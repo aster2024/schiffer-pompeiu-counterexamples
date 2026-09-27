@@ -1,0 +1,1104 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Gc}{\mathcal{G}}
+\newcommand{\Fc}{\mathcal{F}}
+\newcommand{\Nc}{\mathcal{N}}
+\newcommand{\Bc}{\mathcal{B}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\bw}{\overline{w}}
+\newcommand{\jst}{j_*}
+\newcommand{\sU}{\mathsf{U}}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\dist}{dist}
+\newcommand{\nrm}[1]{\lVert #1\rVert}
+
+\begin{document}
+
+\title[A counterexample to Schiffer and Pompeiu in dimension four]{A counterexample to the Schiffer and Pompeiu conjectures in dimension four}
+
+\author{Jizhou Guo}
+\address{Dots Studio, Rednote}
+\email{mitsuha2021b@gmail.com, sjtu18640985163@sjtu.edu.cn}
+
+\date{September 27, 2026}
+
+\subjclass[2020]{Primary 35N25; Secondary 35P05, 42B10, 35J05, 65G20}
+\keywords{Schiffer conjecture, Pompeiu problem, overdetermined boundary value problem, Neumann eigenfunction, disk polynomials, computer-assisted proof}
+
+\begin{abstract}
+We construct a bounded convex domain $\Omega\subset\R^4$ which is not a ball, whose boundary is a real-analytic hypersurface diffeomorphic to $S^3$, and which carries a nonconstant Neumann eigenfunction of the Laplacian that is constant on $\partial\Omega$: the overdetermined problem $\Delta u+u=0$ in $\Omega$, $u=1$ and $\partial_\nu u=0$ on $\partial\Omega$ has a solution. By Green's identity the Fourier transform of the indicator function of $\Omega$ vanishes on the unit sphere, so $\Omega$ fails the Pompeiu property. This gives a counterexample to the Schiffer conjecture and to the Pompeiu conjecture in dimension four. The domain is invariant under $O(3)$ acting on the last three coordinates and under reflection of the first one. For such domains the four-dimensional problem is equivalent to a planar Helmholtz problem in the meridian domain with Cauchy data $F=y$, $\nabla F=e_y$ on its boundary. We treat this planar problem with the conformal fixed-disc method of Colbrook and Stepaniants, and prove the existence of an exact solution near an explicit approximate one by a Newton--Kantorovich argument in a weighted space of disk-polynomial coefficients. The finite-dimensional part of the argument is checked in interval arithmetic, and all infinite tails are controlled by explicit analytic estimates.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+%======================================================================
+\section{Introduction}\label{sec:intro}
+%======================================================================
+
+\subsection{The Pompeiu problem and Schiffer's conjecture}
+
+Let $n\geq2$. A bounded domain $\Omega\subset\R^n$ has the \emph{Pompeiu property} if the only continuous function $f\colon\R^n\to\C$ such that
+\[
+\int_{\sigma(\Omega)}f(x)\,dx=0\qquad\text{for every rigid motion }\sigma\text{ of }\R^n
+\]
+is $f\equiv0$. The question of which domains have this property goes back to Pompeiu \cite{Pom29a,Pom29b,Pom29c}. Balls do not have it: if $J_{n/2}(kR)=0$ for some $k>0$, then the Fourier transform of $\one_{B_R}$ vanishes on the sphere $\{|\xi|=k\}$, and $f(x)=e^{ikx_1}$ integrates to zero over every ball of radius $R$. Brown, Schreiber and Taylor \cite{BST73} characterised the failure of the Pompeiu property through the zero set of the Fourier--Laplace transform of the indicator function; in particular, a bounded domain fails the property whenever $\widehat{\one_\Omega}$ vanishes identically on a sphere $\{|\xi|=k\}$ with $k>0$ (this direction is elementary, see Section~\ref{sec:pompeiu}). The \emph{Pompeiu conjecture} asserts that a bounded domain with Lipschitz boundary homeomorphic to $S^{n-1}$ fails the Pompeiu property only if it is a ball. Some topological assumption is necessary: for every $k>0$ the function $R\mapsto R^{n/2}J_{n/2}(kR)$ takes equal values at suitable distinct radii $R_1<R_2$, so the spherical shell $\{R_1<|x|<R_2\}$ fails the Pompeiu property, and such shells are simply connected when $n\geq3$.
+
+\begin{conjecture}[Schiffer]\label{conj:schiffer}
+Let $\Omega\subset\R^n$ be a bounded domain with smooth boundary homeomorphic to $S^{n-1}$. If, for some $\mu>0$, there is a nonconstant solution of
+\begin{equation}\label{eq:schiffer}
+\Delta u+\mu u=0\ \text{ in }\Omega,\qquad u=\text{const}\ \text{ and }\ \partial_\nu u=0\ \text{ on }\partial\Omega,
+\end{equation}
+then $\Omega$ is a ball.
+\end{conjecture}
+
+On a ball $B_R$, the radial Neumann eigenfunctions $u=r^{1-n/2}J_{n/2-1}(\sqrt\mu\,r)$ solve \eqref{eq:schiffer} precisely when $J_{n/2}(\sqrt\mu\,R)=0$. Formulations of the conjecture in the literature differ in their regularity and topological hypotheses (smooth boundary, simply connected domain, connected boundary); the domain constructed below satisfies all of them. Williams \cite{Wil76} showed that, for bounded domains with Lipschitz boundary homeomorphic to a sphere, the failure of the Pompeiu property is equivalent to the solvability of \eqref{eq:schiffer} for some $\mu>0$, building on \cite{BST73}; the direction from \eqref{eq:schiffer} to the failure of the Pompeiu property is a consequence of Green's identity. In the planar case Schiffer's problem appears as Problem~80 in Yau's list \cite{Yau82}. We refer to Zalcman's survey \cite{Zal92} for the classical bibliography.
+
+A large literature proves the conjectured rigidity under additional hypotheses. Berenstein \cite{Ber80} and Berenstein--Yang \cite{BY87} showed that a domain with infinitely many eigenvalues $\mu$ for which \eqref{eq:schiffer} is solvable is a ball. Kobayashi \cite{Kob93}, Agranovsky \cite{Agr93} and Canuto \cite{Can14} proved rigidity and stability statements for perturbations of balls. Further results under geometric or spectral hypotheses include \cite{Avi86,Dal99,Den12,KL20,Mon26,DLS26,DSWZ25}. We compare our example with these results in Section~\ref{sec:rigidity}.
+
+\subsection{The planar counterexamples}
+
+In August 2026 the planar conjectures were disproved independently by two groups. Colbrook and Stepaniants \cite{CS26} constructed a single explicit ten-fold symmetric noncircular domain $\Omega\subset\R^2$ with real-analytic boundary for which \eqref{eq:schiffer} holds with $\sqrt\mu\in(31.967007261,31.967007293)$. Their proof pulls the problem back to the unit disc by a conformal map, which turns it into a cubic equation on a space of disk-polynomial coefficients, and establishes the existence of an exact solution near an explicit approximation by a computer-assisted contraction argument. Cao-Labora and de Dios Pont \cite{CLdDP26} constructed infinitely many $N$-fold symmetric planar counterexamples, for $N$ sufficiently large, by a bifurcation argument for a relaxed problem in which $N$ is a real parameter, with a branch length that is uniform in $N$. Colbrook, Sadeghi and Stepaniants \cite{CSS26} adapted the conformal method to disprove the planar Berenstein conjecture. Earlier constructions of Schiffer-type domains in related settings include domains in the flat cylinder $\R^N\times\R/2\pi\Z$ and on $S^2$ \cite{FMW25}, contractible domains on the half-sphere \cite{CLF25}, doubly connected planar domains on whose two boundary components the eigenfunction takes different constants \cite{EFRS25}, and noncircular planar solutions of the related problem with nonzero constant Neumann data \cite{Whe25}. To the best of our knowledge, no counterexample to either conjecture was previously known for bounded domains in $\R^n$, $n\geq3$, with boundary homeomorphic to a sphere.
+
+\subsection{Main results}
+
+Write $x=(x_1,x')\in\R\times\R^3$ for points of $\R^4$.
+
+\begin{theorem}\label{thm:main}
+There exist a bounded domain $\Omega\subset\R^4$ and a nonconstant real-valued function $u$, real analytic on an open neighbourhood of $\overline\Omega$, such that
+\begin{equation}\label{eq:main}
+\Delta u+u=0\ \text{ in }\Omega,\qquad u=1\ \text{ and }\ \nabla u=0\ \text{ on }\partial\Omega .
+\end{equation}
+Moreover:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $\Omega$ is not a ball;
+\item $\Omega$ is strictly star-shaped with respect to the origin, and $\partial\Omega$ is a compact real-analytic hypersurface diffeomorphic to $S^3$;
+\item $\Omega$ is invariant under the action of $O(3)$ on $x'$ and under $x_1\mapsto-x_1$.
+\end{enumerate}
+In particular, Conjecture~\ref{conj:schiffer} fails in $\R^4$.
+\end{theorem}
+
+Rescaling $\Omega$ and $u$ gives, for every $\mu>0$, a counterexample with eigenvalue $\mu$ in \eqref{eq:schiffer}.
+
+\begin{corollary}[Pompeiu]\label{cor:pompeiu}
+The Fourier transform of $\one_\Omega$ vanishes on the unit sphere of $\R^4$. Consequently $\int_{\sigma(\Omega)}\cos x_1\,dx=0$ for every rigid motion $\sigma$ of $\R^4$, the domain $\Omega$ fails the Pompeiu property, and the Pompeiu conjecture fails in $\R^4$.
+\end{corollary}
+
+\begin{corollary}[Convexity]\label{cor:convex}
+The domain $\Omega$ of Theorem~\ref{thm:main} is convex.
+\end{corollary}
+
+In particular, the Schiffer and Pompeiu conjectures fail in $\R^4$ even within the class of bounded convex domains with real-analytic boundary.
+
+\begin{remark}[The domain]\label{rem:domain}
+The domain is obtained by rotation: $\Omega=\{(x_1,x'):(x_1,|x'|)\in D\}$, where $D=\psi(\D)\subset\R^2\cong\C$ is the image of the unit disc under a map $\psi(w)=\sum_{j\ \mathrm{odd}}c_jw^j$ with real coefficients. The coefficients satisfy
+\[
+\sum_{j\ \mathrm{odd}}(c_1^\circ)^2(j+1)\Big(\frac{21}{20}\Big)^{j}\,|c_j-c_j^\circ|\leq\frac1{50000},
+\]
+where $c^\circ_1,c^\circ_3,\ldots,c^\circ_{41}$ are explicit dyadic rationals listed in the verification script (Section~\ref{sec:cap}) and $c^\circ_j=0$ for $j>41$; one has $c_1^\circ\approx14.840043$ and $c^\circ_3\approx0.0912$, $c^\circ_5\approx0.0942$, $c^\circ_7\approx0.0964$. For orientation we record some numerical observations about the centre $\psi^\circ$, which are not used in the proofs. The boundary of $D$ is a radial graph whose radius lies between $14.7213$ and $15.1343$. The ball of $\R^4$ that carries a radial solution of \eqref{eq:main} with the same eigenvalue and closest radius has radius $j_{2,4}\approx14.79595$, the fourth positive zero of $J_2$; thus the relative deviation of $\partial\Omega$ from that sphere lies between $-0.5\%$ and $+2.3\%$. Expanding the boundary radius of $\Omega$ in zonal spherical harmonics on $S^3$, the dominant nonconstant term is the zonal harmonic of degree six, with relative amplitude about $2.2\times10^{-2}$ at the poles.
+\end{remark}
+
+\subsection{Strategy of the proof}
+
+The proof has three parts.
+
+\emph{Reduction to a planar problem} (Section~\ref{sec:reduction}). For $u(x)=f(x_1,|x'|)$, the function $F(x_1,y)=yf(x_1,y)$ satisfies
+\begin{equation}\label{eq:intro-red}
+(\partial_{x_1}^2+\partial_y^2)F=y\,(\Delta_{\R^4}u)(x_1,y,0,0),
+\end{equation}
+because the radial part of the Laplacian of $\R^3$ is $y^{-1}\partial_y^2(y\,\cdot\,)$. Hence $O(3)\times\Z_2$-invariant solutions of \eqref{eq:main} correspond to solutions of the planar problem
+\begin{equation}\label{eq:intro-P}
+\Delta F+F=0\ \text{ in }D,\qquad F=y\ \text{ and }\ \nabla F=e_y\ \text{ on }\partial D,
+\end{equation}
+with $F$ odd in $y$ and $D$ symmetric under both coordinate reflections. The identity \eqref{eq:intro-red} has no counterpart without a potential term in dimensions $n\neq2,4$ (Remark~\ref{rem:why4}).
+
+\emph{Conformal fixed-disc formulation and contraction} (Sections~\ref{sec:conformal}--\ref{sec:zero}). Following \cite{CS26} we write $D=\psi(\D)$ and $V=F\circ\psi$. Then $\Delta V+|\psi'|^2V=0$ in $\D$, and $V-\im\psi$ has vanishing value and normal derivative on $\partial\D$. We write $V=Kg+\im\psi$, where $K$ is an explicit inverse of the Laplacian with vanishing Cauchy data on its natural range, and obtain the cubic equation
+\begin{equation}\label{eq:intro-cubic}
+\Fc(g,\psi)=g+|\psi'|^2\,(Kg+\im\psi)=0 .
+\end{equation}
+Compared with the equation $g+|p|^2(1+Kg)=0$ of \cite{CS26}, the constant boundary datum is replaced by $\im\psi$, so that the unknown map enters the data as well; the eigenvalue is absorbed into the scale of $\psi$; the symmetry class consists of odd maps with real coefficients and the sine sector of odd angular frequencies; and the part of the linearisation acting on high shape modes is an upper bidiagonal operator that we invert explicitly. We prove that \eqref{eq:intro-cubic} has an exact zero in an explicit ball around a numerically computed centre, using a Newton--Kantorovich (radii polynomial) argument in weighted $\ell^1$ spaces of disk-polynomial coefficients. The approximate inverse consists of a $525\times525$ matrix, inverted and checked in ball arithmetic, together with an exact tail inverse. All infinitely many columns of the defect operator are covered: finitely many are evaluated without truncation in interval arithmetic, and the remaining ones are bounded by analytic estimates proved in Section~\ref{sec:Z}.
+
+\emph{Reconstruction} (Sections~\ref{sec:recon}--\ref{sec:pompeiu}). From the zero of \eqref{eq:intro-cubic} we obtain a univalent map $\psi$, a strictly star-shaped and convex meridian domain $D$, a solution of \eqref{eq:intro-P} that extends analytically across $\partial D$, and finally, by rotation, the domain $\Omega$ and the function $u$ of Theorem~\ref{thm:main}.
+
+The finite computations are performed by a single self-contained script using ball arithmetic \cite{Joh17,flint}; it runs in about three minutes on one core. Section~\ref{sec:cap} describes what it checks and how to reproduce it.
+
+\subsection{Other dimensions}
+Our proof is specific to dimension four. In Section~\ref{sec:remarks} we record numerical evidence, which we do not claim as proof, for analogous non-ball solutions of \eqref{eq:schiffer} in $\R^3$ and $\R^5$, and discuss the bifurcation mechanism that suggested where to look.
+
+\subsection*{Organisation}
+Section~\ref{sec:reduction} contains the reduction to the plane and Section~\ref{sec:conformal} the conformal formulation. Section~\ref{sec:disk} collects the needed facts on disk polynomials and Section~\ref{sec:K} studies the operator $K$. The cubic map and its derivatives are described in Section~\ref{sec:cubic}, the approximate inverse in Section~\ref{sec:inverse}, and the defect bounds, including all tail estimates, in Section~\ref{sec:Z}. Section~\ref{sec:zero} states the certified bounds and the existence of the zero. Sections~\ref{sec:recon} and~\ref{sec:pompeiu} prove Theorem~\ref{thm:main} and its corollaries. Section~\ref{sec:cap} describes the computer-assisted part. Sections~\ref{sec:remarks} and~\ref{sec:rigidity} contain remarks on other dimensions and curved spaces, and on the relation with known rigidity results.
+
+%======================================================================
+\section{Reduction to a planar problem}\label{sec:reduction}
+%======================================================================
+
+Write points of the meridian plane as $(x_1,y)\in\R^2$, identified with $z=x_1+iy\in\C$, and let $\Pi\colon\R^4\to\R^2$, $\Pi(x_1,x')=(x_1,|x'|)$. The map $\Pi$ is continuous and its image is the closed half-plane $\{y\geq0\}$.
+
+\begin{lemma}\label{lem:laplace-identity}
+Let $f$ be a $C^2$ function on an open subset of $\{y>0\}$ and $F(x_1,y)=yf(x_1,y)$. Then
+\[
+F_{x_1x_1}+F_{yy}=y\Big(f_{x_1x_1}+f_{yy}+\frac2yf_y\Big).
+\]
+The expression in parentheses, evaluated at $(x_1,|x'|)$, is the Laplacian of the function $x\mapsto f(x_1,|x'|)$ at every point with $x'\neq0$.
+\end{lemma}
+
+\begin{proof}
+$(yf)_{yy}=yf_{yy}+2f_y$. The second statement is the formula $\partial_y^2+\frac2y\partial_y$ for the Laplacian of $\R^3$ acting on radial functions.
+\end{proof}
+
+\begin{lemma}\label{lem:odd-division}
+Let $N\subset\R^2$ be open and symmetric under $(x_1,y)\mapsto(x_1,-y)$, and let $F$ be real analytic on $N$ and odd in $y$. Then there is a real-analytic function $G$, defined on an open set containing $\{(x_1,y^2):(x_1,y)\in N\}$, such that $F(x_1,y)=y\,G(x_1,y^2)$ on $N$. Consequently $x\mapsto G(x_1,|x'|^2)$ is real analytic on the open set $\Pi^{-1}(N)$, and it equals $F(x_1,|x'|)/|x'|$ where $x'\neq0$.
+\end{lemma}
+
+\begin{proof}
+For $t>0$ with $(x_1,\sqrt t)\in N$ put $G(x_1,t)=F(x_1,\sqrt t)/\sqrt t$; this is real analytic. Let $(a,0)\in N$. For some $\delta>0$, $F(x_1,y)=\sum_{i,k\geq0}c_{ik}(x_1-a)^iy^k$ converges absolutely for $|x_1-a|<\delta$, $|y|<\delta$, and $c_{ik}=0$ for even $k$ by oddness. Then $G(x_1,t)=\sum_{i,j}c_{i,2j+1}(x_1-a)^it^j$ converges for $|x_1-a|<\delta$, $|t|<\delta^2$ and agrees with the previous definition where $0<t<\delta^2$. Two such local definitions agree on their overlap, which is a connected product of intervals containing points with $t>0$. This defines $G$. The last assertion follows because $x\mapsto(x_1,|x'|^2)$ is polynomial.
+\end{proof}
+
+\begin{proposition}[From the plane to $\R^4$]\label{prop:rotation}
+Let $D\subset\R^2$ be a bounded domain, symmetric under $y\mapsto-y$, whose boundary is a Jordan curve meeting the axis $\{y=0\}$ in exactly two points. Let $F$ be real analytic on an open set $N\supset\overline D$ symmetric under $y\mapsto-y$, odd in $y$, and such that
+\begin{equation}\label{eq:P}
+\Delta F+F=0\ \text{ in }D,\qquad F=y\ \text{ and }\ \nabla F=e_y\ \text{ on }\partial D .
+\end{equation}
+Put $\Omega=\Pi^{-1}(D)$ and let $u$ be the function $x\mapsto G(x_1,|x'|^2)$ of Lemma~\ref{lem:odd-division}. Then $\Omega$ is a bounded open set, $u$ is real analytic on the neighbourhood $\Pi^{-1}(N)$ of $\overline\Omega$, $u$ is nonconstant, and \eqref{eq:main} holds.
+\end{proposition}
+
+\begin{proof}
+$\Omega$ is open and bounded because $\Pi$ is continuous and proper. By continuity $\overline\Omega\subset\Pi^{-1}(\overline D)\subset\Pi^{-1}(N)$, and $\partial\Omega\subset\Pi^{-1}(\partial D)$, since a point $x\in\overline\Omega$ with $\Pi(x)\in D$ lies in the open set $\Omega$.
+
+Off the axis $\{x'=0\}$, $u(x)=f(x_1,|x'|)$ with $f=F/y$, so Lemma~\ref{lem:laplace-identity} gives $|x'|(\Delta u+u)(x)=(\Delta F+F)(\Pi(x))=0$ in $\Omega\setminus\{x'=0\}$. By continuity of $\Delta u+u$ the equation holds in $\Omega$.
+
+Let $x\in\partial\Omega$ with $y=|x'|>0$. Then $\Pi(x)\in\partial D$, so $f=F/y=1$ there. Since $\nabla F=e_y$ on $\partial D$, we have $f_{x_1}=F_{x_1}/y=0$ and $f_y=(F_y-f)/y=0$, hence $\nabla u(x)=(f_{x_1},f_y\,x'/|x'|)=0$. The set $\partial\Omega\cap\{x'\neq0\}=\Pi^{-1}(\partial D\cap\{y>0\})$ is dense in $\partial\Omega$, since $\partial D$ meets the axis in only two points and each of them is a limit of points of $\partial D\cap\{y>0\}$. By continuity $u=1$ and $\nabla u=0$ on all of $\partial\Omega$. Finally, a constant solution of $\Delta u+u=0$ vanishes identically, which contradicts $u=1$ on $\partial\Omega$.
+\end{proof}
+
+The reduction is reversible in the analytic class, which explains why nothing is lost by working in the plane.
+
+\begin{proposition}[From $\R^4$ to the plane]\label{prop:converse}
+Let $\Omega\subset\R^4$ be a bounded domain invariant under $O(3)$ acting on $x'$, and let $u$ be real analytic on a neighbourhood of $\overline\Omega$ and solve \eqref{eq:main}. Put $D=\{(x_1,y):(x_1,|y|,0,0)\in\Omega\}$ and $\tilde u(x)=\int_{O(3)}u(x_1,Qx')\,dQ$ \textup{(}Haar probability measure\textup{)}. Then $\tilde u$ also solves \eqref{eq:main}, it has the form $\tilde u(x)=f(x_1,|x'|)$ with $f$ real analytic and even in $y$, and $F=yf$ solves \eqref{eq:P}.
+\end{proposition}
+
+\begin{proof}
+The Laplacian commutes with rotations, and the boundary conditions are rotation invariant; hence $\tilde u$ solves \eqref{eq:main}. The function $f(x_1,y)=\tilde u(x_1,y,0,0)$ is real analytic and even in $y$ (use the rotation $x'\mapsto-x'$), and $\tilde u(x)=f(x_1,|x'|)$ by invariance. Lemma~\ref{lem:laplace-identity} gives $\Delta F+F=0$ in $D\cap\{y\neq0\}$, and by analyticity in $D$. On $\partial D\cap\{y>0\}$ we have $f=1$ and $\nabla f=0$, hence $F=y$ and $\nabla F=f e_y+y\nabla f=e_y$; continuity extends this to the points of $\partial D$ on the axis.
+\end{proof}
+
+\begin{remark}[Why dimension four]\label{rem:why4}
+For $O(n-1)$-invariant functions $u(x)=f(x_1,|x'|)$ on $\R^n$ one has $\Delta u=f_{x_1x_1}+f_{yy}+(n-2)y^{-1}f_y$. With $F=y^{(n-2)/2}f$,
+\[
+F_{x_1x_1}+F_{yy}=y^{(n-2)/2}\,\Delta u+\frac{(n-2)(n-4)}{4}\,\frac{F}{y^2}.
+\]
+The inverse-square potential vanishes exactly for $n=2$ and $n=4$. For $n=4$ the substitution also transforms the boundary conditions $u=1$, $\nabla u=0$ into $F=y$, $\nabla F=e_y$. The conformal method below uses in an essential way that the planar operator is the Laplacian, whose conformal pull-back is a multiple of the Laplacian; for $n=3$ or $n\geq5$ the meridian problem contains a first-order drift term, or equivalently an inverse-square potential, and a different fixed-domain formulation would be needed.
+\end{remark}
+
+Let $x_1+iy=re^{i\phi}$ be planar polar coordinates, and let $U_\ell$ denote the Chebyshev polynomial of the second kind, so that $U_\ell(\cos\phi)$ is the zonal spherical harmonic of degree $\ell$ on $S^3$. Under $u=F/y$, the planar Helmholtz solution $F=J_m(r)\sin m\phi$, with $m$ odd, corresponds to the four-dimensional Helmholtz solution
+\[
+u=r^{-1}J_m(r)\,U_{m-1}(\cos\phi).
+\]
+For instance, $F=J_1(r)\sin\phi$ gives the radial solution $r^{-1}J_1(r)$, whose derivative is $-r^{-1}J_2(r)$; this is why the Schiffer balls of $\R^4$ at eigenvalue one have radii $j_{2,k}$, the positive zeros of $J_2$.
+
+%======================================================================
+\section{The conformal fixed-disc formulation}\label{sec:conformal}
+%======================================================================
+
+Let $\D=\{w\in\C:|w|<1\}$, $w=re^{i\theta}$. The following lemma pulls \eqref{eq:P} back to the disc; it is the analogue of the reformulation in \cite{CS26}.
+
+\begin{lemma}\label{lem:pullback}
+Let $\psi$ be holomorphic and injective on a neighbourhood of $\overline\D$, with $\psi'\neq0$ there, and let $D=\psi(\D)$. Let $V\in C^1(\overline\D)$ be real valued and satisfy
+\begin{equation}\label{eq:V}
+\Delta V+|\psi'|^2V=0\ \text{ in }\mathcal D'(\D),\qquad V-\im\psi=0\ \text{ and }\ \nabla(V-\im\psi)=0\ \text{ on }\partial\D .
+\end{equation}
+Then $F=V\circ\psi^{-1}\in C^1(\overline D)$ satisfies $\int_D(\nabla F\cdot\nabla\varphi-F\varphi)\,dA=0$ for all $\varphi\in C^\infty_c(D)$, and $F=y$, $\nabla F=e_y$ on $\partial D$. If moreover $\psi$ is odd with real Taylor coefficients, $V(\overline w)=-V(w)$ and $V(-\overline w)=V(w)$, then $D$ is symmetric under both coordinate reflections, $F$ is odd in $y$ and even in $x_1$.
+\end{lemma}
+
+\begin{proof}
+For $\varphi\in C_c^\infty(D)$, the function $\varphi\circ\psi$ belongs to $C_c^\infty(\D)$. Conformal invariance of the Dirichlet integral and the Jacobian $|\psi'|^2$ give
+\[
+\int_D\nabla F\cdot\nabla\varphi\,dA=\int_\D\nabla V\cdot\nabla(\varphi\circ\psi)\,dA=\int_\D|\psi'|^2V\,(\varphi\circ\psi)\,dA=\int_DF\varphi\,dA,
+\]
+where the middle equality is the distributional equation for $V\in C^1$. The function $V-\im\psi=(F-y)\circ\psi$ has zero value and gradient on $\partial\D$; since the Jacobian matrix of $\psi$ is invertible on $\partial\D$, the chain rule gives $F-y=0$ and $\nabla(F-y)=0$ on $\partial D$. If $\psi$ is odd with real coefficients, then $\psi(\overline w)=\overline{\psi(w)}$ and $\psi(-\overline w)=-\overline{\psi(w)}$, which gives the symmetries of $D$ and, with the stated parities of $V$, those of $F$.
+\end{proof}
+
+We shall look for $V$ of the form $V=Kg+\im\psi$, where $g$ is an unknown function on $\D$ and $K$ is an inverse of the Laplacian with zero Cauchy data on $\partial\D$ (Section~\ref{sec:K}). Since $\im\psi$ is harmonic, \eqref{eq:V} becomes $g+|\psi'|^2(Kg+\im\psi)=0$, which is \eqref{eq:intro-cubic}. We normalise the eigenvalue to one; the size of $D$ is then an unknown, encoded in the coefficient $c_1$ of $\psi$. The symmetry class removes the degeneracies of the problem: the scaling is fixed by the eigenvalue, translations along the axis are excluded by the symmetry $x_1\mapsto-x_1$, and the M\"obius automorphisms of the disc are excluded by requiring $\psi(0)=0$ with real Taylor coefficients.
+
+%======================================================================
+\section{Disk polynomials and coefficient spaces}\label{sec:disk}
+%======================================================================
+
+\subsection{Disk polynomials}
+Write $w=re^{i\theta}$ and $t=r^2$. For $m\in\Z$ and an integer $s\geq0$ let
+\begin{equation}\label{eq:Phi}
+\Phi_{m,s}(w)=r^{|m|}P_s^{(0,|m|)}(2r^2-1)\,e^{im\theta},
+\end{equation}
+where $P^{(\alpha,\beta)}_s$ is the Jacobi polynomial in the standard normalisation, so that $P^{(0,n)}_s(1)=1$ and $\Phi_{m,s}=e^{im\theta}$ on $\partial\D$. Explicitly,
+\begin{equation}\label{eq:jacobi}
+P_s^{(0,n)}(2t-1)=\sum_{k=0}^sa^{(n)}_{s,k}t^k,\qquad a^{(n)}_{s,k}=(-1)^{s-k}\frac{(n+s+k)!}{k!\,(s-k)!\,(n+k)!},
+\end{equation}
+and, equivalently, $P_s^{(0,n)}(2t-1)=\frac1{s!}t^{-n}\frac{d^s}{dt^s}\{t^{n+s}(t-1)^s\}$. We set $a^{(n)}_{s,k}=0$ for $k\notin\{0,\ldots,s\}$ and $\Phi_{m,-1}=0$. Each $\Phi_{m,s}$ is a polynomial in $w,\bw$ of degree $|m|+2s$; these are the disk (Zernike) polynomials \cite{Koo78}. Complex conjugation gives $\overline{\Phi_{m,s}}=\Phi_{-m,s}$.
+
+\begin{lemma}\label{lem:orth}
+The disk polynomials have the following properties.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item For $n,s\geq0$, the polynomial $P^{(0,n)}_s(2t-1)$ is orthogonal in $L^2([0,1],t^n\,dt)$ to all polynomials of degree less than $s$.
+\item The functions $\Phi_{m,s}$ are pairwise orthogonal in $L^2(\D)$, and $\int_\D|\Phi_{m,s}|^2\,dA=\pi/(|m|+2s+1)$.
+\item $|\Phi_{m,s}(w)|\leq1$ for $|w|\leq1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) Integrate the Rodrigues formula by parts $s$ times against $t^n\cdot t^i$, $i<s$; all boundary terms vanish because the derivatives of order less than $s$ of $t^{n+s}(t-1)^s$ vanish at $t=0$ and $t=1$.
+
+(b) Angular integration separates different $m$. For equal $m$ with $n=|m|$, $\int_\D\Phi_{m,s}\overline{\Phi_{m,s'}}\,dA=\pi\int_0^1t^nP_s^{(0,n)}P_{s'}^{(0,n)}\,dt$, which vanishes for $s\neq s'$ by (a). For $s=s'$, by (a) only the leading coefficient $a^{(n)}_{s,s}=\frac{(n+2s)!}{s!(n+s)!}$ of one factor contributes, and $s$ integrations by parts in the Rodrigues formula give $\int_0^1t^{n+s}P^{(0,n)}_s\,dt=\int_0^1t^{n+s}(1-t)^s\,dt=\frac{(n+s)!\,s!}{(n+2s+1)!}$. The product is $1/(n+2s+1)$.
+
+(c) Let $|w|\leq1$, $h=\sqrt{1-|w|^2}$, and consider the unitary matrix $U=\left(\begin{smallmatrix}w&-h\\h&\bw\end{smallmatrix}\right)$, acting on the space of homogeneous polynomials of degree $N=n+2s$ in two variables $e_1,e_2$, with the $U(2)$-invariant inner product in which the monomials are orthogonal. The induced operator is unitary, so its diagonal matrix coefficients with respect to the normalised monomials have modulus at most one. The coefficient of $e_1^{n+s}e_2^{s}$ in $(we_1+he_2)^{n+s}(-he_1+\bw e_2)^{s}$ is
+\[
+\sum_{k=0}^s\binom{n+s}{k}\binom{s}{k}w^{n+s-k}\bw^{s-k}(-h^2)^k=e^{in\theta}r^n\sum_{k=0}^s\binom{n+s}{k}\binom sk t^{s-k}(t-1)^k .
+\]
+By Leibniz's rule applied to the Rodrigues formula, the last sum equals $P^{(0,n)}_s(2t-1)$. This proves (c) for $m=n\geq0$; conjugation gives $m<0$.
+\end{proof}
+
+Fix $\rho>1$ (we shall take $\rho=21/20$). Let $\Bc_\rho$ be the space of complex sequences $f=(f_{m,s})_{m\in\Z,s\geq0}$ with
+\[
+\nrm f_\rho=\sum_{m,s}\rho^{|m|}|f_{m,s}|<\infty .
+\]
+By Lemma~\ref{lem:orth}(c), $\sum f_{m,s}\Phi_{m,s}$ converges absolutely and uniformly on $\overline\D$, with $\sup_{\overline\D}|f|\leq\nrm f_\rho$; by Lemma~\ref{lem:orth}(b) the coefficients are determined by the function. We identify $f$ with this continuous function. $\Bc_\rho$ is a Banach space, and every bounded linear operator on it (or between such weighted $\ell^1$ spaces) is determined by its values on the basis vectors.
+
+\begin{lemma}[Multiplication by $w$ and $\bw$]\label{lem:mult}
+Let $n=|m|$. Then
+\begin{equation}\label{eq:rec}
+w\,\Phi_{m,s}=
+\begin{cases}
+\dfrac{n+s+1}{n+2s+1}\Phi_{m+1,s}+\dfrac{s}{n+2s+1}\Phi_{m+1,s-1}, & m\geq0,\\[8pt]
+\dfrac{n+s}{n+2s+1}\Phi_{m+1,s}+\dfrac{s+1}{n+2s+1}\Phi_{m+1,s+1}, & m<0,
+\end{cases}
+\end{equation}
+and $\bw\,\Phi_{m,s}=\overline{w\,\Phi_{-m,s}}$. In both cases the coefficients are nonnegative and sum to one. Consequently $\nrm{wf}_\rho\leq\rho\nrm f_\rho$ and $\nrm{\bw f}_\rho\leq\rho\nrm f_\rho$, and for every holomorphic $p(w)=\sum_{a\geq0}p_aw^a$ with $N_\rho(p):=\sum_a\rho^a|p_a|<\infty$,
+\begin{equation}\label{eq:algebra}
+\nrm{pf}_\rho\leq N_\rho(p)\nrm f_\rho,\qquad \nrm{\overline pf}_\rho\leq N_\rho(p)\nrm f_\rho .
+\end{equation}
+Moreover, if $m\geq0$ then $w^N\Phi_{m,s}$ is a convex combination of $\Phi_{m+N,s'}$ with $s'\leq s$.
+\end{lemma}
+
+\begin{proof}
+For $m=n\geq0$ both sides of the first formula are $r^{n+1}e^{i(n+1)\theta}$ times a polynomial in $t$, and the claim is the identity $a^{(n)}_{s,k}=\frac{n+s+1}{n+2s+1}a^{(n+1)}_{s,k}+\frac{s}{n+2s+1}a^{(n+1)}_{s-1,k}$. Dividing by $a^{(n+1)}_{s,k}$ (which is nonzero for $0\leq k\leq s$) and using \eqref{eq:jacobi}, it reduces to $(n+s+1)(n+s+k+1)-s(s-k)=(n+k+1)(n+2s+1)$. For $m=-n<0$ the claim is $a^{(n)}_{s,k-1}=\frac{n+s}{n+2s+1}a^{(n-1)}_{s,k}+\frac{s+1}{n+2s+1}a^{(n-1)}_{s+1,k}$; dividing by $a^{(n-1)}_{s,k}$ for $0\leq k\leq s$ it reduces to $(n+s)(s+1-k)-(s+1)(n+s+k)=-k(n+2s+1)$, and the case $k=s+1$ is checked directly. The formula for $\bw$ follows from $\overline{\Phi_{m,s}}=\Phi_{-m,s}$. Since $|m\pm1|\leq|m|+1$, the weight grows by at most a factor $\rho$, which gives the bounds for $w$ and $\bw$; \eqref{eq:algebra} follows by iteration and absolute summation. The last assertion follows from the case $m\geq0$ of \eqref{eq:rec}.
+\end{proof}
+
+\begin{lemma}[Radial index under monomials]\label{lem:radial}
+Let $\alpha,\beta\geq0$, $m\in\Z$, $s\geq0$. Then $w^\alpha\bw^\beta\Phi_{m,s}$ is a finite linear combination of $\Phi_{m+\alpha-\beta,s'}$ with $s'\geq s-\max(\alpha,\beta)$.
+\end{lemma}
+
+\begin{proof}
+Put $m'=m+\alpha-\beta$. The product equals $r^{\alpha+\beta+|m|}P^{(0,|m|)}_s(2t-1)\,e^{im'\theta}$, so, by Lemma~\ref{lem:orth}(b) its coefficient on $\Phi_{m',s'}$ is a multiple of
+\[
+\int_0^1t^{|m|}P^{(0,|m|)}_s(2t-1)\,t^{e}P^{(0,|m'|)}_{s'}(2t-1)\,dt,\qquad e=\frac{\alpha+\beta+|m'|-|m|}2 .
+\]
+Since $|m'|-|m|\equiv\alpha+\beta\pmod 2$ and $\big||m'|-|m|\big|\leq|\alpha-\beta|$, $e$ is an integer with $0\leq\min(\alpha,\beta)\leq e\leq\max(\alpha,\beta)$. The second factor is a polynomial of degree $e+s'$, so the integral vanishes if $e+s'<s$ by Lemma~\ref{lem:orth}(a).
+\end{proof}
+
+\begin{lemma}[Monomials]\label{lem:monomial}
+Let $\alpha\geq\beta\geq0$. Then $w^\alpha\bw^\beta=\sum_{s=0}^{\beta}\kappa_s\Phi_{\alpha-\beta,s}$ with $\kappa_s\geq0$, $\sum_s\kappa_s=1$ and $\kappa_0=\dfrac{\alpha-\beta+1}{\alpha+1}$.
+\end{lemma}
+
+\begin{proof}
+$\bw^\beta=\Phi_{-\beta,0}$. Applying \eqref{eq:rec} $\alpha$ times preserves nonnegativity and total mass one, raises the radial index by at most one in each of the first $\beta$ steps and never afterwards. The harmonic coefficient is the $L^2$ projection onto $r^{\alpha-\beta}e^{i(\alpha-\beta)\theta}$, namely $\int_0^1r^{2\alpha+1}dr\big/\int_0^1r^{2(\alpha-\beta)+1}dr$.
+\end{proof}
+
+\subsection{The sine sector}
+For odd $n\geq1$ and $s\geq0$ let
+\[
+S_{n,s}=\im\Phi_{n,s}=r^nP_s^{(0,n)}(2r^2-1)\sin n\theta=\frac{\Phi_{n,s}-\Phi_{-n,s}}{2i}.
+\]
+Let $\Sc$ be the real Banach space of $f=\sum_{n\ \mathrm{odd},\,s\geq0}f_{n,s}S_{n,s}$ with $\nrm f_\rho=\sum\rho^n|f_{n,s}|<\infty$; this is also its norm as an element of $\Bc_\rho$. The elements of $\Sc$ are real-valued, odd under $w\mapsto\bw$ and even under $w\mapsto-\bw$. Conversely, since $\Phi_{m,s}(\bw)=\Phi_{-m,s}(w)$ and $\Phi_{m,s}(-\bw)=(-1)^m\Phi_{-m,s}(w)$, every real-valued $f\in\Bc_\rho$ with these two symmetries belongs to $\Sc$. The functions $S_{n,0}=r^n\sin n\theta$ are harmonic; we call $f_{n,0}$ the harmonic coefficients and put
+\[
+\Gc=\{g\in\Sc:\ g_{n,0}=0\text{ for all }n\}.
+\]
+
+%======================================================================
+\section{The compatible inverse of the Laplacian}\label{sec:K}
+%======================================================================
+
+For odd $n\geq1$ and $s\geq1$ put $q=n+2s$ and define
+\begin{equation}\label{eq:K}
+KS_{n,s}=\frac{S_{n,s-1}}{4q(q+1)}-\frac{S_{n,s}}{2q(q+2)}+\frac{S_{n,s+1}}{4(q+1)(q+2)} .
+\end{equation}
+
+\begin{lemma}\label{lem:K}
+For odd $n\geq1$ and $s\geq1$:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\Delta KS_{n,s}=S_{n,s}$;
+\item $KS_{n,s}=0$ and $\nabla KS_{n,s}=0$ on $\partial\D$;
+\item $KS_{n,s}=\dfrac{(1-r^2)^2}{4s(s+1)}\,r^nP_{s-1}^{(2,n)}(2r^2-1)\sin n\theta$;
+\item the absolute sum of the coefficients in \eqref{eq:K} is $1/(q(q+2))$. Hence $K$ extends to a bounded operator $K\colon\Gc\to\Sc$ with $\nrm K=1/15$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Write $\mathsf A,\mathsf B,\mathsf C$ for the three coefficients in \eqref{eq:K} and $a_{s,k}=a^{(n)}_{s,k}$.
+
+(a) Since $\Delta(r^{n+2k}\sin n\theta)=4k(n+k)r^{n+2k-2}\sin n\theta$, the claim is equivalent to
+$\mathsf Aa_{s-1,k+1}+\mathsf Ba_{s,k+1}+\mathsf Ca_{s+1,k+1}=a_{s,k}/(4(k+1)(n+k+1))$ for $0\leq k\leq s$. By \eqref{eq:jacobi} the three ratios $a_{s-1,k+1}/a_{s,k}$, $a_{s,k+1}/a_{s,k}$, $a_{s+1,k+1}/a_{s,k}$ equal $(s-k)(s-k-1)$, $-(n+s+k+1)(s-k)$ and $(n+s+k+2)(n+s+k+1)$, each divided by $(k+1)(n+k+1)$, and a direct computation gives
+$\mathsf A(s-k)(s-k-1)-\mathsf B(n+s+k+1)(s-k)+\mathsf C(n+s+k+2)(n+s+k+1)=\tfrac14$.
+
+(b) At $r=1$ each $r^nP_t^{(0,n)}(2r^2-1)$ equals one, and $\mathsf A+\mathsf B+\mathsf C=0$. Its radial derivative at $r=1$ is $\beta_t=n+2t(t+n+1)$, because $\frac{d}{dx}P^{(0,n)}_t(1)=t(t+n+1)/2$. Since $\beta_s-\beta_{s-1}=2q$ and $\beta_{s+1}-\beta_s=2(q+2)$, we get $\mathsf A\beta_{s-1}+\mathsf B\beta_s+\mathsf C\beta_{s+1}=-2q\mathsf A+2(q+2)\mathsf C=0$. The tangential derivative vanishes because the boundary value vanishes identically.
+
+(c) By (b), $KS_{n,s}=r^nR(t)\sin n\theta$ where $R$ is a polynomial of degree $s+1$ with $R(1)=0$ and $nR(1)+2R'(1)=0$, so $R(t)=(1-t)^2Q(t)$ with $\deg Q=s-1$. As a combination of $P^{(0,n)}_{s-1},P^{(0,n)}_s,P^{(0,n)}_{s+1}$, the polynomial $R$ is orthogonal in $L^2(t^ndt)$ to polynomials of degree less than $s-1$ (Lemma~\ref{lem:orth}(a)); hence $Q$ is orthogonal in $L^2(t^n(1-t)^2dt)$ to them and is a multiple of $P^{(2,n)}_{s-1}(2t-1)$. Comparing leading coefficients, $\mathsf C\,a_{s+1,s+1}$ for $R$ and $\frac{(n+2s)!}{(s-1)!(n+s+1)!}$ for $P^{(2,n)}_{s-1}(2t-1)$, gives the factor $1/(4s(s+1))$.
+
+(d) $\mathsf A-\mathsf B+\mathsf C=\frac{(q+2)+2(q+1)+q}{4q(q+1)(q+2)}=\frac1{q(q+2)}$. The operator $K$ does not change the angular index, hence not the weight. Since $q\geq3$, the supremum of $1/(q(q+2))$ is $1/15$, attained at $(n,s)=(1,1)$.
+\end{proof}
+
+\begin{lemma}\label{lem:traces}
+For $g\in\Gc$, the function $W=Kg$ belongs to $C^1(\overline\D)$, satisfies $\Delta W=g$ in $\mathcal D'(\D)$, and $W=0$, $\nabla W=0$ on $\partial\D$.
+\end{lemma}
+
+\begin{proof}
+Let $g_N$ be the truncations of $g$ to finitely many coefficients and $W_N=Kg_N$, a polynomial with $\Delta W_N=g_N$ and zero Cauchy data by Lemma~\ref{lem:K}. The Dirichlet Green function of the disc is $G(w,\zeta)=\frac1{2\pi}\log\big|\frac{w-\zeta}{1-w\overline\zeta}\big|$, and $W_N(w)=\int_\D G(w,\zeta)g_N(\zeta)\,dA(\zeta)$. We have $|\nabla_wG(w,\zeta)|\leq\frac1{2\pi}\big(|w-\zeta|^{-1}+|\zeta|\,|1-w\overline\zeta|^{-1}\big)$. For $|w|\leq1$, $\int_\D|w-\zeta|^{-1}dA(\zeta)\leq4\pi$, since $\D$ lies in the disc of radius $2$ about $w$. If $|w|<1/2$ then $|\zeta|/|1-w\overline\zeta|\leq2$; if $|w|\geq1/2$ then $|\zeta|/|1-w\overline\zeta|\leq2/|\zeta-1/\bw|$ and $\D$ lies in the disc of radius $3$ about $1/\bw$; in both cases the integral of this term is at most $12\pi$. Hence
+\[
+\sup_{\D}|\nabla(W_N-W_L)|\leq8\sup_\D|g_N-g_L|\leq8\nrm{g_N-g_L}_\rho,\qquad \sup_\D|W_N-W_L|\leq\tfrac1{15}\nrm{g_N-g_L}_\rho .
+\]
+Thus $(W_N)$ is Cauchy in $C^1(\overline\D)$; its limit is $Kg$ (the coefficients converge in $\Sc$), the zero Cauchy data pass to the limit, and so does the distributional equation.
+\end{proof}
+
+\begin{remark}\label{rem:compatible}
+Conversely, if $W\in C^1(\overline\D)$ has $\Delta W=g\in\Sc$ in $\mathcal D'(\D)$ and zero Cauchy data, then $g\in\Gc$ and $W=Kg$: the extension of $W$ by zero is $C^1$ and satisfies $\Delta W=g\one_\D$ in $\mathcal D'(\R^2)$, and pairing with the harmonic polynomials $r^n\sin n\theta$ gives $g_{n,0}=0$; then $W-Kg$ is harmonic with zero boundary values. This is why the equation is posed on $\Gc$.
+\end{remark}
+
+%======================================================================
+\section{The cubic equation}\label{sec:cubic}
+%======================================================================
+
+From now on $\rho=21/20$, $M=41$ and $S=24$. The centre $x^\circ=(g^\circ,c^\circ)$ consists of $504$ coefficients $g^\circ_{n,s}$, $n\in\{1,3,\ldots,41\}$, $1\leq s\leq24$, and $21$ coefficients $c^\circ_j$, $j\in\{1,3,\ldots,41\}$; all other coefficients of $x^\circ$ vanish. Each of these $525$ numbers is an explicitly given dyadic rational (a binary64 number interpreted exactly). We write $b=c_1^\circ\approx14.840043$ and
+\[
+\omega_j=b^2(j+1)\rho^j\qquad(j\ \text{odd}).
+\]
+Let $X$ be the real Banach space of pairs $x=(g,c)$, with $g\in\Gc$ and $c=(c_j)_{j\ \mathrm{odd}\geq1}$ real, normed by
+\[
+\nrm{(g,c)}_X=\nrm g_\rho+\sum_{j\ \mathrm{odd}}\omega_j|c_j| .
+\]
+To $c$ we associate $\psi_c(w)=\sum_jc_jw^j$, which is holomorphic in $|w|<\rho$ and continuous up to $|w|=\rho$ because $|c_j|\rho^j\leq\omega_j|c_j|/(2b^2)$. Note that $\im\psi_c=\sum_jc_jS_{j,0}\in\Sc$. Define
+\begin{equation}\label{eq:F}
+\Fc(g,c)=g+|\psi_c'|^2\big(Kg+\im\psi_c\big).
+\end{equation}
+
+\begin{lemma}\label{lem:F}
+$\Fc$ is a continuous cubic polynomial map $X\to\Sc$. If $\Fc(g,c)=0$, then $V=Kg+\im\psi_c$ belongs to $C^1(\overline\D)$, is odd under $w\mapsto\bw$ and even under $w\mapsto-\bw$, and satisfies \eqref{eq:V} with $\psi=\psi_c$.
+\end{lemma}
+
+\begin{proof}
+$\psi_c'=\sum_jjc_jw^{j-1}$ has real coefficients and even powers, and $N_\rho(\psi_c')=\sum_jj\rho^{j-1}|c_j|\leq\nrm{c}/(b^2\rho)$, where $\nrm c=\sum\omega_j|c_j|$. Thus $|\psi_c'|^2$ is real and invariant under $w\mapsto\bw$ and $w\mapsto-\bw$, and multiplication by it maps $\Sc$ into $\Sc$ with norm at most $N_\rho(\psi'_c)^2$ by \eqref{eq:algebra}. Together with $\nrm{Kg}_\rho\leq\nrm g_\rho/15$ and $\nrm{\im\psi_c}_\rho=\sum\rho^j|c_j|$, this shows that \eqref{eq:F} is a sum of bounded multilinear maps of degree at most three. If $\Fc(g,c)=0$, then Lemma~\ref{lem:traces} gives $V\in C^1(\overline\D)$, $V-\im\psi_c=Kg$ with zero Cauchy data, and $\Delta V=g=-|\psi_c'|^2V$ in $\mathcal D'(\D)$; the last identity holds pointwise because both sides are uniformly convergent disk-polynomial series with the same coefficients. The parities hold because $V\in\Sc$.
+\end{proof}
+
+\subsection{Expansion at the centre}
+Write $p=\psi_{c^\circ}'=\sum_{a=0,2,\ldots,40}p_aw^a$ with $p_a=(a+1)c^\circ_{a+1}$, so $p_0=b$, and put
+\[
+P=N_\rho(p),\qquad V^\circ=Kg^\circ+\im\psi_{c^\circ},\qquad V_0=\nrm{V^\circ}_\rho .
+\]
+For $h=(\delta g,\eta)\in X$ let $\delta V=K\delta g+\im\psi_\eta$ and, for shape perturbations $\eta,\eta_1,\eta_2$,
+\[
+L(\eta)=\overline p\,\psi_\eta'+p\,\overline{\psi_\eta'}=2\re(\overline p\,\psi_\eta'),\qquad Q(\eta_1,\eta_2)=\re\big(\psi_{\eta_1}'\overline{\psi_{\eta_2}'}\big).
+\]
+Since $|p+\psi_\eta'|^2=|p|^2+L(\eta)+Q(\eta,\eta)$, expanding \eqref{eq:F} gives
+\begin{equation}\label{eq:expansion}
+\Fc(x^\circ+h)=\Fc(x^\circ)+D\Fc(x^\circ)h+B_2(h,h)+B_3(h,h,h),
+\end{equation}
+where
+\begin{align}
+D\Fc(x^\circ)h&=\delta g+|p|^2K\delta g+L(\eta)V^\circ+|p|^2\im\psi_\eta,\label{eq:DF}\\
+B_2(h_1,h_2)&=\tfrac12\big\{L(\eta_1)\,\delta V_2+L(\eta_2)\,\delta V_1\big\}+Q(\eta_1,\eta_2)V^\circ,\notag\\
+B_3(h_1,h_2,h_3)&=\tfrac13\big\{Q(\eta_1,\eta_2)\,\delta V_3+Q(\eta_1,\eta_3)\,\delta V_2+Q(\eta_2,\eta_3)\,\delta V_1\big\}.\notag
+\end{align}
+There are no terms of higher order.
+
+\begin{lemma}\label{lem:nonlinear}
+Let $\kappa=1/15$, $\vartheta_1=1/(b^2\rho)$ and $\vartheta_0=1/(2b^2)$. Then for all $h_i\in X$,
+\[
+\nrm{B_2(h_1,h_2)}_\rho\leq c_2\nrm{h_1}_X\nrm{h_2}_X,\qquad\nrm{B_3(h_1,h_2,h_3)}_\rho\leq c_3\nrm{h_1}_X\nrm{h_2}_X\nrm{h_3}_X,
+\]
+with $c_2=\max\{P\vartheta_1\kappa,\ 2P\vartheta_1\vartheta_0+\vartheta_1^2V_0\}$ and $c_3=\vartheta_1^2\max\{\kappa,\vartheta_0\}$.
+\end{lemma}
+
+\begin{proof}
+Write $a_i=\nrm{\delta g_i}_\rho$ and $e_i=\sum_j\omega_j|\eta_{i,j}|$. Termwise, $N_\rho(\psi'_{\eta_i})\leq\vartheta_1e_i$ (as $j/(j+1)\leq1$), $\nrm{\im\psi_{\eta_i}}_\rho\leq\vartheta_0e_i$ (as $j+1\geq2$), and $\nrm{K\delta g_i}_\rho\leq\kappa a_i$, so $\nrm{\delta V_i}_\rho\leq\kappa a_i+\vartheta_0e_i$. By \eqref{eq:algebra}, $\nrm{L(\eta_i)f}_\rho\leq2P\vartheta_1e_i\nrm f_\rho$ and $\nrm{Q(\eta_i,\eta_k)f}_\rho\leq\vartheta_1^2e_ie_k\nrm f_\rho$. Hence $\nrm{B_2(h_1,h_2)}_\rho\leq P\vartheta_1\kappa(e_1a_2+e_2a_1)+(2P\vartheta_1\vartheta_0+\vartheta_1^2V_0)e_1e_2\leq c_2(a_1+e_1)(a_2+e_2)$. Similarly every monomial $e_ie_ka_l$ in the bound for $B_3$ has coefficient $\vartheta_1^2\kappa/3$ and $e_1e_2e_3$ has coefficient $\vartheta_1^2\vartheta_0$; each is at most its coefficient in $c_3\prod_i(a_i+e_i)$.
+\end{proof}
+
+%======================================================================
+\section{The contraction argument and the approximate inverse}\label{sec:inverse}
+%======================================================================
+
+\subsection{A Newton--Kantorovich theorem}
+
+\begin{proposition}\label{prop:NK}
+Let $\Fc\colon X\to\Sc$ have the form \eqref{eq:expansion} with symmetric bounded $B_2$ and $B_3$, and let $A\colon\Sc\to X$ be bounded, linear and injective. Suppose that
+\[
+\nrm{A\Fc(x^\circ)}_X\leq Y,\quad\nrm{I-AD\Fc(x^\circ)}_{X\to X}\leq Z,\quad\nrm A\,c_2\leq C_2,\quad\nrm A\,c_3\leq C_3,
+\]
+and that $r>0$ satisfies
+\begin{equation}\label{eq:radii}
+Y+(Z-1)r+C_2r^2+C_3r^3<0,\qquad Z-1+2C_2r+3C_3r^2<0 .
+\end{equation}
+Then $\Fc$ has exactly one zero in the closed ball $\overline B_X(x^\circ,r)$.
+\end{proposition}
+
+\begin{proof}
+Let $\Nc(x)=x-A\Fc(x)$. For $\nrm h_X\leq r$, \eqref{eq:expansion} gives $\Nc(x^\circ+h)-x^\circ=-A\Fc(x^\circ)+(I-AD\Fc(x^\circ))h-AB_2(h,h)-AB_3(h,h,h)$, whose norm is at most $Y+Zr+C_2r^2+C_3r^3<r$. For $h_1,h_2$ in the ball, $B_2(h_1,h_1)-B_2(h_2,h_2)=B_2(h_1-h_2,h_1+h_2)$ and $B_3(h_1,h_1,h_1)-B_3(h_2,h_2,h_2)=B_3(h_1-h_2,h_1,h_1)+B_3(h_2,h_1-h_2,h_1)+B_3(h_2,h_2,h_1-h_2)$, so $\Nc$ is Lipschitz on the ball with constant $Z+2C_2r+3C_3r^2<1$. By the contraction mapping principle $\Nc$ has a unique fixed point in the ball, and since $A$ is injective the fixed points of $\Nc$ are exactly the zeros of $\Fc$.
+\end{proof}
+
+In the weighted $\ell^1$ spaces $X$ and $\Sc$, operator norms are computed column by column.
+
+\begin{lemma}\label{lem:columns}
+Let $E$ and $E'$ be weighted $\ell^1$ spaces with bases $(e_\iota)$ and $(e'_\kappa)$ and weights $(\lambda_\iota)$ and $(\lambda'_\kappa)$, and let $T\colon E\to E'$ be bounded. Then $\nrm T=\sup_\iota\nrm{Te_\iota}_{E'}/\lambda_\iota$.
+\end{lemma}
+
+\begin{proof}
+The inequality $\geq$ follows by testing on $e_\iota/\lambda_\iota$, and $\leq$ by the triangle inequality and absolute summation, using continuity of $T$ and density of finitely supported vectors.
+\end{proof}
+
+We shall apply Lemma~\ref{lem:columns} with the bases $\{e_{(n,s)}:s\geq1\}\cup\{e_j\}$ of $X$, of weights $\rho^n$ and $\omega_j$, and $\{S_{n,s}:s\geq0\}$ of $\Sc$, of weights $\rho^n$. We call the basis vectors of $X$ \emph{inputs} and those of $\Sc$ \emph{rows}.
+
+\subsection{Finite block and tail}
+The \emph{finite inputs} are the $504$ coordinates $g_{n,s}$ with $n\leq M$, $1\leq s\leq S$, and the $21$ shape coordinates $c_j$ with $j\leq M$. The \emph{finite rows} are the $504$ rows $(n,s)$ with $n\leq M$, $1\leq s\leq S$, and the $21$ harmonic rows $(n,0)$ with $n\leq M$. All other inputs and rows are \emph{tail} inputs and rows. We write $X=X_f\oplus X_t$ and $\Sc=\Sc_f\oplus\Sc_t$ accordingly; $\dim X_f=\dim\Sc_f=525$. Let $M_f$ be the $525\times525$ matrix of the restriction of $D\Fc(x^\circ)$ to finite inputs and finite rows.
+
+On tail inputs we use the following explicit model of $D\Fc(x^\circ)$, obtained by replacing $\psi^\circ$ by $bw$ and $V^\circ$ by $b\im w$:
+\begin{equation}\label{eq:T}
+T(\delta g,\eta)=\delta g+b^2\sum_{j>M}\eta_j\big\{(j+1)S_{j,0}-(j-1)S_{j-2,0}-S_{j-2,1}\big\}.
+\end{equation}
+
+\begin{lemma}\label{lem:Tform}
+For odd $j\geq3$, $L_b(w^j)\,b\im w+b^2\im w^j=b^2\{(j+1)S_{j,0}-(j-1)S_{j-2,0}-S_{j-2,1}\}$, where $L_b(\eta)=2\re(b\,\psi_\eta')$.
+\end{lemma}
+
+\begin{proof}
+$L_b(w^j)\,b\im w=2b^2jr^{j}\cos((j-1)\theta)\sin\theta=b^2jr^j\{\sin j\theta-\sin(j-2)\theta\}$. Moreover $r^2\Phi_{j-2,0}=\frac1j\Phi_{j-2,1}+\frac{j-1}j\Phi_{j-2,0}$, because $P^{(0,n)}_1(2t-1)=(n+2)t-(n+1)$ by \eqref{eq:jacobi}; hence $jr^j\sin(j-2)\theta=S_{j-2,1}+(j-1)S_{j-2,0}$.
+\end{proof}
+
+Write $Te=(Be,T_{tt}e)$ for tail inputs $e$, with $B$ the part in finite rows and $T_{tt}$ the part in tail rows. Only the shape input $j=M+2$ reaches finite rows:
+\begin{equation}\label{eq:B}
+B(\delta g,\eta)=-b^2\eta_{M+2}\big((M+1)e_{(M,0)}+e_{(M,1)}\big).
+\end{equation}
+Put $\tau=(1-\rho^{-2})^{-1}$.
+
+\begin{lemma}\label{lem:Ttt}
+$T_{tt}\colon X_t\to\Sc_t$ is a bounded bijection. For a tail residual $y=\sum y_{n,s}S_{n,s}\in\Sc_t$ its inverse is
+\begin{equation}\label{eq:Tinv}
+\eta_n=\sum_{\substack{m\geq n\\ m\ \mathrm{odd}}}\frac{y_{m,0}}{b^2(m+1)}\quad(n>M),\qquad \delta g_{n,s}=y_{n,s}+\one_{s=1}\,b^2\eta_{n+2}\quad((n,s)\text{ a tail $g$-input}).
+\end{equation}
+Moreover $\nrm{T_{tt}}\leq1+\rho^{-2}$ and $\nrm{T_{tt}^{-1}}\leq\max\{1,\tau+\tau/((M+3)\rho^2)\}$.
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:T}, the tail harmonic rows read $b^2(n+1)(\eta_n-\eta_{n+2})=y_{n,0}$ for $n\geq M+2$, the tail rows $(n,1)$ read $\delta g_{n,1}-b^2\eta_{n+2}=y_{n,1}$, and all other tail rows are $\delta g_{n,s}=y_{n,s}$. Since $\sum\omega_n|\eta_n|<\infty$ forces $\eta_n\to0$, summation of the harmonic equations gives \eqref{eq:Tinv}, and a solution with $y=0$ vanishes; conversely \eqref{eq:Tinv} solves the equations whenever the series converge. For the bounds we use Lemma~\ref{lem:columns}. The shape input $e_j$ has three nonzero entries, $b^2(j+1)$ in row $(j,0)$, $-b^2(j-1)$ in row $(j-2,0)$ and $-b^2$ in row $(j-2,1)$; its weighted norm divided by $\omega_j$ is $1+j\rho^{-2}/(j+1)\leq1+\rho^{-2}$. Tail $g$-inputs are mapped to the identical rows. For $T_{tt}^{-1}$, a nonharmonic tail row is mapped to the identical input. The normalised harmonic row $\rho^{-m}S_{m,0}$ is mapped to $\eta_n=\rho^{-m}/(b^2(m+1))$ for $M<n\leq m$ and $\delta g_{n-2,1}=b^2\eta_n$ for $M+4\leq n\leq m$, with norm
+\[
+\sum_{M<n\leq m}\frac{(n+1)\rho^n}{(m+1)\rho^m}+\sum_{M+4\leq n\leq m}\frac{\rho^{n-2}}{(m+1)\rho^m}\leq\tau+\frac{\tau}{(M+3)\rho^2}. \qedhere
+\]
+\end{proof}
+
+\subsection{The approximate inverse}
+Let $\widehat A$ be a $525\times525$ matrix with dyadic rational entries (in the computation, the midpoints of an interval enclosure of $M_f^{-1}$), regarded as an exact linear map $\Sc_f\to X_f$, and suppose that
+\begin{equation}\label{eq:Ahat}
+\nrm{I-\widehat AM_f}_{X_f\to X_f}<1 .
+\end{equation}
+Define $A\colon\Sc=\Sc_f\oplus\Sc_t\to X=X_f\oplus X_t$ by
+\begin{equation}\label{eq:A}
+A=\begin{pmatrix}\widehat A&-\widehat ABT_{tt}^{-1}\\0&T_{tt}^{-1}\end{pmatrix}.
+\end{equation}
+
+\begin{lemma}\label{lem:A}
+Under \eqref{eq:Ahat}, $A$ is bounded and injective, and $ATe=e$ for every tail input $e$.
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:Ahat} and the Neumann series, $\widehat AM_f$ is invertible, so $\widehat A$ is invertible. The operator $\left(\begin{smallmatrix}\widehat A^{-1}&B\\0&T_{tt}\end{smallmatrix}\right)$ is a left inverse of $A$. For a tail input $e$, $ATe=(\widehat ABe-\widehat ABT_{tt}^{-1}T_{tt}e,\ T_{tt}^{-1}T_{tt}e)=(0,e)$.
+\end{proof}
+
+Let $e_{(n,s)}$ denote the finite rows as elements of $\Sc_f$, and define
+\[
+\nrm R=\max_{(n,s)\ \text{finite row}}\frac{\nrm{\widehat Ae_{(n,s)}}_{X_f}}{\rho^n},\qquad H=\big\|\widehat A\big(e_{(M,1)}+(M+1)e_{(M,0)}\big)\big\|_{X_f},
+\]
+and, for odd $n\geq M+2$,
+\begin{equation}\label{eq:hn}
+h_n=\frac{H+\sum_{j=M+2,M+4,\ldots,n}(j+1)\rho^j+\sum_{j=M+4,M+6,\ldots,n}\rho^{j-2}}{(n+1)\rho^n}.
+\end{equation}
+
+\begin{lemma}\label{lem:normA}
+Let $N_H\geq M+2$ be odd. Then $A$ maps every residual supported in tail rows with norm at most
+\[
+A_t:=\max\Big\{1,\ \max_{M+2\leq n\leq N_H}h_n,\ \tau+\frac{\tau}{(N_H+3)\rho^2}+\frac{H}{(N_H+3)\rho^{N_H+2}}\Big\},
+\]
+it is the identity on residuals supported in nonharmonic tail rows, and $\nrm A\leq\max\{\nrm R,A_t\}$.
+\end{lemma}
+
+\begin{proof}
+We use Lemma~\ref{lem:columns}. A finite row $e_{(n,s)}$ is mapped to $\widehat Ae_{(n,s)}$. A nonharmonic tail row is mapped to the identical tail input by \eqref{eq:Tinv}, and $B$ vanishes on it. The normalised harmonic tail row $\rho^{-n}S_{n,0}$ is mapped to the shape coordinates $\eta_j=\rho^{-n}/(b^2(n+1))$, $M+2\leq j\leq n$, to $\delta g_{j-2,1}=b^2\eta_j$, $M+4\leq j\leq n$, and, by \eqref{eq:B}, to the finite part $b^2\eta_{M+2}\widehat A((M+1)e_{(M,0)}+e_{(M,1)})$; the sum of the three norms is exactly $h_n$. For $n\geq N_H+2$ we bound $(j+1)/(n+1)\leq1$ in the first sum, sum the geometric series $\sum_{i\geq0}\rho^{-2i}=\tau$, and use $n+1\geq N_H+3$ in the other two terms.
+\end{proof}
+
+%======================================================================
+\section{The defect bounds}\label{sec:Z}
+%======================================================================
+
+In this section we explain how the bounds $Y$ and $Z$ of Proposition~\ref{prop:NK} are obtained for the operator $A$ of \eqref{eq:A}. By Lemma~\ref{lem:columns}, $\nrm{I-AD\Fc(x^\circ)}$ is the supremum over all inputs $e$ of $\nrm{(I-AD\Fc(x^\circ))e}_X$ divided by the weight of $e$. We partition the inputs into five classes and bound each class separately; every input belongs to exactly one class, and no column is estimated by sampling. Throughout, $d=\deg p=40$, and $\Lambda=M+d=81$.
+
+\subsection{The residual and the finite columns}\label{subsec:finite}
+The residual $\Fc(x^\circ)$ is a polynomial in $w,\bw$. Using \eqref{eq:rec} and \eqref{eq:K}, its expansion in the basis $S_{n,s}$ is computed without truncation (it has $2286$ coefficients) in interval arithmetic. Only finitely many tail rows occur, so $A\Fc(x^\circ)$ is computed without truncation from \eqref{eq:A}, \eqref{eq:B} and \eqref{eq:Tinv}, and $Y$ is an upper bound of its norm.
+
+For each of the $525$ finite inputs $e$, $D\Fc(x^\circ)e$ is again a polynomial by \eqref{eq:DF}, and $(I-AD\Fc(x^\circ))e$ is computed in the same way. We denote by $Z_f$ an upper bound for the maximum of the normalised norms of these columns.
+
+\subsection{\texorpdfstring{Tail $g$-columns}{Tail g-columns}}
+Let $n_{\max}=M+2d+2=123$ and $s_{\max}=S+d+3=67$.
+
+\begin{lemma}\label{lem:gtail}
+Let $e=e_{(n,s)}$ be a tail $g$-input and $q=n+2s$. Then $(I-AD\Fc(x^\circ))e=-A(|p|^2KS_{n,s})$. Moreover, writing $p=p_{\leq16}+p_{>16}$ for the splitting of $p$ into terms of degree $\leq16$ and $>16$, and $P_s=N_\rho(p_{\leq16})$, $P_t=N_\rho(p_{>16})$,
+\begin{equation}\label{eq:gshort}
+\frac{\nrm{(I-AD\Fc(x^\circ))e}_X}{\rho^n}\leq\frac{\nrm{A(|p_{\leq16}|^2KS_{n,s})}_X}{\rho^n}+\frac{\nrm A\,(2P_sP_t+P_t^2)}{q(q+2)} .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:DF}, $D\Fc(x^\circ)e=S_{n,s}+|p|^2KS_{n,s}$, and $Te=S_{n,s}$, so $AS_{n,s}=ATe=e$ by Lemma~\ref{lem:A}. Since $|p|^2-|p_{\leq16}|^2=\overline{p_{\leq16}}\,p_{>16}+\overline{p_{>16}}\,p_{\leq16}+|p_{>16}|^2$, \eqref{eq:algebra} and Lemma~\ref{lem:K}(d) give $\nrm{(|p|^2-|p_{\leq16}|^2)KS_{n,s}}_\rho\leq(2P_sP_t+P_t^2)\rho^n/(q(q+2))$.
+\end{proof}
+
+For the $62\cdot67-21\cdot24=3650$ tail $g$-inputs with $n\leq n_{\max}$ and $s\leq s_{\max}$, the first term on the right of \eqref{eq:gshort} is computed without truncation; let $Z_{g,\partial}$ bound the maximum of the right-hand side over these inputs.
+
+\begin{lemma}\label{lem:gfar}
+For every tail $g$-input $e_{(n,s)}$ with $n>n_{\max}$ or $s>s_{\max}$,
+\[
+\frac{\nrm{(I-AD\Fc(x^\circ))e_{(n,s)}}_X}{\rho^n}\leq Z_{g,\infty}:=\max\Big\{\frac{P^2}{137\cdot139},\ \frac{A_tP^2}{127\cdot129}\Big\}.
+\]
+\end{lemma}
+
+\begin{proof}
+We have $|p|^2=\sum_{a,a'}p_ap_{a'}w^a\bw^{a'}$ with $a,a'\leq d$. By \eqref{eq:K} and Lemma~\ref{lem:radial}, every component of $|p|^2KS_{n,s}$ has radial index at least $s-1-d$ and angular frequency of modulus at least $n-d$. Also $\nrm{|p|^2KS_{n,s}}_\rho\leq P^2\rho^n/(q(q+2))$ with $q=n+2s$.
+
+If $s>s_{\max}$, all radial indices are at least $s-1-d\geq S+3$, so all components lie in nonharmonic tail rows, on which $A$ is the identity (Lemma~\ref{lem:normA}); and $q\geq1+2(s_{\max}+1)=137$.
+
+If $s\leq s_{\max}$ and $n>n_{\max}$, all frequencies are at least $n-d\geq n_{\max}+2-d>M$, so all components lie in tail rows, on which $A$ has norm at most $A_t$; and $q\geq n_{\max}+2+2=127$.
+\end{proof}
+
+\subsection{Shape columns}
+For the $480$ shape inputs $e_j$ with $M<j\leq\jst=1001$, $(I-AD\Fc(x^\circ))e_j$ is computed without truncation as in Section~\ref{subsec:finite}; let $Z_{\mathrm{sh},\partial}$ bound their normalised norms. For $j>\jst$ we prove a uniform bound.
+
+Let $W^\circ=Kg^\circ$, so that $V^\circ=W^\circ+\im\psi_{c^\circ}$. By \eqref{eq:DF} and Lemma~\ref{lem:Tform}, for odd $j>M$,
+\[
+D\Fc(x^\circ)e_j=2\re\Big[w^{j-1}\Big(j\,\overline pV^\circ+\frac{|p|^2w}{2i}\Big)\Big],\qquad Te_j=2\re\Big[w^{j-1}\Big(jb^2\im w+\frac{b^2w}{2i}\Big)\Big].
+\]
+Since $ATe_j=e_j$, we get $(I-AD\Fc(x^\circ))e_j=-A\Delta_j$ with
+\begin{equation}\label{eq:Deltaj}
+\Delta_j=2\re\big[w^{j-1}(j\Gamma_1+\Gamma_0)\big]+2\re\big[jw^{j-1}\overline pW^\circ\big],
+\end{equation}
+where $\Gamma_1=\overline p\im\psi_{c^\circ}-b^2\im w$ and $\Gamma_0=(|p|^2-b^2)w/(2i)$.
+Writing $\im\psi_{c^\circ}=(\psi_{c^\circ}-\overline{\psi_{c^\circ}})/(2i)$ and $|p|^2=\sum p_ap_{a'}w^a\bw^{a'}$, and using $p_0=c^\circ_1=b$,
+\[
+2i\Gamma_1=\sum_{(a,l)\neq(0,1)}p_ac^\circ_l\big(w^l\bw^a-\bw^{a+l}\big),\qquad 2i\Gamma_0=\sum_{(a,a')\neq(0,0)}p_ap_{a'}w^{a+1}\bw^{a'},
+\]
+with $a,a'\in\{0,2,\ldots,40\}$ and $l\in\{1,3,\ldots,41\}$. After combining equal monomials, $2i\Gamma_1=\sum_{\alpha,\beta}q^1_{\alpha\beta}w^\alpha\bw^\beta$ and $2i\Gamma_0=\sum_{\alpha,\beta}q^0_{\alpha\beta}w^\alpha\bw^\beta$ with finitely many real coefficients. The differences $k=\alpha-\beta$ that occur are odd and lie in $[k_-,k_+]=[-81,41]$. For odd $k\in[k_-,k_+]$ define
+\begin{gather*}
+\bar q_k=\sum_{\alpha-\beta=k}q^1_{\alpha\beta},\qquad \eps_k=\frac1{\jst+1}\sum_{\alpha-\beta=k}\big((1+\beta)|q^1_{\alpha\beta}|+|q^0_{\alpha\beta}|\big),\qquad \bar\eta_k=\frac1{b^2}\sum_{l\geq k}\bar q_l,\\
+\delta_k=\frac1{b^2}\sum_{l\geq k}\Big[\eps_l\Big(1+\frac{|l-1|}{\jst+k_-}\Big)+\frac{|\bar q_l|\,|l-1|}{\jst+k_-}\Big],\qquad E_k=|\bar\eta_k|+\delta_k,
+\end{gather*}
+where the sums over $l$ run over odd $l\leq k_+$. By Lemma~\ref{lem:K}(c), $W^\circ=(1-|w|^2)^2Q^\circ$ with
+\[
+Q^\circ=\sum_{n,s}\frac{g^\circ_{n,s}}{4s(s+1)}\,r^nP^{(2,n)}_{s-1}(2r^2-1)\sin n\theta ,
+\]
+and $Q^\circ$ has a finite disk-polynomial expansion, which we compute from the connection formulas (they follow from \cite[Eq.~18.9.5]{DLMF} and the symmetry $P^{(\alpha,\beta)}_k(-x)=(-1)^kP^{(\beta,\alpha)}_k(x)$, \cite[Table~18.6.1]{DLMF})
+\[
+P^{(a+1,n)}_k=\frac{2k+a+n+1}{k+a+n+1}P^{(a,n)}_k+\frac{k+n}{k+a+n+1}P^{(a+1,n)}_{k-1}\qquad(a=0,1).
+\]
+The function $w^\Lambda\overline pQ^\circ$ has only nonnegative frequencies, since the frequencies of $\overline pQ^\circ$ are at least $-M-d$; write $w^\Lambda\overline pQ^\circ=\sum_{m\geq0,t\geq0}\varpi_{m,t}\Phi_{m,t}$ (a finite sum, computed in interval arithmetic). Finally let
+\begin{align*}
+\sU_1&=\sum_k\Big(1+\frac{\max(0,k-1)}{\jst+1}\Big)\rho^{k-1}E_k, \qquad
+\sU_2=E_{k_-}\rho^{k_--3}\tau,\\
+\sU_3&=\frac{1}{\jst+1}\Big(\sum_k\rho^{k-3}E_k+E_{k_-}\rho^{k_--5}\tau\Big), \qquad
+\sU_4=\frac{HE_{k_-}}{(\jst+1)\rho^{\jst}},\\
+\sU_5&=\sum_{\alpha,\beta}\frac{\big(|q^1_{\alpha\beta}|+|q^0_{\alpha\beta}|/\jst\big)\,\beta\,\rho^{\alpha-\beta-1}}{b^2(\jst+\alpha)},\\
+\sU_W&=\frac{8}{b^2(\jst-\Lambda)^2}\sum_{m,t}|\varpi_{m,t}|(2t+1)(2t+3)\rho^{m-1-\Lambda},
+\end{align*}
+where $k$ runs over odd integers in $[k_-,k_+]$.
+
+\begin{lemma}\label{lem:doublezero}
+For integers $m,t,N\geq0$,
+\[
+\nrm{(1-|w|^2)^2w^N\Phi_{m,t}}_\rho\leq\frac{4(2t+1)(2t+3)}{(m+N+1)^2}\rho^{m+N}.
+\]
+\end{lemma}
+
+\begin{proof}
+Applying \eqref{eq:rec} for $w$ and then for $\bw$ gives $|w|^2\Phi_{m,t}=\lambda^+_t\Phi_{m,t+1}+(1-\lambda^+_t-\lambda^-_t)\Phi_{m,t}+\lambda^-_t\Phi_{m,t-1}$ with
+\[
+\lambda^+_t=\frac{(t+1)(m+t+1)}{(m+2t+1)(m+2t+2)}\leq\frac{t+1}{m+1},\qquad\lambda^-_t=\frac{t(m+t)}{(m+2t)(m+2t+1)}\leq\frac{t}{m+1}.
+\]
+Hence $(1-|w|^2)\Phi_{m,t}$ has the same frequency and absolute coefficient sum $2(\lambda_t^++\lambda_t^-)\leq2(2t+1)/(m+1)$, and its radial indices are at most $t+1$. Applying this twice, $\nrm{(1-|w|^2)^2\Phi_{m,t}}_\rho\leq4(2t+1)(2t+3)\rho^m/(m+1)^2$. By Lemma~\ref{lem:mult}, $w^N\Phi_{m,t}$ is a convex combination of $\Phi_{m+N,t'}$ with $t'\leq t$; apply the previous bound to each term.
+\end{proof}
+
+\begin{proposition}\label{prop:farshape}
+Assume $\jst+k_--1>M+2$ and $\jst>2M+d+2$. Then for every odd $j>\jst$,
+\[
+\frac{\nrm{(I-AD\Fc(x^\circ))e_j}_X}{\omega_j}\leq Z_{\mathrm{sh},\infty}:=\sU_1+\sU_2+\sU_3+\sU_4+\sU_5+A_t\,\sU_W .
+\]
+\end{proposition}
+
+\begin{proof}
+Fix an odd $j>\jst$. For real $\gamma$, $2\re[w^{j-1}\gamma w^\alpha\bw^\beta/(2i)]=\gamma\im(w^{j-1+\alpha}\bw^\beta)$. For every monomial occurring, $k=\alpha-\beta\geq k_-$ and $j-1+k>M+2\geq1$, so by Lemma~\ref{lem:monomial} $\im(w^{j-1+\alpha}\bw^\beta)=\sum_s\kappa_sS_{j-1+k,s}$ with nonnegative coefficients summing to one and harmonic coefficient $\kappa_0=1-\beta/(j+\alpha)$. Accordingly we split $\Delta_j=\Delta^H+\Delta^N+\Delta^W$ into the harmonic part and the nonharmonic part of the first term of \eqref{eq:Deltaj}, and the second term $\Delta^W$. All rows occurring in $\Delta^H$ and $\Delta^N$ have frequency at least $j-1+k_->M+2$, so they are tail rows.
+
+\emph{The harmonic part.} The coefficient of $\Delta^H$ in row $(j-1+k,0)$ is $y_k=\sum_{\alpha-\beta=k}(jq^1_{\alpha\beta}+q^0_{\alpha\beta})\big(1-\frac{\beta}{j+\alpha}\big)$. Since $\frac{j}{j+1}\big(1-\frac\beta{j+\alpha}\big)-1=-\frac1{j+1}-\frac{j\beta}{(j+1)(j+\alpha)}$ and $0\leq1-\frac\beta{j+\alpha}\leq1$, we have $|y_k/(j+1)-\bar q_k|\leq\eps_k$. By \eqref{eq:Tinv}, the shape part of $A\Delta^H$ is $\eta_{j-1+k}=b^{-2}\sum_{l\geq k}y_l/(j+l)$ in the window $k_-\leq k\leq k_+$, and $\eta_n=\eta_{j-1+k_-}$ for $M<n<j-1+k_-$. Writing $\frac{y_l}{j+l}=\frac{y_l}{j+1}\big(1+\frac{1-l}{j+l}\big)$ and using $\big|\frac{1-l}{j+l}\big|\leq\frac{|l-1|}{\jst+k_-}$, we get $|\eta_{j-1+k}-\bar\eta_k|\leq\delta_k$, hence $|\eta_{j-1+k}|\leq E_k$, and $|\eta_n|\leq E_{k_-}$ below the window. We now bound the parts of $A\Delta^H$, divided by $\omega_j=b^2(j+1)\rho^j$.
+\begin{itemize}
+\item Shape coordinates in the window: $\omega_{j-1+k}/\omega_j=\big(1+\frac{k-1}{j+1}\big)\rho^{k-1}$, which gives at most $\sU_1$.
+\item Shape coordinates below the window: $\sum_{n\leq j-3+k_-}(n+1)\rho^n/((j+1)\rho^j)\leq\rho^{k_--3}\tau$, which gives at most $\sU_2$.
+\item The coupled coordinates $\delta g_{n-2,1}=b^2\eta_n$, of weight $\rho^{n-2}$: at most $\sU_3$, by the same two computations and $j+1>\jst+1$.
+\item The finite part $b^2\eta_{M+2}\widehat A((M+1)e_{(M,0)}+e_{(M,1)})$: its norm is at most $b^2HE_{k_-}$, which gives at most $\sU_4$ since $j>\jst$.
+\end{itemize}
+
+\emph{The nonharmonic part.} $\Delta^N$ lies in nonharmonic tail rows, on which $A$ is the identity, and its normalised norm is at most
+\[
+\sum_{\alpha,\beta}\frac{|jq^1_{\alpha\beta}+q^0_{\alpha\beta}|}{j+1}\cdot\frac{\beta}{j+\alpha}\cdot\frac{\rho^{j-1+\alpha-\beta}}{b^2\rho^j}\leq\sU_5 .
+\]
+
+\emph{The part $\Delta^W$.} We have $jw^{j-1}\overline pW^\circ=j(1-|w|^2)^2w^{j-1-\Lambda}\big(w^\Lambda\overline pQ^\circ\big)$ with $j-1-\Lambda\geq0$. Since conjugation preserves $\nrm\cdot_\rho$, $\nrm{2\re f}_\rho\leq2\nrm f_\rho$, and Lemma~\ref{lem:doublezero} with $N=j-1-\Lambda$ gives
+\[
+\frac{\nrm{\Delta^W}_\rho}{\omega_j}\leq\frac{2j}{b^2(j+1)\rho^j}\sum_{m,t}|\varpi_{m,t}|\frac{4(2t+1)(2t+3)\rho^{m+j-1-\Lambda}}{(m+j-\Lambda)^2}\leq\sU_W .
+\]
+All frequencies in $\Delta^W$ are at least $j-1-\Lambda>M$ because $\jst>2M+d+2$, so $\nrm{A\Delta^W}_X\leq A_t\nrm{\Delta^W}_\rho$ by Lemma~\ref{lem:normA}.
+
+Adding the three contributions proves the claim.
+\end{proof}
+
+\begin{remark}
+Each of $\eps_k$, $\delta_k$, $\sU_3$, $\sU_5$ is $O(1/\jst)$, $\sU_4=O(\rho^{-\jst}/\jst)$ and $\sU_W=O(\jst^{-2})$. Hence, as $\jst\to\infty$, the majorant $Z_{\mathrm{sh},\infty}$ tends to $\sum_k\rho^{k-1}|\bar\eta_k|+|\bar\eta_{k_-}|\rho^{k_--3}\tau\approx0.19723$; for comparison, the directly computed normalised column at $j=1003$ is about $0.19752$.
+\end{remark}
+
+Collecting the five classes, the number
+\[
+Z=\max\{Z_f,\ Z_{g,\partial},\ Z_{g,\infty},\ Z_{\mathrm{sh},\partial},\ Z_{\mathrm{sh},\infty}\}
+\]
+bounds $\nrm{I-AD\Fc(x^\circ)}_{X\to X}$.
+
+%======================================================================
+\section{Certified bounds and the exact zero}\label{sec:zero}
+%======================================================================
+
+The quantities defined in Sections~\ref{sec:cubic}--\ref{sec:Z} are finite expressions in the $525$ dyadic centre coefficients and in $\rho=21/20$, apart from the entries of $\widehat A$, which are dyadic numbers produced by the computation and are then treated as exact data. They were evaluated in ball arithmetic as described in Section~\ref{sec:cap}. Table~\ref{tab:bounds} lists the results, rounded outward.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Quantity & Where defined & Certified bound\\
+\midrule
+$b=c_1^\circ$ & Section~\ref{sec:cubic} & $14.8400430096918\ldots$ (exact dyadic)\\
+$P=N_\rho(p)$ & Section~\ref{sec:cubic} & $<16.833325$\\
+$V_0=\nrm{V^\circ}_\rho$ & Section~\ref{sec:cubic} & $<134.261058$\\
+$\nrm{I-\widehat AM_f}$ & \eqref{eq:Ahat} & $<1.343\cdot10^{-34}$\\
+$\nrm R$ & Lemma~\ref{lem:normA} & $<675.571877$\\
+$H$ & Lemma~\ref{lem:normA} & $<1966.719238$\\
+$A_t$ \ ($N_H=443$) & Lemma~\ref{lem:normA} & $<10.777973$\\
+$\nrm A$ & Lemma~\ref{lem:normA} & $<675.571877$\\
+\midrule
+$Y$ & Section~\ref{subsec:finite} & $<6.297631\cdot10^{-6}$\\
+$Z_f$ \ ($525$ columns) & Section~\ref{subsec:finite} & $<0.180814$\\
+$2P_sP_t+P_t^2$ & Lemma~\ref{lem:gtail} & $<0.056966$\\
+$Z_{g,\partial}$ \ ($3650$ columns, maximum at $(43,1)$) & Lemma~\ref{lem:gtail} & $<0.313479$\\
+$Z_{g,\infty}$ & Lemma~\ref{lem:gfar} & $<0.186417$\\
+$Z_{\mathrm{sh},\partial}$ \ ($480$ columns, maximum at $j=43$) & Section~\ref{sec:Z} & $<0.360262$\\
+$\sU_1$ & Proposition~\ref{prop:farshape} & $<0.217542$\\
+$\sU_2$ & Proposition~\ref{prop:farshape} & $<4.45704\cdot10^{-4}$\\
+$\sU_3$ & Proposition~\ref{prop:farshape} & $<1.97149\cdot10^{-4}$\\
+$\sU_4$ & Proposition~\ref{prop:farshape} & $<3.018\cdot10^{-24}$\\
+$\sU_5$ & Proposition~\ref{prop:farshape} & $<9.23594\cdot10^{-4}$\\
+$\sum_{m,t}|\varpi_{m,t}|(2t+1)(2t+3)\rho^{m-1-\Lambda}$ & Proposition~\ref{prop:farshape} & $<19930.219512$\\
+$\sU_W$, \ $A_t\sU_W$ & Proposition~\ref{prop:farshape} & $<8.55375\cdot10^{-4}$, \ $<9.219199\cdot10^{-3}$\\
+$Z_{\mathrm{sh},\infty}$ \ (all $j>1001$) & Proposition~\ref{prop:farshape} & $<0.228328$\\
+$Z$ & Section~\ref{sec:Z} & $<0.360262$\\
+$C_2=\nrm Ac_2$ & Lemma~\ref{lem:nonlinear} & $<3.278617$\\
+$C_3=\nrm Ac_3$ & Lemma~\ref{lem:nonlinear} & $<8.42289\cdot10^{-4}$\\
+\bottomrule
+\end{tabular}
+\caption{Certified bounds, rounded outward, for $M=41$, $S=24$, $\rho=21/20$, $\jst=1001$. The complete interval enclosures are recorded in the certificate file (Section~\ref{sec:cap}).}
+\label{tab:bounds}
+\end{table}
+
+\begin{theorem}\label{thm:zero}
+Let $r=1/50000$. There is exactly one $x^*=(g^*,c^*)\in X$ with $\nrm{x^*-x^\circ}_X\leq r$ and $\Fc(x^*)=0$.
+\end{theorem}
+
+\begin{proof}
+The conditions $\jst+k_--1=919>M+2$ and $\jst=1001>2M+d+2=124$ of Proposition~\ref{prop:farshape} hold, and \eqref{eq:Ahat} holds by Table~\ref{tab:bounds}; hence $A$ is bounded and injective (Lemma~\ref{lem:A}). By Table~\ref{tab:bounds}, Proposition~\ref{prop:NK} applies with the rational majorants $Y=7\cdot10^{-6}$, $Z=37/100$, $C_2=4$ and $C_3=10^{-3}$. For these values and $r=1/50000$, exact rational arithmetic gives
+\begin{gather*}
+Y+(Z-1)r+C_2r^2+C_3r^3=-5.5983999999920\cdot10^{-6}<0,\\
+Z-1+2C_2r+3C_3r^2=-0.6298399999988<0 . \qedhere
+\end{gather*}
+\end{proof}
+
+\begin{remark}[The centre]\label{rem:centre}
+The centre $x^\circ$ was obtained numerically, and its provenance plays no role in the proof. A spectral collocation computation in spherical coordinates, started from the ball of radius $j_{2,4}$ perturbed by the zonal harmonic of degree six (see Section~\ref{sec:remarks}), produced an approximate solution of \eqref{eq:main}; its meridian domain was mapped conformally to the disc, and Newton's method was applied to the Galerkin truncation of \eqref{eq:F} to the $21$ shape coefficients $c_1,c_3,\ldots,c_{41}$ and the $504$ coefficients of $g$ described above. The resulting binary64 numbers were then frozen and are interpreted as exact dyadic rationals.
+\end{remark}
+
+%======================================================================
+\section{Reconstruction of the domain}\label{sec:recon}
+%======================================================================
+
+Let $x^*=(g^*,c^*)$ be the zero of Theorem~\ref{thm:zero}, $\psi^*=\psi_{c^*}$, and $\delta c=c^*-c^\circ$. Then $\sum_j\omega_j|\delta c_j|\leq r$, and consequently
+\begin{equation}\label{eq:dc}
+\begin{gathered}
+|c_1^*-b|\leq\frac{r}{2b^2\rho},\qquad \sum_{j}j\rho^{j-1}|\delta c_j|\leq\frac r{b^2\rho},\\
+\sum_{j\geq3}|\delta c_j|\leq\frac r{4b^2\rho^3},\qquad\sum_jj(j-1)|\delta c_j|\leq\frac{r\rho}{b^2(\rho-1)^2},
+\end{gathered}
+\end{equation}
+because $j\rho^{j-1}/\omega_j\leq1/(b^2\rho)$, $1/\omega_j\leq1/(4b^2\rho^3)$ for $j\geq3$, and $j(j-1)/\omega_j\leq j\rho^{-j}/b^2\leq\sum_{i\geq1}i\rho^{-i}/b^2=\rho/(b^2(\rho-1)^2)$. In particular $\psi^*$ is holomorphic in $|w|<\rho$.
+
+\subsection{Univalence, star-shapedness and the non-disc property}
+
+\begin{proposition}\label{prop:geometry}
+The map $\psi^*$ is injective on the disc $\{|w|<41/40\}$, and $\psi^{*\prime}$ has no zeros there. The domain $D=\psi^*(\D)$ is bounded by the real-analytic Jordan curve $\psi^*(\partial\D)$, it is strictly star-shaped with respect to $0$, symmetric under $x_1\mapsto-x_1$ and $y\mapsto-y$, and it is not a disc.
+\end{proposition}
+
+\begin{proof}
+Let $R=41/40<\rho$, $b_-=b-r/(2b^2\rho)\leq c^*_1$, and
+\[
+s_1=\sum_{j\geq3}j|c^\circ_j|+\frac r{b^2\rho},\qquad s_0=\sum_{j\geq3}|c^\circ_j|+\frac r{4b^2\rho^3}.
+\]
+By \eqref{eq:dc}, $\sum_{j\geq3}j|c^*_j|\leq s_1$ and $\sum_{j\geq3}|c_j^*|\leq s_0$. The computation (Section~\ref{sec:cap}) certifies
+\begin{gather}
+\re\psi^{*\prime}(w)\geq b_--\sum_{j\geq3}j|c^\circ_j|R^{j-1}-\frac r{b^2\rho}>13.081358\qquad(|w|\leq R),\label{eq:uni}\\
+\frac{s_1}{b_-}<0.104547,\qquad \frac{s_1+s_0}{b_--s_0}<0.126890,\qquad |c^*_3|\geq|c^\circ_3|-\frac r{4b^2\rho^3}>0.0911958,\label{eq:star}
+\end{gather}
+where in \eqref{eq:uni} we used $j|\delta c_j|R^{j-1}\leq j|\delta c_j|\rho^{j-1}$ and \eqref{eq:dc}.
+
+\emph{Univalence.} For $w_1\neq w_2$ in the convex disc $|w|<R$, $\frac{\psi^*(w_2)-\psi^*(w_1)}{w_2-w_1}=\int_0^1\psi^{*\prime}(w_1+\sigma(w_2-w_1))\,d\sigma$ has positive real part by \eqref{eq:uni}.
+
+\emph{Star-shapedness.} For $|w|=1$ we have $|\psi^*(w)-c_1^*w|\leq s_0$, $|w\psi^{*\prime}(w)-\psi^*(w)|\leq\sum_{j\geq3}(j-1)|c_j^*|\leq s_1$ and $|\psi^*(w)|\geq b_--s_0>0$, hence $|w\psi^{*\prime}/\psi^*-1|<0.127$ by \eqref{eq:star}. Therefore $\frac{d}{d\theta}\arg\psi^*(e^{i\theta})=\re\big(w\psi^{*\prime}(w)/\psi^*(w)\big)>0$. The winding number of $\psi^*(e^{i\theta})$ about $0$ equals that of $c_1^*e^{i\theta}$, namely one, since $|\psi^*(w)-c_1^*w|\leq s_0<c_1^*$ on $\partial\D$. Hence the argument increases by exactly $2\pi$, and $\partial D$ is a radial graph $\{R_D(\phi)e^{i\phi}\}$ with $R_D$ positive and real analytic; $D$ is strictly star-shaped.
+
+\emph{Symmetry.} $\psi^*$ is odd with real coefficients, so $\psi^*(\bw)=\overline{\psi^*(w)}$ and $\psi^*(-w)=-\psi^*(w)$.
+
+\emph{Not a disc.} If $D$ were a disc, the two reflection symmetries would force its centre to be $0$, and $w\mapsto\psi^*(w)/\psi^*{}'(0)$ would be a conformal map of $\D$ onto a disc centred at $0$ fixing $0$ with derivative one there; by the Schwarz lemma applied to it and to its inverse, it is the identity, so $\psi^*$ is linear. This contradicts $c^*_3\neq0$.
+\end{proof}
+
+\subsection{Convexity}
+
+\begin{proposition}\label{prop:convex}
+For $|w|\leq1$,
+\[
+\re\Big(1+\frac{w\psi^{*\prime\prime}(w)}{\psi^{*\prime}(w)}\Big)>0.414074 .
+\]
+Consequently $D$ is strictly convex, and $\Omega=\Pi^{-1}(D)$ is convex.
+\end{proposition}
+
+\begin{proof}
+Let $A_1=\sum_{j\geq3}j|c^\circ_j|$, $A_2=\sum_{j\geq3}j(j-1)|c_j^\circ|$, $E_1=r/(b^2\rho)$ and $E_2=r\rho/(b^2(\rho-1)^2)$. By \eqref{eq:dc}, for $|w|\leq1$,
+\[
+|\psi^{*\prime}(w)|\geq c^*_1-\sum_{j\geq3}j|c^*_j|\geq b-A_1-E_1=:L,\qquad|\psi^{*\prime\prime}(w)|\leq\sum_{j\geq3}j(j-1)|c_j^*|\leq A_2+E_2=:U .
+\]
+The computation certifies $A_1<1.5514770$, $A_2<7.7860764$, $E_1<8.6491\cdot10^{-8}$, $E_2<3.81425\cdot10^{-5}$, hence $L>13.288565$, $U<7.786115$ and $\re(1+w\psi^{*\prime\prime}/\psi^{*\prime})\geq1-U/L>0.414074$.
+
+Let $z(\theta)=\psi^*(e^{i\theta})$. Then $z'(\theta)=ie^{i\theta}\psi^{*\prime}(e^{i\theta})\neq0$ and
+\[
+\frac{d}{d\theta}\arg z'(\theta)=\re\Big(1+\frac{w\psi^{*\prime\prime}(w)}{\psi^{*\prime}(w)}\Big)\Big|_{w=e^{i\theta}}>0 .
+\]
+Thus the tangent direction of the simple closed analytic curve $\partial D$ turns strictly monotonically, through a total angle $2\pi$ (the winding number of $\psi^{*\prime}(e^{i\theta})$ about $0$ is zero, as $\psi^{*\prime}$ has no zeros in $\overline\D$), and $\partial D$ bounds a strictly convex domain; this is the classical analytic convexity criterion for conformal maps of the disc, cf.\ \cite[Chapter~2]{Dur83}.
+
+Now let $(x_1,x'),(z_1,z')\in\Omega$, $\sigma\in[0,1]$, and put $y_\sigma=\sigma|x'|+(1-\sigma)|z'|$. By convexity of $D$, $(\sigma x_1+(1-\sigma)z_1,\pm y_\sigma)\in D$, and by convexity again the vertical segment joining these two points lies in $D$. Since $|\sigma x'+(1-\sigma)z'|\leq y_\sigma$, the point $\sigma(x_1,x')+(1-\sigma)(z_1,z')$ lies in $\Omega$.
+\end{proof}
+
+\subsection{Analytic regularity and continuation}
+
+\begin{lemma}\label{lem:interior}
+Let $U\subset\R^2$ be open and $F\in C(U)$ with $\int_UF(\Delta\varphi+\varphi)=0$ for all $\varphi\in C^\infty_c(U)$. Then $F$ is real analytic in $U$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal H(x_1,y,\zeta)=e^\zeta F(x_1,y)$ on $U\times\R$. For $\Phi\in C_c^\infty(U\times\R)$, integration by parts in $\zeta$ gives $\int\mathcal H\,\Delta_3\Phi=\int_UF(\Delta\varphi+\varphi)=0$ with $\varphi=\int e^\zeta\Phi(\cdot,\zeta)\,d\zeta\in C_c^\infty(U)$. By Weyl's lemma the continuous function $\mathcal H$ is harmonic, hence real analytic, and so is $F=\mathcal H(\cdot,\cdot,0)$.
+\end{proof}
+
+\begin{lemma}\label{lem:boundary}
+Let $D\subset\R^2$ be a bounded domain whose boundary is a real-analytic regular Jordan curve, and let $F\in C^1(\overline D)$ satisfy $\int_D(\nabla F\cdot\nabla\varphi-F\varphi)=0$ for all $\varphi\in C_c^\infty(D)$, together with $F=y$ and $\nabla F=e_y$ on $\partial D$. Then $F$ extends to a real-analytic solution of $\Delta F+F=0$ on an open neighbourhood of $\overline D$.
+\end{lemma}
+
+\begin{proof}
+\emph{Local Cauchy problem.} Fix $z_0\in\partial D$ and a real-analytic regular parametrisation $\gamma$ of $\partial D$ near $z_0$ with $\gamma(0)=z_0$; extend $\gamma$ holomorphically to a disc $\{|a|<a_0\}$ on which $\gamma'\neq0$ and $\gamma$ is injective, and put $\gamma^\dagger(b)=\overline{\gamma(\overline b)}$. In the complex coordinates $\zeta=x_1+iy$, $\chi=x_1-iy$ the Laplacian is $4\partial_\zeta\partial_\chi$, and the substitution $\zeta=\gamma(a)$, $\chi=\gamma^\dagger(b)$ turns $4\partial_\zeta\partial_\chi F+F=0$ into $\partial_a\partial_bF=-kF$ with $k(a,b)=\gamma'(a)\gamma^{\dagger\prime}(b)/4$. The real plane corresponds to $b=\overline a$, and $\partial D$ to the real diagonal $a=b\in\R$. The function $F_0(a,b)=(\gamma(a)-\gamma^\dagger(b))/(2i)$ is the holomorphic extension of $y$ and satisfies $\partial_a\partial_bF_0=0$. On the closed bidisc $\{|a|,|b|\leq\eps\}$ consider
+\[
+(\mathcal TW)(a,b)=-\int_{[b,a]}\int_{[t,b]}k(t,v)\big(W(t,v)+F_0(t,v)\big)\,dv\,dt
+\]
+along straight segments, which stay in the bidisc by convexity. $\mathcal T$ maps the Banach space of functions continuous on the closed bidisc and holomorphic in its interior into itself, and $\nrm{\mathcal TW-\mathcal T\widetilde W}_\infty\leq2\eps^2K_0\nrm{W-\widetilde W}_\infty$ with $K_0=\sup|k|$, since $\int_{[b,a]}|t-b|\,|dt|=|a-b|^2/2\leq2\eps^2$. For $2\eps^2K_0<1$ the contraction mapping principle gives a fixed point $W$, and differentiation of the iterated integral gives $W_{ab}=-k(W+F_0)$ and $W=W_a=W_b=0$ on the diagonal $a=b$. Hence $\widetilde F(x_1,y)=(F_0+W)(\gamma^{-1}(x_1+iy),(\gamma^\dagger)^{-1}(x_1-iy))$ is a real-analytic (possibly complex-valued) solution of $\Delta\widetilde F+\widetilde F=0$ on a disc $U$ about $z_0$, with $\widetilde F=y$ and $\nabla\widetilde F=e_y$ on $\partial D\cap U$.
+
+\emph{Matching.} Shrink $U$ so that $\partial D$ divides it into two connected pieces. The function $Z=F-\widetilde F$ on $D\cap U$, extended by zero to $U\setminus D$, is $C^1$ on $U$, because its value and gradient vanish on $\partial D\cap U$. It is a weak solution of $\Delta Z+Z=0$ on $U$. Indeed, let $\varphi\in C_c^\infty(U)$, and let $\chi_\delta\in C_c^\infty(D)$ be equal to one at distance at least $2\delta$ from $\partial D$, with $0\leq\chi_\delta\leq1$ and $|\nabla\chi_\delta|\leq C/\delta$. Since $F$ and $\widetilde F$ are weak solutions in $D\cap U$ and $\chi_\delta\varphi\in C_c^\infty(D\cap U)$,
+\[
+\int_U(\nabla Z\cdot\nabla\varphi-Z\varphi)=\int_{D\cap U}(1-\chi_\delta)(\nabla Z\cdot\nabla\varphi-Z\varphi)-\int_{D\cap U}\varphi\,\nabla Z\cdot\nabla\chi_\delta .
+\]
+The integrands are supported in the layer $\Sigma_\delta=\{\dist(\cdot,\partial D)<2\delta\}\cap D\cap\operatorname{supp}\varphi$, whose area is $O(\delta)$. The first integral is $O(\delta)$, and the second is bounded by $C'\sup_{\Sigma_\delta}|\nabla Z|$, which tends to zero because $\nabla Z$ is continuous and vanishes on $\partial D\cap U$. By Lemma~\ref{lem:interior} (applied to the real and imaginary parts) $Z$ is real analytic on $U$; it vanishes on the open set $U\setminus\overline D$, hence on $U$. Thus $\widetilde F=F$ on $D\cap U$.
+
+\emph{Gluing.} Cover $\partial D$ by finitely many discs $B(z_i,r_i/2)$ such that on $B(z_i,r_i)$ a local extension $\widetilde F_i$ as above exists, and let $0<\eps\leq\min_ir_i/6$. For $z$ with $\dist(z,\partial D)<\eps$ choose $q\in\partial D$ with $|z-q|<\eps$ and $i$ with $q\in B(z_i,r_i/2)$, and put $\widetilde F(z)=\widetilde F_i(z)$. If another choice $q',i'$ is made, then $|q-q'|<2\eps$, so $B(q',\eps)\subset B(z_i,r_i)\cap B(z_{i'},r_{i'})$; both $\widetilde F_i$ and $\widetilde F_{i'}$ coincide with $F$ on the nonempty open set $B(q',\eps)\cap D$, hence on the disc $B(q',\eps)\ni z$. Thus $\widetilde F$ is well defined and real analytic on $\{\dist(\cdot,\partial D)<\eps\}$, and together with $F$ it gives the required extension. It is real valued because it is real on $D$.
+\end{proof}
+
+\subsection{\texorpdfstring{Proof of Theorem~\ref{thm:main}}{Proof of Theorem 1.1}}
+
+Let $V^*=Kg^*+\im\psi^*$. By Lemma~\ref{lem:F}, $V^*\in C^1(\overline\D)$ satisfies \eqref{eq:V} with $\psi=\psi^*$ and has the parities required in Lemma~\ref{lem:pullback}. By Proposition~\ref{prop:geometry}, $\psi^*$ is injective with nonvanishing derivative on a neighbourhood of $\overline\D$. Lemma~\ref{lem:pullback} shows that $F=V^*\circ(\psi^*)^{-1}\in C^1(\overline D)$ is a weak solution of $\Delta F+F=0$ in $D$ with $F=y$ and $\nabla F=e_y$ on $\partial D$, odd in $y$ and even in $x_1$. By Lemmas~\ref{lem:interior} and~\ref{lem:boundary}, $F$ extends to a real-analytic solution on an open neighbourhood of $\overline D$; replacing this neighbourhood by the connected component containing $\overline D$ of its intersection with its images under the two reflections, we obtain a symmetric connected neighbourhood $N$ on which, by the identity theorem, $F$ is still odd in $y$ and even in $x_1$.
+
+Since $D$ is strictly star-shaped and symmetric, $\partial D$ meets the axis in exactly two points. Proposition~\ref{prop:rotation} now shows that $\Omega=\Pi^{-1}(D)$ and $u=F(x_1,|x'|)/|x'|$ (extended analytically to the axis) satisfy \eqref{eq:main}, that $u$ is real analytic on the neighbourhood $\Pi^{-1}(N)$ of $\overline\Omega$, and that $u$ is nonconstant.
+
+\emph{Geometry of $\Omega$.} Let $R_D(\phi)$ be the radial function of $D$ from Proposition~\ref{prop:geometry}. It is positive, real analytic, $2\pi$-periodic and even. Its Fourier series $R_D(\phi)=\sum_{k\geq0}\alpha_k\cos k\phi$ has exponentially decaying coefficients, so $\widetilde R(\tau)=\sum_k\alpha_kT_k(\tau)$, with $T_k$ the Chebyshev polynomials, converges on a complex neighbourhood of $[-1,1]$ (since $|T_k|\leq\varrho^k$ on the Bernstein ellipse of parameter $\varrho$) and defines a real-analytic function with $\widetilde R(\cos\phi)=R_D(\phi)$, positive near $[-1,1]$. For $x\neq0$, $\Pi(x)$ has polar angle $\phi=\arccos(x_1/|x|)\in[0,\pi]$ and modulus $|x|$. Hence
+\[
+\Omega=\{0\}\cup\{x\neq0:\ |x|<\widetilde R(x_1/|x|)\},\qquad\partial\Omega=\{\widetilde R(\omega_1)\,\omega:\ \omega\in S^3\}.
+\]
+Thus $\Omega$ is strictly star-shaped with respect to $0$, in particular connected. The map $\omega\mapsto\widetilde R(\omega_1)\omega$ is real analytic and injective on $S^3$ (its inverse is $x\mapsto x/|x|$), and its differential maps a tangent vector $v\perp\omega$ to $\widetilde R'(\omega_1)v_1\omega+\widetilde R(\omega_1)v$, whose component tangent to $S^3$ is $\widetilde R(\omega_1)v\neq0$. Hence it is a real-analytic embedding, and $\partial\Omega$ is a compact real-analytic hypersurface diffeomorphic to $S^3$. The symmetries of $\Omega$ follow from $\Omega=\Pi^{-1}(D)$ and the symmetry of $D$ under $x_1\mapsto-x_1$.
+
+\emph{$\Omega$ is not a ball.} If it were, invariance under $x'\mapsto-x'$ and $x_1\mapsto-x_1$ would put its centre at $0$; then $\Pi(\Omega)=D\cap\{y\geq0\}$ would be the upper half of a disc centred at $0$, and by the symmetry $y\mapsto-y$, $D$ would be that disc, contradicting Proposition~\ref{prop:geometry}. This completes the proof of Theorem~\ref{thm:main}, and Proposition~\ref{prop:convex} proves Corollary~\ref{cor:convex}. \qed
+
+%======================================================================
+\section{The Pompeiu property}\label{sec:pompeiu}
+%======================================================================
+
+\begin{proof}[Proof of Corollary~\ref{cor:pompeiu}]
+Let $\xi\in\R^4$ with $|\xi|=1$ and $v(x)=e^{i\xi\cdot x}$, so that $\Delta v+v=0$. Since $u$ and $v$ are smooth up to the real-analytic boundary and solve the same equation, Green's identity and \eqref{eq:main} give
+\[
+0=\int_\Omega(u\Delta v-v\Delta u)\,dx=\int_{\partial\Omega}(u\,\partial_\nu v-v\,\partial_\nu u)\,dS=\int_{\partial\Omega}\partial_\nu v\,dS=\int_\Omega\Delta v\,dx=-\int_\Omega e^{i\xi\cdot x}\,dx .
+\]
+Thus $\widehat{\one_\Omega}$ vanishes on the unit sphere. If $\sigma(x)=Qx+a$ is a rigid motion, then
+\[
+\int_{\sigma(\Omega)}e^{ix_1}\,dx=e^{ia_1}\int_\Omega e^{i(Q^{\mathsf T}e_1)\cdot x}\,dx=0,
+\]
+and taking real parts, $\int_{\sigma(\Omega)}\cos x_1\,dx=0$. Since $\cos x_1$ is continuous and not identically zero, $\Omega$ fails the Pompeiu property. By Theorem~\ref{thm:main} and Corollary~\ref{cor:convex}, $\Omega$ is a bounded convex domain, not a ball, with real-analytic boundary diffeomorphic to $S^3$, so the Pompeiu conjecture fails in $\R^4$.
+\end{proof}
+
+%======================================================================
+\section{Computer-assisted verification}\label{sec:cap}
+%======================================================================
+
+\subsection{What the script checks}
+All finite computations are carried out by a single script, \texttt{verify\_r4.py} (569 lines), which uses only the Python standard library and \texttt{python-flint} 0.9.0 \cite{flint}, the Python interface to the ball arithmetic of FLINT/Arb \cite{Joh17}. Every real number is represented by a ball $[m\pm\varepsilon]$ whose arithmetic is rigorous, including all rounding errors. The $525$ centre coefficients are embedded in the script as hexadecimal binary64 strings, which are converted to exact dyadic rationals (exactness is checked); $\rho=21/20$, $r=1/50000$ and the rational majorants of Theorem~\ref{thm:zero} are exact. The script performs the following steps.
+\begin{enumerate}[label=(\arabic*)]
+\item It expands $\Fc(x^\circ)$ and the $525$ finite columns of $D\Fc(x^\circ)$ in ball arithmetic, using \eqref{eq:rec}, \eqref{eq:K} and \eqref{eq:DF}; no coefficient is discarded.
+\item It assembles $M_f$, computes a ball enclosure of $M_f^{-1}$, and defines $\widehat A$ as the matrix of the (exact, dyadic) midpoints of this enclosure. It then computes $I-\widehat AM_f$ in ball arithmetic and verifies \eqref{eq:Ahat} for the weighted column norm. The matrix $\widehat A$ is never treated as an interval-valued operator.
+\item It computes $\nrm R$, $H$, the numbers $h_n$ for $M+2\leq n\leq N_H=443$ and the remainder bound of Lemma~\ref{lem:normA}, hence $A_t$ and a bound for $\nrm A$.
+\item It computes $Y$ and $Z_f$ by applying $A$, in the form \eqref{eq:A}, \eqref{eq:B}, \eqref{eq:Tinv}, to the residual and to the finite columns.
+\item It computes the $3650$ tail $g$-columns with $n\leq123$, $s\leq67$ with the short polynomial $p_{\leq16}$ and adds the error term of \eqref{eq:gshort}; it evaluates $Z_{g,\infty}$.
+\item It computes the $480$ shape columns $43\leq j\leq1001$ without truncation, checks the hypotheses of Proposition~\ref{prop:farshape}, and evaluates $\sU_1,\ldots,\sU_5,\sU_W$ and $Z_{\mathrm{sh},\infty}$.
+\item It evaluates $Z$, $c_2$, $c_3$, $C_2$, $C_3$, checks $Y<7\cdot10^{-6}$, $Z<37/100$, $C_2<4$, $C_3<10^{-3}$, and then the two inequalities \eqref{eq:radii} at $r=1/50000$.
+\item It checks the geometric inequalities \eqref{eq:uni} and \eqref{eq:star}.
+\end{enumerate}
+In \texttt{python-flint}, an order relation between balls evaluates to true only if it holds for all points of the balls. Every check is an explicit test that raises an exception when it fails (also under \texttt{python -O}); maxima over columns are taken over rigorous upper endpoints, and nonfinite enclosures are rejected. After step (4) the script writes an intermediate checkpoint file (\texttt{*.base.json}), which carries no status field; only when all checks succeed does it write the certificate file (JSON) with the enclosures of all quantities of Table~\ref{tab:bounds} and the status \texttt{PROVED}, and print \texttt{PROVED}. A diagnostic mode (\texttt{--stage base}) stops after step (4) and never prints \texttt{PROVED}.
+
+A second script, \texttt{verify\_convex.py}, checks that the centre data file coincides with the data embedded in \texttt{verify\_r4.py}, that the main certificate has status \texttt{PROVED} for the radius $r=1/50000$, and then verifies the bounds of Proposition~\ref{prop:convex}, which involve only the finite sums $A_1,A_2$ and the explicit tail constants $E_1,E_2$.
+
+The analytic content of the proof, namely all lemmas and all tail estimates, is contained in Sections~\ref{sec:reduction}--\ref{sec:pompeiu}; the scripts only evaluate the finitely many explicit expressions defined there.
+
+\subsection{Reproduction}
+From a directory containing \texttt{verify\_r4.py}, \texttt{verify\_convex.py} and \texttt{data/centre.json}, the certificate is reproduced by
+\begin{verbatim}
+nice -n 19 env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  python3 verify_r4.py --stage all --bits 128 --jstar 1001 \
+  --output logs/certificate_r4_128.json
+python3 verify_convex.py --bits 128 \
+  --main-certificate logs/certificate_r4_128.json \
+  --output logs/convex_128.json
+\end{verbatim}
+The first command prints \texttt{PROVED} as its last line, the second prints \texttt{PROVED\_CONVEX}. The runs use one thread. On a single core of a Linux server the $128$-bit run took between $163$ and $167$ seconds of wall-clock time in several independent runs, and the same run at $192$ bits (\texttt{--bits 192}) took about $198$ seconds; the convexity check takes a fraction of a second. Runs under Python 3.10.19 and Python 3.12.3, both with \texttt{python-flint} 0.9.0, produced byte-identical certificate files. At $192$ bits all inequalities hold with the same displayed bounds, and the finite inverse defect \eqref{eq:Ahat} is below $7.5\cdot10^{-54}$.
+
+\begin{table}[ht]
+\centering
+\scriptsize
+\begin{tabular}{@{}ll@{}}
+\toprule
+File & SHA-256\\
+\midrule
+\texttt{verify\_r4.py} & \texttt{32c4334a215df722651b610f3c2922b3472b65edab2be21d32df7739195f85ed}\\
+\texttt{verify\_convex.py} & \texttt{ccbf0ed709443dae7911a75ad3e6b3d355a2ea5320cf944ce53615d0cef14236}\\
+\texttt{data/centre.json} & \texttt{ad87d8832320b1a94e1aadb04dfe4a523b9edf94941cbb00e219317b1bdb8fc0}\\
+\texttt{certificate\_r4\_128.json} & \texttt{59bba629550c19cedaa406f0c05fa8951ec40fbb2a954665b187367184a648bb}\\
+\texttt{certificate\_r4\_192.json} & \texttt{068f73865cbb191d5574ef5abbbbf87774d49817af2f07f5daf3b6b1e1c20f73}\\
+\texttt{convex\_128.json} & \texttt{f14415b400133c47579baf08e8fda4e479826d55bc4c4d57a4dad134124f672e}\\
+\texttt{convex\_192.json} & \texttt{073794c76c79e6f7ae74c68f23af43636ab91a6990bde0ed5e59ba21475bb09f}\\
+\bottomrule
+\end{tabular}
+\caption{SHA-256 checksums of the verification scripts, the centre data and the certificates.}
+\label{tab:sha}
+\end{table}
+
+\emph{Availability.} The two scripts, the centre data and the four certificate files listed in Table~\ref{tab:sha} are distributed as ancillary files (directory \texttt{anc/}) with the arXiv version of this paper, and at \url{https://github.com/aster2024/schiffer-pompeiu-r4}.
+
+\subsection{Consistency checks}
+The following checks are not part of the proof. The algebraic identities of Sections~\ref{sec:disk}, \ref{sec:K} and Lemma~\ref{lem:Tform} were verified symbolically for small indices. An independently written floating-point implementation, which computes projections by quadrature instead of the recurrences \eqref{eq:rec} and uses its own approximate inverse, reproduced $\nrm R$, $H$, $Z_f$ and the largest shape column of Table~\ref{tab:bounds} to the displayed digits. The function $u$ was also evaluated directly in $\R^4$ from a Fourier--Bessel representation $F=\sum_{m\ \mathrm{odd}}a_mJ_m(r)\sin m\phi$ fitted to the boundary data of the centre: at random points of $\partial\Omega$ the defects $|u-1|$ and $|\nabla u|$ were below $10^{-10}$, and the Fourier transform of $\one_\Omega$, computed by quadrature, was below $10^{-10}$ in modulus on the unit sphere and between $18$ and $28$ in modulus on the sphere of radius $0.999$.
+
+%======================================================================
+\section{Remarks on other dimensions and on curved spaces}\label{sec:remarks}
+%======================================================================
+
+The statements in this section are not used in the proof of Theorem~\ref{thm:main}. Those about dimensions three and five are based on numerical computations only and are \emph{not proved}.
+
+\subsection{A transcritical mechanism}\label{subsec:mechanism}
+Let $n\geq3$ and let $\rho_m=j_{n/2,m}$, so that the unit ball of $\R^n$ carries the radial solution of \eqref{eq:schiffer} with $\mu=\rho_m^2$. Consider domains $\{x:|x|<1+sY_\ell(x_1/|x|)+O(s^2)\}$ invariant under $O(n-1)\times\Z_2$, where $Y_\ell$ is the zonal spherical harmonic of even degree $\ell$ on $S^{n-1}$, normalised by $Y_\ell(1)=1$. The linearisation of the Schiffer problem at the ball in the direction $Y_\ell$ is degenerate exactly when $J_{\ell+n/2-1}(\rho_m)=0$, and this never happens for integer $n$ and $\ell\geq2$: for even $n$ this is Bourget's hypothesis, proved by Siegel \cite{Sie29}, that Bessel functions of distinct nonnegative integer orders have no common positive zero, and for odd $n$ it follows from a similar transcendence argument based on the Lindemann--Weierstrass theorem. So there is no bifurcation from balls in this class. However, $J_{\ell+n/2-1}(\rho_m)$ can be small. A formal Lyapunov--Schmidt expansion in the direction $Y_\ell$ then gives, at second order, a reduced equation of the form
+\[
+-\sigma s+\frac{\rho_m^2}2\,\frac{\langle Y_\ell^3\rangle}{\langle Y_\ell^2\rangle}\,s^2+O(s^3,\sigma s^2)=0,
+\]
+where $\langle\cdot\rangle$ is the average over $S^{n-1}$ and $\sigma$ is a small quantity proportional to $J_{\ell+n/2-1}(\rho_m)$. This suggests a non-ball solution with boundary amplitude $s_*\approx2\sigma\langle Y_\ell^2\rangle/(\rho_m^2\langle Y_\ell^3\rangle)$.
+
+In the plane the corresponding cubic average $\langle\cos^3N\phi\rangle$ vanishes, the reduced equation is odd in $s$, and a sign condition or an additional parameter is needed; compare the relaxed parameter of \cite{CLdDP26} and the continuation from the constant-flux problem in \cite{CS26}. For $n\geq3$ and even $\ell$ the cubic average does not vanish: for $n=3$, $\langle P_\ell^3\rangle/\langle P_\ell^2\rangle=(2\ell+1)\left(\begin{smallmatrix}\ell&\ell&\ell\\0&0&0\end{smallmatrix}\right)^2>0$; for $n=4$ the zonal harmonics are $U_\ell(\cos\phi)/(\ell+1)$, where $U_\ell(\cos\phi)$ is the character of the irreducible representation of $SU(2)\cong S^3$ of dimension $\ell+1$, and the Clebsch--Gordan rule gives $\langle U_\ell^3\rangle=\langle U_\ell^2\rangle=1$ for even $\ell$. That quadratic terms make axisymmetric bifurcations in the even-degree representations of $O(3)$ generically transcritical is a classical fact of equivariant bifurcation theory \cite{IG84,GSS88}. What we use is only the observation that this classical mechanism applies to the Schiffer problem near a near-resonance, where the planar obstruction disappears. Integrals of products of three spherical harmonics arise in any second-order perturbation analysis near a ball, and we make no claim of novelty for them.
+
+For $(n,\rho_m,\ell)=(4,j_{2,4},6)$, the zero $j_{2,4}\approx14.79595$ of $J_2$ is close to the zero $j_{7,2}\approx14.82127$ of $J_7=J_{\ell+n/2-1}$, and the formal prediction for the relative $Y_6$-amplitude is about $2.4\cdot10^{-2}$. The domain of Theorem~\ref{thm:main} has $Y_6$-amplitude about $2.2\cdot10^{-2}$ (Remark~\ref{rem:domain}); in the meridian plane the $Y_6$ direction corresponds to the mode $J_7(r)\sin7\phi$ (Section~\ref{sec:reduction}). This is how the example was located. Numerically, Newton iterations started from the ball perturbed by a small multiple of $Y_6$ converge either back to the ball or to our domain, depending on the size of the perturbation, as expected from a transcritical picture.
+
+\subsection{Dimensions three and five: numerical evidence}
+With a spectral collocation solver (expansions in exact Helmholtz solutions $r^{1-n/2}J_{\ell+n/2-1}(\sqrt\mu\,r)Y_\ell$, boundary given as a radial graph, Gauss--Newton iteration), we found numerical solutions of \eqref{eq:schiffer} on non-ball, star-shaped, $O(n-1)\times\Z_2$-invariant domains near the near-resonances predicted in Section~\ref{subsec:mechanism}:
+\begin{itemize}
+\item $n=3$, $\sqrt\mu=j_{3/2,42}\approx133.5102$ (unit ball normalisation), $\ell=20$, boundary amplitude about $9.6\cdot10^{-4}$. In multiprecision the collocation residual is about $10^{-36}$, and the residual off the collocation grid decreases spectrally with the truncation (about $10^{-11}$, $10^{-14}$, $10^{-17}$ and $10^{-20}$ for $120$, $160$, $200$ and $240$ modes). A test of the Pompeiu condition that uses only the computed boundary gives $2\cdot10^{-12}$, compared with $1.4\cdot10^{-2}$ for a comparison domain.
+\item $n=3$, $\sqrt\mu=j_{3/2,15}\approx48.6741$, $\ell=12$, amplitude about $1.5\cdot10^{-2}$, off-grid residual about $2\cdot10^{-11}$ with $150$ modes.
+\item $n=5$, $\sqrt\mu=j_{5/2,30}\approx97.3586$, $\ell=16$, amplitude about $7.1\cdot10^{-3}$, and $\sqrt\mu=j_{5/2,24}\approx78.5016$, $\ell=14$, amplitude about $2.1\cdot10^{-2}$; residuals about $10^{-11}$, stable under changes of the truncation.
+\end{itemize}
+We do not claim that these solutions exist: they are not certified. By Remark~\ref{rem:why4} the reduction of Section~\ref{sec:reduction} is not available in these dimensions, and a computer-assisted proof would require a different fixed-domain formulation.
+
+\subsection{Curved spaces}
+In spheres and hyperbolic spaces the curvature provides a genuine one-parameter family in which radial Neumann eigenvalues and non-radial Dirichlet eigenvalues of geodesic balls can cross, which allows local bifurcation from geodesic balls. Cao-Labora and Fern\'andez \cite{CLF25} used this to construct contractible Schiffer domains on the half-sphere $S^2$, and they pointed out \cite[Remark~1.2]{CLF25} that their method generalises to other non-flat spaces, with numerically observed crossings for $S^3$, $S^4$ and $H^2$. Earlier examples in spheres are bounded by isoparametric hypersurfaces \cite{Shk00,PS21}, whose boundaries are not topological spheres in general. The mechanism of Section~\ref{subsec:mechanism} is also relevant in spheres and hyperbolic spaces of dimension $n\geq3$; we do not pursue curved spaces in this paper.
+
+%======================================================================
+\section{Relation with rigidity results and other claims}\label{sec:rigidity}
+%======================================================================
+
+\emph{Perturbations of balls.} Several theorems assert rigidity near balls. Agranovsky \cite{Agr93} considers a real-analytic family of planar domains issuing from the disc along which an analytic branch of Pompeiu spectral parameters persists. Kobayashi \cite{Kob93} proves that balls are isolated among domains carrying such overdetermined eigenfunctions, for families of domains issuing from a ball, under a nondegeneracy condition and with uniformly bounded spectral parameters. Canuto \cite{Can14} proves, in arbitrary dimension, rigidity near a fixed radial Neumann eigenvalue within an eigenvalue-dependent class of perturbations. These hypotheses concern solution-carrying families issuing from a ball, or specified perturbation classes, rather than the geometric proximity of a single domain to a ball, and where a neighbourhood of a ball is involved its size is not explicit. Theorem~\ref{thm:main} concerns a single domain, whose boundary deviates from the sphere of radius $j_{2,4}$ by up to $2.3\%$ (Remark~\ref{rem:domain}), and there is no contradiction with these results. Heuristically, the size of such neighbourhoods is limited by the inverse of the linearised operator at the ball, which is large near a near-resonance, and the transcritical picture of Section~\ref{subsec:mechanism} places the non-ball solution at a distance comparable to the near-resonance. We have not attempted to make the constants in these theorems explicit.
+
+\emph{Spectral conditions.} A domain for which \eqref{eq:schiffer} is solvable for infinitely many $\mu$ is a ball \cite{Ber80,BY87}; our construction provides one eigenvalue. Dai, Liu and Sun \cite{DLS26} prove a rigidity theorem in all dimensions when the eigenvalue in \eqref{eq:schiffer} is the second Dirichlet eigenvalue; for our domain, the eigenvalue $1$ is much larger than the second Dirichlet eigenvalue of $\Omega$. Indeed, the proof of Proposition~\ref{prop:geometry} gives $|\psi^*|\geq b_--s_0>14.54$ on $\partial\D$, so $\Omega$ contains the ball of radius $14.54$ about the origin, and by domain monotonicity its second Dirichlet eigenvalue is at most $(j_{2,1}/14.54)^2<0.13$. In the plane, rigidity is known for low eigenvalues \cite{Den12} and under further conditions \cite{Avi86,Dal99,KL20,Mon26}.
+
+\emph{Convex domains and high frequency.} Dai, Sun, Wei and Zhang \cite{DSWZ25} prove that a uniformly convex planar domain carrying solutions of \eqref{eq:schiffer} with sufficiently large eigenvalue, above a threshold depending on the domain, is a disc, and state that the extension to higher dimensions is left for future work. Their theorem is planar and does not apply to our example. By Corollary~\ref{cor:convex}, our domain is convex; thus convexity alone does not force Schiffer rigidity in $\R^4$ at every eigenvalue, and a higher-dimensional analogue of such high-frequency results could only hold above a frequency threshold that excludes the eigenvalue of our example.
+
+\emph{Claims in dimension three.} Ramm \cite{Ram19} states that a bounded connected $C^2$ domain in $\R^3$ whose indicator function has Fourier transform vanishing on a sphere is a ball, and Chen \cite{Che16} states a proof of the Schiffer conjecture for star-shaped Lipschitz domains in $\R^3$. Both concern $\R^3$, so they are not contradicted by Theorem~\ref{thm:main}, which is four-dimensional. We note only that the numerical three-dimensional solutions of Section~\ref{sec:remarks} are star-shaped with analytic boundary, so that a rigorous version of them would be incompatible with these statements.
+
+\section*{Acknowledgements}
+This work was carried out with the assistance of AI models (Claude Opus 5.5 and GPT-6 Astra). The author takes full responsibility for the content of this paper.
+
+\begin{thebibliography}{99}
+
+\bibitem{Agr93}
+M.~L. Agranovsky, \emph{On the stability of the spectrum in the Pompeiu problem}, J. Math. Anal. Appl. \textbf{178} (1993), no.~1, 269--279.
+
+\bibitem{Avi86}
+P.~Aviles, \emph{Symmetry theorems related to Pompeiu's problem}, Amer. J. Math. \textbf{108} (1986), no.~5, 1023--1036.
+
+\bibitem{Ber80}
+C.~A. Berenstein, \emph{An inverse spectral theorem and its relation to the Pompeiu problem}, J. Anal. Math. \textbf{37} (1980), 128--144.
+
+\bibitem{BY87}
+C.~A. Berenstein and P.~C. Yang, \emph{An inverse Neumann problem}, J. Reine Angew. Math. \textbf{382} (1987), 1--21.
+
+\bibitem{BST73}
+L.~Brown, B.~M. Schreiber, and B.~A. Taylor, \emph{Spectral synthesis and the Pompeiu problem}, Ann. Inst. Fourier (Grenoble) \textbf{23} (1973), no.~3, 125--154.
+
+\bibitem{Can14}
+B.~Canuto, \emph{Stability results for the $N$-dimensional Schiffer conjecture via a perturbation method}, Calc. Var. Partial Differential Equations \textbf{50} (2014), no.~1--2, 305--334.
+
+\bibitem{CLdDP26}
+G.~Cao-Labora and J.~de Dios Pont, \emph{Counterexamples to Schiffer's conjecture}, arXiv:2608.05114 (2026).
+
+\bibitem{CLF25}
+G.~Cao-Labora and A.~J. Fern\'andez, \emph{A contractible Schiffer counterexample on the half-sphere}, arXiv:2510.05732 (2025).
+
+\bibitem{Che16}
+L.-H. Chen, \emph{A proof of Schiffer's conjecture in starlike domain by far-field patterns}, arXiv:1502.05302v2 (2016).
+
+\bibitem{CSS26}
+M.~J. Colbrook, S.~Sadeghi, and G.~Stepaniants, \emph{A computer-assisted counterexample to the planar Berenstein conjecture}, arXiv:2608.08953 (2026).
+
+\bibitem{CS26}
+M.~J. Colbrook and G.~Stepaniants, \emph{A computer-assisted counterexample to the planar Pompeiu and Schiffer conjectures}, arXiv:2608.01579 (2026).
+
+\bibitem{DLS26}
+G.~Dai, Q.~Liu, and Y.~Sun, \emph{High dimension Weinstein conjecture and its application to Schiffer conjecture}, Z. Angew. Math. Phys. \textbf{77} (2026), Article 139.
+
+\bibitem{DSWZ25}
+G.~Dai, Y.~Sun, J.~Wei, and Y.~Zhang, \emph{On the Schiffer and Berenstein conjectures with high-frequency for convex domains in the plane}, arXiv:2511.19819v2 (2026).
+
+\bibitem{Dal99}
+R.~Dalmasso, \emph{A note on the Schiffer conjecture}, Hokkaido Math. J. \textbf{28} (1999), no.~2, 373--383.
+
+\bibitem{Den12}
+J.~Deng, \emph{Some results on the Schiffer conjecture in $\mathbb R^2$}, J. Differential Equations \textbf{253} (2012), no.~8, 2515--2526.
+
+\bibitem{DLMF}
+NIST Digital Library of Mathematical Functions, \url{https://dlmf.nist.gov/}.
+
+\bibitem{Dur83}
+P.~L. Duren, \emph{Univalent Functions}, Grundlehren der mathematischen Wissenschaften, vol.~259, Springer-Verlag, New York, 1983.
+
+\bibitem{EFRS25}
+A.~Enciso, A.~J. Fern\'andez, D.~Ruiz, and P.~Sicbaldi, \emph{A Schiffer-type problem for annuli with applications to stationary planar Euler flows}, Duke Math. J. \textbf{174} (2025), no.~6, 1151--1208.
+
+\bibitem{FMW25}
+M.~M. Fall, I.~A. Minlend, and T.~Weth, \emph{The Schiffer problem on the cylinder and on the $2$-sphere}, J. Eur. Math. Soc. (2025), published online; arXiv:2303.17036.
+
+\bibitem{flint}
+The FLINT team, \emph{FLINT: Fast Library for Number Theory}, \url{https://flintlib.org}; \texttt{python-flint}, version 0.9.0, \url{https://github.com/flintlib/python-flint}.
+
+\bibitem{GSS88}
+M.~Golubitsky, I.~Stewart, and D.~G. Schaeffer, \emph{Singularities and Groups in Bifurcation Theory, Vol.~II}, Applied Mathematical Sciences, vol.~69, Springer-Verlag, New York, 1988.
+
+\bibitem{IG84}
+E.~Ihrig and M.~Golubitsky, \emph{Pattern selection with $O(3)$ symmetry}, Phys. D \textbf{13} (1984), 1--33.
+
+\bibitem{Joh17}
+F.~Johansson, \emph{Arb: efficient arbitrary-precision midpoint-radius interval arithmetic}, IEEE Trans. Comput. \textbf{66} (2017), no.~8, 1281--1292.
+
+\bibitem{KL20}
+B.~Kawohl and M.~Lucia, \emph{Some results related to Schiffer's problem}, J. Anal. Math. \textbf{142} (2020), no.~2, 667--696.
+
+\bibitem{Kob93}
+T.~Kobayashi, \emph{Perturbation of domains in the Pompeiu problem}, Comm. Anal. Geom. \textbf{1} (1993), no.~4, 515--541.
+
+\bibitem{Koo78}
+T.~H. Koornwinder, \emph{Positivity proofs for linearization and connection coefficients of orthogonal polynomials satisfying an addition formula}, J. London Math. Soc. (2) \textbf{18} (1978), no.~1, 101--114.
+
+\bibitem{Mon26}
+S.~Mondal, \emph{A short note on Schiffer's conjecture for a class of centrally symmetric convex domains in $\mathbb R^2$}, J. Anal. Math. \textbf{158} (2026), no.~2, 401--412.
+
+\bibitem{Pom29a}
+D.~Pompeiu, \emph{Sur certains syst\`emes d'\'equations lin\'eaires et sur une propri\'et\'e int\'egrale des fonctions de plusieurs variables}, C. R. Acad. Sci. Paris \textbf{188} (1929), 1138--1139.
+
+\bibitem{Pom29b}
+D.~Pompeiu, \emph{Sur une propri\'et\'e des fonctions continues d\'ependant de plusieurs variables}, Bull. Sci. Math. \textbf{53} (1929), 328--332.
+
+\bibitem{Pom29c}
+D.~Pompeiu, \emph{Sur une propri\'et\'e int\'egrale des fonctions de deux variables r\'eelles}, Bull. Cl. Sci. Acad. Roy. Belgique \textbf{15} (1929), 265--269.
+
+\bibitem{PS21}
+L.~Provenzano and A.~Savo, \emph{Isoparametric foliations and the Pompeiu property}, Math. Eng. \textbf{5} (2023), no.~2, 1--27; arXiv:2108.13706.
+
+\bibitem{Ram19}
+A.~G. Ramm, \emph{Symmetry problems in harmonic analysis}, arXiv:1904.11363 (2019).
+
+\bibitem{Shk00}
+V.~Shklover, \emph{Schiffer problem and isoparametric hypersurfaces}, Rev. Mat. Iberoam. \textbf{16} (2000), no.~3, 529--569.
+
+\bibitem{Sie29}
+C.~L. Siegel, \emph{\"Uber einige Anwendungen diophantischer Approximationen}, Abh. Preuss. Akad. Wiss., Phys.-Math. Kl. (1929), no.~1, 1--70.
+
+\bibitem{Whe25}
+M.~H. Wheeler, \emph{Non-symmetric solutions to an overdetermined problem for the Helmholtz equation in the plane}, arXiv:2509.00455 (2025).
+
+\bibitem{Wil76}
+S.~A. Williams, \emph{A partial solution of the Pompeiu problem}, Math. Ann. \textbf{223} (1976), no.~2, 183--190.
+
+\bibitem{Yau82}
+S.-T. Yau, \emph{Problem section}, in: Seminar on Differential Geometry, Ann. of Math. Stud., vol.~102, Princeton Univ. Press, Princeton, NJ, 1982, 669--706.
+
+\bibitem{Zal92}
+L.~Zalcman, \emph{A bibliographic survey of the Pompeiu problem}, in: Approximation by Solutions of Partial Differential Equations (B.~Fuglede et al., eds.), NATO ASI Ser. C Math. Phys. Sci., vol.~365, Kluwer, Dordrecht, 1992, 185--194.
+
+\end{thebibliography}
+
+\end{document}

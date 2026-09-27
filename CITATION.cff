@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "A counterexample to the Schiffer and Pompeiu conjectures in dimension four"
+authors:
+  - family-names: Guo
+    given-names: Jizhou
+    affiliation: "Dots Studio, Rednote"
+date-released: 2026-09-27
+url: "https://github.com/aster2024/schiffer-pompeiu-r4"

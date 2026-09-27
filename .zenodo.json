@@ -1,0 +1,12 @@
+{
+  "title": "A counterexample to the Schiffer and Pompeiu conjectures in dimension four",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "description": "Paper and computer-assisted verification (Arb interval arithmetic) of a bounded convex domain in R^4, not a ball, with real-analytic boundary diffeomorphic to S^3, carrying a nonconstant Neumann eigenfunction of the Laplacian that is constant on the boundary. This gives counterexamples to the Schiffer conjecture and to the Pompeiu conjecture in dimension four. This work was carried out with the assistance of AI models (Claude Opus 5.5 and GPT-6 Astra).",
+  "creators": [
+    {"name": "Guo, Jizhou", "affiliation": "Dots Studio, Rednote"}
+  ],
+  "keywords": ["Schiffer conjecture", "Pompeiu problem", "overdetermined problems", "Neumann eigenfunctions", "computer-assisted proof", "interval arithmetic"],
+  "license": "cc-by-4.0",
+  "language": "eng"
+}

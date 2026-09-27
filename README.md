@@ -1,5 +1,7 @@
 # A counterexample to the Schiffer and Pompeiu conjectures in dimension four
 
+[![DOI](https://zenodo.org/badge/1391007796.svg)](https://doi.org/10.5281/zenodo.22999505)
+
 This repository contains the paper and the computer-assisted verification for the following result.
 
 **Theorem.** There exist:
@@ -42,6 +44,10 @@ sha256sum out/*.json   # compare with SHA256SUMS
 ```
 
 Use `--bits 192` for the higher-precision run. The certificate JSON files are byte-for-byte reproducible.
+
+## Archived version
+
+Zenodo DOI: [10.5281/zenodo.22999505](https://doi.org/10.5281/zenodo.22999505) (release v1.0).
 
 ## Status
 

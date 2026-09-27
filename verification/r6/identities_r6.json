@@ -1,0 +1,42 @@
+{
+  "status": "IDENTITIES_VERIFIED",
+  "bits": 128,
+  "jacobi_formula_pairs": 4182,
+  "K_exact": {
+    "n_max": 202,
+    "s_max": 80,
+    "pairs": 4080
+  },
+  "q_of_g_exact_pairs": 450,
+  "Kg_arb": {
+    "coefficients": 480,
+    "diff_norm_upper": "[2.01573e-31 +/- 1.08e-37]",
+    "Kg_norm": "[8352.7358607142299460 +/- 3.5e-19]",
+    "Q_norm": "[104752.28038595896061 +/- 4.35e-15]"
+  },
+  "radial_51_exact": {
+    "j_max": 2001,
+    "count": 500
+  },
+  "principal_exact": {
+    "j_max": 2001,
+    "count": 500
+  },
+  "principal_arb": {
+    "j_max": 1001,
+    "count": 250,
+    "max_abs_diff_upper": "[2.20745e-28 +/- 2.46e-34]"
+  },
+  "principal_pointwise_arb": {
+    "j": [
+      5,
+      9,
+      61,
+      101,
+      397,
+      1001
+    ],
+    "points": 4,
+    "max_abs_diff_upper": "[8.17081e-29 +/- 2.88e-35]"
+  }
+}

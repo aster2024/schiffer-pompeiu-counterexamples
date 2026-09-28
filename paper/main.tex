@@ -1384,28 +1384,7 @@ python3 verify_convex.py --bits 128 \
   --main-certificate logs/certificate_r4_128.json \
   --output logs/convex_128.json
 \end{verbatim}
-The second command prints \texttt{PROVED} as its last line, the third prints \texttt{PROVED\_CONVEX}. The runs use one thread. The distributed certificates are in the subdirectory \texttt{certificates/} (Section~\ref{subsec:avail}); the files written to \texttt{logs/} are byte-identical to them and have the checksums of Table~\ref{tab:sha}. On a single core of a Linux server the $128$-bit run took between $163$ and $167$ seconds of wall-clock time in several independent runs, and the same run at $192$ bits (\texttt{--bits 192}) took about $198$ seconds; the convexity check takes a fraction of a second. Runs under Python 3.10.19 and Python 3.12.3, both with \texttt{python-flint} 0.9.0, produced byte-identical certificate files. At $192$ bits all inequalities hold with the same displayed bounds, and the finite inverse defect \eqref{eq:Ahat} is below $7.5\cdot10^{-54}$.
-
-\begin{table}[ht]
-\centering
-\scriptsize
-\begin{tabular}{@{}ll@{}}
-\toprule
-File & SHA-256\\
-\midrule
-\texttt{verify\_r4.py} & \texttt{32c4334a215df722651b610f3c2922b3472b65edab2be21d32df7739195f85ed}\\
-\texttt{verify\_convex.py} & \texttt{ccbf0ed709443dae7911a75ad3e6b3d355a2ea5320cf944ce53615d0cef14236}\\
-\texttt{data/centre.json} & \texttt{ad87d8832320b1a94e1aadb04dfe4a523b9edf94941cbb00e219317b1bdb8fc0}\\
-\texttt{certificate\_r4\_128.json} & \texttt{59bba629550c19cedaa406f0c05fa8951ec40fbb2a954665b187367184a648bb}\\
-\texttt{certificate\_r4\_192.json} & \texttt{068f73865cbb191d5574ef5abbbbf87774d49817af2f07f5daf3b6b1e1c20f73}\\
-\texttt{convex\_128.json} & \texttt{f14415b400133c47579baf08e8fda4e479826d55bc4c4d57a4dad134124f672e}\\
-\texttt{convex\_192.json} & \texttt{073794c76c79e6f7ae74c68f23af43636ab91a6990bde0ed5e59ba21475bb09f}\\
-\bottomrule
-\end{tabular}
-\caption{SHA-256 checksums of the verification scripts, the centre data and the certificates for $n=4$.}
-\label{tab:sha}
-\end{table}
-
+The second command prints \texttt{PROVED} as its last line, the third prints \texttt{PROVED\_CONVEX}. The runs use one thread. The distributed certificates are in the subdirectory \texttt{certificates/} (Section~\ref{subsec:avail}); the files written to \texttt{logs/} are byte-identical to them; their checksums are listed in the file \texttt{SHA256SUMS} (Section~\ref{subsec:avail}). On a single core of a Linux server the $128$-bit run took between $163$ and $167$ seconds of wall-clock time in several independent runs, and the same run at $192$ bits (\texttt{--bits 192}) took about $198$ seconds; the convexity check takes a fraction of a second. Runs under Python 3.10.19 and Python 3.12.3, both with \texttt{python-flint} 0.9.0, produced byte-identical certificate files. At $192$ bits all inequalities hold with the same displayed bounds, and the finite inverse defect \eqref{eq:Ahat} is below $7.5\cdot10^{-54}$.
 \subsection{Dimension six}\label{subsec:cap6}
 {\sloppy For $n=6$ the finite computations are split into five stage scripts, which evaluate the quantities of Section~\ref{sec:r6} in ball arithmetic at $128$ bits, in batches, and write interval receipts (JSON files), and a final script that combines the receipts. All scripts use Python, \texttt{python-flint} 0.9.0 and, only to read the matrix $\widehat A$, NumPy.
 \begin{enumerate}[label=(\arabic*)]
@@ -1420,7 +1399,7 @@ File & SHA-256\\
 \par}
 As for $n=4$, an order relation between balls is true only if it holds for all points of the balls, every check raises an exception when it fails, and maxima are taken over rigorous upper endpoints; a NaN or infinite enclosure, whether computed or read back from a receipt, stops the verification. The script \texttt{test\_fail\_closed\_r6.py} tests this behaviour on artificial inputs. A further script, \texttt{check\_identities\_r6.py}, checks in exact rational arithmetic the identities of Lemma~\ref{lem:K}(a)--(d) for all $n\equiv2\pmod4$, $n\leq202$, and $1\leq s\leq80$ ($4080$ pairs), reruns the connection recurrences used for $Q^\circ$ in rational arithmetic ($450$ pairs, all coefficients positive), checks $\nrm{Kg^\circ-(1-|w|^2)^2Q^\circ}_\rho\leq2.02\cdot10^{-31}$ in ball arithmetic, and compares \eqref{eq:Tj6} with the column algebra of the verifier, exactly for $5\leq j\leq2001$ and in ball arithmetic for $5\leq j\leq1001$. These identities are proved in Section~\ref{sec:r6}; the script is a consistency check.
 
-The complete six-dimensional verification is reproduced, from a directory containing the files of Table~\ref{tab:sha6}, by
+The complete six-dimensional verification is reproduced, from the directory \texttt{anc/r6/} of the ancillary files, by
 \begin{verbatim}
 sha256sum -c SHA256SUMS
 bash reproduce_r6.sh
@@ -1433,47 +1412,10 @@ python3 verify_convex_r6.py
 python3 check_identities_r6.py --output identities_r6.json
 \end{verbatim}
 which print \texttt{PROVED}, \texttt{PROVED\_CONVEX} and \texttt{IDENTITIES VERIFIED} and rewrite the three files byte-identically; they take about two seconds, less than a second and about fifteen seconds, respectively.
-
-\begin{table}[ht]
-\centering
-\scriptsize
-\begin{tabular}{@{}ll@{}}
-\toprule
-File & SHA-256\\
-\midrule
-\texttt{verify\_r6.py} & \texttt{67a565438b6a7e459145a18b40c8c12d21134b097280575fce4bc9db8b6941c9}\\
-\texttt{verify\_convex\_r6.py} & \texttt{be964ff20884b78025b2e09629639164bf8a35ac054750eec5924a127fd457fe}\\
-\texttt{check\_identities\_r6.py} & \texttt{23ff08666c23be4002b1011e4c07657eede0616660fae099a4d6ebad0ccb3d6c}\\
-\texttt{test\_fail\_closed\_r6.py} & \texttt{cf9f229636ddccbd9744a62098de0804791d396e1f585e11c7976a1f41478112}\\
-\texttt{reproduce\_r6.sh} & \texttt{c5fb06ca32d2058ae3862cbdc75e5b313185aae8559ad86d3315e2f514ebfd03}\\
-\texttt{finite\_interval\_r6.py} & \texttt{dec54274aa7b52940ef6cf9253102b5d12393629b2bd40434e2b21a526dc060c}\\
-\texttt{tail\_inverse\_r6.py} & \texttt{ea14f859d44a9f643263b73b10a4f95548c7b603cf6e7e3c3b6e109164c183ab}\\
-\texttt{g\_tail\_interval\_r6.py} & \texttt{6799e59083a354db0178e06dcbbc03f468f8f1edfdc12978fb85a3e2a0dca211}\\
-\texttt{shape\_tail\_interval\_r6.py} & \texttt{05566777c507e8c37ecc5e3fd20cbfda2010cb1b8a1d8825bede55a77ecbbb3c}\\
-\texttt{far\_shape\_r6.py} & \texttt{99f1da9274008d3122bb5e7fffbdf949465f9d530639935c548674a005fe2804}\\
-\texttt{center\_r6.json} & \texttt{83018f0975e0cd61f4168e2de8bb1946032265869b5bfa168773c5920198aaba}\\
-\texttt{inverse\_r6\_M58\_S30.npy} & \texttt{8bb1b34aa882e1dbbe6943cba4726ba4eb18aefa4150cb734665a85b9f1026a9}\\
-\texttt{finite\_batches\_r6.json} & \texttt{138e166004e655a3e76f3ceea5e6d48fc99549734d6de28f573246176044c97c}\\
-\texttt{residual\_bound\_r6.json} & \texttt{b111bf5b26279810d582125f0d04fa07f07614d3e0bb60cf0119049319db556a}\\
-\texttt{tail\_inverse\_bound\_r6.json} & \texttt{393643e94df5e6d32189911ae61c10664e3658e6fff06d961931ef7d07f0433a}\\
-\texttt{g\_tail\_batches\_r6.json} & \texttt{194efaeb46b2762d86532cc9b91d6c6b652eef1ead0a879ceb082ed3cdd98375}\\
-\texttt{g\_far\_bound\_r6.json} & \texttt{8af49da5adc3aa3801c898949ea4ab8ff55c7ffa0ce94b51cd601b4ba300e474}\\
-\texttt{shape\_tail\_batches\_r6.json} & \texttt{7331746c80180533ce527565064aa39749ceca22172ae407f5f9d6a3531ce8ef}\\
-\texttt{far\_shape\_bound\_r6.json} & \texttt{6cf4938b1aaad6a1f40f7acc11ae3e602b615b6a9d469cb319deff6595153478}\\
-\texttt{certificate\_r6.json} & \texttt{e481cb505c3d35219540f49153e828a9d94d3ebfb97ce2f657e055cba1daf66d}\\
-\texttt{convex\_r6.json} & \texttt{a7d42cd53f9a840096accf2bffab22cc0c8bd4a7ddde7fb42b0640d1299927f6}\\
-\texttt{identities\_r6.json} & \texttt{26540b55e9b07ce340ca6ebfc037e7ba8fb0497c49a82760c5460b18830169ca}\\
-\texttt{SHA256SUMS} & \texttt{c05aa958160ff62136bc9053d6bff223f765a259e2f6a827340bee3a86358e17}\\
-\bottomrule
-\end{tabular}
-\caption{SHA-256 checksums of the scripts, data, interval receipts and certificates for $n=6$. The file \texttt{SHA256SUMS} lists these files (except itself) together with the two documentation files \texttt{FINAL.md} and \texttt{PROOF\_ADDENDUM.md}.}
-\label{tab:sha6}
-\end{table}
-
 The analytic content of the proofs, namely all lemmas and all tail estimates, is contained in Sections~\ref{sec:reduction}--\ref{sec:pompeiu}; the scripts only evaluate the finitely many explicit expressions defined there.
 
 \subsection{Availability}\label{subsec:avail}
-The files listed in Tables~\ref{tab:sha} and~\ref{tab:sha6} are distributed as ancillary files with the arXiv version of this paper: the four-dimensional files in the directory \texttt{anc/}, with the four certificates in \texttt{anc/certificates/}, and the six-dimensional files, together with \texttt{SHA256SUMS}, a file \texttt{RELEASE\_README.md} with instructions, and the working notes \texttt{PROOF\_ADDENDUM.md} and \texttt{FINAL.md} (the latter in Chinese), in the directory \texttt{anc/r6/}. All of these files are also available at \url{https://github.com/aster2024/schiffer-pompeiu-r4} (four-dimensional files in \texttt{verification/}, six-dimensional files in \texttt{verification/r6/}) and archived on Zenodo, \url{https://doi.org/10.5281/zenodo.22999505}.
+All scripts, data and certificates are distributed as ancillary files with the arXiv version of this paper, with SHA-256 checksums of all files in the files \texttt{SHA256SUMS}: the four-dimensional files in the directory \texttt{anc/}, with the four certificates in \texttt{anc/certificates/}, and the six-dimensional files, together with \texttt{SHA256SUMS}, a file \texttt{RELEASE\_README.md} with instructions, and the working notes \texttt{PROOF\_ADDENDUM.md} and \texttt{FINAL.md} (the latter in Chinese), in the directory \texttt{anc/r6/}. All of these files are also available at \url{https://github.com/aster2024/schiffer-pompeiu-r4} (four-dimensional files in \texttt{verification/}, six-dimensional files in \texttt{verification/r6/}) and archived on Zenodo, \url{https://doi.org/10.5281/zenodo.22999505}.
 
 \subsection{Consistency checks}
 The following checks are not part of the proof. The algebraic identities of Sections~\ref{sec:disk}, \ref{sec:K} and Lemma~\ref{lem:Tform} were verified symbolically for small indices. An independently written floating-point implementation, which computes projections by quadrature instead of the recurrences \eqref{eq:rec} and uses its own approximate inverse, reproduced $\nrm R$, $H$, $Z_f$ and the largest shape column of Table~\ref{tab:bounds} to the displayed digits. The function $u$ was also evaluated directly in $\R^4$ from a Fourier--Bessel representation $F=\sum_{m\ \mathrm{odd}}a_mJ_m(r)\sin m\phi$ fitted to the boundary data of the centre: at random points of $\partial\Omega$ the defects $|u-1|$ and $|\nabla u|$ were below $10^{-10}$, and the Fourier transform of $\one_\Omega$, computed by quadrature, was below $10^{-10}$ in modulus on the unit sphere and between $18$ and $28$ in modulus on the sphere of radius $0.999$.

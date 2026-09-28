@@ -1,76 +1,52 @@
-# Counterexamples to the Schiffer and Pompeiu conjectures in dimensions four and six
+# Convex counterexamples to the Schiffer and Pompeiu conjectures in dimensions 3, 4, 6, 8, 10 and 14
 
 [![DOI](https://zenodo.org/badge/1391007796.svg)](https://doi.org/10.5281/zenodo.22999505)
 
-This repository contains the paper and the computer-assisted verification for the following result.
+This repository contains the paper and the computer-assisted proofs for the following result.
 
-**Theorem.** For n = 4 and n = 6 there exist a bounded domain Ω ⊂ ℝⁿ and a nonconstant function u such that
+**Theorem.** For every n ∈ {3, 4, 6, 8, 10, 14} there are a bounded **convex** domain Ω ⊂ ℝⁿ, **not a ball**, whose boundary is a real-analytic hypersurface diffeomorphic to Sⁿ⁻¹, and a nonconstant function u, real analytic on a neighbourhood of Ω̄, such that
 
     Δu + u = 0 in Ω,   u = 1 and ∇u = 0 on ∂Ω.
 
-The domain Ω has the following properties:
-- it is convex and strictly star-shaped, and it is **not a ball**;
-- its boundary is a real-analytic hypersurface diffeomorphic to Sⁿ⁻¹.
+**Consequences.**
+- By Green's identity the Fourier transform of the indicator of Ω vanishes on the unit sphere, so Ω fails the Pompeiu property.
+- The Schiffer and Pompeiu conjectures therefore fail in these dimensions, even among convex domains.
+- The paper also contains a second, independent three-dimensional example. It is strictly star-shaped and non-convex.
 
-The function u is real analytic on a neighbourhood of Ω̄.
-
-The symmetries are:
-- n = 4: invariant under O(3)×ℤ₂;
-- n = 6: invariant under O(3)×O(3), including the exchange of the two factors.
-
-**Consequences.** Schiffer's conjecture fails in ℝ⁴ and ℝ⁶. The Fourier transform of the indicator of Ω vanishes on the unit sphere, so Ω fails the Pompeiu property, and the Pompeiu conjecture fails in these dimensions as well.
-
-**Earlier and other dimensions.**
-- Planar counterexamples were found in 2026 by Colbrook–Stepaniants (arXiv:2608.01579) and Cao-Labora–de Dios Pont (arXiv:2608.05114).
-- The four- and six-dimensional problems reduce to planar problems through the identities Δ₂(y·u) = y·Δ₄u and Δ₂(y₁y₂·u) = y₁y₂·Δ₆u.
-- Dimensions three and five are discussed in the paper only as numerical evidence and are **not** proved here.
+**Structure.**
+- **n = 3:** the domain is axisymmetric (O(2) × ℤ₂), obtained from a conformal parametrisation of its meridian section.
+- **n = 4, 6, 8, 10, 14:** the domains are adjoint-invariant domains in the rank-two compact Lie algebras u(2), so(4), su(3), so(5) and g₂. Harish-Chandra's radial-part formula reduces each problem to a planar Helmholtz problem, and Kostant's convexity theorem reduces convexity to the Cartan section.
+- **Existence proofs:** in each case existence follows from a Newton–Kantorovich (radii-polynomial) argument in a weighted coefficient space. Finite blocks are verified in Arb ball arithmetic, and every infinite tail is controlled by explicit analytic bounds.
 
 ## Contents
 
 | Path | Description |
 |---|---|
-| `paper/main.pdf`, `paper/main.tex` | The paper (42 pages). |
-| `verification/verify_r4.py`, `verification/verify_convex.py` | Arb (interval-arithmetic) verifiers for n = 4: the main theorem and convexity. The centre is embedded as exact dyadic rationals. The docstring of `verify_r4.py` refers to "FINAL.md"; the corresponding mathematics is the paper. |
-| `verification/data/`, `verification/certificates/` | Centre data and reference certificates for n = 4. |
-| `verification/r6/` | Everything for n = 6: verifier, stage scripts, centre, approximate inverse, seven interval receipts, certificates, identity checks and convexity check. See `verification/r6/RELEASE_README.md`. |
-| `SHA256SUMS`, `verification/r6/SHA256SUMS` | Checksums. |
+| `paper/main.pdf`, `paper/main.tex` | The paper (87 pages). |
+| `verification/README.md` | Layout, requirements, commands and running times for all dimensions. |
+| `verification/` (top level), `verification/r6/` | n = 4 and n = 6. |
+| `verification/r8/`, `r10/`, `r14/` | n = 8, 10, 14 (each with `README.md` and `reproduce_r*.sh`). |
+| `verification/r3_convex/` | n = 3, convex example: single-file verifier `verify_r3_convex.py` and two independent full-run receipts. |
+| `verification/r3/` | n = 3, additional non-convex example: verifier `verify_r3.py`, two certificates and a non-convexity check. |
+| `SHA256SUMS`, `verification/**/SHA256SUMS` | Checksums. |
 
-## Reproducing the verification
+The repository was previously named `schiffer-pompeiu-r4`. Its first releases contained only the four- and six-dimensional results.
 
-The requirements are Python ≥ 3.10 and `python-flint` 0.9.0 (`pip install python-flint==0.9.0`); n = 6 also needs `numpy`. Runs are single-core.
+## Reproducing
 
-**n = 4** (about 3 minutes):
-```bash
-mkdir -p out
-OMP_NUM_THREADS=1 python3 verification/verify_r4.py --stage all --bits 128 --jstar 1001 --output out/certificate_r4_128.json      # last line: PROVED
-OMP_NUM_THREADS=1 python3 verification/verify_convex.py --bits 128 --main-certificate out/certificate_r4_128.json --output out/convex_128.json   # PROVED_CONVEX
-```
-
-**n = 6** (about 3 minutes; recomputes all seven receipts and compares them byte for byte):
-```bash
-cd verification/r6
-PYTHON=python3 bash reproduce_r6.sh      # ends with: REPRODUCTION COMPLETE
-sha256sum -c SHA256SUMS
-```
-
-All certificate files are byte-for-byte reproducible.
+The requirements are Python ≥ 3.10, `python-flint` 0.9.0, NumPy and, for some dimensions, SciPy and gcc. See `verification/README.md` and the per-directory READMEs. Running times:
+- n = 4, 6, 8, 10, 14: minutes each;
+- n = 3 convex: about 1.8 hours on 5 cores;
+- n = 3 non-convex: about 1.1 hours on 4 cores.
 
 ## Status
 
-- These are computer-assisted proofs.
-- Both certificates were re-run independently and reproduced byte for byte.
-- Each dimension was examined by separate internal mathematical and computational audits.
-- The work has **not yet been peer reviewed**. Comments and independent checks are very welcome.
+These are computer-assisted proofs. They were independently re-run and audited (mathematics, code and independent numerics) before release, but they have **not yet been peer reviewed**.
 
-## AI statement
+## Author and acknowledgement
 
-This work was carried out with the assistance of AI models (Claude Opus 5.5, GPT-6 Astra and GPT-6 Sol). The author takes responsibility for the content.
+Jizhou Guo (Dots Studio, Rednote). This work was carried out with the assistance of AI models (Claude Opus 5.5, GPT-6 Astra and GPT-6 Sol). The author takes full responsibility for the content.
 
-## Author
+## Licence
 
-Jizhou Guo, Dots Studio, Rednote. Contact: mitsuha2021b@gmail.com, sjtu18640985163@sjtu.edu.cn
-
-## License
-
-- Code in `verification/`: MIT License (see `LICENSE`).
-- Paper: CC BY 4.0.
+The code is under the MIT licence (see `LICENSE`).

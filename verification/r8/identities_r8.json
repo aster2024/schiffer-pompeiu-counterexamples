@@ -1,0 +1,8 @@
+{
+  "status": "IDENTITIES_PASS",
+  "bits": 256,
+  "K_cases": 12,
+  "radial_power_cases": 3,
+  "ball_principal_max_error": "[6.08330141706249240902728036061e-73 +/- 3.03e-103]",
+  "Q_connection_max_error": "[6.91924610547401765115011934238e-70 +/- 3.70e-100]"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "PROVED_CONVEX",
+  "bits": 128,
+  "main_certificate_sha256": "49d813f5aa6d5b9cd8246b5ef9cd5365adaf11cc4d7e944db1a2f415e6b1a7a1",
+  "main_verifier_sha256": "c1f3b8ae24b484b6a1ea8b4a016030d9b621bc965ed5e2bfaa3990a9bf5fa586",
+  "centre_sha256": "c8a300b65bfb530e752c12e817f53cc464f9112c16707c57e6ec0b498b4e9c98",
+  "radius": "[3.33333333333333333333333333333e-5 +/- 3.34e-35]",
+  "extension_margin": "[20.0371958945734406869291277078 +/- 2.12e-29]",
+  "derivative_lower": "[20.2319428319351152299204999963 +/- 4.87e-29]",
+  "second_upper": "[3.40844427039334384308966321834 +/- 4.78e-30]",
+  "curvature_lower": "[0.831531539076253016547553490430 +/- 2.41e-31]",
+  "c7_lower": "[0.0774840229982784981966552280165 +/- 1.25e-32]"
+}

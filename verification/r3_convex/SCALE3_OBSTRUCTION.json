@@ -1,0 +1,23 @@
+{
+  "status": "SAME_OPERATOR_SCALE3_CONTRACTION_OBSTRUCTION",
+  "center_sha256": "547dd683610fbe00753ee1af34ed19f6ff5d1bde76b5b7dacdba2031131bcb3b",
+  "matrix_sha256": "b8f1016b72e642f4727be43c318c3cda2efd8d51cbcd3c495b9ff9992e150bec",
+  "source_receipt_sha256": "1b9ec4463220d489eea3f9433c48f3f2e4c12a5721d64b62997ef47d7d3fffbb",
+  "shape_scale_multiple": 3,
+  "witness": {
+    "kind": "shape",
+    "index": 183,
+    "s": 0,
+    "g_output": "[2.91356297202 +/- 8.45e-12]",
+    "c_output": "[0.183677179945 +/- 2.37e-13]",
+    "full_defect_base": "[3.09724015197 +/- 9.52e-12]",
+    "full_defect_shape_scale4": "[0.91206792295 +/- 2.35e-12]",
+    "head_g_dot_error": "[6.38546783214213644151526411240077181047218567740667318640753902860834782903744185404219323472712326e-12 +/- 7.43e-111]",
+    "head_c_dot_error": "[2.14612941545384120098723102690710169503116375426170115718862579095884360416301979939566265439785045e-13 +/- 6.65e-112]",
+    "infinite_shape_remainder": "[6.1239568348621580798529679749543554894380179029437480960310270704603797251120220458799934188277211404056809367e-46 +/- 2.79e-156]",
+    "seconds": 1229.0389651255682
+  },
+  "normalized_defect_enclosure": "[1.15486483729 +/- 8.06e-12]",
+  "strict_lower_bound": "[1.154864837281946333315656378279423499577660550130531191825866699218750000000000000000000000000000000000000000000000 +/- 9.73e-117]",
+  "scope": "The final physical fixed-point operator has derivative norm above one at this centre in X3. Other operators, norms and centres are not excluded."
+}

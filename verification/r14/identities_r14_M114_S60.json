@@ -1,0 +1,9 @@
+{
+  "status": "IDENTITIES_PASS",
+  "dimension": 14,
+  "bits": 256,
+  "K_cases": 12,
+  "radial_power_cases": 3,
+  "ball_principal_max_error": "[1.63051317437722367928047959641e-84 +/- 3.16e-114]",
+  "Q_connection_max_error": "[3.31319867199897219644060527660e-72 +/- 8.22e-103]"
+}

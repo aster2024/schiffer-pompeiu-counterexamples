@@ -8,3 +8,9 @@ authors:
 date-released: 2026-09-28
 url: "https://github.com/aster2024/schiffer-pompeiu-counterexamples"
 doi: 10.5281/zenodo.22999505
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22999505
+  - type: url
+    value: "https://arxiv.org/abs/2609.35419"
+    description: "arXiv:2609.35419"

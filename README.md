@@ -1,8 +1,8 @@
 # Convex counterexamples to the Schiffer and Pompeiu conjectures in dimensions 3, 4, 6, 8, 10 and 14
 
-[![DOI](https://zenodo.org/badge/1391007796.svg)](https://doi.org/10.5281/zenodo.22999505)
+[![DOI](https://zenodo.org/badge/1391007796.svg)](https://doi.org/10.5281/zenodo.22999505) [![arXiv](https://img.shields.io/badge/arXiv-2609.35419-b31b1b.svg)](https://arxiv.org/abs/2609.35419)
 
-This repository contains the paper and the computer-assisted proofs for the following result.
+This repository contains the paper (arXiv:[2609.35419](https://arxiv.org/abs/2609.35419)) and the computer-assisted proofs for the following result.
 
 **Theorem.** For every n ∈ {3, 4, 6, 8, 10, 14} there are a bounded **convex** domain Ω ⊂ ℝⁿ, **not a ball**, whose boundary is a real-analytic hypersurface diffeomorphic to Sⁿ⁻¹, and a nonconstant function u, real analytic on a neighbourhood of Ω̄, such that
 

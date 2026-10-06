@@ -1,0 +1,56 @@
+\subsection{The plane}\label{r2:sec:computer}
+
+\subsubsection{Inputs and arithmetic}
+The ancillary file \texttt{verify\_planar\_convex\_v2.py} rebuilds the numerical hypotheses used in the planar proof sections. Its inputs are two finite sets of exact decimal strings: the eight-mode reference shape and the forty-mode centre, the latter consisting of the arrays \texttt{p}, \texttt{a} and \texttt{scales}. Every decimal string is interpreted as an exact rational and enclosed without a binary64 conversion. In particular the centre's \texttt{p} array contains the coefficients $c_j$ of $\psi_0$; differentiation to obtain $p_0$ is exact. The field divisors \texttt{scales} are positive exact decimals.
+
+The single-file verifier embeds the stage sources, the reference and the centre in a compressed bundle. Hashes identify both the bundle and each embedded file. It embeds no computed Bessel roots, spectral matrices or boundary outputs. Stage functions construct floating-point proposals where useful, then validate them with enclosures. Opposite endpoint signs enclose Bessel roots; the spacing and sign-grid arguments certify coverage; enclosed Gauss rules and basis errors certify matrix entries; the congruence defects certify the inverse. The boundary computation encloses the values and adds the analytic aliases and infinite Fourier tail before forming the residual.
+
+Special functions, quadrature data, matrix errors and the boundary traces are enclosed with FLINT/Arb through \texttt{python-flint}~\cite{flint,Joh17}. Root-sign evaluations increase through $256$, $1024$ and $4096$ bits when necessary; spectral Bessel values use $2048$ bits and boundary values use $4096$ bits. Binary64 matrix proposals are exact dyadics with separately bounded rounding errors. A second implementation in \texttt{mpmath.iv}, at $400$ bits, recombines the scalar chain from the spectral inverse bound and the eight boundary moment bounds. It independently reconstructs the lift and coupled constants, but does not independently certify the special functions, spectral matrices or boundary traces.
+
+The acceptance checks use certain one-sided interval comparisons. Nonfinite values and comparisons that an interval cannot resolve are rejected. The final check recomputes the coupled constants in the driver process rather than accepting constants supplied by a stage-output file. It also compares the two spectral enumerations at the level of individual roots. A successful run writes the receipt and prints \texttt{NUMERICAL\_GATES\_PASS}, certifying the numerical hypotheses of the analytic lemmas. The receipt field \texttt{full\_proof=false} records that the analytic lemmas of this paper are not machine-checked. The proof consists of those lemmas together with the enclosed inequalities. Symbolic polynomial control examples test the material identity, while its general proof is Proposition~\ref{r2:prop:coupled}.
+
+\subsubsection{Stages and recorded timings}
+Table~\ref{r2:tab:timings} gives the stage timings in the recorded receipt. The leaf groups report sums of individual stage elapsed times, so they are not wall times for the parallel groups. The recorded run used five single-threaded workers and had wall time $242.21$ seconds. The number of workers affects only the scheduling of the stages: the two-worker command below reproduces the same numerical hypotheses with lower concurrency.
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lrr}
+\toprule
+Stage group & Stages & Recorded seconds\\
+\midrule
+Independent sign-grid coverage & 1 & 30.42\\
+Spectral preparation & 1 & 11.95\\
+Spectral basis leaves & 17 & 455.06\\
+Spectral assembly and inverse & 1 & 13.68\\
+Boundary trace leaves & 8 & 219.60\\
+Boundary merge & 1 & 0.48\\
+Coupled constants and radii & 1 & 0.28\\
+Symbolic identities & 1 & 3.99\\
+Second interval scalar chain & 1 & 0.33\\
+\bottomrule
+\end{tabular}
+\caption{The $32$ stages of the recorded run. Each leaf is single-threaded. Group sums are displayed to two decimal places and may differ slightly from a sum of rounded individual times.}\label{r2:tab:timings}
+\end{table}
+
+The built-in failure controls reject $144$ deliberate perturbations, including nonfinite decimal inputs, altered coupled bounds, missing or duplicated spectral states, changed grid size and violated geometric thresholds. A nonzero stage exit or a timeout terminates the run without a receipt. The final artifact hash map is read back before the status line is printed. These controls exercise the numerical acceptance path; they do not replace the analytic estimates.
+
+\subsubsection{Ancillary files and replay}
+The directory \texttt{anc/r2/} contains the verifier \path{verify_planar_convex_v2.py}, the recorded receipt \path{VERIFICATION_RECEIPT.json}, the frozen centre \path{center_j40_frozen.json}, the eight-mode reference \path{reference.json} and the nine stage sources that the verifier embeds. It also contains the two files from which the single-file verifier is assembled, the list of software versions, the scalar robustness calculation \path{ROBUSTNESS_CHECK.json}, the script \path{exact_constants.py}, a description of the files, and the checksum file \texttt{SHA256SUMS}. The verifier needs only its embedded inputs to run; the separate centre and sources expose the exact input and implementation for inspection. The receipt records the enclosures in Table~\ref{r2:tab:constants}, the complete stage list, software versions, the rejected perturbations and hashes of replay artifacts. The script \path{exact_constants.py} evaluates in exact rational arithmetic the algebraic constants of the two inputs that are quoted in Subsection~\ref{r2:sec:spectrum} through Section~\ref{r2:sec:existence}. The directory \texttt{anc/r2/diagnostics/} contains the scripts and output logs of the non-interval computations quoted in Sections~\ref{r2:sec:intro} and~\ref{r2:sec:rigidity}.
+
+The verifier's SHA-256 is
+\begin{center}
+\texttt{\footnotesize ed4f65a5d5a31ee86bfe6c8c742ea86ba76f4cdb888b3c8fb70b53b8334e7226}
+\end{center}
+The recorded environment was Python $3.10.19$, \texttt{python-flint} $0.9.0$, NumPy $1.26.4$, SciPy $1.15.2$, SymPy $1.14.0$ and mpmath $1.3.0$.
+
+From the directory containing \texttt{anc/r2/}, with those packages available, choose a new or empty replay directory and an output receipt path that does not exist. A command with at most two single-threaded stage workers is
+\begin{verbatim}
+nice -n 19 env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+  MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH= \
+  python -O anc/r2/verify_planar_convex_v2.py \
+  --workdir ./replay --jobs 2 \
+  --output ./REPLAY_RECEIPT.json
+\end{verbatim}
+The driver refuses an occupied working directory and a pre-existing output receipt. The default timeout is $7200$ seconds for each stage and can be set with \texttt{--stage-timeout}. The files of \texttt{anc/r2/} can be checked by running \texttt{sha256sum -c SHA256SUMS} inside that directory.
+
+The computational trust base consists of the Python runtime, the enclosure libraries and their arithmetic, and the correspondence between the verifier and the formulas of Sections~\ref{r2:sec:inverse}--\ref{r2:sec:existence}; the analytic arguments of those sections are not machine-checked. The frozen centre is a finite proposal with a nonzero residual. All existence and geometry statements concern the exact zero of $F$ in the certified infinite-dimensional ball.

@@ -1,0 +1,212 @@
+\section{Relation with rigidity results and other claims}\label{sec:rigidity}\label{r2:sec:rigidity}
+The planar geometric theorems below concern the domain of Theorem~\ref{r2:thm:main}; the spectral-sequence theorem concerns all the domains of Theorems~\ref{thm:main} and~\ref{br:thm:main}, and the higher-dimensional spectral and perturbation comparisons concern the corresponding domains of Theorem~\ref{thm:main}. Apart from the certified bounds already stated, the planar numerical values are binary64 evaluations for the forty-mode centre $\psi_0$, from \path{anc/r2/diagnostics/}, and are not interval enclosures. The planar domain is uniformly convex and centrally symmetric, with real-analytic boundary.
+
+The Berenstein domain of Theorem~\ref{br:thm:main} is treated separately in Subsection~\ref{br:sec:literature}: its boundary arc-length measure replaces the indicator measure, its eigenfunction has zero Dirichlet data and constant nonzero flux, and the comparison uses the Dirichlet version of the rigidity results.
+
+\subsection{Dai--Sun--Wei--Zhang: high frequency in the plane}
+Dai, Sun, Wei and Zhang~\cite[Theorem 1.2, version 2]{DSWZ25} prove that a bounded uniformly convex planar domain with Lipschitz connected boundary carrying a Schiffer solution at an eigenvalue $\alpha>\alpha_0(\Omega)$ must be a disc. The threshold depends on the domain. Their quantitative argument uses support coordinates in Steiner position. Write $h(\theta)$ for the support function and $\varrho(\theta)=h+h''$ for the radius of curvature. The relevant amplitude defect is
+\begin{equation}\label{r2:eq:DSWZ-defect}
+ \begin{split}
+ \mathcal B(\Omega)=\max_{\theta,\ t\in\{-1,1\}}\bigl|
+ &\sqrt{\varrho(\theta)}e^{t h'(\theta)}\\
+ &-\sqrt{\varrho(\theta+\pi)}e^{-t h'(\theta+\pi)}\bigr|.
+ \end{split}
+\end{equation}
+For a controlled $C^5$ class with size, curvature and support-function bounds, their two-point stationary-phase expansion has remainders satisfying
+\begin{equation}\label{r2:eq:remainder}
+ |R_D|+|R_N|\le C_*\lambda^{-3/2},\qquad
+ \lambda\ge3,\quad |t|\le1.
+\end{equation}
+The constant $C_*$ depends on the class bounds and is not supplied numerically. Their exclusion estimate, for $\mathcal B(\Omega)\ge\delta>0$, is
+\begin{equation}\label{r2:eq:DSWZ-threshold}
+ \alpha>\left[\max\left\{3,\frac{C_*}{\sqrt{2\pi}\,\delta}\right\}\right]^2-1.
+\end{equation}
+The proof of their qualitative theorem chooses $\delta=\mathcal B(\Omega)/2$.
+
+\begin{remark}[The remainder for this domain]\label{r2:rem:stationary}
+Let $\Omega_1=\rho^{-1}\Omega$ be the domain rescaled to conformal radius one; its eigenvalue is $\alpha=\rho^2\approx6.6334\cdot10^5$. In this remark $h$, $\varrho$ and $\mathcal B$ refer to $\Omega_1$, and their values are evaluated for the normalised centre $\psi_0/\rho$. By central symmetry $h$ and $\varrho$ have period $\pi$, so $\mathcal B=2\max_\theta\sqrt{\varrho(\theta)}\sinh|h'(\theta)|$; its value is $\mathcal B\approx0.0078698$. With the most favourable choice $\delta=\mathcal B$, the estimate~\eqref{r2:eq:DSWZ-threshold} excludes the eigenvalue $\alpha$ only if
+\[
+ C_*<\sqrt{2\pi(\alpha+1)}\,\mathcal B\approx16.07.
+\]
+The first remainder in~\eqref{r2:eq:remainder} belongs to the boundary integral
+\[
+ I_D(\lambda,t,\theta)
+ =\int_{\partial\Omega}e^{t\eta\cdot x}e^{i\lambda\xi\cdot x}\,ds,
+ \qquad\xi=(\cos\theta,\sin\theta),\quad\eta\perp\xi,
+\]
+whose leading two-point expression is
+\[
+ \sqrt{\frac{2\pi}{\lambda}}\left[
+ \sqrt{\varrho(\theta)}e^{t h'(\theta)}e^{i\lambda h(\theta)-i\pi/4}
+ +\sqrt{\varrho(\theta+\pi)}e^{-t h'(\theta+\pi)}
+ e^{-i\lambda h(\theta+\pi)+i\pi/4}\right];
+\]
+$R_D$ is the difference. A floating-point computation (trapezoidal quadrature with $2^{17}$ and $2^{21}$ nodes, without error enclosures) for $\Omega_1$ at $t=0$ gives $\max_\theta|R_D|\approx0.118$ and $\lambda^{3/2}\max_\theta|R_D|\approx2.75\cdot10^3$ at $\lambda=\rho\approx814.4574$, and $\lambda^{3/2}\max_\theta|R_D|\approx1.28\cdot10^5$ at $\lambda=1.6\cdot10^5$. These computed values indicate lower bounds for any constant $C_*$ valid in~\eqref{r2:eq:remainder} for a class containing the domain; they exceed $16.07$ by factors larger than $170$ and $7900$, respectively. The support function in the normal angle has $\sup|h^{(5)}|\approx1.8\cdot10^9$, so the $C^5$ bound of such a class is large although the radial displacement is small.
+
+The threshold~\eqref{r2:eq:DSWZ-threshold} is not invariant under dilation, and the theorem applies to every dilate $s\Omega_1$, $s>0$, whose eigenvalue is $\alpha/s^2$. The remainder and the defect scale as
+\[
+ R_D^{s\Omega_1}(\lambda,0,\theta)=s\,R_D^{\Omega_1}(s\lambda,0,\theta),
+ \qquad
+ \mathcal B(s\Omega_1)=2\sqrt s\,\max_\theta\sqrt{\varrho(\theta)}\sinh\bigl(s|h'(\theta)|\bigr).
+\]
+Hence~\eqref{r2:eq:DSWZ-threshold}, with the most favourable choice $\delta=\mathcal B(s\Omega_1)$, excludes the eigenvalue of $s\Omega_1$ only if, for every $\lambda'\ge3s$,
+\[
+ \lambda'^{3/2}\max_\theta|R_D^{\Omega_1}(\lambda',0,\theta)|<T(s)
+ :=\sqrt{2\pi(\alpha+s^2)}\,\max_\theta2\sqrt{\varrho(\theta)}\sinh\bigl(s|h'(\theta)|\bigr).
+\]
+At the sampled values of $s\le\sqrt{\alpha/8}\approx288$, $T(s)$ increases and remains below $5.8\cdot10^3$, with $T(1)\approx16.07$; for larger $s$ the eigenvalue $\alpha/s^2$ is less than $8$ and does not exceed the right side of~\eqref{r2:eq:DSWZ-threshold} for any $C_*$. Since the left side is approximately $1.28\cdot10^5$ at $\lambda'=1.6\cdot10^5$, the computation indicates that no dilate is excluded. This agrees with the remark of the authors of~\cite{DSWZ25} that their threshold depends on the full geometry of the domain and does not contradict the planar counterexamples~\cite{CS26,CLdDP26}.
+
+Dependence of a high-frequency cutoff on the domain is necessary over the full class of uniformly convex planar domains: the dilates $s\Omega$ of the domain of Theorem~\ref{r2:thm:main} are uniformly convex, are not discs, and carry solutions with eigenvalue $s^{-2}$, which is arbitrarily large as $s\downarrow0$.
+\end{remark}
+
+\subsection{Planar geometric criteria}
+\subsubsection{Brown--Kahane: width}
+Brown and Kahane~\cite{BK82} prove that a convex planar region has the Pompeiu property if its minimum width is at most half its maximum width. This hypothesis is not satisfied by $\Omega$. Indeed, for $|w|=1$,
+\[
+ 808<\re\int_0^1p(tw)\,dt\le|\psi(w)|\le\int_0^1|p(tw)|\,dt\le P+r_*<821,
+\]
+by~\eqref{r2:eq:univalence-ball} and the bound $P<820.7003$ of Subsection~\ref{r2:sec:linearization}. The support function of the convex domain $\Omega$ about the origin lies between the minimum and the maximum of $|\psi|$ on the unit circle, so every width of $\Omega$ lies between $1616$ and $1642$. For the centre, the ratio of minimum to maximum width is approximately $0.99996$.
+
+\subsubsection{Mondal: normals through the centre}
+Since $\psi(-w)=-\psi(w)$, the domain is centrally symmetric about the origin. Mondal~\cite{Mon26} proves that a bounded centrally symmetric planar domain with analytic boundary and centre $c$ satisfies Schiffer's conjecture if the number $\tau$ of boundary points whose normal line passes through $c$ is less than $8$. Each of the $182$ reflection axes of $D_{182}$ meets $\partial\Omega$ in two points. At such a point the tangent line is invariant under the reflection and, being a supporting line of $\Omega$, does not pass through the origin; it is therefore perpendicular to the axis, and the normal line is the axis. Hence $\tau\ge364$, and the hypothesis is not satisfied.
+
+\subsubsection{Dalmasso: a support-function integral}
+Dalmasso~\cite[Theorem~4]{Dal00} considers bounded convex planar domains with $C^2$ boundary of positive curvature. Such a domain has the Pompeiu property if its support function $h$ satisfies
+\[
+ \int_0^{2\pi}h(\theta)\bigl(h(\theta)+h''(\theta)\bigr)e^{2i\theta}\,d\theta\ne0.
+\]
+For $\Omega$, with the origin at its centre, $h$ and $h+h''$ have period $2\pi/182$, so the integral vanishes. It also vanishes for every translate of $\Omega$, because a translation adds a combination of $\cos\theta$ and $\sin\theta$ to $h$ and leaves $h+h''$ unchanged. The hypothesis is therefore not satisfied by $\Omega$ in any position.
+
+\subsection{Deng, Aviles and Dai--Liu--Sun: low spectral index}
+Deng~\cite{Den12} proves disc rigidity for a bounded planar domain with connected smooth boundary when the eigenvalue is below the eighth Neumann eigenvalue, and for a strictly convex centrally symmetric such domain when it is below the thirteenth; the Neumann eigenvalues are numbered $0=\mu_1<\mu_2\le\cdots$ with multiplicity. The eigenvalue $1$ of Theorem~\ref{r2:thm:main} lies outside both ranges. To see this we use a min--max comparison that requires only the bound $|\psi'|>811$ on $\overline\D$ from Theorem~\ref{r2:thm:main}. Since $\psi$ is a diffeomorphism of $\overline\D$ onto $\overline\Omega$, the pull-back $v\mapsto v\circ\psi$ is an isomorphism of $H^1(\Omega)$ onto $H^1(\D)$ and of $H^1_0(\Omega)$ onto $H^1_0(\D)$. Under it, the Dirichlet energy is unchanged and the mass becomes $\int_\D|v\circ\psi|^2|\psi'|^2$. Every Rayleigh quotient on $\Omega$ is therefore at most $811^{-2}$ times the corresponding quotient on $\D$, and the min--max principle gives
+\begin{equation}\label{r2:eq:neumann-minmax}
+ \mu_{13}(\Omega)\le\frac{\mu_{13}(\D)}{811^2}
+ \le\frac{84}{811^2}<1.
+\end{equation}
+For the second inequality use the $13$-dimensional real harmonic-polynomial trial space
+\[
+ 1,\qquad r^n\cos n\theta,\quad r^n\sin n\theta\quad(1\le n\le6).
+\]
+Its energy and mass forms are diagonal by angular orthogonality. For either degree-$n$ function their ratio is $2n(n+1)$, whose maximum is $84$; the constant has ratio zero. This proves~\eqref{r2:eq:neumann-minmax}.
+
+For the Dirichlet eigenvalues $\lambda_1<\lambda_2\le\cdots$ of $\Omega$, use the $13$-dimensional zero-Dirichlet trial space
+\[
+ 1-r^2,\qquad r^n(1-r^2)\cos n\theta,
+ \quad r^n(1-r^2)\sin n\theta\quad(1\le n\le6).
+\]
+For $n\ge0$, the radial mass factor is
+\[
+ \int_0^1r^{2n+1}(1-r^2)^2\,dr
+ =\frac1{(n+1)(n+2)(n+3)}.
+\]
+The identity $-\Delta(r^n(1-r^2)\cos n\theta)=4(n+1)r^n\cos n\theta$ gives the Rayleigh quotient $2(n+1)(n+3)$, which is at most $126$. The same conformal comparison proves
+\begin{equation}\label{r2:eq:dirichlet-minmax}
+ \lambda_{13}(\Omega)\le126/811^2<1.
+\end{equation}
+The estimates~\eqref{r2:eq:neumann-minmax} and~\eqref{r2:eq:dirichlet-minmax} also cover the other low-index results. Aviles~\cite{Avi86} proved rigidity for convex planar domains when the eigenvalue does not exceed the seventh eigenvalue, in the Dirichlet numbering as quoted in~\cite[\S0]{BY87} and in the Neumann numbering as quoted in~\cite[\S1]{Den12} and~\cite[(1.4.2)]{Kob93}; and Dai, Liu and Sun~\cite{DLS26}, as quoted in~\cite[\S1]{DSWZ25}, treat the case in which the eigenvalue equals the second Dirichlet eigenvalue. Since $\mu_7(\Omega)\le\mu_{13}(\Omega)<1$ and $\lambda_2(\Omega)\le\lambda_7(\Omega)\le\lambda_{13}(\Omega)<1$, the eigenvalue $1$ lies above all these ranges.
+
+
+\subsubsection{The higher-dimensional examples}
+The three-dimensional example has the radial scale $j_{3/2,34}\approx108.37572$, and the certified inscribed ball of radius $106$ puts $\lambda_2(\Omega)<0.002$; hence its eigenvalue $1$ is far above the second-Dirichlet threshold quoted for~\cite{DLS26} in~\cite[\S1]{DSWZ25}. The certified bounds of Sections~\ref{sec:recon}, \ref{sec:r6}, \ref{lie:sec}, \ref{sec:r3}, \ref{sec:r5} and~\ref{r7:sec} show that $\Omega$ contains the ball of radius $r_0$ about the origin, with $r_0=106$, $14.54$, $55.4$, $28.69$, $82.6$, $20.0$, $37.9$ and $87.1$ for $n=3,4,5,6,7,8,10,14$ (for $n=3,8,10,14$, the lower bound for $\re\psi^{*\prime}$ on the closed unit disc gives $|\psi^*(w)|\geq\re\big(\psi^*(w)/w\big)\geq r_0$ for $|w|=1$, and for $n=5$ the same argument applied to $\rho\psi$, with $\re\psi'>0.9811$ and $\rho>56.49$, gives $r_0>55.4$; for $n=7$, $\rho>83.18$ and $\re\psi'>0.9935575$ give $r_0>82.6$). By domain monotonicity, $\lambda_2(\Omega)\leq\ldots\leq\lambda_{n+1}(\Omega)\leq(j_{n/2,1}/r_0)^2<0.15$ in every case; in fact, $1$ exceeds more than five hundred Dirichlet eigenvalues of $\Omega$, counted with multiplicity, and hence more than five hundred Neumann eigenvalues, since $\mu_k(\Omega)\leq\lambda_k(\Omega)$ for every $k$.
+
+\subsubsection{The exact-inverse axisymmetric examples}\label{sec:rig-ax}
+\newcommand{\gdRigDimensions}{\gdDimensions}
+Let $\mathcal N_{\mathrm{ax}}=\gdDimensions$ be the set of dimensions in which Theorem~\ref{gd:thm:main} gives a domain $\Omega=\rho\,\Theta_\psi(B^n)$ by the exact-inverse method, where $\psi(w)=\sum_{j\ \mathrm{odd}}c_jw^j$ has real coefficients and $\Theta_\psi(x_1,x')=\bigl(\re\psi(x_1+i|x'|),\ \im\psi(x_1+i|x'|)\,x'/|x'|\bigr)$. These domains are strictly convex and invariant under $x\mapsto-x$. In Tables~\ref{tab:rig-spec} and~\ref{tab:rig-kob}, $\rho$ is rounded; $T$ is the bound $L_*$ of~\eqref{gd:eq:unit-disc-tangent}, evaluated from~\eqref{gd:eq:geometry-sums} for the centres of Table~\ref{gd:tab:inputs}, and $r_0=\rho T$ is rounded down. The Bessel zeros, the quantities $(j_{n/2,1}/r_0)^2$ and $U$, the count $N_n$ and $d$ are fifty-digit numerical evaluations; the meridian map $\psi$ of $\Omega$ differs from that of the centre, at which $d$ is evaluated, by less than $10^{-50}$ on $\overline\D$.
+
+The bound $T=L_*$ of~\eqref{gd:eq:unit-disc-tangent} gives
+\[
+ |\psi(w)|\ge\re\bigl(\psi(w)/w\bigr)
+ =\re\int_0^1\psi'(tw)\,dt\ge T\qquad(|w|=1).
+\]
+Thus $\Omega$ contains the origin-centred ball of radius $r_0=\rho T$. Domain monotonicity gives
+\[
+ \lambda_2(\Omega)\le\cdots\le\lambda_{n+1}(\Omega)
+ \le(j_{n/2,1}/r_0)^2,\qquad
+ \lambda_k(\Omega)\le\lambda_k(B_{r_0})\quad(k\ge1).
+\] The numerical count $N_n$ estimates the number of Dirichlet eigenvalues of $B_{r_0}$ below $1$, counted with multiplicity; the same comparison applies to Neumann eigenvalues because $\mu_k(\Omega)\leq\lambda_k(\Omega)$. Table~\ref{tab:rig-spec} gives these evaluations for
+$n\in\gdRigDimensions$, where $(j_{n/2,1}/r_0)^2<0.4522$. The trial space spanned by $1-r^2$ and $x_i(1-r^2)$, $1\le i\le n$,
+on $B^n$ gives by min--max
+\[
+ \lambda_{n+1}(\Omega)\le\frac{(n+2)(n+6)}{2r_0^2}<0.609<1\qquad(n\in\mathcal N_{\mathrm{ax}}).
+\]
+The energy and mass forms are diagonal by spherical orthogonality;
+their quotients are $n(n+4)/2$ and $(n+2)(n+6)/2$, respectively. The eigenvalue $1$ therefore lies above the second-Dirichlet threshold quoted for~\cite{DLS26} in~\cite[\S1]{DSWZ25}, which is stated there for every dimension. The results of Deng~\cite{Den12} and Aviles~\cite{Avi86} stated above concern the plane and give no comparison for $n\in\mathcal N_{\mathrm{ax}}$.
+
+\begin{table}[ht]
+\centering\footnotesize
+\begin{tabular}{@{}cclcccc@{}}
+\toprule
+$n$ & $\rho$ & $j_{n/2,k}\approx\rho$ & $T$ & $r_0$ & $(j_{n/2,1}/r_0)^2$ & $N_n$\\
+\midrule
+$5$ & $56.4956$ & $j_{5/2,17}$ & $>0.98281$ & $55.52$ & $<0.0108$ & $>1.28\cdot10^{6}$ \\
+$9$ & $169.587$ & $j_{9/2,52}$ & $>0.99934$ & $169.47$ & $<2.34\cdot10^{-3}$ & $>7.41\cdot10^{13}$ \\
+$11$ & $57.8601$ & $j_{11/2,16}$ & $>0.98610$ & $57.05$ & $<0.0269$ & $>8.12\cdot10^{10}$ \\
+$12$ & $42.7785$ & $j_{6,11}$ & $>0.99561$ & $42.59$ & $<0.0545$ & $>9.32\cdot10^{9}$ \\
+$13$ & $84.5746$ & $j_{13/2,24}$ & $>0.99097$ & $83.81$ & $<0.0158$ & $>2.51\cdot10^{14}$ \\
+$15$ & $32.1112$ & $j_{15/2,7}$ & $>0.96616$ & $31.02$ & $<0.142$ & $>7.99\cdot10^{8}$ \\
+$16$ & $369.836$ & $j_{8,114}$ & $>0.99986$ & $369.78$ & $<1.10\cdot10^{-3}$ & $>1.02\cdot10^{27}$ \\
+$17$ & $74.9172$ & $j_{17/2,20}$ & $>0.999109$ & $74.85$ & $<0.0293$ & $>2.01\cdot10^{16}$ \\
+$18$ & $20.8070$ & $j_{9,3}$ & $>0.95484$ & $19.86$ & $<0.4522$ & $>1.28\cdot10^{5}$ \\
+$20$ & $83.4392$ & $j_{10,22}$ & $>0.99341$ & $82.88$ & $<0.0306$ & $>7.42\cdot10^{18}$ \\
+$21$ & $112.609$ & $j_{21/2,31}$ & $>0.99226$ & $111.73$ & $<0.0182$ & $>1.97\cdot10^{22}$ \\
+\bottomrule
+\end{tabular}
+\caption{Spectral comparison for $n\in\gdRigDimensions$. In fifty-digit numerical evaluation, $\rho$ differs from the zero $j_{n/2,k}$ of $J_{n/2}$ nearest to it by less than $2\cdot10^{-14}$. Here $T$ is the certified lower bound for $\re\psi'$ on $\overline\D$, $r_0=\rho T$ is rounded down, and $N_n$ is the numerical count of Dirichlet eigenvalues of $B_{r_0}$ below $1$, counted with multiplicity.}\label{tab:rig-spec}
+\end{table}
+
+
+\subsection{Berenstein and Berenstein--Yang: spectral sequences}
+Berenstein and Yang~\cite{BY87} prove that a bounded Lipschitz domain with connected boundary in any dimension carrying overdetermined eigenfunctions for infinitely many eigenvalues is a ball; for simply connected planar domains this is attributed to Berenstein~\cite{Ber80} in~\cite[\S0]{BY87}. Theorems~\ref{thm:main} and~\ref{br:thm:main} provide one eigenvalue for each domain. By~\cite{BY87}, each of these domains carries overdetermined eigenfunctions for at most finitely many eigenvalues.
+
+\subsection{Kobayashi: perturbations of balls}
+Kobayashi~\cite{Kob93} considers a $C^{1,\beta}$ family of star-shaped domains $\Omega_t=\{r\omega:0\le r<g(t,\omega)\}$ with $g(0,\cdot)=1$. He proves that $\Omega_{t_0}$ is a disc if the real zero set of the Fourier transform of $\one_{\Omega_{t_0}}$ contains a circle inside the open disc of radius $R$ about the origin and $t_0$ satisfies a smallness condition~\cite[Proposition~4.4]{Kob93}. This condition involves the frequency radius $R$ and the size and regularity of the family, not the radial displacement alone. Its first part reads $t_0B(g)e^{\nrm g_\infty}<\varepsilon(2,R)\delta(2,R)$. By the definitions~\cite[(3.3.1), (3.3.2), (4.2.1)]{Kob93}, the left side is at least $2\pi e\sup_\omega|g(t_0,\omega)-1|$, and by~\cite[(2.3.3), (2.4.1)]{Kob93} the right side is at most $2\pi|J_0(j)|/j$ for every positive zero $j\le R$ of $J_1$. Consider the rescaled domain $\Omega_1=\rho^{-1}\Omega$ of Remark~\ref{r2:rem:stationary}, for which the zero circle has radius $\rho$, so that $R>\rho$. For every family with $\Omega_{t_0}=\Omega_1$ the left side is then at least $3.45\cdot10^{-4}$, while the right side, evaluated at the zero $j\approx811.3158$ of $J_1$, is at most $2.17\cdot10^{-4}$. The smallness condition is therefore not satisfied.
+
+
+For the higher-dimensional examples, the same smallness condition gives the following comparison. Its smallness condition implies $t_0B(g)<\varepsilon(n,R)\delta(n,R)$ \cite[(4.2.2b), (4.4.1b) and Lemma~4.5]{Kob93}, where $B(g)$ \cite[(4.2.1)]{Kob93} is at least $\omega_{n-1}\sup_\omega|g(t_0,\omega)-1|/t_0$, with $\omega_{n-1}=|S^{n-1}|$, while by \cite[(2.3.2), (2.3.4)]{Kob93} the product $\varepsilon(n,R)\delta(n,R)$ is smaller than the modulus of the Fourier transform of the indicator function of the unit ball at a point between two consecutive zeros of $J_{n/2}$ below $R$, which is of order $R^{-(n+1)/2}$. Hence the condition forces the relative deviation of $\partial\Omega_{t_0}$ from the unit sphere to be at most of order $R^{-(n+1)/2}$. Kobayashi's theorem concerns a controlled perturbation family with a smallness condition; neither is part of Theorem~\ref{thm:main}. 
+
+For $n\in\mathcal N_{\mathrm{ax}}$ the comparison is explicit, as in the plane. Let $\Omega_1=\rho^{-1}\Omega=\Theta_\psi(B^n)$; the Fourier transform of $\one_{\Omega_1}$ vanishes on the sphere of radius $\rho$, so $R>\rho$. Let $h$ be the support function of $\Omega_1$ about its centre and $d=(\max h-\min h)/(\max h+\min h)$. Since $\Omega_1$ is centrally symmetric, its widths are $2h$. If a translate of $\Omega_1$ has a radial function $g$ about some point with $\sup|g-1|\leq s$, it lies between the balls of radii $1-s$ and $1+s$ about that point, so all widths $2h$ of $\Omega_1$ lie in $[2-2s,2+2s]$; then $(1+s)/(1-s)\geq\max h/\min h$, that is, $s\geq d$. By the definitions~\cite[(3.3.1), (3.3.2), (4.2.1)]{Kob93} and $\nrm g_\infty\geq1$, the left side of the first part $t_0B(g)e^{\nrm g_\infty}<\varepsilon(n,R)\delta(n,R)$ of the smallness condition is therefore at least $e\,\omega_{n-1}d$ for every family with $\Omega_{t_0}=\Omega_1+v$, $v\in\R^n$. By~\cite[(2.3.1), (2.3.3), (2.4.1)]{Kob93},
+\[
+ \varepsilon(n,R)\delta(n,R)\leq(2\pi)^{n/2}j^{-n/2}\,|J_{n/2+1}(j)|
+\]
+for every positive zero $j\leq R$ of $J_{n/2}$; for $n=2$ the right side is $2\pi|J_0(j)|/j$. We take for $j$ the largest zero not exceeding $\rho$, listed for each tabulated dimension in Table~\ref{tab:rig-kob}. For $n=13,15,17,20,21$, $\rho$ lies below its nearest zero by less than $10^{-14}$, and $j$ is the preceding zero. The centre evaluations in Table~\ref{tab:rig-kob} give the numerical factors $e\,\omega_{n-1}d/U$ by which the left side exceeds this upper estimate for the right side.
+
+\begin{table}[ht]
+\centering\footnotesize
+\begin{tabular}{@{}cccccc c@{}}
+\toprule
+$n$ & $j$ & $\omega_{n-1}$ & $d$ & $e\,\omega_{n-1}d$ & $U$ & $e\,\omega_{n-1}d/U$\\
+\midrule
+$5$ & $j_{5/2,17}$ & $26.32$ & $>1.30\cdot10^{-3}$ & $>0.0934$ & $<4.38\cdot10^{-4}$ & $>213$ \\
+$9$ & $j_{9/2,52}$ & $29.69$ & $>4.36\cdot10^{-5}$ & $>3.52\cdot10^{-3}$ & $<2.23\cdot10^{-8}$ & $>1.58\cdot10^{5}$ \\
+$11$ & $j_{11/2,16}$ & $20.73$ & $>1.68\cdot10^{-3}$ & $>0.0948$ & $<5.21\cdot10^{-7}$ & $>1.82\cdot10^{5}$ \\
+$12$ & $j_{6,11}$ & $16.02$ & $>6.31\cdot10^{-4}$ & $>0.0275$ & $<1.22\cdot10^{-6}$ & $>2.25\cdot10^{4}$ \\
+$13$ & $j_{13/2,23}$ & $11.84$ & $>9.95\cdot10^{-4}$ & $>0.0320$ & $<5.18\cdot10^{-9}$ & $>6.18\cdot10^{6}$ \\
+$15$ & $j_{15/2,6}$ & $5.722$ & $>4.45\cdot10^{-3}$ & $>0.0693$ & $<1.58\cdot10^{-6}$ & $>4.40\cdot10^{4}$ \\
+$16$ & $j_{8,114}$ & $3.765$ & $>8.00\cdot10^{-6}$ & $>8.19\cdot10^{-5}$ & $<2.88\cdot10^{-16}$ & $>2.84\cdot10^{11}$ \\
+$17$ & $j_{17/2,19}$ & $2.397$ & $>1.17\cdot10^{-4}$ & $>7.66\cdot10^{-4}$ & $<9.61\cdot10^{-11}$ & $>7.98\cdot10^{6}$ \\
+$18$ & $j_{9,3}$ & $1.479$ & $>7.33\cdot10^{-3}$ & $>0.0294$ & $<3.47\cdot10^{-6}$ & $>8.49\cdot10^{3}$ \\
+$20$ & $j_{10,21}$ & $0.5161$ & $>8.15\cdot10^{-4}$ & $>1.14\cdot10^{-3}$ & $<7.66\cdot10^{-13}$ & $>1.49\cdot10^{9}$ \\
+$21$ & $j_{21/2,30}$ & $0.2929$ & $>9.15\cdot10^{-4}$ & $>7.28\cdot10^{-4}$ & $<7.09\cdot10^{-15}$ & $>1.02\cdot10^{11}$ \\
+\bottomrule
+\end{tabular}
+\caption{Kobayashi comparison for $n\in\gdRigDimensions$: $\omega_{n-1}=|S^{n-1}|$, $d$ the relative Hausdorff distance of $\Omega_1=\rho^{-1}\Omega$ to centred balls, and $U=(2\pi)^{n/2}j^{-n/2}|J_{n/2+1}(j)|$, the upper-bound expression for $\varepsilon(n,R)\delta(n,R)$. Entries other than $n$ and the zero index are fifty-digit numerical evaluations; inequality signs record their rounding direction.}\label{tab:rig-kob}
+\end{table}
+
+
+Agranovsky~\cite{Agr93} and Canuto~\cite{Can14} give further perturbation results near balls; the quantitative comparison here uses Kobayashi's stated smallness condition.
+
+\subsection{Consequences for the conformal map}
+Theorems restricting polynomial and rational conformal maps have a different role: they give consequences for the exact map once existence is established. Garofalo and Seg\`ala~\cite{GS91} prove that a simply connected bounded domain whose simple closed boundary is parametrised by a polynomial in $e^{i\theta}$ has the Pompeiu property unless it is a disc. Their later result for convex domains~\cite[Corollary 3]{GS94} gives the Pompeiu property for a convex domain $h(\D)$ when the conformal map $h$ has a pole on the circle of convergence of its Taylor series at zero and is not a M\"obius transformation. Ebenfelt~\cite[Theorem 2.1]{Ebe93} proves that the only bounded quadrature domains failing the Pompeiu property are discs. By the theorem of Aharonov and Shapiro~\cite{AS76}, a simply connected bounded domain is a quadrature domain if and only if its conformal map from $\D$ is rational; compare the remark following Corollary~3 in~\cite{GS94}.
+
+\begin{corollary}\label{r2:cor:nonrational}
+The normalised conformal map $\psi$ of Theorem~\ref{r2:thm:main} is not rational; in particular it is not a polynomial. If the Taylor series of $\psi$ at zero has a finite radius of convergence, then $\psi$ has no pole on its circle of convergence.
+\end{corollary}
+\begin{proof}
+If $\psi$ were rational, $\Omega=\psi(\D)$ would be a bounded quadrature domain~\cite{AS76}. Ebenfelt's theorem, together with the failure of the Pompeiu property, would make $\Omega$ a disc, contrary to Theorem~\ref{r2:thm:main}. If $\psi$ had a pole on the circle of convergence of its Taylor series, then, $\Omega$ being convex, Corollary~3 of~\cite{GS94} would give the Pompeiu property unless $\psi$ were a M\"obius transformation. A M\"obius transformation that maps $\D$ onto a bounded domain maps it onto a disc, which is again excluded.
+\end{proof}
+
+\subsection{Spheres and isoparametric hypersurfaces} The principal orbits of the adjoint representations of $\mathfrak{su}(3)$, $\mathfrak{so}(5)$ and $\mathfrak g_2$ on their unit spheres are homogeneous isoparametric hypersurfaces of $S^7$, $S^9$ and $S^{13}$, with $3$, $4$ and $6$ distinct principal curvatures \cite{HL71}, so domains of these spheres bounded by adjoint orbits are among the isoparametric tubes that fail the Pompeiu property \cite[Corollary~7]{PS21}; see also \cite{Shk00}. These are problems of cohomogeneity one in spheres, reducing to ordinary differential equations, and the boundaries of the domains are not topological spheres. Our domains are Euclidean, of cohomogeneity two, and bounded by topological spheres, and their construction requires the solution of a two-dimensional free boundary problem.
+
+\subsection{Claims in dimension three and in general dimension} Several published or posted statements are contradicted by Theorem~\ref{thm:r3} and Corollary~\ref{cor:pompeiu}. Ramm \cite[Theorems~1 and~2]{Ram17} states that a bounded domain in $\R^3$ with $C^1$ boundary on which \eqref{eq:schiffer} has a solution with constant $1$, or which fails the Pompeiu property, is a ball. Ramm \cite[Theorem~1]{Ram21} states that a bounded connected domain in $\R^m$, $m\geq2$, with smooth boundary, on which an overdetermined problem that includes \eqref{eq:schiffer} as a special case is solvable, is a ball; \cite[Theorem~A(a)]{Ram21} states that a bounded connected domain in $\R^3$ with Lipschitz boundary whose indicator function has Fourier transform vanishing on a sphere is a ball; and \cite[Theorem~C]{Ram21} states the corresponding answer to the Pompeiu problem in $\R^m$. Ramm \cite[Theorem~B]{Ram19} states the same Fourier transform statement for connected bounded domains in $\R^3$ with $C^2$ boundary. Chen \cite[Theorem~1.1]{Che16} states, in a scattering formulation of the problem with the Sommerfeld radiation condition, that a star-shaped domain in $\R^3$ containing the origin, with Lipschitz boundary, on which \eqref{eq:schiffer} has a nonconstant solution with $\mu\geq1$, is a ball centred at the origin. The domain of Theorem~\ref{thm:r3} satisfies the hypotheses of each of these statements, with $\mu=1$, and is not a ball; \cite[Theorems~1 and~C]{Ram21} are also contradicted by the planar counterexamples \cite{CS26,CLdDP26} and by Theorem~\ref{thm:main}. Hence these statements are not correct as stated. Finally, Disser \cite[Theorem~11]{Dis25} showed that a bounded $C^{2,1}$ domain of $\R^3$ is a ``bad domain'' for the fluid-elastic semigroup if and only if it carries a nonconstant solution of \eqref{eq:schiffer}, and conjectured that balls are the only bad domains \cite[Conjecture~6]{Dis25}; by Theorem~\ref{thm:r3}, this conjecture does not hold.
+
+%======================================================================

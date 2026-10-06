@@ -8,7 +8,10 @@ enclosures are rejected.
 
 | Path | Content |
 |---|---|
+| `r2/` | Strictly convex planar `D_182` example: single-file verifier, recorded numerical-gates receipt, frozen forty-mode centre, reference, sources and non-interval diagnostics; see `r2/README.md`. |
 | `r3_convex/` | `R³` convex main example: single-file verifier, full replay receipt, final certificate, centre, geometry and scale-obstruction receipts; see `r3_convex/README.md`. |
+| `r5/` | `R⁵` convex example (coefficient spaces graded by polynomial degree): single-file verifier `verify_r5.py`, its full-run receipt `VERIFICATION_RECEIPT.json` and the frozen class parameters `params.json`; see `r5/README.md`. |
+| `r7/` | `R⁷` strictly convex example (quadratic polynomial-degree weight): frozen single-file verifier, two independent full-run receipts (machine-specific working-directory strings replaced by `<workdir>`) and checksums; see `r7/README.md`. |
 | `r3/` | additional nonconvex `R³` example: single-file verifier `verify_r3.py`, its certificate, the certificate `certificate_r3_replay2.json` of a second, independent from-scratch replay (identical certified values), and the exact check `check_nonconvex_r3.py` of non-convexity at the poles; see `r3/README.md`. |
 | `verify_r4.py`, `verify_convex.py`, `data/centre.json`, `certificates/` | `R⁴ = u(2)`: as described in the paper (commands below). |
 | `r6/` | `R⁶ = su(2) ⊕ su(2)`: see `r6/RELEASE_README.md`. |
@@ -16,17 +19,24 @@ enclosures are rejected.
 | `r10/` | `R¹⁰ = so(5)` (`m = 4`): see `r10/README.md`. |
 | `r14/` | `R¹⁴ = g₂` (`m = 6`): see `r14/README.md`. |
 | `check_radial_rank2.py` | Cross-check of the radial part of the Laplacian for `su(3)`, `so(5)`, `g₂` (see below). |
+| `gd/` | Exact-inverse certificates for dimensions 5, 9, 11, 12, 13, 15, 16, 17, 18, 20, 21: single-file verifier, frozen inputs and eleven overall receipts; see `gd/README.md`. |
+| `berenstein/` | Strictly convex planar `D_77` Berenstein domain: single-file verifier, frozen centre and isolated receipt; see `berenstein/README.md`. |
+| `diagnostics/berenstein/` | Curvature, eigenvalue-index and stationary-phase comparisons, plus the interval triangle witness for the earlier planar domain; see its README. |
 | `SHA256SUMS` | SHA-256 of every other file under this directory (paths relative to it). |
 
 File integrity, from this directory: `sha256sum -c SHA256SUMS`. The
-subdirectories `r3/`, `r3_convex/`, `r6/`, `r8/`, `r10/`, `r14/` also carry their own
+subdirectories `r2/`, `r3/`, `r3_convex/`, `r5/`, `r6/`, `r7/`, `r8/`, `r10/`, `r14/`, `gd/`, `berenstein/`, `diagnostics/berenstein/` also carry their own
 `SHA256SUMS`, to be checked from inside the subdirectory.
 
 ## Requirements
 
+For the plane, see `r2/REQUIREMENTS.txt` (Python, python-flint, NumPy, SciPy, SymPy and mpmath).
+
 Python 3 with **python-flint 0.9.0** and NumPy for all dimensions; SymPy for
 the identity checks and `check_radial_rank2.py`; for both `R³` verifiers in addition SciPy,
-`gcc` and the python-flint binary wheel from PyPI (see `r3/README.md`). All
+`gcc` and the python-flint binary wheel from PyPI (see `r3/README.md`); for the `R⁵` and `R⁷`
+verifiers in addition `gcc` and a 64-bit Linux system with x87 long double
+(see `r5/README.md` and `r7/README.md`). All
 runs recorded here used Python 3.10.19 on 64-bit Linux, one thread per
 process, at `nice -n 19`.
 
@@ -34,8 +44,11 @@ process, at `nice -n 19`.
 
 | Dimension | Command (from the directory named) | Output | Time |
 |---|---|---|---|
+| 2 | From the paper directory: `python -O anc/r2/verify_planar_convex_v2.py --workdir <empty dir> --output receipt.json --jobs 2` | `NUMERICAL_GATES_PASS` (numerical hypotheses; analytic lemmas in the text) | recorded five-worker run 242.21 s; two-worker command is provided for lower concurrency |
 | 3 convex | `r3_convex/`: `python3 -O verify_r3_convex.py --workdir <empty dir> --output receipt.json --jobs 5` | `PROVED` | about 1.8 h with 5 workers |
 | 3 additional nonconvex | `r3/`: `python3 -I -O verify_r3.py --workdir <new-dir> --jobs 4 --max-seconds 17000 --output cert.json`; `python3 check_nonconvex_r3.py` | `PROVED`, `NONCONVEX_AT_POLES_VERIFIED` | about 67 min with 4 workers; < 1 s |
+| 5 | `r5/`: `python3 -O verify_r5.py --workdir <empty dir> --output receipt.json --jobs 6` | `PROVED` | about 40 min with 6 workers |
+| 7 | `r7/`: `python3 -O verify_r7.py --workdir <empty dir> --output receipt.json --jobs 8` | `PROVED` | 6175 s (about 103 min) with 8 workers |
 | 4 | `./`: the two commands below | `PROVED`, `PROVED_CONVEX` | about 165 s |
 | 6 | `r6/`: `bash reproduce_r6.sh` | `REPRODUCTION COMPLETE` | about 3 min |
 | 8 | `r8/`: `python3 verify_r8.py --stage final --centre center_r8_M45_S24.json --output certificate_r8.json`; `python3 verify_convex_r8.py` | `PROVED`, `PROVED_CONVEX` | < 1 s |
@@ -94,12 +107,7 @@ I2(4)_ROOT_NUMERIC_PASS samples=100 max_relative=2.190e-15
 I2(6)_ROOT_NUMERIC_PASS samples=100 max_relative=1.597e-14
 ```
 
-### Changes relative to the reviewed rank-two code
-
-The rank-two scripts were reviewed before this release. The following changes
-were made afterwards; all 106 interval receipts were then recomputed from the
-frozen centres and inverses with `reproduce_r*.sh` and are byte-identical to
-the reviewed ones.
+### Numerical implementation notes
 
 1. **Exact `κ`.** `verify_r10.py` and `verify_r14.py` evaluated the norm bound
    `κ = 1/((m+2)(m+4))` of `K` as a binary64 float. For `m = 4`, the float
@@ -121,9 +129,35 @@ the reviewed ones.
    `check_identities_rank2.py`, `far_shape_r8.py`, `g_tail_r8.py` and
    `check_radial_rank2.py` were replaced by explicit checks that also run
    under `python -O`.
-4. Comments in `rank2_cap_core.py` and `verify_r8.py` that referred to a
-   single case were made generic.
-5. Because stage scripts changed, the frozen-bundle digests in
-   `verify_r8.py`, `verify_r10.py`, `verify_r14.py` and all certificates were
-   regenerated. New files: `reproduce_r*.sh`, `test_fail_closed_r*.py`,
-   `README.md` and `SHA256SUMS` in each directory.
+
+Comments in the frozen sources carry internal development labels; they have
+no meaning for the proofs. References in those comments to working proof
+notes are superseded by the corresponding sections of the paper.
+
+## Exact inverse in general dimension (`gd/`)
+
+Use `gd/REQUIREMENTS.txt` and the complete command and receipt comparison
+in `gd/README.md`. `--dimension all` is sequential. The final line must be
+the complete `PROVED dimensions=...` line, with exit zero and `PROVED` in
+both freshly generated receipts. The recorded per-dimension chain and
+complete-process times of the eleven final isolated runs are listed in
+`gd/README.md`. This directory retains the compressed exact centres and
+overall receipts; the single-file verifier regenerates all intermediate
+artifacts. The mathematical enclosures are tabulated in the paper.
+
+## Convex planar Berenstein domain (`berenstein/`)
+
+See `berenstein/README.md` and `berenstein/REQUIREMENTS.txt`. From that
+directory, with dependencies visible to isolated Python, run
+`python -I -O verify_berenstein_planar_convex_v3.py --workdir replay --jobs 4`
+with the one-thread environment and `nice 19` specified in its README.
+The work directory must not exist. The recorded isolated run took 173.042
+seconds; its status is `NUMERICAL_GATES_PASS`, with `full_proof=false`.
+The verifier certifies the numerical hypotheses; the analytic lemmas are
+proved in the paper. The reader package contains the verifier, exact centre,
+isolated receipt, dependencies, instructions and checksums. Numerical
+comparisons with earlier work are in `diagnostics/berenstein/`.
+
+Check both new manifests from the ancillary root with
+`(cd gd && sha256sum -c SHA256SUMS)` and
+`(cd berenstein && sha256sum -c SHA256SUMS)`.

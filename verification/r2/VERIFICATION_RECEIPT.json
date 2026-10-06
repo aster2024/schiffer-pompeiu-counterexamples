@@ -1,0 +1,1013 @@
+{
+  "status": "NUMERICAL_GATES_PASS",
+  "full_proof": false,
+  "analytic_proof": "PROOF_PACKAGE.md; analytic arguments are not machine-checked",
+  "trust_base": "CPython, FLINT/Arb/python-flint; second scalar chain in mpmath.iv",
+  "claim": "bounded real-analytic strictly convex non-disc D182 planar Schiffer domain",
+  "proof_scope": "local numerical hypotheses of the written proof; no new AI or external review",
+  "verifier_sha256": "ed4f65a5d5a31ee86bfe6c8c742ea86ba76f4cdb888b3c8fb70b53b8334e7226",
+  "embedded_bundle_sha256": "345bb779178a54fb57330dc2ee32a994fff5a2d02f22c01bde7c8f14664ecd07",
+  "candidate_sha256": "694df4c822eb099a9f4909603a4fd5de729399f9f4e29cc4094c11e689e75ed2",
+  "reference_sha256": "7d69e98d18214480fb25bae2aae3e9baefcca4039f41b981e35b2a3d5c031673",
+  "radius": "1e-32",
+  "norm": "||g||_{sum 2^|j| C_r}+||p||_{sum 2^j}, p=psi prime",
+  "bounds": {
+    "B_L2": "[6.74779750694711298023211922274685173769852109 +/- 3.13e-45]",
+    "spectral_transfer_delta_q": "[8.3755702256552148530817686341012458253977236750103e-14 +/- 1.26e-64]",
+    "high_angular_gap_lower": "[164759.13610693299231269327755060843792027975630055 +/- 2.25e-45]",
+    "high_angular_start": "5.0000000000000000000000000000000000000000000000000",
+    "high_angular_beta": "[0.061957694247853507118355381118716064759278541440640 +/- 1.04e-52]",
+    "B_Y": "[104494569.9497425342577980974286837260602327120 +/- 5.36e-38]",
+    "B_trace": "[70382208922875.3705206018207633132942334943655 +/- 4.47e-32]",
+    "U_field": "[131.60972082703369183110747513431302085410547635943 +/- 4.78e-48]",
+    "dU_field": "[110995.33690745322727388223804027170014593566330468 +/- 3.20e-45]",
+    "D0": "[88645590.598483330921466023057388634295332736961265 +/- 4.75e-43]",
+    "D1": "[74888360741.271206552107849975678257869880673944252 +/- 1.89e-41]",
+    "inverse_W1_boundary": "[6.0582167343855270246696006712336159335017974074669e-6 +/- 4.03e-56]",
+    "inverse_W1_holomorphic": "[0.0030384808334056542085599875282194746984453083142699 +/- 3.90e-53]",
+    "B_shape": "[851610483371.924326349978409134068468047979180 +/- 6.68e-34]",
+    "B_field": "[64182750756125535230.6536341586883651535758261 +/- 6.24e-26]",
+    "A": "[64182751607736018602.5779605086667742876442942 +/- 2.03e-26]",
+    "Y": "[6.18879951236557013368039159335987293063748595e-41 +/- 1.92e-86]",
+    "Z": "[2.121260549090543799751705968646979378762056728e-38 +/- 7.67e-84]",
+    "C2": "[34784475333730071812832.2127663667555646817290 +/- 5.48e-23]",
+    "C3": "[16045687901934004650.64449012716669357191107355 +/- 5.08e-27]",
+    "radius": "[1.0000000000000000000000000000000000000000000000000e-32 +/- 3e-86]",
+    "radii_polynomial": "[-9.9999999346335573429712914819128627895524690662022e-33 +/- 2.54e-83]",
+    "contraction": "[6.95689506674601436256644255348547721598246390e-10 +/- 6.61e-55]",
+    "four_C2_Y": "[8.61096575933123483490939760166364685004738608e-18 +/- 7.83e-63]",
+    "analytic_radius_lower": "[1.0038157625476116370985777194878687836810248463449 +/- 3.04e-50]",
+    "unit_derivative_lower": "[811.39117895521532268073034117233157294476569930064 +/- 4.44e-49]",
+    "curvature_lower": "[0.29988792315417174281645332496946282691567716128649 +/- 2.13e-52]",
+    "convexity_margin_lower": "[243.32641552249442530192132632891020043130348348838 +/- 3.26e-48]",
+    "non_disc_c1_lower": "[0.016455820680193961254513540227368264926591933977222 +/- 1.17e-52]",
+    "analytic_univalence_margin_lower": "[808.21452279688901342824310405203836600891359916437 +/- 2.45e-48]"
+  },
+  "final_rechecked_bounds": {
+    "radii_polynomial_upper": "[-9.999999934633557342971291481912862789552469066202225293e-33 +/- 4.11e-88]",
+    "contraction_upper": "[6.956895066746014362566442553485477215982463896737184605e-10 +/- 2.01e-65]",
+    "four_C2_Y_upper": "[8.610965759331234834909397601663646850047386087863995248e-18 +/- 4.26e-73]",
+    "recomputed_coupled_bounds": {
+      "B_L2": "[6.74779750694711298023211922274685173769852109 +/- 3.13e-45]",
+      "spectral_transfer_delta_q": "[8.3755702256552148530817686341012458253977236750103e-14 +/- 1.26e-64]",
+      "high_angular_gap_lower": "[164759.13610693299231269327755060843792027975630055 +/- 2.25e-45]",
+      "high_angular_start": "5.0000000000000000000000000000000000000000000000000",
+      "high_angular_beta": "[0.061957694247853507118355381118716064759278541440640 +/- 1.04e-52]",
+      "B_Y": "[104494569.9497425342577980974286837260602327120 +/- 5.36e-38]",
+      "B_trace": "[70382208922875.3705206018207633132942334943655 +/- 4.47e-32]",
+      "U_field": "[131.60972082703369183110747513431302085410547635943 +/- 4.78e-48]",
+      "dU_field": "[110995.33690745322727388223804027170014593566330468 +/- 3.20e-45]",
+      "D0": "[88645590.598483330921466023057388634295332736961265 +/- 4.75e-43]",
+      "D1": "[74888360741.271206552107849975678257869880673944252 +/- 1.89e-41]",
+      "inverse_W1_boundary": "[6.0582167343855270246696006712336159335017974074669e-6 +/- 4.03e-56]",
+      "inverse_W1_holomorphic": "[0.0030384808334056542085599875282194746984453083142699 +/- 3.90e-53]",
+      "B_shape": "[851610483371.924326349978409134068468047979180 +/- 6.68e-34]",
+      "B_field": "[64182750756125535230.6536341586883651535758261 +/- 6.24e-26]",
+      "A": "[64182751607736018602.5779605086667742876442942 +/- 2.03e-26]",
+      "Y": "[6.18879951236557013368039159335987293063748595e-41 +/- 1.92e-86]",
+      "Z": "[2.121260549090543799751705968646979378762056728e-38 +/- 7.67e-84]",
+      "C2": "[34784475333730071812832.2127663667555646817290 +/- 5.48e-23]",
+      "C3": "[16045687901934004650.64449012716669357191107355 +/- 5.08e-27]",
+      "radius": "[1.0000000000000000000000000000000000000000000000000e-32 +/- 3e-86]",
+      "radii_polynomial": "[-9.9999999346335573429712914819128627895524690662022e-33 +/- 2.54e-83]",
+      "contraction": "[6.95689506674601436256644255348547721598246390e-10 +/- 6.61e-55]",
+      "four_C2_Y": "[8.61096575933123483490939760166364685004738608e-18 +/- 7.83e-63]",
+      "analytic_radius_lower": "[1.0038157625476116370985777194878687836810248463449 +/- 3.04e-50]",
+      "unit_derivative_lower": "[811.39117895521532268073034117233157294476569930064 +/- 4.44e-49]",
+      "curvature_lower": "[0.29988792315417174281645332496946282691567716128649 +/- 2.13e-52]",
+      "convexity_margin_lower": "[243.32641552249442530192132632891020043130348348838 +/- 3.26e-48]",
+      "non_disc_c1_lower": "[0.016455820680193961254513540227368264926591933977222 +/- 1.17e-52]",
+      "analytic_univalence_margin_lower": "[808.21452279688901342824310405203836600891359916437 +/- 2.45e-48]"
+    }
+  },
+  "Dirichlet_inverse_L2_upper": "[6.74779750694329935100501720513818707947979086 +/- 1.61e-45]",
+  "residual_E0_upper": "[9.642465237684866145791694591428028863378188472844524391e-61 +/- 5.75e-117]",
+  "residual_E1_upper": "[5.417856218519872249981387687910761232223950045387434650e-56 +/- 1.15e-111]",
+  "coverage_counts": [
+    102,
+    99,
+    91,
+    74,
+    37,
+    5,
+    0
+  ],
+  "second_interval_scalar": {
+    "status": "SECOND_LIBRARY_SCALAR_GATES_PASS",
+    "library": "mpmath.iv",
+    "precision_bits": 400,
+    "scope": "scalar chain only; spectral inverse and boundary moments inherited from Arb",
+    "bounds_display": {
+      "B_L2": [
+        "6.747797506947112980232119222746851737698521093126594771",
+        "6.747797506947112980232119222746851737698521093126594771"
+      ],
+      "B_Y": [
+        "104494569.9497425342577980974286837260602327119963193886",
+        "104494569.9497425342577980974286837260602327119963193886"
+      ],
+      "B_trace": [
+        "70382208922875.37052060182076331329423349436554465306421",
+        "70382208922875.37052060182076331329423349436554465306421"
+      ],
+      "U_field": [
+        "131.6097208270336918311074751343130208541054763594252225",
+        "131.6097208270336918311074751343130208541054763594252225"
+      ],
+      "dU_field": [
+        "110995.3369074532272738822380402717001459356633046831978",
+        "110995.3369074532272738822380402717001459356633046831978"
+      ],
+      "E0": [
+        "9.642465237684866145791694591428028863378188472844524392e-61",
+        "9.642465237684866145791694591428028863378188472844524392e-61"
+      ],
+      "E1": [
+        "5.41785621851987224998138768791076123222395004538743465e-56",
+        "5.41785621851987224998138768791076123222395004538743465e-56"
+      ],
+      "A": [
+        "64182751607736018602.57796050866677428764429421033336179",
+        "64182751607736018602.57796050866677428764429421033336179"
+      ],
+      "Y": [
+        "6.188799512365570133680391593359872930637485951911243909e-41",
+        "6.188799512365570133680391593359872930637485951911243909e-41"
+      ],
+      "Z": [
+        "2.121260549090543799751705968646979378762056728766191396e-38",
+        "2.121260549090543799751705968646979378762056728766191396e-38"
+      ],
+      "C2": [
+        "34784475333730071812832.21276636675556468172905470297866",
+        "34784475333730071812832.21276636675556468172905470297866"
+      ],
+      "C3": [
+        "16045687901934004650.64449012716669357191107355258334045",
+        "16045687901934004650.64449012716669357191107355258334045"
+      ],
+      "radii_polynomial": [
+        "-9.999999934633557342971291481912862789552469066202225294e-33",
+        "-9.999999934633557342971291481912862789552469066202225294e-33"
+      ],
+      "contraction": [
+        "0.000000000695689506674601436256644255348547721598246389671778028",
+        "0.000000000695689506674601436256644255348547721598246389671778028"
+      ],
+      "four_C2_Y": [
+        "8.610965759331234834909397601663646850047386087827794302e-18",
+        "8.610965759331234834909397601663646850047386087827794302e-18"
+      ],
+      "curvature_lower": [
+        "0.2998879231541717428164533249694628269156771612864902125",
+        "0.2998879231541717428164533249694628269156771612864902125"
+      ],
+      "convexity_margin_lower": [
+        "243.3264155224944253019213263289102004313034834883832584",
+        "243.3264155224944253019213263289102004313034834883832584"
+      ],
+      "non_disc_c1_lower": [
+        "0.01645582068019396125451354022736826492659193397722211632",
+        "0.01645582068019396125451354022736826492659193397722211632"
+      ],
+      "analytic_univalence_margin_lower": [
+        "808.2145227968890134282431040520383660089135991643675566",
+        "808.2145227968890134282431040520383660089135991643675566"
+      ]
+    }
+  },
+  "stages": [
+    {
+      "stage": "independent_coverage",
+      "elapsed_seconds": 30.423607292585075,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_prepare",
+      "elapsed_seconds": 11.953555293381214,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0000_0024",
+      "elapsed_seconds": 22.303843299858272,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0096_0120",
+      "elapsed_seconds": 24.155948657542467,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0024_0048",
+      "elapsed_seconds": 24.941496765241027,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0048_0072",
+      "elapsed_seconds": 26.476128879003227,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0072_0096",
+      "elapsed_seconds": 28.38485813792795,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0144_0168",
+      "elapsed_seconds": 25.690269857645035,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0120_0144",
+      "elapsed_seconds": 28.779191808775067,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0192_0216",
+      "elapsed_seconds": 24.93097646906972,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0168_0192",
+      "elapsed_seconds": 31.37683000881225,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0216_0240",
+      "elapsed_seconds": 40.99900701455772,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0240_0264",
+      "elapsed_seconds": 24.419560846872628,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0264_0288",
+      "elapsed_seconds": 24.900384319014847,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0288_0312",
+      "elapsed_seconds": 26.215851373039186,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0312_0336",
+      "elapsed_seconds": 24.62670031748712,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0360_0384",
+      "elapsed_seconds": 22.774343233555555,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0336_0360",
+      "elapsed_seconds": 28.751956161111593,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_basis_0384_0408",
+      "elapsed_seconds": 25.332597852684557,
+      "returncode": 0
+    },
+    {
+      "stage": "spectral_assemble",
+      "elapsed_seconds": 13.683053279295564,
+      "returncode": 0
+    },
+    {
+      "stage": "boundary_0128_0256",
+      "elapsed_seconds": 26.233513827435672,
+      "returncode": 0
+    },
+    {
+      "stage": "boundary_0256_0384",
+      "elapsed_seconds": 26.39169367775321,
+      "returncode": 0
+    },
+    {
+      "stage": "boundary_0384_0512",
+      "elapsed_seconds": 26.770572505891323,
+      "returncode": 0
+    },
+    {
+      "stage": "boundary_0000_0128",
+      "elapsed_seconds": 28.179543562233448,
+      "returncode": 0
+    },
+    {
+      "stage": "boundary_0512_0640",
+      "elapsed_seconds": 28.528866569511592,
+      "returncode": 0
+    },
+    {
+      "stage": "boundary_0768_0896",
+      "elapsed_seconds": 27.84174638800323,
+      "returncode": 0
+    },
+    {
+      "stage": "boundary_0640_0768",
+      "elapsed_seconds": 27.996955174952745,
+      "returncode": 0
+    },
+    {
+      "stage": "boundary_0896_1024",
+      "elapsed_seconds": 27.658362427726388,
+      "returncode": 0
+    },
+    {
+      "stage": "boundary_merge",
+      "elapsed_seconds": 0.4818505020812154,
+      "returncode": 0
+    },
+    {
+      "stage": "coupled_radii",
+      "elapsed_seconds": 0.27522630617022514,
+      "returncode": 0
+    },
+    {
+      "stage": "identities",
+      "elapsed_seconds": 3.9939938839524984,
+      "returncode": 0
+    },
+    {
+      "stage": "second_interval_scalar",
+      "elapsed_seconds": 0.32599599100649357,
+      "returncode": 0
+    }
+  ],
+  "stage_timeout_seconds": 7200,
+  "jobs": 5,
+  "wall_seconds": 242.20735447481275,
+  "versions": {
+    "python": "3.10.19",
+    "python_flint": "0.9.0",
+    "numpy": "1.26.4",
+    "scipy": "1.15.2",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0"
+  },
+  "fail_closed_tests": {
+    "status": "FAIL_CLOSED_TESTS_PASS",
+    "positive_controls": 4,
+    "count": 144,
+    "rejected": [
+      {
+        "test": "maximum_nan",
+        "reason": "nonfinite/non-Arb bound"
+      },
+      {
+        "test": "maximum_inf",
+        "reason": "nonfinite/non-Arb bound"
+      },
+      {
+        "test": "maximum_-inf",
+        "reason": "nonfinite/non-Arb bound"
+      },
+      {
+        "test": "decimal_'nan'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_p_'nan'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_a_'nan'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_scales_'nan'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "decimal_'inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_p_'inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_a_'inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_scales_'inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "decimal_'-inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_p_'-inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_a_'-inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_scales_'-inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "decimal_'+inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_p_'+inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_a_'+inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_scales_'+inf'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "decimal_''",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_p_''",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_a_''",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_scales_''",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "decimal_'[1 +/- 0.01]'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_p_'[1 +/- 0.01]'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_a_'[1 +/- 0.01]'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_scales_'[1 +/- 0.01]'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "decimal_'1/3'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_p_'1/3'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_a_'1/3'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_scales_'1/3'",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "decimal_1.0",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_p_1.0",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_a_1.0",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "field_scales_1.0",
+        "reason": "expected finite exact decimal string"
+      },
+      {
+        "test": "scale_0",
+        "reason": "invalid finite field"
+      },
+      {
+        "test": "scale_-1",
+        "reason": "invalid finite field"
+      },
+      {
+        "test": "field_count",
+        "reason": "invalid finite field"
+      },
+      {
+        "test": "strip_constant_not_absorbed",
+        "reason": "Dirichlet strip constant not absorbed"
+      },
+      {
+        "test": "d_h_910.0000000000000000000000000000000000000000000000000000000000000000000000000",
+        "reason": "nonpositive high angular gap d_h"
+      },
+      {
+        "test": "d_h_911.0000000000000000000000000000000000000000000000000000000000000000000000000",
+        "reason": "nonpositive high angular gap d_h"
+      },
+      {
+        "test": "d_h_[9.1e+2 +/- 1.01]",
+        "reason": "nonpositive high angular gap d_h"
+      },
+      {
+        "test": "missing_E1",
+        "reason": "'E1_upper'"
+      },
+      {
+        "test": "nan_E0",
+        "reason": "nonfinite/non-Arb bound"
+      },
+      {
+        "test": "bad_shape_hash",
+        "reason": "boundary center mismatch"
+      },
+      {
+        "test": "missing_schur",
+        "reason": "'schur_relative_bound_upper'"
+      },
+      {
+        "test": "bad_schur",
+        "reason": "spectral inverse gate failed"
+      },
+      {
+        "test": "inflated_inverse_not_recoupled",
+        "reason": "coupled stage differs from in-process recomputation"
+      },
+      {
+        "test": "inflated_E0_not_recoupled",
+        "reason": "full-space radii polynomial failed"
+      },
+      {
+        "test": "inflated_E1_not_recoupled",
+        "reason": "full-space radii polynomial failed"
+      },
+      {
+        "test": "nan_Y",
+        "reason": "coupled stage differs from in-process recomputation"
+      },
+      {
+        "test": "missing_C3",
+        "reason": "coupled stage differs from in-process recomputation"
+      },
+      {
+        "test": "forged_Y_zero",
+        "reason": "coupled stage differs from in-process recomputation"
+      },
+      {
+        "test": "forged_convexity",
+        "reason": "coupled stage differs from in-process recomputation"
+      },
+      {
+        "test": "wrong_radius",
+        "reason": "coupled stage differs from in-process recomputation"
+      },
+      {
+        "test": "states_407",
+        "reason": "spectral dimensions"
+      },
+      {
+        "test": "wrong_window",
+        "reason": "spectral dimensions"
+      },
+      {
+        "test": "wrong_gauss_count",
+        "reason": "spectral dimensions"
+      },
+      {
+        "test": "grid_8",
+        "reason": "boundary grid contract"
+      },
+      {
+        "test": "wrong_lmax",
+        "reason": "boundary grid contract"
+      },
+      {
+        "test": "wrong_modes",
+        "reason": "candidate mode mismatch"
+      },
+      {
+        "test": "missing_derivative_tail",
+        "reason": "missing differentiated boundary tail"
+      },
+      {
+        "test": "sector_0_total_preserved",
+        "reason": "sector count j=0"
+      },
+      {
+        "test": "sector_1_total_preserved",
+        "reason": "sector count j=1"
+      },
+      {
+        "test": "sector_2_total_preserved",
+        "reason": "sector count j=2"
+      },
+      {
+        "test": "sector_3_total_preserved",
+        "reason": "sector count j=3"
+      },
+      {
+        "test": "sector_4_total_preserved",
+        "reason": "sector count j=4"
+      },
+      {
+        "test": "sector_5_total_preserved",
+        "reason": "sector count j=0"
+      },
+      {
+        "test": "independent_sector_0",
+        "reason": "sector count j=0"
+      },
+      {
+        "test": "independent_sector_1",
+        "reason": "sector count j=1"
+      },
+      {
+        "test": "independent_sector_2",
+        "reason": "sector count j=2"
+      },
+      {
+        "test": "independent_sector_3",
+        "reason": "sector count j=3"
+      },
+      {
+        "test": "independent_sector_4",
+        "reason": "sector count j=4"
+      },
+      {
+        "test": "independent_sector_5",
+        "reason": "sector count j=5"
+      },
+      {
+        "test": "independent_sector_6",
+        "reason": "sector count j=6"
+      },
+      {
+        "test": "sector_dimensions",
+        "reason": "sector count dimensions"
+      },
+      {
+        "test": "public_upper_B_L2",
+        "reason": "public upper: B_L2"
+      },
+      {
+        "test": "public_upper_high_angular_beta",
+        "reason": "public upper: high_angular_beta"
+      },
+      {
+        "test": "public_upper_B_Y",
+        "reason": "public upper: B_Y"
+      },
+      {
+        "test": "public_upper_B_trace",
+        "reason": "public upper: B_trace"
+      },
+      {
+        "test": "public_upper_U_field",
+        "reason": "public upper: U_field"
+      },
+      {
+        "test": "public_upper_dU_field",
+        "reason": "public upper: dU_field"
+      },
+      {
+        "test": "public_upper_A",
+        "reason": "public upper: A"
+      },
+      {
+        "test": "public_upper_C2",
+        "reason": "public upper: C2"
+      },
+      {
+        "test": "public_upper_C3",
+        "reason": "public upper: C3"
+      },
+      {
+        "test": "public_upper_four_C2_Y",
+        "reason": "public upper: four_C2_Y"
+      },
+      {
+        "test": "public_upper_contraction",
+        "reason": "public upper: contraction"
+      },
+      {
+        "test": "public_upper_Y",
+        "reason": "public upper: Y"
+      },
+      {
+        "test": "public_upper_Z",
+        "reason": "public upper: Z"
+      },
+      {
+        "test": "public_lower_curvature_lower",
+        "reason": "public lower: curvature_lower"
+      },
+      {
+        "test": "public_lower_convexity_margin_lower",
+        "reason": "public lower: convexity_margin_lower"
+      },
+      {
+        "test": "public_lower_non_disc_c1_lower",
+        "reason": "public lower: non_disc_c1_lower"
+      },
+      {
+        "test": "public_lower_analytic_univalence_margin_lower",
+        "reason": "public lower: analytic_univalence_margin_lower"
+      },
+      {
+        "test": "public_lower_analytic_radius_lower",
+        "reason": "public lower: analytic_radius_lower"
+      },
+      {
+        "test": "public_lower_unit_derivative_lower",
+        "reason": "public lower: unit_derivative_lower"
+      },
+      {
+        "test": "public_lower_high_angular_gap_lower",
+        "reason": "public lower: high_angular_gap_lower"
+      },
+      {
+        "test": "public_spectral_gauss_error_upper",
+        "reason": "public spectral upper: gauss_error_upper"
+      },
+      {
+        "test": "public_spectral_congruence_gram_defect_upper",
+        "reason": "public spectral upper: congruence_gram_defect_upper"
+      },
+      {
+        "test": "public_spectral_relative_finite_congruence_defect_upper",
+        "reason": "public spectral upper: relative_finite_congruence_defect_upper"
+      },
+      {
+        "test": "public_spectral_schur_relative_bound_upper",
+        "reason": "public spectral upper: schur_relative_bound_upper"
+      },
+      {
+        "test": "public_spectral_full_Dirichlet_inverse_L2_norm_upper",
+        "reason": "public spectral upper: full_Dirichlet_inverse_L2_norm_upper"
+      },
+      {
+        "test": "public_radii_polynomial",
+        "reason": "public radii polynomial"
+      },
+      {
+        "test": "public_complement",
+        "reason": "public complement gap"
+      },
+      {
+        "test": "public_E0_upper",
+        "reason": "public E0 upper"
+      },
+      {
+        "test": "public_E1_upper",
+        "reason": "public E1 upper"
+      },
+      {
+        "test": "coverage_input_stage",
+        "reason": "coverage input stage"
+      },
+      {
+        "test": "coverage_angular_cutoff",
+        "reason": "coverage angular cutoff"
+      },
+      {
+        "test": "coverage_missing_sector",
+        "reason": "missing coverage sector"
+      },
+      {
+        "test": "coverage_wrong_sector",
+        "reason": "coverage sector identity"
+      },
+      {
+        "test": "coverage_missing_guards",
+        "reason": "missing root guards"
+      },
+      {
+        "test": "coverage_wrong_order",
+        "reason": "root angular order"
+      },
+      {
+        "test": "coverage_wide_bracket",
+        "reason": "coverage bracket geometry"
+      },
+      {
+        "test": "coverage_same_signs",
+        "reason": "coverage root endpoint signs"
+      },
+      {
+        "test": "coverage_bad_norm",
+        "reason": "coverage normalization enclosure"
+      },
+      {
+        "test": "coverage_bad_first_flag",
+        "reason": "first-root flag type"
+      },
+      {
+        "test": "coverage_order_zero_first",
+        "reason": "order zero needs lower guard"
+      },
+      {
+        "test": "coverage_lost_lower_guard",
+        "reason": "coverage lower guard"
+      },
+      {
+        "test": "coverage_lost_upper_guard",
+        "reason": "coverage upper guard"
+      },
+      {
+        "test": "coverage_skipped_root",
+        "reason": "coverage skipped or duplicate root"
+      },
+      {
+        "test": "coverage_lost_first_zero",
+        "reason": "first-root coverage"
+      },
+      {
+        "test": "coverage_false_first_guard",
+        "reason": "coverage lower guard"
+      },
+      {
+        "test": "coverage_wrong_window",
+        "reason": "coverage window contract"
+      },
+      {
+        "test": "coverage_forged_counts",
+        "reason": "stored coverage counts differ"
+      },
+      {
+        "test": "coverage_state_replaced_same_counts",
+        "reason": "states differ from all covered in-window roots"
+      },
+      {
+        "test": "scan_bad_stage",
+        "reason": "independent coverage identity"
+      },
+      {
+        "test": "scan_wrong_hash",
+        "reason": "independent coverage identity"
+      },
+      {
+        "test": "scan_wrong_grid",
+        "reason": "independent coverage grid contract"
+      },
+      {
+        "test": "scan_wrong_step",
+        "reason": "independent coverage grid contract"
+      },
+      {
+        "test": "scan_wrong_total",
+        "reason": "independent coverage total/sectors"
+      },
+      {
+        "test": "scan_missing_sector",
+        "reason": "independent coverage total/sectors"
+      },
+      {
+        "test": "scan_zero_sign",
+        "reason": "independent nonzero signs missing"
+      },
+      {
+        "test": "scan_missing_sign",
+        "reason": "independent nonzero signs missing"
+      },
+      {
+        "test": "scan_wrong_sector_id",
+        "reason": "independent sector identity"
+      },
+      {
+        "test": "scan_wrong_change_cell",
+        "reason": "independent sign-change count"
+      },
+      {
+        "test": "root_cell_mismatch",
+        "reason": "independent root-cell mismatch"
+      },
+      {
+        "test": "unresolved_sign_oracle",
+        "reason": "nonfinite/non-Arb bound"
+      },
+      {
+        "test": "zero_sign_oracle",
+        "reason": "unresolved independent sign n=182 k=0"
+      },
+      {
+        "test": "scan_symmetry_guard",
+        "reason": "sign scan symmetry"
+      },
+      {
+        "test": "scan_spacing_guard",
+        "reason": "sign scan zero spacing"
+      },
+      {
+        "test": "scan_high_order_guard",
+        "reason": "sign scan higher-order exclusion"
+      },
+      {
+        "test": "public_conformal_radius",
+        "reason": "public conformal radius"
+      },
+      {
+        "test": "iv_corrupt_moment",
+        "reason": "iv: lo(dstar) > 0"
+      },
+      {
+        "test": "iv_infinite_scale",
+        "reason": "iv: exact decimal required"
+      },
+      {
+        "test": "iv_bad_radius",
+        "reason": "iv contraction target"
+      }
+    ]
+  },
+  "artifacts_sha256": {
+    "analytic_cap.py": "6cddceac9a7f9bb0aa9d409e839935436239f1eea46d7825ad5d4df703c5e665",
+    "boundary_0000_0128.json": "81ef8da5f744a19ded43bd269ea94090c5edfcc9fd294e9b1d3d7acabbaa87d6",
+    "boundary_0000_0128.log": "79d8b544211edbab9197616aa9267b5847fcf826825ed12323edcf639d1a3139",
+    "boundary_0128_0256.json": "42c373552b60bc3e7781b2fc30295d37b587ed348f05aec635c75d03a0f4c8a5",
+    "boundary_0128_0256.log": "a7ad0275a39900e14207ae1042a4bc04efad2561cf5c4adacddd2bc1cf5057ed",
+    "boundary_0256_0384.json": "5ec1a418ed0ab910eda07d3b8213b4d1f60eda5a019a82b5bfcd9809ecc159ee",
+    "boundary_0256_0384.log": "ddf16f198fdfcdf3b00b18536037236c302136384c7da7add8dafb6b8044bc7d",
+    "boundary_0384_0512.json": "a2965eed57c45b54c5c41c3749842a1c5f52d0842d427a5f1ba293547681edb8",
+    "boundary_0384_0512.log": "48152f6df8b6c6d57186f3b6e865fcbce9caea58d5001d4c107fc84eae4d7e34",
+    "boundary_0512_0640.json": "51720615c40f26fd3fcac9c71b7846984777e3083419042e7bc4bce1cb4a28cf",
+    "boundary_0512_0640.log": "99526f0bd0ba61f6259cb1d1847427aefc02db6280aa0f4fb9a6652573b5b472",
+    "boundary_0640_0768.json": "106f35e813619030fefc10f444a83c64bf24e5ec0e2a0770e23c1143aca7d3e6",
+    "boundary_0640_0768.log": "b466d6274e80269e5c14bfe5ab2a767cd069fa1ac2c8a9a5ca43935b1fdcb65b",
+    "boundary_0768_0896.json": "190793878d254f6de11735c2961a385298e545c4c6b344e3b7122cdd1a896d6d",
+    "boundary_0768_0896.log": "d53a6c03fc698a7f21c03409b63aaf01b58451ba0e08e9fb8bada3837bf5c821",
+    "boundary_0896_1024.json": "9b1608b18622a58afb7fe44655f826f319bac2649d7718a88ada326aeb1da203",
+    "boundary_0896_1024.log": "10f108690418c4aa56699818ccf4368d4a719ffe28356fbd47bdc08dcadaddff",
+    "boundary_interval.py": "2d8260168cc473459dba68b63da4e29e42f16e48729c8e497120a4ecbe84b933",
+    "boundary_merge.log": "5de84558c84bdbc7a30db1b8fa8cfcc6a1a6a8ef9d67b9272e444dc3e6077bdb",
+    "boundary_newton.py": "9f15bf3eb07896211038bc5b61d57689235b4cc9e352e0343dcfc0c993604f44",
+    "candidate.json": "694df4c822eb099a9f4909603a4fd5de729399f9f4e29cc4094c11e689e75ed2",
+    "clamped_residual.json": "4d92e44cab00b100324b3ed0f433e3b79d0a1b4d3ac43edd475cc2e0786f1d9c",
+    "coupled_radii.json": "88b519b8eb3d87f9e94365579c596fec8e3973ea6406670fa3b220f0a4a83eb5",
+    "coupled_radii.log": "0fcbbdefea5edbf1697802417753125d9c30ec0860656327a14568b9ea2a94d0",
+    "coverage_checks.py": "c650252874f535302ca2289f5e661b198a1e2d88be021043b0de540e265b150c",
+    "fail_closed_tests.json": "1385c30a3765b164b402eea0d6c289b2add04bbc781b095b24d4653cfe98e452",
+    "final_gates.py": "7935d55b9127c149bee6dce0cf1d6afdab791a3e163d97c0b8a87c56bcff86a7",
+    "identities.log": "c1765f08aa0839a21d423e761e3e64c2d901eba942dd03779e3e8ec1e9e464c3",
+    "identity_checks.json": "b733ae8d4d36f5e6d632dc46f0ee8b7e6089307d4fbea134ff6cefb19cbcd31f",
+    "identity_checks.py": "e2497c940d3eea60267116db3415e80f4f496484eaf752d209d2ec423b974983",
+    "independent_coverage.json": "f6aaa2c4144965a38c4bcbc9bac4c890e9e32e92d0fd2ffff34e304db9dbb0ef",
+    "independent_coverage.log": "9eda90b0cbe685db8cb61a7cee228bfe67b5d2471fb3c4d9b83c914daee2ace1",
+    "negative_controls.py": "f4664b433580f9f95aa02cb023c5db313f58e88c785ed87739bb12735adb9be7",
+    "reference.json": "7d69e98d18214480fb25bae2aae3e9baefcca4039f41b981e35b2a3d5c031673",
+    "scalar_second_iv.json": "8c552b2184f07c87ed84707a30ed3306a414d9f47fc809946436847e3d1fc598",
+    "scalar_second_iv.py": "fb0a020a7b82b95f53a360759169071ea4da601d477423cb93632b790e02a934",
+    "second_interval_scalar.log": "62273be9dedb7bcb72fcff6ca46f6d548a131a871f02fb0078e1333edfdcad92",
+    "spectral_assemble.log": "166d5b339ad49b7d20828e2352a0aeb83091010bb693b6dd4a78b6e57eca4796",
+    "spectral_basis_0000_0024.json": "e1da923126cbb9975b80cd3756ecf9b4139a166d60c8856ad522934675631244",
+    "spectral_basis_0000_0024.log": "46dbf69e4bca7f329c57aa12a79e21732427872857a5cf7045e829419c5d4043",
+    "spectral_basis_0024_0048.json": "8728da143dfc872bf636b202bb9b9f66c412f3e043ee0377b257ba17cee80032",
+    "spectral_basis_0024_0048.log": "c899a23eced2181746e9af6ba3cd4c05206e9981370ee49c0b6f96a024bbeabf",
+    "spectral_basis_0048_0072.json": "6184d45f972fd115d89aafb7a7f55efc20c4d01ee1dc2afcb5a66a8fbfedb8cd",
+    "spectral_basis_0048_0072.log": "d3baf24b62d14d02f47e37ef8c3782531829c415c4f964d768a87e12e7273811",
+    "spectral_basis_0072_0096.json": "11799e8e88634a46b0de1aea55a6fba1177f3efb4bec025e5d1816ef988185dc",
+    "spectral_basis_0072_0096.log": "e97f7efd3bb7216ac1221e5957c3712a184559912dbfccd25b9b81fa9df5e905",
+    "spectral_basis_0096_0120.json": "01486541e809a13c74eed0fbe1adecbb137638661b7a2a903ecfb3de86dab6fc",
+    "spectral_basis_0096_0120.log": "e4169f709d26e8ed141a2058770edbd6e7932d086e3db1ef68fa0183f47d3e68",
+    "spectral_basis_0120_0144.json": "ee781bf91f237dd798ec819387200f68cde8477b8ed7f02bfbf127fc0f65bf72",
+    "spectral_basis_0120_0144.log": "4aeb5d01b14215dfa22528e8263590e0493652402623925344da441c06170242",
+    "spectral_basis_0144_0168.json": "09848644f74028421859a40462e0a93b25b2f1de87ff5e7e16f9a6bb4a6565a8",
+    "spectral_basis_0144_0168.log": "4c22ef07b5e344f56424faa2c2943766bfd23c0feba70f3b580467d4c97d7521",
+    "spectral_basis_0168_0192.json": "b6124a7ed1c19251b7fe0bb6e05bcf9e7ce4c405ab2081b1e8f53d2eefecbb71",
+    "spectral_basis_0168_0192.log": "78e0e97879fc6676629596fc46adbe0643318b2e54d871261986cec80a199981",
+    "spectral_basis_0192_0216.json": "31abfa1657593e5607a934c64097f1c9d505fc8934fde2b2edf37cf975408244",
+    "spectral_basis_0192_0216.log": "79855b344e12b404c01345f7fb73b19f316f21e359c8ba4db4e72133dc301901",
+    "spectral_basis_0216_0240.json": "8ca83c756df584f265c5d09bad4a40da84ba3a76c0906edefe535851227b1cf4",
+    "spectral_basis_0216_0240.log": "5996fec8b8c65faba013f7caafaf5522ff9beb9d53c03cefa8761597d07b8353",
+    "spectral_basis_0240_0264.json": "0dba3f0c05ccf4fc008b137f9a9b0fe8a1e0b5ef9c8fef2bde475da4ce872e19",
+    "spectral_basis_0240_0264.log": "4d1fe7cdc3f0bd208becebf9e32c02989e8cd0a6848f62abc139b625be2b5922",
+    "spectral_basis_0264_0288.json": "9a83036454a960a182f3b3498074e8aafdecc0ea8f07cfe1d2b135438e57bf88",
+    "spectral_basis_0264_0288.log": "3a98c4770e1f0d81666ec2149114df9a1bc7de464f9d58cb293df5e4810b6ce7",
+    "spectral_basis_0288_0312.json": "a04d3223d610055e0e651c070406ebbd68fda39e8d28b68b3e73bbeab2cb0b32",
+    "spectral_basis_0288_0312.log": "e4318361ca68edeeb2ff7d3c4b5fdd4aa736336200a245870a008a1330b1e048",
+    "spectral_basis_0312_0336.json": "9253a4f460d2e870aa9f03789bd5358cd2650304b56d6a105c3152d8f43b24ec",
+    "spectral_basis_0312_0336.log": "1971e1e07e438048d09c4de23a6ee2bdc05469be6c5e20885d6cf31fdb4607f6",
+    "spectral_basis_0336_0360.json": "0cc052dac5d884507f12c19c2c282d99812458a036561a46661e634e39f87fd4",
+    "spectral_basis_0336_0360.log": "5f59353a533422ffb95bf3a4bfbe78c9c0f9bea6fb68707612f7a92ddb88ed88",
+    "spectral_basis_0360_0384.json": "2c84eefdfc39740f0b915855282da022670b7b3374749b41c652bb2c817601d9",
+    "spectral_basis_0360_0384.log": "aa725686dd51ade9da8f1d1cef7cd1f1e3aa1d4d77fcc1451fd94c740a4b4024",
+    "spectral_basis_0384_0408.json": "66655b64df295c777bc8d8b5929c7c5261e5dacd24a46541a05c4757ea6675c1",
+    "spectral_basis_0384_0408.log": "7f6e12ccafd0faa1c997b9b6cea992bc378842b692c9fc90af9f85a6d5620800",
+    "spectral_inputs.json": "e728d0f90ab002552adc26282b39e70e7212a3b230603ac2fb7516426d2d94b5",
+    "spectral_interval.py": "7c9f825d59b2c8cd05c214a0aa4fe1eabf32af9421516dceaf377138c7e78b3f",
+    "spectral_inverse.json": "361e1a7f119fe9df5c808b8776ebbfbd3370cceac7e539f7576fab549bbc2955",
+    "spectral_prepare.log": "39653b1f10c23ba0e4683f15d2983acb462758617b448d86a88e85a03605ebdd"
+  }
+}

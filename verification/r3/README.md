@@ -82,7 +82,7 @@ arithmetic that `ψ°'(1) = Σ j c°_j ∈ (42.81903, 42.81904)` and
 existence ball `Σ j (21/20)^j |c_j − c°_j| ≤ r/(3b)`, `r = 3·10⁻⁷`, it follows
 that `ψ_c'(1) > 0`, `ψ_c'(1) + ψ_c''(1) < −7.758` and
 `1 + ψ_c''(1)/ψ_c'(1) < −0.181`, so that both principal curvatures of `∂Ω` at
-the two poles are negative (paper, Theorem 1.1(iv)). It prints
+the two poles are negative (paper, Proposition 21.27). It prints
 `NONCONVEX_AT_POLES_VERIFIED` and runs in a fraction of a second.
 
 ## The certificate
@@ -127,13 +127,9 @@ polynomial `< −4.8199·10⁻⁹`; contraction bound `< 0.95921`; derivative ma
 columns, 91 radial and 1 angular infinite field classes, 260 explicit shape
 columns, and all shape columns from index 521 on by the far-shape bound.
 
-## Review notes
+## Technical notes
 
-An internal review of this package (mathematics, code, numerics) found no
-gap. It recorded the following cosmetic points; none of them affects the
-certificate.
-
-Written proof (taken into account in the paper):
+Written proof:
 
 1. The τ-norm of `q`, `q_x`, `q_y/y`, grouped by degree, is taken equal to the
    raw Chebyshev-weighted sum. This uses that the Legendre coefficients of the
@@ -141,12 +137,11 @@ Written proof (taken into account in the paper):
    nonnegative. This holds because their generating functions are the second
    and fourth powers of the Legendre generating function
    `(1 − 2xt + t²)^(−1/2)`, and products of Legendre polynomials have
-   nonnegative Legendre coefficients (Gaunt); the reviewer also checked it
-   exactly for `n ≤ 200`.
+   nonnegative Legendre coefficients (Gaunt)..
 2. Proof of `h_{ℓ+1} ≤ R h_ℓ`: write `R h_ℓ − h_{ℓ+1} = Σ_j δ_j R^{n_j}`,
    where only the lowest-frequency coefficient `δ_j` is negative and
    `Σ_j δ_j = 0` (the identity at `R = 1`); hence the sum is `≥ 0` for
-   `R ≥ 1`. (Checked numerically for `ℓ ≤ 2600`.)
+   `R ≥ 1`.
 3. Quadrature: the replay uses 697 radial Gauss–Legendre nodes (exact to
    degree 1393) and 542 angular nodes (exact to degree 1083). The integrands
    have radial degree at most 850 + 540 + 2 = 1392 and angular degree at most
@@ -156,9 +151,7 @@ Written proof (taken into account in the paper):
    regularity theorem of Morrey–Nirenberg (analytic boundary, constant
    Dirichlet data) rather than a brief Cauchy–Kovalevskaya argument. The main
    theorem only needs `u ∈ C¹(Ω̄)`, analytic in `Ω`.
-5. Typesetting of `{\rm even}` in norm definitions of the working notes.
-
-Code (the verifier is hash-frozen, so these were documented, not changed):
+Frozen code:
 
 6. `coeff3_native.c`: the return value of `arb_set_str` is not checked in
    `vec_linear` and `projection_prepare`. All strings parse correctly: the
@@ -192,7 +185,7 @@ Numerics and geometry:
     existence ball, is proved in the paper from the exact values checked by
     `check_nonconvex_r3.py` (added after the review; the verifier is
     unchanged).
-12. Independent recomputations by the reviewers: field-tail envelope for the
+12. Recorded independent recomputations: field-tail envelope for the
     class `(46,65)` `0.858929`, angular class `0.832893`, output tail of the
     finite columns `0.718703`, far shape bound `0.80361` (certificate:
     `0.80368`); at the centre, the residual `F/b` is about `10⁻¹⁸`, and

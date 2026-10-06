@@ -1,0 +1,14 @@
+{
+  "dimensions": {
+    "11": {
+      "receipt": "n11/VERIFICATION_RECEIPT.json",
+      "receipt_sha256": "c7534acd7bc76a733f3c58131b2cb79e598e19a33b8b4494b45514d8d926868b",
+      "seconds": 370.25638337712735,
+      "status": "PROVED"
+    }
+  },
+  "payload_sha256": "f2770d8b604e4e0f27f90b45fba2640582ba18ccfeffce6d158ce78ebbec6574",
+  "seconds": 378.09874061122537,
+  "status": "PROVED",
+  "verifier_sha256": "b33fd6c7e9d72a283c9f752ec55b8e1d4dec48b132872759ac4a32553d1e3940"
+}

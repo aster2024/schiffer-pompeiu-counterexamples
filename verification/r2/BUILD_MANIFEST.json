@@ -1,0 +1,14 @@
+{
+  "spectral_interval.py": "7c9f825d59b2c8cd05c214a0aa4fe1eabf32af9421516dceaf377138c7e78b3f",
+  "analytic_cap.py": "6cddceac9a7f9bb0aa9d409e839935436239f1eea46d7825ad5d4df703c5e665",
+  "boundary_interval.py": "2d8260168cc473459dba68b63da4e29e42f16e48729c8e497120a4ecbe84b933",
+  "boundary_newton.py": "9f15bf3eb07896211038bc5b61d57689235b4cc9e352e0343dcfc0c993604f44",
+  "identity_checks.py": "e2497c940d3eea60267116db3415e80f4f496484eaf752d209d2ec423b974983",
+  "coverage_checks.py": "c650252874f535302ca2289f5e661b198a1e2d88be021043b0de540e265b150c",
+  "scalar_second_iv.py": "fb0a020a7b82b95f53a360759169071ea4da601d477423cb93632b790e02a934",
+  "final_gates.py": "7935d55b9127c149bee6dce0cf1d6afdab791a3e163d97c0b8a87c56bcff86a7",
+  "negative_controls.py": "f4664b433580f9f95aa02cb023c5db313f58e88c785ed87739bb12735adb9be7",
+  "candidate.json": "694df4c822eb099a9f4909603a4fd5de729399f9f4e29cc4094c11e689e75ed2",
+  "reference.json": "7d69e98d18214480fb25bae2aae3e9baefcca4039f41b981e35b2a3d5c031673",
+  "verify_planar_convex_v2.py": "ed4f65a5d5a31ee86bfe6c8c742ea86ba76f4cdb888b3c8fb70b53b8334e7226"
+}

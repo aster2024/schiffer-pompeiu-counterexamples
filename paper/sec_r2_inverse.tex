@@ -1,0 +1,492 @@
+\part{The plane}\label{r2:part}
+\section{Function spaces and the Dirichlet inverse}\label{r2:sec:inverse}
+In this part $m=182$, $p=\psi'$, and $W$ is the holomorphic shape space; $Y$ is the real invariant field space and $K$ is the zero-Dirichlet Poisson inverse, restricted to its clamped range when acting on $X_g$. These symbols are local: in later parts $W$ may denote a Weyl group, $Y$ a residual bound, and $K$ a compatible inverse in a coefficient space. In the spectral subsection $\rho$ is the radius of the reference shape; thereafter it is the radius of the forty-mode centre, rather than the angular coefficient weight used in the Cartan reductions.
+
+\subsection{Conformal formulation and Banach spaces}\label{r2:sec:spaces}
+
+\subsubsection{Pull-back to the disc}
+Identify $\R^2$ with $\C$. For a holomorphic univalent map $\psi$ with derivative $p$, conformal covariance of the Laplacian gives
+\begin{equation}\label{r2:eq:covariance}
+ \Delta_w(u\circ\psi)=|p|^2(\Delta_z u)\circ\psi.
+\end{equation}
+Along the unit circle the vector $w p(w)$ points in the outward normal direction to the image boundary and has length $|p(w)|$. Hence, for $U=u\circ\psi$,
+\[
+ U=1,\quad\partial_rU=0\quad\text{on }\partial\D
+ \quad\Longleftrightarrow\quad
+ u=1,\quad\partial_\nu u=0\quad\text{on }\partial\Omega.
+\]
+The pulled-back equation is $\Delta U+|p|^2U=0$. We encode both boundary conditions in the field space before solving the equation.
+
+Throughout the construction set
+\begin{equation}\label{r2:eq:weight}
+ m=182,\qquad R=2^{1/m},\qquad R^{jm}=2^j.
+\end{equation}
+For a continuous function on $\overline\D$ with angular coefficients $f_n(r)$, define
+\begin{equation}\label{r2:eq:Ycal}
+ f(r,\theta)=\sum_{n\in\Z}f_n(r)e^{in\theta},\qquad
+ \nrm{f}_{\Yc}=\sum_{n\in\Z}R^{|n|}\sup_{0\le r\le1}|f_n(r)|.
+\end{equation}
+The coefficients must have the origin compatibility of a continuous Cartesian function. In particular, $f_n(0)=0$ for $n\ne0$. The space $\Yc$ consists of those functions for which~\eqref{r2:eq:Ycal} is finite. Let $Y$ be its real $D_m$-invariant subspace. Its only frequencies are $n\in m\Z$, and its coefficients satisfy $f_{-n}=f_n\in\R$.
+
+\begin{lemma}\label{r2:lem:algebra}
+The spaces $\Yc$ and $Y$ are Banach spaces, and
+\begin{equation}\label{r2:eq:algebra}
+ \nrm{fh}_{\Yc}\le\nrm{f}_{\Yc}\nrm{h}_{\Yc}.
+\end{equation}
+The boundary trace has norm at most one into the Laurent coefficient space with norm $\sum_nR^{|n|}|f_n(1)|$.
+\end{lemma}
+\begin{proof}
+The weighted sum in~\eqref{r2:eq:Ycal} gives uniform convergence of the angular series. A Cauchy sequence converges in each radial coefficient in $C([0,1])$ and in the weighted sum of these coefficient norms. The limit is uniform on the closed disc, so it preserves Cartesian continuity and origin compatibility. The reality and symmetry conditions are closed. For products, absolute convergence gives
+\[
+ (fh)_n=\sum_k f_kh_{n-k},\qquad
+ R^{|n|}\le R^{|k|}R^{|n-k|}.
+\]
+Taking radial suprema and summing proves~\eqref{r2:eq:algebra}. The trace estimate follows coefficient by coefficient.
+\end{proof}
+
+The shape derivative belongs to the real-coefficient holomorphic space
+\begin{equation}\label{r2:eq:W}
+ W=\left\{p(w)=\sum_{j\ge0}p_jw^{jm}:p_j\in\R,
+ \quad\nrm{p}_W=\sum_{j\ge0}2^j|p_j|<\infty\right\}.
+\end{equation}
+Every $p\in W$ is holomorphic on $|w|<R$ and continuous on its closure. As an element of $\Yc$ on the unit disc it has norm exactly $\nrm{p}_W$. We normalise its primitive by
+\begin{equation}\label{r2:eq:primitive}
+ \psi(w)=\int_0^w p(z)\,dz
+ =\sum_{j\ge0}c_jw^{jm+1},\qquad
+ c_j=\frac{p_j}{jm+1}.
+\end{equation}
+The shape space fixes the origin, the orientation, and the reflection symmetry.
+
+We also need one angular derivative of boundary data. For a Laurent series set
+\begin{equation}\label{r2:eq:Wone}
+ \nrm{h}_{W_1}=\sum_{n\in\Z}R^{|n|}(1+|n|)|h_n|.
+\end{equation}
+The holomorphic version uses only nonnegative indices. Both retain the analytic weight. If $W_0$ denotes the same coefficient norm without $1+|n|$, then
+\[
+ \nrm{h}_{W_1}=\nrm{h}_{W_0}+\nrm{\partial_\theta h}_{W_0}.
+\]
+The inequalities $R^{|n+k|}\le R^{|n|}R^{|k|}$ and $1+|n+k|\le(1+|n|)(1+|k|)$ show that $W_1$ is a Banach algebra. We use the same notation for a holomorphic series and its boundary values when the norm is identical.
+
+\subsubsection{The clamped range of the Laplacian}
+Let $K$ denote the zero-Dirichlet inverse of $\Delta$ on the disc. Define the closed real subspace
+\begin{equation}\label{r2:eq:Xg}
+ X_g=\left\{g\in Y:
+ \int_0^1 r^{|n|+1}g_n(r)\,dr=0
+ \quad(n\in m\Z)\right\}.
+\end{equation}
+Each moment is a bounded functional, so this common kernel is closed.
+
+\begin{lemma}\label{r2:lem:Poisson}
+For $g\in Y$, the zero-Dirichlet solution $v=Kg$ satisfies
+\begin{equation}\label{r2:eq:Poisson}
+ \nrm{Kg}_{\Yc}\le\frac14\nrm{g}_Y,\qquad
+ \partial_rv_n(1)=\int_0^1r^{|n|+1}g_n(r)\,dr.
+\end{equation}
+Consequently $g\in X_g$ if and only if $Kg$ has zero Neumann trace.
+\end{lemma}
+\begin{proof}
+For $n\ge0$, the positive Green kernel of $-\Delta_n$, with radial measure $s\,ds$, is
+\[
+ G_n(r,s)=\frac{(a/b)^n-(ab)^n}{2n}\quad(n>0),\qquad
+ G_0(r,s)=-\log b,
+ \quad a=\min(r,s),\ b=\max(r,s).
+\]
+The formula at $r=0$ is understood by continuity. Since
+\[
+ 0\le G_n(r,s)\le\frac{1-b^{2n}}{2n}\le-\log b,
+ \qquad\int_0^1G_0(r,s)s\,ds=\frac{1-r^2}{4},
+\]
+the supremum norm of each radial inverse is at most $1/4$. Summing with the angular weights proves the norm bound. The $n$th radial equation is
+\[
+ v_n''+\frac1r v_n'-\frac{n^2}{r^2}v_n=g_n.
+\]
+After multiplication by $r^{|n|+1}$ the left side is the derivative of $r^{|n|+1}v_n'-|n|r^{|n|}v_n$. This function tends to zero as $r\to0$ for the regular solution, and $v_n(1)=0$. Integration over $[0,1]$ therefore gives
+\[
+ \int_0^1r^{|n|+1}g_n(r)\,dr
+ =v_n'(1)-|n|v_n(1)=v_n'(1).
+\]
+Continuous right sides give $v\in W^{2,s}(\D)$ for every finite $s$, hence $v\in C^1(\overline\D)$ by taking $s>2$. Consequently $v_n'(1)$ is the $n$th Fourier coefficient of the Neumann trace $\partial_rv|_{r=1}$, and the identity just proved gives its Fourier expansion. Since $|v_n'(1)|\le\sup|g_n|/(|n|+2)$, the trace series is absolutely convergent. The Neumann trace therefore vanishes if and only if every moment in~\eqref{r2:eq:Xg} vanishes, which is the last assertion.
+\end{proof}
+
+\subsubsection{The cubic equation}
+We work on real Banach spaces
+\begin{equation}\label{r2:eq:X}
+ X=X_g\times W,\qquad
+ \nrm{(h,k)}_X=\nrm{h}_Y+\nrm{k}_W,
+ \qquad F\colon X\longrightarrow Y,
+ \quad F(g,p)=g+|p|^2(1+Kg).
+\end{equation}
+The algebra estimate makes $F$ a continuous cubic polynomial map. For any zero set $U=1+Kg$. Lemma~\ref{r2:lem:Poisson} gives its exact boundary data, while $F=0$ gives
+\begin{equation}\label{r2:eq:fixed-disc}
+ \Delta U+|p|^2U=0\quad\text{in }\D,
+ \qquad U=1,\quad\partial_rU=0\quad\text{on }\partial\D.
+\end{equation}
+Univalence and strict convexity are proved for every shape in the final ball, after existence has been established in $X$.
+
+We distinguish two fixed shapes. The eight-mode reference $p_{\rm ref}$ is used only to compute the Dirichlet spectral inverse in Subsection~\ref{r2:sec:spectrum}. The forty-mode shape $p_0$ defines the clamped centre and every subsequent nonlinear constant. Their proximity transfers the reference inverse to $p_0$ at the end of Subsection~\ref{r2:sec:spectrum}. The exact shape $p$ supplied by the contraction is a third object. The finite arrays specify the first two objects, while the contraction specifies the last.
+
+\subsection{The Dirichlet operator in the symmetric sector}\label{r2:sec:spectrum}
+
+This section constructs an inverse of $L_{\rm ref}=\Delta+|p_{\rm ref}|^2$ in the real even $D_m$ sector and transfers it to $L=\Delta+|p_0|^2$. In the spectral construction only, abbreviate
+\[
+ p=p_{\rm ref},\qquad \rho=p_{{\rm ref},0},\qquad
+ q=|p|^2,\qquad V=q-\rho^2.
+\]
+The $L^2$ measure is $r\,dr\,d\theta/(2\pi)$. All projections and operators in this section act inside that invariant sector.
+
+\subsubsection{The spectral window}
+Let $a_{j,k}$ denote the positive zeros of $J_{jm}$ in increasing order. An orthonormal Dirichlet basis is
+\begin{equation}\label{r2:eq:basis}
+ b_{j,k}(r)\chi_j(\theta),\qquad
+ b_{j,k}(r)=\frac{\sqrt2 J_{jm}(a_{j,k}r)}{|J_{jm+1}(a_{j,k})|},
+ \quad \chi_0=1,\quad\chi_j=\sqrt2\cos(jm\theta)\ (j>0).
+\end{equation}
+Indeed, the angular factors are orthonormal, and integration of the Bessel equation and its parameter derivative gives
+\[
+ \int_0^1rJ_n(ar)^2\,dr=\frac{J_{n+1}(a)^2}{2}\quad(J_n(a)=0).
+\]
+The usual Dirichlet spectral decomposition on the disc establishes completeness. The potential $V$ preserves this sector.
+
+Let $\PP$ be the projection onto all basis states with
+\begin{equation}\label{r2:eq:window}
+ |a_{j,k}-\rho|<160,
+\end{equation}
+and set $\QQ=I-\PP$. Complete zero enumeration gives the counts in Table~\ref{r2:tab:zeros}; their sum is $408$.
+\begin{table}[htbp]
+\centering
+\begin{tabular}{c rrrrrrr}
+\toprule
+Angular order & $0$ & $182$ & $364$ & $546$ & $728$ & $910$ & $1092$\\
+States in the window & $102$ & $99$ & $91$ & $74$ & $37$ & $5$ & $0$\\
+\bottomrule
+\end{tabular}
+\caption{The complete symmetric-sector spectral window. All higher angular orders have no state in the window.}\label{r2:tab:zeros}
+\end{table}
+
+\begin{lemma}\label{r2:lem:zero-coverage}
+The interval sign and spacing tests described below enumerate every state of~\eqref{r2:eq:window}. The independent quarter-step sign grid gives the same enumeration without using the root proposals.
+\end{lemma}
+\begin{proof}
+For integer $n\ge0$, put $y(x)=\sqrt{x}J_n(x)$. The Bessel equation becomes
+\begin{equation}\label{r2:eq:Sturm}
+ y''+Q_n(x)y=0,\qquad Q_n(x)=1-\frac{n^2-1/4}{x^2}.
+\end{equation}
+If $y$ vanishes at $a<b$ and $Q_n\le Q_{\max}$ on $[a,b]$, integration by parts and Wirtinger's inequality imply
+\[
+ \frac{\pi^2}{(b-a)^2}\int_a^b y^2
+ \le\int_a^b(y')^2=\int_a^bQ_ny^2
+ \le Q_{\max}\int_a^b y^2.
+\]
+Hence two distinct zeros of $y$ in an interval on which $Q_n\le Q_{\max}$ are separated by at least $\pi/\sqrt{Q_{\max}}$. Since $Q_n(x)\le5/4$ for $x\ge1$ and every integer $n\ge0$, zeros in $x\ge1$ are separated by more than $2.8$. Each proposed root is enclosed by opposite signs at exact offsets $\pm2^{-220}$ from its exact midpoint. Its left endpoint is checked to exceed $1$ and its width to be less than $1/10$, so the bracket contains exactly one root. For successive brackets, the distance between the outer endpoints is checked to be less than $2\pi/\sqrt{Q_{\max}}$, where $Q_{\max}$ is the maximum of $Q_n$ between those endpoints. A further root between the two enclosed roots would require the opposite inequality. Guard roots on both sides cover the endpoints of the window.
+
+There is a separate initial check when the angular order lies above the lower endpoint of the window. For $n>0$, the positive leading power of $J_n$ gives $J_n,J_n'>0$ near zero. A first zero of $J_n'$ in $(0,n)$ while $J_n>0$ would satisfy
+\[
+ J_n''=(n^2/x^2-1)J_n>0,
+\]
+which is incompatible with a first crossing from positive derivative. A first zero of $J_n$ is then also impossible. The limiting values at $n$ give $y(n),y'(n)>0$. Comparison in~\eqref{r2:eq:Sturm} with the constant coefficient $Q_{\max}$ places the first subsequent zero at distance at least $\pi/(2\sqrt{Q_{\max}})$ from $n$. A hidden first zero before the proposed one would place the latter at distance at least $3\pi/(2\sqrt{Q_{\max}})$; the reverse strict inequality is checked. For $n\ge1092>\rho+160$, positivity up to $n$ excludes the entire window.
+
+For the second enumeration, use again the universal bound
+\[
+ Q_n(x)\le\frac54\quad(x\ge1),\qquad
+ \frac{\pi}{\sqrt{5/4}}>2.8.
+\]
+Every cell of length $1/4$ in $x\ge1$ therefore contains at most one zero. Positive zeros are simple by uniqueness for the Bessel ODE. Nonzero endpoint signs determine whether the cell contains one zero or none. Evaluate the signs at the $1281$ exact points
+\begin{equation}\label{r2:eq:sign-grid}
+ x_k=\rho-160+k/4,\qquad 0\le k\le1280,
+\end{equation}
+for $n=0,182,364,546,728,910,1092$. Increasing precision until the sign is resolved yields Table~\ref{r2:tab:zeros}. The positivity argument excludes all remaining orders. Finally, each root bracket from the first method must lie in a distinct sign-changing cell of the second method. Equality of the reconstructed state lists establishes agreement at the level of individual roots, as well as total and sector counts.
+\end{proof}
+
+\subsubsection{Matrix entries and certified quadrature}
+On the $408$-dimensional range of $\PP$, form
+\begin{equation}\label{r2:eq:matrices}
+ B=\PP V\PP,\qquad B_2=\PP V^2\PP,\qquad
+ H=\diag(a_{j,k}^2-\rho^2)-B.
+\end{equation}
+These are exact matrices, evaluated through enclosures. If $p(w)=\sum p_jw^{jm}$ is the eight-mode reference, write
+\begin{align*}
+ q_h(r)&=\sum_{k\ge0}p_{k+h}p_kr^{(2k+h)m}\quad(h>0),\\
+ q_0(r)&=\sum_{k>0}p_k^2r^{2km}.
+\end{align*}
+Then $V=q_0+\sum_{h>0}2q_h\cos(hm\theta)$; absent coefficients are zero. The Fourier coefficients of $V^2$ are the full finite convolution over both positive and negative indices. With the angular normalisation in~\eqref{r2:eq:basis}, the angular integrals of multiplication by $V$ are
+\[
+ q_0\quad(0,0),\qquad
+ \sqrt2q_j\quad(0,j),\qquad
+ q_{|i-j|}+q_{i+j}\quad(i,j>0).
+\]
+The same formulas applied to the convolved coefficients give the entries of $B_2$. Thus the remaining integrations are one-dimensional radial integrals.
+
+Use $N_G=1536$ Gauss--Legendre nodes on $[-1,1]$. Each is enclosed as a sign-changing bracket of the Legendre polynomial $P_{N_G}$; the disjoint brackets and the degree prove that all nodes are covered. At a true node $x_i$, the weight is
+\[
+ w_i=\frac{2}{(1-x_i^2)P_{N_G}'(x_i)^2}.
+\]
+The identities
+\[
+ (x^2-1)P_{N_G}'=N_G(xP_{N_G}-P_{N_G-1}),\qquad
+ \max_{[-1,1]}|P_{N_G}''|
+ =\frac{(N_G-1)N_G(N_G+1)(N_G+2)}8
+\]
+bound evaluation at the unknown true root from evaluation at its enclosing midpoint. The transformed radial node is $r_i=(1+x_i)/2$, with radial measure factor $w_i r_i/2$.
+
+The Bessel values at exact midpoint arguments are enclosed at $2048$ bits. For real arguments and integer order, the integral representation implies $|J_n'|\le1$. It therefore bounds the additional uncertainty in arguments arising from enclosed roots and nodes. A binary64 value exported for matrix assembly is interpreted as an exact dyadic number, accompanied by a verified row error; the resulting matrix enclosure includes that error and the quadrature error.
+
+For completeness, the quadrature majorant is explicit. On the Bernstein ellipse of parameter $2$ in $x=2r-1$,
+\[
+ |r|\le9/8,\qquad |\im r|\le3/8,
+ \qquad |J_n(ar)|\le e^{a|\im r|}.
+\]
+Set
+\[
+ P_e=\sum_j|p_j|(9/8)^{jm},\qquad V_e=P_e^2+\rho^2,
+ \qquad b_* =\min|J_{jm+1}(a_{j,k})|,\qquad a_{\max}=\max a_{j,k},
+\]
+where the minimum and the maximum are taken over the $408$ states of the window~\eqref{r2:eq:window}; in particular $a_{\max}<\rho+160$. The common bound
+\begin{equation}\label{r2:eq:ellipse-majorant}
+ M_e=8(1+9/8)(1+V_e^2)e^{3a_{\max}/4}/b_*^2
+\end{equation}
+dominates every integrand for $B$ and $B_2$, including the radial measure, both basis normalisations and angular factors. Its analytic Chebyshev coefficients have absolute value at most $2M_e2^{-k}$. Truncate at degree $2N_G-1$. The Gauss rule is exact on that polynomial, and both the integral and the positive quadrature rule have total mass two. The error is therefore at most
+\begin{equation}\label{r2:eq:Gauss-error}
+ 4\sum_{k\ge2N_G}2M_e2^{-k}=16M_e2^{-2N_G}.
+\end{equation}
+This error is added to every matrix entry, before any inverse estimate is made.
+
+\subsubsection{The entire complement}
+Let $s=\sum_{j>0}|p_j|$ and define
+\begin{equation}\label{r2:eq:complement-gap}
+ v_* =2\rho s+s^2,\qquad
+ g_*=160(2\rho-160),\qquad\gamma=g_*-v_*.
+\end{equation}
+Here $\nrm{V}_\infty\le v_*$. On the complementary Dirichlet operator domain set
+\[
+ D_Q=\QQ(-\Delta-\rho^2)\QQ,\qquad
+ M_Q=D_Q-\QQ V\QQ.
+\]
+The operator $D_Q$ is generally indefinite. Its spectrum nonetheless has a two-sided gap of size $g_*$. For a root $a\le\rho-160$, put $t=\rho-a$; then $t\in[160,\rho)$ and
+\[
+ |a^2-\rho^2|=t(2\rho-t)\ge160(2\rho-160).
+\]
+For $a\ge\rho+160$ the corresponding bound is $160(2\rho+160)$, which is larger. Thus $D_Q^{-1}$ is bounded with norm at most $1/g_*$. If $\gamma>0$, the factorization
+\begin{equation}\label{r2:eq:unbounded-factor}
+ M_Q=(I-\QQ V\QQ D_Q^{-1})D_Q
+\end{equation}
+on the domain of $D_Q$ has an invertible bounded first factor, by its Neumann series. Consequently
+\begin{equation}\label{r2:eq:M-inverse}
+ \nrm{M_Q^{-1}}\le1/\gamma.
+\end{equation}
+This argument uses a gap in absolute spectral value, not positivity of $M_Q$.
+
+The following identity is the reason no further complementary radial enumeration is required:
+\begin{equation}\label{r2:eq:Gram}
+ G:=B_2-B^2
+  =\PP V(\PP+\QQ)V\PP-(\PP V\PP)^2
+  =(\QQ V\PP)^*(\QQ V\PP)\succeq0.
+\end{equation}
+It holds for the full orthogonal complement $\QQ$. In particular, positivity is an analytic property of the exact matrix $G$, even when its numerical enclosure has small entrywise uncertainty.
+
+\begin{proposition}[Schur complement estimate]\label{r2:prop:Schur}
+Assume that $\gamma>0$ in~\eqref{r2:eq:complement-gap}. Let $C$ be a real $408\times408$ matrix and $D$ a real diagonal matrix of the same size with nonzero diagonal entries $D_i$, and suppose that the numbers $\eps_C$, $\eps$ and $\eta$ satisfy
+\begin{align}
+ \nrm{C^TC-I}_\infty&\le\eps_C<1,\label{r2:eq:C-defect}\\
+ \nrm{|D|^{-1/2}(C^THC-D)|D|^{-1/2}}_\infty&\le\eps,\label{r2:eq:H-defect}\\
+ \frac{\tr(|D|^{-1}C^TGC)}{\gamma}&\le\eta,
+ \qquad\eps+\eta<1.\label{r2:eq:eta}
+\end{align}
+Then $L_{\rm ref}$, with its Dirichlet domain in the symmetric sector, has a bounded inverse on $L^2$, and
+\begin{align}
+ \nrm{L_{\rm ref}^{-1}}_{L^2\to L^2}
+ &\le B_{\rm ref}:=\left(1+(v_*/\gamma)^2\right)S_*+1/\gamma,
+ \label{r2:eq:BLref}\\
+ S_*&:=\frac{1+\eps_C}{\min_i|D_i|(1-\eps-\eta)}.\label{r2:eq:S-bound}
+\end{align}
+\end{proposition}
+\begin{proof}
+\emph{The block form.}
+The range of $\PP$ is spanned by finitely many Dirichlet eigenfunctions, so it lies in the operator domain of $L_{\rm ref}$, and $\PP$ commutes with $\Delta$ on that domain. Consequently $\QQ$ maps the operator domain into itself, and the operator domain is the direct sum of the range of $\PP$ and the domain of $D_Q$. For $u=u_P+u_Q$ in this decomposition, $\PP(-\Delta-\rho^2)u_Q=0$ and $\QQ(-\Delta-\rho^2)u_P=0$. Hence
+\[
+ -L_{\rm ref}=\begin{pmatrix}H&b^*\\b&M_Q\end{pmatrix},
+ \qquad b=-\QQ V\PP,\quad b^*=-\PP V\QQ,
+\]
+where $\nrm b\le\nrm V_\infty\le v_*$. The operator $D_Q$ is self-adjoint and diagonal in the basis~\eqref{r2:eq:basis}, and $\QQ V\QQ$ is bounded and symmetric. Thus $M_Q$ is self-adjoint on the domain of $D_Q$, and its inverse, which exists by~\eqref{r2:eq:unbounded-factor}, is bounded and self-adjoint. The Schur complement
+\[
+ S=H-b^*M_Q^{-1}b
+\]
+is a real symmetric matrix on the range of $\PP$.
+
+\emph{The Schur complement.}
+Both defect matrices in~\eqref{r2:eq:C-defect} and~\eqref{r2:eq:H-defect} are symmetric. Their $\ell^2$ operator norms are therefore bounded by their maximum row sums. The first defect makes $C^TC$, and hence the square matrix $C$, invertible, and gives $\nrm C^2\le1+\eps_C$. Set $X_Q=bC|D|^{-1/2}$. By~\eqref{r2:eq:Gram}, $X_Q^*X_Q=|D|^{-1/2}C^TGC|D|^{-1/2}$ is positive semidefinite, so its norm is at most its trace $\tr(|D|^{-1}C^TGC)$. With~\eqref{r2:eq:M-inverse} and~\eqref{r2:eq:eta},
+\[
+ \nrm{X_Q^*M_Q^{-1}X_Q}
+ \le\gamma^{-1}\nrm{X_Q^*X_Q}
+ \le\eta.
+\]
+The normalised Schur matrix is
+\[
+ |D|^{-1/2}C^TSC|D|^{-1/2}
+ =\operatorname{sgn}(D)
+ +|D|^{-1/2}(C^THC-D)|D|^{-1/2}-X_Q^*M_Q^{-1}X_Q,
+\]
+that is, $\operatorname{sgn}(D)$ plus a perturbation of norm at most $\eps+\eta<1$. Since $\operatorname{sgn}(D)$ is an isometry, the normalised Schur matrix is invertible and its inverse has norm at most $(1-\eps-\eta)^{-1}$. Undoing the congruence,
+\[
+ S^{-1}=C|D|^{-1/2}\bigl(|D|^{-1/2}C^TSC|D|^{-1/2}\bigr)^{-1}|D|^{-1/2}C^T,
+ \qquad\nrm{S^{-1}}\le S_*,
+\]
+with $S_*$ as in~\eqref{r2:eq:S-bound}. The signs of $D$ are retained throughout; no definiteness of $H$ or of $S$ is used.
+
+\emph{The block inverse.}
+For $f=f_P+f_Q$ in $L^2$, put
+\[
+ u_P=S^{-1}\bigl(f_P-b^*M_Q^{-1}f_Q\bigr),\qquad
+ u_Q=M_Q^{-1}(f_Q-bu_P).
+\]
+Then $u_Q$ lies in the domain of $D_Q$, so $u=u_P+u_Q$ lies in the operator domain, and
+\[
+ Hu_P+b^*u_Q=Su_P+b^*M_Q^{-1}f_Q=f_P,\qquad bu_P+M_Qu_Q=f_Q.
+\]
+Thus $-L_{\rm ref}u=f$. Conversely, if $-L_{\rm ref}u=0$ for some $u$ in the operator domain, the second block row gives $u_Q=-M_Q^{-1}bu_P$, the first gives $Su_P=0$, and therefore $u=0$. Hence $-L_{\rm ref}$ is a bijection of its domain onto $L^2$, with the bounded inverse
+\[
+ (-L_{\rm ref})^{-1}
+ =\begin{pmatrix}I\\-M_Q^{-1}b\end{pmatrix}
+ S^{-1}\begin{pmatrix}I&-b^*M_Q^{-1}\end{pmatrix}
+ +\begin{pmatrix}0&0\\0&M_Q^{-1}\end{pmatrix}.
+\]
+Since $M_Q^{-1}$ is self-adjoint, the row operator is the adjoint of the column. The squared norm of the column is at most $1+(v_*/\gamma)^2$, because $\nrm{M_Q^{-1}b}\le\nrm b/\gamma\le v_*/\gamma$. Together with $\nrm{S^{-1}}\le S_*$ and~\eqref{r2:eq:M-inverse}, this gives~\eqref{r2:eq:BLref}.
+\end{proof}
+
+For the eight-mode reference, $C$ and $D$ are binary64 proposals read as exact dyadic matrices, and the enclosed calculation gives
+\begin{equation}\label{r2:eq:spectral-numbers}
+ \begin{gathered}
+ v_*<5004.03,\qquad\gamma>230022.34,\qquad\min_i|D_i|>0.1953,\\
+ \eps_C<10^{-12},\qquad\eps<10^{-9},\qquad\eta<0.240915,
+ \end{gathered}
+\end{equation}
+and the quadrature error~\eqref{r2:eq:Gauss-error} is below $1.35\cdot10^{-360}$. The hypotheses of Proposition~\ref{r2:prop:Schur} therefore hold, and $B_{\rm ref}<6.748$. Floating-point root and congruence proposals enter this conclusion only through the root coverage of Lemma~\ref{r2:lem:zero-coverage}, the enclosed matrix entries and the defects~\eqref{r2:eq:C-defect}--\eqref{r2:eq:eta}.
+
+\subsubsection{Transfer to the forty-mode centre}
+Return now to $p_0$. The pointwise difference on $\overline\D$ satisfies
+\begin{equation}\label{r2:eq:transfer-difference}
+ \nrm{|p_0|^2-|p_{\rm ref}|^2}_\infty\le\delta_q,
+ \qquad
+ \delta_q=(\nrm{p_0}_\infty+\nrm{p_{\rm ref}}_\infty)
+ \nrm{p_0-p_{\rm ref}}_\infty.
+\end{equation}
+Bounding the three supremum norms by unweighted sums of coefficients gives $\delta_q<8.376\cdot10^{-14}$. On the Dirichlet domain,
+\[
+ \Delta+|p_0|^2
+ =\Bigl(I+\bigl(|p_0|^2-|p_{\rm ref}|^2\bigr)L_{\rm ref}^{-1}\Bigr)L_{\rm ref},
+\]
+and the first factor is invertible by its Neumann series because $B_{\rm ref}\delta_q<1$. Hence
+\begin{equation}\label{r2:eq:transfer}
+ \nrm{(\Delta+|p_0|^2)^{-1}}_{L^2\to L^2}\le
+ B_{L^2}:=\frac{B_{\rm ref}}{1-B_{\rm ref}\delta_q}<6.748.
+\end{equation}
+All constants from Subsection~\ref{r2:sec:analytic} onward use $p_0$ and its conformal radius $\rho=p_0(0)$.
+
+\begin{remark}
+The inverse in~\eqref{r2:eq:transfer} is confined to the symmetric sector. For a genuine Schiffer solution, physical derivatives of $u$ solve a homogeneous Dirichlet problem at the same eigenvalue. Their angular sectors are different from the invariant even sector, so they do not contradict the inverse proved here.
+\end{remark}
+
+\subsection{From the spectral inverse to the analytic norm}\label{r2:sec:analytic}
+
+In this subsection and Section~\ref{r2:sec:coupled}, put $p=p_0$, $q=|p_0|^2$, $\rho=p_0(0)$, and $L=\Delta+q$; write $p(w)=\sum_{j\ge0}p_jw^{jm}$. Define
+\begin{equation}\label{r2:eq:P-bounds}
+ P=\sum_{j\ge0}2^j|p_j|,\qquad
+ P_1=\sum_{j\ge0}2^j jm|p_j|,\qquad V_*=P^2-\rho^2.
+\end{equation}
+The finite centre makes these sums finite. The product estimate shows
+\begin{equation}\label{r2:eq:V-analytic}
+ \nrm{q}_Y\le P^2,
+ \qquad\nrm{q-\rho^2}_Y\le V_*.
+\end{equation}
+For the second bound, expand $p\bar p$ and remove the $(j,k)=(0,0)$ term; $2^{|j-k|}\le2^{j+k}$ bounds the remaining terms.
+
+\begin{proposition}\label{r2:prop:Yinverse}
+Suppose the symmetric-sector Dirichlet inverse has $L^2$ bound $B_{L^2}$. Let $h$ be the least positive integer with $hm>\rho$, and set
+\begin{equation}\label{r2:eq:high-constants}
+ d_h=(hm)^2-\rho^2,\qquad\beta=V_*/d_h,
+ \qquad W_\ell=1+2\sum_{j=1}^{h-1}2^j.
+\end{equation}
+If $d_h>0$ and $0\le\beta<1$, then the zero-Dirichlet solution of $Lv=f$, for $f\in Y$, belongs to $Y$ and satisfies
+\begin{equation}\label{r2:eq:BY}
+ \nrm v_Y\le B_Y\nrm f_Y,
+ \qquad B_Y=\frac{W_\ell(1+P^2B_{L^2})/(2\sqrt2)+1/d_h}{1-\beta}.
+\end{equation}
+Its normal trace $N=\partial_rv|_{r=1}$ belongs to $W_1$, with
+\begin{equation}\label{r2:eq:BN}
+ \nrm N_{W_1}\le B_N\nrm f_Y,
+ \qquad B_N=1+P^2B_Y.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Parseval's identity and the radial measure give
+\[
+ \nrm f_{L^2}^2=\sum_n\int_0^1|f_n(r)|^2r\,dr
+ \le\frac12\sum_n\sup_r|f_n(r)|^2\le\frac12\nrm f_Y^2.
+\]
+The spectral inverse therefore gives $\nrm v_{L^2}\le B_{L^2}\nrm f_Y/\sqrt2$. For every angular coefficient, apply the radial Poisson inverse to $(f-qv)_n$. Its kernel is dominated by $-\log\max(r,s)\le-\log s$, and
+\[
+ \int_0^1(\log s)^2s\,ds=\frac14.
+\]
+Cauchy--Schwarz yields
+\begin{equation}\label{r2:eq:low-mode}
+ \sup_r|v_n(r)|\le\frac12\nrm{(f-qv)_n}_{L^2(r\,dr)}
+ \le\frac{1+P^2B_{L^2}}{2\sqrt2}\nrm f_Y.
+\end{equation}
+This estimates all coefficients, but we use it only for $|n|<hm$. Their total weighted norm is bounded by $W_\ell$ times the right side of~\eqref{r2:eq:low-mode}.
+
+For $|n|\ge hm$, the positive potential of $-\Delta_n-\rho^2$ is
+\[
+ \frac{n^2}{r^2}-\rho^2\ge n^2-\rho^2\ge d_h>0.
+\]
+The radial maximum principle bounds its zero-Dirichlet inverse in supremum norm by $1/(n^2-\rho^2)$. The direct sum of these inverses is consequently bounded by $1/d_h$ in the weighted radial supremum norm on the high sector $|n|\ge hm$ of $Y$. Let $\Pi_H$ be the angular projection onto that sector; it has norm one on $Y$, and multiplication by $q-\rho^2$ has norm at most $V_*$ by~\eqref{r2:eq:algebra} and~\eqref{r2:eq:V-analytic}. Let $v_\ell=v-\Pi_Hv$ be the low part already estimated, which belongs to $Y$, and solve the high equations
+\[
+ (\Delta+\rho^2)\tilde v_H=\Pi_H\bigl(f-(q-\rho^2)(v_\ell+\tilde v_H)\bigr),
+ \qquad\tilde v_H=0\ \text{on }\partial\D,
+\]
+by the contraction mapping theorem in the high sector of $Y$. The contraction constant is at most $\beta<1$, so there is a unique solution $\tilde v_H$, and its weighted norm is finite. This construction establishes finiteness of the weighted high norm before any inequality involving that norm is rearranged.
+
+We identify $\tilde v_H$ with the high part $v_H=\Pi_Hv$ of the original $L^2$ solution. Put
+\[
+ F_H=\Pi_H\bigl(f-(q-\rho^2)(v_\ell+\tilde v_H)\bigr)-\rho^2\tilde v_H\in Y.
+\]
+In every angular mode, $\tilde v_{H,n}$ is the regular solution of the radial equation $\Delta_n\tilde v_{H,n}=F_{H,n}$ with $\tilde v_{H,n}(1)=0$; hence $\tilde v_H=KF_H$. Since $F_H$ is continuous, $\tilde v_H\in W^{2,s}(\D)$ for every finite $s$, as in the proof of Lemma~\ref{r2:lem:Poisson}. In particular $\tilde v_H\in H^2\cap H^1_0$, and the high equation holds almost everywhere. Applying $\Pi_H$ to $(\Delta+\rho^2)v=f-(q-\rho^2)v$ shows that $v_H\in H^2\cap H^1_0$ satisfies the same equation with $\tilde v_H$ replaced by $v_H$. The difference $z=\tilde v_H-v_H$ therefore lies in the high sector and solves
+\[
+ (\Delta+\rho^2)z=-\Pi_H\bigl((q-\rho^2)z\bigr).
+\]
+On this sector, $r\le1$ and angular orthogonality give
+\[
+ \int_\D|\nabla z|^2\ge\int_\D\frac{|\partial_\theta z|^2}{r^2}
+ \ge(hm)^2\int_\D|z|^2.
+\]
+Multiplying the equation for $z$ by $-z$ and integrating over $\D$, and using that $\Pi_H$ is self-adjoint in $L^2$ with $\Pi_Hz=z$, gives
+\[
+ d_h\int_\D|z|^2\le\int_\D|\nabla z|^2-\rho^2\int_\D|z|^2
+ =\int_\D(q-\rho^2)|z|^2
+ \le V_*\int_\D|z|^2,
+\]
+because $\nrm{q-\rho^2}_\infty\le\nrm{q-\rho^2}_Y\le V_*$. Since $d_h>V_*$, $z=0$. Thus $v_H=\tilde v_H$ belongs to $Y$.
+
+The high fixed-point equation now gives
+\[
+ \nrm{v_H}_Y\le d_h^{-1}\nrm f_Y
+ +\beta\bigl(\nrm{v_\ell}_Y+\nrm{v_H}_Y\bigr).
+\]
+Add the low norm and solve for the total norm $\nrm v_Y=\nrm{v_\ell}_Y+\nrm{v_H}_Y$ to obtain~\eqref{r2:eq:BY}. Finally apply the trace formula from Lemma~\ref{r2:lem:Poisson} to $\Delta v=f-qv$:
+\begin{equation}\label{r2:eq:normal-moment}
+ N_n=\int_0^1r^{|n|+1}(f-qv)_n(r)\,dr.
+\end{equation}
+It follows that
+\[
+ R^{|n|}(1+|n|)|N_n|
+ \le R^{|n|}\frac{1+|n|}{2+|n|}\sup_r|(f-qv)_n(r)|.
+\]
+Summation and~\eqref{r2:eq:V-analytic} prove~\eqref{r2:eq:BN}.
+\end{proof}
+
+For the centre in this paper, $h=5$ and $W_\ell=61$. The numerical hypotheses and consequences are
+\begin{equation}\label{r2:eq:Y-numbers}
+ \begin{gathered}
+ d_h>164759.13,\qquad\beta<0.061958,\\
+ B_Y<1.045\cdot10^8,\qquad B_N<7.039\cdot10^{13}.
+ \end{gathered}
+\end{equation}
+These are bounds in the same angular weight used for the shape space. The normal trace gains the factor $(|n|+2)^{-1}$, which pays for one derivative when the shape variation is reconstructed in Subsection~\ref{r2:sec:linearization}. No reduction of the analytic radius is needed.

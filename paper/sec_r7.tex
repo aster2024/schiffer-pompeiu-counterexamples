@@ -1,0 +1,417 @@
+%======================================================================
+\section{Dimension seven}\label{r7:sec}
+%======================================================================
+
+We prove Theorem~\ref{thm:main} for $n=7$ by the axisymmetric formulation of Section~\ref{r5:sec}, with the weight $\Upsilon(D)=(1+D/10^6)^2$, the square of the weight used for $n=5$.
+
+\subsection{Coefficient spaces and reconstruction}\label{r7:sec-spaces}
+Let $B\subset\R^7$ be the unit ball, $x=(x_1,x')\in\R\times\R^6$, $y=|x'|$, $w=x_1+iy$, $r=|x|$, $t=r^2$ and $\xi=x_1/r$. Throughout this section
+\[
+\lambda=\frac52,\qquad R=\frac65,\qquad\zeta=R^{-2}=\frac{25}{36},\qquad
+\Upsilon(D)=\Big(1+\frac D{10^6}\Big)^2.
+\]
+Put $Y_\ell=C^{(\lambda)}_\ell/C^{(\lambda)}_\ell(1)$, $H_\ell=r^\ell Y_\ell(\xi)$, $\beta_\ell=\ell+\lambda$ and $\Psi_{\ell,s}=H_\ell J^{\beta_\ell}_s(t)$. Since $\lambda=(n-2)/2$, $H_\ell$ is the axisymmetric harmonic polynomial on $\R^7$, homogeneous of degree $\ell$, with $H_\ell(1,0)=1$ and $|H_\ell|\leq1$ on $\overline B$, and $\Delta(H_\ell v(t))=4H_\ell\big(tv''+(\beta_\ell+1)v'\big)$. Here
+\[
+C^{(\lambda)}_\ell(1)=\frac{(\ell+1)(\ell+2)(\ell+3)(\ell+4)}{24},\qquad
+\lambda^+_\ell=\frac{\ell+5}{2\ell+5},\quad\lambda^-_\ell=\frac\ell{2\ell+5}.
+\]
+The identities $x_1H_\ell=\lambda^+_\ell H_{\ell+1}+\lambda^-_\ell tH_{\ell-1}$ and $(x\cdot\nabla)H_\ell=\ell H_\ell$ follow from the Gegenbauer recurrence and homogeneity. For $\ell\geq1$, $\partial_{x_1}H_\ell=\ell H_{\ell-1}$: the left side is axisymmetric, harmonic and homogeneous of degree $\ell-1$, hence a multiple of $H_{\ell-1}$, and the multiple is $\ell$ because $H_\ell(x_1,0)=x_1^\ell$. For $\ell=0$ the derivative is zero. Let $\mathsf a_k=(\lambda)_k/k!$ and
+\[
+Y_\ell=\sum_mD_{m\ell}T_m,\qquad
+D_{\ell-2k,\ell}=\frac{(2-\delta_{\ell,2k})\mathsf a_k\mathsf a_{\ell-k}}{C^{(\lambda)}_\ell(1)},\qquad h_\ell=\sum_mD_{m\ell}R^m.
+\]
+$D_{m\ell}\geq0$ and $\sum_mD_{m\ell}=1$. Write $T_K=\sum_\ell C_{\ell K}Y_\ell$ and $\mathcal T_K=\sum_\ell C_{\ell K}H_\ell$. All field and harmonic indices in $\mathcal X$, $\mathcal Y$ below are even, and all shape indices are odd. Define
+\begin{align*}
+\nrm f_{\mathcal L}&=\sum_{\ell,s\geq0}h_\ell\Upsilon(\ell+2s)|f_{\ell,s}|,\qquad
+\Gc=\{g\in\mathcal L^{\mathrm{ev}}:g_{\ell,0}=0\},\\
+\nrm f_{\mathcal Y}&=\sum_mR^m\Upsilon(m)|f_m|+\sum_{\ell,\,s\geq1}h_\ell\Upsilon(\ell+2s)|f_{\ell,s}|,\\
+\nrm c_{\mathcal E}&=\sum_{j\ \mathrm{odd}}jR^j\Upsilon(j-1)|c_j|,\qquad
+\nrm{(g,c)}_{\mathcal X}=\nrm g_{\mathcal L}+\sigma\nrm c_{\mathcal E}.
+\end{align*}
+Here $f\in\mathcal Y$ represents $\sum_m f_m\mathcal T_m+\sum_{s\geq1}f_{\ell,s}\Psi_{\ell,s}$. For multipliers put $\tau(\sum m_{a,k}H_at^k)=\sum h_a\Upsilon(a+2k)|m_{a,k}|$ and $\nrm{\sum\tilde m_{n,k}r^{n+2k}T_n}_{\mathrm{ch}}=\sum R^n\Upsilon(n+2k)|\tilde m_{n,k}|$. $\mathcal L^{\mathrm{ev}}\hookrightarrow\mathcal Y$ has norm at most one.
+
+\begin{lemma}[Connection coefficients]\label{r7:lem-conn}
+$C_{00}=1$, and for $K\geq1$, $0\leq i\leq K/2$ and $\ell=K-2i$,
+\[
+C_{\ell K}=\frac{K(-\lambda)_i(K-i-1)!(\ell+\lambda)C^{(\lambda)}_\ell(1)}{2i!(\lambda)_{K-i+1}}.
+\]
+Let $e_i=|(-\lambda)_i|/i!$ and $\mathsf w_i=e_i\zeta^i(1-\zeta)^{-\lambda}$. Then
+\begin{gather*}
+|C_{K-2i,K}|h_{K-2i}\leq\mathsf w_iR^K,\qquad
+\kappa_7:=\sum_i\mathsf w_i=(1-\zeta)^{-5/2}\Big(2+\frac{15}4\zeta^2\Big)-1,\\
+\lambda^+_\ell h_{\ell+1}+\lambda^-_\ell h_{\ell-1}\leq Rh_\ell,\qquad
+D_{\ell-2k,\ell}R^{\ell-2k}\leq\mathsf a_k\zeta^kh_\ell.
+\end{gather*}
+\end{lemma}
+\begin{proof}
+Take the connection formula \cite[18.18.16]{DLMF} for $C^{(\mu)}_K$ in terms of the $C^{(\lambda)}_{K-2i}$ with $\lambda=\frac52$, divide by $\mu$ and let $\mu\to0$; by \cite[18.7.25]{DLMF}, $C^{(\mu)}_K/\mu\to(2/K)T_K$ for $K\geq1$, and $(\mu)_{K-i}/\mu\to(K-i-1)!$ since $K-i\geq1$. As $\lambda(\lambda+1)_{K-i}=(\lambda)_{K-i+1}$, this gives the stated $C_{\ell K}$. For $\ell>0$ it gives $|C_{\ell K}|D_{\ell\ell}=e_i\varrho_i$, where $\varrho_0=1$ and
+\[
+\varrho_i=\frac K{K-i+\lambda}\prod_{q=1}^{i-1}\frac{\ell+q}{\ell+q+\lambda}
+\leq\frac{K(\ell+1)}{(K-i+\lambda)(\ell+i)}\leq1\quad(i\geq1).
+\]
+Telescoping, using $(\ell+q)/(\ell+q+\lambda)\leq(\ell+q)/(\ell+q+1)$ since $\lambda\geq1$, gives the first inequality; the second uses
+\[
+(K-i+\lambda)(K-i)-K(K-2i+1)
+=i^2-\lambda i+(\lambda-1)K\geq i^2+(\lambda-2)i\geq0.
+\]
+This uses $K\geq2i$ and $\lambda\geq2$. For $\ell=0$ one has $D_{00}=1$, hence $|C_{0K}|D_{00}=\frac12e_i\varrho_i\leq e_i$. Since $\mathsf a_k$ is nondecreasing ($(k+\lambda)/(k+1)\geq1$),
+$h_\ell\leq D_{\ell\ell}R^\ell\sum_k\mathsf a_k\zeta^k=D_{\ell\ell}R^\ell(1-\zeta)^{-\lambda}$, proving the bound. In $(1-\zeta)^{5/2}$ only the coefficients of degrees $0$ and $2$ are positive; taking absolute values gives $\sum_ie_i\zeta^i=2+15\zeta^2/4-(1-\zeta)^{5/2}$. The last two inequalities follow by applying the positive functional $T_m\mapsto R^m$ to $\xi Y_\ell=\lambda^+_\ell Y_{\ell+1}+\lambda^-_\ell Y_{\ell-1}$, and by $D_{\ell-2k,\ell}\leq\mathsf a_kD_{\ell\ell}$.
+\end{proof}
+
+\begin{lemma}[Graded multiplication]\label{r7:lem-mult}
+Theorem~\ref{r5:thm-mult} holds in the spaces above, with $\kappa_7$ in place of $\kappa_5$ and harmonic fraction
+$\vartheta_{d_a}(\ell,s)=\mathbf1_{d_a\geq s}(d_a/(\ell+d_a+9/2))^s$. The expansion of $H_at^k\Psi_{\ell,s}$ is nonnegative, has angular index $v\geq|\ell-a|$, radial index $s'\geq s-d_a$, degree at most $\ell+2s+d_a$, and its radial lowering is dominated by $\mathrm{Binomial}(d_a,1/2)$, where $d_a=a+2k$. Theorem~\ref{r5:thm-transfer} holds with the present $\Upsilon$.
+\end{lemma}
+\begin{proof}
+The linearisation formula \cite[18.18.22]{DLMF}, at $\lambda=5/2>0$, gives nonnegative coefficients $G_{a\ell v}$ of $Y_aY_\ell$, with sum one and $\sum_vG_{a\ell v}h_v\leq h_ah_\ell$. In the proof of Theorem~\ref{r5:thm-mult}(b), every Jacobi raising or lowering step remains a probability vector because $\beta_\ell>0$. The factors in its harmonic estimate become $\beta_v+1=v+7/2$ and $(d_a-i)/(\ell+d_a+9/2+i)$; the binomial domination is the same sequence of lowering steps of probability at most $1/2$ as in Lemma~\ref{r3:lem-radial}. The degree bound, the submultiplicativity of $\Upsilon$, and Lemma~\ref{r7:lem-conn} prove the norm bounds in part~(c). Part~(d) involves only the meridian expansions, whose degrees are unchanged. Finally, the proof of Theorem~\ref{r5:thm-transfer} uses only that $\Upsilon$ is nondecreasing and submultiplicative; these properties hold for its square as well.
+\end{proof}
+
+\begin{lemma}[Compatible inverse and stencils]\label{r7:lem-K}
+For $s\geq1$, let $d=\ell+2s+\lambda$ and $E=x\cdot\nabla$. Then
+\begin{align*}
+K_7\Psi_{\ell,s}&=\frac{\Psi_{\ell,s-1}}{4d(d+1)}-\frac{\Psi_{\ell,s}}{2d(d+2)}+\frac{\Psi_{\ell,s+1}}{4(d+1)(d+2)},\\
+\partial_{x_1}K_7\Psi_{\ell,s}&=\frac{\lambda^+_\ell(\Psi_{\ell+1,s}-\Psi_{\ell+1,s-1})+\lambda^-_\ell(\Psi_{\ell-1,s+1}-\Psi_{\ell-1,s})}{2(d+1)},\\
+EK_7\Psi_{\ell,s}&=-\frac{d+\lambda}{4d(d+1)}\Psi_{\ell,s-1}+\frac\lambda{2d(d+2)}\Psi_{\ell,s}+\frac{d+2-\lambda}{4(d+1)(d+2)}\Psi_{\ell,s+1}.
+\end{align*}
+One has $\Delta K_7\Psi_{\ell,s}=\Psi_{\ell,s}$ and zero value and gradient on $\partial B$. The norms of $K_7$, $\partial_{x_1}K_7$, $EK_7$ and $y\partial_yK_7=EK_7-x_1\partial_{x_1}K_7$, from $\Gc$ to $\mathcal L$, are bounded by
+\begin{gather*}
+\mathsf k_K=\frac1{d_0(d_0+2)}+\frac{\Upsilon(2)-1}{4(d_0+1)(d_0+2)},\qquad
+\mathsf k_D=\frac{R(1+\Upsilon(1))}{2(d_0+1)},\\
+\mathsf k_E=\frac{d_0+\lambda}{2d_0(d_0+1)}+\frac{(\Upsilon(2)-1)(d_0+2-\lambda)}{4(d_0+1)(d_0+2)},\qquad
+\mathsf k_Y=\mathsf k_E+R\Upsilon(1)\mathsf k_D,\quad d_0=\frac92.
+\end{gather*}
+\end{lemma}
+\begin{proof}
+Write $K_7\Psi_{\ell,s}=H_\ell k(t)$ and $\beta=\beta_\ell$. Then $\Delta K_7\Psi_{\ell,s}=\Psi_{\ell,s}$ reads $(t^{\beta+1}k')'=\frac14t^\beta J^\beta_s$. By the Rodrigues formula the polynomial solution is
+\[
+t^{\beta+1}k'=\frac1{4\,s!}\frac{d^{s-1}}{dt^{s-1}}\big[t^{\beta+s}(t-1)^s\big].
+\]
+Thus $\deg k=s+1$, $k'(1)=\frac14\int_0^1t^\beta J^\beta_s\,dt=0$ by Lemma~\ref{r3:lem-jacobi}(a), and we normalise $k(1)=0$. For a polynomial $\varphi$ of degree at most $s-1$, two integrations by parts with $k(1)=k'(1)=0$ give
+\[
+\int_0^1t^\beta k\,(t\varphi''+(\beta+1)\varphi')\,dt
+=\frac14\int_0^1t^\beta J^\beta_s\varphi\,dt=0.
+\]
+The map $\varphi\mapsto t\varphi''+(\beta+1)\varphi'$ sends the polynomials of degree at most $s-1$ onto those of degree at most $s-2$. Hence $k$ is orthogonal for the weight $t^\beta$ to the polynomials of degree at most $s-2$, so it lies in the span of $J^\beta_{s-1},J^\beta_s,J^\beta_{s+1}$. Its leading coefficient and the two boundary conditions give the first stencil. The Jacobi identities give
+\[
+k'=\frac{J_s^{\beta_\ell+1}-J_{s-1}^{\beta_\ell+1}}{4(d+1)},\qquad
+\beta_\ell k+tk'=\frac{J_{s+1}^{\beta_\ell-1}-J_s^{\beta_\ell-1}}{4(d+1)}.
+\]
+Substitute these into $\partial_{x_1}(H_\ell k)=2\lambda^+_\ell H_{\ell+1}k'+2\lambda^-_\ell H_{\ell-1}(\beta_\ell k+tk')$. Substitution into $E(H_\ell k)=H_\ell(2(\beta_\ell k+tk')-(\beta_\ell+\lambda)k)$ gives the third stencil. All formulas include $\ell=0$, with $\lambda^-_0=0$. For the norm bounds, the absolute column sums of the first and third stencils are $1/(d(d+2))$ and $(d+\lambda)/(2d(d+1))$. The degree increases are at most two; only the last entry requires $\Upsilon(2)$ instead of one. The derivative stencil has degree shifts $\pm1$ and uses $\lambda^+_\ell h_{\ell+1}+\lambda^-_\ell h_{\ell-1}\leq Rh_\ell$. These bounds decrease for $d\geq d_0$; multiplication by $x_1$ costs $R\Upsilon(1)$.
+\end{proof}
+
+\begin{proposition}[$C^1$ reconstruction]\label{r7:prop-C1}
+The series $K_7g$ converges in $C^1(\overline B)$ for $g\in\Gc$, has zero value and gradient on $\partial B$, satisfies $\Delta K_7g=\iota(g)$ in distributions, and
+\[
+\nrm{K_7g}_{C^1(\overline B)}\leq3.73\cdot10^{10}\nrm g_{\mathcal L},
+\]
+where the $C^1$ norm is the maximum of the two suprema of value and Euclidean gradient.
+\end{proposition}
+\begin{proof}
+We use the correspondence between polynomials on the ball and $O(2)$-invariant spherical harmonics on $S^8$ (cf.\ \cite[Ch.~4]{DX14}); its measure and degree argument is as follows. Let $V_m$ be the orthogonal complement of polynomials of degree at most $m-1$ in those of degree at most $m$, in $L^2(B)$. An $O(2)$-invariant homogeneous harmonic polynomial of degree $m$ on $\R^7\times\R^2$ restricts, by $|z|^2=1-|x|^2$, to $V_m$. Indeed, the parametrisation $(x,\theta)\mapsto(x,\sqrt{1-|x|^2}(\cos\theta,\sin\theta))$ has surface element $dx\,d\theta$, and
+$\int_{S^8}FG=2\pi\int_Bfg$. Different harmonic degrees are orthogonal. Conversely, homogenise each polynomial of degree at most $m$ to degree $m$ or $m-1$, according to parity, using $|x|^2+|z|^2$, and apply the equivariant Fischer decomposition. The restrictions therefore exhaust $V_0\oplus\cdots\oplus V_m$, and the map is injective by the displayed norm identity.
+
+As in Lemma~\ref{r3:lem-embed}(a), by Fischer decomposition and Lemma~\ref{r3:lem-jacobi}(a), the $\Psi_{\ell,s}$ are pairwise orthogonal in $L^2(B)$ and $\Psi_{\ell,s}$ is orthogonal to all polynomials of degree less than $\ell+2s$. The map $\iota\colon\mathcal L\to L^2(B)$ is continuous, since $\nrm{\Psi_{\ell,s}}^2_{L^2(B)}\leq|S^6|/7$ by the formula below. Let $N_m^{(q)}$ denote the dimension of degree-$m$ harmonics on $S^{q-1}$. The spherical addition theorem and $|S^8|=(2\pi/7)|S^6|$ give $|f(x)|^2\leq7N_m^{(9)}\nrm f_{L^2(B)}^2/|S^6|$ for $f\in V_m$. Jacobi orthogonality gives, with $D=\ell+2s$ and $d=D+5/2$,
+\[
+\nrm{\Psi_{\ell,s}}_{L^2(B)}^2=\frac{|S^6|}{2N_\ell^{(7)}(D+7/2)},\qquad
+\nrm{\nabla K_7\Psi_{\ell,s}}_{L^2(B)}^2=\frac{\nrm{\Psi_{\ell,s}}_{L^2(B)}^2}{2d(d+2)}.
+\]
+Integration by parts and parity put every Cartesian derivative of $K_7\Psi_{\ell,s}$ in $V_{D-1}\oplus V_{D+1}$. Cauchy--Schwarz hence bounds its squared gradient supremum by
+\[
+\Gamma_7(\ell,s)^2=\frac{7(N_{D-1}^{(9)}+N_{D+1}^{(9)})}{4N_\ell^{(7)}(D+5/2)(D+7/2)(D+9/2)}
+\leq B_7(s):=\frac{\prod_{i=2}^7(2s+i)}{720(2s+5/2)(2s+7/2)}.
+\]
+For the last inequality use $N_{D-1}^{(9)}\leq N_{D+1}^{(9)}$ and the harmonic dimension formula: with $D=\ell+2s$ the resulting factors $(D+1+i)/(\ell+i)$ ($1\leq i\leq4$), $(D+6)/(D+5/2)$, $(D+7)/(D+7/2)$ and $1/(2\ell+5)$ all decrease in $\ell$; their value at zero is $B_7(s)$. Integrating along a radius gives the same bound for the value. For $c=10^6$ and $x=2s$, $(x+2)(x+3)\leq(x+5/2)(x+7/2)$ and $x+i\leq x+c$ for $4\leq i\leq7$, so $B_7(s)/\Upsilon(2s)^2\leq c^4/720$. Since $373^2\cdot720>10^8$, $c^2/\sqrt{720}<3.73\cdot10^{10}$. Since $h_\ell\geq1$ and $\Upsilon(D)\geq\Upsilon(2s)$, absolute summation proves convergence and the traces; $L^2$ convergence of $g$ passes the Laplacian identity to distributions. This constant is used only in reconstruction.
+\end{proof}
+
+\subsection{The equation, Taylor bounds and inverse}\label{r7:sec-F}
+The exact dyadic centre $x^\circ=(g^\circ,c^\circ)$ has $(M,S)=(210,84)$, $\rho=731659610854495\cdot2^{-43}$, $b=c^\circ_1\approx1.0000971073$ and $\sigma=25\rho^2$. Its $8904$ field coefficients and $106$ shape coefficients are fixed exact data. Put $\psi_c(w)=\sum_{j\ \mathrm{odd}}c_jw^j$, $p_c=\psi'_c$, $q_c=\im\psi_c/y$, $W=K_7g$, $W_1=\partial_{x_1}W$ and $W_2=y\partial_yW$. Define
+\begin{equation}\label{r7:eq-F}
+\Fc(g,c)=b^{-1}\big[q_cg+5\big((q_c)_{x_1}W_1+((q_c)_y/y)W_2\big)+\rho^2q_c|p_c|^2(1+W)\big].
+\end{equation}
+
+\begin{lemma}\label{r7:lem-F}
+$\Fc\colon\mathcal X\to\mathcal Y$ is a bounded quartic polynomial. If $\Fc(g,c)=0$ and $\re\psi'_c>0$ on a disc of radius $R_0$, $1<R_0<R$, then $U=1+\iota(K_7g)\in C^1(\overline B)$ has $U=1$, $\nabla U=0$ on $\partial B$ and satisfies
+\[
+\int_Bq_c^5(\nabla U\cdot\nabla\varphi-\rho^2|p_c|^2U\varphi)=0\quad(\varphi\in C_c^\infty(B)).
+\]
+\end{lemma}
+\begin{proof}
+Lemma~\ref{r7:lem-mult} and the stencils prove boundedness, and the values are even in $x_1$, because $q_c$, $|p_c|^2$, $W$ and $y\partial_yW$ are even in $x_1$ while $\partial_{x_1}q_c\,\partial_{x_1}W$ is a product of two odd functions. The meridian series make $q_c$ analytic in $(x_1,|x'|^2)$, with $q_c=\int_0^1\re\psi'_c(x_1+iuy)\,du>0$. Proposition~\ref{r7:prop-C1} gives $\Delta W=\iota(g)$ and the boundary traces. For any test function, integrate the distributional identity against $q_c^5\varphi$ to obtain
+\[
+\int_Bq_c^5(\nabla U\cdot\nabla\varphi-\rho^2|p_c|^2U\varphi)
+=-\int_B bq_c^4\varphi\,\iota(\Fc(g,c))=0.
+\]
+The factor five comes from $\nabla q_c^5=5q_c^4\nabla q_c$; the test function need not be axisymmetric.
+\end{proof}
+
+Let $G_0\geq\nrm{g^\circ}_{\mathcal L}$, $C_0\geq\nrm{c^\circ}_{\mathcal E}$ and
+\begin{align*}
+B'&=\frac1R+5\Big(\frac{2\mathsf k_D}{R^2-1}+\frac{4R\mathsf k_Y}{(R^2-1)^2}\Big),\\
+c_2&=\frac{\kappa_7}b\Big[\frac{B'}\sigma+\frac{3\rho^2\mathsf k_KC_0^2}{R^3\sigma}+\frac{3\rho^2C_0(1+\mathsf k_KG_0)}{R^3\sigma^2}\Big],\\
+c_3&=\frac{\kappa_7\rho^2}{bR^3}\Big[\frac{1+\mathsf k_KG_0}{\sigma^3}+\frac{3C_0\mathsf k_K}{\sigma^2}\Big],\qquad
+c_4=\frac{\kappa_7\rho^2\mathsf k_K}{bR^3\sigma^3}.
+\end{align*}
+For $\nrm h_{\mathcal X}\leq r$ the Taylor remainder and derivative remainder of $\Fc$ are bounded by $\sum_{k=2}^4c_kr^k$ and $\sum_{k=2}^4kc_kr^{k-1}$. To prove this, write $h=(\delta g,\delta c)$ with norms at most $r,r/\sigma$. The raw multiplier bounds (Theorem~\ref{r5:thm-mult}(d), which does not depend on $n$) are $\nrm{\delta q}_{\mathrm{ch}}\leq\nrm{\delta c}_{\mathcal E}/R$, $\nrm{\delta q_{x_1}}_{\mathrm{ch}}\leq2\nrm{\delta c}_{\mathcal E}/(R^2-1)$ and $\nrm{\delta q_y/y}_{\mathrm{ch}}\leq4R\nrm{\delta c}_{\mathcal E}/(R^2-1)^2$. The first two terms of \eqref{r7:eq-F} give $\kappa_7B'r^2/(b\sigma)$. In the potential term $q^\circ$ has raw norm and $p^\circ$ analytic coefficient norm at most $a=C_0/R$, and their increments at most $e=r/(\sigma R)$. Expand $(a+\eta e)^3(1+\mathsf k_K(G_0+\eta r))$ in $\eta$; the coefficients of orders two, three and four give the remaining terms. Convert each raw product to solid multipliers once, costing $\kappa_7$. The same multilinear bounds, with one increment left free, prove the derivative estimate.
+
+The finite inputs are $(\ell,s)$ with even $\ell\leq210$, $1\leq s\leq84$, and odd $j\leq211$. The finite rows are the same field rows and the harmonic rows $\mathcal T_m$, $m\leq210$ even. Thus the scaled finite Jacobian $\widetilde J$ has size $9010$. Let $\widehat A$ be an exact dyadic approximate inverse. In tail coordinates $\hat a_N=(N+1)R^{N+1}c_{N+1}$, $\hat y_m=R^my_m$ ($N,m$ even), the principal part of the shape column is as in Lemma~\ref{r3:lem-principal} and Section~\ref{r5:sec-quartic}. The input $e_{N+1}$ has $\hat a_N=(N+1)R^{N+1}$, and its principal polynomial $\frac{2(N+1)\rho^2}b\,q^\circ\re(\overline{p^\circ}w^N)$ has boundary values $\frac{2(N+1)\rho^2}b\sum_\delta s_\delta T_{|N+2\delta|}$; let $\mathsf Me_{N+1}$ be the harmonic element with these boundary values. For $N,m\geq M+2$, the output coordinate $\hat y_m$ in row $m=N+2\delta$, divided by the input coordinate $\hat a_N$, is $\frac{2\rho^2}{bR}s_\delta R^{2\delta}$. Thus the part $T$ of $\mathsf M$ from the shape tail to the harmonic tail rows is
+\[
+T=\frac{2\rho^2s_0}{bR}(I+E),\quad
+(E\hat a)_m=\sum_{N\ne m}\frac{s_{(m-N)/2}}{s_0}R^{m-N}\hat a_N,
+\quad m,N\geq212\text{ even},
+\]
+where $s_\delta=\sum_{k-a=2\delta}p_aq_k$, $p_a=(a+1)c^\circ_{a+1}$, $q_k=\sum_{j>|k|}c^\circ_j$, $s_0>0$ and $-210\leq\delta\leq105$. Since $N+2\delta\geq-208$ for $N\geq212$, negative frequencies fold only into finite rows. The finite fold $\mathcal B$ collects the modes $|N+2\delta|\leq210$. The bound
+\[
+\eps_\Upsilon=\sum_{\delta\ne0}|s_\delta/s_0|R^{2\delta}\Upsilon((2\delta)_+)<1
+\]
+gives $\nrm{T^{-1}}\leq\tau_T=bR/(2\rho^2s_0(1-\eps_\Upsilon))$, including a Neumann remainder of norm at most $\tau_T\eps_\Upsilon^{L+1}$ after powers through $L$. Define
+\begin{equation}\label{r7:eq-A}
+Ay=\widehat A(y_f-\mathcal BT^{-1}y_t^H)+T^{-1}y_t^H+y_t^N.
+\end{equation}
+Let $\alpha_\iota$ bound the normalised finite-row column norms of $\widehat A$, set $\alpha^H_m=\alpha_{\mathcal T_m}$ for $m\leq M$, and put
+\[
+\rho_{\mathcal B}=\sup_{N>M}\frac{\sum_{m\leq M}\alpha^H_m\Upsilon(m)|\hat{\mathcal B}_{mN}|}{\Upsilon(N)},\qquad
+A_t=\tau_T(\sigma+\rho_{\mathcal B}),\qquad\alpha^H_m=A_t\ (m>M).
+\]
+Then $\nrm A\leq\max(\max_\iota\alpha_\iota,A_t,1)$, $A\Psi_{\ell,s}=e_{(\ell,s)}$ for field tail inputs, and $A\mathsf Me_j=e_j$ for shape tail inputs, where $\mathsf Me_j$ is the harmonic extension of the principal boundary polynomial. If $\nrm{I-\widehat A\widetilde J}<1$, $\widehat A$ is invertible; the upper triangular form \eqref{r7:eq-A}, with invertible $T$ and the identity on field tails, makes $A$ a bounded bijection.
+
+\subsection{All field columns}\label{r7:sec-field}
+There are $106$ radial classes $s\geq S_\ell$ for even $\ell\leq210$, where $S_\ell=90,89,88,87,86,85$ on the ranges $0$--$2$, $4$--$10$, $12$--$18$, $20$--$26$, $28$--$36$, $38$--$210$, respectively. The intervening $51$ field inputs are explicit. For even $212\leq\ell\leq386$, the $88$ gap classes have $S_\ell=3$ on $212$--$218$, $2$ on $220$--$366$ and $1$ on $368$--$386$, with $82$ explicit inputs below these thresholds. The uniform angular class is $\ell\geq388$, $s\geq1$.
+
+For each finite input $e$, the complete column $y=D\Fc(x^\circ)e$ gives the normalised defect bound $\delta_e+(A_t\nrm{y_t^H}+\nrm{y_t^N})/w_e$, where $\delta_e$ bounds its finite inverse defect. For an exceptional field input the bound is $(\nrm{\widehat Ay_f}+A_t\nrm{y_t^H}+\nrm{y_t^N-e})/w_e$. For a shape input $e_j$ with $213\leq j\leq701$ odd, use
+\[
+\frac{\nrm{\widehat A(y_f-\mathcal Ba)}+\sigma\nrm{a-e_j}+\nrm{y_t^N}+(\sigma+\rho_{\mathcal B})\mathrm{rem}}{w_j},
+\]
+where $a$ approximates $T^{-1}y_t^H$ and $\mathrm{rem}$ bounds its remainder. The same numerator without $e_j$, applied to $y=\Fc(x^\circ)$, bounds $Y_0=\nrm{A\Fc(x^\circ)}$.
+
+For the infinite field classes define $\chi_1=q^\circ/b-1$, $\chi_2=5q^\circ_{x_1}/b$, $\chi_3=5(q^\circ_y/y)/b$, $\chi_4=x_1\chi_3$, $\chi_5=\rho^2q^\circ|p^\circ|^2/b$. Let $\tau_i(d)$ be the graded solid norm of the degree-$d$ part of $\chi_i$. For each angular grid row $\nu$ let $g_\nu(t)$ be the maximum of one and the normalised finite field-row column norms of $A$ over $\ell'\geq2\nu$, $s'\geq t+1$, with $g_\nu(t)=1$ outside the finite grid, including $t\geq S$. Let $\beta^H(L)$ be a nonincreasing upper bound for
+\[
+\beta^H_v=\frac{\sum_mD_{mv}R^m\Upsilon(m)\alpha^H_m}{h_v\Upsilon(v)}\quad(v\geq L\text{ even}).
+\]
+Odd profile indices carry the maximum of their even neighbours. For even $v>1400$ use $\beta^H_v\leq A_t+\sum_{m\leq M}(\alpha^H_m-A_t)_+\mathsf a_{k_m}\zeta^{k_m}$, $k_m=(1402-m)/2$. This follows from Lemma~\ref{r7:lem-conn}; $\mathsf a_k\zeta^k$ decreases for $k\geq k_m$, since $(k+5/2)\leq(k+1)R^2$ at these starting indices.
+
+For $\nu=\lceil(\ell-d)_+/2\rceil$, $a=g_\nu(\max(1,s-d)-1)$, $b_d=\beta^H((\ell-d)_+)$, $\theta=\vartheta_d(\ell,s)$ and $X_d\sim\mathrm{Binomial}(d,1/2)$, put
+\begin{align*}
+\mathfrak B_d(\ell,s)=\min\Big\{&a+(b_d-a)_+\theta,\\
+&1+\sum_{t=0}^{S-1}(g_\nu(t)-g_\nu(t+1))\Pr(X_d\geq s-t-1)
+ +(b_d-g_\nu(0))_+\Pr(X_d\geq s)\Big\}.
+\end{align*}
+Set $\mathfrak B^{(i)}(\ell,s)=\sum_d\tau_i(d)\mathfrak B_d(\ell,s)$. With $d_\ell=\ell+2s+\lambda$, define
+\begin{align*}
+\mathfrak z(\ell,s)={}&\mathfrak B^{(1)}(\ell,s)
++\frac{\Upsilon(1)}{2(d_\ell+1)}\sum_{i=2,4}\Big[\lambda^+_\ell\frac{h_{\ell+1}}{h_\ell}
+ (\mathfrak B^{(i)}(\ell+1,s)+\mathfrak B^{(i)}(\ell+1,s-1))\\
+&\hphantom{\mathfrak B^{(1)}(\ell,s)+\frac{\Upsilon(1)}{2(d_\ell+1)}\sum_{i=2,4}\Big[}
++\lambda^-_\ell\frac{h_{\ell-1}}{h_\ell}(\mathfrak B^{(i)}(\ell-1,s+1)+\mathfrak B^{(i)}(\ell-1,s))\Big]\\
+&+\frac{(d_\ell+\lambda)\mathfrak B^{(3)}(\ell,s-1)}{4d_\ell(d_\ell+1)}
++\frac{\lambda\mathfrak B^{(3)}(\ell,s)}{2d_\ell(d_\ell+2)}
++\frac{\Upsilon(2)(d_\ell+2-\lambda)\mathfrak B^{(3)}(\ell,s+1)}{4(d_\ell+1)(d_\ell+2)}\\
+&+\frac{\mathfrak B^{(5)}(\ell,s-1)}{4d_\ell(d_\ell+1)}
++\frac{\mathfrak B^{(5)}(\ell,s)}{2d_\ell(d_\ell+2)}
++\frac{\Upsilon(2)\mathfrak B^{(5)}(\ell,s+1)}{4(d_\ell+1)(d_\ell+2)}.
+\end{align*}
+Omit the $\ell-1$ terms when $\ell=0$. In $\mathfrak z_{\mathrm u}$ replace each bracket by $R$ times the maximum of its two parenthesised sums.
+
+\begin{lemma}[Field envelope]\label{r7:lem-envelope}
+For every field tail input, its normalised defect is at most $\mathfrak z(\ell,s)\leq\mathfrak z_{\mathrm u}(\ell,s)$. For fixed $\ell$, $\mathfrak z$ decreases in $s$; $\mathfrak z_{\mathrm u}$ decreases in both $\ell$ and $s$. Thus the infinite classes are bounded at $(\ell,S_\ell)$ and $(388,1)$.
+\end{lemma}
+\begin{proof}
+The column defect is $-Av$, with $v=\chi_1\Psi+\chi_2\partial_{x_1}K_7\Psi+\chi_3EK_7\Psi-\chi_4\partial_{x_1}K_7\Psi+\chi_5K_7\Psi$. Lemma~\ref{r7:lem-mult} bounds each multiplier by its degree norm. Its support and harmonic fraction give the first branch of $\mathfrak B_d$; binomial domination of the radial lowering gives the second, by summation of the layers $g_\nu(t)-g_\nu(t+1)$. The index $\max(1,s-d)-1$ selects precisely $s'\geq\max(1,s-d)$. Applying the stencils proves the formula, and Lemma~\ref{r7:lem-conn} proves the uniform replacement.
+
+The first branch is nondecreasing in $a,b_d,\theta$, each of which decreases with $\ell,s$. For the second, put $p_{-1}=\Pr(X_d\geq s)$ and $p_t=\Pr(X_d\geq s-t-1)$. Summation by parts rewrites it as
+\[
+1-p_{S-1}+\max(b_d,g_\nu(0))p_{-1}+\sum_{t=0}^{S-1}g_\nu(t)(p_t-p_{t-1}).
+\]
+All coefficients of the grid values are nonnegative, proving decrease in $\ell$; its original expression proves decrease in $s$. The stencil coefficients decrease for $d_\ell\geq9/2$. For the only less immediate numerator $d_\ell+2-\lambda$, the derivative has numerator $-d_\ell^2+d_\ell+7/2<0$; for $d_\ell+\lambda$ it is $-d_\ell^2-2\lambda d_\ell-\lambda<0$. The nonuniform $h$-ratios are fixed in a radial class; the uniform replacement removes them. This proves the stated monotonicity.
+\end{proof}
+
+\subsection{Far shape columns}\label{r7:sec-far}
+Let $W^\circ=K_7g^\circ$, $W_1^\circ=\partial_{x_1}W^\circ$, $Z^\circ=y^{-1}\partial_yW^\circ$ and $H^\circ=g^\circ+\rho^2|p^\circ|^2(1+W^\circ)$. These are polynomials, with $W^\circ$ vanishing to order two and $W_1^\circ,Z^\circ$ to order one at $t=1$. The axis identity
+\[
+\frac{\partial_yH_\ell}y=-\sum_{k=\ell-2,\ell-4,\ldots\geq0}
+\frac{2(k+\lambda)C_k^{(\lambda)}(1)}{C_\ell^{(\lambda)}(1)}H_kt^{(\ell-2-k)/2}
+\]
+follows from $\xi C_\ell'=\ell C_\ell+C_{\ell-1}'$ and $C_{\ell-1}'=\sum_k2(k+\lambda)C_k^{(\lambda)}$, where $0\leq k\leq\ell-2$ and $k\equiv\ell-2\pmod2$ (see \cite[18.9]{DLMF}). Differentiating \eqref{r7:eq-F} in $c_j$, $j=N+1$, gives
+\begin{equation}\label{r7:eq-farcol}
+\begin{split}
+bD\Fc(x^\circ)e_j={}&r^NU_NH^\circ+5(N+1)r^{N-1}U_{N-1}W_1^\circ\\
+&+5\Big(Nr^NT_N-\frac{r^NU_N+tr^{N-2}U_{N-2}}2\Big)Z^\circ\\
+&+2(N+1)\rho^2q^\circ\re(\overline{p^\circ}w^N)W^\circ+b\Pi_j,
+\end{split}
+\end{equation}
+where $b\Pi_j=2(N+1)\rho^2q^\circ\re(\overline{p^\circ}w^N)$. Indeed $\delta q=r^NU_N$, $\delta q_{x_1}=(N+1)r^{N-1}U_{N-1}$ and $\delta(q_y/y)=-2r^{N-2}C^{(2)}_{N-2}$; use $2(1-\xi^2)C^{(2)}_{N-2}=(U_N+U_{N-2})/2-NT_N$ for the third term.
+
+Expand the principal polynomial as $q^\circ\re(\overline{p^\circ}w^N)=\sum_{(\eta,e)}\gamma_{\eta,e}t^er^{N+\eta}T_{N+\eta}$, with shifts $-420\leq\eta\leq210$. In estimates $\gamma_{\eta,e}$ denotes the sum of the moduli of its individual contributions. Its harmonic model replaces $t^er^KT_K$ by $\mathcal T_K$.
+
+Let $\Gamma_F(v)\geq1$ and $\Gamma_H(v)\geq A_t$ be nonincreasing bounds for all normalised field-row columns and for $\beta^H_{v'}$, respectively, with $v'\geq v$. Put $\Gamma_* =\max(\Gamma_F,\Gamma_H)$ and $\Gamma_{\max}=\Gamma_*(0)$. Fix $I=140$, $I_1=24$, $i_c=100$, $I_+=I+1$, $i_1=\lceil(K-M)/2\rceil$ and $S_p(j)=\sum_{k\geq0}\zeta^k(j+k)^p$. Define
+\[
+G_p(K)=\mathsf w_{I_+}\begin{cases}
+\Gamma_{\max}S_p(I_+),&i_1\leq I_+,\\
+\Gamma_*(M+1)S_p(I_+)+\Gamma_{\max}\zeta^{i_1-I_+}S_p(i_1),&i_1>I_+,
+\end{cases}\quad p=0,1,2.
+\]
+These bound $\sum_{I<i\leq K/2}\mathsf w_ii^p\Gamma_*(K-2i)$: $e_i$ decreases for $i\geq I_+$, and $K-2i>M$ for $i<i_1$.
+
+\begin{lemma}[Geometric switch]\label{r7:lem-switch}
+If $\Gamma_*(M+1)S_p(I_+)\leq\Gamma_{\max}I_+^p$ for $p=0,1,2$, each $G_p$ is nonincreasing in $i_1$, including its first switch.
+\end{lemma}
+\begin{proof}
+The identity $S_p(I_+)-\zeta S_p(I_++1)=I_+^p$ gives the first switch inequality. In the second branch increasing $i_1$ drops a nonnegative summand from $\sum_{i\geq i_1}\zeta^{i-I_+}i^p$. For the present profiles the three assumptions hold with $\Gamma_*(M+1)S_p(I_+)/(\Gamma_{\max}I_+^p)\approx7.9\cdot10^{-4},\ 8.0\cdot10^{-4},\ 8.1\cdot10^{-4}$ for $p=0,1,2$.
+\end{proof}
+\begin{lemma}\label{r7:lem-lap}
+For $K\geq2$, $\sum_ii\,(K-i+\frac52)\,C_{K-2i,K}\,Y_{K-2i}=-\frac{5K}4U_{K-2}$.
+\end{lemma}
+
+\begin{proof}
+In $\R^7$, $\Delta(t^iH_v)=4i(i+v+\frac52)t^{i-1}H_v$. The function $r^KT_K(\xi)=\re w^K$ is harmonic in the meridian variables, so $\Delta\re w^K=\frac5y\partial_y\re w^K=-\frac{5K}y\im w^{K-1}=-5Kr^{K-2}U_{K-2}(\xi)$. Apply $\Delta$ to $r^KT_K=\sum_iC_{K-2i,K}H_{K-2i}t^i$ and restrict to $t=1$.
+\end{proof}
+
+\begin{lemma}\label{r7:lem-raw}
+Let $K,e,m$ be nonnegative integers with $K$ even, $\beta=K+\frac52$, $c_m=\max(2,m+1)$, $\mathsf F_m(\beta')=m!/(\beta'/2+1)_m$, and
+\[
+\mathsf f(x)=\frac{\beta-2x+1}{\prod_{k=1}^{m+1}(\beta-x+e+k)},\qquad\varrho_2(i)=\mathsf f(i)-\mathsf f(0)-\mathsf f'(0)\,i .
+\]
+All connection sums below have $i\leq K/2$. Let $u=t^er^KT_K(\xi)(1-t)^m$ if $m\geq1$, and $u=t^er^KT_K(\xi)-\mathcal T_K$ if $m=0$ and $K>M$. Then
+\begin{multline*}
+\frac{\nrm{Au}_{\mathcal X}}{R^K\Upsilon(K+2e+2m)}\leq\sum_i\mathsf w_i\,\mathsf g_i\,\Gamma_F(K-2i)\\
++m!\Big(\mathsf f_0\,\alpha^H(K)+\frac54|\mathsf f'(0)|\,\mathsf u(K)+\sum_{i\geq1}\mathsf w_i\Big(\frac{|\mathsf f'(0)|\,i^2}\beta+|\varrho_2(i)|\Big)\Gamma_H(K-2i)\Big),
+\end{multline*}
+where $\mathsf g_i=\mathsf F_m(\beta-2i)$ and $\mathsf f_0=\mathsf f(0)$ if $m\geq1$, $\mathsf g_i=(e+i)/(\beta-i+e+1)$ and $\mathsf f_0=1-\mathsf f(0)=e/(\beta+e+1)$ if $m=0$, and $\mathsf u(K)=2A_t\zeta/(1-\zeta)+2\sum_{n\leq\min(M,K-2),\,n\equiv K}R^{n-K}(\alpha^H_n-A_t)_+$. Here $\alpha^H(K)=\max(A_t,\alpha^H_K)$ for $K\leq M$ and $\alpha^H(K)=A_t$ for $K>M$; $\mathcal H_v=\sum_nD_{nv}\mathcal T_n$ denotes the harmonic element with trace $Y_v$. Moreover, for $i\leq K/2$,
+\[
+|\mathsf f'(0)|\leq\frac{c_m\mathsf f(0)}{\beta+1},\qquad|\varrho_2(i)|\leq\frac{i^2}2\cdot\frac{(\beta+1)(c_m^2+m+5)}{(\beta-2i+1)^2\prod_{k=1}^{m+1}(\beta-i+e+k)} .
+\]
+\end{lemma}
+
+\begin{proof}
+Let $v_i=K-2i$, with every connection sum restricted to $0\leq i\leq\lfloor K/2\rfloor$. By definition of $C_{\ell K}$, $u=\sum_iC_{v_i,K}H_{v_i}t^{e+i}(1-t)^m$, minus $\mathcal T_K=\sum_iC_{v_i,K}H_{v_i}$ if $m=0$, and all outputs have degree at most $K+2e+2m$; so it suffices to bound the norms with $\Upsilon\equiv1$ (Lemma~\ref{r7:lem-mult}). \emph{Field layer.} By Lemma~\ref{r3:lem-jacobi}(c),(d), the $J^{\beta_{v_i}}$-coefficients of $t^{e+i}(1-t)^m$ have $\ell^1$ norm at most $\mathsf F_m(\beta_{v_i})=\mathsf F_m(\beta-2i)$, and those of $t^{e+i}-1$ with $s\geq1$ have sum $(e+i)/(\beta_{v_i}+e+i+1)$; with $|C_{v_i,K}|h_{v_i}\leq\mathsf w_iR^K$ this gives the first sum. \emph{Harmonic layer.} By Lemma~\ref{r3:lem-jacobi}(a), the coefficient of $J^{\beta_v}_0$ in $t^\mu(1-t)^m$ is $(\beta_v+1)\int_0^1t^{\beta_v+\mu}(1-t)^mdt=m!(\beta_v+1)/\prod_{k=1}^{m+1}(\beta_v+\mu+k)$, which for $v=v_i$ and $\mu=e+i$ equals $m!\,\mathsf f(i)$. Hence the boundary trace of the harmonic layer of $u$ is $m!\sum_iC_{v_i,K}\mathsf f(i)Y_{v_i}$, minus $T_K$ if $m=0$. By $\sum_iC_{v_i,K}Y_{v_i}=T_K$ and Lemma~\ref{r7:lem-lap}, $\sum_iiC_{v_i,K}Y_{v_i}=\beta^{-1}\big(-\frac{5K}4U_{K-2}+\sum_ii^2C_{v_i,K}Y_{v_i}\big)$, and the trace equals
+\[
+m!\Big(\mathsf f(0)T_K-\frac{5K\mathsf f'(0)}{4\beta}U_{K-2}+\sum_iC_{v_i,K}\Big(\frac{\mathsf f'(0)i^2}\beta+\varrho_2(i)\Big)Y_{v_i}\Big),
+\]
+with $\mathsf f(0)-1$ in place of $\mathsf f(0)$ if $m=0$. We apply $A$ to the three parts: $\nrm{A\mathcal T_K}\leq\alpha^H(K)R^K\Upsilon(K)$; the Chebyshev coefficients of $U_{K-2}$ are $2$ (and $1$ for $T_0$), which gives $\mathsf u(K)$, since $K<\beta$; and $Y_{v}$ is the trace of $\mathcal H_v$. For the bounds on $\mathsf f$ write $\mathsf f=g/P$ with $g(x)=\beta-2x+1$ and $P(x)=\prod_k(\beta-x+e+k)$, and let $S_1=\sum_k(\beta-x+e+k)^{-1}$, $S_2=\sum_k(\beta-x+e+k)^{-2}$. Then $\mathsf f'=\mathsf f\,(S_1-2/g)$ and $\mathsf f''=P^{-1}\big(g(S_1^2+S_2)-4S_1\big)$. At $x=0$, $0<S_1\leq(m+1)/(\beta+1)$ and $2/g=2/(\beta+1)$, which gives the bound for $\mathsf f'(0)$. For $0\leq x\leq i\leq K/2$ the two terms of $\mathsf f''$ have opposite signs, so $|\mathsf f''(x)|\leq P(x)^{-1}\max\{g(S_1^2+S_2),4S_1\}$; with $P(x)\geq P(i)$, $g\leq\beta+1$, $S_1\leq(m+1)/(\beta-i+1)$, $S_2\leq(m+1)/(\beta-i+1)^2$ and $(\beta-2i+1)^2\leq(\beta+1)(\beta-i+1)$ this is at most $(\beta+1)\max\{(m+1)(m+2),4(m+1)\}/((\beta-2i+1)^2P(i))$, and $\max\{(m+1)(m+2),4(m+1)\}\leq c_m^2+m+5$. Taylor's formula gives the bound for $\varrho_2$.
+\end{proof}
+
+Let $\Phi_m(K)$ ($m\geq1$) and $\Phi_P(K,e)$ ($m=0$) be the right-hand side of Lemma~\ref{r7:lem-raw}, evaluated as follows. For $m\geq1$ the bounds are made independent of $e$ by putting $e=0$ in $\mathsf f(0)$ and in the bound for $\varrho_2$. For $m=0$ use $|\mathsf f'(0)|\leq2/(\beta+e+1)$, $\mathsf f_{\max}=1$ and the second-derivative constant $9$. The sums over $i$ are evaluated exactly for $i\leq I_1$; for  $I_1<i\leq\min(I,K/2)$ the factors $\mathsf g_i$ and $|\varrho_2(i)|/i^2$, which increase with $i$, are replaced by their values at the largest index; and the terms with $i>I$ are bounded by means of $G_0,G_1,G_2$, using $\mathsf g_i\leq1$, $|\mathsf f(i)|\leq\mathsf f_{\max}$ and $|\varrho_2(i)|\leq2\mathsf f_{\max}+|\mathsf f'(0)|i$, where $\mathsf f_{\max}=(\beta+1)/(K/2+\frac72)^{m+1}$ for $m\geq1$ and $\mathsf f_{\max}=1$ for $m=0$. The same formulas define placeholder values at odd indices for suffix maximisation. For odd $K\leq M$, which enters only through suffix maxima, $\alpha^H(K)$ is the maximum of $A_t$ and of the two even neighbours, and the sum in $\mathsf u(K)$ is empty. Let $\varphi_m(K)=\sup_{K'\geq K}\Phi_m(K')$, and
+\[
+\bar\Gamma(K)=\sup_{K'\geq K}\sum_{i\leq I}\mathsf w_i\Gamma_*\big(\max(K'-2i,0)\big)+\mathsf w_{I_+}S_0(I_+)\,\Gamma_{\max} .
+\]
+For $f$ one of the polynomials $H^\circ$, $W^\circ_1$, $Z^\circ$, $W^\circ$, write $f=\sum_aH_af_a(t)$, $f_a=\sum_sf_{a,s}J^{\beta_a}_s=\sum_mf^\natural_{a,m}(1-t)^m$ and $\nrm{f_a}_J=\sum_s|f_{a,s}|$. By Proposition~\ref{r7:prop-C1}, every $f_a$ has a double zero at $t=1$ for $f=W^\circ$ and a zero for $f=W^\circ_1,Z^\circ$, so the corresponding $f^\natural_{a,m}$ vanish exactly. For $K'\geq0$ let
+\[
+\mathrm{HH}_a(K')=\sup_{K''\geq K'}\sum_{i\leq\min(100,K''/2)}\mathsf w_i\Gamma_*(K''-2i)\sum_{m>3}|f^\natural_{a,m}|\,\mathsf F_m(\beta_{K''-2i}),
+\]
+let $\mathrm{JT}(K')$ be the supremum over $K''\geq K'$ of $\sum_{100<i\leq\min(I,K''/2)}\mathsf w_i\Gamma_*(K''-2i)$ plus $G_0(K'')$ if $K''>2I$, and put, for $K\geq a$,
+\begin{multline*}
+\mathrm{Mix}_a(K)=|f^\natural_{a,0}|\,\bar\Gamma(K-a)+\sum_{m=1}^3|f^\natural_{a,m}|\,\varphi_m(K-a)+\mathrm{HH}_a(K-a)\\
++\Big(\nrm{f_a}_J+\sum_{m\leq3}|f^\natural_{a,m}|\,\mathsf F_m(\beta_a)\Big)\mathrm{JT}(K-a),
+\end{multline*}
+$\mathrm{Jac}_a(K)=\nrm{f_a}_J\,\bar\Gamma(\max(K-a,0))$, and finally
+\[
+V_f(K)=\sup_{K'\geq K}\sum_ah_a\min\{\mathrm{Jac}_a(K'),\mathrm{Mix}_a(K')\},
+\]
+where $\mathrm{Mix}_a(K')$ is omitted for $K'<a$. For $\mathrm{HH}_a$, replacing $\mathsf F_m(\beta_v)$ by $\mathsf F_m(\beta_{8\lfloor v/8\rfloor})$ is also permitted: this is a nonincreasing upper step bound and is the bound evaluated in Section~\ref{r7:sec-cap}.
+
+\begin{lemma}\label{r7:lem-centre}
+For $f\in\{H^\circ,W^\circ_1,Z^\circ,W^\circ\}$ and integers $K,e\geq0$, with $K$ odd for $W_1^\circ$ and even otherwise, $\nrm{A(t^er^KT_K(\xi)f)}_{\mathcal X}\leq R^K\,\Upsilon(K+2e+\deg f)\,V_f(K)$.
+\end{lemma}
+
+\begin{proof}
+It suffices to treat one angular component $H_af_a$, with $\Upsilon\equiv1$, and to show that its contribution is at most $R^Kh_a\mathrm{Jac}_a(K)$ and, for $K\geq a$, at most $R^Kh_a\mathrm{Mix}_a(K)$. \emph{Jacobi route.} Expand $r^KT_K=\sum_iC_{K-2i,K}H_{K-2i}t^i$ and multiply by $H_af_a$ with Lemma~\ref{r7:lem-mult}: the outputs have angular index at least $K-2i-a$, the lowering steps of the Jacobi parameter that are needed come with enough factors $t$ (as in the proof of Lemma~\ref{r3:lem-mult}(a)), all steps are stochastic, and $\sum_vG_{v'av}h_v\leq h_{v'}h_a$; with Lemma~\ref{r7:lem-conn} this gives $\mathrm{Jac}_a$. \emph{Mixed route}, for $K\geq a$. By $H_a=\sum_nD_{na}t^{(a-n)/2}r^nT_n$ and $T_KT_n=\frac12(T_{K+n}+T_{K-n})$, $t^er^KT_KH_a$ is a nonnegative combination of raw monomials $t^{e'}r^{K'}T_{K'}$ with $K'\geq K-a$ and $R$-weighted mass at most $h_aR^K$. Split $f_a=P_a+(f_a-P_a)$ with $P_a=\sum_{m\leq3}f^\natural_{a,m}(1-t)^m$. The part $P_a$ is bounded by $\bar\Gamma$ for $m=0$ and by Lemma~\ref{r7:lem-raw} for $1\leq m\leq3$. For $f_a-P_a$, in the connection expansion of $t^{e'}r^{K'}T_{K'}$ the components with index $i\leq100$ are bounded with Lemma~\ref{r3:lem-jacobi}(c),(d) term by term in $m>3$, which gives $\mathrm{HH}_a$, and those with $i>100$ by the Jacobi norm, which gives $\mathrm{JT}$: here
+\[
+\nrm{t^\mu(f_a-P_a)}_{J^{\beta_v},1}\leq\nrm{f_a-P_a}_{J^{\beta_a},1}\leq\nrm{f_a}_J+\sum_{m\leq3}|f^\natural_{a,m}|\,\mathsf F_m(\beta_a),
+\]
+because every lowering of the Jacobi parameter from $\beta_a$ to $\beta_v<\beta_a$ comes with a factor $t$ (for the monomials $t^{e'}r^{K'}T_{K'}$ above one has $e'+K'/2=e+(a+K)/2\geq a$ when $K\geq a$, so that $\mu=e'+i\geq a-(K'-2i)=a-v$ for every $i\leq K'/2$), and the raising and lowering stencils of Lemma~\ref{r3:lem-jacobi}(b) are nonnegative with column sums one. Finally, $\bar\Gamma$, $\varphi_m$, $\mathrm{HH}_a$ and $\mathrm{JT}$ are nonincreasing and $K'\geq K-a$.
+\end{proof}
+
+
+\begin{lemma}[Principal difference and infinite suffix tables]\label{r7:lem-extension}
+Assume the three inequalities of Lemma~\ref{r7:lem-switch}. Then $\Phi_P(K,e)$ is nonincreasing on the even integers $K\geq\max(M+2,2I+2)$. Let $K_{\max}$ be an even integer with
+\[
+K_{\max}\geq\max(2I+2,M+2,2i_c).
+\]
+Then the suffix maxima of the raw tables defining $\bar\Gamma$, $\varphi_m$, $\mathrm{HH}_a$ and $\mathrm{JT}$, computed through $K_{\max}$ and extended constantly afterwards, bound the suprema of these tables over all integers $K'\geq K$. The same construction gives nonincreasing upper bounds $V_f$ at all required indices.
+\end{lemma}
+\begin{proof}
+For $K\geq2I+2$ all $i$-ranges in $\Phi_P$ are fixed, and the geometric tail is present. The weights $\mathsf w_i$ are independent of $K$, the profiles decrease, and $\alpha^H(K)=A_t$. The factors $(e+i)/(\beta-i+e+1)$, $e/(\beta+e+1)$, $2/(\beta+e+1)$ and $1/\beta$ decrease with $\beta=K+5/2$. So does the second-derivative majorant $9(\beta+1)/((\beta-2i+1)^2(\beta-i+e+1))$, since $(\beta+1)/(\beta-2i+1)^2$ has negative logarithmic derivative. On even indices the finite part of $\mathsf u(K)$ is multiplied by $\zeta$ at each step once $K>M$; on odd indices it is absent. Lemma~\ref{r7:lem-switch} controls every branch change of $G_p$.
+
+For the other raw tables the terms of $\bar\Gamma$ decrease without a threshold. In $\Phi_m$, once $K\geq\max(2I+2,M+2)$, $\mathsf F_m(\beta-2i)$, $\mathsf f(0)$, its derivative and second-derivative bounds, and $\mathsf f_{\max}$ all decrease. For the last factor the logarithmic derivative is $1/(K+7/2)-(m+1)/(K+7)<0$ for $m\geq1$, $K>0$. In $\mathrm{JT}$ the range $(i_c,I]$ is fixed for $K\geq2I+2$; in $\mathrm{HH}_a$ the range $[0,i_c]$ is fixed for $K\geq2i_c$. The remaining factors are nonincreasing suffix profiles. Odd indices of $\mathsf u$ contribute only $2A_t\zeta/(1-\zeta)$ and are bounded by the preceding even value. Thus every raw value beyond the even $K_{\max}$ is at most its value there, for either parity.
+
+Suffix maximisation now bounds the whole infinite sequence. For $V_f$ both routes are nonnegative combinations of these tables at $\max(K-a,0)$ or $K-a$; when $K=a$ the additional mixed route enters a minimum and can only lower it. Hence their summed minimum is nonincreasing, and its constant extension after $K_{\max}$ is an upper bound. Tables are formed for both parities. Only odd $K$ is used for $f=W_1^\circ$, and only even $K$ for $H^\circ,Z^\circ,W^\circ$; entries of the other parity enter solely through suffix maxima and can only enlarge the bounds.
+
+For the frozen parameters $K_{\max}=N_2+2=1202$ is even and $\max(2I+2,M+2,2i_c)=282$. The extension condition involves no Taylor angular degrees.
+\end{proof}
+
+\begin{proposition}[All far shape columns]\label{r7:prop-far}
+Let $N_*=702$, $N_2=1200$, $k_0=N_2/2$, $\mathsf p=\Upsilon(1000)/(b\sigma R)$, and for even $N\geq N_*$ put
+\begin{align*}
+\mathfrak F(N)=\mathsf p\Big[&\frac1{N+1}\sum_{k=0}^{N/2}(2-\delta_{2k,N})\zeta^kV_{H^\circ}(N-2k)
++\frac{10}R\sum_{k=0}^{N/2-1}\zeta^kV_{W_1^\circ}(N-1-2k)\\
+&+5V_{Z^\circ}(N)+\frac5{2(N+1)}\Big(\sum_{k=0}^{N/2}(2-\delta_{2k,N})\zeta^kV_{Z^\circ}(N-2k)\\
+&\hphantom{{}+5V_{Z^\circ}(N)+\frac5{2(N+1)}\Big(}
++\sum_{k=0}^{N/2-1}(2-\delta_{2k,N-2})\zeta^{k+1}V_{Z^\circ}(N-2-2k)\Big)\\
+&+2\rho^2\sum_{(\eta,e)}\gamma_{\eta,e}R^\eta\big(\Phi_P(N_*+\eta,e)+V_{W^\circ}(N_*+\eta)\big)\Big],\\
+\mathfrak F_\infty=\mathfrak F(N_2)&+\frac{\mathsf p\zeta^{k_0}}{1-\zeta}
+\Big(\frac{2V_{H^\circ}(0)}{N_2+1}+\frac{10V_{W_1^\circ}(0)}R+\frac{10V_{Z^\circ}(0)}{N_2+1}\Big).
+\end{align*}
+Every odd $j\geq703$ has normalised defect at most
+$Z_{\mathrm{far}}=\max(\{\mathfrak F(N):702\leq N\leq1200\text{ even}\}\cup\{\mathfrak F_\infty\})$.
+\end{proposition}
+\begin{proof}
+Divide \eqref{r7:eq-farcol}, with $\mathsf Me_j$ subtracted, by $b\sigma(N+1)R^{N+1}\Upsilon(N)$. All output degrees are at most $N+800$, so $\Upsilon(1000)$ covers the grading. The expansions of $U_N,U_{N-1},U_{N-2}$ and Lemma~\ref{r7:lem-centre} give the first four terms. Lemma~\ref{r7:lem-raw} bounds the principal difference and Lemma~\ref{r7:lem-centre} the $W^\circ$ term. The smallest principal frequency is $N_*-420=282=2I+2>M$, so Lemma~\ref{r7:lem-extension} bounds these terms at $N_*$ for every later $N$.
+
+For $N\leq N_2$ the finite $k$-sums are evaluated as written. For $N>N_2$, every old term decreases because $V_f$ does. In the $H^\circ$ sum and the first $Z^\circ$ sum, the endpoint $k=k_0$ has weight two instead of one. The $W_1^\circ$ sum has new terms from $k=k_0$. In the second $Z^\circ$ sum the old endpoint $k=k_0-1$ changes from weight one to two, with power $\zeta^{k_0}$, and new terms follow. Write the $W_1^\circ$ sum as $\frac5R\sum_k2\zeta^kV_{W_1^\circ}(N-1-2k)$, all Chebyshev coefficients of $U_{N-1}$ being two. Then each sum, with its weights, exceeds its value at $N_2$ by at most $2\zeta^{k_0}V_f(0)/(1-\zeta)$, using $1/(N+1)\leq1/(N_2+1)$. The prefactors are $1/(N_2+1)$, $5/R$ and $5/(2(N_2+1))$, and the two $Z^\circ$ sums together carry the weight four; this gives exactly $\mathfrak F_\infty$. Thus all infinitely many far columns are covered.
+\end{proof}
+
+\subsection{Certified zero and geometry}\label{r7:sec-zero}
+Table~\ref{r7:tab-bounds} bounds all input columns. The finite inverse defect is below $5.94\cdot10^{-7}$, $\eps_\Upsilon<0.010791473$, $\rho_{\mathcal B}<846.350140$ and $\tau_T<8.758304\cdot10^{-5}$.
+The value $Z_0\approx0.899$ is the bound for the uniform angular class $\ell\geq388$, $s\geq1$, given by the envelope $\mathfrak z_{\mathrm u}(388,1)$; every explicitly computed column has certified defect below $0.68$.
+
+\begin{table}[ht]
+\centering\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+Quantity & Certified upper bound\\
+\midrule
+$\nrm A$, $A_t$ & $342234.383037$, $15.223634$\\
+$Y_0$, $Z_0$ & $5.950563\cdot10^{-11}$, $0.898934481$\\
+finite columns ($9010$) & $0.058622927$\\
+exceptional field columns ($133$) & $0.676824352$\\
+field envelopes ($106$ radial, $88$ gap, angular) & $0.898934481$\\
+explicit shape tail ($245$ columns), far shape tail & $0.651602561$, $0.305605856$\\
+$G_0$, $C_0$ & $366106.776644$, $1.243142911$\\
+$c_2$, $c_3$, $c_4$ & $0.745260675$, $1.946871609\cdot10^{-6}$, $1.925257056\cdot10^{-12}$\\
+$p(10^{-9})$, contraction bound & $-4.13048\cdot10^{-11}$, $0.899444589$\\
+\bottomrule
+\end{tabular}
+\caption{Outward roundings of the seven-dimensional certificate: $(M,S)=(210,84)$, $R=6/5$, $\sigma=25\rho^2$.}\label{r7:tab-bounds}
+\end{table}
+
+\begin{theorem}[Seven-dimensional certificate]\label{r7:thm-zero}
+For $(M,S)=(210,84)$, $R=6/5$ and $\sigma=25\rho^2$, equation \eqref{r7:eq-F} has exactly one zero $x^*=(g^*,c^*)$ in $\overline B_{\mathcal X}(x^\circ,10^{-9})$. Its residual bound is $Y_0<5.950563\cdot10^{-11}$, its linear defect bound is $Z_0<0.898934481$, and the Newton map has contraction bound below $0.899444589$. For every shape in this existence ball,
+\begin{gather*}
+\re\psi'>0.993557571646\quad(|w|\leq101/100),\\
+\re(1+w\psi''/\psi')>0.951916263887\quad(|w|\leq1),\qquad
+\re(w\psi'/\psi)>0.994796343179\quad(|w|=1),\\
+|c_3|>0.000189913656777,\qquad
+\kappa_\perp>0.934750157145\quad\text{on the unscaled revolved boundary}.
+\end{gather*}
+In particular, the domain reconstructed from $x^*$ is a strictly convex non-ball domain in $\R^7$ satisfying Theorem~\ref{thm:main}.
+\end{theorem}
+\begin{proof}
+The block inverse is injective. The finite, exceptional and envelope field classes are disjoint and exhaustive, as are the finite shape inputs $j\leq211$, explicit tail $213\leq j\leq701$ and far tail $j\geq703$. The preceding bounds therefore give $Y_0$ and $Z_0$ for the full operator by Lemma~\ref{lem:columns}. At $r=10^{-9}$,
+\[
+p(r)=Y_0+(Z_0-1)r+\nrm A\sum_{k=2}^4c_kr^k<-4.13048\cdot10^{-11},\qquad
+Z_0+\nrm A\sum_{k=2}^4kc_kr^{k-1}<0.899444589.
+\]
+Proposition~\ref{r3:prop-NK} gives existence and uniqueness. The shape projection has radius at most
+$\eps_0=2890623035776027/(5\cdot10^{29})\geq r/\sigma$.
+
+Put $S_1=\sum_{j\geq3}j|c^\circ_j|$, $S_2=\sum_{j\geq3}j(j-1)|c^\circ_j|$, $S_{\mathrm{rad}}=\sum_{j\geq3}j^2|c^\circ_j|$ and
+$H_{\mathcal E}=\max_{j\geq3\text{ odd}}(j-1)/(R^j\Upsilon(j-1))$. Its consecutive odd ratio is at most $(j+1)/((j-1)R^2)\leq1$ for $j\geq7$; thus the maximum uses only $j\leq7$. The triangle estimates of Proposition~\ref{r5:prop-geometry}, with these weights and $\eps_0$, prove the three real-part bounds and $|c_3|\geq|c^\circ_3|-\eps_0/(3R^3\Upsilon(2))$.
+
+For $w=e^{i\theta}$ on the upper semicircle the outward meridian normal is $w\psi'/|\psi'|$. Each of the five transverse principal curvatures equals
+\[
+\kappa_\perp=\frac{\im(w\psi')}{|\psi'|\im\psi}\geq
+\frac{c^\circ_1-S_{\mathrm{rad}}-\eps_0(H_{\mathcal E}+1/R)}{(c^\circ_1+S_1+\eps_0/R)^2}>0.934750157145.
+\]
+Indeed $|\sin(j\theta)/\sin\theta|\leq j$, and $\sum_jj^2|\delta c_j|\leq\eps_0(H_{\mathcal E}+1/R)$. Both factors of the denominator, after division of $\im\psi$ by $\sin\theta$, are positive and at most $c^\circ_1+S_1+\eps_0/R$. The formula extends continuously to the poles by real analyticity. The meridian curvature is $\re(1+w\psi''/\psi')/|\psi'|>0$; all six principal curvatures are positive throughout the shape ball. These are triangle-inequality lower bounds uniform over the shape ball; at the centre itself one finds numerically $\min_{|w|=1}\re(1+w\psi''/\psi')\approx0.9712$ and $\min\kappa_\perp\approx0.9988$.
+
+Let $\Theta(x_1,x')=(\re\psi(x_1+i|x'|),q_cx')$. The proof of Lemma~\ref{r5:lem-lift} applies in $\R^7$: the meridian differential is $|p|$ times a rotation and the five transverse differentials equal $q_c$, so $\det D\Theta=q_c^5|p|^2>0$. Univalence and $q_c>0$ make $\Theta$ injective near $\overline B$; its meridian series give analyticity across the axis. Lemma~\ref{r7:lem-F} and change of variables give $u_0=(1+K_7g^*)\circ\Theta^{-1}\in C^1(\overline{\Theta(B)})$, solving $\Delta u_0+\rho^2u_0=0$ weakly with the prescribed traces. Set $\Omega=\rho\Theta(B)$ and $u(X)=u_0(X/\rho)$. Lemma~\ref{r3:lem-regularity} gives analyticity near the closed domain. Its boundary is diffeomorphic to $S^6$, with $O(6)\times\Z_2$ symmetry. The symmetric strictly convex meridian section gives a convex solid of revolution, and the curvature bounds give strict convexity (physical curvatures are divided by $\rho$). The lower bound for $\re(w\psi'/\psi)$ on $|w|=1$ makes $\psi(\D)$, and hence the solid of revolution $\Omega$, strictly star-shaped with respect to the origin. A ball would be centred at zero by symmetry and would force $\psi$ linear by Schwarz's lemma, contradicting $c_3\ne0$. A constant Helmholtz solution is zero, whereas $u=1$ on the boundary. This proves Theorem~\ref{thm:main} for $n=7$.
+\end{proof}

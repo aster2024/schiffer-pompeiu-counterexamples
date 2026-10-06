@@ -1,0 +1,119 @@
+\subsection{The exact inverse in general dimension}\label{gd:sec:verification}
+The directory \texttt{anc/gd/} contains the single-file verifier
+\path{verify_axisym_exact_v2.py} for Theorem~\ref{gd:thm:main}.
+It embeds the finite exact-decimal centres, the dimension parameters
+and the stage sources in a hash-checked compressed bundle.
+It embeds no computed spectral matrix, boundary coefficient or
+existence receipt. A fresh run extracts the sources and inputs,
+checks their hashes and the module bindings, and recomputes the
+numerical chain in one process for each dimension.
+Relative to the single-file verifier that was first run for $n\in\{5,9,11,12,13\}$,
+this file changes the dimension lists, the embedded centres and parameters
+of the six further dimensions, and the two spectral settings for $n=16$
+stated below. For $n\in\{5,9,11,12,13\}$ it reproduces every certified
+bound of the first verifier.
+
+The spectral stage encloses all roots in~\eqref{gd:eq:window},
+compares the two enumerations root by root, encloses the tensor
+Gaussian data and polynomial potential, adds the errors of
+Section~\ref{gd:sec:quadrature}, and evaluates the full Schur bound.
+The spectral arithmetic uses $768$ bits and $384$ radial Gauss nodes,
+except for $n=16$, where it uses $1536$ bits and $640$ radial nodes.
+The boundary stage encloses the trigonometric samples and the
+Acb Fourier transform, including the half-grid phase, and adds
+every retained alias allowance and the entire analytic tail.
+The angular conversion, heat and maximum-principle bounds supply
+the norm transfer. The coupled stage forms the residual of the
+exactly clamped centre, the corrected inverse bound, the left
+Newton defect, the quartic remainder and the whole-ball geometry.
+Every retained decimal is an exact rational input.
+Special functions and enclosure arithmetic use Arb/Acb through
+\texttt{python-flint}~\cite{flint,Joh17}; binary64 matrix proposals
+use exact dyadic interpretation and the explicit error budget.
+
+The acceptance path accepts a strict interval comparison only when it holds for every
+pair of points of the two enclosures,
+rejects nonfinite or unresolved bounds, and is run under
+\texttt{python -E -O}. A successful run performs $125$ exact symbolic connection-formula and
+lift examples, $25$ in each of dimensions $5,9,11,12,13$, as well as the
+symbolic-$n$ material identity, and rejects $52$ semantic failure controls.
+The connection examples test the closed formula; they do not test
+the implementation's connection recurrence.
+After the controls, the final scalar chain is recomputed and all
+receipt artifacts are read back against their hashes.
+
+A second implementation in \texttt{mpmath.iv}, at $120$ decimal digits,
+recombines the final residual, coupled, quartic, radii and geometric
+expressions from the Arb primitives. It compares overlap of the nine
+final scalar enclosures. It does not independently enclose the
+special functions, spectral matrices, boundary samples, shape-norm constants, norm-transfer
+constants or fixed-field primitives.
+The scalar gates also include $4C_2Y_0<10^{-10}$; existence uses
+the invariant-ball and contraction inequalities of~\eqref{gd:eq:radii}.
+Every printed inequality bound is rounded outward from its own enclosure;
+products of rounded entries need not recover the sharper product bounds.
+The analytic lemmas of this paper and the stated numerical arithmetic
+together give the certificate.
+
+From \texttt{anc/gd/}, with an absent or empty output directory, run
+\begin{verbatim}
+nice -n 19 env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+  MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
+  python -E -O verify_axisym_exact_v2.py \
+  --dimension 12 --workdir replay12
+\end{verbatim}
+The successful final line is \texttt{PROVED dimensions=12}, with exit
+status zero. The overall and per-dimension receipts must both have
+status \texttt{PROVED}. A search for the substring
+\texttt{PROVED} is insufficient: it occurs in the failure status
+\texttt{NOT\_PROVED}, the overall failure receipt status
+\texttt{NOT\_ALL\_PROVED}, the spectral stage status
+\texttt{PROVED\_L2\_DIRICHLET\_INVERSE\_ONLY} and the per-dimension lines.
+The option \texttt{--dimension all} executes all supported dimensions
+sequentially; its final line lists those dimensions.
+The spectral module pins to the lowest allowed CPU; an explicit
+\texttt{taskset} restriction to one allowed CPU fixes that choice.
+Table~\ref{gd:tab:replay} records, for each dimension, the strip radius $S$
+and the parameters $K$, $J_b$ of Subsection~\ref{gd:sec:boundary}, the
+boundary precision in bits, and the times of the final isolated runs.
+
+\begin{table}[htbp]
+\centering\small
+\def\gdReplayRow#1#2#3#4#5#6#7{$#1$ & $#2$ & $#3$ & $#4$ & $#5$ & $#6$ & $#7$\\}
+\begin{tabular}{@{}crrrrrr@{}}
+\toprule
+$n$ & boundary $S$ & $K$ & $J_b$ & bits & chain (s) & process (s)\\
+\midrule
+\gdReplayData
+\bottomrule
+\end{tabular}
+\caption{Boundary-stage parameters and times of the final isolated runs of
+the verifier, rounded to three decimals. The process time also
+includes extraction and symbolic checks. Each used one allowed CPU,
+one Arb/BLAS thread and priority \texttt{nice 19}.}
+\label{gd:tab:replay}
+\end{table}
+
+The recorded environment is Python $3.10.19$,
+\texttt{python-flint} $0.9.0$, NumPy $1.26.4$, SciPy $1.15.2$,
+SymPy $1.14.0$ and mpmath $1.3.0$.
+The verifier's SHA-256 is
+\begin{center}\ttfamily\footnotesize
+b33fd6c7e9d72a283c9f752ec55b8e1d4dec48b132872759ac4a32553d1e3940
+\end{center}
+The separate frozen centres \path{frozen_centers/nN.json.gz} are the
+gzip-compressed exact-decimal inputs (keys \texttt{n}, \texttt{rho},
+\texttt{c}, \texttt{a}, \texttt{scales}, \texttt{status}); \texttt{gzip -dc} returns the JSON inputs
+of the replays byte for byte.
+The ancillary directory retains the overall
+\path{receipts/nN/VERIFICATION_RECEIPT.json} of the final
+isolated run for each dimension; for dimension $21$ this is the only
+completed isolated replay of the verifier. These receipts bind the verifier,
+payload and dimension and record the wall time. A fresh run regenerates
+the extracted sources, stage outputs, identity receipt, both final
+receipts and artifact-hash readbacks in its output directory; compare
+the numerical enclosures with the tables in this paper.
+The checksum command is \texttt{sha256sum -c SHA256SUMS}, run inside
+\texttt{anc/gd/}. The ancillary requirements record the versions
+actually used by these receipts.
+

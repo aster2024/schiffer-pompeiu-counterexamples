@@ -1,0 +1,8 @@
+{
+  "status": "SCALAR_ROBUSTNESS_PASS",
+  "A_amplification": "100000000",
+  "radius": "1e-32",
+  "interpretation": "Inflate the certified A bound while retaining E0/E1 and other analytic factors; Y,Z,C2,C3 all scale linearly. This is a scalar robustness check, not a different inverse proof.",
+  "radii_polynomial_upper": "[-3.463355734297129148191286278955246906620222529341082406e-33 +/- 2.05e-88]",
+  "contraction_upper": "[0.06956895066746014362566442553485477215982463896737184808 +/- 7.58e-58]"
+}

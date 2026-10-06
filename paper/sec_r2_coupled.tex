@@ -1,0 +1,365 @@
+\section{The centre and the exact linearisation inverse}\label{r2:sec:coupled}
+
+\subsection{The exactly clamped approximate solution}\label{r2:sec:centre}
+
+\subsubsection{The finite input and the analytic lift}
+The frozen centre contains $41$ exact decimal entries in each of the arrays $c_j$, $a_j$ and $s_j$, indexed by $0\le j\le40$. Every $s_j$ is positive. The file key \texttt{p} stores $c_j$, not the derivative coefficient $p_j=(jm+1)c_j$. Define
+\begin{equation}\label{r2:eq:finite-centre}
+ \psi_0(w)=\sum_{j=0}^{40}c_jw^{jm+1},\qquad p_0=\psi_0',
+ \qquad\rho=c_0.
+\end{equation}
+The exact decimal value of $\rho$ lies in $(814.45,814.46)$. The finite physical field is
+\begin{equation}\label{r2:eq:physical-centre}
+ u_*(z)=\sum_{j=0}^{40}\frac{a_j}{s_j}J_{jm}(|z|)\cos(jm\arg z),
+ \qquad U_*(w)=u_*(\psi_0(w)).
+\end{equation}
+The normalisation divisors $s_j$ are part of the exact input; no identity with a Bessel value is assumed. Each summand extends smoothly through $z=0$ and is an entire real-analytic solution of $(\Delta+1)u=0$. Thus $\Delta U_*+qU_*=0$, where $q=|p_0|^2$.
+
+Let $D_j$ and $N_j$ be the full cosine coefficients in
+\[
+ U_*(1,\theta)-1=\sum_{j\ge0}D_j\cos(jm\theta),\qquad
+ \partial_rU_*(1,\theta)=\sum_{j\ge0}N_j\cos(jm\theta).
+\]
+For $n=jm$ introduce
+\begin{equation}\label{r2:eq:lifts}
+ h_n^D(r)=r^n\left(1-\frac n2(r^2-1)\right),\qquad
+ h_n^N(r)=\frac12r^n(r^2-1).
+\end{equation}
+Their Dirichlet and radial derivative traces at $r=1$ are $(1,0)$ and $(0,1)$, respectively. Set
+\begin{equation}\label{r2:eq:clamped}
+ \begin{split}
+ \ell(r,\theta)&=\sum_{j\ge0}
+  \bigl(D_jh_{jm}^D(r)+N_jh_{jm}^N(r)\bigr)\cos(jm\theta),\\
+ U_0&=U_*-\ell,\qquad g_0=\Delta(U_0-1).
+ \end{split}
+\end{equation}
+The bounds below imply convergence of this series with all derivatives needed in the proof, on a neighbourhood of the closed disc. Consequently
+\begin{equation}\label{r2:eq:exact-clamp}
+ U_0=1,\quad\partial_rU_0=0\quad\text{on }\partial\D,
+ \qquad g_0\in X_g,\quad Kg_0=U_0-1.
+\end{equation}
+The inclusion follows by Green's identity against the harmonic monomials; the last equality follows from Dirichlet uniqueness for $\Delta$. Thus $(g_0,p_0)$ is an exactly specified point of $X$, even though $g_0$ is defined by an infinite analytic lift.
+
+\subsubsection{Uniform strip bounds for the field}
+Complexify $\phi=m\theta$ to $|\im\phi|\le\log4$. Define
+\begin{equation}\label{r2:eq:strip-shape}
+ \begin{gathered}
+ S=\sum_{j>0}4^j|c_j|,\qquad
+ d=\frac{2\rho S+S^2}{\rho},\qquad
+ \eps_s=\frac12\log\frac{\rho+S}{\rho-S},\\
+ P_4=\sum_j4^j(jm+1)|c_j|.
+ \end{gathered}
+\end{equation}
+For fixed $0\le r\le1$, write
+\[
+ A_\pm=\rho+\sum_{j>0}c_jr^{jm}e^{\pm ij\phi},\qquad
+ B_s=(A_+A_-)^{1/2}.
+\]
+Both $A_\pm$ lie within $S$ of $\rho$. For the centre $S<0.07$, so $\rho>2S$ and each of $A_\pm$ has argument of modulus less than $\pi/6$; this places $A_+A_-$ in the right half-plane and selects the square root $B_s$ with positive real part. Since $|B_s^2-\rho^2|=|A_+A_--\rho^2|\le2\rho S+S^2$ and $|B_s+\rho|\ge\rho$, and since $|A_\pm/B_s|^2=|A_\pm/A_\mp|\le(\rho+S)/(\rho-S)$,
+\begin{equation}\label{r2:eq:strip-B}
+ |B_s-\rho|\le d,\qquad
+ |A_+/B_s|\le e^{\eps_s},\qquad
+ |A_-/B_s|\le e^{\eps_s}.
+\end{equation}
+The continuation of the positive angular branch in~\eqref{r2:eq:physical-centre} is
+\[
+ J_n(rB_s)e^{in\theta}(A_+/B_s)^n,
+ \qquad n=jm,
+\]
+and the negative branch uses $A_-$. This representation also follows from the entire power series in the two independent variables $z,\bar z$, so the apparent polar coordinates introduce no singularity at the origin.
+
+For integer $n\ge0$, shift the contour in the Bessel integral by $i\alpha$, $\alpha\ge0$. The integrand is entire and periodic, so
+\begin{equation}\label{r2:eq:Bessel-contour}
+ |J_n(z)|\le
+ \exp\bigl(-n\alpha+|\re z|\sinh\alpha+|\im z|\cosh\alpha\bigr).
+\end{equation}
+Choose $\alpha_j=0$ if $jm\le\rho+d$, and otherwise
+\[
+ \alpha_j=\acosh\frac{jm}{\rho+d}.
+\]
+Combining~\eqref{r2:eq:strip-B} and~\eqref{r2:eq:Bessel-contour}, define
+\begin{equation}\label{r2:eq:bj}
+ b_j=\frac{|a_j|}{s_j}4^j
+ \exp\bigl(jm\eps_s-jm\alpha_j
+       +(\rho+d)\sinh\alpha_j+d\cosh\alpha_j\bigr).
+\end{equation}
+Then $M_U=\sum_j b_j$ bounds $|U_*|$ on the complex strip, uniformly in $r$. Cauchy's estimate in the periodic variable gives a Fourier coefficient bound $M_U4^{-|k|}$; summing the weight $2^{|k|}$ yields
+\begin{equation}\label{r2:eq:Ub}
+ \nrm{U_*}_Y\le U_b:=3M_U.
+\end{equation}
+
+We need a bound for a Cartesian derivative in the same weight, rather than only a bound for an angular derivative. The Wirtinger identities are
+\begin{align*}
+ \partial_z\bigl(J_n(|z|)e^{in\arg z}\bigr)
+ &=\tfrac12J_{n-1}(|z|)e^{i(n-1)\arg z},\\
+ \partial_z\bigl(J_n(|z|)e^{-in\arg z}\bigr)
+ &=-\tfrac12J_{n+1}(|z|)e^{-i(n+1)\arg z}.
+\end{align*}
+Hence, for $n=jm$,
+\[
+ \partial_zu_*=\sum_{j=0}^{40}\frac{a_j}{4s_j}
+ \Bigl(J_{n-1}(|z|)e^{i(n-1)\arg z}-J_{n+1}(|z|)e^{-i(n+1)\arg z}\Bigr),
+\]
+and $\partial_wU_*=p_0\,(\partial_zu_*)\circ\psi_0$. We bound the continuation of each summand to the strip as before; the two angular factors continue to $e^{i(n-1)\theta}(A_+/B_s)^{n-1}$ and $e^{-i(n+1)\theta}(A_-/B_s)^{n+1}$. Let $j\ge1$. With the same $\alpha_j$, the contour bound~\eqref{r2:eq:Bessel-contour} for the orders $n\pm1$ exceeds the bound for the order $n$ by at most the factor $e^{\alpha_j}$. On the strip $|e^{\pm i\theta}|\le4^{1/m}$ and $|A_\pm/B_s|\le e^{\eps_s}$, so the angular factor of order $n+1$ is at most $4^{1/m}e^{\eps_s}$ times the bound $4^je^{n\eps_s}$ used in~\eqref{r2:eq:bj}, while the factor of order $n-1$ does not exceed that bound. For $j=0$ the summand is $-(a_0/2s_0)J_1(|z|)e^{-i\arg z}$, and $\alpha_0=0$. Finally $|p_0|\le P_4$ on the strip. The $j$th summand of $\partial_wU_*$ is therefore at most $\frac12\,4^{1/m}P_4e^{\eps_s}b_je^{\alpha_j}$ for every $j\ge0$, and the same holds for $\partial_{\bar w}U_*$ by reality. Dropping the factor $1/2$, both Wirtinger derivatives satisfy, on the strip and uniformly in $r$,
+\begin{equation}\label{r2:eq:strip-derivative}
+ |\partial_wU_*|,\ |\partial_{\bar w}U_*|\le
+ M_\partial:=4^{1/m}P_4e^{\eps_s}\sum_jb_je^{\alpha_j}.
+\end{equation}
+The derivative $\partial_wU_*$ has angular frequencies $km-1$, $k\in\Z$. The function $e^{i\theta}\partial_wU_*$ is therefore periodic in $\phi$, and it is bounded by $4^{1/m}M_\partial$ on the strip. Cauchy's estimate bounds its Fourier coefficients by $4^{1/m}M_\partial4^{-|k|}$, while $R^{|km-1|}\le R2^{|k|}$. Summation over $k$ gives
+\begin{equation}\label{r2:eq:Db}
+ \nrm{\partial_wU_*}_{\Yc}\le
+ D_b:=3R4^{1/m}M_\partial=3R4^{2/m}P_4e^{\eps_s}\sum_jb_je^{\alpha_j}.
+\end{equation}
+Reality gives the same bound for $\partial_{\bar w}U_*$. The resulting enclosures are $U_b<131.610$ and $D_b<110996$.
+
+Both boundary defects have a common strip bound. Since $2M_U\ge1$ for the centre (indeed $M_U=U_b/3>43$),
+\[
+ |U_*-1|\le M_U+1\le3M_U=U_b.
+\]
+The radial derivative is $\partial_rU_*=e^{i\theta}\partial_wU_*+e^{-i\theta}\partial_{\bar w}U_*$, and $|e^{\pm i\theta}|\le4^{1/m}$ on the strip. By~\eqref{r2:eq:strip-derivative},
+\[
+ |\partial_rU_*|\le2\cdot4^{1/m}M_\partial=\frac{2D_b}{3R}.
+\]
+We can therefore use
+\begin{equation}\label{r2:eq:trace-M}
+ M=U_b+2D_b
+\end{equation}
+as a common majorant for the two boundary functions.
+
+\subsubsection{All boundary modes and the residual}
+The boundary computation encloses $1024$ equispaced values at $4096$ bits and their cosine coefficients through $j=400$. For a periodic strip-analytic function bounded by $M$, the discrete coefficient differs from the continuum coefficient by the sum of all aliased coefficients. Their geometric bound gives, uniformly for $0\le j\le400$,
+\begin{equation}\label{r2:eq:alias}
+ e_Q=\frac{8M4^{-(1024-400)}}{1-4^{-1024}}.
+\end{equation}
+For $j>400$, Cauchy's estimate gives $|D_j|,|N_j|\le2M4^{-j}$. The constant mode is included with its own coefficient convention; in particular no defect is discarded because it belongs to a finite equation used to choose the centre.
+
+For $0\le k\le3$, form the full moments
+\begin{equation}\label{r2:eq:moments}
+ D^{[k]}=\sum_{j\ge0}2^j(jm+1)^k|D_j|,
+ \qquad N^{[k]}=\sum_{j\ge0}2^j(jm+1)^k|N_j|.
+\end{equation}
+The tail begins at $j=401$. Expanding $(m(401+t)+1)^k$ by the binomial theorem reduces its bound to
+\begin{equation}\label{r2:eq:tail-sums}
+ \sum_{t\ge0}t^\ell2^{-t}=2,\ 2,\ 6,\ 26\quad\text{for }\ell=0,1,2,3\text{ respectively},
+\end{equation}
+where $t^0=1$, also at $t=0$. Thus every moment in~\eqref{r2:eq:moments} includes the infinite tail. The stronger coefficient decay $4^{-j}$ also proves smooth convergence of the lift on any closed disc strictly inside radius $4^{1/m}$.
+
+Direct differentiation gives
+\[
+ \Delta(h_n^D\cos n\theta)=-2n(n+1)r^n\cos n\theta,
+ \qquad
+ \Delta(h_n^N\cos n\theta)=2(n+1)r^n\cos n\theta.
+\]
+On $0\le r\le1$, $|h_n^D|\le1$ and $|h_n^N|\le1/(n+2)$. For the first inequality, $h_n^D$ increases to one, since its derivative is $n(n+2)r^{n-1}(1-r^2)/2$ for $n>0$; the $n=0$ case is constant. For the second, maximize $r^n(1-r^2)/2$. The following enlarged constants then suffice:
+\begin{equation}\label{r2:eq:lift-bounds}
+ \begin{aligned}
+ L_0&=D^{[0]}+N^{[0]}/2,&
+ L_1&=2R(D^{[2]}+N^{[1]}),\\
+ L_\Delta&=2(D^{[2]}+N^{[1]}),&
+ L_{\Delta,1}&=2R(D^{[3]}+N^{[2]}).
+ \end{aligned}
+\end{equation}
+They bound $\ell$, $\partial_w\ell$, $\Delta\ell$ and $\partial_w\Delta\ell$, respectively, in $\Yc$. To see the derivative bounds, express $r^n\cos n\theta=(w^n+\bar w^n)/2$ and multiply by $w\bar w$ for the second term of each lift. A Wirtinger derivative costs at most the degree and one factor $R$ in the angular weight. The coefficients in~\eqref{r2:eq:lift-bounds} dominate all resulting terms, including $n=0$.
+
+The residual at the clamped centre is
+\begin{equation}\label{r2:eq:E}
+ E=F(g_0,p_0)=\Delta U_0+qU_0=-(\Delta+q)\ell.
+\end{equation}
+Since $\nrm{\partial_wq}_{\Yc}\le RPP_1$, the residual and its derivative have bounds
+\begin{equation}\label{r2:eq:E-bounds}
+ \nrm E_Y\le E_0=L_\Delta+P^2L_0,
+ \qquad
+ \nrm{\partial_wE}_{\Yc}\le E_1=L_{\Delta,1}+RPP_1L_0+P^2L_1.
+\end{equation}
+Since $\Delta U_0=-qU_*-\Delta\ell$, we also have the fixed-centre derivative bounds
+\begin{equation}\label{r2:eq:D-bounds}
+ \begin{split}
+ \nrm{\Delta U_0}_Y&\le\Lambda_0:=P^2U_b+L_\Delta,\\
+ \nrm{\partial_w\Delta U_0}_{\Yc}&\le
+ \Lambda_1:=RPP_1U_b+P^2D_b+L_{\Delta,1}.
+ \end{split}
+\end{equation}
+The resulting enclosures are
+\begin{equation}\label{r2:eq:E-numbers}
+ E_0<9.643\cdot10^{-61},\qquad E_1<5.418\cdot10^{-56},
+ \qquad\Lambda_0<8.865\cdot10^7,\quad\Lambda_1<7.489\cdot10^{10}.
+\end{equation}
+The small residual is a bound for the clamped centre in the Banach-space equation, including all modes. The existence argument uses this residual and the inverse proved next.
+
+\subsection{An exact inverse of the corrected linearisation}\label{r2:sec:linearization}
+
+All quantities are evaluated at $(g_0,p_0)$; abbreviate $p=p_0$, $q=|p|^2$. The centre $U_0$ is smooth on a neighbourhood of $\overline\D$ and has the exact Cauchy data~\eqref{r2:eq:exact-clamp}. Its residual is $E=\Delta U_0+qU_0$. For a variation $(\delta g,\delta p)\in X$, set
+\begin{equation}\label{r2:eq:variation}
+ \eta(w)=\int_0^w\delta p(z)\,dz,\qquad
+ v=\eta/p,
+ \qquad T=v\partial_wU_0+\bar v\partial_{\bar w}U_0.
+\end{equation}
+Here $p$ has no zero on $|w|\le R$ as soon as $j_*>0$ in~\eqref{r2:eq:reciprocal-denominators} below, because $|p(w)-\rho|\le P-\rho$ there; $v$ is then holomorphic on $|w|<R$. The real vector field represented by the complex number $v$ acts on $U_0$ as $T$. Define the bounded correction
+\begin{equation}\label{r2:eq:residual-correction}
+ \Ecal(\delta p)=v\partial_wE+\bar v\partial_{\bar w}E+(v'+\bar v')E,
+ \qquad \widetilde D=DF(g_0,p_0)-\Ecal,
+\end{equation}
+where $\Ecal$ on $X$ acts only on the second component.
+
+\begin{proposition}[The coupled inverse]\label{r2:prop:coupled}
+Suppose $L=\Delta+q$ has the symmetric-sector Dirichlet inverse and trace bound of Proposition~\ref{r2:prop:Yinverse}, and the centre satisfies
+\begin{equation}\label{r2:eq:reciprocal-denominators}
+ d_*:=\rho^2-(P^2-\rho^2)-E_0>0,
+ \qquad j_*:=\rho-(P-\rho)>0.
+\end{equation}
+Then $\widetilde D\colon X\to Y$ has a bounded two-sided inverse $A\colon Y\to X$. Define
+\begin{align}
+ I_0&=d_*^{-1},& I_1&=I_0+I_0^2(2PP_1+2RE_1),\label{r2:eq:I}\\
+ \mathcal J_0&=j_*^{-1},& \mathcal J_1&=\mathcal J_0+P_1\mathcal J_0^2,\label{r2:eq:J}\\
+ B_p&=(P+P_1)I_1B_N,&
+ B_g&=B_N+2(R\Lambda_1+\Lambda_0)I_1B_N.\label{r2:eq:BgBp}
+\end{align}
+Then, with $A_*=B_g+B_p$,
+\begin{equation}\label{r2:eq:A-defects}
+ \begin{gathered}
+ \nrm A_{Y\to X}\le A_*,\qquad
+ \nrm{AF(g_0,p_0)}_X\le Y_0:=A_*E_0,\\
+ \nrm{I_X-A DF(g_0,p_0)}_{X\to X}
+ \le Z:=2A_*(RE_1+E_0)\mathcal J_1.
+ \end{gathered}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+\emph{The material-derivative identity.}
+Use $\Delta=4\partial_w\partial_{\bar w}$ and holomorphicity of $v$. Direct differentiation gives
+\begin{equation}\label{r2:eq:DeltaT}
+ \Delta T=v\partial_w\Delta U_0+\bar v\partial_{\bar w}\Delta U_0
+          +(v'+\bar v')\Delta U_0.
+\end{equation}
+There is no second derivative of $v$ in this formula. For example,
+\[
+ 4\partial_w\partial_{\bar w}(v\partial_wU_0)
+ =v'\Delta U_0+v\partial_w\Delta U_0;
+\]
+the conjugate term has the analogous expression. Since $\eta=pv$,
+\begin{equation}\label{r2:eq:deltaq}
+ \begin{split}
+ \delta q&=\bar p\eta'+p\bar\eta'\\
+ &=v\partial_wq+\bar v\partial_{\bar w}q+q(v'+\bar v').
+ \end{split}
+\end{equation}
+Insert $\Delta U_0=E-qU_0$ into~\eqref{r2:eq:DeltaT}, apply the product rule, and use~\eqref{r2:eq:deltaq}. The terms involving derivatives of $q$ combine with $\delta qU_0$, and the terms involving derivatives of $U_0$ combine with $qT$. The result is the exact identity
+\begin{equation}\label{r2:eq:material}
+ (\Delta+q)T+\delta qU_0
+ =v\partial_wE+\bar v\partial_{\bar w}E+(v'+\bar v')E
+ =\Ecal(\delta p).
+\end{equation}
+For $\delta U=K\delta g$, differentiation of $F$ gives
+\begin{equation}\label{r2:eq:DF}
+ DF(g_0,p_0)(\delta g,\delta p)
+ =(\Delta+q)\delta U+\delta qU_0.
+\end{equation}
+Thus $\widetilde D(\delta g,\delta p)=L(\delta U-T)$.
+
+\emph{The boundary Hessian.}
+The constant Dirichlet data and zero normal derivative imply $\nabla U_0=0$ on the circle. Differentiate this vector identity along the circle: the Hessian annihilates its tangent vector. Since the Hessian is symmetric, it has only a normal--normal component, and its trace is that component. Therefore
+\[
+ \operatorname{Hess}U_0=(\Delta U_0)\nu\otimes\nu
+ \quad\text{on }\partial\D.
+\]
+The derivative of the vector field $v$ in the normal derivative of $T$ multiplies $\nabla U_0$ and vanishes. With $\nu=e^{i\theta}$ and $U_0=1$ this proves
+\begin{equation}\label{r2:eq:T-boundary}
+ T=0,\qquad
+ \partial_rT=(E-q)\re(ve^{-i\theta})
+ \quad\text{on }\partial\D.
+\end{equation}
+
+\emph{The boundary reciprocal.}
+Put $d_\partial=(q-E)|_{\partial\D}$. In the weighted boundary algebra $W_0$,
+\[
+ \nrm{d_\partial-\rho^2}_{W_0}
+ \le P^2-\rho^2+E_0<\rho^2.
+\]
+A Neumann series in $W_0$ gives $d_\partial^{-1}\in W_0$ and norm at most $I_0$. The angular derivative satisfies
+\[
+ \nrm{\partial_\theta q}_{W_0}\le2PP_1,
+ \qquad\nrm{\partial_\theta E}_{W_0}\le2RE_1.
+\]
+For the second inequality use $\partial_\theta E=i(w\partial_wE-\bar w\partial_{\bar w}E)$ and reality. Differentiate the reciprocal to obtain
+\[
+ \nrm{d_\partial^{-1}}_{W_1}
+ \le I_0+I_0^2\nrm{\partial_\theta d_\partial}_{W_0}\le I_1.
+\]
+This argument uses a smallness condition only in $W_0$, and the derivative identity in $W_1$; it does not require the stronger $W_1$ perturbation to be small.
+
+\emph{Construction of the right inverse.}
+For $f\in Y$, solve
+\begin{equation}\label{r2:eq:Vproblem}
+ L\Phi=f\quad\text{in }\D,\qquad\Phi=0\quad\text{on }\partial\D,
+ \qquad N=\partial_r\Phi|_{r=1}.
+\end{equation}
+Set $H_\partial=N/d_\partial$. Proposition~\ref{r2:prop:Yinverse} and the reciprocal bound give $\nrm{H_\partial}_{W_1}\le I_1B_N\nrm f_Y$. This function is real and even, with frequencies in $m\Z$. If its complex Fourier coefficients are $H_n$, define
+\begin{equation}\label{r2:eq:realpart}
+ a(w)=H_0+2\sum_{j>0}H_{jm}w^{jm}.
+\end{equation}
+Then $a$ has real coefficients, $\re a=H_\partial$ on the circle, and
+\begin{equation}\label{r2:eq:a-norm}
+ \nrm a_{W_1}=\nrm{H_\partial}_{W_1}\le I_1B_N\nrm f_Y.
+\end{equation}
+The equality uses $H_{-n}=H_n$ and the factor two on positive frequencies. This real-part problem has a unique solution in the real-coefficient class: the usual imaginary constant is excluded by that class. The constant mode $H_0$ is allowed and determines the dilation component of the shape.
+
+Define
+\begin{equation}\label{r2:eq:A-recipe}
+ v=wa,\qquad\eta=pv,\qquad\delta p=(pv)',
+ \qquad\delta U=\Phi+T,\qquad\delta g=\Delta\delta U.
+\end{equation}
+Now $\re(ve^{-i\theta})=\re a=N/d_\partial$. Equations~\eqref{r2:eq:T-boundary} and~\eqref{r2:eq:Vproblem} give zero Dirichlet and Neumann traces of $\delta U$. Consequently $\delta g\in X_g$ and $K\delta g=\delta U$. Its shape variation lies in $W$, with the required real coefficients and frequencies. Formula~\eqref{r2:eq:material} then gives $\widetilde D(\delta g,\delta p)=L\Phi=f$. The construction is linear in $f$; denote it by $Af$.
+
+\emph{Bounds and regularity of the construction.}
+Multiplication and differentiation of the holomorphic series give
+\begin{equation}\label{r2:eq:v-estimates}
+ \nrm v_{\Yc}\le R\nrm a_{W_1},\qquad
+ \nrm{v'}_{\Yc}\le\nrm a_{W_1},\qquad
+ \nrm{\delta p}_W=\nrm{pa}_{W_1}
+ \le(P+P_1)\nrm a_{W_1}.
+\end{equation}
+In the middle inequality, writing $a(w)=\sum_{j\ge0}\hat a_jw^{jm}$, one has $v'=\sum_j(jm+1)\hat a_jw^{jm}$, so equality actually holds. The last identity follows from differentiating $wpa$. For the field, $\Delta\Phi=f-q\Phi$ and~\eqref{r2:eq:DeltaT} imply
+\[
+ \nrm{\delta g}_Y
+ \le B_N\nrm f_Y+2(R\Lambda_1+\Lambda_0)\nrm a_{W_1}.
+\]
+Together with~\eqref{r2:eq:a-norm}, these are $B_p$ and $B_g$ in~\eqref{r2:eq:BgBp} and prove $\nrm A\le A_*$. They also prove that the recipe maps all of $Y$ into $X$.
+
+There is no loss of angular radius in these estimates. Although a general input field is only continuous in $Y$, its Poisson potential and the Dirichlet solution are in $W^{2,s}$ for finite $s$ and have $C^1$ traces. The function $v$ is holomorphic on the larger disc $|w|<R$; hence $T$ is smooth near $\overline\D$. The identities hold distributionally for these general inputs, and the boundary identities are classical for $T$. Thus no density assertion in a stronger differentiability norm is required.
+
+\emph{The left inverse.}
+Take any $(\delta g,\delta p)\in X$ and define $\eta$, $v$, $T$ as in~\eqref{r2:eq:variation}. For $a=\eta/(wp)$, the apparent singularity at zero is removable. Moreover,
+\begin{equation}\label{r2:eq:primitive-norm}
+ \nrm{\eta/w}_{W_1}=\nrm{\delta p}_W.
+\end{equation}
+The $W_0$ Neumann series for $1/p$, followed by differentiation of the reciprocal, gives $\nrm{1/p}_{W_1}\le\mathcal J_1$ from~\eqref{r2:eq:J}. Thus $a\in W_1$, with real coefficients and frequencies $jm$.
+
+Put $\Phi=K\delta g-T$. It has zero Dirichlet trace and satisfies $L\Phi=\widetilde D(\delta g,\delta p)$. Dirichlet uniqueness in the symmetric sector recovers exactly the function in~\eqref{r2:eq:Vproblem} when the recipe is applied to this right side. Its normal trace is, by~\eqref{r2:eq:T-boundary},
+\[
+ \partial_r\Phi=-\partial_rT=d_\partial\re a.
+\]
+Dividing by $d_\partial$ and solving the real-part problem recovers $a$ uniquely. The recipe therefore recovers $v$, $\eta$, $\delta p$ and $\delta g$. Hence $A\widetilde D=I_X$, as well as $\widetilde DA=I_Y$. In particular $A$ is injective.
+
+\emph{The Newton defect.}
+Equation~\eqref{r2:eq:primitive-norm} gives $\nrm a_{W_1}\le\mathcal J_1\nrm{\delta p}_W$. From~\eqref{r2:eq:residual-correction} and~\eqref{r2:eq:v-estimates},
+\[
+ \nrm{\Ecal(\delta p)}_Y
+ \le2(RE_1+E_0)\mathcal J_1\nrm{\delta p}_W.
+\]
+Since $A\widetilde D=I_X$,
+\[
+ I_X-A DF(g_0,p_0)=-A\Ecal.
+\]
+This proves the left defect estimate in~\eqref{r2:eq:A-defects}. The bound for $AF(g_0,p_0)$ follows from $\nrm E_Y\le E_0$.
+\end{proof}
+
+\begin{remark}[Shape differentiation]
+The material derivative $T=v\cdot\nabla U_0$ and the use of the boundary normal displacement are the classical Hadamard shape-derivative mechanism; see, for example,~\cite{SZ92,HP18}. This mechanism is not specific to two dimensions. The planar conformal coordinates and holomorphic real-part problem make the resulting inverse explicit here. The residual term in~\eqref{r2:eq:material} records that the centre solves the equation only approximately.
+\end{remark}
+
+For the forty-mode centre, exact rational arithmetic gives $P<820.7003$, $P_1<1176.5538$ and $V_*=P^2-\rho^2<10208.097$. With the bound for $E_0$ in~\eqref{r2:eq:E-numbers},
+\begin{equation}\label{r2:eq:reciprocal-numbers}
+ d_*>6.5313\cdot10^5,\qquad j_*>808.21,
+\end{equation}
+so~\eqref{r2:eq:reciprocal-denominators} holds. The enclosed constants are $I_1<6.059\cdot10^{-6}$, $\mathcal J_1<3.039\cdot10^{-3}$, $B_p<8.517\cdot10^{11}$ and $B_g<6.419\cdot10^{19}$, and the inverse bound is $A_*<6.419\cdot10^{19}$. Its size is compatible with the contraction because the residual bounds in~\eqref{r2:eq:E-numbers} are much smaller. The two-sided construction is needed because the Newton map acts on $X$: its contraction estimate uses $I_X-A\,DF(g_0,p_0)$, a left-inverse defect on $X$.

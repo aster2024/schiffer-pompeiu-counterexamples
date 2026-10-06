@@ -9,12 +9,8 @@ a nonconstant solution of
 Δu + u = 0 in Ω,    u = 1,  ∇u = 0 on ∂Ω .
 ```
 
-Hence `Ω` fails the Pompeiu property. Mathematics: `FINAL.md` (proof notes,
-Chinese) and `PROOF_ADDENDUM.md` (release addendum: fail-closed verifier,
-general proofs of the principal shape column (5.1) and of `Kg = (1−r²)²Q`,
-convexity of `D` and of `Ω`). Status: local computer-assisted proof, audited
-(verdict CORRECT, with the fixes of this release applied); not yet peer
-reviewed.
+Hence `Ω` fails the Pompeiu property. The mathematics is in Section 19 of
+the paper.
 
 ## Requirements
 
@@ -32,7 +28,7 @@ reviewed.
 sha256sum -c SHA256SUMS
 ```
 
-Expected: `OK` on each of the 24 lines.
+Expected: `OK` on each of the 23 lines.
 
 **2. Main certificate** (reads the frozen centre, inverse and seven interval
 receipts; about 2 s):
@@ -107,22 +103,23 @@ about 3 minutes on one core):
 bash reproduce_r6.sh            # or: PYTHON=/path/to/python3 bash reproduce_r6.sh
 ```
 
-Expected output of the release run (2026-09-28, 3 min 2 s wall clock):
+Expected output of the release run (2026-09-28, 3 min 2 s wall clock);
+machine-specific scratch paths below were replaced by `<workdir>`:
 
 ```text
 interpreter: python3 Python 3.10.19 python-flint 0.9.0
 FAIL-CLOSED TESTS PASSED
 All seven frozen interval receipts reproduced byte for byte.
 PROVED
-certificate: /tmp/r6-recheck-XXXXXX/certificate_r6.json
+certificate: <workdir>/certificate_r6.json
 certificate_r6.json reproduced byte for byte.
 Jacobi formulas agree: 4182 pairs
 I.1 … (as in step 4) …
 IDENTITIES VERIFIED
-receipt: /tmp/r6-recheck-XXXXXX/identities_r6.json
+receipt: <workdir>/identities_r6.json
 identities_r6.json reproduced byte for byte.
 PROVED_CONVEX  Re(1+w psi''/psi') > 0.71569200 on |w|<=1 for every shape in the certified ball
-certificate: /tmp/r6-recheck-XXXXXX/convex_r6.json
+certificate: <workdir>/convex_r6.json
 convex_r6.json reproduced byte for byte.
 REPRODUCTION COMPLETE
 ```
@@ -131,7 +128,7 @@ Any mismatch prints `REPRODUCTION MISMATCH: <file>` and exits nonzero.
 
 ## SHA-256 of the release files
 
-The same list is in `SHA256SUMS`. `verify_r6.py` freezes the hashes of the
+The same list is in `SHA256SUMS`, which also covers this README. `verify_r6.py` freezes the hashes of the
 centre, the inverse, the seven receipts and the five stage scripts
 (`EXPECTED_SHA256`) and records its own hash in `certificate_r6.json`
 (`verifier_sha256`); `verify_convex_r6.py` freezes the hashes of `verify_r6.py`
@@ -162,23 +159,8 @@ centre hash, weight and radius.
 | `far_shape_r6.py` | stage script (far shape tail) | `99f1da9274008d3122bb5e7fffbdf949465f9d530639935c548674a005fe2804` |
 | `test_fail_closed_r6.py` | negative tests of the fail-closed maximum | `cf9f229636ddccbd9744a62098de0804791d396e1f585e11c7976a1f41478112` |
 | `reproduce_r6.sh` | end-to-end reproduction | `c5fb06ca32d2058ae3862cbdc75e5b313185aae8559ad86d3315e2f514ebfd03` |
-| `FINAL.md` | proof notes (Chinese) | `49110c536588a21ce2a48ba4e741d1f0580f5e1cf56f353a094963ccbed8f16f` |
-| `PROOF_ADDENDUM.md` | release addendum: proofs of (5.1), `Kg=(1−r²)²Q`, convexity | `71b564e4f9ad519439ae081494d605d246b4a4012bb90caf1eb86356ede701c1` |
 
 Superseded: the pre-release certificate (the pre-release `certificate_r6.json`,
 `9a3129a1302c6d8571052cdc0d7c50b75d79d5108ed9d9ef6b72d3c695be4f1b`) and
 verifier (`c400a08706d39604f8293d1b9f1771d2325d139329ff68aedd2d6df65d72de8e`).
 The centre, inverse and all seven interval receipts are unchanged.
-
-## Other files (not needed for the proof)
-
-These files belong to the full working package and are not included in the
-arXiv ancillary files. Exploration and centre construction, kept for provenance: `r6_bessel.py`,
-`candidate_m8_L{12,20,28}.npz` (Fourier–Bessel candidate), `scan_r6.py`
-(resonance scan), `pompeiu_r6.py` (volume-moment check), `disc6.py`,
-`from_bessel_r6.py`, `conformal_M18_S12.npz`, `conformal_M58_S30.npz`
-(conformal Newton), `symbolic_reduction.py` (sympy check of
-`Δ₂(y₁y₂u) = y₁y₂Δ₆u` and of (4.1)), `check_tail_r6.py` (sympy check of (5.1)
-for j = 5…17, superseded by `check_identities_r6.py`), `NOTES.md` (research
-log), `dev/` (original task prompt and run log). The certificate uses only the
-frozen dyadic centre and interval arithmetic.

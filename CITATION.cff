@@ -1,11 +1,11 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "Convex counterexamples to the Schiffer and Pompeiu conjectures in dimensions three, four, six, eight, ten and fourteen"
+title: "Convex counterexamples to the Schiffer and Pompeiu conjectures in dimensions two to eighteen"
 authors:
   - family-names: Guo
     given-names: Jizhou
     affiliation: "Dots Studio, Rednote"
-date-released: 2026-09-28
+date-released: 2026-10-06
 url: "https://github.com/aster2024/schiffer-pompeiu-counterexamples"
 doi: 10.5281/zenodo.22999505
 identifiers:

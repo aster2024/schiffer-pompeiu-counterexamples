@@ -1,0 +1,1596 @@
+\par
+% Certificate constants.
+% name                         value / source
+\newcommand{\brM}{77}
+\newcommand{\brModes}{72}
+\newcommand{\brWindow}{160}
+\newcommand{\brStates}{300}
+\newcommand{\brGaussNodes}{1536}
+\newcommand{\brDGrid}{512}
+\newcommand{\brTraceGrid}{1024}
+\newcommand{\brTraceCutoff}{400}
+\newcommand{\brSpectralBits}{2048}
+\newcommand{\brTraceBits}{4096}
+\newcommand{\brRecordedSeconds}{173.042}
+\newcommand{\brWorkers}{4}
+\newcommand{\brCentreHash}{272abaf4b002d8b63cf68344616ca501eb1a3c1f2636b27280af4960713c4472}
+\newcommand{\brVerifierHash}{375ea2e68225d3419309d5359c7d5d2a589c07bb0985e71f2cd0ac9bc3fc95fb}
+\newcommand{\brRadius}{10^{-36}}
+\newcommand{\brRhoLo}{237.97}
+\newcommand{\brRhoHi}{237.98}
+\newcommand{\brAnalyticRadius}{1.00904}
+\newcommand{\brDerivativeLo}{237.2785}
+\newcommand{\brUnivalentLo}{235.7747}
+\newcommand{\brConvexLo}{0.64407}
+\newcommand{\brNonDiscLo}{0.0038627}
+\newcommand{\brOriginLo}{19.3341}
+\newcommand{\brMu}{0.011202}
+\newcommand{\brEpsC}{5.276\cdot10^{-13}}
+\newcommand{\brEps}{2.580\cdot10^{-11}}
+\newcommand{\brSchur}{0.013407}
+\newcommand{\brDinf}{0.355923}
+\newcommand{\brDiagLo}{0.5561235}
+\newcommand{\brGaussError}{9.734\cdot10^{-51}}
+\newcommand{\brBLtwo}{1.823}
+\newcommand{\brBY}{1.117\cdot10^6}
+\newcommand{\brBTone}{6.443\cdot10^{10}}
+\newcommand{\brBTtwo}{1.187\cdot10^{13}}
+\newcommand{\brHighFactor}{0.033901}
+\newcommand{\brP}{240.1776}
+\newcommand{\brPone}{295.0400}
+\newcommand{\brPtwo}{42522.831}
+\newcommand{\brJtwo}{0.793080}
+\newcommand{\brBzeroone}{541.556}
+\newcommand{\brUb}{68.459}
+\newcommand{\brDUb}{17609.075}
+\newcommand{\brEzero}{9.699\cdot10^{-67}}
+\newcommand{\brEone}{2.728\cdot10^{-62}}
+\newcommand{\brA}{1.947\cdot10^{22}}
+\newcommand{\brYzero}{1.888\cdot10^{-44}}
+\newcommand{\brZ}{2.981\cdot10^{-39}}
+\newcommand{\brMtwo}{65827.163}
+\newcommand{\brCtwo}{6.406\cdot10^{26}}
+\newcommand{\brPolynomial}{-9.99999980\cdot10^{-37}}
+\newcommand{\brContraction}{1.282\cdot10^{-9}}
+\newcommand{\brFourCY}{4.836\cdot10^{-17}}
+\newcommand{\brCoverageRows}{%
+Angular order & $0$ & $77$ & $154$ & $231$ & $308$ & $385$ & $462$\\
+\midrule
+States & $102$ & $91$ & $60$ & $33$ & $13$ & $1$ & $0$\\}
+% Floating-point diagnostics.
+\newcommand{\brCurvatureDiagnostic}{[2.719\cdot10^{-3},\,5.283\cdot10^{-3}]}
+\newcommand{\brCSSConvexDiagnostic}{-2.5506}
+\newcommand{\brCSSCurvatureDiagnostic}{-2.968}
+\newcommand{\brAlphaDiagnostic}{56632.65}
+\newcommand{\brScaleDiagnostic}{84.137}
+\newcommand{\brRemainderDiagnostic}{8467}
+\newcommand{\brThresholdDiagnostic}{92.6\text{--}228.8}
+\newcommand{\brRatioDiagnostic}{37}
+\newcommand{\brRemainderRows}{%
+$5000$ & $3953$\\
+$23309.55191881634$ & $7096$\\
+$100000$ & $8467$\\}
+% END BERENSTEIN CERTIFICATE MACRO TABLE
+
+\part{A convex planar domain for Berenstein's problem}\label{br:part}
+\section{The domain and the fixed-disc equation}\label{br:sec:formulation}
+
+The Dirichlet counterpart of Schiffer's problem prescribes zero boundary
+value and a nonzero constant normal derivative. Colbrook, Sadeghi and
+Stepaniants~\cite{CSS26} constructed a planar counterexample to
+Berenstein's conjecture. The construction below gives the first convex
+planar counterexample.
+
+\begin{theorem}\label{br:thm:main}
+There exist a bounded strictly convex domain $\Omega\subset\R^2$, different
+from a disc, with real-analytic boundary and $D_{\brM}$ symmetry, and a
+real-valued sign-changing function $u\in C^\infty(\overline\Omega)$ such that
+\begin{equation}\label{br:eq:physical}
+ \Delta u+u=0\quad\text{in }\Omega,\qquad
+ u=0,\quad\partial_\nu u=1\quad\text{on }\partial\Omega.
+\end{equation}
+Here $\nu$ is the outward unit normal.
+The domain is $\psi(\D)$, with $\psi(0)=0$, $\psi'(0)>0$, and
+\begin{equation}\label{br:eq:main-geometry}
+ \brRhoLo<\psi'(0)<\brRhoHi,\qquad
+ \re\left(1+\frac{w\psi''(w)}{\psi'(w)}\right)>\brConvexLo
+ \quad(|w|=1).
+\end{equation}
+The map is holomorphic and univalent on $|w|<R=2^{1/\brM}>\brAnalyticRadius$,
+with $\re\psi'(w)>\brUnivalentLo$ there. On $\overline\D$,
+$|\psi'|>\brDerivativeLo$. Writing
+$\psi(w)=\sum_{j\ge0}c_jw^{jm+1}$, $m=\brM$, one has
+$|c_1|>\brNonDiscLo$ and $u(0)>\brOriginLo$.
+There is a unique zero of the fixed-disc equation~\eqref{br:eq:F} in
+\begin{equation}\label{br:eq:solution-ball}
+ \nrm{g-g_0}_Y+\nrm{p-p_0}_{W_1}\le\brRadius,
+ \qquad p=\psi'.
+\end{equation}
+Here $Y$, $W_1$ and $X$ are the spaces of
+Subsection~\ref{br:sec:spaces}, and $(g_0,p_0)$ is the clamped centre of
+Subsection~\ref{br:sec:centre}.
+\end{theorem}
+
+The second quantity in~\eqref{br:eq:main-geometry} is the conformal convexity
+factor. The physical curvature is this factor divided by $|\psi'|$.
+For the finite centre, a floating-point evaluation gives physical curvature
+in the approximate range $\brCurvatureDiagnostic$.
+
+\subsection{The arc-length Fourier transform}\label{br:sec:fourier}
+Let $\sigma_{\partial\Omega}$ denote arc-length measure and use the convention
+$\widehat\sigma(\xi)=\int_{\partial\Omega}e^{-i\xi\cdot x}\,ds$.
+For a smooth bounded
+domain with connected Jordan boundary, the existence of a real solution
+$u$ of~\eqref{br:eq:physical} is equivalent to
+\begin{equation}\label{br:eq:fourier}
+ \widehat\sigma_{\partial\Omega}(\xi)=0\qquad(|\xi|=1).
+\end{equation}
+Indeed, if $v=e^{-i\xi\cdot x}$, Green's identity gives
+$0=\int_\Omega(u\Delta v-v\Delta u)
+=\int_{\partial\Omega}(u\partial_\nu v-v\partial_\nu u)
+=-\widehat\sigma(\xi)$. Conversely, let $\Phi$ be the outgoing fundamental
+solution with $(\Delta+1)\Phi=-\delta$ and put
+$S(x)=\int_{\partial\Omega}\Phi(x-y)\,ds_y$.
+Its far-field amplitude is a nonzero constant multiple of
+$\widehat\sigma(\widehat x)$, so~\eqref{br:eq:fourier} and Rellich uniqueness
+give $S=0$ in the connected exterior. The single layer is continuous across
+the boundary, and its normal derivatives obey
+$\partial_\nu S|_{\rm ext}-\partial_\nu S|_{\rm int}=-1$.
+Thus $u=\re S|_\Omega$ solves~\eqref{br:eq:physical}; smooth boundary
+regularity gives the classical traces. This is the Fourier-circle
+equivalence of~\cite[Proposition~2.1]{CSS26}. In particular, the theorem produces a strictly
+convex noncircular curve whose arc-length Fourier transform vanishes on
+the unit circle.
+
+\subsection{Spaces and lifts}\label{br:sec:spaces}
+In this part $m=\brM$, $R=2^{1/m}$, and the symbols $Y$, $\Yc$, $K$, $X_g$
+have the meanings of Subsection~\ref{r2:sec:spaces}, with this value of $m$.
+The field is real, reflection-even and invariant under rotation through
+$2\pi/m$. In particular,
+\begin{equation}\label{br:eq:norms}
+ \nrm f_Y=\sum_{n\in m\Z}R^{|n|}\sup_{0\le r\le1}|f_n(r)|,
+ \qquad
+ \nrm b_{W_s}=\sum_{n\in m\Z}R^{|n|}(1+|n|)^s|b_n|.
+\end{equation}
+The full angular space $\Yc$ permits all integer frequencies. Continuity
+is Cartesian, so nonconstant angular coefficients vanish at the origin.
+Holomorphic versions of $W_s$ use nonnegative frequencies and real
+coefficients. The algebra proof of Lemma~\ref{r2:lem:algebra} applies for
+every $R>1$ and every $m$; the additional weight satisfies
+$1+|n+k|\le(1+|n|)(1+|k|)$, making $W_s$ a Banach algebra for
+$s=0,1,2$. A holomorphic real-coefficient series $h$ satisfies
+\begin{equation}\label{br:eq:realpart-norm}
+ \nrm{\re h}_{W_s}=\nrm h_{W_s}.
+\end{equation}
+For each positive frequency, taking the real part puts half the Taylor
+coefficient at each of the two opposite Fourier frequencies; their weights
+are equal. The constant coefficient is real and retains its weight.
+
+The zero-Dirichlet Poisson inverse $K$ and its clamped range are
+\begin{equation}\label{br:eq:clamped-space}
+ X_g=\left\{g\in Y:\int_0^1r^{|n|+1}g_n(r)\,dr=0\ (n\in m\Z)\right\},
+ \qquad \nrm K_{Y\to Y}\le\tfrac14.
+\end{equation}
+Lemma~\ref{r2:lem:Poisson} uses neither the Schiffer boundary value nor the
+symmetry order: its radial Green formula and moment identity apply
+verbatim. Thus $Kg$ has zero Cauchy data precisely when $g\in X_g$.
+For a boundary series introduce the Neumann lift
+\begin{equation}\label{br:eq:neumann-lift}
+ \Bc b=\frac12\sum_n b_nr^{|n|}(r^2-1)e^{in\theta}.
+\end{equation}
+Its Cauchy traces are $(0,b)$, and
+\begin{equation}\label{br:eq:neumann-lift-bounds}
+ \nrm{\Bc b}_Y\le\tfrac12\nrm b_{W_0},\qquad
+ \nrm{\Delta\Bc b}_Y\le2\nrm b_{W_1}.
+\end{equation}
+Indeed $\Delta(r^{|n|}(r^2-1)e^{in\theta}/2)
+=2(|n|+1)r^{|n|}e^{in\theta}$, and the radial factor has modulus at most
+$1/2$ on $[0,1]$.
+
+Write $p=\psi'=\sum_jp_jw^{jm}$ and
+$\psi(w)=\int_0^wp(z)\,dz$, so $c_j=p_j/(jm+1)$.
+Conformal covariance~\eqref{r2:eq:covariance} and the normal transformation
+give the following fixed-disc problem for $U=u\circ\psi$:
+\begin{equation}\label{br:eq:pullback}
+ \Delta U+|p|^2U=0\quad\text{in }\D,\qquad
+ U=0,\quad U_r=|p|\quad\text{on }\partial\D.
+\end{equation}
+The boundary vector $wp(w)$ is outward normal to the image and has length
+$|p(w)|$, so the normal derivative in physical coordinates is
+$|p|^{-1}U_r$.
+We work on the real Banach space
+\begin{equation}\label{br:eq:X}
+ X=X_g\times W_1,\qquad
+ \nrm{(g,p)}_X=\nrm g_Y+\nrm p_{W_1},\qquad
+ U(g,p)=\Bc(|p|)+Kg.
+\end{equation}
+The shape component $p$ of $X$ is a holomorphic real-coefficient series
+in $W_1$: $p=\sum_{j\ge0}p_jw^{jm}$ with $p_j\in\R$. Its reflection
+symmetry $p(\bar w)=\overline{p(w)}$ is equivariance; it does not make
+$p$ real on $\partial\D$. The field is real-valued and reflection-even
+in $Y$. On the ball~\eqref{br:eq:solution-ball}, the boundary function
+$|p|$ lies in the full two-sided space $W_1$, and every shape satisfies
+$\re p\ge2\rho-P-\brRadius>0$ on the closed weighted disc $|w|\le R$,
+with $P$ of~\eqref{br:eq:P}; see~\eqref{br:eq:univalence}. Thus $p$ is
+nonzero throughout that disc.
+We solve
+\begin{equation}\label{br:eq:F}
+ F(g,p)=g+\Delta\Bc(|p|)+|p|^2\bigl(\Bc(|p|)+Kg\bigr)=0.
+\end{equation}
+On the ball $\nrm{p-p_0}_{W_1}<1/J_1$, with $J_1$ as
+in~\eqref{br:eq:reciprocals}, write $p=p_0(1+k/p_0)$. The binomial
+series for the square roots of $1+k/p_0$ and its reflection converge
+in $W_1$, and $|p_0|\in W_1$ by~\eqref{br:eq:b-bound}. Thus $F$
+is a real-analytic map from this neighbourhood of the centre in $X$ to $Y$.
+The term $\Delta\Bc(|p|)$ requires the $W_1$ shape norm.
+For every $(g,p)\in X$ in this neighbourhood, $U(g,p)$ has the exact
+Cauchy data $(0,|p|)$, and $F=\Delta U+|p|^2U$ distributionally.
+The Schiffer cubic equation and its Dirichlet linear inverse are therefore
+replaced by~\eqref{br:eq:F} and a Robin inverse.
+
+\subsection{The exactly clamped centre}\label{br:sec:centre}
+The input consists of exact decimal coefficients
+$c_j^{(0)}$, $a_j$ and positive divisors $s_j$, $0\le j\le\brModes$.
+The divisors are specified positive numbers; no identity with a Bessel
+value is assumed. The decimal strings are the entries $0\le j\le72$
+of \texttt{p}, \texttt{a} and \texttt{scales} in
+\path{anc/berenstein/centre_frozen.json}; the array \texttt{p} stores
+$c_j^{(0)}$, while $p_j^{(0)}=(jm+1)c_j^{(0)}$. Put
+\begin{equation}\label{br:eq:input}
+ \begin{split}
+ \psi_0(w)&=\sum_{j=0}^{\brModes}c_j^{(0)}w^{jm+1},\quad
+ p_0=\psi_0',\quad \rho=c_0^{(0)},\quad q=|p_0|^2,\\
+ u_*(z)&=\sum_{j=0}^{\brModes}\frac{a_j}{s_j}
+ J_{jm}(|z|)\cos(jm\arg z),\quad U_*=u_*\circ\psi_0.
+ \end{split}
+\end{equation}
+Each physical summand extends through the origin as an entire real-analytic
+Helmholtz solution, so $(\Delta+q)U_*=0$ identically.
+The finite conformal polynomial and finite field specify an infinite-dimensional
+clamped centre as follows. Let $D_j$ and $N_j$ be the complete cosine
+coefficients of
+\begin{equation}\label{br:eq:defects}
+ U_*(1,\theta)=\sum_{j\ge0}D_j\cos(jm\theta),\qquad
+ \partial_rU_*(1,\theta)-|p_0(e^{i\theta})|
+ =\sum_{j\ge0}N_j\cos(jm\theta).
+\end{equation}
+For $n\ge0$ use the polynomials of~\eqref{r2:eq:lifts},
+\[
+ h_n^D=r^n\bigl(1-n(r^2-1)/2\bigr),\qquad
+ h_n^N=r^n(r^2-1)/2,
+\]
+whose traces $(1,0)$ and $(0,1)$ do not depend on the prescribed Cauchy
+data. Define
+\begin{equation}\label{br:eq:centre}
+ \begin{split}
+ \ell&=\sum_{j\ge0}(D_jh_{jm}^D+N_jh_{jm}^N)\cos(jm\theta),\\
+ U_0&=U_*-\ell,\qquad
+ g_0=\Delta\bigl(U_0-\Bc(|p_0|)\bigr).
+ \end{split}
+\end{equation}
+The strip estimates of Subsection~\ref{br:sec:residual} give convergence with
+all derivatives needed near $\overline\D$. Thus $U_0$ has traces
+$(0,|p_0|)$, the quantity inside the Laplacian has zero Cauchy data,
+$g_0\in X_g$, and Poisson uniqueness gives
+$Kg_0=U_0-\Bc(|p_0|)$. In particular $U(g_0,p_0)=U_0$ and
+\begin{equation}\label{br:eq:E}
+ E:=F(g_0,p_0)=-(\Delta+q)\ell.
+\end{equation}
+All boundary harmonics enter this definition. The exact zero enclosed
+in~\eqref{br:eq:solution-ball} need not have a finite conformal or field
+series.
+\section{The Robin inverse in the symmetric sector}\label{br:sec:spectrum}
+At the centre define
+\begin{equation}\label{br:eq:Robin}
+ LV=(\Delta+q)V=f,\qquad V_r+\beta V=0\quad\text{on }\partial\D,
+ \qquad \beta=1+d,\quad d=\re\frac{wp_0'}{p_0}.
+\end{equation}
+All operators in this section act in the real even $D_m$ sector, with
+interior measure $r\,dr\,d\theta/(2\pi)$ and boundary measure
+$d\theta/(2\pi)$. By~\eqref{r2:eq:curvature-formula}, $\beta=|p_0|\kappa_0$,
+where $\kappa_0$ is the curvature of $\partial\psi_0(\D)$. The symmetric form associated with $-L$ is
+\begin{equation}\label{br:eq:Robin-form}
+ \mathfrak a(z,y)=\int_\D\nabla z\cdot\nabla y
+ +\int_{\partial\D}\beta zy-\int_\D qzy,
+ \qquad z,y\in H^1(\D).
+\end{equation}
+The form is closed and bounded below after addition of a sufficiently large
+multiple of the $L^2$ inner product. Its self-adjoint operator is the Robin
+realisation of $-L$. Boundary multiplication is treated as a form on $H^1$.
+
+\subsection{The Dini basis and complete spectral window}\label{br:sec:coverage}
+Let $\alpha_{j,k}>0$ run over the roots
+\begin{equation}\label{br:eq:Dini-roots}
+ \alpha J_n'(\alpha)+J_n(\alpha)=0,\qquad n=jm.
+\end{equation}
+The Robin-one Laplacian $-\Delta_{R,1}$ has the complete orthonormal Dini
+basis
+\begin{equation}\label{br:eq:basis}
+ e_{j,k}=b_{j,k}(r)\chi_j(\theta),\qquad
+ b_{j,k}(r)=\frac{\sqrt2J_n(\alpha_{j,k}r)}
+ {|J_n(\alpha_{j,k})|\sqrt{1+(1-n^2)/\alpha_{j,k}^2}},
+\end{equation}
+where $\chi_0=1$ and $\chi_j=\sqrt2\cos(jm\theta)$ for $j>0$.
+The Dini parameter is $1$, with $n+1>0$, so no exceptional nonpositive
+radial eigenvalue is present. Orthogonality and completeness also follow
+from the separated self-adjoint Robin Sturm--Liouville problems and the
+complete angular cosine basis. The identity
+\[
+ \int_0^1rJ_n(\alpha r)^2\,dr
+ =\tfrac12\bigl(J_n'(\alpha)^2+(1-n^2/\alpha^2)J_n(\alpha)^2\bigr)
+\]
+follows by integrating the Bessel equation and its parameter derivative.
+At~\eqref{br:eq:Dini-roots} it gives
+$\tfrac12J_n(\alpha)^2(1+(1-n^2)/\alpha^2)$, which is positive:
+every root exceeds $n$ for $n\ge1$, and the $n=0$ expression is positive.
+In particular the basis functions have nonzero boundary values.
+
+Let $\PP$ select every root satisfying
+\begin{equation}\label{br:eq:window}
+ |\alpha_{j,k}-\rho|<\omega,\qquad \omega=\brWindow,
+\end{equation}
+and put $\QQ=I-\PP$. The window contains $\brStates$ states, with the
+sector counts of Table~\ref{br:tab:coverage}.
+Enumerate these states by $i\leftrightarrow(j,k)$ and write
+$n_i=jm$, $\alpha_i=\alpha_{j,k}$, $\chi_i=\chi_j$ and
+$\tau_i=b_{j,k}(1)$.
+\begin{table}[htbp]
+\centering
+\begin{tabular}{c rrrrrrr}
+\toprule
+\brCoverageRows
+\bottomrule
+\end{tabular}
+\caption{Complete Robin-one spectral window. All higher angular orders
+have no state in the window.}\label{br:tab:coverage}
+\end{table}
+
+\begin{lemma}[Two coverage arguments]\label{br:lem:coverage}
+The Dirichlet interlacing and the quarter-step Robin sign grid described
+below enumerate all states of~\eqref{br:eq:window}.
+\end{lemma}
+\begin{proof}
+For $y(x)=\sqrt xJ_n(x)$ the Bessel equation gives
+\[
+ y''+Q_n(x)y=0,\qquad Q_n(x)=1-(n^2-1/4)/x^2.
+\]
+On an interval with $Q_n\le Q_{\max}$, integration by parts between two
+zeros and Wirtinger's inequality give their spacing at least
+$\pi/\sqrt{Q_{\max}}$, exactly as in
+Lemma~\ref{r2:lem:zero-coverage}. Enclose proposed Dirichlet zeros by
+opposite signs in disjoint brackets of width less than $1/10$.
+For successive brackets the distance between their outer endpoints is
+less than $2\pi/\sqrt{Q_{\max}}$, where $Q_{\max}$ is the maximum
+between those endpoints. Three zeros there would require the reverse
+inequality, so each bracket contains exactly one zero and none lies
+between them. Guard zeros beyond both endpoints of the window
+complete this argument whenever a lower Dirichlet zero is present.
+
+For every positive angular order whose first Dirichlet zero lies above
+the lower window endpoint, the initial interval requires a separate guard.
+This includes $n=m,2m,\ldots,5m$ in the present window. When $n>0$, $J_n$ and $J_n'$ are
+positive on $(0,n]$: at a first derivative zero below $n$ the Bessel ODE
+would give $J_n''=(n^2/x^2-1)J_n>0$, which cannot be a first downward
+crossing. This also excludes a first zero of $J_n$ there. The identity
+$(xJ_n')'=(n^2/x-x)J_n>0$ on $(0,n)$ gives $J_n'(n)>0$,
+and hence $y(n),y'(n)>0$. Constant-coefficient comparison puts the
+first zero after $n$ at distance at least $\pi/(2\sqrt{Q_{\max}})$.
+A hidden first zero before the proposed bracket would put the bracketed
+zero at distance at least $3\pi/(2\sqrt{Q_{\max}})$. The strict opposite
+inequality is imposed on its upper endpoint, with $Q_{\max}$ taken on
+the entire interval from $n$ to that endpoint. This proves the initial
+Dirichlet guard.
+
+Between consecutive Dirichlet zeros consider $z=xJ_n'/J_n$. It satisfies
+$xz'=n^2-x^2-z^2$. Thus $1+z$ runs from $+\infty$ to $-\infty$ and, at any
+zero, has derivative $-(x^2+1-n^2)/x<0$. There is exactly one Robin root
+in each such gap. In the initial gap it is likewise unique between $n$
+and the first Dirichlet zero, since $1+z>0$ at $n$. Each proposed Robin
+bracket lies strictly inside its corresponding certified gap. The
+location relative to both window endpoints is resolved by strict
+inequalities. For all remaining angular orders $n>\rho+\omega$,
+positivity up to $n$ excludes any root in the window.
+
+For the second argument put $\mathfrak g_n=J_n+xJ_n'$ and
+$\mathfrak d_n=x^2+1-n^2$. On $x>\max(n,1)$, direct differentiation gives
+\begin{equation}\label{br:eq:Robin-ode}
+ \left(\mathfrak g_n\sqrt{x/\mathfrak d_n}\right)''+
+ \left(1+\frac{1/4-n^2}{x^2}+\frac4{\mathfrak d_n}
+              -\frac{3x^2}{\mathfrak d_n^2}\right)
+ \mathfrak g_n\sqrt{x/\mathfrak d_n}=0.
+\end{equation}
+The coefficient is at most $21/4$: $\mathfrak d_n>1$, the second term
+is at most $1/4$, and the last term is nonpositive. The same spacing
+argument gives separation greater than $\pi/\sqrt{21/4}>1$.
+Roots are simple because at a root
+$\mathfrak g_n'=-(\mathfrak d_n/x)J_n\ne0$; simultaneous vanishing of $\mathfrak g_n$ and
+$J_n$ would also force $J_n'=0$. Below $n$ the sign of $\mathfrak g_n$ is positive.
+The nonzero endpoint signs at
+$x_k=\rho-\omega+k/4$, $0\le k\le8\omega$, therefore determine the number
+of roots in every quarter-step cell: one for opposite signs, zero for
+equal signs. In a cell crossing $n$ the portion below $n$ contains no
+root and the portion above it contains at most one. Each bracket from
+the first argument belongs to a distinct sign-changing cell, and all
+such cells are represented. This establishes a bijection of the state
+lists, including the empty next angular sector.
+\end{proof}
+
+\subsection{Matrices and integration}\label{br:sec:matrices}
+Write $\mathcal V=q-\rho^2$ and form the exact matrices on $\operatorname{Ran}\PP$
+\begin{equation}\label{br:eq:matrices}
+ \begin{gathered}
+ \mathsf B=\PP\mathcal V\PP,\qquad
+ \mathsf B_2=\PP\mathcal V^2\PP,\\
+ \mathsf D_{ij}=\int_{\partial\D}d\,\tau_i\chi_i \tau_j\chi_j,
+ \qquad \mathsf D_{2,ij}=\int_{\partial\D}d^2\tau_i\chi_i \tau_j\chi_j,\\
+ \mathsf H=\diag(\alpha_i^2-\rho^2)-\mathsf B+\mathsf D.
+ \end{gathered}
+\end{equation}
+The plus sign in $\mathsf D$ follows from~\eqref{br:eq:Robin-form}.
+The two Gram identities are
+\begin{equation}\label{br:eq:grams}
+ \mathsf G:=\mathsf B_2-\mathsf B^2
+ = (\QQ\mathcal V\PP)^*(\QQ\mathcal V\PP),\qquad
+ x^T\mathsf D_2x=\nrm{d\operatorname{Tr}(\PP x)}_2^2.
+\end{equation}
+Both include all complementary modes; $\mathsf D_2$ is not a truncated
+square of $\mathsf D$.
+
+Writing $p_0(w)=\sum_jp_j^{(0)}w^{jm}$, the complex Fourier coefficients
+of $q$ are
+\[
+ q_h(r)=\sum_kp_{k+h}^{(0)}p_k^{(0)}r^{(2k+h)m}\qquad(h\ge0).
+\]
+Subtract $\rho^2$ from $q_0$ to obtain those of $\mathcal V$, and take
+the full two-sided convolution for $\mathcal V^2$. For complex coefficients
+$v_h$, the angular factors in the cosine basis are $v_0$ in position
+$(0,0)$, $\sqrt2v_j$ in $(0,j)$, and $v_{|i-j|}+v_{i+j}$ for $i,j>0$.
+The same rule applies to $d$ and $d^2$.
+
+The radial integrations use $N_G=\brGaussNodes$ Gauss--Legendre nodes.
+Disjoint sign brackets of the Legendre polynomial in $(-1,1)$, equal in
+number to its degree, enclose all its roots. The weights
+$2/[(1-x_i^2)\mathrm{Leg}_{N_G}'(x_i)^2]$ include root uncertainty using
+\[
+ \max_{[-1,1]}|\mathrm{Leg}_{N_G}''|
+ = (N_G-1)N_G(N_G+1)(N_G+2)/8.
+\]
+Real Bessel arguments are evaluated at exact midpoint arguments and
+enlarged by their argument radii, since the integer-order integral
+representation gives $|J_n'|\le1$ on the real axis. An exported dyadic
+basis value carries its interval evaluation error into every matrix entry.
+
+For the analytic quadrature error use the Bernstein ellipse of parameter
+two in $x=2r-1$. It has $|r|\le9/8$ and $|\im r|\le3/8$. Set
+\begin{equation}\label{br:eq:Gauss-majorant}
+ \begin{split}
+ P_e&=\sum_j|p_j^{(0)}|(9/8)^{jm},\qquad V_e=P_e^2+\rho^2,\\
+ M_e&=8(1+9/8)(1+V_e^2)e^{3\alpha_{\max}/4}/b_*^2,
+ \end{split}
+\end{equation}
+where $b_*$ is the smallest denominator in~\eqref{br:eq:basis} and
+$\alpha_{\max}$ is the largest root in the window. The Bessel integral
+gives $|J_n(z)|\le e^{|\im z|}$, so $M_e$ bounds every integrand, including
+the angular factors and normalisations. The Chebyshev argument
+of~\eqref{r2:eq:Gauss-error} depends only on this majorant and Gauss
+exactness; hence the error in each entry is at most
+\begin{equation}\label{br:eq:Gauss-error}
+ 16M_e2^{-2N_G}<\brGaussError.
+\end{equation}
+
+For the boundary entries complexify $\phi=m\theta$. On
+$|\im\phi|\le\log4$ define
+$S_4=\sum_{j>0}4^j|p_j^{(0)}|$ and
+$P_{1,4}=\sum_j4^jjm|p_j^{(0)}|$.
+The Laurent continuation of $d$ is the half-sum of $wp_0'/p_0$ and its
+reflection. For the centre, $S_4<7.762<\rho$; this excludes its poles and gives strip
+bound $M_d=P_{1,4}/(\rho-S_4)$. A trapezoidal sum with
+$N_d=\brDGrid$ nodes adds to every required Fourier coefficient of $d$
+and $d^2$ the error
+\begin{equation}\label{br:eq:boundary-matrix-error}
+ \frac{4(1+M_d^2)4^{-(N_d-h_{\max})}}{1-4^{-N_d}}.
+\end{equation}
+Here $h_{\max}$ is the largest Fourier index used by the matrices.
+This follows by summing the aliased coefficients, each bounded by its
+strip supremum times $4^{-|h|}$.
+
+\subsection{The complement as a quadratic form}\label{br:sec:complement}
+Let
+\begin{equation}\label{br:eq:complement-constants}
+ \gamma_0=\omega(2\rho-\omega),\qquad
+ t_Q=\frac{2(1+\sqrt{\gamma_0+\rho^2})}{\gamma_0},\qquad
+ v_*=2\rho\sigma_0+\sigma_0^2,\quad d_*=\sigma_1/(\rho-\sigma_0).
+\end{equation}
+Here $\sigma_0=\sum_{j>0}|p_j^{(0)}|$ and
+$\sigma_1=\sum_{j>0}jm|p_j^{(0)}|$. On $\overline\D$,
+$\rho-\sigma_0\le|p_0|\le\rho+\sigma_0$ and
+$|wp_0'|\le\sigma_1$, so $\nrm{\mathcal V}_\infty\le v_*$ and
+$\nrm d_\infty\le d_*$.
+On $\operatorname{Ran}\QQ$ set
+$D_Q=\QQ(-\Delta_{R,1}-\rho^2)\QQ$. Every omitted state obeys
+$|\alpha^2-\rho^2|\ge\gamma_0$: below the window this is
+$(\rho-\alpha)(\rho+\alpha)\ge\omega(2\rho-\omega)$, and above the window
+the bound is larger. Thus $|D_Q|\ge\gamma_0$.
+For $z\in H^1(\D)$ the divergence theorem applied to $x|z|^2$ gives
+\begin{equation}\label{br:eq:trace-divergence}
+ \nrm{\operatorname{Tr}z}_2^2
+ \le2\nrm z_2^2+2\nrm z_2\nrm{\nabla z}_2.
+\end{equation}
+The estimate extends from smooth functions by $H^1$ approximation.
+For $z\in\QQ H^1$, the reference Robin-one form and
+$\alpha^2\le|\alpha^2-\rho^2|+\rho^2$ give
+\[
+ \nrm{\nabla z}_2^2\le
+ (1+\rho^2/\gamma_0)\langle|D_Q|z,z\rangle.
+\]
+Dropping its positive boundary term and inserting this inequality
+in~\eqref{br:eq:trace-divergence} proves
+\begin{equation}\label{br:eq:trace-energy}
+ \nrm{\operatorname{Tr}\QQ|D_Q|^{-1/2}}^2\le t_Q.
+\end{equation}
+Consequently the complementary form, conjugated by $|D_Q|^{-1/2}$,
+is $\operatorname{sgn}D_Q$ plus a bounded self-adjoint perturbation of norm
+at most
+\begin{equation}\label{br:eq:mu}
+ \mu_Q=v_*/\gamma_0+d_*t_Q.
+\end{equation}
+If $\mu_Q<1$, its inverse in this energy pairing has norm at most
+$(1-\mu_Q)^{-1}$. The sign operator is a self-adjoint isometry;
+no positivity of $D_Q$ is required.
+
+\begin{proposition}[Robin form Schur bound]\label{br:prop:Schur}
+Let $C$ be a real square matrix of dimension $\brStates$ and $\Theta$
+a real diagonal matrix with nonzero entries. Suppose
+\begin{equation}\label{br:eq:congruence}
+ \begin{split}
+ \nrm{C^TC-I}_{\rm row}&\le\epsilon_C<1,\\
+ \nrm{|\Theta|^{-1/2}(C^T\mathsf HC-\Theta)|\Theta|^{-1/2}}_{\rm row}
+ &\le\epsilon.
+ \end{split}
+\end{equation}
+Define
+\begin{equation}\label{br:eq:Schur-data}
+ \begin{split}
+ g_V&=\tr(|\Theta|^{-1}C^T\mathsf GC),\qquad
+ g_d=\tr(|\Theta|^{-1}C^T\mathsf D_2C),\\
+ \eta_Q&=\frac{(\sqrt{g_V/\gamma_0}+\sqrt{t_Qg_d})^2}{1-\mu_Q},\\
+ S_*&=\frac{1+\epsilon_C}{\min_i|\Theta_i|(1-\epsilon-\eta_Q)},\\
+ t_P&=\max_j\sum_{i:n_i=jm}\tau_i^2,\qquad
+ k_*=v_*/\sqrt{\gamma_0}+d_*\sqrt{t_Qt_P},\\
+ \delta_Q&=\frac{k_*}{\sqrt{\gamma_0}(1-\mu_Q)}.
+ \end{split}
+\end{equation}
+If $\mu_Q<1$ and $\epsilon+\eta_Q<1$, the problem~\eqref{br:eq:Robin}
+has an $L^2$ inverse with
+\begin{equation}\label{br:eq:BLtwo}
+ \nrm{L^{-1}}_{2\to2}\le B_{L^2}
+ :=(1+\delta_Q^2)S_*+\frac1{\gamma_0(1-\mu_Q)}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The finite spectral projection preserves $H^1$, and the energy space
+of $|D_Q|^{1/2}$ is $\QQ H^1$ with an equivalent norm. Thus the
+block decomposition of~\eqref{br:eq:Robin-form} is legitimate on
+$\operatorname{Ran}\PP\oplus\QQ H^1$. Its finite diagonal block is
+$\mathsf H$ and its complementary block is the form just estimated.
+Denote the coupling from the finite block into the complementary dual
+space by $\mathfrak b$. Its volume part is $-\QQ\mathcal V\PP$; its
+boundary part is the pairing with $d\operatorname{Tr}\PP$.
+By~\eqref{br:eq:grams} and~\eqref{br:eq:trace-energy}, after multiplication
+on the right by $C|\Theta|^{-1/2}$, their energy Hilbert--Schmidt norms
+are at most $\sqrt{g_V/\gamma_0}$ and $\sqrt{t_Qg_d}$.
+The triangle inequality bounds their sum. Pairing twice with the
+complementary inverse yields the relative Schur correction at most
+$\eta_Q$.
+
+The matrices in~\eqref{br:eq:congruence} are symmetric, so their maximum
+row sums bound their Euclidean operator norms. The first makes $C$
+invertible and gives $\nrm C^2\le1+\epsilon_C$. If $\mathsf S$ is the
+finite Schur complement, then
+$|\Theta|^{-1/2}C^T\mathsf SC|\Theta|^{-1/2}$ is
+$\operatorname{sgn}\Theta$ plus a symmetric perturbation of norm at
+most $\epsilon+\eta_Q<1$. Its inverse norm is at most
+$(1-\epsilon-\eta_Q)^{-1}$, and undoing the congruence gives
+$\nrm{\mathsf S^{-1}}\le S_*$.
+
+The finite trace map has squared norm at most $t_P$: angular
+orthogonality gives
+$\nrm{\operatorname{Tr}\PP x}_2^2
+=\sum_j|\sum_{i:n_i=jm}\tau_ix_i|^2\le t_P\nrm x_2^2$.
+The unweighted coupling into the complementary energy space therefore
+has norm at most $k_*$. The complementary inverse, followed by inclusion
+into $L^2$, bounds the off-diagonal solve by $\delta_Q$ and its
+$L^2$ diagonal solve by $1/[\gamma_0(1-\mu_Q)]$.
+The symmetric block inverse of $-L$ has the form
+\[
+ \begin{pmatrix}I\\-X_Q\end{pmatrix}\mathsf S^{-1}
+ \begin{pmatrix}I&-X_Q^*\end{pmatrix}
+ +\begin{pmatrix}0&0\\0&\mathfrak M_Q^{-1}\end{pmatrix},
+ \qquad \nrm{X_Q}\le\delta_Q,
+\]
+where $\mathfrak M_Q^{-1}$ is the complementary form inverse restricted
+to $L^2$. This proves~\eqref{br:eq:BLtwo}. The formula constructs a weak
+solution for every $L^2$ right side; the invertible complementary and
+Schur blocks also prove uniqueness. Smooth coefficients and boundary
+give the usual Robin $H^2$ regularity, so this form inverse is the
+operator inverse asserted in the proposition.
+\end{proof}
+
+For the centre~\eqref{br:eq:input}, the enclosures give
+\begin{equation}\label{br:eq:spectral-numbers}
+ \begin{gathered}
+ d_*<\brDinf<1,\qquad \mu_Q<\brMu,\qquad
+ \epsilon_C<\brEpsC,\qquad\epsilon<\brEps,\\
+ \min_i|\Theta_i|>\brDiagLo,\qquad
+ \eta_Q<\brSchur,\qquad B_{L^2}<\brBLtwo.
+ \end{gathered}
+\end{equation}
+In particular $\beta\ge1-d_*>0$.
+
+\section{Transfer to the working norms}\label{br:sec:transfer}
+Define the centre coefficient sums
+\begin{equation}\label{br:eq:P}
+ \begin{gathered}
+ P=\sum_j2^j|p_j^{(0)}|,\qquad
+ P_1=\sum_j2^jjm|p_j^{(0)}|,\qquad
+ P_2=\sum_j2^j(jm)^2|p_j^{(0)}|,\\
+ J_0=(2\rho-P)^{-1},\qquad
+ d_0=J_0P_1,\qquad
+ d_1=J_0(P_1+P_2)+J_0^2P_1^2.
+ \end{gathered}
+\end{equation}
+The reciprocal is well defined because $P<\brP<2\rho$.
+The Neumann series for $1/p_0$ in $W_0$ gives norm at most $J_0$.
+For $\mathcal Q_0=wp_0'/p_0$,~\eqref{br:eq:realpart-norm} and differentiation give
+\begin{equation}\label{br:eq:d-norms}
+ \nrm d_{W_0}\le d_0,\qquad \nrm d_{W_1}\le d_1.
+\end{equation}
+Indeed $\nrm{wp_0'}_{W_0}=P_1$, while
+$\nrm{\partial_\theta \mathcal Q_0}_{W_0}\le J_0P_2+J_0^2P_1^2$.
+Also multiplication by $q$ on $Y$ has norm at most $P^2$, and
+\begin{equation}\label{br:eq:potential-norm}
+ \nrm{q-\rho^2}_Y\le P^2-\rho^2.
+\end{equation}
+For the latter, remove the constant--constant product in $p_0\overline{p_0}$
+and bound $2^{|j-k|}$ by $2^{j+k}$ on every remaining term.
+
+\begin{proposition}[Robin inverse and two trace derivatives]\label{br:prop:transfer}
+Let $j_{\rm h}$ be the least positive integer with $j_{\rm h}m>\rho$. Put
+\begin{equation}\label{br:eq:high-data}
+ \gamma_{\rm h}=(j_{\rm h}m)^2-\rho^2,\qquad
+ b_{\rm h}=\frac{P^2-\rho^2}{\gamma_{\rm h}}+\frac{d_0}{1+\sqrt{\gamma_{\rm h}}}.
+\end{equation}
+Suppose that~\eqref{br:eq:Robin} has an inverse on $L^2$ of the
+symmetric sector with norm at most $B_{L^2}$, and that $\beta>0$
+and $b_{\rm h}<1$. For $f\in Y$ the Robin solution of
+\eqref{br:eq:Robin} belongs to $Y$, its boundary trace belongs to $W_2$,
+and
+\begin{equation}\label{br:eq:transfer-bounds}
+ \nrm V_Y\le B_Y\nrm f_Y,\qquad
+ \nrm{\operatorname{Tr}V}_{W_s}\le B_{Ts}\nrm f_Y\quad(s=1,2),
+\end{equation}
+where, with $P_{\rm un}=\sum_j|p_j^{(0)}|$,
+\begin{equation}\label{br:eq:transfer-constants}
+ \begin{split}
+ \tau_*^2&=2B_{L^2}^2+
+ 2B_{L^2}\sqrt{P_{\rm un}^2B_{L^2}^2+B_{L^2}},\\
+ b_{\rm low}&=\bigl[(1+P^2B_{L^2})/2+\tau_*\bigr]/\sqrt2,\\
+ B_Y&=\frac{(1+2\sum_{j=1}^{j_{\rm h}-1}2^j)b_{\rm low}+1/\gamma_{\rm h}}{1-b_{\rm h}},\\
+ B_{T1}&=1+P^2B_Y+d_0B_Y,\\
+ B_{T2}&=1+P^2B_Y+d_1B_{T1}.
+ \end{split}
+\end{equation}
+\end{proposition}
+\begin{proof}
+\emph{Energy and low modes.}
+The weak equation~\eqref{br:eq:Robin-form}, tested with $V$, gives
+\[
+ \nrm{\nabla V}_2^2+\int_{\partial\D}\beta V^2
+ =\int_\D qV^2-\int_\D fV.
+\]
+Dropping the positive boundary term and using the $L^2$ inverse yields
+\[
+ \nrm{\nabla V}_2^2
+ \le(P_{\rm un}^2B_{L^2}^2+B_{L^2})\nrm f_2^2.
+\]
+The divergence estimate~\eqref{br:eq:trace-divergence} then gives
+$\nrm{\operatorname{Tr}V}_2\le\tau_*\nrm f_2$.
+For each angular coefficient write
+$V_n=K_n(f-qV)_n+t_nr^{|n|}$, where $K_n$ is the zero-Dirichlet inverse of the radial operator in
+Lemma~\ref{r2:lem:Poisson} and $t_n$ is its boundary trace.
+The radial Green kernel in Lemma~\ref{r2:lem:Poisson} is bounded by
+$-\log\max(r,s)$ and
+$\int_0^1(\log s)^2s\,ds=1/4$. Therefore
+\[
+ \sup_r|K_n(f-qV)_n|\le\tfrac12\nrm{(f-qV)_n}_{L^2(r\,dr)}.
+\]
+The three comparisons completing the estimate are
+\[
+ \nrm f_2\le\nrm f_Y/\sqrt2,\qquad
+ \nrm{(f-qV)_n}_{L^2(r\,dr)}\le\nrm{f-qV}_2,
+ \qquad |t_n|\le\nrm{\operatorname{Tr}V}_2.
+\]
+The first follows from Parseval and $\int_0^1r\,dr=1/2$, the second
+from orthogonality, and the third from the boundary Fourier coefficient
+formula. Thus every coefficient has supremum at most
+$b_{\rm low}\nrm f_Y$. The low part $V_{\rm low}$, consisting of $|n|<j_{\rm h}m$,
+has weighted norm at most
+$(1+2\sum_{j=1}^{j_{\rm h}-1}2^j)b_{\rm low}\nrm f_Y$.
+
+\emph{Construction of the high modes.}
+For $|n|\ge j_{\rm h}m$, the operator $-\Delta_n-\rho^2$ has positive radial
+potential $n^2/r^2-\rho^2\ge\gamma_{\rm h}$. The maximum principle with
+Robin-one boundary data gives interior-forcing norm at most
+$1/\gamma_{\rm h}$. This may also be seen by comparing with the constant
+supersolution $\nrm{\mathfrak f}_\infty/\gamma_{\rm h}$ for the interior forcing
+$\mathfrak f$ of~\eqref{br:eq:high-equations}. The supersolution has
+positive Robin boundary datum; apply the comparison to both signs of the real solution.
+For a pure boundary source the regular homogeneous solution is a multiple
+of $J_{|n|}(\rho r)$, which is positive and increasing because $|n|>\rho$.
+Its logarithmic derivative
+$z_n=r\rho J_{|n|}'(\rho r)/J_{|n|}(\rho r)$ obeys
+\[
+ rz_n'=n^2-\rho^2r^2-z_n^2.
+\]
+The power series at zero gives
+$z_n=|n|-\rho^2r^2/[2(|n|+1)]+O(r^4)$, greater than
+$\sqrt{n^2-\rho^2r^2}$ for small positive $r$. At a first contact with
+this decreasing comparison function, $z_n'=0$ and the difference has
+positive derivative, excluding the contact. Consequently the solution
+with boundary source $\varsigma_n$ has supremum at most
+$|\varsigma_n|/(1+\sqrt{\gamma_{\rm h}})$.
+
+Let $\Pi_H$ be the angular high projection. In the high subspace of $Y$
+solve by contraction
+\begin{equation}\label{br:eq:high-equations}
+ \begin{split}
+ (\Delta+\rho^2)\widetilde V_H
+ &=\Pi_H\bigl(f-(q-\rho^2)(V_{\rm low}+\widetilde V_H)\bigr),\\
+ (\widetilde V_H)_r+\widetilde V_H
+ &=-\Pi_H\bigl(d\operatorname{Tr}(V_{\rm low}+\widetilde V_H)\bigr).
+ \end{split}
+\end{equation}
+The interior and boundary estimates, the trace norm $Y\to W_0$ at most
+one, and~\eqref{br:eq:d-norms} give Lipschitz constant $b_{\rm h}<1$.
+This constructs $\widetilde V_H$ with finite $Y$ norm before any total
+analytic norm is assumed.
+
+For its identification with $\Pi_HV$ we first justify the energy
+equation. In each mode the constructed solution is regular at zero and
+solves its radial ODE with Robin-one boundary source. If $\mathfrak f_n$ and $\varsigma_n$
+are the right sides of~\eqref{br:eq:high-equations}, the mode energy
+identity is
+\[
+ \int_0^1\bigl(|(\widetilde V_{H,n})'|^2+
+ (n^2/r^2-\rho^2)|\widetilde V_{H,n}|^2\bigr)r\,dr
+ +|\widetilde V_{H,n}(1)|^2
+ =-\re\int_0^1\mathfrak f_n\overline{\widetilde V_{H,n}}r\,dr
+ +\re(\varsigma_n\overline{\widetilde V_{H,n}(1)}).
+\]
+The weighted supremum sums for the solution and $\mathfrak f_n$, and the weighted
+boundary sum for $\varsigma_n$, make the sum of the absolute right sides finite.
+Adding the finite $\rho^2L^2$ term shows convergence of the mode series
+in $H^1$. The mode equations, first tested against finite angular sums
+and then by $H^1$ density, give the weak high-subspace equation and its
+boundary pairing. In particular the boundary source is an actual weak
+Robin datum.
+
+The original $L^2$ inverse gives $V\in H^2$; testing its weak equation
+against a radial test function times $\cos(n\theta)$ gives
+\begin{equation}\label{br:eq:mode-Robin}
+ V_n'(1)=-(\beta\operatorname{Tr}V)_n.
+\end{equation}
+Here $V_n$ is $C^2$ on $(0,1]$ since $(f-qV)_n$ is continuous.
+Thus $V_H=\Pi_HV$ satisfies the same weak projected equation as
+$\widetilde V_H$, with its own occurrence on the right side. Their
+difference $z\in\Pi_HH^1$ satisfies
+\[
+ \nrm{\nabla z}_2^2+\int_{\partial\D}\beta z^2=\int_\D qz^2.
+\]
+Angular orthogonality gives
+$\nrm{\nabla z}_2^2\ge(j_{\rm h}m)^2\nrm z_2^2$.
+The inequality $b_{\rm h}<1$ implies $(j_{\rm h}m)^2>P^2\ge\nrm q_\infty$.
+Since $\beta>0$, $z=0$. This identifies the analytic high solution
+with the original Robin solution.
+
+The high fixed-point equation now gives
+$\nrm{V_H}_Y\le\nrm f_Y/\gamma_{\rm h}+b_{\rm h}\nrm V_Y$.
+Add the low bound and rearrange to obtain $B_Y$.
+
+\emph{Two boundary derivatives.}
+Integrate the radial equation $\Delta_nV_n=(f-qV)_n$ against
+$r^{|n|+1}$. The moment identity underlying
+Lemma~\ref{r2:lem:Poisson}, now with nonzero Dirichlet trace, reads
+\[
+ \int_0^1r^{|n|+1}(f-qV)_n\,dr=V_n'(1)-|n|t_n.
+\]
+Using~\eqref{br:eq:mode-Robin} gives
+\begin{equation}\label{br:eq:trace-identity}
+ (|n|+1)t_n=-\int_0^1r^{|n|+1}(f-qV)_n\,dr-(dt)_n.
+\end{equation}
+Since $t\in W_0$ already, summing this formula with weights $R^{|n|}$
+first proves $t\in W_1$. Its norm is at most
+$\tfrac12\nrm{f-qV}_Y+d_0\nrm t_{W_0}$, bounded by the stated $B_{T1}$.
+Multiply the same identity by $|n|+1$ and use
+$(|n|+1)/(|n|+2)\le1$. The $W_1$ algebra bound on $dt$ then proves
+$t\in W_2$ and the stated $B_{T2}$.
+\end{proof}
+
+The centre enclosures give $b_{\rm h}<\brHighFactor<1$ and
+\begin{equation}\label{br:eq:transfer-numbers}
+ B_Y<\brBY,\qquad B_{T1}<\brBTone,\qquad B_{T2}<\brBTtwo.
+\end{equation}
+The second boundary derivative is needed because reconstruction of $p$
+from its primitive consumes one derivative while the unknown shape
+belongs to $W_1$.
+\section{All-mode residual and the exact linearisation inverse}\label{br:sec:inverse}
+\subsection{Strip bounds and the clamped residual}\label{br:sec:residual}
+Complexify $\phi=m\theta$ to $|\im\phi|\le\log4$. Set
+\begin{equation}\label{br:eq:strip-data}
+ \begin{gathered}
+ S_c=\sum_{j>0}4^j|c_j^{(0)}|,\qquad
+ \delta_s=(2\rho S_c+S_c^2)/\rho,\qquad
+ \varepsilon_s=\tfrac12\log\frac{\rho+S_c}{\rho-S_c},\\
+ P_4=\sum_j4^j(jm+1)|c_j^{(0)}|.
+ \end{gathered}
+\end{equation}
+For $0\le r\le1$ put
+$A_\pm=\rho+\sum_{j>0}c_j^{(0)}r^{jm}e^{\pm ij\phi}$.
+For the centre, $S_c<0.0571$, so $\rho>2S_c$; this places each $A_\pm$ in the disc
+$|A-\rho|\le S_c<\rho/2$. Define
+\begin{equation}\label{br:eq:strip-root}
+ B_s=\sqrt{A_+}\sqrt{A_-}
+\end{equation}
+using the principal roots of the individual factors. Both roots are
+analytic, and $|\arg B_s|<\pi/6$, hence $\re B_s>0$ and
+$|B_s+\rho|\ge\rho$. Therefore
+\begin{equation}\label{br:eq:strip-geometry}
+ |B_s-\rho|=\frac{|A_+A_--\rho^2|}{|B_s+\rho|}\le\delta_s,
+ \qquad |A_\pm/B_s|\le e^{\varepsilon_s}.
+\end{equation}
+
+The complexified physical radius is $rB_s$. The positive angular branch
+of order $n=jm$ is
+$J_n(rB_s)e^{ij\phi}(A_+/B_s)^n$, with the reflected expression for
+the negative branch. The entire Cartesian Bessel power series interprets
+this formula also at $r=0$. For integer order the contour shift
+in~\eqref{r2:eq:Bessel-contour} uses only the Bessel integral and gives
+\[
+ |J_n(z)|\le
+ \exp(-n\vartheta+|\re z|\sinh\vartheta+|\im z|\cosh\vartheta)
+ \quad(\vartheta\ge0).
+\]
+Choose $\vartheta_j=0$ for $jm\le\rho+\delta_s$ and otherwise
+$\vartheta_j=\acosh(jm/(\rho+\delta_s))$. Define
+\begin{equation}\label{br:eq:strip-summands}
+ \mathfrak u_j=\frac{|a_j|}{s_j}4^j
+ \exp\bigl(jm\varepsilon_s-jm\vartheta_j
+       +(\rho+\delta_s)\sinh\vartheta_j+\delta_s\cosh\vartheta_j\bigr).
+\end{equation}
+Since $|\re(rB_s)|\le\rho+\delta_s$ and $|\im(rB_s)|\le\delta_s$,
+$\sum_j\mathfrak u_j$ bounds $U_*$ uniformly on the strip. The coefficient
+bound $M4^{-|j|}$ yields the weighted sum factor
+$1+2\sum_{j\ge1}2^{-j}=3$. Consequently
+\begin{equation}\label{br:eq:field-bounds}
+ \begin{split}
+ \nrm{U_*}_Y&\le U_b:=3\sum_j\mathfrak u_j,\\
+ \nrm{\partial_wU_*}_{\Yc},\ \nrm{\partial_{\bar w}U_*}_{\Yc}
+ &\le \mathfrak D_U:=3R4^{2/m}P_4e^{\varepsilon_s}
+                      \sum_j\mathfrak u_je^{\vartheta_j}.
+ \end{split}
+\end{equation}
+For the derivative bound use the Wirtinger recurrences displayed in
+Subsection~\ref{r2:sec:centre}: a physical derivative changes Bessel
+order by one, costs at most $e^{\vartheta_j}$ in the contour bound, and
+changes the angular factor by at most $4^{1/m}e^{\varepsilon_s}$.
+The chain rule contributes $P_4$. The resulting angular frequencies are
+$km\pm1$; multiplying by $e^{\mp i\theta}$ makes them periodic in
+$\phi$, and $R^{|km\pm1|}\le R2^{|k|}$ costs the further factors
+$R4^{1/m}$. These estimates give the enlarged $\mathfrak D_U$ in
+\eqref{br:eq:field-bounds}, including the order-zero term via
+the Bessel identity $J_{-1}(z)=-J_1(z)$.
+
+The common strip majorant for both defects in~\eqref{br:eq:defects} is
+\begin{equation}\label{br:eq:trace-majorant}
+ M_{\rm tr}=U_b+2\mathfrak D_U+P_4.
+\end{equation}
+Indeed the radial derivative is
+$e^{i\theta}U_w+e^{-i\theta}U_{\bar w}$, whose strip bound is at most
+$2\mathfrak D_U$ by the estimates just derived. The complexification of $|p_0|$
+is the product of the principal square roots of $p_0(e^{i\theta})$ and
+its reflected series. The inequality $S_4<\rho$ of Subsection~\ref{br:sec:matrices} makes this product analytic on the strip, with modulus at most
+$P_4$. This accounts for the additional term in~\eqref{br:eq:trace-majorant}.
+
+Use $N_b=\brTraceGrid$ interval trapezoidal nodes and retain the cosine
+coefficients through $L_b=\brTraceCutoff<N_b/2$. Summing the aliases gives
+the common retained-coefficient error
+\begin{equation}\label{br:eq:trace-alias}
+ e_b=\frac{8M_{\rm tr}4^{-(N_b-L_b)}}{1-4^{-N_b}}.
+\end{equation}
+For $j>L_b$, $|D_j|,|N_j|\le2M_{\rm tr}4^{-j}$.
+Cauchy's estimate gives the same bound for every $j\ge1$, and the
+cosine coefficients of $|p_0|$ are bounded by $2P_44^{-j}$. Thus the
+series~\eqref{br:eq:centre} for $\ell$ and the series for $\Bc(|p_0|)$
+converge with all derivatives on every closed disc of radius less than
+$4^{1/m}$. The complete moments are
+\begin{equation}\label{br:eq:trace-moments}
+ D^{[k]}=\sum_{j\ge0}2^j(jm+1)^k|D_j|,\qquad
+ N^{[k]}=\sum_{j\ge0}2^j(jm+1)^k|N_j|\quad(0\le k\le3).
+\end{equation}
+Complex Fourier coefficients and one-sided cosine coefficients give the
+same norm here, since the two half-coefficients at opposite frequencies
+sum to the full cosine coefficient. With $J=L_b+1$, the tail added to
+each moment is at most
+\begin{equation}\label{br:eq:trace-tail}
+ 2M_{\rm tr}2^{-J}\sum_{i=0}^k\binom{k}{i}
+ (mJ+1)^{k-i}m^i\mathfrak m_i,
+ \qquad (\mathfrak m_0,\mathfrak m_1,\mathfrak m_2,\mathfrak m_3)
+ =(2,2,6,26).
+\end{equation}
+These four integers are the exact sums
+$\sum_{t\ge0}t^i2^{-t}$, as in~\eqref{r2:eq:tail-sums}. Expanding
+$(m(J+t)+1)^k$ proves~\eqref{br:eq:trace-tail} and includes every
+uncomputed harmonic.
+
+The lift polynomials are identical to those of the Schiffer centre;
+their norm estimates depend only on the defect coefficients. In the
+present notation they give
+\begin{equation}\label{br:eq:lift-constants}
+ \begin{aligned}
+ L_0&=D^{[0]}+N^{[0]}/2,&
+ L_1&=2R(D^{[2]}+N^{[1]}),\\
+ L_\Delta&=2(D^{[2]}+N^{[1]}),&
+ L_{\Delta,1}&=2R(D^{[3]}+N^{[2]}).
+ \end{aligned}
+\end{equation}
+They bound $\ell$, each Wirtinger derivative of $\ell$, $\Delta\ell$,
+and each Wirtinger derivative of $\Delta\ell$, respectively.
+For example,
+\[
+ \begin{split}
+ \Delta(h_n^D\cos n\theta)&=-2n(n+1)r^n\cos n\theta,\\
+ \Delta(h_n^N\cos n\theta)&=2(n+1)r^n\cos n\theta.
+ \end{split}
+\]
+Writing the lifts in $w,\bar w$ proves the
+derivative bounds with one factor $R$ for the shifted angular frequency;
+the displayed enlargements include $n=0$.
+Since $\nrm{\partial_wq}_{\Yc}\le RPP_1$ and multiplication by $q$
+has norm at most $P^2$, equation~\eqref{br:eq:E} gives
+\begin{equation}\label{br:eq:residual-bounds}
+ \begin{split}
+ \nrm E_Y&\le E_0:=L_\Delta+P^2L_0,\\
+ \nrm{\partial_wE}_{\Yc},\ \nrm{\partial_{\bar w}E}_{\Yc}
+ &\le E_1:=L_{\Delta,1}+RPP_1L_0+P^2L_1,\\
+ \nrm{\operatorname{Tr}E}_{W_1}&\le E_{W1}:=E_0+2RE_1.
+ \end{split}
+\end{equation}
+The last bound uses $\partial_\theta E=i(wE_w-\bar wE_{\bar w})$.
+Likewise $\Delta U_0=-qU_*-\Delta\ell$ implies
+\begin{equation}\label{br:eq:Lambda}
+ \nrm{\Delta U_0}_Y\le\Lambda_0:=P^2U_b+L_\Delta,
+ \qquad
+ \nrm{\partial_w\Delta U_0}_{\Yc}\le
+ \Lambda_1:=RPP_1U_b+P^2\mathfrak D_U+L_{\Delta,1},
+\end{equation}
+with the same bound for the conjugate derivative. In particular,
+\begin{equation}\label{br:eq:residual-numbers}
+ U_b<\brUb,\qquad \mathfrak D_U<\brDUb,\qquad
+ E_0<\brEzero,\qquad E_1<\brEone.
+\end{equation}
+
+\subsection{Material derivative and boundary identities}\label{br:sec:linearization}
+All quantities below are evaluated at $x_0=(g_0,p_0)$. For a variation
+$(\delta g,k)\in X$ define
+\begin{equation}\label{br:eq:variation}
+ \eta(w)=\int_0^wk(z)\,dz,\qquad
+ v=\eta/p_0=wa,\qquad
+ T=v\partial_wU_0+\bar v\partial_{\bar w}U_0.
+\end{equation}
+The symbol $a$ denotes only the holomorphic real-coefficient shape
+function in this formula; the $a_j$ in~\eqref{br:eq:input} are the fixed
+field coefficients. Put $b=|p_0|$ on the circle and denote its real
+derivative by $\mathrm Db[k]=b\re(k/p_0)$.
+Differentiation of~\eqref{br:eq:F} yields
+\begin{equation}\label{br:eq:DF}
+ DF(x_0)(\delta g,k)=LH+\delta q\,U_0,
+ \qquad H=K\delta g+\Bc(\mathrm Db[k]),\quad
+ \delta q=2\re(\bar p_0k).
+\end{equation}
+The material identity of the Schiffer part uses only holomorphicity
+and the equation $\Delta U_0+qU_0=E$, so it gives here
+\begin{equation}\label{br:eq:material}
+ LT+\delta q\,U_0=\Ecal(k),\qquad
+ \Ecal(k)=vE_w+\bar vE_{\bar w}+(v'+\bar v')E.
+\end{equation}
+To see all cancellations, $\Delta(vU_w)=v\partial_w\Delta U+v'\Delta U$,
+and the conjugate formula gives
+\begin{equation}\label{br:eq:DeltaT}
+ \Delta T=v\partial_w\Delta U_0+\bar v\partial_{\bar w}\Delta U_0
+                  +(v'+\bar v')\Delta U_0.
+\end{equation}
+The identity $k=(p_0v)'$ gives
+$\delta q=vq_w+\bar vq_{\bar w}+(v'+\bar v')q$.
+Substitute $\Delta U_0=E-qU_0$ in~\eqref{br:eq:DeltaT}; the terms involving
+derivatives of $q$ cancel with $\delta qU_0$, and the other terms involving
+$U_0$ cancel with $qT$. This proves~\eqref{br:eq:material}.
+
+The boundary Hessian calculation differs from the Schiffer case.
+Exact clamping gives $U_0=0$, $(U_0)_r=b$, $(U_0)_{r\theta}=b_\theta$,
+and $(U_0)_{rr}=E-b$ on the circle. Since
+$T=r\re a\,(U_0)_r+\im a\,(U_0)_\theta$, radial differentiation gives
+\begin{equation}\label{br:eq:T-boundary}
+ T=b\re a,\qquad
+ T_r=b\re(a+wa')+(E-b)\re a+b_\theta\im a.
+\end{equation}
+For $\mathcal Q_0=wp_0'/p_0$ one has
+\[
+ \mathrm Db[k]=b\re\bigl((1+\mathcal Q_0)a+wa'\bigr),\qquad
+ b_\theta=-b\im \mathcal Q_0.
+\]
+The tangential terms cancel in the difference, leaving
+\begin{equation}\label{br:eq:boundary-difference}
+ \mathrm Db[k]-T_r=(\beta-E/b)T,
+ \qquad \beta=1+\re \mathcal Q_0.
+\end{equation}
+Thus the residual introduces a boundary term as well as the interior
+term $\Ecal$. Define its Neumann lift and the corrected linearisation by
+\begin{equation}\label{br:eq:corrected}
+ \mathcal C(k)=\Bc(E\re a),\qquad
+ \widetilde D=DF(x_0)-\Ecal+L\mathcal C.
+\end{equation}
+Equations~\eqref{br:eq:DF} and~\eqref{br:eq:material} then give
+$\widetilde D(\delta g,k)=L(H-T+\mathcal C(k))$.
+
+\subsection{The exact two-sided inverse}\label{br:sec:two-sided}
+\begin{proposition}\label{br:prop:inverse}
+Suppose that~\eqref{br:eq:Robin} has the inverse and trace bounds of
+Proposition~\ref{br:prop:transfer}, and that $P<2\rho$. Then
+$\widetilde D\colon X\to Y$ of~\eqref{br:eq:corrected} has a bounded
+two-sided inverse $A\colon Y\to X$ with $\nrm A\le A_*$, where $A_*$
+is defined in~\eqref{br:eq:inverse-norm-data}.
+\end{proposition}
+\begin{proof}
+\emph{Right inverse.}
+Given $f\in Y$, solve~\eqref{br:eq:Robin} by the Robin inverse and let
+$t=\operatorname{Tr}V\in W_2$. Since $b$ does not vanish, prescribe
+\begin{equation}\label{br:eq:shape-recovery}
+ \re a=-t/b.
+\end{equation}
+The reciprocal estimates in Subsection~\ref{br:sec:inverse-norm} below
+give $1/b\in W_2$. The right side is real, even and has frequencies in
+$m\Z$. If its cosine coefficients are $\widehat a_j$, define
+$a(w)=\sum_{j\ge0}\widehat a_jw^{jm}$. Thus the cosine coefficients of
+$-t/b$ are the Taylor coefficients of $a$. Equivalently retain the
+constant complex Fourier coefficient and double every positive one.
+This is the unique solution in the holomorphic real-coefficient class;
+the imaginary constant of the general real-part problem is excluded.
+Equation~\eqref{br:eq:realpart-norm} gives equality of the $W_2$ norms.
+Define, in this order,
+\begin{equation}\label{br:eq:inverse-recipe}
+ v=wa,\quad k=(p_0wa)',\quad
+ H=V+T-\mathcal C(k),\quad
+ \delta g=\Delta\bigl(H-\Bc(\mathrm Db[k])\bigr).
+\end{equation}
+The boundary value of $H$ is $t+b\re a=0$. Using
+$V_r=-\beta t=\beta T$ and~\eqref{br:eq:boundary-difference},
+\[
+ H_r=\beta T+T_r-E\re a=\mathrm Db[k].
+\]
+These equalities hold mode by mode by~\eqref{br:eq:mode-Robin}.
+The function $H-\Bc(\mathrm Db[k])$ has zero Cauchy data and a Laplacian
+in $Y$. The radial moment identity therefore gives $\delta g\in X_g$,
+and Poisson uniqueness gives
+$K\delta g=H-\Bc(\mathrm Db[k])$.
+The interior identity now gives
+$\widetilde D(\delta g,k)=LV=f$. The recipe is linear in $f$.
+
+\emph{Derivative count and regularity.}
+For an arbitrary $k\in W_1$,
+\begin{equation}\label{br:eq:derivative-count}
+ \nrm{\eta/w}_{W_2}=\nrm k_{W_1},\qquad
+ \nrm{(p_0wa)'}_{W_1}=\nrm{p_0a}_{W_2}.
+\end{equation}
+Both identities follow coefficient by coefficient from multiplication
+or division by $jm+1$. The Robin solve gains two boundary derivatives,
+division by $b$ preserves $W_2$, and reconstruction of $k$ spends one.
+The Laplacian of the Neumann lift spends one boundary derivative,
+which is available from $k\in W_1$. All holomorphic shape functions
+are smooth near $\overline\D$ because $R>1$. The Robin solution is a
+weak $H^2$ solution, with continuous right side; standard elliptic
+regularity gives $W^{2,s}$ for finite $s$ and $C^1$ boundary traces.
+The mode-wise boundary identity proved above justifies the zero
+Neumann trace of $H-\Bc(\mathrm Db[k])$. The estimates below show that
+its Laplacian belongs to $Y$, and hence that the recipe maps $Y$ to $X$.
+
+\emph{Left inverse.}
+Start with any $(\delta g,k)\in X$. Form $\eta,v,a,T$ by
+\eqref{br:eq:variation}, $H$ by~\eqref{br:eq:DF}, and put
+$V=H-T+\mathcal C(k)$. The apparent singularity in
+$a=\eta/(wp_0)$ at zero is removable, and
+\eqref{br:eq:derivative-count} gives $a\in W_2$.
+Its Dirichlet trace is $-b\re a$, and
+\eqref{br:eq:boundary-difference} gives $V_r+\beta V=0$.
+Also $LV=\widetilde D(\delta g,k)$ distributionally.
+The terms involving the fixed smooth centre and the holomorphic shape
+are smooth near the circle; $K\delta g$ has $C^1$ traces. Thus this
+function is the weak Robin solution. Uniqueness recovers the same $V$
+when the right-inverse recipe is applied to $\widetilde D(\delta g,k)$.
+Its Dirichlet trace divided by $-b$ recovers $\re a$, and the unique
+real-coefficient real-part solution recovers $a$. Then $k$, $T$,
+$\mathcal C(k)$, $H$ and $\delta g$ are recovered in turn.
+Consequently $A\widetilde D=I_X$ and $\widetilde DA=I_Y$.
+\end{proof}
+
+\subsection{Inverse norm and left Newton defect}\label{br:sec:inverse-norm}
+The reciprocal bounds required above are
+\begin{equation}\label{br:eq:reciprocals}
+ J_1=J_0+P_1J_0^2,\qquad
+ J_2=J_0+(2P_1+P_2)J_0^2+2P_1^2J_0^3.
+\end{equation}
+They bound $1/p_0$ in $W_1$ and $W_2$, respectively; $J_2$ also bounds
+$1/b$ in $W_2$. To prove the holomorphic bounds differentiate the
+reciprocal once and twice in the angular variable and use
+$\nrm h_{W_2}=\nrm h_{W_0}+2\nrm{\partial_\theta h}_{W_0}
++\nrm{\partial_\theta^2h}_{W_0}$. For the boundary reciprocal,
+$\log b=(\log p_0+\log\overline{p_0})/2$ has first derivative norm at
+most $J_0P_1$ and second derivative norm at most
+$J_0P_2+J_0^2P_1^2$. The product of the individual square-root reciprocal
+series gives $\nrm{1/b}_{W_0}\le J_0$; differentiating
+$\exp(-\log b)$ gives exactly the stated $J_2$ enlargement.
+
+With $\delta_p=(P-\rho)/\rho<1$, set
+\begin{equation}\label{br:eq:b-bound}
+ B_{01}=\rho(1+\delta_p)^2+
+                 \frac{1+\delta_p}{\sqrt{1-\delta_p}}P_1.
+\end{equation}
+This bounds $\nrm b_{W_1}$. Indeed the sum of absolute nonconstant
+coefficients in the series for $\sqrt{1+z}$ at $|z|=\delta_p$ is
+$1-\sqrt{1-\delta_p}\le\delta_p$. Apply this to $\sqrt{p_0/\rho}$ and
+its reflection and multiply. Differentiating a square root adds at
+most $P_1/[2\sqrt\rho\sqrt{1-\delta_p}]$; the two product derivatives
+give the second term of~\eqref{br:eq:b-bound}. In particular,
+\begin{equation}\label{br:eq:Db-bound}
+ \nrm{\mathrm Db[k]}_{W_1}\le B_{01}J_1\nrm k_{W_1},
+\end{equation}
+by~\eqref{br:eq:realpart-norm} applied to $k/p_0$.
+
+Define
+\begin{equation}\label{br:eq:inverse-norm-data}
+ \begin{split}
+ B_a&=J_2B_{T2},\qquad B_p=(P+2P_1+P_2)B_a,\\
+ B_g&=1+P^2B_Y+2(R\Lambda_1+\Lambda_0+E_{W1})B_a
+                         +2B_{01}J_1B_p,\\
+ A_*&=B_g+B_p.
+ \end{split}
+\end{equation}
+For $Af=(\delta g,k)$, equation~\eqref{br:eq:shape-recovery} bounds
+$\nrm a_{W_2}\le B_a\nrm f_Y$, and the exact second identity
+of~\eqref{br:eq:derivative-count} gives
+$\nrm k_{W_1}\le B_p\nrm f_Y$ because
+$\nrm{p_0}_{W_2}=P+2P_1+P_2$.
+As in~\eqref{r2:eq:v-estimates}, $\nrm v_{\Yc}\le R\nrm a_{W_1}$
+and $\nrm{v'}_{\Yc}=\nrm a_{W_1}$.
+The product identity~\eqref{br:eq:DeltaT} therefore gives
+\[
+ \nrm{\Delta T}_Y\le2(R\Lambda_1+\Lambda_0)\nrm a_{W_1}.
+\]
+Also $\nrm{\Delta\mathcal C(k)}_Y\le2E_{W1}\nrm a_{W_1}$.
+Applying these estimates and~\eqref{br:eq:Db-bound} to
+\eqref{br:eq:inverse-recipe}, with $\Delta V=f-qV$, proves
+$\nrm{\delta g}_Y\le B_g\nrm f_Y$ and $\nrm A\le A_*$.
+
+For an arbitrary input shape,
+$\nrm a_{W_2}\le J_2\nrm k_{W_1}$ by the first identity of
+\eqref{br:eq:derivative-count}. Hence
+\begin{equation}\label{br:eq:Newton-data}
+ \begin{split}
+ \nrm{AF(x_0)}_X&\le Y_0:=A_*E_0,\\
+ \nrm{I_X-A DF(x_0)}_{X\to X}&\le Z,\\
+ Z&:=A_*J_2\bigl[2(RE_1+E_0)+2E_{W1}+P^2E_0/2\bigr].
+ \end{split}
+\end{equation}
+Indeed $I_X-A DF=A(-\Ecal+L\mathcal C)$, the material correction has
+norm at most $2(RE_1+E_0)\nrm a_{W_1}$, and
+$\nrm{L\mathcal C}_Y\le(2E_{W1}+P^2E_0/2)\nrm a_{W_1}$.
+The last term includes $q\mathcal C$ as well as its Laplacian.
+Both identities of Proposition~\ref{br:prop:inverse} are used: the left
+identity gives this defect on $X$, and the right identity makes $A$
+injective, so a fixed point of the Newton map is a zero of $F$.
+
+\subsection{Symmetry directions and the fixed parameter}\label{br:sec:kernels}
+At a true solution, the Eulerian derivative $\dot u$ associated with
+normal displacement $h_\nu$ has boundary data
+$\dot u=-h_\nu$ and $\partial_\nu\dot u=\kappa h_\nu$.
+Thus $\partial_\nu\dot u+\kappa\dot u=0$, agreeing with
+\eqref{br:eq:Robin}. Translations have angular character $\pm1$ and
+are absent from the $D_m$ invariant sector. The rotation derivative is
+reflection-odd and is absent from its real even subspace.
+The real conformal coefficients and $\psi(0)=0$, $\psi'(0)>0$ fix the
+conformal normalisation.
+The constant coefficient $\widehat a_0$ of $a$ generates the radial
+reparametrisation $w\mapsto(1+\varepsilon\widehat a_0)w$ of the parameter
+disc. It is retained in the inverse and equals the mean of $-t/b$
+in~\eqref{br:eq:shape-recovery}. Euclidean dilation is not a homogeneous kernel with
+eigenvalue and flux fixed. The flux-preserving family
+$u_s(x)=s\,u(x/s)$ has parameter $s^{-2}$; its derivative
+$u-x\cdot\nabla u$ satisfies $(\Delta+1)(u-x\cdot\nabla u)=2u$.
+Multiplying the field by a constant changes its prescribed flux.
+The absence of a kernel within the working sector follows from the
+Robin inverse and the two-sided construction above.
+\section{Existence, geometry and earlier results}\label{br:sec:existence}
+\subsection{The full nonlinear bound}\label{br:sec:nonlinear}
+Fix $r_*>0$ with $J_1r_*<1/4$ and consider the closed $X$ ball about
+$x_0$ of that radius. Put
+\begin{equation}\label{br:eq:ball-data}
+ \begin{gathered}
+ P_b=P+r_*,\qquad B_b=4B_{01},\qquad J_b=2J_1,\qquad U_c=U_b+L_0,\\
+ U_{\rm ball}=U_c+r_*/4+B_bJ_br_*/2.
+ \end{gathered}
+\end{equation}
+On the ball, $\nrm p_{W_0}\le P_b$, $\nrm{|p|}_{W_1}\le B_b$,
+$\nrm{1/p}_{W_1}\le J_b$, and $\nrm{U(g,p)}_Y\le U_{\rm ball}$.
+For the reciprocal and square root write $p=p_0(1+k/p_0)$.
+The $W_1$ algebra gives $\nrm{k/p_0}_{W_1}<1/4$; its Neumann series
+bounds the reciprocal by $(4/3)J_1\le J_b$. Multiplying the square-root
+series of $1+k/p_0$ and its reflection bounds the modulus by
+$4B_{01}=B_b$. Along the segment from $p_0$ to $p$, the formula
+$\mathrm D|p|[k]=|p|\re(k/p)$ bounds its change in $W_1$ by
+$B_bJ_b\nrm k_{W_1}$. The lift bound and $\nrm K\le1/4$ give the last
+bound in~\eqref{br:eq:ball-data}.
+
+\begin{lemma}\label{br:lem:nonlinear}
+Throughout the ball, $F$ has second derivative bound
+\begin{equation}\label{br:eq:Mtwo}
+ \nrm{F''}_{X\times X\to Y}\le M_2
+ :=(4+P_b^2)B_bJ_b^2+2P_bB_bJ_b+P_b+2U_{\rm ball}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Differentiating the modulus derivative once more and applying the
+$W_1$ product inequality gives
+$\nrm{\mathrm D^2|p|[k_1,k_2]}_{W_1}
+\le2B_bJ_b^2\nrm{k_1}_{W_1}\nrm{k_2}_{W_1}$.
+Let $q_p=|p|^2$ for the varying shape; $q$ continues to denote the fixed
+centre potential $|p_0|^2$. For $x_i=(g_i,k_i)$ the full second derivative is
+\begin{equation}\label{br:eq:Fsecond}
+ \begin{split}
+ F''[x_1,x_2]={}&(\Delta+|p|^2)\Bc(\mathrm D^2|p|[k_1,k_2])\\
+ &+\mathrm Dq_p[k_1]\bigl(\Bc(\mathrm D|p|[k_2])+Kg_2\bigr)\\
+ &+\mathrm Dq_p[k_2]\bigl(\Bc(\mathrm D|p|[k_1])+Kg_1\bigr)
+   +\mathrm D^2q_p[k_1,k_2]U.
+ \end{split}
+\end{equation}
+Here $\nrm{\mathrm Dq_p[k]}_Y\le2P_b\nrm k_{W_1}$ and
+$\nrm{\mathrm D^2q_p[k_1,k_2]}_Y\le2\nrm{k_1}_{W_1}\nrm{k_2}_{W_1}$.
+The first line of~\eqref{br:eq:Fsecond} is bounded by
+$(4+P_b^2)B_bJ_b^2$, using both bounds
+in~\eqref{br:eq:neumann-lift-bounds}. The two shape/lift products give
+$2P_bB_bJ_b$, and the two shape/Poisson products are bounded by $P_b$
+using $\nrm K\le1/4$. The final product gives $2U_{\rm ball}$.
+For unit $X$ directions these enlarged bounds sum to~\eqref{br:eq:Mtwo}.
+\end{proof}
+
+\subsection{The radii polynomial}\label{br:sec:contraction}
+Set $C_2=A_*M_2/2$. The Newton map $\mathcal T(x)=x-AF(x)$ satisfies,
+for $\nrm{x-x_0}_X\le r_*$,
+\begin{equation}\label{br:eq:Newton-map-bounds}
+ \nrm{\mathcal T(x)-x_0}_X\le Y_0+Zr_*+C_2r_*^2,
+ \qquad \nrm{D\mathcal T(x)}\le Z+2C_2r_*.
+\end{equation}
+These follow from Taylor's integral remainder,~\eqref{br:eq:Newton-data}
+and Lemma~\ref{br:lem:nonlinear}. Thus
+\begin{equation}\label{br:eq:radii}
+ Y_0+(Z-1)r_*+C_2r_*^2<0,
+ \qquad Z+2C_2r_*<1
+\end{equation}
+make the ball invariant and the map a contraction. The fixed-point
+argument in Lemma~\ref{r2:lem:contraction} applies with the quadratic
+Taylor majorant~\eqref{br:eq:Newton-map-bounds} in place of the cubic
+expansion. The contraction has a unique fixed point;
+there $AF(x)=0$. The identity $\widetilde DA=I_Y$ implies $F(x)=0$.
+Every zero in the ball is a fixed point, so uniqueness is uniqueness of
+the zero of~\eqref{br:eq:F}.
+
+Take $r_*=\brRadius$. The bounds in Table~\ref{br:tab:constants} give
+both strict inequalities in~\eqref{br:eq:radii}.
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ll}
+\toprule
+Quantity & Enclosed bound\\
+\midrule
+$B_{L^2}$ & $<\brBLtwo$\\
+$B_Y$ & $<\brBY$\\
+$B_{T1}$ & $<\brBTone$\\
+$B_{T2}$ & $<\brBTtwo$\\
+$E_0$ & $<\brEzero$\\
+$E_1$ & $<\brEone$\\
+$A_*$ & $<\brA$\\
+$Y_0$ & $<\brYzero$\\
+$Z$ & $<\brZ$\\
+$M_2$ & $<\brMtwo$\\
+$C_2$ & $<\brCtwo$\\
+$Y_0+(Z-1)r_*+C_2r_*^2$ & $<\brPolynomial$\\
+$Z+2C_2r_*$ & $<\brContraction$\\
+$4C_2Y_0$ & $<\brFourCY$\\
+\bottomrule
+\end{tabular}
+\caption{The certificate at $r_*=\brRadius$. The last row gives
+$4C_2Y_0<(1-Z)^2$, the discriminant condition for the radii polynomial.}
+\label{br:tab:constants}
+\end{table}
+
+\subsection{Geometry on the whole ball}\label{br:sec:geometry}
+Let $\sigma_0,\sigma_1$ be the sums defined
+after~\eqref{br:eq:complement-constants}.
+For every shape in the ball, the $W_1$ variation norm bounds both
+$\sum_j|p_j-p_j^{(0)}|$ and
+$\sum_jjm|p_j-p_j^{(0)}|$ by $r_*$. Consequently, on $\overline\D$,
+\begin{equation}\label{br:eq:whole-ball-geometry}
+ |p|\ge\rho-\sigma_0-r_*>\brDerivativeLo,
+ \qquad
+ \re(1+wp'/p)\ge1-\frac{\sigma_1+r_*}{\rho-\sigma_0-r_*}
+ >\brConvexLo.
+\end{equation}
+On the larger disc $|w|\le R$,
+\begin{equation}\label{br:eq:univalence}
+ \re p(w)\ge2\rho-P-r_*>\brUnivalentLo>0.
+\end{equation}
+For distinct $w_1,w_2$ inside that disc, the difference quotient
+\[
+ \frac{\psi(w_2)-\psi(w_1)}{w_2-w_1}
+ =\int_0^1p(w_1+t(w_2-w_1))\,dt
+\]
+has positive real part, proving injectivity. Thus $\psi$ is univalent
+and $p$ nonzero on a neighbourhood of $\overline\D$; $R>\brAnalyticRadius$.
+The boundary is a real-analytic Jordan curve. The tangent-angle
+calculation~\eqref{r2:eq:curvature-formula} is a purely conformal
+identity and applies to the present boundary:
+\begin{equation}\label{br:eq:curvature}
+ \kappa(\theta)=\frac{\re(1+wp'/p)}{|p|}>0.
+\end{equation}
+Its positive curvature and total turning $2\pi$ make the bounded image
+strictly convex.
+
+For its first nonlinear coefficient,
+\begin{equation}\label{br:eq:nondisc}
+ |c_1|\ge|c_1^{(0)}|-\frac{r_*}{2(m+1)^2}>\brNonDiscLo.
+\end{equation}
+Indeed the $j=1$ term in $\nrm{p-p_0}_{W_1}$ is
+$2(m+1)|p_1-p_1^{(0)}|$, and $c_1=p_1/(m+1)$.
+The real coefficient and frequency restrictions give
+\[
+ \psi(e^{2\pi i/m}w)=e^{2\pi i/m}\psi(w),\qquad
+ \psi(\bar w)=\overline{\psi(w)}.
+\]
+Thus $\Omega$ has $D_m$ symmetry. A disc invariant under this rotation
+would be centred at zero, and its normalised Riemann map would be
+linear, contradicting~\eqref{br:eq:nondisc}. Finally
+$|\psi'(0)-\rho|\le r_*$ and the exact centre coefficient give
+$\brRhoLo<\psi'(0)<\brRhoHi$.
+
+\subsection{The field and its signs}\label{br:sec:sign}
+At the zero, $U=\Bc(|p|)+Kg$ solves~\eqref{br:eq:pullback}
+distributionally. Initially $U$ is continuous, with the Cauchy traces
+given by the lift and Lemma~\ref{r2:lem:Poisson}. The coefficient
+$|p|^2$ is real analytic near $\overline\D$. Dirichlet elliptic
+regularity upgrades $U$ to a smooth solution on the closed disc,
+and the Cauchy traces are classical. With
+$u=U\circ\psi^{-1}$, conformal covariance and the normal transformation
+give exactly~\eqref{br:eq:physical}.
+
+At the origin the finite field has value $a_0/s_0$. Here $s_0$ is
+the positive field divisor from~\eqref{br:eq:input}, while the shape
+sums are $\sigma_0,\sigma_1$. The lift and ball bounds give
+\begin{equation}\label{br:eq:origin}
+ U(0)\ge\frac{a_0}{s_0}-L_0-r_*/4-B_bJ_br_*/2>\brOriginLo>0.
+\end{equation}
+For any boundary point $x$, smoothness and the outward derivative one
+give $u(x-t\nu(x))=-t+O(t^2)<0$ for small positive $t$.
+Thus $u$ changes sign. This completes the proof of
+Theorem~\ref{br:thm:main} and, by the Green identity of
+Subsection~\ref{br:sec:fourier}, its arc-length Fourier formulation.
+
+\subsection{Relation with earlier work}\label{br:sec:literature}
+\subsubsection{Sign, spectral sequences and low eigenvalues}
+Serrin's symmetry theorem~\cite{Ser71}, in the form recorded
+in~\cite[Theorem~2]{Dal14}, concerns a bounded connected open set
+$\Omega$ with $C^2$ boundary and $u\in C^2(\overline\Omega)$ satisfying
+$\Delta u+\lambda u+\varepsilon=0$, $\lambda>0$,
+$\varepsilon\in\{0,\pm1\}$, and $u=0$, $\partial_\nu u=c$ on
+$\partial\Omega$: if $u>0$ in $\Omega$, then $\Omega$ is a ball. Changing the sign of the solution gives the negative case.
+The field in~\eqref{br:eq:origin} has both signs.
+Berenstein's planar spectral-sequence theorem~\cite{Ber80}, as stated
+in~\cite[Proposition~1.1]{Dal10} for simply connected bounded planar
+domains with $C^{2,\varepsilon}$ boundary and in~\cite[\S0]{BY87}, forces a disc
+when the Dirichlet overdetermined problem is solvable for infinitely
+many distinct spectral parameters. Berenstein and Yang~\cite[Theorem 1]{BY87}
+give the corresponding result for bounded Lipschitz domains with
+connected boundary in all dimensions, for either the Neumann or
+Dirichlet overdetermined problem. The present construction supplies
+one parameter. These sequence results imply that the domain of
+Theorem~\ref{br:thm:main} has only finitely many overdetermined Dirichlet
+eigenvalues.
+
+Dalmasso~\cite[Theorem~1]{Dal14} proves that a bounded connected domain
+with $C^1$ boundary is a ball if $\Delta u+\lambda u=0$ has a
+nonconstant solution $u\in C^2(\overline\Omega)$ with constant
+Dirichlet and Neumann data and $\lambda\le\lambda_1$. If the domain
+is also convex and symmetric about a hyperplane, the same conclusion
+holds for $\lambda\le\lambda_2$.
+The geometric and symmetry hypotheses of the latter statement hold
+here. Its spectral inequality does not: the trial functions
+$1-r^2$ and $r^n(1-r^2)\cos n\theta$, $r^n(1-r^2)\sin n\theta$,
+$1\le n\le6$, span a thirteen-dimensional zero-Dirichlet space on
+the disc. As in~\eqref{r2:eq:dirichlet-minmax}, their Rayleigh quotients
+are $2(n+1)(n+3)\le126$. Conformal invariance of energy and
+$|p|>\brDerivativeLo$ therefore give
+\begin{equation}\label{br:eq:low-index}
+ \lambda_2(\Omega)\le\lambda_{13}(\Omega)
+ \le126/(\brDerivativeLo)^2<1.
+\end{equation}
+For the finite centre, comparison with the inscribed and circumscribed
+origin-centred discs, using binary64 Bessel zeros, shows that between
+$14037$ and $14040$ Dirichlet eigenvalues do not exceed one.
+The second-Dirichlet-eigenvalue case of the Schiffer problem is recorded
+in~\cite[\S0]{BY87} as a consequence of the Payne--Weinberger
+isoperimetric inequality and attributed to Berenstein~\cite{Ber80}
+in~\cite[Remark~1]{Dal14}. The corresponding application of Dai, Liu
+and Sun~\cite{DLS26} is quoted in~\cite[\S1]{DSWZ25}. These statements
+concern the Schiffer boundary data.
+
+Dalmasso's finiteness theorem~\cite[Theorem 1.1]{Dal10} concerns
+$\Delta u+\lambda u+\mu=0$ with $u=0$, $\partial_\nu u=c\ne0$.
+For a bounded convex planar domain with smooth positive-curvature
+boundary, the Schiffer property and nonconstant width, it allows at
+most finitely many pairs $(\lambda,\mu)$ at fixed $c$.
+It is a finiteness statement and permits the single pair $(1,0)$.
+Liu's criterion~\cite{Liu07}, as recorded in~\cite{CSS26,DSWZ25},
+involves constancy of the second interior normal derivative.
+Here the boundary decomposition of the Laplacian gives directly
+\begin{equation}\label{br:eq:second-normal}
+ u_{\nu\nu}=-\kappa u_\nu=-\kappa\quad\text{on }\partial\Omega:
+\end{equation}
+the tangential second derivative of the zero boundary trace vanishes,
+and $\Delta u=-u=0$ there. Constant curvature would make the boundary
+a circle, so~\eqref{br:eq:nondisc} also excludes constancy of
+$u_{\nu\nu}$.
+
+\subsubsection{Dai--Sun--Wei--Zhang and the numerical remainder comparison}
+Dai, Sun, Wei and Zhang~\cite[Theorem 1.1, version 2]{DSWZ25} prove
+Dirichlet rigidity above a threshold $\alpha_0(\Omega)$ for bounded
+uniformly convex planar domains with connected $C^{2,\varepsilon}$
+boundary, $0<\varepsilon<1$. The geometric hypotheses hold here.
+The threshold depends on the full geometry of the fixed domain.
+In support coordinates in Steiner position, let $h(\theta)$ be the
+support function and $\varrho=h+h''$ the radius of curvature.
+Their amplitude defect is
+\begin{equation}\label{br:eq:DSWZ-defect}
+ \mathfrak B(\Omega)=\max_{\theta,\,\upsilon\in\{-1,1\}}
+ \left|\sqrt{\varrho(\theta)}e^{\upsilon h'(\theta)}
+ -\sqrt{\varrho(\theta+\pi)}e^{-\upsilon h'(\theta+\pi)}\right|.
+\end{equation}
+This is the quantity $\mathcal B(\Omega)$ of~\eqref{r2:eq:DSWZ-defect}.
+
+For a controlled $C^5$ class, put
+\[
+ I_D(\lambda,\upsilon,\theta)=\int_{\partial\Omega}
+ e^{\upsilon\eta_\perp\cdot x+i\lambda\xi\cdot x}\,ds,
+ \qquad \xi=(\cos\theta,\sin\theta),\quad\eta_\perp\perp\xi.
+\]
+Its two-point leading term is
+\begin{equation}\label{br:eq:DSWZ-leading}
+ \sqrt{\frac{2\pi}{\lambda}}\left[
+ \sqrt{\varrho(\theta)}e^{\upsilon h'(\theta)}e^{i\lambda h(\theta)-i\pi/4}
+ +\sqrt{\varrho(\theta+\pi)}e^{-\upsilon h'(\theta+\pi)}
+                          e^{-i\lambda h(\theta+\pi)+i\pi/4}\right].
+\end{equation}
+Writing $R_D$ for the difference, their expansion gives
+$|R_D|\le C_*\lambda^{-3/2}$ for $\lambda\ge3$, $|\upsilon|\le1$.
+The constant $C_*$ depends on the class and is not supplied numerically.
+Their exclusion lemma, for $\mathfrak B\ge\delta>0$, has threshold
+\begin{equation}\label{br:eq:DSWZ-threshold}
+ \alpha>\left[\max\left\{3,\frac{C_*}{\sqrt{2\pi}\delta}\right\}\right]^2-1.
+\end{equation}
+The qualitative theorem chooses $\delta=\mathfrak B/2$.
+
+The following comparison uses floating-point quadrature for the finite centre. Let $\Omega_1$ be its image rescaled to conformal radius
+one; its parameter is $\alpha_u=\rho^2\approx\brAlphaDiagnostic$.
+Any constant admissible for its stationary-phase expansion must
+dominate every evaluated remainder. In the unit scale define
+\[
+ G_u(\zeta)=\zeta^{3/2}\max_\theta|R_D^{\Omega_1}(\zeta,0,\theta)|.
+\]
+The computed values in Table~\ref{br:tab:remainder} use trapezoidal
+integration in the conformal angle and the support coordinates of the
+two stationary points.
+\begin{table}[htbp]
+\centering
+\begin{tabular}{rr}
+\toprule
+$\zeta$ & Sampled $G_u(\zeta)$\\
+\midrule
+\brRemainderRows
+\bottomrule
+\end{tabular}
+\caption{Numerical stationary-phase remainders for the normalised
+Berenstein centre in binary64 arithmetic. Each sampled angular maximum
+estimates a lower bound for $G_u(\zeta)$.}
+\label{br:tab:remainder}
+\end{table}
+
+The comparison also includes dilation. For $s\Omega_1$ the parameter
+is $\alpha_u/s^2$, and
+\[
+ R_D^{s\Omega_1}(\lambda,0,\theta)
+ =sR_D^{\Omega_1}(s\lambda,0,\theta),\qquad
+ \mathfrak B(s\Omega_1)=\sqrt s\,\mathfrak B_u(s),
+\]
+where
+$\mathfrak B_u(s)=\max_{\theta,\upsilon=\pm1}
+|\sqrt\varrho\,e^{\upsilon sh'}-\sqrt{\varrho(\theta+\pi)}e^{-\upsilon sh'(\theta+\pi)}|$
+uses the unit-scale support data. An admissible $C_*$ for a class
+containing $s\Omega_1$ satisfies
+\[
+ C_*\ge\lambda'^{3/2}|R_D^{s\Omega_1}(\lambda',0,\theta)|,
+ \qquad \lambda'\ge3.
+\]
+Taking the angular maximum gives
+$C_*\ge s^{-1/2}G_u(s\lambda')$. With the most favourable choice
+$\delta=\mathfrak B(s\Omega_1)$, exclusion of $\alpha_u/s^2$
+by~\eqref{br:eq:DSWZ-threshold} requires
+$\lambda_s=\sqrt{\alpha_u/s^2+1}>3$ and
+\[
+ C_*<\sqrt{2\pi}\lambda_s\mathfrak B(s\Omega_1)
+ =\sqrt{2\pi(\alpha_u+s^2)}s^{-1/2}\mathfrak B_u(s).
+\]
+Hence exclusion requires
+\begin{equation}\label{br:eq:DSWZ-rescaled}
+ G_u(\zeta)<T_D(s):=\sqrt{2\pi(\alpha_u+s^2)}\,\mathfrak B_u(s)
+ \quad\text{for every }\zeta\ge3s.
+\end{equation}
+For $s>\sqrt{\alpha_u/8}$ the parameter is below eight and
+cannot exceed~\eqref{br:eq:DSWZ-threshold}. On the remaining scales
+$0<s\le\sqrt{\alpha_u/8}\approx\brScaleDiagnostic$, the numerical
+calculation gives $T_D(s)$ approximately in the range
+$\brThresholdDiagnostic$. The sampled remainder at the largest
+frequency in Table~\ref{br:tab:remainder} is approximately
+$\brRemainderDiagnostic$, about $\brRatioDiagnostic$ times the
+largest computed threshold. In this computation the condition
+\eqref{br:eq:DSWZ-rescaled} fails at every admissible scale, so the
+stationary-phase exclusion does not remove the finite centre.
+
+Version~1 of~\cite{DSWZ25} required central symmetry. The present
+domain is not centrally symmetric. Any centre of symmetry would be
+fixed by its nontrivial rotational symmetry and hence be the origin.
+Then normalised Riemann-map uniqueness would imply $\psi(-w)=-\psi(w)$.
+Since $m=\brM$ is odd, its nonzero coefficient $c_1$ multiplies the
+even power $w^{m+1}$, which contradicts that identity.
+
+\subsubsection{The planar counterexample of Colbrook--Sadeghi--Stepaniants}
+Colbrook, Sadeghi and Stepaniants~\cite{CSS26} proved existence on
+a bounded simply connected non-disc domain with real-analytic Jordan
+boundary, $D_{13}$ symmetry and a sign-changing eigenfunction.
+For their numerical centre
+$\varphi^\circ(w)=w+\sum_{j=1}^{20}\varphi_j^\circ w^{13j+1}$,
+the binary64 evaluation of its appendix coefficients in the present paper gives
+\begin{equation}\label{br:eq:CSS-computation}
+ \min_{|w|=1}\re(1+w(\varphi^\circ)''/(\varphi^\circ)')
+       \approx\brCSSConvexDiagnostic,\qquad
+ \min\kappa^\circ\approx\brCSSCurvatureDiagnostic.
+\end{equation}
+Here $\kappa^\circ$ is the curvature of
+$\varphi^\circ(\partial\D)$ in the normalisation
+$(\varphi^\circ)'(0)=1$. The centre curve is not convex: one of its
+points lies at distance about $1.0\cdot10^{-2}$ inside the boundary of
+its convex hull. The exact boundary of~\cite{CSS26} differs from the
+centre curve pointwise by less than $4.67\cdot10^{-10}$~\cite[Subsection~5.1]{CSS26},
+so their domain is not convex. The interval triangle witness is given in
+\path{anc/diagnostics/berenstein/csb_nonconvex.json}; its construction is
+described in Subsection~\ref{br:sec:verification}.
+Theorem~\ref{br:thm:main} supplies a convex domain.
+The conformal fixed-disc method is due to~\cite{CS26},
+and~\cite{CSS26} adapted it to the Dirichlet problem. The coupled inverse here uses the Dirichlet trace of
+a Robin solution to recover the shape, together with the explicit
+residual Neumann lift~\eqref{br:eq:corrected}.

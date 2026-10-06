@@ -1,0 +1,135 @@
+\section{Existence, geometry and the Pompeiu property}\label{r2:sec:existence}
+
+\subsection{The radii polynomial}
+Let $x_0=(g_0,p_0)$ and use the fixed bounded inverse $A$ of Proposition~\ref{r2:prop:coupled}. Write $\kappa_K=1/4$ and $U_c=U_b+L_0$. For $(h,k)\in X$, expansion of the cubic map gives
+\begin{equation}\label{r2:eq:cubic-expansion}
+ \begin{split}
+ F(g_0+h,p_0+k)={}&E+DF(g_0,p_0)(h,k)\\
+ &+(p_0\bar k+\bar p_0k)Kh+|k|^2U_0+|k|^2Kh.
+ \end{split}
+\end{equation}
+For $s=\nrm h_Y+\nrm k_W$, the algebra estimate and Lemma~\ref{r2:lem:Poisson} bound the quadratic terms by $(2P\kappa_K+U_c)s^2$ and the cubic term by $\kappa_Ks^3$. Define
+\begin{equation}\label{r2:eq:C23}
+ C_2=A_*(2P\kappa_K+U_c),\qquad C_3=A_*\kappa_K.
+\end{equation}
+These constants also bound the corresponding polarised bilinear and trilinear maps. For example, polarising the first quadratic term gives the average of $2P\kappa_K\nrm{k_1}\nrm{h_2}$ and $2P\kappa_K\nrm{k_2}\nrm{h_1}$; each is bounded by the product of the two $X$ norms. Polarizing $|k|^2U_0$ uses $\re(k_1\bar k_2)U_0$ with the same bound. The symmetric trilinear form for $|k|^2Kh$ has bound $\kappa_K$ in the product of three $X$ norms. Consequently the derivative majorants are $2C_2s$ and $3C_3s^2$.
+
+\begin{lemma}\label{r2:lem:contraction}
+If a radius $r_*>0$ satisfies
+\begin{equation}\label{r2:eq:radii}
+ Y_0+(Z-1)r_*+C_2r_*^2+C_3r_*^3<0,
+ \qquad Z+2C_2r_*+3C_3r_*^2<1,
+\end{equation}
+then $F$ has a unique zero in the closed $X$ ball $\nrm{x-x_0}_X\le r_*$.
+\end{lemma}
+\begin{proof}
+For the Newton map $\mathcal T(x)=x-AF(x)$, Proposition~\ref{r2:prop:coupled} and~\eqref{r2:eq:cubic-expansion} imply
+\[
+ \nrm{\mathcal T(x_0+(h,k))-x_0}_X
+ \le Y_0+Zs+C_2s^2+C_3s^3.
+\]
+The first inequality of~\eqref{r2:eq:radii} makes this ball invariant. The polarised derivative bounds give
+\[
+ \nrm{D\mathcal T(x)}_{X\to X}\le Z+2C_2r_*+3C_3r_*^2<1
+\]
+on the ball. Completeness gives a unique fixed point. At that point $AF(x)=0$, and injectivity of $A$ gives $F(x)=0$. Every zero in the ball is a fixed point, so the uniqueness is uniqueness of a zero of $F$.
+\end{proof}
+
+For the forty-mode centre take $r_*=10^{-32}$. The constants obtained from the exact interval chain are recorded in Table~\ref{r2:tab:constants}. Upper bounds are rounded upward; negative upper bounds are rounded toward zero. The two inequalities of Lemma~\ref{r2:lem:contraction} are strict.
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ll}
+\toprule
+Quantity & Enclosed bound\\
+\midrule
+$B_{L^2}$ & $<6.748$\\
+$B_Y$ & $<1.045\cdot10^8$\\
+$B_N$ & $<7.039\cdot10^{13}$\\
+$E_0$ & $<9.643\cdot10^{-61}$\\
+$E_1$ & $<5.418\cdot10^{-56}$\\
+$A_*$ & $<6.419\cdot10^{19}$\\
+$Y_0$ & $<6.189\cdot10^{-41}$\\
+$Z$ & $<2.122\cdot10^{-38}$\\
+$C_2$ & $<3.479\cdot10^{22}$\\
+$C_3$ & $<1.605\cdot10^{19}$\\
+$Y_0+(Z-1)r_*+C_2r_*^2+C_3r_*^3$ & $<-9.99999993\cdot10^{-33}$\\
+$Z+2C_2r_*+3C_3r_*^2$ & $<6.957\cdot10^{-10}$\\
+$4C_2Y_0$ & $<8.611\cdot10^{-18}$\\
+\bottomrule
+\end{tabular}
+\caption{The forty-mode certificate, with $r_*=10^{-32}$. Every row is rounded from its own interval enclosure. In particular the row for $Y_0$ and the last three rows are not recomputed from the rounded rows above; for example, the rounded bounds for $A_*$ and $E_0$ alone give only $Y_0<6.190\cdot10^{-41}$.}\label{r2:tab:constants}
+\end{table}
+
+The inequalities~\eqref{r2:eq:radii} remain valid at $r_*=10^{-32}$ when $A_*$, and hence $Y_0$, $Z$, $C_2$ and $C_3$, are multiplied by $10^8$: the first expression is then less than $-3.46\cdot10^{-33}$ and the second less than $0.0696$ (ancillary file \path{ROBUSTNESS_CHECK.json}).
+
+\subsection{Geometry on the entire ball}
+Let $(g,p)$ be the zero obtained above, and write $p(w)=\sum_jp_jw^{jm}$ and $\psi(w)=\sum_jc_jw^{jm+1}$ as in~\eqref{r2:eq:primitive}. For the centre write $p_0(w)=\sum_jp^{(0)}_jw^{jm}$ and $\psi_0(w)=\sum_jc^{(0)}_jw^{jm+1}$, so that $p^{(0)}_0=c^{(0)}_0=\rho$ and $P=\sum_j2^j|p^{(0)}_j|$. The estimates of this subsection use only
+\[
+ \nrm{p-p_0}_W=\sum_{j\ge0}2^j|p_j-p^{(0)}_j|\le r_*,
+\]
+so they hold for every shape in the ball. On $|w|\le R$ the weighted coefficient bound gives
+\begin{equation}\label{r2:eq:univalence-ball}
+ \re p(w)\ge\rho-(P-\rho)-r_*>808.
+\end{equation}
+If $w_1\ne w_2$ are in the disc $|w|<R$, then
+\[
+ \frac{\psi(w_2)-\psi(w_1)}{w_2-w_1}
+ =\int_0^1p\bigl(w_1+t(w_2-w_1)\bigr)\,dt
+\]
+has positive real part. Thus $\psi$ is univalent on that larger disc. The same estimate makes $p$ nonzero there, and $\psi$ is analytic on a neighbourhood of $\overline\D$.
+
+For unit-disc convexity, use the sharper unweighted centre sums
+\begin{equation}\label{r2:eq:geometry-LU}
+ L_* =\rho-\sum_{j>0}|p^{(0)}_j|-r_*,
+ \qquad\Theta_*=\sum_{j>0}jm|p^{(0)}_j|+\frac{m+1}{2}r_*.
+\end{equation}
+Here $\sum_j|p_j-p^{(0)}_j|\le r_*$, and $\sum_jjm|p_j-p^{(0)}_j|\le\frac{m+1}2r_*$ because $jm/2^j\le(m+1)/2$ for every $j\ge1$. Throughout the closed unit disc therefore
+\[
+ |p|\ge L_*>811,
+ \qquad |wp'|\le\Theta_*.
+\]
+On the boundary,
+\begin{equation}\label{r2:eq:convexity-ball}
+ \re\left(1+\frac{wp'}p\right)
+ \ge1-\frac{\Theta_*}{L_*}>0.2998879.
+\end{equation}
+For $z(\theta)=\psi(e^{i\theta})$, the derivative of the tangent angle is $\re(1+wp'/p)$ and the speed is $|p|$. Thus the outwardly oriented curvature is
+\begin{equation}\label{r2:eq:curvature-formula}
+ \kappa(\theta)=\frac{\re(1+wp'/p)}{|p|}>0.
+\end{equation}
+Univalence makes the boundary a simple closed curve. Its positive curvature and total turning $2\pi$ make its enclosed domain strictly convex. Equivalently, this is the analytic convexity criterion for conformal maps~\cite[\S2.5]{Dur83}. The same coefficient estimates give the convexity inequality in additive form: for every shape in the ball and every $|w|\le1$,
+\begin{equation}\label{r2:eq:joint-margin}
+ |p(w)|-|wp'(w)|\ge
+ \rho-\sum_{j>0}(jm+1)|p^{(0)}_j|-\frac{m+1}{2}r_*>243.3264,
+\end{equation}
+because $jm+1\le\frac{m+1}22^j$ for every $j\ge0$.
+
+Since $\psi(0)=0$, the origin lies in $\Omega$. Every tangent line to the boundary supports this strictly convex domain and therefore does not pass through the origin. Thus every ray from the origin meets the boundary exactly once and transversally. The coefficient bounds also give, for $|w|=1$,
+\[
+ \left|p(w)-\frac{\psi(w)}w\right|\le P-\rho+r_*,\qquad
+ \left|\frac{\psi(w)}w\right|\ge\re\int_0^1p(tw)\,dt>808,
+\]
+and hence
+\[
+ \re\frac{w\psi'(w)}{\psi(w)}
+ \ge1-\frac{P-\rho+r_*}{808}>0,
+\]
+because $P<820.7003$, $\rho>814.457$ and $r_*=10^{-32}$. This proves strict star-shapedness with respect to the origin. The real-analytic parametrisation $\theta\mapsto\psi(e^{i\theta})$, with nonvanishing derivative, identifies the boundary diffeomorphically with $S^1$.
+
+The first nonlinear coefficient of $\psi$ obeys
+\begin{equation}\label{r2:eq:non-disc}
+ |c_1|\ge|c^{(0)}_1|-\frac{r_*}{2(m+1)}>0.01645,
+\end{equation}
+because $2|p_1-p^{(0)}_1|\le\nrm{p-p_0}_W\le r_*$ and $c_1=p_1/(m+1)$. The coefficient restrictions give
+\[
+ \psi(e^{2\pi i/m}w)=e^{2\pi i/m}\psi(w),\qquad
+ \psi(\bar w)=\overline{\psi(w)}.
+\]
+The domain is therefore $D_m$-invariant. If it were a disc, its centre would be fixed by rotation through $2\pi/m$ and hence would be zero. Its normalised conformal map would then be linear, contrary to~\eqref{r2:eq:non-disc}. Hence $\Omega$ is not a disc. Since $\psi'(0)=p(0)$ and $|p(0)-\rho|\le r_*$, while the exact decimal $\rho$ satisfies $814.457<\rho<814.458$, the bound~\eqref{r2:eq:radius-main} follows. Analyticity and nonvanishing of $\psi'$ near the circle give a real-analytic boundary.
+
+\subsection{Transfer of the field}
+At the zero of $F$, $U=1+Kg$ satisfies~\eqref{r2:eq:fixed-disc} initially in the distributional sense, with its $C^1$ boundary traces. The coefficient $|p|^2$ is smooth near $\overline\D$. Dirichlet elliptic regularity, applied successively to $\Delta U=-|p|^2U$ with smooth constant Dirichlet data, gives smoothness up to the boundary. The previously established zero normal trace is therefore the classical normal condition.
+
+Set $\Omega=\psi(\D)$ and $u=U\circ\psi^{-1}$. Formula~\eqref{r2:eq:covariance} proves $(\Delta+1)u=0$. The normal transformation gives $\partial_\nu u=|p|^{-1}\partial_rU=0$, while $u=1$ on the boundary. The function cannot be constant: its boundary value would force that constant to be one, and the constant one does not solve $(\Delta+1)u=0$. This establishes the differential-equation and geometric assertions of Theorem~\ref{r2:thm:main}.
+
+The Green's identity argument in Section~\ref{sec:pompeiu} proves that $\widehat{\one_\Omega}$ vanishes on the unit circle and that $\Omega$ fails the Pompeiu property, completing Theorem~\ref{r2:thm:main}.

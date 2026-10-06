@@ -1,0 +1,1872 @@
+\part{The exact inverse in general dimension}\label{gd:part}
+% Certified data are loaded once from gd_data_block.tex in the preamble.
+
+
+\section{The general-dimensional certificate}\label{gd:sec:theorem}
+
+This part proves the cases $n\in\gdDimensions\setminus\{5\}$ of
+Theorem~\ref{thm:main} and gives a second proof of the case $n=5$.
+
+\begin{theorem}\label{gd:thm:main}
+For every $n\in\gdDimensions$ there is a bounded strictly convex domain
+$\Omega\subset\R^n$, different from a ball and strictly star-shaped
+with respect to the origin, with real-analytic boundary
+diffeomorphic to $S^{n-1}$, invariant under $O(n-1)$ on the last $n-1$
+coordinates and under reflection of the first coordinate. It carries a
+nonconstant real-valued solution, real analytic on a neighbourhood of
+$\overline\Omega$, of
+\begin{equation}\label{gd:eq:schiffer}
+ (\Delta+1)u=0\quad\hbox{in }\Omega,\qquad
+ u=1,\quad \partial_{\mathbf n} u=0\quad\hbox{on }\partial\Omega.
+\end{equation}
+Here $\mathbf n$ is the outward unit normal.
+In particular, $\Omega$ fails the Pompeiu property.
+\end{theorem}
+
+For $n=5$ this is a second proof of the five-dimensional case of
+Theorem~\ref{thm:main}; it uses none of the bounds of Section~\ref{r5:sec}.
+The argument below is parametrised by an integer $n\ge5$.
+The angular conversion uses $\lambda\ge1$, and root coverage uses
+$\nu=l+\lambda\ge3/2$.
+Its exact parameters and constants are in
+Tables~\ref{gd:tab:inputs}--\ref{gd:tab:geometry}; the finite centres are
+the compressed files \path{anc/gd/frozen_centers/nN.json.gz} described in
+Subsection~\ref{gd:sec:verification}.
+The scale $\rho$, analytic weight $R>1$, shape weight $\sigma>0$ and
+existence radius $r_*>0$ are exact, as are $\lambda$, $L_0$ and the mode
+and state counts. Entries carrying an inequality sign are strict
+one-sided bounds.
+
+\begin{table}[htbp]
+\centering\small
+\def\gdRow#1#2#3#4#5#6#7#8{$#1$ & #2\\}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+$n$ & stored modes & $\rho$ & $R$ & $\sigma$ & $r_*$\\
+\midrule
+\gdData
+\bottomrule
+\end{tabular}
+\caption{Exact inputs. The stored-mode count is the length of each finite
+shape and field array, not a count of converged coefficients; the clamping
+lift and the solution have infinite expansions.}\label{gd:tab:inputs}
+\end{table}
+
+\subsection{Meridian coordinates and the equation}\label{gd:sec:formulation}
+Write reference points as $x=(x_1,x')\in\R\times\R^{n-1}$ and set
+\[
+ y=|x'|,\quad w=x_1+iy,\quad r=|x|,\quad \xi=x_1/r,\quad
+ a=n-2,\quad\lambda=a/2,\quad\mu=\rho^2.
+\]
+As in Sections~\ref{r5:sec} and~\ref{r7:sec}, $\xi$ is the angular
+variable. The radial variable here is $r$; below $t$ denotes a time or
+a parameter.
+All scalar unknowns are $O(n-1)$-invariant and even in $x_1$.
+The regular lift to the full ball interprets the meridian operator
+\begin{equation}\label{gd:eq:laplacian}
+ \Delta_n=\partial_{x_1}^2+\partial_y^2+\frac a y\partial_y .
+\end{equation}
+There is no boundary condition on the axis.
+
+Let $\psi$ be odd holomorphic with real coefficients, $p=\psi'$ and
+$q=\im\psi/y$. As in Lemma~\ref{r5:lem-lift}, put
+\begin{equation}\label{gd:eq:lift-map}
+ \Theta_\psi(x_1,x')=
+ \bigl(\re\psi(x_1+i|x'|),\,q(x_1,|x'|)x'\bigr).
+\end{equation}
+Hereafter $b$ is the positive coefficient of $w$ in the fixed centre
+$\psi_0$; it is held constant throughout the equation.
+The unscaled domain is $\Theta_\psi(B^n)$, with $u_0$ of frequency
+$\rho$; the domain of the theorem is $\Omega=\rho\Theta_\psi(B^n)$.
+On the meridian plane the differential is $|p|$ times a rotation;
+on each of the $n-2$ transverse directions it is multiplication by $q$.
+Consequently
+\[
+ \det D\Theta_\psi=|p|^2q^{n-2}.
+\]
+The proof of Lemma~\ref{r5:lem-lift}, with $n-2$ transverse vectors,
+gives the change of variables in every dimension.
+
+For $U=u_0\circ\Theta_\psi$, with frequency $\rho$, the
+pull-back equation is
+\[
+ \operatorname{div}(q^a\nabla U)+\mu q^a|p|^2U=0.
+\]
+Divide by the positive factor $bq^{a-1}$ and define
+\begin{equation}\label{gd:eq:B}
+ \begin{split}
+ BU&=\frac1b\left\{q\Delta_n U+
+ a\left(q_{x_1}U_{x_1}+\frac{q_y}{y}\,yU_y\right)
+ +\mu q|p|^2U\right\},\\
+ \mathcal L U&=\Delta_n U+\frac a q\nabla q\cdot\nabla U
+                  +\mu|p|^2U,\qquad B=(q/b)\mathcal L .
+ \end{split}
+\end{equation}
+In particular the multiplier relating $B$ to the operator $\Delta+\mu$ is
+\begin{equation}\label{gd:eq:physical-multiplier}
+ B(u_0\circ\Theta_\psi)=
+ \frac{q|p|^2}{b}\bigl((\Delta+\mu)u_0\bigr)\circ\Theta_\psi .
+\end{equation}
+The quotients in~\eqref{gd:eq:B} are regular analytic scalars:
+$q=\int_0^1\re p(x_1+isy)\,ds$ is even in $y$, and so is $q_y/y$.
+This is the quartic normalisation of~\eqref{r5:eq-div}, with the
+fixed scalar factor $1/b$.
+
+\section{Angular coefficient spaces and the compatible Poisson inverse}
+\label{gd:sec:spaces}
+
+\subsection{The angular algebra}\label{gd:sec:algebra}
+Set
+\[
+ G_l(\xi)=\frac{C_l^\lambda(\xi)}{C_l^\lambda(1)},\qquad
+ H_l(x)=r^lG_l(\xi).
+\]
+For $n=5,7$ these are the polynomials denoted $Y_\ell,H_\ell$ in
+Sections~\ref{r5:sec-spaces} and~\ref{r7:sec-spaces}.
+The generating function of the Gegenbauer polynomials gives
+\begin{equation}\label{gd:eq:cosine}
+ \begin{split}
+ G_l(\cos\theta)&=\sum_mD_{ml}\cos(m\theta),\\
+ D_{l-2k,l}&=
+ \frac{(2-\delta_{l,2k})(\lambda)_k(\lambda)_{l-k}}
+ {k!(l-k)!C_l^\lambda(1)}
+ \quad(0\le k\le l/2),\qquad
+ h_l=\sum_m D_{ml}R^m .
+ \end{split}
+\end{equation}
+In particular $D_{ml}\ge0$, $\sum_mD_{ml}=1$ and
+$h_l\ge\sum_mD_{ml}=1$.
+
+Let $\mathcal Y_n$ consist of expansions
+$f=\sum_{l\ge0}f_l(r)G_l(\xi)$, with $f_l\in C([0,1])$,
+$f_l(0)=0$ for $l>0$, and norm
+\begin{equation}\label{gd:eq:Y}
+ \nrm f_{\mathcal Y_n}=\sum_{l\ge0}h_l\nrm{f_l}_\infty.
+\end{equation}
+Let $Y$ be its real even sector, so only even $l$ occur.
+The radial norm is a supremum over all radii. It replaces the sum of
+Jacobi radial coefficients, graded by polynomial degree, in
+Sections~\ref{r5:sec-spaces} and~\ref{r7:sec-spaces}.
+In particular a continuous radial profile is admitted without a Jacobi
+expansion. The Poisson estimates below provide its $C^1$ reconstruction.
+
+The raw cosine norm is
+$\nrm f_{\rm raw}=\sum_mR^m\nrm{\tilde f_m}_\infty$ for the corresponding
+cosine expansion. The boundary norms $W_0,W_1$ have exactly the Fourier
+convention of~\eqref{r2:eq:Wone}, now with weight $R^{|m|}$.
+For a real cosine series they are
+\[
+ \nrm h_{W_0}=\sum_{m\ge0}R^m|h_m|,\qquad
+ \nrm h_{W_1}=\sum_{m\ge0}(1+m)R^m|h_m|.
+\]
+Thus $\nrm f_{\rm raw}\le\nrm f_{\mathcal Y_n}$ and boundary evaluation
+has norm at most one into $W_0$.
+
+\begin{lemma}\label{gd:lem:algebra}
+The spaces $\mathcal Y_n$ and $Y$ are Banach algebras with
+$\nrm{fg}_{\mathcal Y_n}\le\nrm f_{\mathcal Y_n}\nrm g_{\mathcal Y_n}$.
+\end{lemma}
+\begin{proof}
+Completeness is the weighted $C([0,1])$ argument of
+Lemma~\ref{r2:lem:algebra}; the origin conditions define a closed subspace.
+Since $|G_l|\le1$, convergence in the norm gives uniform convergence on
+the full closed ball. For the product, write
+$G_lG_k=\sum_dL_{lk}^dG_d$. The addition theorem represents $G_l$
+as a positive semidefinite zonal kernel on $S^{n-1}$.
+The product kernel is positive semidefinite by tensoring its feature
+vectors. Its scalar eigenvalues on spherical harmonics are nonnegative,
+and orthogonality identifies them, up to positive normalisations, with
+$L_{lk}^d$. Hence $L_{lk}^d\ge0$; evaluation at $\xi=1$ gives
+$\sum_dL_{lk}^d=1$. This is the positivity used in
+Theorem~\ref{r5:thm-mult}(a), also given by the Gegenbauer linearisation
+formula~\cite[18.18.22]{DLMF}.
+The nonnegative cosine expansions and
+$T_mT_j=(T_{m+j}+T_{|m-j|})/2$ give
+\[
+ \sum_dL_{lk}^dh_d\le h_lh_k .
+\]
+Taking radial suprema proves the product estimate for finite sums.
+Absolute convergence proves it for infinite sums. At the origin only
+constant angular terms remain, so products preserve origin compatibility.
+\end{proof}
+
+\begin{lemma}[Conversion of the full cosine expansion]\label{gd:lem:connection}
+Put $z=R^{-2}$ and $e_i=|(-\lambda)_i|/i!$. Then
+\begin{equation}\label{gd:eq:kappa}
+ \nrm f_{\mathcal Y_n}\le\kappa\nrm f_{\rm raw},\qquad
+ \kappa=(1-z)^{-\lambda}\sum_{i\ge0}e_i z^i .
+\end{equation}
+This bound applies to arbitrary continuous radial profiles and includes
+all angular degrees.
+\end{lemma}
+\begin{proof}
+The connection formula of Lemma~\ref{r7:lem-conn}, whose derivation of
+the coefficient formula holds for every $\lambda>0$, is
+\begin{equation}\label{gd:eq:connection}
+ T_N=\sum_{i=0}^{\lfloor N/2\rfloor} C_{N-2i,N}G_{N-2i},\qquad
+ C_{l,N}=
+ \frac{N(-\lambda)_i(N-i-1)!(l+\lambda)C_l^\lambda(1)}
+ {2i!(\lambda)_{N-i+1}},
+ \quad l=N-2i,
+\end{equation}
+for $N>0$; $T_0=G_0=1$. It follows by the same limit of the
+Gegenbauer connection formula~\cite[18.18.16,18.7.25]{DLMF}.
+For $l>0$ the top cosine coefficient is
+$2(\lambda)_l/(l!C_l^\lambda(1))$.
+Since $\lambda\ge1$, the remaining positive coefficients in
+\eqref{gd:eq:cosine} give
+\[
+ h_l\le
+ \frac{2(\lambda)_lR^l}{l!C_l^\lambda(1)}(1-z)^{-\lambda}.
+\]
+For $l=0$ use the top cosine coefficient one and
+$h_0\le(1-z)^{-\lambda}$.
+For $i\ge1$, multiplication by $|C_{l,N}|$ leaves
+$e_iR^Nz^i(1-z)^{-\lambda}$ times
+\[
+ \frac{N}{N-i+\lambda}
+ \prod_{s=1}^{i-1}\frac{l+s}{l+s+\lambda}\le1.
+\]
+For $i=0$, the product of $C_{N,N}$ and the top cosine
+coefficient is exactly one. For $i\ge1$ the displayed product is at most
+$(l+1)/(l+i)$, and the desired inequality reduces to
+$i^2-\lambda i+N(\lambda-1)\ge i(i+\lambda-2)\ge0$,
+using $N\ge2i$. Summation proves~\eqref{gd:eq:kappa}.
+Conversion lowers degree and preserves the origin condition.
+
+For integer $\lambda$, the infinite series is $(1+z)^\lambda$.
+For $\lambda=m+1/2$, the Taylor coefficients $(-\lambda)_i/i!$
+have sign $(-1)^i$ for $i\le m+1$ and fixed sign
+$\epsilon_\lambda=(-1)^{m+1}$ for $i\ge m+1$. Hence
+\[
+ \sum_{i\ge0}e_i z^i=\epsilon_\lambda(1-z)^\lambda
+ +2\sum_{\substack{0\le i\le m\\i\equiv m\ (\mathrm{mod}\ 2)}}e_i z^i.
+\]
+For $\lambda=3/2,5/2$ this is the expression in
+Lemmas~\ref{r5:lem-conn}(b) and~\ref{r7:lem-conn}.
+Thus~\eqref{gd:eq:kappa} has a finite closed expression in both cases.
+\end{proof}
+
+\begin{lemma}[Weights and polynomial moments]\label{gd:lem:moments}
+One has $1=h_0\le h_1\le h_2\le\cdots$ and $h_l\le R^l$.
+For a representation $f=\sum_{l,s}c_{ls}r^{2s}H_l$ define
+$\mathfrak m_k(f)=\sum_{l,s}|c_{ls}|h_l(l+2s)^k$.
+Then
+\begin{equation}\label{gd:eq:poly-derivatives}
+ \nrm{\partial_{x_1}f}_{\mathcal Y_n}\le C_x^{\rm pol}\mathfrak m_1(f),
+ \qquad
+ \nrm{y\partial_yf}_{\mathcal Y_n}\le C_y^{\rm pol}\mathfrak m_1(f),
+ \quad C_x^{\rm pol}=1+R,\quad C_y^{\rm pol}=1+RC_x^{\rm pol}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Choose a random $\zeta$ with distribution $\operatorname{Beta}(\lambda,\lambda)$,
+then independent signs of mean $2\zeta-1$, and let $S_l$ be their sum.
+Integration of the binomial law gives
+$\binom lk(\lambda)_k(\lambda)_{l-k}/(2\lambda)_l$.
+Pairing $k$ and $l-k$ identifies~\eqref{gd:eq:cosine} with
+$h_l=\mathbb E R^{|S_l|}$.
+The conditional expectation is
+$\mathbb E(S_{l+1}\mid S_l)=S_l(1+(2\lambda+l)^{-1})$.
+Jensen's inequality for the even convex function $s\mapsto R^{|s|}$
+proves monotonicity; $|S_l|\le l$ proves the upper bound.
+The harmonic identity $\partial_{x_1}H_l=lH_{l-1}$ is proved in
+Section~\ref{r7:sec-spaces} by an argument valid in every dimension.
+Differentiating $r^{2s}H_l$ and using
+$\nrm{x_1}_{\mathcal Y_n}=R$ gives the first estimate.
+The Euler derivative multiplies that monomial by $l+2s$;
+$y\partial_y=r\partial_r-x_1\partial_{x_1}$ gives the second.
+Absolute convergence with the indicated moments justifies all derivatives.
+\end{proof}
+
+\subsection{The zero-Dirichlet inverse and its trace}\label{gd:sec:Poisson}
+Let $K_n^D$ be the regular zero-Dirichlet inverse of $\Delta_n$.
+For angular degree $l$ its radial equation is
+\[
+ \mathcal D_lv=v''+\frac{n-1}{r}v'-\frac{l(l+n-2)}{r^2}v=f_l,
+ \qquad v(1)=0.
+\]
+Regularity at the origin is that of the solution on $B^n$.
+
+\begin{lemma}\label{gd:lem:Poisson}
+For $f\in Y$ the following bounds hold:
+\begin{equation}\label{gd:eq:Poisson-constants}
+ \begin{split}
+ \nrm{K_n^Df}_Y&\le C_K\nrm f_Y,\qquad C_K=\frac1{2n},\\
+ \nrm{\partial_{x_1}K_n^Df}_{\mathcal Y_n}&\le C_x^K\nrm f_Y,\qquad
+ \nrm{y\partial_yK_n^Df}_Y\le C_y^K\nrm f_Y,\\
+ C_x^K&=\frac Rn+\frac R{n+2}+\frac{2(2R+1)}{n+1},\\
+ C_E^K&=\frac1n+\frac1{n+2}+\frac2{n+1},
+ \qquad C_y^K=C_E^K+RC_x^K.
+ \end{split}
+\end{equation}
+Moreover,
+\begin{equation}\label{gd:eq:Poisson-trace}
+ (K_n^Df)_l'(1)=\int_0^1r^{l+n-1}f_l(r)\,dr,\qquad
+ \nrm{\partial_rK_n^Df}_{W_1}\le\nrm f_Y.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For $-\mathcal D_l$ the function $(1-r^2)/(2n)$ is a supersolution
+with right side at least one. The radial maximum principle therefore gives
+$\nrm v_\infty\le\nrm{f_l}_\infty/(2n)$.
+For $l\ge2$, $-\mathcal D_l r=(l-1)(l+n-1)/r$; comparison with
+$r\nrm{f_l}_\infty/d_l$, where $d_l=(l-1)(l+n-1)$, gives
+$|v(r)|/r\le\nrm{f_l}_\infty/d_l$.
+For $l=0$, apply the maximum principle on $B^n$ to the radial functions
+$(1-r^2)\nrm{f_0}_\infty/(2n)\pm v$. For $l\ge1$, apply it on
+$[\epsilon,1]$ and let $\epsilon\to0$. Continuity gives $v(\epsilon)=o(1)$ for $l\ge1$.
+Full-ball Dirichlet regularity for continuous data~\cite{GT01} gives a $C^1$
+solution; its constant and linear Taylor terms have angular degrees
+zero and one. Thus $v(\epsilon)=o(\epsilon)$ for $l\ge2$, as
+required for the second barrier.
+Writing $v=r^l\phi$ and integrating its equation gives
+\begin{equation}\label{gd:eq:radial-derivative}
+ v'=\frac{lv}{r}+\mathcal I_l(r),\qquad
+ \mathcal I_l(r)=r^{-l-n+1}\int_0^r s^{l+n-1}f_l(s)\,ds,\qquad
+ |\mathcal I_l(r)|\le\frac r{l+n}\nrm{f_l}_\infty .
+\end{equation}
+For $l=0$ this gives $|v'|\le\nrm{f_0}_\infty/n$.
+
+The Gegenbauer identity
+$(1-\xi^2)G_l'=l(G_{l-1}-\xi G_l)$, obtained by differentiating
+$H_l$, gives the cancellation
+\[
+ \partial_{x_1}(vG_l)=\xi\mathcal I_lG_l+(lv/r)G_{l-1}.
+\]
+Multiplication by $\xi=G_1$ costs $R$.
+For even $l\ge2$, $l/d_l\le2/(n+1)$, and $h_{l-1}\le h_l$.
+Thus the coefficient bound for $\partial_{x_1}K_n^D$ is at most
+$\max\{R/n,R/(n+2)+2/(n+1)\}$.
+For the Euler derivative $r\partial_r$ the corresponding bound is
+$\max\{1/n,1/(n+2)+2/(n+1)\}$.
+The enlarged constants in~\eqref{gd:eq:Poisson-constants} dominate
+these bounds, and $y\partial_y=r\partial_r-x_1\partial_{x_1}$
+gives $C_y^K$. Inputs have even degree, so no $l=1$ radial estimate
+is required; $\partial_{x_1}$ may have odd outputs in $\mathcal Y_n$.
+
+At $r=1$, \eqref{gd:eq:radial-derivative} and $v(1)=0$
+give the moment formula. The boundary cosine frequencies of $G_l$
+are at most $l$, hence
+\[
+ \nrm{\partial_rK_n^Df}_{W_1}
+ \le\sum_l(l+1)h_l|v_l'(1)|
+ \le\sum_l\frac{l+1}{l+n}h_l\nrm{f_l}_\infty\le\nrm f_Y .
+\]
+For continuous data the full-ball Poisson solution belongs to
+$W^{2,p}(B^n)$ for every finite $p$ and to $C^1(\overline{B^n})$
+for $p>n$, by Dirichlet regularity~\cite{GT01}. Approximation of the data proves the moment formula
+for its classical normal trace.
+\end{proof}
+
+Define the closed compatible subspace and product space
+\begin{equation}\label{gd:eq:X}
+ \begin{split}
+ \Gc&=\left\{g\in Y:\int_0^1r^{l+n-1}g_l(r)\,dr=0
+                            \text{ for every even }l\right\},\\
+ K_n&=K_n^D|_{\Gc},\qquad
+ W=\left\{p=\sum_{j\ge0}p_{2j}w^{2j}:
+                  p_{2j}\in\R,\ \nrm p_W=\sum_{j\ge0}R^{2j}|p_{2j}|<\infty\right\},\\
+ X&=\Gc\times W,\qquad
+ \nrm{(g,p)}_X=\nrm g_Y+\sigma\nrm p_W .
+ \end{split}
+\end{equation}
+The moments are bounded functionals, so $\Gc$ is complete.
+Lemma~\ref{gd:lem:Poisson} gives both zero traces of $K_ng$.
+The normalised primitive is $\psi(w)=\int_0^wp(z)\,dz$.
+The nonlinear equation is
+\begin{equation}\label{gd:eq:F}
+ F(g,p)=B(1+K_ng)=0 .
+\end{equation}
+It is affine in $g$ and cubic in $p$, thus a polynomial of degree four
+in $(g,p)$.
+The constant $\sigma$ changes the product norm, not this equation.
+
+\begin{table}[htbp]
+\centering\small
+\def\gdRow#1#2#3#4#5#6#7#8{$#1$ & #3\\}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+$n$ & $\lambda$ & $\kappa$ & $C_x^K$ & $C_y^K$ & $L_0$\\
+\midrule
+\gdData
+\bottomrule
+\end{tabular}
+\caption{Angular conversion, Poisson bounds, and the starting degree
+$L_0$ of the high angular complement. Here $C_K=1/(2n)$ exactly.}
+\label{gd:tab:Poisson}
+\end{table}
+
+\section{The symmetric-sector Dirichlet inverse}\label{gd:sec:spectral}
+
+All operators in this section are evaluated at the finite shape $\psi_0$.
+Set $e=a/2=\lambda$. Direct differentiation of $q^{-e}$ yields
+\begin{equation}\label{gd:eq:conjugation}
+ q^e\mathcal L(q^{-e}Z)=(\Delta_n+\mathcal V)Z,\qquad
+ \mathcal V=\mu|p|^2-\frac{a(a-2)}2\frac{q_y}{yq}
+                 -\frac{a(a-2)}4\frac{|\nabla q|^2}{q^2}.
+\end{equation}
+Here $\Delta_2=\partial_{x_1}^2+\partial_y^2$. The identity
+$\Delta_2(yq)=0$ implies $\Delta_nq=(a-2)q_y/y$;
+substitution cancels the first derivatives of $Z$.
+Let $L=\Delta_n+\mathcal V$, $c=\rho b$, and $v_0=c^2$.
+
+\subsection{The complete window}\label{gd:sec:window}
+With reduced measure
+$r^{n-1}\,dr\,(1-\xi^2)^{(n-3)/2}\,d\xi$, an orthonormal Dirichlet basis
+in the invariant even sector is
+\begin{equation}\label{gd:eq:spectral-basis}
+ b_{l,\alpha}(r,\xi)=
+ \frac{\sqrt2\,r^{-\lambda}J_{l+\lambda}(\alpha r)}
+ {|J_{l+\lambda+1}(\alpha)|}
+ \frac{C_l^\lambda(\xi)}{\sqrt{h_l^{(2)}}},\qquad
+ h_l^{(2)}=\frac{\pi2^{1-2\lambda}\Gamma(l+2\lambda)}
+ {l!(l+\lambda)\Gamma(\lambda)^2},
+\end{equation}
+where $l$ is even and $\alpha$ runs through all positive zeros of
+$J_{l+\lambda}$. The Bessel equation and differentiation in $\alpha$
+give the radial norm, as in~\eqref{r2:eq:basis}.
+Angular orthogonality and the self-adjoint ball Dirichlet spectral
+decomposition give completeness. The analytic weight $h_l$ in
+\eqref{gd:eq:Y} is distinct from the $L^2$ normalisation $h_l^{(2)}$.
+
+Let $\PP$ include every state with
+\begin{equation}\label{gd:eq:window}
+ |\alpha-c|<12,\qquad \QQ=I-\PP .
+\end{equation}
+There are two complete coverage arguments for this window.
+
+\begin{lemma}\label{gd:lem:coverage}
+Opposite-sign root brackets satisfying the spacing and guard conditions
+below enumerate all states of~\eqref{gd:eq:window}.
+\end{lemma}
+\begin{proof}
+Put $\nu=l+\lambda$. The leading series of $J_\nu$ makes
+$J_\nu,J_\nu'>0$ near zero. At a first stationary point $x<\nu$
+with $J_\nu>0$, the Bessel equation would give
+$J_\nu''=(\nu^2/x^2-1)J_\nu>0$, contrary to a first loss of
+positive derivative. A first zero of $J_\nu$ is also impossible
+while its derivative is positive. Thus both remain positive for $x<\nu$.
+If $J_\nu'(\nu)=0$, its equation gives $J_\nu''(\nu)=0$ and
+$J_\nu'''(\nu)=-2J_\nu(\nu)/\nu<0$; Taylor expansion would make
+$J_\nu'$ negative immediately to the left. Hence
+$J_\nu,J_\nu'>0$ also at $\nu$.
+
+For $z_\nu(x)=\sqrt{x}J_\nu(x)$ one has
+\[
+ z_\nu''+\left(1-\frac{\nu^2-1/4}{x^2}\right)z_\nu=0.
+\]
+On an interval ending at $B>\nu$, its coefficient is at most
+$q_B=1-(\nu^2-1/4)/B^2$. The integration-by-parts and interval
+Poincar\'e argument of Lemma~\ref{r2:lem:zero-coverage} gives spacing
+at least $\pi/\sqrt{q_B}$. Starting from
+$z_\nu(\nu),z_\nu'(\nu)>0$, comparison with the constant-coefficient
+equation gives first-zero distance at least $\pi/(2\sqrt{q_B})$.
+Consequently the first bracket ending strictly before
+$\nu+3\pi/(2\sqrt{q_B})$ cannot miss an earlier zero.
+If the outer endpoints of successive brackets have separation less
+than $2\pi/\sqrt{q_B}$, no zero is missed between them.
+Each bracket has opposite nonzero signs and width below the spacing;
+it therefore contains exactly one simple zero.
+Enumeration from $\nu$ through a guard root above $c+12$ covers the
+window in that angular sector. Positivity up to $\nu$ excludes
+all orders $\nu\ge c+12$.
+
+For the second argument evaluate $J_\nu$ on the exact grid
+$c-12+k/4$, $0\le k\le96$, in each remaining sector.
+Here $\nu\ge3/2$, so the differential-equation coefficient is at
+most one on the positive axis. Distinct positive roots are separated
+by at least $\pi$. A grid cell contains at most one root.
+Simplicity, and nonzero endpoint signs, make equal signs equivalent
+to no root and opposite signs equivalent to one root.
+Exclude equality at the two window edges. The same positivity bound excludes all larger angular orders.
+\end{proof}
+
+\subsection{The polynomial potential and its full error}\label{gd:sec:potential}
+Index shape coefficients throughout this part by their actual odd degree:
+$\psi_0(w)=\sum_{j\ {\rm odd}}c_jw^j$, $c_1=b$.
+For a full, retained or discarded list define
+\[
+ s_1=\sum_{j>1}j|c_j|,\qquad
+ s_2=\sum_{j>1}j(j-1)|c_j|,\qquad
+ s_3=\frac13\sum_{j>1}j(j-1)(j-2)|c_j|.
+\]
+The integral formula for $q$ gives
+$|p-b|,|q-b|\le s_1$, $|q_{x_1}|,|q_y|\le s_2$ and
+$|q_y/y|\le s_3$. For the last bound, $q_y(x_1,0)=0$ because $q$ is even in $y$, and
+$q_{yy}=-\int_0^1s^2\re p''(x_1+isy)\,ds$ gives
+$|q_{yy}|\le s_3$, hence $|q_y|\le s_3|y|$.
+Let the subscripts $f,t,d$ denote full, retained and discarded data.
+Retain degrees at most $61$ in the polynomial potential only.
+Put $q_*=b-s_{1,f}>0$ and $A_n=a(a-2)$. Then
+\begin{equation}\label{gd:eq:vfull}
+ \nrm{\mathcal V-v_0}_\infty\le
+ v_f:=\mu(2bs_{1,f}+s_{1,f}^2)
+ +\frac{A_ns_{3,f}}{2q_*}+\frac{A_ns_{2,f}^2}{2q_*^2}.
+\end{equation}
+The difference caused by discarding shape degrees is at most
+\begin{equation}\label{gd:eq:shape-error}
+ \begin{split}
+ \delta_{\rm shape}={}&
+ \mu(2b+s_{1,f}+s_{1,t})s_{1,d}\\
+ &+\frac{A_n}2\left(\frac{s_{3,d}}{q_*}
+                    +\frac{s_{3,t}s_{1,d}}{q_*^2}\right)\\
+ &+\frac{A_n}4\left\{
+ \frac{2(s_{2,f}+s_{2,t})s_{2,d}}{q_*^2}
+ +\frac{2s_{2,t}^2(2b+s_{1,f}+s_{1,t})s_{1,d}}{q_*^4}\right\}.
+ \end{split}
+\end{equation}
+The first line bounds the difference of $|p|^2$.
+The second uses $|q_f^{-1}-q_t^{-1}|\le s_{1,d}/q_*^2$.
+For the last line split the gradient square and its squared reciprocal;
+$|\nabla q|^2\le2s_2^2$ and
+$|q_f^{-2}-q_t^{-2}|\le
+(2b+s_{1,f}+s_{1,t})s_{1,d}/q_*^4$ give the displayed bound.
+
+Replace $q_t^{-1}$ by the polynomial
+$S_4=b^{-1}\sum_{k=0}^4[-(q_t-b)/b]^k$ and $q_t^{-2}$ by $S_4^2$.
+Since $s_{1,t}\le s_{1,f}<b$, the geometric remainder is at most
+$\delta_S=(s_{1,t}/b)^5/(b-s_{1,t})$.
+Also $|S_4|\le(b-s_{1,t})^{-1}$.
+The resulting polynomial potential $\mathcal V_t$ satisfies
+\begin{equation}\label{gd:eq:potential-error}
+ \nrm{\mathcal V-\mathcal V_t}_\infty\le
+ \delta_V:=\delta_{\rm shape}
+ +\frac{A_n}2s_{3,t}\delta_S
+ +\frac{A_ns_{2,t}^2\delta_S}{b-s_{1,t}}.
+\end{equation}
+This includes the squared-reciprocal error
+$2\delta_S/(b-s_{1,t})$. As a polynomial in $(x_1,y)$,
+$\mathcal V_t$ has degree at most $598$: the term
+$|\nabla q_t|^2S_4^2$ has degree $118+480$.
+Set $V_t=\mathcal V_t-v_0$ and $v_*=v_f+\delta_V$.
+
+\subsection{The Gram identity and Schur complement}\label{gd:sec:Schur}
+Form the exact finite matrices
+\begin{equation}\label{gd:eq:matrices}
+ \mathsf B=\PP V_t\PP,\qquad \mathsf B_2=\PP V_t^2\PP,\qquad
+ H_{\mathsf P}=\diag(\alpha^2-v_0)-\mathsf B,\qquad G=\mathsf B_2-\mathsf B^2.
+\end{equation}
+The sans-serif symbols distinguish these matrices from the differential
+operator $B$ in~\eqref{gd:eq:B}. The Gram identity is
+\begin{equation}\label{gd:eq:Gram}
+ G=(\QQ V_t\PP)^*(\QQ V_t\PP)\succeq0.
+\end{equation}
+It is the identity~\eqref{r2:eq:Gram} on the entire orthogonal complement;
+in particular it includes every omitted radial and angular mode.
+
+On the complement the ball operator $-\Delta_n-v_0$ has absolute
+spectral gap at least $12(2c-12)$, with $c>12$.
+Therefore
+\[
+ M_Q=\QQ(-\Delta_n-v_0-V_t)\QQ,\qquad
+ \nrm{M_Q^{-1}}\le\gamma^{-1},\qquad
+ \gamma=12(2c-12)-v_*>0 .
+\]
+This is the Neumann factorisation~\eqref{r2:eq:unbounded-factor};
+the operator is allowed to be indefinite.
+
+\begin{proposition}\label{gd:prop:Schur}
+Let $C$ be a square real matrix of the window size, $D$ a real
+diagonal matrix with nonzero diagonal, and suppose
+\begin{equation}\label{gd:eq:Schur-gates}
+ \begin{gathered}
+ \nrm{C^TC-I}_2\le\epsilon_C<1,\\
+ \nrm{|D|^{-1/2}(C^TH_{\mathsf P}C-D)|D|^{-1/2}}_2\le\epsilon_{\rm S},\\
+ \gamma^{-1}\tr(|D|^{-1}C^TGC)\le\eta_{\rm S},\qquad\epsilon_{\rm S}+\eta_{\rm S}<1.
+ \end{gathered}
+\end{equation}
+Set
+\begin{equation}\label{gd:eq:L2}
+ \begin{split}
+ S_*&=\frac{1+\epsilon_C}{\min_i|D_i|(1-\epsilon_{\rm S}-\eta_{\rm S})},\\
+ B_{\rm pol}&=\bigl(1+(v_*/\gamma)^2\bigr)S_*+\gamma^{-1},\\
+ B_{L^2}&=\frac{B_{\rm pol}}{1-B_{\rm pol}\delta_V}\qquad(B_{\rm pol}\delta_V<1).
+ \end{split}
+\end{equation}
+Then $L$ has a symmetric-sector Dirichlet inverse with
+$\nrm{L_D^{-1}}_{L^2\to L^2}\le B_{L^2}$.
+\end{proposition}
+\begin{proof}
+The proof of Proposition~\ref{r2:prop:Schur} applies with this ball basis
+and $V_t$, the two defects being bounded directly in the $\ell^2$
+operator norm. It uses only the orthogonal splitting of the Dirichlet
+operator domain, the complement gap and~\eqref{gd:eq:Gram}.
+In particular, for $T=\QQ V_t\PP C|D|^{-1/2}$,
+\[
+ \nrm{T^*M_Q^{-1}T}\le\gamma^{-1}\nrm{T^*T}
+ \le\gamma^{-1}\tr(T^*T)\le\eta_{\rm S}.
+\]
+After congruence the Schur matrix is $\operatorname{sgn}(D)$ plus a
+perturbation of norm at most $\epsilon_{\rm S}+\eta_{\rm S}$, so its inverse is bounded
+by $S_*$. The block inverse has norm at most
+$(1+(v_*/\gamma)^2)S_*+\gamma^{-1}$, exactly as in
+\eqref{r2:eq:BLref}. Finally the bounded perturbation
+$\mathcal V-\mathcal V_t$ is transferred by the factorisation of
+\eqref{r2:eq:transfer}, giving $B_{L^2}$.
+\end{proof}
+
+The reduced measure in~\eqref{gd:eq:spectral-basis} differs from
+Lebesgue measure on invariant functions on $B^n$ by the factor
+$|S^{n-2}|$. On the even invariant sector, the map
+$f(r,\xi)\mapsto |S^{n-2}|^{-1/2}f(|x|,x_1/|x|)$ is a unitary
+identification of the reduced space with the invariant subspace of
+$L^2(B^n,dx)$. It intertwines the Dirichlet operators, so $B_{L^2}$
+is also the inverse bound on this subspace with Lebesgue measure.
+
+\subsection{Quadrature enclosures}\label{gd:sec:quadrature}
+Here are the finite expressions defining the matrix enclosures.
+For odd $n$, the angular rule is Gauss--Legendre with polynomial weight
+$(1-\xi^2)^{(n-3)/2}$.
+For even $n$, it is Gauss--Chebyshev of the second kind, with
+\[
+ \xi_k=\cos\frac{k\pi}{N_\theta+1},\qquad
+ \omega_k=\frac{\pi}{N_\theta+1}
+             \sin^2\frac{k\pi}{N_\theta+1}\quad(1\le k\le N_\theta),
+\]
+and remaining polynomial weight $(1-\xi^2)^{(n-4)/2}$.
+Choose the angular order so that the entire polynomial degree of each
+integrand is at most $2N_\theta-1$; this makes angular integration exact.
+This covers both integral and half-integral $\lambda$.
+
+For radial Gauss--Legendre order $N_r$, the Bernstein ellipse of parameter
+two in $2r-1$ gives $|r|\le9/8$ and $|\im r|\le3/8$.
+Poisson's Bessel integral~\cite[10.9.4]{DLMF} gives
+\[
+ |z^{-\nu}J_\nu(z)|\le
+ \frac{e^{|\im z|}}{2^\nu\Gamma(\nu+1)}.
+\]
+For each window basis vector its radial integrand factor, including
+$r^{(n-1)/2}$, is bounded by
+\begin{equation}\label{gd:eq:ellipse}
+ \hat e_i=\frac{\sqrt2C_l^\lambda(1)}
+ {\sqrt{h_l^{(2)}}|J_{\nu+1}(\alpha)|}
+ \frac{\alpha^\nu(9/8)^{l+(n-1)/2}e^{3\alpha/8}}
+ {2^\nu\Gamma(\nu+1)},\qquad \nu=l+\lambda .
+\end{equation}
+The products are entire: after removing the Bessel leading powers,
+the radial power is $l+l'+n-1$, an integer.
+Let $\hat e_*=\max_i\hat e_i$ and let $V_e$ bound $|V_t(r,\xi)|$ for $r$ on the ellipse
+and $-1\le\xi\le1$, using the $s_i$ sums at $9/8$ and the finite
+polynomial $S_4$. The entrywise radial errors can be taken as
+\begin{equation}\label{gd:eq:quadrature-errors}
+ q_1=32\hat e_*^2(1+V_e)2^{-2N_r},\qquad
+ q_2=32\hat e_*^2(1+V_e^2)2^{-2N_r}.
+\end{equation}
+Indeed the Chebyshev coefficients of an analytic integrand bounded by
+$M$ are at most $2M2^{-k}$. The radial Gaussian rule is exact through
+degree $2N_r-1$; bounding both its positive mass and the integration
+mass and summing the remaining geometric series gives the factor
+$16$. The angular integration has mass at most two, giving $32$.
+
+Let $u_{\rm fl}=2^{-52}$,
+$\gamma_k=ku_{\rm fl}/(1-ku_{\rm fl})$, and $\tau=10^{-280}$.
+Use these bounds only when $ku_{\rm fl}<1$, with finite intermediate
+values. Regard every binary64 export as its exact dyadic rational.
+At a tensor node the radial and angular factors are
+\[
+ \frac{\sqrt{2\omega_rr}J_\nu(\alpha r)}{|J_{\nu+1}(\alpha)|},
+ \qquad
+ C_l^\lambda(\xi)
+ \sqrt{\omega_\theta w_{\rm poly}(\xi)/h_l^{(2)}}.
+\]
+Here $\omega_r$ is the radial Gauss--Legendre weight on $[0,1]$,
+$\omega_\theta$ is the angular weight, and
+$w_{\rm poly}(\xi)=(1-\xi^2)^{(n-3)/2}$ for odd $n$,
+$(1-\xi^2)^{(n-4)/2}$ for even $n$.
+Let their exported vectors be $r_i,a_i$, with enclosed norm errors
+$e_{r,i},e_{a,i}$. The column error is bounded by
+\begin{equation}\label{gd:eq:tensor-error}
+ e_i^{\rm col}=e_{r,i}\nrm{a_i}_2+\nrm{r_i}_2e_{a,i}
+              +e_{r,i}e_{a,i}
+              +u_{\rm fl}\nrm{r_i}_2\nrm{a_i}_2+\tau .
+\end{equation}
+Thus $e_{\rm bas}=(\sum_i(e_i^{\rm col})^2)^{1/2}$
+bounds the basis matrix Frobenius error.
+Bessel argument uncertainty is bounded by differentiating the Poisson
+integral:
+\[
+ \sup_{0\le x\le X}|J_\nu'(x)|
+ \le\frac{\nu X^{\nu-1}+X^\nu}{2^\nu\Gamma(\nu+1)}
+ \quad(\nu\ge1).
+\]
+
+The potential arrays are given by the exact identities
+\begin{equation}\label{gd:eq:potential-arrays}
+ \begin{aligned}
+ q-b&=\sum_{j>1}c_jr^{j-1}U_{j-1}(\xi),&
+ \re p-b&=\sum_{j>1}jc_jr^{j-1}T_{j-1}(\xi),\\
+ q_{x_1}&=\sum_{j>1}jc_jr^{j-2}U_{j-2}(\xi),&
+ q_y/y&=-2\sum_{j>1}c_jr^{j-3}C_{j-3}^{(2)}(\xi).
+ \end{aligned}
+\end{equation}
+Each array is expanded in $r^iT_m(\xi)$ using
+\[
+ \begin{split}
+ U_m&=\sum_{k=0}^{\lfloor m/2\rfloor}(2-\delta_{m,2k})T_{m-2k},\\
+ C_N^{(2)}&=\sum_{k=0}^{\lfloor N/2\rfloor}
+       (2-\delta_{N,2k})(k+1)(N-k+1)T_{N-2k}.
+ \end{split}
+\]
+Here $S_{\rm pol}$ is the absolute sum of the resulting coefficients.
+These coefficients are exported, and only the $T_m$ are evaluated by
+the recurrence below.
+For degree at most $d$, radial power error costs $\gamma_{d+1}$.
+The recurrence at an exported node $|\xi|<1$ is
+$\widehat T_{j+1}=2\xi\widehat T_j-\widehat T_{j-1}$,
+$\widehat T_0=1$, $\widehat T_1=\xi$.
+Suppose $10u_{\rm fl}(d+1)^3<10^{-3}$. If
+$|\widehat T_i|\le1.001$ for $i\le j$, the product and subtraction
+have total rounding error $|\epsilon_j|\le6u_{\rm fl}$, apart from
+the separate underflow allowance. Since $|U_m|\le m+1$,
+\[
+ \left|\widehat T_{j+1}-T_{j+1}(\xi)\right|
+ =\left|\sum_{i=1}^j\epsilon_iU_{j-i}(\xi)\right|
+ \le3u_{\rm fl}j(j+1)<10^{-3}.
+\]
+Thus $|\widehat T_{j+1}|\le1.001$ by induction, and the error at
+every degree $k\le d$ is at most
+$3u_{\rm fl}d(d-1)\le10u_{\rm fl}(d+1)^3$, the recurrence allowance
+of the array error.
+Node-export uncertainty is separate: $|T_m|\le1$ and
+$|T_m'|\le m^2$ imply the array error
+$S_{\rm pol}(d\,\delta r+d^2\delta\xi)$.
+Add coefficient export errors and both dense-product allowances.
+Propagate them through the seven-variable polynomial potential by
+interval differentiation on a box containing both the exact and
+exported inputs, so the mean value theorem applies; an additional $2\gamma_{400}$ times the
+absolute arithmetic majorant covers its fewer than $100$ scalar
+operations. Let $\delta_{\rm pt}$ be the resulting pointwise potential error,
+and $v_{\rm exp}$ the exported absolute bound.
+
+For an exported basis matrix $E_F$ with $\nrm{E_F}_F\le K_F$,
+window size $m$ and total node count $N_q$, valid matrix errors are
+\begin{equation}\label{gd:eq:matrix-errors}
+ \begin{split}
+ e_B={}&v_*(2K_Fe_{\rm bas}+e_{\rm bas}^2)+\delta_{\rm pt} K_F^2
+              +\gamma_{N_q+4}v_{\rm exp}K_F^2+mq_1+\tau,\\
+ e_{B_2}={}&v_*^2(2K_Fe_{\rm bas}+e_{\rm bas}^2)
+       +\delta_{\rm pt}(2v_*+\delta_{\rm pt})K_F^2
+       +\gamma_{N_q+6}v_{\rm exp}^2K_F^2+mq_2+\tau .
+ \end{split}
+\end{equation}
+These follow by adding and subtracting the exact factors in
+$E_F^T\diag(V_F)E_F$. Include root-diagonal export, subtraction
+and symmetrisation errors in $e_H$.
+Bound $\epsilon_C$ by the Frobenius norm of the computed $C^TC-I$
+plus $\gamma_{m+3}\nrm C_F^2+\tau$.
+Let $H_F$ be the exported symmetrised $H_{\mathsf P}$. Bound the numerator of
+$\epsilon_{\rm S}$ by the Frobenius norm of the computed $C^TH_FC-D$ plus
+\[
+ \gamma_{2m+8}(\nrm C_F^2\nrm{H_F}_F+\nrm D_F)+\tau
+                    +(1+\epsilon_C)e_H.
+\]
+Division by $\min|D_i|$ bounds the normalised defect in
+\eqref{gd:eq:Schur-gates}.
+For the exported Gram difference $G_F=\mathsf B_{2,\rm exp}-\mathsf B_{\rm exp}^2$ add
+\begin{equation}\label{gd:eq:Gram-error}
+ e_G=e_{B_2}+e_B(2v_*+e_B)+\gamma_{m+4}\nrm{\mathsf B_{\rm exp}}_F^2
+                  +u_{\rm fl}(\nrm{\mathsf B_{2,\rm exp}}_F+\nrm{\mathsf B_{\rm exp}^2}_F)+\tau .
+\end{equation}
+The weighted trace allowance is
+\[
+ \frac{\gamma_{4m+20}\nrm C_F^2\nrm{G_F}_F
+              +m(1+\epsilon_C)e_G}{\min|D_i|}+\tau .
+\]
+Divide the upper trace bound by $\gamma$ to obtain $\eta_{\rm S}$.
+For an exported array $A_F$ with $N$ entries, let $s_F$ be its computed
+sum of squares. The Frobenius reduction uses
+\[
+ \nrm{A_F}_F\le\sqrt{\frac{s_F}{1-\gamma_{2N+2}}+\tau}.
+\]
+
+\section{Transfer of the Dirichlet inverse to the working norm}
+\label{gd:sec:transfer}
+
+\subsection{Low angular degrees by heat smoothing}\label{gd:sec:heat}
+Let $M\ge\nrm{\mathcal V}_Y$, so $|\mathcal V|\le M$, and let $Lv=f$
+with zero Dirichlet data in the invariant sector.
+For the Dirichlet heat semigroup with this bounded real potential,
+\begin{equation}\label{gd:eq:heat}
+ \nrm{e^{tL}}_{2\to\infty}\le e^{Mt}(8\pi t)^{-n/4},
+ \qquad
+ \nrm{e^{tL}}_{\infty\to\infty}\le e^{Mt}\quad(t>0).
+\end{equation}
+To obtain these bounds, the maximum principle first dominates the
+Dirichlet heat kernel by the positive free Gaussian kernel, after
+extension of data by zero. Iterating Duhamel's formula for multiplication
+by $\mathcal V$, taking absolute values, and using $|\mathcal V|\le M$
+sums to the factor $e^{Mt}$.
+The $L^2$ norm of
+$(4\pi t)^{-n/2}\exp(-|x|^2/(4t))$ is $(8\pi t)^{-n/4}$.
+Its $L^1$ norm is one. This proves both estimates, also on invariant
+inputs with the full Lebesgue measure.
+
+The spectral inverse places $v$ in the Dirichlet operator domain.
+Integrating the semigroup derivative gives
+\[
+ v=e^{tL}v-\int_0^t e^{sL}f\,ds .
+\]
+Since $\nrm f_2\le\sqrt{|B^n|}\nrm f_Y$ and
+$\nrm v_2\le B_{L^2}\nrm f_2$, it follows that
+\begin{equation}\label{gd:eq:Bsup}
+ \nrm v_\infty\le B_\infty\nrm f_Y,\qquad
+ B_\infty=e^{Mt}(8\pi t)^{-n/4}\sqrt{|B^n|}B_{L^2}
+                    +\frac{e^{Mt}-1}{M},
+ \quad |B^n|=\frac{\pi^{n/2}}{\Gamma(n/2+1)}.
+\end{equation}
+We take $t=1/M$. In particular $v$ is bounded before any analytic
+coefficient norm of $v$ is used.
+The equation $\Delta_n v=f-\mathcal Vv$ now has bounded data;
+full-ball elliptic regularity gives $v\in W^{2,p}$ for every finite $p$,
+and hence a continuous radial expansion~\cite{GT01}.
+
+The dimension of degree-$l$ spherical harmonics on $S^{n-1}$ is
+\[
+ d_l^{\rm sph}=\frac{2l+n-2}{n-2}\binom{l+n-3}{l}.
+\]
+The addition theorem gives
+$\int_{S^{n-1}}G_l^2\,d\mathcal H^{n-1}/|S^{n-1}|=1/d_l^{\rm sph}$.
+At each $r$, angular projection and Cauchy--Schwarz imply
+\begin{equation}\label{gd:eq:low-angular}
+ |v_l(r)|\le\sqrt{d_l^{\rm sph}}\nrm{v(r,\cdot)}_\infty
+                 \le\sqrt{d_l^{\rm sph}}B_\infty\nrm f_Y .
+\end{equation}
+Only finitely many angular degrees will use this estimate.
+
+\subsection{The entire high angular complement}\label{gd:sec:high}
+Let $v_Y\ge\nrm{\mathcal V-v_0}_Y$.
+The tabulated $L_0$ is the least even degree with $d_h>2v_Y$.
+For the argument, choose any even $L_0$ with
+\begin{equation}\label{gd:eq:high}
+ d_h=L_0(L_0+n-2)-v_0>v_Y,\qquad \beta=v_Y/d_h<1 .
+\end{equation}
+For every $l\ge L_0$, the positive zero-order part of $-\mathcal D_l-v_0$
+is at least $d_h$. The radial maximum principle therefore bounds its
+zero-Dirichlet inverse in supremum norm by $1/d_h$.
+First define this high-mode inverse in $L^2$ by coercivity.
+For a source in $Y$, its finite angular truncations converge in $Y$;
+the radial bound makes their inverse images converge in $Y$ and in
+$L^2$. Closedness of the Dirichlet operator places their limit in
+$H^2\cap H^1_0$ and identifies it with the same inverse.
+Let $\Pi_H$ be angular projection to these degrees, and let
+$v_{\rm low}=(I-\Pi_H)v$. By~\eqref{gd:eq:low-angular} this low part
+belongs to $Y$. Solve
+\[
+ (\Delta_n+v_0)\tilde v_H
+   =\Pi_H\bigl(f-(\mathcal V-v_0)(v_{\rm low}+\tilde v_H)\bigr)
+\]
+with zero Dirichlet data by contraction on the high part of $Y$.
+The algebra bound gives contraction factor at most $\beta$.
+
+We next identify $\tilde v_H$ with $\Pi_Hv$, as in the proof of
+Proposition~\ref{r2:prop:Yinverse}.
+Its Poisson right side, including $-v_0\tilde v_H$, lies in $Y$.
+Thus $\tilde v_H$ equals its zero-Dirichlet Poisson potential, and belongs
+to $H^2\cap H^1_0$. The original high projection belongs to the same
+operator domain. Their difference $z$ has only degrees $l\ge L_0$ and
+satisfies
+\[
+ (\Delta_n+v_0)z=-\Pi_H((\mathcal V-v_0)z).
+\]
+Angular orthogonality and $r\le1$ give
+$\int|\nabla z|^2\ge L_0(L_0+n-2)\int|z|^2$.
+Testing the equation with $-z$, using self-adjointness of $\Pi_H$,
+gives
+\[
+ d_h\int|z|^2
+ \le\int|\nabla z|^2-v_0\int|z|^2
+ =\int(\mathcal V-v_0)|z|^2\le v_Y\int|z|^2 .
+\]
+Hence $z=0$. This proves membership of the original solution in $Y$
+before rearranging any inequality involving its $Y$ norm.
+
+Add the low norm to the high contraction inequality, use $h_l\le R^l$,
+and obtain
+\begin{equation}\label{gd:eq:BY}
+ \nrm{L_D^{-1}f}_Y\le B_Y\nrm f_Y,\qquad
+ B_Y=\frac{B_\infty
+       \displaystyle\sum_{\substack{0\le l<L_0\\l\ {\rm even}}}
+                R^l\sqrt{d_l^{\rm sph}}+d_h^{-1}}{1-\beta}.
+\end{equation}
+The Poisson trace formula applied to $\Delta_n v=f-\mathcal Vv$
+also gives
+\begin{equation}\label{gd:eq:trace-conjugated}
+ \nrm{\partial_rv}_{W_1}\le(1+MB_Y)\nrm f_Y .
+\end{equation}
+
+\subsection{Undoing the conjugation}\label{gd:sec:unconjugation}
+Let $\nrm{q-b}_Y\le q_b<b$ and define
+\begin{equation}\label{gd:eq:source-multipliers}
+ \mathfrak I=(b-q_b)^{-1},\qquad
+ S_q=b^e(1-q_b/b)^{-|e-1|},\qquad
+ M_0=b^{-e}(1-q_b/b)^{-e}.
+\end{equation}
+The binomial series gives
+$\nrm{bq^{e-1}}_Y\le S_q$ and $\nrm{q^{-e}}_Y\le M_0$.
+For a positive exponent, absolute falling-factorial coefficients are
+bounded by the corresponding rising-factorial coefficients.
+This proves the stated enlarged bound for either integral or
+half-integral $e$.
+
+For the original Dirichlet equation $B\Phi=f$, set $Z=q^e\Phi$.
+Then $LZ=bq^{e-1}f$. Write
+\[
+ \begin{gathered}
+ X_*\ge\nrm{q_{x_1}}_{\mathcal Y_n},\quad Y_*\ge\nrm{q_y/y}_Y,\quad
+ Y_2\ge\nrm{y^2}_Y,\quad Q^{[1]}\ge\mathfrak m_1(q-b),\\
+ B_Z=S_qB_Y,\qquad J_Z=S_q+MB_Z .
+ \end{gathered}
+\]
+Consequently $\nrm Z_Y\le B_Z\nrm f_Y$ and
+$\nrm{\Delta_nZ}_Y\le J_Z\nrm f_Y$.
+Define
+\begin{equation}\label{gd:eq:JW}
+ \begin{split}
+ J_W=M_0\bigl[&
+ J_Z+2e\mathfrak I(X_*C_x^K+Y_*C_y^K)J_Z\\
+ &+\{e(n-4)\mathfrak I Y_*
+       +e(e+1)\mathfrak I^2(X_*^2+Y_2Y_*^2)\}B_Z\bigr],\\
+ N_W&=M_0(1+e\mathfrak I Q^{[1]})J_Z .
+ \end{split}
+\end{equation}
+
+\begin{proposition}\label{gd:prop:original-inverse}
+The original symmetric-sector zero-Dirichlet inverse satisfies
+\[
+ \nrm{\Delta_nB_D^{-1}f}_Y\le J_W\nrm f_Y,\qquad
+ \nrm{\partial_rB_D^{-1}f}_{W_1}\le N_W\nrm f_Y .
+\]
+\end{proposition}
+\begin{proof}
+Expand
+\[
+ \begin{split}
+ \Delta_n(q^{-e}Z)=q^{-e}\bigl[
+ \Delta_nZ-2e q^{-1}\nabla q\cdot\nabla Z
+ +\{-e q^{-1}\Delta_nq
+       +e(e+1)q^{-2}|\nabla q|^2\}Z\bigr].
+ \end{split}
+\]
+The zero-Dirichlet identity $Z=K_n^D\Delta_nZ$ and
+Lemma~\ref{gd:lem:Poisson} control both gradient terms.
+Use $\Delta_nq=(n-4)q_y/y$ and
+$|\nabla q|^2=q_{x_1}^2+y^2(q_y/y)^2$ to obtain $J_W$.
+At the boundary $Z=0$, so $\partial_r\Phi=q^{-e}\partial_rZ$.
+Lemma~\ref{gd:lem:Poisson} bounds $\partial_rZ$ by $J_Z\nrm f_Y$
+in $W_1$. Moreover
+\[
+ \nrm{q^{-e}|_\partial}_{W_1}
+ \le M_0+eM_0\mathfrak I\nrm{\partial_\theta q|_\partial}_{W_0}
+ \le M_0(1+e\mathfrak I Q^{[1]}).
+\]
+The boundary algebra of~\eqref{r2:eq:Wone} gives $N_W$.
+\end{proof}
+
+\begin{table}[htbp]
+\centering\small
+\def\gdRow#1#2#3#4#5#6#7#8{$#1$ & #4\\}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+$n$ & states & $B_{L^2}$ & $B_Y$ & $J_W$ & $N_W$\\
+\midrule
+\gdData
+\bottomrule
+\end{tabular}
+\caption{Complete Dirichlet inverse bounds. $B_Y$ is for the conjugated
+operator; $J_W,N_W$ are for the original operator $B$.}
+\label{gd:tab:inverse}
+\end{table}
+
+\section{The exactly clamped centre and its residual}\label{gd:sec:centre}
+
+\subsection{Finite field and infinite clamping lift}
+\label{gd:sec:clamp}
+The finite input arrays are exact decimals $c_{2j+1},a_j,s_j$,
+$0\le j\le J$, with $s_j>0$: these are the keys \texttt{c},
+\texttt{a}, \texttt{scales} of the frozen centre, and $J+1$ is the
+mode count of Table~\ref{gd:tab:inputs}. Their shape convention is
+$\psi_0(w)=\sum_{j\ {\rm odd}}c_jw^j$, $b=c_1$ and $p_0=\psi_0'$.
+Put, in unscaled meridian coordinates $(X_1,Y_\psi)$,
+\begin{equation}\label{gd:eq:physical-field}
+ u_*=\sum_{j=0}^J\frac{a_j}{s_j}
+ \mathcal R^{-\lambda}J_{2j+\lambda}(\rho\mathcal R)
+ G_{2j}(X_1/\mathcal R),\qquad
+ \mathcal R^2=X_1^2+Y_\psi^2,\qquad U_*=u_*\circ\Theta_{\psi_0}.
+\end{equation}
+The Bessel power series expresses each summand as a solid harmonic
+times an entire series in $\mathcal R^2$, and separation gives
+$(\Delta_n+\mu)u_*=0$. The $s_j$ are fixed divisors; no identity
+between them and Bessel values is required. By~\eqref{gd:eq:physical-multiplier},
+$BU_*=0$ exactly.
+
+Let $D_l,N_l$ be the full Gegenbauer coefficients of
+$D=U_*|_{r=1}-1$ and $N=\partial_rU_*|_{r=1}$.
+The double-trace lifts are
+\begin{equation}\label{gd:eq:lifts}
+ h_l^D=r^l[1-l(r^2-1)/2]G_l,\qquad
+ h_l^N=\tfrac12r^l(r^2-1)G_l .
+\end{equation}
+Their value and radial derivative traces are respectively $(G_l,0)$
+and $(0,G_l)$.
+Define the exact centre by
+\begin{equation}\label{gd:eq:clamp}
+ \ell=\sum_l(D_lh_l^D+N_lh_l^N),\qquad
+ U_0=U_*-\ell,\qquad g_0=\Delta_nU_0,\qquad x_0=(g_0,p_0).
+\end{equation}
+The boundary decay proved below gives analytic convergence on a
+neighbourhood of the closed ball. Thus $U_0=1$ and $\partial_rU_0=0$
+on the sphere, $g_0\in\Gc$, and $U_0=1+K_ng_0$ by Dirichlet uniqueness.
+This is the clamping construction of~\eqref{r2:eq:clamped}
+with solid zonal harmonics in place of planar harmonics.
+
+\subsection{Complex majorants for the finite field}\label{gd:sec:strip}
+Choose $S>R>1$, $\delta>0$, and $r_0=1/\rho<1$.
+For $0\le r\le1$, $|\im\theta|\le\log S$, allow independent
+perturbations of size $\delta$ in $w=re^{i\theta}$ and
+$\bar w=re^{-i\theta}$. Define
+\begin{equation}\label{gd:eq:strip-parameters}
+ \begin{split}
+ s&=b\delta S/r_0+
+       S\sum_{j>1}|c_j|(S+\delta/r_0)^j,\qquad d_s=2s+s^2/b,\\
+ z_*&=\sum_{j\ {\rm odd}}|c_j|(r_0S+\delta)^j,\qquad
+ H_s=S(b+s),\qquad A_s=H_s/(b-d_s).
+ \end{split}
+\end{equation}
+Assume $d_s<b$.
+For $r\ge r_0$ write the two perturbed coordinates as
+$X_1\pm iY_\psi=re^{\pm i\theta}A_\pm$.
+Then $|A_\pm-b|\le s$.
+To verify the nonlinear part of this estimate, set
+$\varsigma=|re^{\pm i\theta}|\in[r_0/S,S]$.
+For odd $m\ge3$, $f(\varsigma)=(\varsigma+\delta)^m/\varsigma$ has derivative
+$f'(\varsigma)=(\varsigma+\delta)^{m-1}((m-1)\varsigma-\delta)/\varsigma^2$, so $f$ decreases for
+$\varsigma<\delta/(m-1)$ and increases afterwards; hence its supremum
+on $[r_0/S,S]$ is attained at an endpoint. Since $r_0<1<S$,
+\[
+ \begin{split}
+ f(S)&=(S+\delta)^m/S\le S(S+\delta/r_0)^m,\\
+ f(r_0/S)&=Sr_0^{m-1}(1/S+\delta/r_0)^m
+                       \le S(S+\delta/r_0)^m.
+ \end{split}
+\]
+The linear perturbation is at most $b\delta S/r_0$.
+
+The product $A_+A_-$ lies in the disc of radius $2bs+s^2=bd_s<b^2$
+about $b^2$, so it admits a square root $B_s$ with positive real part.
+It satisfies $|B_s-b|\le d_s$ because $|B_s+b|\ge b$.
+The complex radius is $rB_s$, with positive real part
+and $|\im(rB_s)|\le d_s$.
+The positive cosine expansion of the solid harmonic gives
+$|H_l(X_1,Y_\psi)|\le(rH_s)^l$ and
+$|G_l(X_1/\mathcal R)|\le A_s^l$.
+
+For $\nu>0$, $\re z>0$, Schl\"afli's integral~\cite[10.9.6]{DLMF} gives
+\[
+ |J_\nu(z)|\le e^{|\im z|}+\frac1{\pi\nu}.
+\]
+Indeed the finite cosine integral has modulus at most $e^{|\im z|}$,
+and the remaining integral is bounded by
+$\pi^{-1}\int_0^\infty e^{-\nu t}\,dt$.
+The normalised Poisson integral also applies at the removable origin.
+Writing $l=2j$, $\nu=l+\lambda$ and
+$P_\nu=(\rho/2)^\nu/\Gamma(\nu+1)$, a uniform field majorant is
+\begin{equation}\label{gd:eq:Mfield}
+ \begin{split}
+ M_*=\sum_j\frac{|a_j|}{s_j}\biggl[
+ P_\nu z_*^l e^{\rho z_*}
+ +\min\biggl\{&
+ (r_0(b-d_s))^{-\lambda}A_s^l
+                 \left(e^{\rho d_s}+\frac1{\pi\nu}\right),\\[-2pt]
+ &P_\nu H_s^l e^{\rho d_s}\biggr\}\biggr].
+ \end{split}
+\end{equation}
+The first term covers $r\le r_0$ by the entire solid-harmonic
+representation; the minimum covers $r\ge r_0$ by the two Bessel bounds.
+Adding these nonnegative bounds enlarges their maximum.
+
+Angular Cauchy estimates and Lemma~\ref{gd:lem:connection} give, with
+$C=\kappa(S+R)/(S-R)$,
+\begin{equation}\label{gd:eq:fixed-field-bounds}
+ \begin{gathered}
+ U_b=CM_*,\quad X_b=2U_b/\delta,\quad Y_b=RX_b,\\
+ XX_b=6U_b/\delta^2,\quad YX_b=RXX_b,\quad YY_b=R^2XX_b .
+ \end{gathered}
+\end{equation}
+These bound $U_*,(U_*)_{x_1},y(U_*)_y,(U_*)_{x_1x_1},
+y(U_*)_{x_1y},y^2(U_*)_{yy}$ in $Y$ or $\mathcal Y_n$
+according to parity.
+For the first derivative the two independent complex coordinates give
+the factor two; their second derivatives and twice the mixed derivative
+give six by the polydisc Cauchy estimates.
+The factors $y,y^2$ are multiplied in the raw Fourier algebra before
+conversion of the resulting regular scalar. Thus $y$ itself is not
+treated as an analytic scalar on $B^n$.
+For these fixed-field estimates use $S=(102/100)R$ and
+$\delta=(1000\rho)^{-1}$.
+The boundary moment estimates use their own larger strip radius $S$.
+
+\subsection{Boundary coefficients and their entire tails}\label{gd:sec:boundary}
+Let $K$ and $J_b<K$ be the boundary sample and retained coefficient
+parameters. Reflection of the values at
+$\theta_k=(k+1/2)\pi/(2K)$, $0\le k<K$, gives $2K$
+equispaced samples in $\phi=2\theta$.
+For $D$ and $N$ the complex strip majorants are
+$M_D=M_*+1$, $M_N=2SM_*/\delta$.
+The corresponding continuum cosine coefficient of frequency $2j$
+has modulus at most $2M_{D,N}S^{-2j}$.
+The exact discrete Fourier transform, with its half-grid phase,
+differs at each retained index $0\le j\le J_b$ by at most
+\begin{equation}\label{gd:eq:alias}
+ e_Q=\frac{4M_{D,N}S^{-2(2K-J_b)}}{1-S^{-4K}} .
+\end{equation}
+This is the alias sum at indices $j+2Kq$, as in
+\eqref{r2:eq:alias}; the constant mode is included with the enlarged
+same bound. Above $J_b$ use the full continuum coefficient bound.
+
+Define the actual Gegenbauer moments
+\begin{equation}\label{gd:eq:boundary-moments}
+ D^{[k]}=\sum_lh_l(l+1)^k|D_l|,\qquad
+ N^{[k]}=\sum_lh_l(l+1)^k|N_l|,\qquad 0\le k\le3.
+\end{equation}
+The connection lowers degree and hence the moment factor. Below,
+$D^{[k]},N^{[k]}$ denote the upper bounds obtained by multiplying
+the retained cosine moments
+$\sum_{j=0}^{J_b}R^{2j}(2j+1)^k(|d_j|+e_Q)$ and the full tail
+of~\eqref{gd:eq:tail-sums} by $\kappa$, where $d_j$ denotes the
+corresponding cosine coefficient of $D$ or $N$. All later constants
+are monotone in these bounds. For $q_{\rm tail}=(R/S)^2$, expand
+$(2(J_b+1+t)+1)^k$ and use
+\begin{equation}\label{gd:eq:tail-sums}
+ \begin{aligned}
+ \sum_{t\ge0}q_{\rm tail}^t&=\frac1{1-q_{\rm tail}},&
+ \sum_{t\ge0}tq_{\rm tail}^t&=\frac{q_{\rm tail}}{(1-q_{\rm tail})^2},\\
+ \sum_{t\ge0}t^2q_{\rm tail}^t&=\frac{q_{\rm tail}(1+q_{\rm tail})}{(1-q_{\rm tail})^3},&
+ \sum_{t\ge0}t^3q_{\rm tail}^t&=\frac{q_{\rm tail}(1+4q_{\rm tail}+q_{\rm tail}^2)}{(1-q_{\rm tail})^4}.
+ \end{aligned}
+\end{equation}
+The geometric coefficient decay also shows
+that the lift in~\eqref{gd:eq:clamp} converges with all its derivatives
+on a neighbourhood of the closed ball.
+
+Direct differentiation of~\eqref{gd:eq:lifts} gives
+\[
+ \Delta_n h_l^D=-l(2l+n)H_l,\qquad
+ \Delta_n h_l^N=(2l+n)H_l .
+\]
+Consequently set
+\begin{equation}\label{gd:eq:lift-moments}
+ \Lambda_k=2^k(D^{[k+1]}+N^{[k]})\ (0\le k\le2),\qquad
+ \Lambda^\Delta_k=(n+2)(D^{[k+2]}+N^{[k+1]})\ (0\le k\le1).
+\end{equation}
+These bound the degree moments $\mathfrak m_k(\ell)$ and
+$\mathfrak m_k(\Delta_n\ell)$.
+For the first use that a lift monomial has degree at most
+$l+2\le2(l+1)$, with total absolute coefficient at most $l+1$
+for $h_l^D$ and one for $h_l^N$.
+For the second use $2l+n\le(n+2)(l+1)$.
+The radial factors themselves also give
+\[
+ \nrm\ell_Y\le D^{[0]}+N^{[0]}/2:
+\]
+the Dirichlet lift increases to one on $[0,1]$, and the Neumann
+lift has modulus at most $1/2$.
+
+\subsection{Residual and centre derivatives}\label{gd:sec:residual}
+Let $Q_*,X_*,Y_*,P_*$ bound $q,q_{x_1},q_y/y,|p_0|^2$
+in $\mathcal Y_n$, and let $Q^{[1]},X^{[1]},Y^{[1]},P^{[1]}$ bound their
+total-degree coefficient moments.
+Here $X_*,Y_*$ are the bounds of Section~\ref{gd:sec:unconjugation},
+and $Q_*=b+q_b$. They arise from the finite shape identities~\eqref{gd:eq:potential-arrays}
+and the full product
+\[
+ |p_0|^2=\sum_{i,j}(2i+1)(2j+1)c_{2i+1}c_{2j+1}
+                         r^{2(i+j)}\cos(2(i-j)\theta).
+\]
+Retained connection coefficients can be converted directly;
+Lemma~\ref{gd:lem:connection} bounds every higher angular degree.
+Products add degree moments with nonnegative majorants.
+
+Since $BU_*=0$, the actual residual is $E=F(x_0)=-B\ell$.
+The product and derivative bounds give
+\begin{equation}\label{gd:eq:E0}
+ E_0=\frac{Q_*\Lambda^\Delta_0+
+       a(X_*C_x^{\rm pol}+Y_*C_y^{\rm pol})\Lambda_1+\mu Q_*P_*\Lambda_0}{b}
+       \ge\nrm E_Y
+\end{equation}
+and the coefficient degree moment bound
+\begin{equation}\label{gd:eq:Ed}
+ \begin{split}
+ E_d=\frac1b\bigl[&
+ Q^{[1]}\Lambda^\Delta_0+Q_*\Lambda^\Delta_1\\
+ &+a\{(X^{[1]}C_x^{\rm pol}+Y^{[1]}C_y^{\rm pol})\Lambda_1
+       +(X_*C_x^{\rm pol}+Y_*C_y^{\rm pol})\Lambda_2\}\\
+ &+\mu\{(Q^{[1]}P_*+Q_*P^{[1]})\Lambda_0+Q_*P_*\Lambda_1\}\bigr].
+ \end{split}
+\end{equation}
+Thus
+\[
+ \nrm{E_{x_1}}_{\mathcal Y_n}\le C_x^{\rm pol}E_d,\quad
+ \nrm{yE_y}_Y\le C_y^{\rm pol}E_d,\quad
+ \nrm{\partial_\theta E|_\partial}_{W_0}\le E_d .
+\]
+
+The inverse below uses derivatives of the fixed centre only.
+Define $A^q=q_{x_1}/q$, $B^q=(q_y/y)/q$, $C^q=\mu|p_0|^2$.
+With $\mathfrak I$ of~\eqref{gd:eq:source-multipliers}, upper bounds for these
+coefficients and their derivatives are
+\begin{equation}\label{gd:eq:coefficient-derivatives}
+ \begin{aligned}
+ A_*^q&=X_*\mathfrak I,& B_*^q&=Y_*\mathfrak I,& C_*^q&=\mu P_*,\\
+ A_x^q&=C_x^{\rm pol}X^{[1]}\mathfrak I+X_*^2\mathfrak I^2,&
+ A_y^q&=C_y^{\rm pol}X^{[1]}\mathfrak I+X_*Y_2Y_*\mathfrak I^2,\\
+ B_x^q&=C_x^{\rm pol}Y^{[1]}\mathfrak I+Y_*X_*\mathfrak I^2,&
+ B_y^q&=C_y^{\rm pol}Y^{[1]}\mathfrak I+Y_*^2Y_2\mathfrak I^2,\\
+ C_x^q&=\mu C_x^{\rm pol}P^{[1]},&
+ C_y^q&=\mu C_y^{\rm pol}P^{[1]} .
+ \end{aligned}
+\end{equation}
+Here subscripts $x$ and $y$ indicate $\partial_{x_1}$ and
+$y\partial_y$ respectively.
+Use $\Delta_nU_*=-a(A^q(U_*)_{x_1}+B^qy(U_*)_y)-C^qU_*$
+and~\eqref{gd:eq:fixed-field-bounds} to define
+\begin{equation}\label{gd:eq:gstar}
+ \begin{split}
+ \Gamma_b={}&a(A_*^qX_b+B_*^qY_b)+C_*^qU_b,\\
+ \Gamma_x={}&a(A_x^qX_b+A_*^qXX_b+B_x^qY_b+B_*^qYX_b)
+                      +C_x^qU_b+C_*^qX_b,\\
+ \Gamma_y={}&a(A_y^qX_b+A_*^qYX_b+B_y^qY_b+B_*^q(Y_b+YY_b))
+                      +C_y^qU_b+C_*^qY_b .
+ \end{split}
+\end{equation}
+The term $Y_b+YY_b$ is the derivative of $y(U_*)_y$ by
+$y\partial_y$. Finally the bounds for the clamped centre are
+\begin{equation}\label{gd:eq:centre-bounds}
+ \begin{gathered}
+ U_c=U_b+D^{[0]}+N^{[0]}/2,\quad
+ U_x=X_b+C_x^{\rm pol}\Lambda_1,\quad U_y=Y_b+C_y^{\rm pol}\Lambda_1,\\
+ \Gamma_0=\Gamma_b+\Lambda^\Delta_0,\quad \Gamma_{0x}=\Gamma_x+C_x^{\rm pol}\Lambda^\Delta_1,\quad
+ \Gamma_{0y}=\Gamma_y+C_y^{\rm pol}\Lambda^\Delta_1 .
+ \end{gathered}
+\end{equation}
+They bound $U_0,(U_0)_{x_1},y(U_0)_y,g_0,
+(g_0)_{x_1},y(g_0)_y$ in their respective parity spaces.
+
+\section{The exact inverse of the corrected linearisation}
+\label{gd:sec:coupled}
+
+\subsection{The material identity, including the axis term}
+\label{gd:sec:material}
+All coefficients here are evaluated at $x_0$.
+For $\delta p\in W$ define the odd real-coefficient holomorphic functions
+\[
+ \eta(w)=\int_0^w\delta p(z)\,dz,\qquad v=\eta/p_0 .
+\]
+The associated full-ball vector field is
+$(\re v,(\im v/y)x')$, regular on the axis.
+Its action on $U_0$ is $T=\re v\,(U_0)_{x_1}+\im v\,(U_0)_y$.
+
+To derive the material identity, let $\Theta_t$ vary the shape,
+$m_t=q_t|p_t|^2/b$, and keep the function
+$u_0=U_0\circ\Theta_0^{-1}$ fixed.
+The centre is analytic on a neighbourhood of the closed ball, so this
+function is defined on a neighbourhood as well.
+Equivalently the following differentiation is a local differential
+identity. Differentiating
+$B_t(u_0\circ\Theta_t)=m_t((\Delta+\mu)u_0)\circ\Theta_t$ gives
+\begin{equation}\label{gd:eq:material-general}
+ BT+(\delta B)U_0
+ =v\cdot\nabla E+(\delta\log m-v\cdot\nabla\log m)E .
+\end{equation}
+For example the last transport term before expansion is
+$m\,v\cdot\nabla(E/m)$, which explains the minus sign.
+
+The cancellation for $|p|^2$ uses $\eta'=p'v+pv'$:
+\[
+ \delta\log|p|^2-v\cdot\nabla\log|p|^2=2\re v'.
+\]
+For $q$ one has, with $Y_\psi=yq=\im\psi$,
+$v\cdot\nabla Y_\psi=\im(pv)=\im\eta$.
+Hence $v\cdot\nabla q=\im\eta/y-q\im v/y$ and
+\[
+ \delta\log q-v\cdot\nabla\log q=\im v/y .
+\]
+Define
+\begin{equation}\label{gd:eq:correction}
+ \Ecal(\delta p)=\re v\,E_{x_1}+\im v\,E_y
+                         +(2\re v'+\im v/y)E,\qquad
+ \widetilde D=DF(x_0)-\Ecal .
+\end{equation}
+The coefficient of $\im v/y$ is one, independent of $n$, because
+the multiplier in~\eqref{gd:eq:physical-multiplier} contains one factor
+$q$. The dimension enters the operator $B$ through $a=n-2$.
+For the divergence multiplier $|p|^2q^a$, the same calculation gives
+coefficient $a=n-2$ instead.
+Equations~\eqref{gd:eq:F} and~\eqref{gd:eq:material-general} now imply
+\begin{equation}\label{gd:eq:corrected-factor}
+ \widetilde D(\delta g,\delta p)=B(K_n\delta g-T).
+\end{equation}
+The material mechanism is the Hadamard shape derivative used in
+Proposition~\ref{r2:prop:coupled}; see, for example,~\cite{SZ92,HP18}.
+
+\subsection{Boundary reconstruction and both inverse identities}
+\label{gd:sec:inverse-identities}
+Exact clamping gives $\nabla U_0=0$ on the sphere.
+Differentiating this identity in each tangential direction shows that
+the Hessian annihilates every tangent vector. By symmetry of the
+Hessian,
+\[
+ D^2U_0=(\Delta_nU_0)\mathbf n\otimes\mathbf n\quad\hbox{on }\partial B^n .
+\]
+Thus, with $w=e^{i\theta}$ on the meridian circle,
+\begin{equation}\label{gd:eq:boundary-material}
+  \begin{gathered}
+ T=0,\qquad \partial_rT=-d_\partial\re(v\bar w),\\
+ d_\partial=-\Delta_nU_0|_\partial=\mu|p_0|^2-bE/q .
+ \end{gathered}
+\end{equation}
+The term from differentiating $v$ multiplies $\nabla U_0$ and vanishes.
+At the poles these identities are full-ball identities, hence also
+hold by continuity.
+
+Assume that $B_D^{-1}$ exists as proved above, $p_0^{-1}$ belongs
+to the holomorphic weighted algebra, and $d_\partial^{-1}\in W_1$.
+For $f\in Y$ solve
+\begin{equation}\label{gd:eq:Dirichlet-recipe}
+ B\Phi=f,\quad \Phi|_\partial=0,\qquad N_\partial=\partial_r\Phi,\quad H_\partial=N_\partial/d_\partial.
+\end{equation}
+Write its cosine coefficients as
+$H_\partial=H_{\partial,0}+\sum_{j>0}H_{\partial,2j}\cos(2j\theta)$ and set
+\begin{equation}\label{gd:eq:realpart-recipe}
+ \mathfrak a(w)=H_{\partial,0}+\sum_{j>0}H_{\partial,2j}w^{2j},\qquad v=w\mathfrak a.
+\end{equation}
+Then $\re(v\bar w)=H_\partial$ on the circle and
+$\nrm{v'}_W=\nrm{\mathfrak a}_{W_1}=\nrm{H_\partial}_{W_1}$.
+The holomorphic real-part problem is the one of
+\eqref{r2:eq:realpart}, with cosine coefficients in place of paired
+complex Fourier coefficients. Its real-coefficient normalisation
+excludes the imaginary constant; the real constant $H_{\partial,0}$ determines
+the dilation variation.
+
+\begin{proposition}[Two-sided inverse]\label{gd:prop:coupled}
+Under these hypotheses the corrected derivative
+$\widetilde D:X\to Y$ has a bounded two-sided inverse $A:Y\to X$.
+It is given by
+\begin{equation}\label{gd:eq:coupled-recipe}
+ \delta\psi=p_0v,\quad \delta p=(p_0v)',\quad
+ \delta U=\Phi+T,\quad \delta g=\Delta_n\delta U,\qquad
+ Af=(\delta g,\delta p).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Equation~\eqref{gd:eq:boundary-material} makes both traces of
+$\delta U$ zero, since $\partial_r\delta U=N_\partial-d_\partial H_\partial=0$.
+The Laplacian estimate in the next subsection proves
+$\delta g\in Y$; the moment formula therefore gives
+$\delta g\in\Gc$ and Dirichlet uniqueness gives
+$K_n\delta g=\delta U$. The shape variation is even holomorphic
+with real coefficients.
+Then~\eqref{gd:eq:corrected-factor} gives $\widetilde D Af=f$.
+
+For the other identity, take any $(\delta g,\delta p)\in X$,
+form its $\eta,v,T$, and put $\Phi=K_n\delta g-T$.
+It has zero Dirichlet trace and satisfies
+$B\Phi=\widetilde D(\delta g,\delta p)$.
+Dirichlet uniqueness recovers precisely this $\Phi$ when the recipe is
+applied to that right side.
+Its normal trace is $N_\partial=d_\partial\,\re(v\bar w)$.
+The function $\mathfrak a=v/w=\eta/(wp_0)$ has a removable singularity at zero.
+It belongs to $W_1$, since
+$\nrm{\eta/w}_{W_1}=\nrm{\delta p}_W$ and
+$p_0^{-1}\in W_1$ by differentiation of its reciprocal.
+The unique real-coefficient real-part solution therefore recovers
+$\mathfrak a$ and then $v,\delta p,\delta U,\delta g$.
+Hence $A\widetilde D=I_X$ as well as $\widetilde DA=I_Y$.
+The bounds below prove boundedness on the entire spaces.
+\end{proof}
+
+The sector is essential to the Dirichlet inverse.
+For a Schiffer solution, physical translation derivatives solve the
+homogeneous Dirichlet equation. The axial derivative is odd in the
+first coordinate and the transverse derivatives are not invariant
+under $O(n-1)$, so they lie outside this sector.
+
+\subsection{Cancellation of higher shape derivatives}
+\label{gd:sec:no-loss}
+Cauchy--Riemann cancellation gives
+\begin{equation}\label{gd:eq:DeltaT}
+ \begin{split}
+ \Delta_nT={}&v\cdot\nabla g_0+2\re v'\,g_0
+       -a\frac{\im v'}y(U_0)_{x_1}\\
+       &+a\frac{\im v/y-\re v'}{y^2}\,y(U_0)_y .
+ \end{split}
+\end{equation}
+To see the axis terms directly, write $A_v=\re v$, $C_v=\im v$.
+The planar Laplacian gives
+$\Delta_2(v\cdot\nabla U_0)
+=v\cdot\nabla\Delta_2U_0+2\re v'\Delta_2U_0$.
+For the remaining operator $ay^{-1}\partial_y$, subtracting its
+transport derivative and $2\re v'$ times that operator leaves
+\[
+ a\frac{(A_v)_y}{y}(U_0)_{x_1}
+ +a\left(\frac{(C_v)_y-2\re v'}y+\frac{C_v}{y^2}\right)(U_0)_y .
+\]
+Use $(A_v)_y=-\im v'$ and $(C_v)_y=\re v'$ to obtain
+\eqref{gd:eq:DeltaT}. Thus no second derivative of the unknown
+holomorphic variation appears.
+
+For the odd monomial $v=w^j$, $j\ge3$, the regular quotient is
+\[
+ \frac{\im v/y-\re v'}{y^2}
+                  =2r^{j-3}C_{j-3}^{(2)}(\xi);
+\]
+for $j=1$, both $\im v'/y$ and
+$(\im v/y-\re v')/y^2$ vanish. The positive cosine expansions of $U_m$
+and $C_m^{(2)}$, summed with weight $R$, give
+\begin{equation}\label{gd:eq:axis-multipliers}
+ \begin{gathered}
+ c_a=\frac2{R(1-R^{-2})},\qquad
+ c_v=\frac4{R^2(1-R^{-2})^2},\\
+ \nrm{\im v'/y}_{\rm raw}\le c_a\nrm{v'}_W,\qquad
+ \nrm{(\im v/y-\re v')/y^2}_{\rm raw}\le c_v\nrm{v'}_W,\\
+ \nrm{\im v/y}_{\rm raw}\le\nrm{v'}_W,\qquad
+ \nrm{\re v}_{\rm raw}\le R\nrm{v'}_W .
+ \end{gathered}
+\end{equation}
+For the first inequality use the sum of the coefficients of
+$U_m$ with decreasing powers $R^{-2k}$, bounded by
+$2/(1-R^{-2})$ after the leading power.
+For the second use the Gegenbauer generating coefficients
+$(2)_k/k!=k+1$; their weighted sum is $(1-R^{-2})^{-2}$.
+The leading powers and division by the derivative coefficient $j$
+give the stated enlarged $c_a,c_v$.
+For $\im v/y$ the unweighted sum of the coefficients of $U_{j-1}$
+is $j$, and every frequency is at most $j-1$.
+The last inequality follows coefficientwise from
+$R^j/j\le R R^{j-1}$.
+Lemma~\ref{gd:lem:connection} converts each regular scalar once.
+Consequently
+\begin{equation}\label{gd:eq:MT}
+ M_T=\kappa\left[R\Gamma_{0x}+\Gamma_{0y}+2\Gamma_0+a c_aU_x+a c_vU_y\right]
+\end{equation}
+bounds $\nrm{\Delta_nT}_Y$ per unit $\nrm{v'}_W$.
+This proves the field membership required in
+Proposition~\ref{gd:prop:coupled} without changing the analytic radius.
+
+\subsection{Reciprocals, inverse norm and left Newton defect}
+\label{gd:sec:inverse-bounds}
+Define the finite shape quantities
+\[
+ P=\nrm{p_0}_W,\qquad
+ P'=\sum_{m>0}m|(p_0)_m|R^{m-1},\qquad q_0=2b-P>0 .
+\]
+The holomorphic reciprocal of $p_0$ and the raw scalar reciprocal
+of $q$ have norm at most $1/q_0$, by Neumann series about $b$.
+Set
+\begin{equation}\label{gd:eq:boundary-reciprocal}
+ \begin{gathered}
+ d_*=\mu(2b^2-P^2)-bE_0/q_0>0,\\
+ D_\theta=2\mu PRP'+b(E_d/q_0+E_0RP'/q_0^2),\\
+ I_0=d_*^{-1},\qquad I_1=I_0+I_0^2D_\theta .
+ \end{gathered}
+\end{equation}
+Indeed
+$\nrm{d_\partial-\mu b^2}_{W_0}\le\mu(P^2-b^2)+bE_0/q_0<\mu b^2$,
+so $\nrm{d_\partial^{-1}}_{W_0}\le I_0$.
+Since $\nrm{\partial_\theta q}_{W_0}\le RP'$,
+differentiating $d_\partial$ gives the bound $D_\theta$.
+Differentiating $d_\partial d_\partial^{-1}=1$ then gives
+$\nrm{d_\partial^{-1}}_{W_1}\le I_1$.
+This is the weaker-norm reciprocal argument in
+Proposition~\ref{r2:prop:coupled}; smallness in $W_1$ is unnecessary.
+
+By~\eqref{gd:eq:Dirichlet-recipe} and~\eqref{gd:eq:JW},
+$\nrm{\mathfrak a}_{W_1}\le I_1N_W\nrm f_Y$.
+Equation~\eqref{gd:eq:coupled-recipe} therefore gives
+\begin{equation}\label{gd:eq:A}
+ B_g=J_W+M_TI_1N_W,\qquad
+ B_p=(P+RP')I_1N_W,\qquad A_*=B_g+\sigma B_p,\qquad
+ \nrm A_{Y\to X}\le A_* .
+\end{equation}
+Here $\delta p=(wp_0\mathfrak a)'$ has the norm of $p_0\mathfrak a$ in $W_1$.
+For an arbitrary input variation, $v=\eta/p_0$ gives
+\begin{equation}\label{gd:eq:Jv}
+ \nrm{v'}_W\le J_v\nrm{\delta p}_W,\qquad
+ J_v=q_0^{-1}+RP'q_0^{-2},
+\end{equation}
+using $\nrm\eta_W\le R\nrm{\delta p}_W$.
+The material correction has the bound
+\begin{equation}\label{gd:eq:epsilon}
+ \nrm{\Ecal}_{X\to Y}\le\varepsilon_{\mathcal E}
+ =\frac{\kappa}{\sigma}
+       \left[(RC_x^{\rm pol}+C_y^{\rm pol})E_d+3E_0\right]J_v .
+\end{equation}
+The factor three is $2+1$ from the last two terms of
+\eqref{gd:eq:correction}. The transport terms use
+$\im v\,E_y=(\im v/y)yE_y$.
+Since $A\widetilde D=I_X$, the left Newton defect is
+\begin{equation}\label{gd:eq:Newton}
+ \nrm{AF(x_0)}_X\le Y_0=A_*E_0,\qquad
+ \nrm{I_X-ADF(x_0)}_{X\to X}\le Z=A_*\varepsilon_{\mathcal E} .
+\end{equation}
+The field right sides need only be continuous.
+Their Dirichlet potentials have $C^1$ traces by the preceding
+Poisson and elliptic bounds, whereas $T$ is analytic near the closed
+ball. Thus the identities apply to every element of $X$ and $Y$.
+
+\begin{table}[htbp]
+\centering\small
+\def\gdRow#1#2#3#4#5#6#7#8{$#1$ & #5\\}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+$n$ & $A_*$ & $Y_0$ & $Z$ & $4C_2Y_0$ & $\mathfrak c(r_*)$\\
+\midrule
+\gdData
+\bottomrule
+\end{tabular}
+\caption{Corrected inverse and contraction bounds.
+$\mathfrak c$ is defined in~\eqref{gd:eq:radii}.
+The quantity $4C_2Y_0$ is defined by~\eqref{gd:eq:Newton}
+and~\eqref{gd:eq:radii}.}
+\label{gd:tab:Newton}
+\end{table}
+
+\section{Quartic bounds and the exact zero}\label{gd:sec:existence}
+
+For a variation $(h,k)\in X$ write $u_h=K_nh$ and
+$q_k=\im\int_0^wk(z)\,dz/y$.
+Lemma~\ref{gd:lem:connection} and the axis multiplier estimates give
+\begin{equation}\label{gd:eq:shape-increments}
+ \begin{gathered}
+ \nrm{q_k}_Y\le\kappa\nrm k_W,\quad
+ \nrm{(q_k)_{x_1}}_{\mathcal Y_n}\le\kappa c_a\nrm k_W,\quad
+ \nrm{(q_k)_y/y}_Y\le\kappa c_v\nrm k_W,\\
+ \nrm{p_0\bar k+\bar p_0k}_Y\le2\kappa P\nrm k_W,\qquad
+ \nrm{|k|^2}_Y\le\kappa\nrm k_W^2 .
+ \end{gathered}
+\end{equation}
+The last two estimates multiply in the raw angular algebra before
+conversion. These bounded linear operators, together with
+Lemma~\ref{gd:lem:Poisson}, make $F:X\to Y$ a continuous quartic
+polynomial on this fixed Banach space.
+
+To bound its remainder, put $P_k=p_0\bar k+\bar p_0k$.
+The terms of degree two, after removal of $E+DF(x_0)(h,k)$,
+are
+\[
+ \begin{split}
+ b\mathcal N_2={}&q_kh+
+ a\{(q_k)_{x_1}(u_h)_{x_1}+((q_k)_y/y)y(u_h)_y\}\\
+ &+\mu\{(qP_k+q_k|p_0|^2)u_h+(q|k|^2+q_kP_k)U_0\}.
+ \end{split}
+\]
+The terms of degrees three and four are
+\[
+ b\mathcal N_3=\mu\{(q|k|^2+q_kP_k)u_h+q_k|k|^2U_0\},
+ \qquad b\mathcal N_4=\mu q_k|k|^2u_h .
+\]
+Projection to the field has norm at most one and projection to the
+shape has norm at most $1/\sigma$ in $X$.
+The algebra, Poisson, and centre estimates therefore give
+\begin{equation}\label{gd:eq:c234}
+ \begin{split}
+ \mathsf k_2={}&\frac1b\biggl[
+ \frac{\kappa}{\sigma}
+ +\frac{a\kappa(c_aC_x^K+c_vC_y^K)}{\sigma}
+ +\frac{\mu(2\kappa Q_*P+\kappa P_*)C_K}{\sigma}\\
+ &\hspace{24mm}
+       +\frac{\mu(\kappa Q_*+2\kappa^2P)U_c}{\sigma^2}\biggr],\\
+ \mathsf k_3={}&\frac\mu b\left[
+       \frac{(\kappa Q_*+2\kappa^2P)C_K}{\sigma^2}
+       +\frac{\kappa^2U_c}{\sigma^3}\right],\\
+ \mathsf k_4={}&\frac{\mu\kappa^2C_K}{b\sigma^3}.
+ \end{split}
+\end{equation}
+In particular $\nrm{\mathcal N_j(h,k)}_Y\le
+\mathsf k_j\nrm{(h,k)}_X^j$.
+Each displayed product also defines a multilinear form with this same
+bound on the product of input norms. Symmetrisation averages over the
+positions of the field and shape inputs, and introduces no larger
+constant. Differentiating the diagonal form consequently bounds
+its derivative by $j\mathsf k_js^{j-1}$ on $\nrm{(h,k)}_X\le s$,
+as in the polarisation argument of Section~\ref{r2:sec:existence}.
+
+Set $C_j=A_*\mathsf k_j$ and define
+\begin{equation}\label{gd:eq:radii}
+ \begin{split}
+ \mathfrak p(s)&=Y_0+(Z-1)s+C_2s^2+C_3s^3+C_4s^4,\\
+ \mathfrak c(s)&=Z+2C_2s+3C_3s^2+4C_4s^3 .
+ \end{split}
+\end{equation}
+
+\begin{proposition}\label{gd:prop:zero}
+If $\mathfrak p(r_*)<0$ and $\mathfrak c(r_*)<1$, then
+$F$ has exactly one zero in
+$\overline B_X(x_0,r_*)$.
+\end{proposition}
+\begin{proof}
+The proof of Lemma~\ref{r2:lem:contraction} applies to the additional
+quartic term. For $\mathcal T(x)=x-AF(x)$, the estimates give
+\[
+ \nrm{\mathcal T(x_0+h)-x_0}_X
+ \le Y_0+Z\nrm h_X+\sum_{j=2}^4C_j\nrm h_X^j .
+\]
+The first inequality makes the closed ball invariant.
+Its derivative is bounded there by $\mathfrak c(r_*)<1$,
+so completeness gives a unique fixed point.
+The two-sided inverse $A$ is injective, hence $AF(x)=0$ implies
+$F(x)=0$. Every zero is a fixed point.
+\end{proof}
+
+\begin{table}[htbp]
+\centering\small
+\def\gdRow#1#2#3#4#5#6#7#8{$#1$ & #6\\}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+$n$ & $E_0$ & $C_2$ & $C_3$ & $C_4$ & $\mathfrak p(r_*)$\\
+\midrule
+\gdData
+\bottomrule
+\end{tabular}
+\caption{The full residual, homogeneous remainder constants and
+negative radii polynomial, at the exact radius of
+Table~\ref{gd:tab:inputs}.}\label{gd:tab:nonlinear}
+\end{table}
+
+Tables~\ref{gd:tab:Newton} and~\ref{gd:tab:nonlinear} give
+$\mathfrak p(r_*)<0$ and $\mathfrak c(r_*)<10^{-5}$,
+so Proposition~\ref{gd:prop:zero} applies.
+
+\section{Geometry on the whole existence ball}\label{gd:sec:geometry}
+
+Write $\psi_0=\sum_{j\ {\rm odd}}c_jw^j$ and let
+$\psi=\psi_0+\delta\psi$ be any shape in the existence ball.
+Then $\nrm{\delta p}_W\le s_*=r_*/\sigma$.
+Define the unweighted centre sums
+\begin{equation}\label{gd:eq:geometry-sums}
+ \begin{gathered}
+ S_1=\sum_{j>1}j|c_j|,\qquad
+ S_2=\sum_{j>1}j(j-1)|c_j|,\\
+ S_T=\sum_{j>1}j^2|c_j|=S_1+S_2,\qquad
+ H_R=\frac{R}{(R-1)^2},\\
+ \beta_0=2b-P-s_*,\quad L_*=b-S_1-s_*,\quad
+ \chi_*=b-S_1-S_2-(1+H_R)s_*,\\
+ \vartheta_3=|c_3|-\frac{s_*}{3R^2}.
+ \end{gathered}
+\end{equation}
+Table~\ref{gd:tab:geometry} gives strict positive lower bounds.
+Since $P-b\ge S_1$, $\beta_0>0$ also implies $L_*>0$.
+The two sums $S_T$ and $S_1+S_2$ are identical, so the meridian and
+transverse estimates below use one common numerator $\chi_*$.
+
+\begin{table}[htbp]
+\centering
+\def\gdRow#1#2#3#4#5#6#7#8{$#1$ & #7\\}
+\begin{tabular}{@{}crrr@{}}
+\toprule
+$n$ & $\beta_0$ & $\chi_*$ & $\vartheta_3$\\
+\midrule
+\gdData
+\bottomrule
+\end{tabular}
+\caption{Whole-ball geometry: analytic univalence, the common
+curvature numerator and the absolute $w^3$ coefficient. The numerator
+$\chi_*$ is the common numerator of
+\eqref{gd:eq:meridian-curvature} and~\eqref{gd:eq:transverse-numerator}.}
+\label{gd:tab:geometry}
+\end{table}
+
+\subsection{Univalence and analytic lift}\label{gd:sec:univalence}
+On $|w|\le R$,
+\[
+ \re p(w)\ge b-(P-b)-s_*=\beta_0>0.
+\]
+On the closed unit disc the sharper coefficient estimate is
+\begin{equation}\label{gd:eq:unit-disc-tangent}
+ \re\psi'(w)\ge b-S_1-s_*=L_*>0\qquad(|w|\le1).
+\end{equation}
+The line-segment proof in Section~\ref{r2:sec:existence} applies verbatim:
+for distinct points $w_1,w_2$ of the disc $|w|<R$,
+\[
+ \frac{\psi(w_2)-\psi(w_1)}{w_2-w_1}
+ =\int_0^1p(w_1+t(w_2-w_1))\,dt
+\]
+has positive real part. Thus $\psi$ is univalent on $|w|<R$.
+Also $q=\int_0^1\re p(x_1+isy)\,ds>0$ there, so $\psi$ preserves
+the upper half-disc. The real-coefficient identities express
+$\re\psi$ and $q$ as convergent power series in $x_1,y^2$.
+Replacing $y^2$ by $|x'|^2$ makes $\Theta_\psi$ analytic across the axis.
+
+Off the axis the meridian differential and the $n-2$ transverse
+differentials give $\det D\Theta_\psi=|p|^2q^{n-2}>0$.
+On the axis its differential is
+$\diag(p(x_1),p(x_1)I_{n-1})$, also nonsingular.
+If two lifted points have the same image, their meridian coordinates
+have the same image under $\psi$; univalence gives equality of $x_1,y$,
+and positivity of $q$ then gives equality of $x'$.
+Thus the lift is an analytic diffeomorphism on a neighbourhood of
+$\overline{B^n}$. Its restriction to the sphere gives a real-analytic
+boundary diffeomorphic to $S^{n-1}$.
+Oddness and reality give the required $O(n-1)\times\Z_2$ symmetry.
+
+\subsection{Meridian and transverse curvatures}\label{gd:sec:curvatures}
+For the perturbation,
+\[
+ \sup_{|w|\le1}|\delta p'|
+ \le\sup_{m\ge1}mR^{-m}\nrm{\delta p}_W
+ \le H_Rs_* .
+\]
+Therefore $|p|\ge L_*$ and $|wp'|\le S_2+H_Rs_*$ on the closed disc.
+The curvature formula~\eqref{r2:eq:curvature-formula} gives
+\begin{equation}\label{gd:eq:meridian-curvature}
+ \re(1+wp'/p)\ge\frac{\chi_*}{L_*}>0,\qquad
+ \kappa_{\rm mer}=\frac{\re(1+wp'/p)}{|p|}>0 .
+\end{equation}
+The simple meridian boundary consequently encloses a strictly convex
+planar domain symmetric in both axes.
+
+For the transverse curvatures and the graph property, write
+$\delta\psi=\sum_{j\ {\rm odd}}\delta c_jw^j$ and parameterise the upper arc as
+$\psi(e^{i\theta})=(X(\theta),Y_\psi(\theta))$, $0<\theta<\pi$.
+Its outward normal is $(Y_\psi',-X')/|p|$ and speed is $|p|$.
+Using $U_m(\cos\theta)=\sin((m+1)\theta)/\sin\theta$ gives
+\begin{equation}\label{gd:eq:transverse-numerator}
+ -\frac{X'}{\sin\theta}
+ =\sum_{j\ {\rm odd}}j(c_j+\delta c_j)U_{j-1}(\cos\theta)
+ \ge b-S_T-(1+H_R)s_*=\chi_* .
+\end{equation}
+Indeed $|U_{j-1}|\le j$, and
+\[
+ \sum_{j\ {\rm odd}}j^2|\delta c_j|
+ =\sum_{m\ {\rm even}}(m+1)|\delta p_m|
+ \le(1+H_R)\nrm{\delta p}_W.
+\]
+Since $Y_\psi/\sin\theta=q>0$, each of the $n-2$ transverse principal
+curvatures of the unscaled body is
+\begin{equation}\label{gd:eq:transverse-curvature}
+ \kappa_\perp=\frac{-X'}{|p|Y_\psi}
+ =\frac{-X'/\sin\theta}{|p|(Y_\psi/\sin\theta)}
+ \ge\frac{\chi_*}{(b+S_1+s_*)^2}>0.
+\end{equation}
+Both denominators have the displayed upper bound by the coefficient
+and integral estimates for $p,q$.
+The quotients extend to the poles analytically.
+At $\theta=0$, $Y_\psi'=p(1)>0$ and
+$-X'/\sin\theta\to-X''(0)=p(1)+p'(1)$, so
+$\kappa_\perp$ tends to
+$(p(1)+p'(1))/p(1)^2$, the meridian curvature there.
+The other pole has the same conclusion by symmetry.
+Thus every principal curvature is positive on the whole boundary.
+Scaling by $\rho$ divides all principal curvatures by $\rho$.
+
+\subsection{Global convexity and the non-ball coefficient}
+\label{gd:sec:global}
+By~\eqref{gd:eq:transverse-numerator}, $X'(\theta)<0$ on the open
+upper arc. It is therefore a graph $Y_\psi=f(X)$ between its two poles.
+The curvature numerator of this oriented graph is
+$X'Y_\psi''-Y_\psi'X''=(X')^3f''$; positive meridian curvature and $X'<0$
+give $f''<0$ in the interior. Continuity extends its concavity to the
+closed interval, where $f$ vanishes at the endpoints and is positive
+inside. The lifted domain is exactly
+\[
+ \Theta_\psi(B^n)=\{(X_1,X_\perp):X_1\text{ between the poles},\
+                 X_\perp\in\R^{n-1},\ |X_\perp|<f(X_1)\}.
+\]
+For two interior points $\mathbf X=(X_1,X_\perp)$ and
+$\tilde{\mathbf X}=(\tilde X_1,\tilde X_\perp)$ and $0<t<1$,
+the triangle inequality and concavity give
+\[
+ \begin{split}
+ |(1-t)X_\perp+t\tilde X_\perp|
+ &\le(1-t)|X_\perp|+t|\tilde X_\perp|\\
+ &<(1-t)f(X_1)+tf(\tilde X_1)\\
+ &\le f((1-t)X_1+t\tilde X_1).
+ \end{split}
+\]
+Hence the body is convex globally.
+Its smooth boundary has positive principal curvatures by
+\eqref{gd:eq:meridian-curvature} and~\eqref{gd:eq:transverse-curvature},
+so it contains no boundary line segment and is strictly convex.
+This is the solid-of-revolution argument used in
+Sections~\ref{r5:sec-zero} and~\ref{r7:sec-zero}.
+
+Finally the coefficient estimate gives
+$|c_3+\delta c_3|\ge\vartheta_3>0$.
+A ball invariant under $O(n-1)$ and first-coordinate reflection has
+centre zero. Its meridian section would be a centred disc.
+The odd conformal map fixing zero with positive derivative there
+would then be linear, by uniqueness of the normalised conformal map,
+contradicting its nonzero $w^3$ coefficient.
+This excludes balls throughout the shape projection of the existence
+ball. The origin $\Theta_\psi(0)$ is an interior point of the convex
+domain. Every tangent hyperplane supports the domain and therefore
+does not contain the origin. Every ray from the origin meets the
+boundary exactly once and transversally, so $\Omega$ is strictly
+star-shaped with respect to the origin.
+
+\section{The Schiffer field and the Pompeiu conclusion}
+\label{gd:sec:conclusion}
+
+\begin{proof}[Proof of Theorem~\ref{gd:thm:main}]
+For each $n\in\gdDimensions$, the centre satisfies
+$c=\rho b>20.69$, $q_*>0.9548$ and $\gamma>299.4$.
+The window of Lemma~\ref{gd:lem:coverage} has the state count of
+Table~\ref{gd:tab:inverse}. The hypotheses~\eqref{gd:eq:Schur-gates} hold with
+$\epsilon_C<2.7\cdot10^{-10}$, $\epsilon_{\rm S}+\eta_{\rm S}<0.0242$
+and $B_{\rm pol}\delta_V<1.1\cdot10^{-4}$, so
+Proposition~\ref{gd:prop:Schur} gives $B_{L^2}$.
+With the tabulated $L_0$, one has $\beta<0.4987$ and
+$q_b<0.3412<b$. Thus~\eqref{gd:eq:BY} and
+Proposition~\ref{gd:prop:original-inverse} give $B_Y,J_W,N_W$.
+For both strip radii, $d_s<0.13b$ in~\eqref{gd:eq:strip-parameters};
+also $q_0>0.9478$ and $d_*>387.0$ in~\eqref{gd:eq:boundary-reciprocal}.
+Proposition~\ref{gd:prop:coupled} therefore applies with the bound
+$A_*$ of Table~\ref{gd:tab:Newton}. The strict radii inequalities
+in Tables~\ref{gd:tab:Newton} and~\ref{gd:tab:nonlinear} give the unique
+zero $(g,p)$ in $\overline B_X(x_0,r_*)$ by
+Proposition~\ref{gd:prop:zero}.
+Put $U=1+K_ng$. Lemma~\ref{gd:lem:Poisson} gives $U\in W^{2,p}(B^n)$
+for every finite $p$, with $U=1$ and $\partial_rU=0$ on the sphere.
+Its tangential derivatives also vanish there, so $\nabla U=0$.
+Since $U\in W^{2,p}$, $F(g,p)=0$ says $BU=0$ almost everywhere.
+Multiplication by $bq^{a-1}$ and integration by parts give
+\[
+ \int_{B^n}q^a(\nabla U\cdot\nabla\varphi-\mu|p|^2U\varphi)\,dx=0
+ \qquad(\varphi\in C_c^\infty(B^n)).
+\]
+The analytic diffeomorphism of Section~\ref{gd:sec:univalence} and
+the change of variables of Lemma~\ref{r5:lem-lift}(b), with $n-2$
+transverse directions, give
+$u_0=U\circ\Theta_\psi^{-1}\in C^1(\overline{\Theta_\psi(B^n)})$,
+a weak solution of $(\Delta+\mu)u_0=0$ with $u_0=1$ and
+$\nabla u_0=0$ on the boundary. Set
+\[
+ \Omega=\rho\Theta_\psi(B^n),\qquad u(X)=u_0(X/\rho).
+\]
+Since $\mu=\rho^2$, $u\in C^1(\overline\Omega)$ solves
+$\Delta u+u=0$ weakly with $u=1$, $\nabla u=0$ on the real-analytic
+boundary. Lemma~\ref{r3:lem-regularity} gives a real-analytic extension
+to a neighbourhood of $\overline\Omega$, solving~\eqref{gd:eq:schiffer}.
+It cannot be constant, because its boundary value would make it the
+constant one, which does not solve $(\Delta+1)u=0$.
+Sections~\ref{gd:sec:univalence}--\ref{gd:sec:global} give all geometric
+assertions and the symmetry.
+
+The Green identity of Section~\ref{sec:pompeiu}
+applies in every dimension. For a unit vector $\mathbf k$ put
+$v(X)=e^{i\mathbf k\cdot X}$. Then
+\[
+ 0=\int_\Omega(u\Delta v-v\Delta u)
+   =\int_{\partial\Omega}\partial_{\mathbf n} v
+   =-\int_\Omega e^{i\mathbf k\cdot X}\,dX .
+\]
+Thus $\widehat{\one_\Omega}$ vanishes on the unit sphere.
+For a rigid motion $X\mapsto QX+A$,
+\[
+ \int_{Q\Omega+A}e^{iX_1}\,dX
+   =e^{iA_1}\int_\Omega e^{i(Q^Te_1)\cdot X}\,dX=0 .
+\]
+Taking real parts gives zero integrals of the nonzero continuous
+function $\cos X_1$ over every rigid motion of $\Omega$.
+Hence $\Omega$ fails the Pompeiu property.
+\end{proof}

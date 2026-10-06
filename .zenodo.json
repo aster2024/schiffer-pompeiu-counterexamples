@@ -1,8 +1,8 @@
 {
-  "title": "Convex counterexamples to the Schiffer and Pompeiu conjectures in dimensions three, four, six, eight, ten and fourteen",
+  "title": "Convex counterexamples to the Schiffer and Pompeiu conjectures in dimensions two to eighteen",
   "upload_type": "publication",
   "publication_type": "preprint",
-  "description": "Paper and computer-assisted proofs (Arb ball arithmetic plus explicit analytic tail bounds) of bounded convex non-ball domains in R^n, n = 3, 4, 6, 8, 10, 14, with real-analytic boundaries diffeomorphic to spheres, carrying nonconstant solutions of Delta u + u = 0 with u = 1 and grad u = 0 on the boundary. These are counterexamples to the Schiffer conjecture and to the Pompeiu conjecture, within the class of convex domains. A second, strictly star-shaped non-convex example in R^3 is included. This work was carried out with the assistance of AI models (Claude Opus 5.5, GPT-6 Astra and GPT-6 Sol).",
+  "description": "Paper and computer-assisted proofs (Arb ball arithmetic plus explicit analytic tail bounds) of bounded convex non-ball domains in R^n, for every n from 2 to 18 and for n = 20, 21, with real-analytic boundaries diffeomorphic to spheres, carrying nonconstant solutions of Delta u + u = 0 with u = 1 and grad u = 0 on the boundary. These are counterexamples to the Schiffer conjecture and to the Pompeiu conjecture within the class of convex domains; the planar domain is the first convex planar counterexample. The paper also contains a strictly convex planar domain for Berenstein's problem (u = 0 and constant normal derivative), and a second, strictly star-shaped non-convex example in R^3. The constructions, proofs, verification code and text were produced with AI models (Claude Opus 5.5, Claude Sonnet 5.5, GPT-6 Astra, GPT-6 Sol and GPT-6.1 Sol) under the author's direction.",
   "creators": [
     {
       "name": "Guo, Jizhou",
@@ -18,9 +18,10 @@
     "interval arithmetic",
     "convex domains",
     "Harish-Chandra radial part",
-    "rank-two Lie algebras"
+    "rank-two Lie algebras",
+    "Berenstein conjecture"
   ],
   "license": "cc-by-4.0",
   "language": "eng",
-  "version": "3.0"
+  "version": "4.0"
 }

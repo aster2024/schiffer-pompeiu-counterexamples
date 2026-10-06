@@ -1,0 +1,52 @@
+{
+  "spec_version": 1,
+  "process": {
+    "compiler": "xelatex"
+  },
+  "sources": [
+    {
+      "filename": "main.tex",
+      "usage": "toplevel"
+    },
+    {
+      "filename": "sec_r7.tex",
+      "usage": "include"
+    },
+    {
+      "filename": "sec_r2_inverse.tex",
+      "usage": "include"
+    },
+    {
+      "filename": "sec_r2_coupled.tex",
+      "usage": "include"
+    },
+    {
+      "filename": "sec_r2_existence.tex",
+      "usage": "include"
+    },
+    {
+      "filename": "sec_r2_computation.tex",
+      "usage": "include"
+    },
+    {
+      "filename": "sec_rigidity.tex",
+      "usage": "include"
+    },
+    {
+      "filename": "sec_berenstein.tex",
+      "usage": "include"
+    },
+    {
+      "filename": "sec_gd.tex",
+      "usage": "include"
+    },
+    {
+      "filename": "sec_gd_verification.tex",
+      "usage": "include"
+    },
+    {
+      "filename": "gd_data_block.tex",
+      "usage": "include"
+    }
+  ]
+}

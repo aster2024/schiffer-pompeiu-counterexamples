@@ -1,4 +1,4 @@
-# Convex three-dimensional certificate (AX4)
+# Convex three-dimensional certificate
 
 This directory is the local computer-assisted proof package for the convex, non-ball, axisymmetric example in R^3. It was independently audited (mathematics, code and numerics). It is separate from `../r3/`, which proves an additional nonconvex example.
 

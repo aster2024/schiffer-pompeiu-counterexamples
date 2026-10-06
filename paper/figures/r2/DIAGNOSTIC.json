@@ -1,0 +1,11 @@
+{
+  "scope": "binary64 descriptive centre evaluation, not a certificate",
+  "rho": 814.4574045909749,
+  "radial_min_sample": 814.4410980544494,
+  "radial_max_sample": 814.4740103975755,
+  "relative_peak_to_trough": 4.041014660874543e-05,
+  "curvature_ratio_min_sample": 0.35025537165396975,
+  "curvature_ratio_max_sample": 1.6885035714428287,
+  "convexity_factor_min_sample": 0.3489837260893065,
+  "schematic_amplification": 2000
+}

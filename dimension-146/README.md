@@ -1,6 +1,6 @@
 # Dimension 146
 
-Jizhou Guo — Dots Studio, Rednote — mitsuha2021b@gmail.com — 9 October 2026
+Jizhou Guo — mitsuha2021b@gmail.com — 9 October 2026
 
 A computer-assisted certificate for one explicit dimension in the two-block setting of the second paper of this
 repository ([`infinitely-many-dimensions/`](../infinitely-many-dimensions/)).

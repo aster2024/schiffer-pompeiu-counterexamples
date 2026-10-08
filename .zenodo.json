@@ -5,8 +5,7 @@
   "description": "Paper and computer-assisted proofs (Arb ball arithmetic plus explicit analytic tail bounds) of bounded convex non-ball domains in R^n, for every n from 2 to 18 and for n = 20, 21, with real-analytic boundaries diffeomorphic to spheres, carrying nonconstant solutions of Delta u + u = 0 with u = 1 and grad u = 0 on the boundary. These are counterexamples to the Schiffer conjecture and to the Pompeiu conjecture within the class of convex domains; the planar domain is the first convex planar counterexample. The paper also contains a strictly convex planar domain for Berenstein's problem (u = 0 and constant normal derivative), and a second, strictly star-shaped non-convex example in R^3. A second paper, 'Convex non-ball Schiffer domains in infinitely many dimensions' (directory infinitely-many-dimensions/), constructs bounded strictly convex non-ball domains with real-analytic boundary carrying the same overdetermined data in infinitely many dimensions, odd and even and in every residue class, invariant under O(a) x O(n-a); its proofs are analytic. The constructions, proofs, verification code and text were produced with AI models (Claude Opus 5.5, Claude Sonnet 5.5, GPT-6 Astra, GPT-6 Sol and GPT-6.1 Sol) under the author's direction.",
   "creators": [
     {
-      "name": "Guo, Jizhou",
-      "affiliation": "Dots Studio, Rednote"
+      "name": "Guo, Jizhou"
     }
   ],
   "keywords": [

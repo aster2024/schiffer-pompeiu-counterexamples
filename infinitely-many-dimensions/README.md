@@ -1,6 +1,6 @@
 # Convex non-ball Schiffer domains in infinitely many dimensions
 
-Jizhou Guo — Dots Studio, Rednote — mitsuha2021b@gmail.com — 8 October 2026
+Jizhou Guo — mitsuha2021b@gmail.com — 8 October 2026
 
 [**Paper (PDF, 114 pages)**](paper.pdf) · [LaTeX source](source/) · Archive: [doi:10.5281/zenodo.23238160](https://doi.org/10.5281/zenodo.23238160)
 

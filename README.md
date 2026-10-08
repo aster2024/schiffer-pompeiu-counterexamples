@@ -65,7 +65,7 @@ The proofs of the first paper are computer-assisted; the proofs of the second pa
 
 ## Author and acknowledgement
 
-Jizhou Guo (Dots Studio, Rednote). The author conceived and directed the project and takes full responsibility for the content. The constructions, proofs, verification code and text were produced with AI models (Claude Opus 5.5, Claude Sonnet 5.5, GPT-6 Astra, GPT-6 Sol and GPT-6.1 Sol) under the author's direction, and were audited with AI assistance.
+Jizhou Guo. The author conceived and directed the project and takes full responsibility for the content. The constructions, proofs, verification code and text were produced with AI models (Claude Opus 5.5, Claude Sonnet 5.5, GPT-6 Astra, GPT-6 Sol and GPT-6.1 Sol) under the author's direction, and were audited with AI assistance.
 
 ## Licence
 

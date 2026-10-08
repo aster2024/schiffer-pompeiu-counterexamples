@@ -1,6 +1,6 @@
 # Dimension 19
 
-Jizhou Guo — Dots Studio, Rednote — mitsuha2021b@gmail.com — 9 October 2026
+Jizhou Guo — mitsuha2021b@gmail.com — 9 October 2026
 
 Together with the paper of this repository (arXiv:[2609.35419](https://arxiv.org/abs/2609.35419), which covers
 dimensions 2 to 18, 20 and 21), this gives convex counterexamples in every dimension from 2 to 21.

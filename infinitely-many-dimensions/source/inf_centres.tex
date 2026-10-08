@@ -1,0 +1,496 @@
+\section{The quartic domain and finite-order centres}\label{inf:sec-centres}
+
+In this section $r$ ranges over the fixed compact interval
+$[1/4,3/8]$. All finite-order constants are uniform on this interval
+and for $|\theta|\le20$, including $\theta=0$ when analytic
+extensions are discussed. The accuracy order is always fixed before
+$p$ tends to infinity.
+
+\subsection{The quartic profile}
+
+The monic degree-two angular polynomial is
+\begin{equation}\label{inf:H2}
+ \mathsf H_2(x)=x^2-\frac{2(\ab+1)}{p+2}x
+                 +\frac{\ab(\ab+1)}{(p+1)(p+2)}.
+\end{equation}
+Its homogeneous spherical degree is four. Define its self-coupling by
+\begin{equation}\label{inf:seed-coupling}
+ g_2=[\mathsf H_2]\mathsf H_2^2
+ =\frac{\int \mathsf H_2^3\,d\mu_r}{\int \mathsf H_2^2\,d\mu_r}.
+\end{equation}
+The bracket denotes the coefficient in the monic orthogonal expansion.
+
+\begin{lemma}[Quartic normalization]\label{inf:quartic-normalization}
+Put $\varsigma=(r-1/2)^2\in[1/64,1/16]$. Then
+\begin{equation}\label{inf:g2-exact}
+ g_2=\frac{p-1}{(p+1)(p+5)}
+ -\frac{4p^2(p^2-9p-16)\varsigma}{(p+1)(p+2)^2(p+4)(p+5)}.
+\end{equation}
+For $p\ge64$,
+\begin{equation}\label{inf:g2-bounds}
+ \frac9{16}<pg_2<1,\qquad
+ \nrm{\mathsf H_2}_\infty<\frac9{16},\qquad
+ \nrm{T_\varsigma}_\infty<1,\quad T_\varsigma(x)=\frac{\mathsf H_2(x)}{pg_2}.
+\end{equation}
+Also $g_2=4r(1-r)p^{-1}+O(p^{-2})$ uniformly in $r$.
+\end{lemma}
+\begin{proof}
+The beta moments are $\int x^h\,d\mu_r=(\ab)_h/(p)_h$.
+They give the two orthogonality conditions for \eqref{inf:H2}.
+Multiplying the three-term recurrence twice gives
+\[
+ \int \mathsf H_2P_j^2\,d\mu_r
+ =\mathfrak a_j^2+\mathfrak a_{j+1}^2+\mathfrak b_j^2
+ -\frac{2(\ab+1)}{p+2}\mathfrak b_j
+ +\frac{\ab(\ab+1)}{(p+1)(p+2)}.
+\]
+At $j=2$, substitute \eqref{inf:recurrence-a}--\eqref{inf:recurrence-b}
+and $\ab=p/2+p(r-1/2)$. The terms linear in $r-1/2$ cancel;
+the constant term is $(p-1)/((p+1)(p+5))$, and the coefficient of
+$(r-1/2)^2$ is the second coefficient in \eqref{inf:g2-exact}.
+Since $P_2$ is a multiple of $\mathsf H_2$, this gives $g_2$.
+
+Write $g_2=c_2^{\mathrm{diag}}+d_2^{\mathrm{diag}}\varsigma$
+with the coefficients in \eqref{inf:g2-exact}. For $p\ge64$,
+$d_2^{\mathrm{diag}}<0$, $|pd_2^{\mathrm{diag}}|<4$, and
+$pc_2^{\mathrm{diag}}\ge4032/4485>13/16$.
+The last inequality persists for larger $p$ because the derivative of
+$p(p-1)/((p+1)(p+5))$ has numerator $7p^2+10p-5>0$.
+Thus $pg_2>13/16-4/16=9/16$, while $pg_2<pc_2^{\mathrm{diag}}<1$.
+The two positive endpoint values of $\mathsf H_2$ are less than $9/16$,
+using $\ab,\bb\le3p/4$. Its negative minimum has magnitude
+$(\ab+1)(\bb+1)/((p+1)(p+2)^2)\le1/(4(p+1))$.
+This proves \eqref{inf:g2-bounds}. Expansion of the rational formula
+gives $1-4\varsigma=4r(1-r)$ as its leading coefficient.
+\end{proof}
+
+The physical quartic radius and its normalized version are
+\begin{equation}\label{inf:quartic-domain}
+ R+h_{\mathrm q}(x),\qquad
+ h_{\mathrm q}=-\frac{2\chi}{g_2}\mathsf H_2,\qquad
+ 1+f_{\mathrm q}(x)=1-\frac{\theta}{2R^2}T_\varsigma(x).
+\end{equation}
+We denote the corresponding physical domain by $\Omega_{\mathrm q}$.
+For real block parameters the same formula denotes its weighted
+meridian domain. The scalar $\theta$ and the radius $R$ stay fixed
+when $\varsigma$ varies.
+
+\subsection{An analytic finite-order construction}
+
+\begin{theorem}[Finite-order centres]\label{inf:centres}
+Fix an integer $N\ge4$. For every prescribed finite radius
+$R_{\mathrm{an}}>0$, put $U=\{x\in\C:|x|\le R_{\mathrm{an}}\}$.
+There exist $C_{N,U},P_{N,U}<\infty$ such that the
+following assertion holds. Suppose $p\in\tfrac12\Z$, $p\ge P_{N,U}$,
+$J_p(R)=0$, $R\in[2p-1,2p+4]$, and
+$0<|\theta|\le20$ with \eqref{inf:detuning-definition}.
+For every $r\in[1/4,3/8]$ one can choose a polynomial $h_N(x)$ and
+a finite sum $u_N$ of regular Helmholtz modes. For real block
+parameters the equation means the weighted operator
+\eqref{inf:invariant-laplacian}; at integer blocks it is the
+Euclidean equation. These choices satisfy
+$(\Delta+1)u_N=0$ exactly and
+\begin{equation}\label{inf:centre-complex-defect}
+ \sup_{x\in U}\left(|u_N(R+h_N(x),x)-1|
+       +|\partial_\varrho u_N(R+h_N(x),x)|\right)
+ \le C_{N,U}\theta^2p^{-N}.
+\end{equation}
+The number and degrees of the modes depend on $N$, not on $p,r,\theta$.
+For every fixed polynomial coefficient norm and every fixed derivative
+order $k$ on $U$, with constants $C_{N,U,k}$ and threshold
+$P_{N,U,k}$,
+\begin{align}
+ h_N&=-\frac{2\chi}{g_2}\mathsf H_2+O_{N,U}(|\theta|p^{-3}),
+ \label{inf:centre-profile}\\
+ [\mathsf H_2]h_N&=-\frac{\theta}{16r(1-r)p}
+                                  +O_{N,U}(|\theta|p^{-2}).
+ \label{inf:centre-witness}
+\end{align}
+The radius $R_{\mathrm{an}}$ can be chosen arbitrarily large before
+the constants and threshold are fixed. In particular the statement
+applies as follows: fix $\rho'>2$ and $d>\rho'$, and then
+choose one $R_{\mathrm{an}}>1+d$.
+\end{theorem}
+
+\begin{proof}
+We construct a finite jet with more terms than the requested accuracy.
+Put $\eps=1/p$, write $R=\rho/\eps$, and set
+$Z=\rho^2$ and $S_0=4(1+3\eps+2\eps^2)$.
+Equation~\eqref{inf:trace-ratio-exact} is equivalent to
+\begin{equation}\label{inf:rho-equation}
+ 2Z(Z-S_0)+\theta\eps^2(1+\eps)(2Z-S_0)=0.
+\end{equation}
+At $(\eps,Z)=(0,4)$ its derivative in $Z$ is eight.
+The analytic implicit-function theorem gives a unique root near four,
+uniformly for $|\theta|\le21$. The supplied radius satisfies
+$(R/p)^2\to4$ and, by \eqref{inf:trace-ratio-exact},
+equation~\eqref{inf:rho-equation} with $Z=(R/p)^2$.
+Thus $Z$ is this root for sufficiently large $p$. The other quadratic root is
+$O(\theta\eps^2)$. Take the positive square root near two.
+Then
+\begin{equation}\label{inf:chi-analytic}
+ \rho=2+3\eps+O(\eps^2),\qquad
+ \chi=\frac{\theta\eps^2}{4\rho}
+      =\frac18\theta\eps^2+O(\theta\eps^3).
+\end{equation}
+Here and below analyticity means on an open complex neighbourhood of
+the stated compact real parameter set.
+
+For finitely many angular indices, the boundary traces of regular
+Bessel modes are computed from
+\begin{equation}\label{inf:finite-q-recurrence}
+ q_{-1}=1,\quad q_0=0,\quad
+ q_{k+1}=\frac{2(1+k\eps)}\rho q_k-q_{k-1}.
+\end{equation}
+This finite recurrence is analytic in $\eps,\theta$.
+Its limiting zero indices give the resonant angular set
+$\mathcal I_{\mathrm{res}}=\{2,5,8,\ldots\}$.
+For $j\notin\mathcal I_{\mathrm{res}}$ normalize the mode $f_j$ by $f_j(R)=1$;
+for $j\in\mathcal I_{\mathrm{res}}$ normalize it by $f_j'(R)=1$.
+The latter convention gives $f_2(R)=\chi$. For $j\ge5$ in
+$\mathcal I_{\mathrm{res}}$,
+\begin{equation}\label{inf:resonant-trace}
+ f_j(R)=c_j\eps+O_j(\eps^2),\qquad
+ c_j=\frac{(2j-1)(2j-4)}3>0.
+\end{equation}
+Indeed the first correction of \eqref{inf:finite-q-recurrence} at
+$k=3h$ is $(-1)^h3h(h-1)\eps$, while the corresponding normal
+trace tends to $(-1)^h$. Put $3h=2j-1$ to obtain
+\eqref{inf:resonant-trace}. The change in $\rho$ due to $\theta$
+starts at order $\eps^2$, so this coefficient is independent of
+$\theta$. The nonresonant normalization denominators tend to $1$ or
+$-1$ and are units in the analytic coefficient ring.
+
+All collar derivatives are supplied by
+\begin{equation}\label{inf:collar-ode}
+ f_j''+\frac{(2-\eps)}{\rho+\eps y}f_j'
+ +\left(1-\frac{2j(2j\eps^2+2\eps-2\eps^2)}
+                    {(\rho+\eps y)^2}\right)f_j=0,
+ \qquad y=\varrho-R.
+\end{equation}
+Its coefficients are analytic near $\eps=0$ on a fixed collar.
+The ball mode has traces $u_0(R)=1$, $u'_0(R)=0$, $u''_0(R)=-1$.
+The collar construction is a local analytic family.
+At the actual inputs $J_p(R)=0$ its traces
+are precisely those of the regular Bessel modes; uniqueness of the
+ordinary differential equation identifies them on the collar and
+then throughout their regular continuation.
+
+We next record the angular filtration that makes the recursion finite.
+For fixed $i,j$ write
+\begin{equation}\label{inf:monic-product-valuation}
+ \mathsf H_i\mathsf H_j=\sum_{k\le i+j}\mathfrak c_{ij}^k\mathsf H_k,\qquad
+ \mathfrak c_{ij}^k=O\left(\eps^{\lceil(i+j-k)/2\rceil}\right).
+\end{equation}
+To prove this, use the monic recurrence
+$\mathsf H_{j+1}=(x-\mathfrak b_j)\mathsf H_j-\mathfrak a_j^2\mathsf H_{j-1}$.
+For fixed indices \eqref{inf:recurrence-a}--\eqref{inf:recurrence-b}
+give $\mathfrak b_j-r=O(\eps)$ and
+$\mathfrak a_j^2=O(\eps)$.
+Induction shows that the coefficient of $(x-r)^k$ in $\mathsf H_j$ has
+valuation at least $\lceil(j-k)/2\rceil$. Descending elimination
+proves the same valuation for the inverse monic triangular
+connection. Multiplying and composing these two connections proves
+\eqref{inf:monic-product-valuation}, since a sum of ceilings is at
+least the ceiling of the sum. In particular,
+\begin{equation}\label{inf:seed-square}
+ \mathsf H_2^2=\mathsf H_4+O(\eps)\mathsf H_3+g_2\mathsf H_2+O(\eps^2)\mathsf H_1+O(\eps^2)\mathsf H_0,
+ \qquad g_2=4r(1-r)\eps+O(\eps^2).
+\end{equation}
+
+Write the formal field and boundary as
+\[
+ u=u_0+\sum_j a_jf_j\mathsf H_j,\qquad \varrho=R+h(x).
+\]
+Every coefficient of $\eps$ is a finite polynomial in $x$.
+Eliminate $h$ from the radial Neumann condition first. Its derivative
+in $h$ at zero is $u_0''(R)=-1$, so at each order the new coefficient
+of $h$ is determined by the already known coefficients and the new
+field coefficients, using the unit divisor $u_0''(R)=-1$.
+In the Dirichlet equation eliminate $a_j$ for $j\notin\mathcal I_{\mathrm{res}}$.
+Its diagonal linear coefficient is $f_j(R)=1$. Thus its new
+coefficients are also determined by unit divisions.
+This elimination includes the $j=0$ field coefficient.
+
+Parametrize the remaining coefficients by
+\begin{equation}\label{inf:resonant-scaling}
+ a_2=\theta\eps \SeedA,\qquad
+ a_j=\theta^2\eps^3 Z_j\quad(j\in\mathcal I_{\mathrm{res}},\ j\ge5).
+\end{equation}
+After the two eliminations the residual Dirichlet coefficients
+$F_j$ have the form
+\begin{align}
+ \frac{F_2}{\theta^2\eps^3}
+ &=\frac{\SeedA}{8}+2r(1-r)\SeedA^2+O(\eps),\label{inf:seed-equation}\\
+ \frac{F_j}{\theta^2\eps^4}
+ &=c_jZ_j+B_j(\SeedA,\theta,r)+O(\eps),
+ \qquad j\in\mathcal I_{\mathrm{res}},\ j\ge5.\label{inf:other-equations}
+\end{align}
+Here $B_j$ is a finite polynomial and is zero except possibly at
+$j=5,8$. These divisions are identities of formal series, including
+at $\theta=0$.
+
+The linear seed term is
+$a_2\chi=\theta^2\eps^3 \SeedA/8+O(\theta^2\eps^4)$.
+Eliminating $h$ gives quadratic Dirichlet term
+$a_2^2\mathsf H_2^2/2$; its seed coefficient is the second term of
+\eqref{inf:seed-equation} by \eqref{inf:seed-square}.
+A pure cubic term has angular degree at most six; reaching index two
+loses four degrees and contributes two further powers of $\eps$.
+The leading nonresonant coefficient is $a_4=-a_2^2/2+O(\eps^3)$,
+and its product with the seed has the same loss when projected to
+index two. Thus neither contributes to the leading seed equation.
+Quadratic terms have no nonseed resonant index. Cubic terms first
+reach index five after losing one angular degree, which supplies one
+extra $\eps$. At total order four the only possible new resonant
+indices are five and eight. A new $Z_j$ contributes linearly through
+\eqref{inf:resonant-trace}, giving $c_jZ_j$.
+Its product with the seed has top index $j+2$, which is nonresonant;
+reaching a resonant index at most $j$ loses at least two degrees and
+therefore at least one extra $\eps$. Contributions through a newly
+eliminated nonresonant coefficient have the same extra factor after
+its unit division. At order zero in \eqref{inf:other-equations},
+$Z_j$ enters linearly as $c_jZ_j$. Every other term has at least two
+amplitudes or the factor $a_2\chi$, so it is divisible by $\theta^2$.
+
+Choose the nonzero root
+$\SeedA_0=-1/(16r(1-r))$ of \eqref{inf:seed-equation}.
+The derivative of its left side with respect to $\SeedA$ at this root is
+$-1/8$. After choosing $\SeedA_0$, determine
+$Z_{j,0}=-B_j(\SeedA_0,\theta,r)/c_j$; these have finite support.
+Work in the ring of formal
+$\eps$ series whose coefficients are polynomials in $x$, with
+coefficients analytic in $r,\theta$ on the indicated compact sets.
+A series is required to have a finite polynomial coefficient at
+every order.
+For a fixed list of resonant amplitude coefficients the two unit
+eliminations have linearization, in the variables $(h,a_{\rm nr})$,
+\[
+ (\dot h,\dot a_{\rm nr})\longmapsto
+ \left(-\dot h+\sum_{j\notin\mathcal I_{\mathrm{res}}}
+       f'_j(R)|_{\eps=0}\,\dot a_j\mathsf H_j|_{\eps=0},
+       \dot a_{\rm nr}\right).
+\]
+Its inverse is triangular and sends a finite polynomial forcing
+to finite polynomial coefficients. At each order, the remaining
+terms involve only coefficients at lower orders. This proves
+existence and uniqueness of those unit eliminations by ordinary
+coefficient induction. It also proves preservation of finite
+support: multiplication and the monic connection use only finite
+polynomials, and the inverse displayed here adds no angular
+indices not present in its forcing. Dependence of the exact
+collar traces on $\eps$ contributes only previously determined
+lower-order coefficients in this calculation.
+
+After these eliminations let
+$\mathcal F_2=F_2/(\theta^2\eps^3)$ and
+$\mathcal F_j=F_j/(\theta^2\eps^4)$ for nonseed resonant $j$.
+Their constant terms are the right sides of
+\eqref{inf:seed-equation}--\eqref{inf:other-equations} without the
+remainders. At $(\SeedA,Z)=(\SeedA_0,Z_0)$ their leading Jacobian is
+\begin{equation}\label{inf:formal-Jacobian}
+ \mathcal J_0(\dot{\SeedA},\dot Z)=
+ \left(-\frac18\dot{\SeedA},
+       \{\partial_{\SeedA}B_j(\SeedA_0,\theta,r)\dot{\SeedA}+c_j\dot Z_j\}_{j\ge5,
+                                                    j\in\mathcal I_{\mathrm{res}}}\right).
+\end{equation}
+The off-diagonal column in this matrix has finite support,
+since $B_j=0$ outside $j=5,8$. Each $c_j$ is positive and fixed.
+Thus its inverse preserves finite support, using only the fixed
+nonzero divisors $-1/8$ and $c_j$.
+
+Suppose all coefficients of $\SeedA,Z$ below order $v\ge1$ have
+already been selected and the reduced equations vanish below
+that order. Substitute those truncated series with the unknown
+order-$v$ coefficients set to zero, and denote the coefficients
+of $\eps^v$ in $\mathcal F_2,\mathcal F_j$ by
+$e_{2,v},e_{j,v}$. They are explicitly defined by finite
+coefficient extraction from the collar Taylor formula, the
+polynomial product connection, and the two unit eliminations.
+Only finitely many $e_{j,v}$ are nonzero.
+The new coefficients occur only through
+\eqref{inf:formal-Jacobian}: every other occurrence is multiplied
+by an additional $\eps$, or by a coefficient of positive order
+of $\SeedA-\SeedA_0$ or $Z-Z_0$. Therefore the unique update is
+\begin{equation}\label{inf:formal-update}
+ \SeedA_v=8e_{2,v},\qquad
+ Z_{j,v}=-\frac{e_{j,v}
+       +\partial_{\SeedA}B_j(\SeedA_0,\theta,r)\SeedA_v}{c_j}.
+\end{equation}
+Set the other coefficients to zero. The update is finite, cancels
+exactly the order-$v$ coefficient, and leaves every lower order
+unchanged. Recompute the unit-eliminated coefficients to that
+order. This completes an induction producing every finite jet.
+
+All operations in \eqref{inf:formal-update} are additions,
+multiplications, coefficient extractions and divisions by the
+nonzero quantities already listed. The resulting coefficients
+are analytic in a common neighbourhood of the compact real
+parameter set for each finite jet. The neighbourhood may shrink
+with its order. At a fixed order only finitely many collar
+normalizations and monic connections occur, so a positive common
+neighbourhood exists for each finite order.
+
+Through order $\eps^4$ the seed equation is the expansion of
+$\chi a_2+g_2a_2^2/2$. All cubic seed projections start at order
+$\eps^5$ by the degree loss just described. Hence the chosen root
+agrees with $-2\chi/g_2$ through order $\eps^2$.
+The order-$\theta^2\eps^2$ shape coefficient vanishes by the
+following cancellation.
+At that order the index-four amplitude is $-a_2^2/2$, whose
+physical normal derivative tends to $-1$.
+The quadratic Neumann correction is
+$-(2p-1)a_2^2\mathsf H_2^2/(2R)$ and $(2p-1)/R\to1$.
+Their index-four contributions cancel.
+All lower indices of $\mathsf H_2^2$ gain at least one $\eps$, and the other
+resonant amplitudes start at order $\theta^2\eps^3$.
+It follows that $h-a_2\mathsf H_2=O(\theta^2\eps^3)$ at these orders,
+proving \eqref{inf:centre-profile} for any sufficiently long finite
+jet with an $O_N(|\theta|\eps^3)$ remainder.
+A finite truncation of the linear-in-$\theta$ part is included in
+this latter bound. Inserting \eqref{inf:chi-analytic} and
+\eqref{inf:g2-exact} gives \eqref{inf:centre-witness}.
+
+Choose the recursion order greater than $N+4$ and retain its finite
+set of modes. Evaluate the truncated coefficients in the exact
+finite-$p$ polynomials $\mathsf H_j$ and exact normalized radial functions.
+Restoring the factors $\theta^2\eps^3$ and $\theta^2\eps^4$
+in \eqref{inf:seed-equation} and \eqref{inf:other-equations}
+recovers the original resonant Dirichlet coefficients. The two
+unit eliminations preserve the chosen Taylor jet of the Neumann
+and nonresonant Dirichlet equations. Thus a jet of order greater
+than $N+4$ makes every original defect coefficient through order
+$N$ vanish.
+Choose the truncations so that $h-a_2\mathsf H_2$ has a factor
+$\theta^2$, using the identical truncated $a_2$ in the field and
+the boundary. The higher powers of $\theta$ already present in
+$a_2$ are retained in this convention.
+For $x$ in any fixed bounded complex neighbourhood $U'\supset U$,
+this polynomial has size $O_{N,U'}(|\theta|\eps)$.
+For sufficiently small $|\eps|$ its values lie in a fixed collar,
+where the integral equation for \eqref{inf:collar-ode} gives jointly
+analytic solutions with uniform bounds. The denominators
+$\rho+\eps y$ remain away from zero, and only finitely many mode
+normalizations occur. Thus both boundary defects are analytic on a
+common neighbourhood of the compact parameter set and $U'$.
+Their Taylor coefficients in $\eps$ vanish through order $N$ by the
+finite induction, as polynomial identities in $x$.
+
+Both defects have an analytic factor $\theta^2$.
+At $\theta=0$ the field and domain are the ball. The
+linear Neumann defect is
+$-\partial_\theta h+(\partial_\theta a_2)\mathsf H_2=0$ by the identical
+seed choice; the linear Dirichlet defect is zero since
+$u'_0(R)=0$ and $f_2(R)=\chi$ itself has a factor $\theta$.
+All other terms have at least two such factors.
+Divide the analytic defects by $\theta^2$ and apply Taylor's formula
+with remainder in $\eps$ on a smaller fixed complex disk. Compactness
+in $r,\theta,x$ bounds the remainder by $C_{N,U}|\eps|^N$.
+Cauchy's formula on $U'$ gives every stipulated fixed angular
+derivative bound. This proves \eqref{inf:centre-complex-defect} and
+the remainder statements. At actual integer blocks the finite regular field is
+analytic across axes and origin by Lemma~\ref{inf:solid-harmonics}.
+\end{proof}
+
+\begin{lemma}[Analytic defects give weighted coefficients]
+\label{inf:analytic-coefficients}
+Let $\mu$ be any positive measure on $[0,1]$ with infinite support,
+$\mathsf H_j$ its monic orthogonal polynomials, and suppose $0<\mathsf H_j(1)\le1$.
+For a complex-valued function $F$ analytic on a neighbourhood of
+$U_d=\{z:\dist(z,[0,1])\le d\}$, its coefficients in
+$G_j=\mathsf H_j/\mathsf H_j(1)$ satisfy
+\begin{equation}\label{inf:cauchy-coefficients}
+ |F_j|\le d^{-j}\sup_{U_d}|F|.
+\end{equation}
+Consequently, for each fixed $k\ge0$ and $1<\rho'<d$,
+\begin{equation}\label{inf:weighted-analytic-coefficients}
+ \sum_{j\ge0}(1+j)^k(\rho')^j|F_j|
+ \le\left(\sum_{j\ge0}(1+j)^k(\rho'/d)^j\right)\sup_{U_d}|F|.
+\end{equation}
+The constants do not depend on the measure. These assertions apply
+to all the beta measures used here.
+\end{lemma}
+\begin{proof}
+For $j=0$ the coefficient is the normalized integral of $F$, so
+\eqref{inf:cauchy-coefficients} follows directly. Let $j\ge1$.
+The zeros $x_1,\ldots,x_j$ of a monic orthogonal polynomial are simple
+and lie in $(0,1)$. Interpolate $F$ at those nodes by a polynomial
+$L$ of degree at most $j-1$. The divided-difference identity gives
+\[
+ F(x)-L(x)=F[x_1,\ldots,x_j,x]\mathsf H_j(x).
+\]
+The integral formula for divided differences, valid also for
+complex-valued functions, gives
+\[
+ |F[x_1,\ldots,x_j,x]|\le\frac1{j!}
+                                  \sup_{[0,1]}|F^{(j)}|.
+\]
+Orthogonality to $L$ therefore gives
+\[
+ \frac{|\langle F,\mathsf H_j\rangle|}{\nrm{\mathsf H_j}_{L^2(\mu)}^2}
+ \le\frac{\sup_{[0,1]}|F^{(j)}|}{j!}
+ \le d^{-j}\sup_{U_d}|F|,
+\]
+where the last inequality is Cauchy's estimate on each radius-$d$
+disk centred on the interval. Multiplication by $\mathsf H_j(1)\le1$
+proves \eqref{inf:cauchy-coefficients}; summation gives
+\eqref{inf:weighted-analytic-coefficients}.
+For our measure \eqref{inf:angular-jacobi} shows
+$\mathsf H_j(1)=(\bb)_j/(p+j-1)_j\le1$.
+\end{proof}
+
+\begin{corollary}[The coefficient form of the centre defects]
+\label{inf:centre-coefficient-defect}
+Fix $N,k$ and $\rho'>1$. The centre in Theorem~\ref{inf:centres}
+can be chosen so that its physical Dirichlet and radial Neumann
+boundary defects $D_N,N_N^{\mathrm{phys}}$, expanded in $G_j$, obey
+\begin{equation}\label{inf:centre-coeff-defect-bound}
+ \sum_j(1+j)^k(\rho')^j
+       (|D_{N,j}|+|N_{N,j}^{\mathrm{phys}}|)
+ \le C_{N,k,\rho'}\theta^2p^{-N}.
+\end{equation}
+The constants and threshold are uniform in $r$ and $0<|\theta|\le20$.
+\end{corollary}
+\begin{proof}
+Choose $d>\rho'$ and then one fixed $R_{\mathrm{an}}>1+d$.
+The set $U_d$ lies in the disc of radius $R_{\mathrm{an}}$.
+Use the analytic remainder established by the finite-jet construction
+in Theorem~\ref{inf:centres} on that disc, and apply
+Lemma~\ref{inf:analytic-coefficients} separately to the two defects.
+The radius choice changes only the constants and threshold for
+this fixed jet. For the Newton application choose $\rho'>2$ once.
+\end{proof}
+
+\begin{proposition}[Transfer of an invariant spectral gap]
+\label{inf:centre-gap-transfer}
+Fix the centre order $N$ and suppose the actual quartic domain has
+invariant Dirichlet gap at least $c_{\mathrm q}\tau p^{-5/3}$ about
+$R^2$ in unit-ball normalization, with fixed $c_{\mathrm q}>0$.
+Then, for all sufficiently large $p$ depending on $N,c_{\mathrm q}$,
+the centre domain $\Omega_N/R$ has gap at least
+$(c_{\mathrm q}/2)\tau p^{-5/3}$. The threshold is independent of
+the admissible split and of $0<\tau\le20$.
+\end{proposition}
+\begin{proof}
+By \eqref{inf:centre-profile}, the two normalized radius functions
+differ by $O_N(\tau p^{-4})$ and are both $1+O_N(\tau p^{-2})$.
+Thus, for $\delta\le C_N\tau p^{-4}$,
+\[
+ (1-\delta)\Omega_{\mathrm q}/R\subset\Omega_N/R
+ \subset(1+\delta)\Omega_{\mathrm q}/R.
+\]
+Zero extension preserves the invariant sector, so the min--max
+principle gives, for every ordered index $i$,
+\[
+ (1+\delta)^{-2}\lambda_i(\Omega_{\mathrm q}/R)
+ \le\lambda_i(\Omega_N/R)
+ \le(1-\delta)^{-2}\lambda_i(\Omega_{\mathrm q}/R).
+\]
+For any eigenvalue within a fixed window of $R^2$, its counterpart
+is $O(p^2)$, and the difference is bounded by $C_N\tau p^{-2}$.
+This is smaller than $(c_{\mathrm q}/2)\tau p^{-5/3}$ once
+$p^{1/3}>2C_N/c_{\mathrm q}$. An eigenvalue inside the proposed
+centre gap would then put its ordered quartic counterpart strictly
+inside the original gap, a contradiction. The factor $\tau$ cancels
+from the required threshold.
+\end{proof}

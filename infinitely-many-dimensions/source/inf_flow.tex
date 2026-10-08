@@ -1,0 +1,904 @@
+\section{The quartic spectral flow}\label{inf:sec-flow}
+
+Throughout this section $p\ge64$, $\varsigma\in I=[1/64,1/16]$,
+$r=1/2-\sqrt \varsigma$, $R\in[2p-1,2p+4]$, and $0<\tau=|\theta|\le20$.
+Unless indicated otherwise, constants are absolute and independent of
+$p,\varsigma,R,\theta$. The fixed window used for the flow argument is
+$W_{\mathrm{flow}}$. The coefficient inverse uses the separately
+defined windows in Appendix~\ref{inf:sec-notation}.
+
+\subsection{Angular matrices and their weighted variation}
+
+Identify the angular Hilbert spaces for different $\varsigma$ by their
+orthonormal bases $P_j(\varsigma)$. In these coordinates the angular operator
+is the fixed diagonal matrix $\Lambda=\diag(\lambda_j)$, and
+multiplication by $x$ is the matrix $X_\varsigma$ in
+\eqref{inf:jacobi-matrix}. Define
+\[
+ T_\varsigma=\frac{\mathsf H_2(X_\varsigma)}{pg_2},\qquad
+ w_j=\frac{j+1}{p+j+1},\qquad \mathsf W=\diag(w_j).
+\]
+The same notation $T_\varsigma(x)$ denotes its scalar polynomial before
+identification. All estimates involving $\mathsf W^{-1}$ initially
+mean estimates on finite sequences, extended by boundedness.
+
+\begin{lemma}[Weighted angular bounds]\label{inf:angular-weighted}
+For $k=0,1,2$, the matrix $\partial_\varsigma^kT_\varsigma$ has bandwidth two and
+\begin{equation}\label{inf:T-entry-bound}
+ |(\partial_\varsigma^kT_\varsigma)_{ij}|\le C\min(w_i,w_j),\qquad
+ \nrm{(\partial_\varsigma^kT_\varsigma)\mathsf W^{-1}}+
+ \nrm{\mathsf W^{-1}(\partial_\varsigma^kT_\varsigma)}\le C.
+\end{equation}
+The matrices $X_\varsigma$ and their first two derivatives are bounded uniformly.
+If
+\begin{equation}\label{inf:G-angular}
+ G_\varsigma=4x(1-x)(\partial_xT_\varsigma)^2
+     =\tfrac12[T_\varsigma,[\Lambda,T_\varsigma]],
+\end{equation}
+then, for $k=0,1,2$,
+\begin{equation}\label{inf:G-weighted}
+ \nrm{\mathsf W^{-1}(\partial_\varsigma^kG_\varsigma)\mathsf W^{-1}}\le Cp.
+\end{equation}
+\end{lemma}
+\begin{proof}
+From \eqref{inf:recurrence-a}, uniformly for $j\ge1$ in the stated range,
+\[
+ \mathfrak a_j^2\le C\frac j{p+j},\qquad
+ \frac{\partial_\varsigma\mathfrak a_j^2}{\mathfrak a_j^2}
+ =-\frac{p^2}{(j+p/2-1)^2-p^2\varsigma}.
+\]
+For $j\ge1$, write
+$\mathfrak D_j=(j+p/2-1)^2-p^2\varsigma$. The exact derivatives are
+\begin{equation}\label{inf:angular-second-derivative}
+ \frac{\partial_\varsigma\mathfrak a_j}{\mathfrak a_j}
+ =-\frac{p^2}{2\mathfrak D_j},\qquad
+ \frac{\partial_\varsigma^2\mathfrak a_j}{\mathfrak a_j}
+ =-\frac{p^4}{4\mathfrak D_j^2}.
+\end{equation}
+The factor $\mathfrak D_j$ is bounded below by $c(p+j)^2$,
+so $|\partial_\varsigma^k\mathfrak a_j|\le C\mathfrak a_j$
+for $k=1,2$. The coefficient $\mathfrak a_0$ and both its
+derivatives are identically zero. The diagonal entries $\mathfrak b_j$ have uniformly
+bounded first two derivatives: $\varsigma$ stays away from zero, so
+$\partial_\varsigma^k\sqrt \varsigma$ is bounded for $k\le2$.
+The two-step entry of $\mathsf H_2(X_\varsigma)$ is
+$\mathfrak a_{j+1}\mathfrak a_{j+2}$ and has size, together with its
+two derivatives, at most $Cw_j$.
+
+The one-step entry is
+\[
+ \mathfrak a_{j+1}\left(\mathfrak b_j+\mathfrak b_{j+1}
+                               -\frac{2(\ab+1)}{p+2}\right).
+\]
+Its parenthesis equals $(r-1/2)$ times
+\[
+ p(p-2)\left\{
+ \frac1{(p+2j-2)(p+2j)}+
+ \frac1{(p+2j)(p+2j+2)}\right\}-\frac{2p}{p+2}.
+\]
+The braces with their prefactor have exactly the compensating value
+at $j=0$. For $j\le p$, subtract this value and differentiate the
+reciprocal products in $j$ to bound the difference by $Cj/p$.
+For $j\ge p$ each term is bounded by a constant. Thus the
+parenthesis and both its $\varsigma$ derivatives are $O(j/(p+j))$.
+Multiplication by $\mathfrak a_{j+1}$ preserves the bound $Cw_j$.
+
+The diagonal entries of $\mathsf H_2(X_\varsigma)$ are
+$M_j=c_j^{\mathrm{diag}}+d_j^{\mathrm{diag}}\varsigma$, where
+\begin{align}
+ c_j^{\mathrm{diag}}&=\frac{j(p-1)(j+p-1)}{2(p+1)(2j+p-3)(2j+p+1)},
+ \label{inf:T-diagonal}\\
+ d_j^{\mathrm{diag}}&=-\frac{2jp^2(j+p-1)(p^2+7p-8j^2-8jp+8j)}
+ {(2j+p)(p+1)(p+2)(2j+p-3)(2j+p-2)(2j+p+1)}.\nonumber
+\end{align}
+These formulas follow by the multiplication calculation in the proof
+of Lemma~\ref{inf:quartic-normalization}, now at general $j$.
+The denominator factors are comparable to $p$ or $p+j$;
+hence $|c_j^{\mathrm{diag}}|+|d_j^{\mathrm{diag}}|\le Cj/(p+j)$.
+The scalar $pg_2$ is bounded away from zero and has bounded derivatives
+of every fixed order. Division by it proves the entry bounds.
+For $|i-j|\le2$ the weights have ratios between $1/3$ and $3$.
+The row and column sums over the five diagonals prove
+\eqref{inf:T-entry-bound}. The same row-sum argument for $X_\varsigma$
+and its derivatives proves their asserted bounds.
+
+The identity in \eqref{inf:G-angular} follows by expanding
+$[\Lambda,T]= (\Lambda T)_{\mathrm{mult}}
+-8x(1-x)T_x\partial_x$.
+The function $G_\varsigma$ is a degree-four polynomial in $X_\varsigma$, with
+coefficients and their first two derivatives uniformly bounded.
+Its bandwidth is four and its unweighted norm is $O(1)$.
+When both indices exceed $p-4$, the weights are bounded below and
+this already proves the required bound.
+For the other nonzero entries all indices are at most $p+4$, and
+\[
+ (G_\varsigma)_{ij}=\frac12\sum_l(2\lambda_l-\lambda_i-\lambda_j)
+                                 (T_\varsigma)_{il}(T_\varsigma)_{lj}.
+\]
+Only finitely many neighbours occur; their eigenvalue differences
+are $O(p)$ and each product is at most $Cw_iw_j$ by
+\eqref{inf:T-entry-bound}. The product rule gives the same estimate
+for two derivatives. Summing over the nine diagonals proves
+\eqref{inf:G-weighted}.
+\end{proof}
+
+\begin{lemma}[Positive angular variation]\label{inf:angular-positive}
+For every subset $\mathcal I\subset\{8,9,\ldots\}$ containing no
+adjacent indices, let $T_{\mathcal I}$ denote the principal angular
+submatrix with those indices. Then
+\begin{equation}\label{inf:angular-positive-bound}
+ T'_{\mathcal I}(\varsigma)\ge c_0\mathsf W_{\mathcal I}^2,
+ \qquad c_0=10^{-4},
+\end{equation}
+for $p\ge64$. The inequality holds for
+finite or infinite $\mathcal I$ as a bounded-operator inequality.
+\end{lemma}
+\begin{proof}
+Differentiate
+$M_j/g_2=(c_j^{\mathrm{diag}}+d_j^{\mathrm{diag}}\varsigma)/
+(c_2^{\mathrm{diag}}+d_2^{\mathrm{diag}}\varsigma)$.
+The numerator is
+\begin{align}
+ \mathcal N_j&=d_j^{\mathrm{diag}}c_2^{\mathrm{diag}}
+                    -c_j^{\mathrm{diag}}d_2^{\mathrm{diag}}\nonumber\\
+ &=\frac{24jp^3(j-2)(p-1)(j+p-1)(j+p+1)}
+ {(2j+p)(p+1)(p+2)^2(p+4)(p+5)
+  (2j+p-3)(2j+p-2)(2j+p+1)}.
+ \label{inf:N-angular}
+\end{align}
+Define also $\partial_\varsigma(\mathfrak a_j^2/g_2)
+=\mathcal E_j/g_2^2$, where
+\begin{align}
+ \mathcal E_j&=\frac{4jp^2(j+p-2)F(p,j)}
+ {(p+1)(p+2)^2(p+4)(p+5)(2j+p-3)(2j+p-2)^2(2j+p-1)},
+ \label{inf:E-angular}\\
+ F(p,j)&=(p^2-9p-16)j^2+(p^3-11p^2+2p+32)j
+                         -5p^3+3p^2+8p-12.\nonumber
+\end{align}
+These identities are obtained by substituting
+\eqref{inf:T-diagonal}, \eqref{inf:recurrence-a}, and
+\eqref{inf:g2-exact} and clearing their positive denominators.
+For $u=p-64$, $j_{\mathrm{pos}}=j-7$ one has the explicit identity
+\begin{align*}
+ F(p,j)={}&(u^2+119u+3504)j_{\mathrm{pos}}^2\\
+ &+(u^3+195u^2+12548u+266304)j_{\mathrm{pos}}\\
+ &+2u^3+359u^2+20957u+394500.
+\end{align*}
+Thus $\mathcal E_j>0$ for $p\ge64,j\ge7$.
+The polynomial identity in Appendix~\ref{inf:sec-positivity} gives
+\begin{equation}\label{inf:half-diagonal}
+ \frac{\mathcal N_j}{2}
+ >\frac23(\mathcal E_{j-1}+\mathcal E_j+
+                 \mathcal E_{j+1}+\mathcal E_{j+2}),\qquad j\ge8.
+\end{equation}
+All denominators there are positive on the stated range.
+
+The adjacent recurrence coefficients satisfy
+$3/4<\mathfrak a_{j+1}/\mathfrak a_j<4/3$ for $j\ge7$.
+For the upper bound discard the denominator ratio in
+\eqref{inf:recurrence-a} to obtain
+\[
+ \frac{\mathfrak a_{j+1}^2}{\mathfrak a_j^2}
+ \le\frac87\left(\frac{23}{22}\right)^2\frac{70}{69}<\frac{16}{9}.
+\]
+For the inverse ratio discard the increasing numerator factors and
+use $2j+p\ge78$ to get
+\[
+ \frac{\mathfrak a_j^2}{\mathfrak a_{j+1}^2}
+ \le\frac{78^2\cdot79}{76^2\cdot75}<\frac{16}{9}.
+\]
+The corresponding rational bound decreases with $2j+p$, factor by
+factor, so these estimates cover every larger $j,p$.
+On one parity the only off-diagonal entries of $T_\varsigma$ are
+$\mathfrak a_{j+1}\mathfrak a_{j+2}/(pg_2)$.
+Their derivatives are positive and, for the upper neighbour, at most
+\[
+ \frac{2}{3pg_2^2}(\mathcal E_{j+1}+\mathcal E_{j+2}).
+\]
+Indeed differentiate the product as one half the sum of the two
+square derivatives times the adjacent coefficient ratios.
+Equation~\eqref{inf:half-diagonal} and
+$2|v_jv_k|\le|v_j|^2+|v_k|^2$ now give
+\[
+ \langle T'_\varsigma v,v\rangle\ge
+ \sum_j\frac{\mathcal N_j}{2pg_2^2}|v_j|^2
+\]
+on either parity and every subset thereof.
+For $8\le j\le p$, the numerator and denominator in
+\eqref{inf:N-angular} are respectively at least $9j^2p^6$ and at
+most $3456p^9$. Since $g_2<1/p$, the margin is at least
+$j^2/(768p^2)$. For $j\ge p$, the corresponding estimates
+$6p^4j^4$ and $3456p^5j^4$ give a margin at least $1/1152$.
+Together with $w_j\le(9/8)j/p$ for $j\ge8$ and $w_j\le1$, these
+bounds imply \eqref{inf:angular-positive-bound} with $c_0=10^{-4}$.
+
+A set with no adjacent indices has no opposite-parity off-diagonal
+entry: the matrix has bandwidth two. Its principal submatrix is
+therefore the direct sum of the two parity submatrices.
+The bounds extend from finite vectors by density and
+Lemma~\ref{inf:angular-weighted}.
+\end{proof}
+
+\subsection{The common Dirichlet form}
+
+Let $\zeta\in(0,1)$ be nonsquared reference radius and put
+\[
+ \epsilon_{\mathrm q}=-\frac{\theta}{2R^2},\qquad
+ \rho_\varsigma(x)=1+\epsilon_{\mathrm q}T_\varsigma(x),\qquad c_p=p-\tfrac12.
+\]
+Use the Hilbert space
+$\Hc_{\mathrm{flow}}=L^2((0,1),d\zeta)\otimes\ell^2(\mathbb N_0)$,
+with the Jacobi identification already made. The ball operator and
+its positive shift are
+\begin{equation}\label{inf:flow-ball-operators}
+ H_0=-\partial_\zeta^2+
+          \frac{c_p(c_p-1)+\Lambda}{\zeta^2},\qquad
+ K_0=H_0+R^2,\qquad
+ \mathsf D=\zeta\partial_\zeta+\tfrac12.
+\end{equation}
+This is the mass-unitary representation of the operator already
+denoted by $H_0$. Its spectrum and all its spectral projections
+are unchanged by the unitary map.
+
+\begin{proposition}[Exact pullback form]\label{inf:flow-form}
+For the weighted quartic domain $0<\varrho<\rho_\varsigma(x)$, let
+$U(\zeta,x)=u(\zeta\rho_\varsigma(x),x)$ and
+$v=\sqrt{2p}\,\zeta^{p-1/2}\rho_\varsigma^pU$. Put
+$L_\varsigma=\partial_x\log\rho_\varsigma$, $\alpha_\varsigma=\rho_\varsigma^{-2}$, and
+$q_x=4x(1-x)$. Its Dirichlet form is
+\begin{equation}\label{inf:flow-formula}
+ \mathfrak q_\varsigma[v,w]=\int\alpha_\varsigma\left\{
+ (v_\zeta-c_pv/\zeta)\overline{(w_\zeta-c_pw/\zeta)}
+ +\frac{q_x}{\zeta^2}(v_x-L_\varsigma\mathsf Dv)
+                       \overline{(w_x-L_\varsigma\mathsf Dw)}\right\}
+ \,d\zeta\,d\mu_r.
+\end{equation}
+Define, initially as weak expressions on the common core,
+\begin{align}
+ \mathcal L(M)&=MH_0+\frac1{2\zeta^2}[\Lambda,M]\mathsf D,
+ \label{inf:linear-form-operator}\\
+ \mathfrak g_\gamma[v,w]&=\int\zeta^{-2}\gamma
+                                  (\mathsf Dv)\overline{\mathsf Dw}.
+ \nonumber
+\end{align}
+Write $\mathcal G(\gamma)$ for the weak form operator characterized
+on this core by
+$\langle\mathcal G(\gamma)v,w\rangle=\mathfrak g_\gamma[v,w]$.
+The operator associated with $\mathfrak q_\varsigma$ is, in the sense of forms,
+\begin{equation}\label{inf:flow-exact-operator}
+ H_\varsigma=H_0+\mathcal L(\alpha_\varsigma-I)+\mathcal G(\gamma_\varsigma),
+ \qquad
+ \gamma_\varsigma=\epsilon_{\mathrm q}^2
+                   (I+\epsilon_{\mathrm q}T_\varsigma)^{-4}G_\varsigma.
+\end{equation}
+The exact form has the same closed domain as $H_0$ for large $p$.
+The family is $C^1$ in the relative form norm and has compact
+resolvent. At integer block sizes it is unitarily equivalent to the
+invariant Euclidean Dirichlet Laplacian on $\Omega_{\mathrm q}/R$.
+\end{proposition}
+\begin{proof}
+With the fixed normalization by the unit-ball volume, the radial
+change of variables has density $2p\zeta^{2p-1}\rho_\varsigma^{2p}$,
+proving the mass normalization.
+Its angular derivative is $U_x-\zeta L_{\varsigma}U_\zeta$.
+Substitution gives
+\[
+ U_x-\zeta L_{\varsigma}U_\zeta
+ = (2p)^{-1/2}\zeta^{-c_p}\rho_\varsigma^{-p}
+       \{v_x-L_\varsigma(\zeta v_\zeta+v/2)\}.
+\]
+The radial derivative gives
+$(2p)^{-1/2}\zeta^{-c_p}\rho_\varsigma^{-p}(v_\zeta-c_pv/\zeta)$.
+These identities prove \eqref{inf:flow-formula}.
+
+To integrate the form, radial integration of its first square gives
+$\alpha_\varsigma(-\partial_\zeta^2+c_p(c_p-1)/\zeta^2)$.
+The purely angular square gives
+\[
+ \zeta^{-2}\{\alpha_\varsigma\Lambda+\tfrac12[\Lambda,\alpha_\varsigma]
+                         -\tfrac12(\Lambda\alpha_\varsigma)_{\mathrm{mult}}\}.
+\]
+For the cross terms use $\alpha_{\varsigma}L_\varsigma=-(\alpha_\varsigma)_x/2$ and
+$\mathsf D^*=-\mathsf D+2$ in radial measure $\zeta^{-2}d\zeta$.
+Their sum is
+\[
+ \zeta^{-2}\{\tfrac12[\Lambda,\alpha_\varsigma](\mathsf D-1)
+                         +\tfrac12(\Lambda\alpha_\varsigma)_{\mathrm{mult}}\}.
+\]
+The multiplication terms cancel. The remaining square has
+coefficient $\alpha_{\varsigma}q_xL_\varsigma^2$, giving
+\eqref{inf:flow-exact-operator} and \eqref{inf:G-angular}.
+These are identities on finite angular sums with radial functions
+compactly supported in $(0,1)$.
+
+We specify the closure. Let $\mathcal V_0=\Dom(K_0^{1/2})$, defined
+as the completion of that core in its positive form norm.
+Angular spectral truncations commute with $K_0$ and converge in
+this norm. In each remaining radial block the Friedrichs definition
+gives approximation by compactly supported radial functions.
+Thus the stated core is form dense. Its angular integration by
+parts has no endpoint term: the boundary factor is
+$x^{\ab}(1-x)^{\bb}$ and the test functions are polynomial there.
+Cutting off a smooth angular function near $x=0$ costs
+$O(\delta^{\ab-1})$ in energy, and near $x=1$ costs
+$O(\delta^{\bb-1})$. Both tend to zero since $\ab,\bb>1$.
+At the physical origin a radial cutoff costs $O(\delta^{2p-2})$.
+Consequently the block axes and origin have zero capacity for
+this weighted energy.
+For integer blocks this is the invariant Euclidean $H^1_0$
+realization, by averaging smooth Dirichlet approximations over the
+compact symmetry group. For real parameters define the original weighted Dirichlet
+realization as the closure of smooth functions compactly supported
+in the open meridian rectangle, using the norm from mass plus
+\[
+ 2p\int_0^1\!\int_0^1
+ \left(|U_\zeta|^2+\zeta^{-2}q_x|U_x|^2\right)
+                  \zeta^{2p-1}\,d\zeta\,d\mu_r.
+\]
+The polynomial angular core has the same closure. The cutoffs
+just estimated put every finite angular
+polynomial times a compactly supported smooth radial function
+in this closure. Conversely, for a smooth function compactly
+supported in the meridian rectangle, let $U_J$ be its angular
+projection on $P_0,\ldots,P_J$.
+Integration by parts in $x$ gives
+$\langle\Lambda_r U,P_j\rangle=\lambda_j\langle U,P_j\rangle$.
+The smooth compact support makes $\Lambda_rU$ square integrable,
+so Parseval gives square summability of these coefficients with
+weight $\lambda_j^2$. It follows that $U_J\to U$ in angular
+energy as well as in angular $L^2$.
+The same projection commutes with the radial derivative;
+Parseval applied to $U_\zeta$ gives convergence of its radial
+energy. The radial support stays in a compact subinterval of
+$(0,1)$, so the factor $\zeta^{-2}$ is bounded there.
+Dominated convergence in the radial integral proves convergence
+in the full weighted form norm. Each projected radial coefficient
+is smooth with compact support. Thus both cores have the same
+closure, establishing the real-parameter domain.
+
+For integer blocks, the identification with the Euclidean
+invariant form domain can also be read in both directions.
+Average a compactly supported smooth Euclidean approximation
+over $O(a)\times O(b)$; averaging is a contraction for mass and
+Dirichlet energy. The result is smooth and invariant.
+Cut it off at the origin and at each block axis. In squared
+angular distance the extra energy is bounded by
+$C\delta^{\ab-1}+C\delta^{\bb-1}$; at the origin it is bounded
+by $C\delta^{2p-2}$. All tend to zero. Away from those sets it
+is a smooth function of the meridian coordinates with compact
+support, so it belongs to the weighted closure just described.
+In the reverse direction a meridian test function with compact
+support away from the axes and origin lifts to a smooth
+invariant Euclidean test function, extended by zero across
+those sets. This proves equality of the closed domains.
+
+The estimates proved immediately below show that the difference of
+\eqref{inf:flow-formula} and the ball form has relative norm below
+$1/2$ on $\mathcal V_0$. Hence its closed form norm is equivalent to
+that of $K_0$, and its closure has exactly domain $\mathcal V_0$.
+The angular mass factor $\rho_\varsigma^p$ also preserves the
+weighted first-order domain. The required control at the origin
+is Hardy's inequality in the radial weight:
+\begin{equation}\label{inf:flow-Hardy}
+ \int_0^1|U|^2\zeta^{2p-3}\,d\zeta
+ \le\frac1{(p-1)^2}
+      \int_0^1|U_\zeta|^2\zeta^{2p-1}\,d\zeta.
+\end{equation}
+For compactly supported $U$ this follows by integrating
+$(\zeta^{2p-2})'|U|^2$ and applying Cauchy--Schwarz; completion
+extends it. Integrate also against $\mu_r$.
+Multiplication by $\rho_\varsigma^{\pm p}$ differentiates in $x$
+by the extra term $\pm p L_\varsigma U$. Its angular energy has
+the factor $p^2|U|^2/\zeta^2$, which is controlled by
+\eqref{inf:flow-Hardy}. Both multipliers and their inverses are
+bounded for fixed parameters. Thus the unitary mass transformation
+preserves the closure, including its origin behaviour.
+The radial graph map is bi-Lipschitz even at the origin: on the
+sphere its radial factor and first derivatives are bounded and it
+is bounded away from zero. Such a map transports Dirichlet energy
+and its closure. Therefore the just described closure is the
+physical one, including at the origin. The relative derivative
+bounds below prove norm $C^1$ dependence. Compactness of the
+embedding $\mathcal V_0\hookrightarrow\Hc_{\mathrm{flow}}$ persists
+under equivalent form norms and proves compact resolvent.
+\end{proof}
+
+\begin{lemma}[Relative form estimates]\label{inf:flow-relative}
+Set $B_{1,\varsigma}=-2\mathcal L(\epsilon_{\mathrm q}T_\varsigma)$ and
+$\mathcal R_{2,\varsigma}=H_\varsigma-H_0-B_{1,\varsigma}$. For $k=0,1,2$ and large $p$,
+\begin{align}
+ \nrm{K_0^{-1/2}(\partial_\varsigma^kB_{1,\varsigma})K_0^{-1/2}\mathsf W^{-1}}
+ &\le C\tau p^{-2},\label{inf:flow-linear-relative}\\
+ \nrm{\mathsf W^{-1}K_0^{-1/2}(\partial_\varsigma^k\mathcal R_{2,\varsigma})
+               K_0^{-1/2}\mathsf W^{-1}}
+ &\le C\theta^2p^{-3}.\label{inf:flow-quadratic-relative}
+\end{align}
+These are estimates on the full radial spaces. They also establish
+the closure and differentiability assertions in
+Proposition~\ref{inf:flow-form}.
+\end{lemma}
+\begin{proof}
+We first prove the band estimate used to sum the exact form.
+If an angular matrix $M$ has bandwidth $m$ and
+$|M_{ij}|\le M_*w_i^aw_j^b$, $a,b\in\{0,1\}$, then
+\begin{equation}\label{inf:band-form-bound}
+ \nrm{\mathsf W^{-a}K_0^{-1/2}\mathcal L(M)
+                K_0^{-1/2}\mathsf W^{-b}}
+ \le C(m+1)^3M_*.
+\end{equation}
+Indeed the radial forms
+$K_{0,j}=-\partial_\zeta^2+(\nu_j^2-1/4)/\zeta^2+R^2$
+are comparable with ratio at most $C(m+1)^2$ for $|i-j|\le m$.
+This follows from $\nu_i/\nu_j$ and its inverse being at most
+$C(m+1)$. Thus
+$\nrm{K_{0,i}^{-1/2}K_{0,j}^{1/2}}\le C(m+1)$.
+The block $M_{ij}H_{0,j}$ in \eqref{inf:linear-form-operator}
+is bounded after normalization since
+$\nrm{H_{0,j}K_{0,j}^{-1}}\le1$.
+For the commutator block use the two form bounds
+\[
+ \nrm{\zeta^{-1}K_{0,i}^{-1/2}}\le C/(p+i),\qquad
+ \nrm{\zeta^{-1}\mathsf DK_{0,j}^{-1/2}}\le C.
+\]
+The first follows from the centrifugal potential; the second from
+$\zeta^{-1}\mathsf D=\partial_\zeta+1/(2\zeta)$ and the same
+positive form. Also
+$|\lambda_i-\lambda_j|\le Cm(p+i+j)\le Cm(m+1)(p+i)$.
+Each normalized block is bounded by $C(m+1)^2M_*$ after its
+weights are removed. The row and column sums involve at most
+$2m+1$ blocks. The scalar Schur inequality proves
+\eqref{inf:band-form-bound} on the form core, then by closure.
+
+For $n\ge2$, Lemma~\ref{inf:angular-weighted} gives
+\[
+ |(\partial_\varsigma^kT_\varsigma^n)_{ij}|\le n^2C^nw_iw_j,\qquad k\le2,
+\]
+with the factor $n^2$ replaced by one when $k=0$ if desired.
+Put one inverse weight on the first factor and one on the last;
+each differentiated endpoint has the same one-sided bound, and
+interior factors are uniformly bounded. The product rule has at
+most a fixed multiple of $n^2$ terms. The bandwidth is $2n$.
+The series
+\[
+ \alpha_\varsigma=I-2\epsilon_{\mathrm q}T_\varsigma
+       +\sum_{n\ge2}(-1)^n(n+1)\epsilon_{\mathrm q}^nT_\varsigma^n
+\]
+therefore has a two-sided weighted remainder under
+\eqref{inf:band-form-bound} of size $C\epsilon_{\mathrm q}^2$,
+including two derivatives. Its dominating series is
+$\sum n^6(C|\epsilon_{\mathrm q}|)^n$, which converges uniformly.
+
+Equation~\eqref{inf:G-weighted} and the convergent series for
+$(I+\epsilon_{\mathrm q}T_\varsigma)^{-4}$ give
+\[
+ \nrm{\mathsf W^{-1}(\partial_\varsigma^k\gamma_\varsigma)\mathsf W^{-1}}
+ \le Cp\epsilon_{\mathrm q}^2,\qquad k\le2.
+\]
+To move the left weight through the inverse series, use boundedness
+of $\mathsf W^{-1}T_\varsigma\mathsf W$ and its derivatives, which follows
+from \eqref{inf:T-entry-bound}. Since
+$\zeta^{-1}\mathsf D$ is controlled by $K_0^{1/2}$ and commutes
+with the angular weights, the same bound holds for the normalized
+form $\mathcal G(\gamma_\varsigma)$.
+Now $|\epsilon_{\mathrm q}|\le C\tau/p^2$.
+The first-order band estimate proves
+\eqref{inf:flow-linear-relative}; the two remainder estimates prove
+\eqref{inf:flow-quadratic-relative}.
+Their unweighted sum is below $1/2$ for large $p$.
+
+The $k=2$ bounds provide a uniform modulus of continuity for the
+first derivative: Taylor's integral formula on the finite bands,
+followed by the uniformly convergent series, bounds the difference
+quotient remainder in relative form norm. Thus the family is norm
+$C^1$ on the common form space. These bounds also prove the
+closure and regularity assertions of Proposition~\ref{inf:flow-form}.
+\end{proof}
+
+\subsection{The boundary matrix and the transport term}
+
+Fix a finite $W_{\mathrm{flow}}$ and set
+$\PP=\one_{[-W_{\mathrm{flow}},W_{\mathrm{flow}}]}(H_0-R^2)$.
+For large $p$, Lemma~\ref{inf:window-isolation} says its states have
+distinct, nonadjacent angular indices. Index its orthonormal states by
+$i$, let $j(i)$ be their angular indices and $z_i$ their positive
+zeros, and write
+\[
+ D_\PP=\diag(z_i^2-R^2),\quad
+ Z_\PP=\diag(z_i/R),\quad
+ T_\PP^{\mathrm{ang}}=[(T_\varsigma)_{j(i),j(i')}],\quad
+ \mathcal S_\varsigma=\PP(\epsilon_{\mathrm q}T_\varsigma\mathsf D)\PP.
+\]
+The matrix $T_\PP^{\mathrm{ang}}$ is the \emph{angular principal
+submatrix}, while $\mathcal S_\varsigma$ is the actual Hilbert-space
+compression with radial overlaps.
+
+\begin{lemma}[Transport identity]\label{inf:transport}
+One has $\mathcal S_\varsigma^*=-\mathcal S_\varsigma$ and the exact identity
+\begin{equation}\label{inf:transport-identity}
+ \PP B_{1,\varsigma}\PP=\theta Z_\PP T_\PP^{\mathrm{ang}} Z_\PP
+                             -[D_\PP,\mathcal S_\varsigma].
+\end{equation}
+For $k=0,1$,
+\begin{equation}\label{inf:transport-bounds}
+ \nrm{\PP(\partial_\varsigma^kB_{1,\varsigma})\PP\mathsf W^{-1}}\le C\tau,
+ \qquad
+ \nrm{(\partial_\varsigma^k\mathcal S_\varsigma)\mathsf W^{-1}}\le C\tau/p,
+\end{equation}
+with constants independent of $W_{\mathrm{flow}}$ once
+$p^2\ge W_{\mathrm{flow}}$.
+\end{lemma}
+\begin{proof}
+As interior differential expressions,
+$[H_0,\mathsf D]=2H_0$ and
+$[H_0,h]=\zeta^{-2}[\Lambda,h]$ for an angular multiplier $h$.
+Thus $B_{1,\varsigma}=-[H_0,\epsilon_{\mathrm q}T_\varsigma\mathsf D]$.
+Green's identity applied to two ball Dirichlet eigenfunctions gives
+\[
+ \langle\phi_i,H_0(h\mathsf D\phi_{i'})\rangle
+ =z_i^2\langle\phi_i,h\mathsf D\phi_{i'}\rangle
+ +\int h\,\partial_\zeta\phi_i(1)
+                 \partial_\zeta\phi_{i'}(1)\,d\mu_r.
+\]
+The origin term vanishes by the regular radial behaviour. The
+boundary derivatives are $\sqrt2z_iP_{j(i)}$ by
+Lemma~\ref{inf:bessel-spacing}. Substitution of
+$h=-\theta T_\varsigma/(2R^2)$ gives
+\eqref{inf:transport-identity}. Radial integration on pairs of
+Dirichlet eigenfunctions gives $\mathsf D^*=-\mathsf D$; the
+angular multiplier commutes with $\mathsf D$. Hence $\mathcal S_\varsigma$ is
+skew-adjoint.
+On the fixed window $\nrm{K_0^{1/2}\PP}\le Cp$.
+Equation~\eqref{inf:flow-linear-relative} proves the first bound
+in \eqref{inf:transport-bounds}. The form estimate also gives
+$\nrm{\mathsf D\PP}\le Cp$; use
+\eqref{inf:T-entry-bound} and
+$|\epsilon_{\mathrm q}|\le C\tau/p^2$ for the second bound.
+\end{proof}
+
+\subsection{Eliminating the full complementary space}
+
+\begin{lemma}[Complementary inverse and remainder]
+\label{inf:flow-complement}
+There is an absolute lower bound on $W_{\mathrm{flow}}\ge100$ such
+that the following holds for $p$ sufficiently large depending on
+that fixed window. For every $\varsigma\in I$ and real $|\lambda|\le1$,
+the form operator
+$\PP^\perp(H_\varsigma-R^2-\lambda)\PP^\perp$ is invertible. Its exact
+Schur matrix is
+\begin{equation}\label{inf:flow-schur}
+ F_\PP(\varsigma,\lambda)=D_\PP-\lambda+
+                        \PP B_{1,\varsigma}\PP+\mathcal R_\varsigma(\lambda),
+\end{equation}
+where, for $k=0,1$,
+\begin{equation}\label{inf:flow-schur-remainder}
+ \nrm{\mathsf W^{-1}(\partial_\varsigma^k\mathcal R_\varsigma)\mathsf W^{-1}}
+ \le C\theta^2(W_{\mathrm{flow}}^{-1}+p^{-1}).
+\end{equation}
+The constant $C$ is independent of the chosen window provided
+$p^2\ge W_{\mathrm{flow}}$ and the window exceeds its fixed lower
+bound. A kernel vector is reconstructed uniquely from $v=\PP u$,
+and its complementary part satisfies
+\begin{equation}\label{inf:flow-Q-reconstruction}
+ \nrm{\PP^\perp u}\le C\tau W_{\mathrm{flow}}^{-1}
+                                      \nrm{\mathsf W v}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Use the positive form normalization $K_0$ and abbreviate
+$Q=\PP^\perp$, $\mathcal B_\varsigma=H_\varsigma-H_0$, and
+$\mathfrak C_\varsigma=K_0^{-1/2}\mathcal B_{\varsigma}K_0^{-1/2}$.
+Write $K_{0,\PP}$ and $K_{0,Q}$ for the restrictions of $K_0$
+to $\PP\Hc_{\mathrm{flow}}$ and $Q\Hc_{\mathrm{flow}}$.
+The inverse $\mathfrak U_0$ of the normalized unperturbed complement is
+radially diagonal with entries
+\[
+ \frac{z_{j,k}^2+R^2}{z_{j,k}^2-R^2-\lambda},
+ \qquad |z_{j,k}^2-R^2|>W_{\mathrm{flow}}.
+\]
+Their absolute supremum is at most $Cp^2/W_{\mathrm{flow}}$.
+This includes the whole infinite tail, where the ratio tends to
+one; $p^2\ge W_{\mathrm{flow}}$ covers that limit.
+Lemma~\ref{inf:flow-relative} gives
+$\nrm{\mathfrak C_\varsigma\mathsf W^{-1}}+
+\nrm{\mathfrak C'_\varsigma\mathsf W^{-1}}\le C\tau/p^2$.
+Choose the fixed window large enough that
+$\nrm{\mathfrak U_0Q\mathfrak C_{\varsigma}Q}\le1/2$ uniformly for $\tau\le20$.
+The normalized inverse
+\[
+ \mathfrak U=(I+\mathfrak U_0Q\mathfrak C_{\varsigma}Q)^{-1}\mathfrak U_0
+\]
+has norm at most $Cp^2/W_{\mathrm{flow}}$, and
+$\mathfrak U'_\varsigma=-\mathfrak UQ\mathfrak C'_{\varsigma}Q\mathfrak U$ has norm at most
+$Cp^2\tau/W_{\mathrm{flow}}^2$.
+The actual form inverse is $K_{0,Q}^{-1/2}\mathfrak UK_{0,Q}^{-1/2}$.
+
+Eliminate $Q$ using this inverse. The remainder in
+\eqref{inf:flow-schur} is
+\[
+ \mathcal R_\varsigma=\PP\mathcal R_{2,\varsigma}\PP
+ -\PP\mathcal B_{\varsigma}QK_{0,Q}^{-1/2}\mathfrak UK_{0,Q}^{-1/2}
+                                      Q\mathcal B_\varsigma\PP.
+\]
+In the second term the two exterior $K_{0,\PP}^{1/2}$ factors cost
+$Cp$ each; each normalized perturbation with its exterior inverse
+weight costs $C\tau/p^2$. The weighted norm is therefore
+$C\theta^2/W_{\mathrm{flow}}$.
+Its derivative either replaces one perturbation by $\mathfrak C'_\varsigma$ or replaces
+$\mathfrak U$ by $\mathfrak U'_\varsigma$. The added bound in the latter case is
+$C\tau^3/W_{\mathrm{flow}}^2$, absorbed in the same bound.
+The first remainder term costs $C\theta^2/p$ by
+\eqref{inf:flow-quadratic-relative}. This proves
+\eqref{inf:flow-schur-remainder} with no dependence of $C$ on the
+window size.
+
+The eliminated component is
+$u_Q=-K_{0,Q}^{-1/2}\mathfrak UQ\mathfrak C_\varsigma\PP K_{0,\PP}^{1/2}v$.
+Since $K_0\ge cp^2I$, the factors cost respectively
+$C/p$, $Cp^2/W_{\mathrm{flow}}$, $C\tau/p^2$ after extracting
+$\mathsf Wv$, and $Cp$. This proves
+\eqref{inf:flow-Q-reconstruction}. The reconstruction belongs to
+the common form domain. The eliminated equation is exactly zero
+there, so the reduced kernel equation is equivalent to the full
+weak eigenvalue equation. A weak solution of that equation is in
+the operator domain by the definition of the associated closed-form
+operator, completing the equivalence of the reduced and full
+eigenvalue equations.
+\end{proof}
+
+\subsection{The seed and the second low state}
+
+Assume now that $R$ and $\theta$ satisfy
+\eqref{inf:detuning-definition} with $J_p(R)=0$.
+
+\begin{lemma}[Low-block elimination]\label{inf:flow-low-block}
+For every fixed $W_{\mathrm{flow}}$ above the absolute lower bound in
+Lemma~\ref{inf:flow-complement} and all sufficiently large
+$p$, the only angular indices below eight in the flow window are
+$j=2,5$, each with one radial state. Their ball offsets satisfy
+\begin{equation}\label{inf:low-offsets}
+ d_2=-\frac{\theta}{2p}+O(\theta^2p^{-3}),\qquad
+ d_5=-72+O(p^{-1}).
+\end{equation}
+Let $L$ be their two-dimensional span and $\PP_H=\PP-L$.
+Write $F_L,\mathsf W_L,u_L$ for the $L$ blocks of $F_\PP,\mathsf W,u$,
+and $\mathcal R_{HL},\mathcal R_{LH}$ for the corresponding off-diagonal
+blocks of $\mathcal R_\varsigma$ between $L$ and $\PP_H$.
+Write $D_H,Z_H,\mathsf W_H$ for the restrictions of
+$D_\PP,Z_\PP,\mathsf W$ to this high block, and
+$T_H^{\mathrm{ang}}$ for its angular principal submatrix.
+For $|\lambda|\le\omega_p=\tau/(16p)$, the $L$ block of
+$F_\PP(\varsigma,\lambda)$ is invertible. Eliminating it gives
+\begin{equation}\label{inf:high-schur}
+ F_H(\varsigma,\lambda)=D_H-\lambda+B_{1,HH}
+                                      +\widehat{\mathcal R}_\varsigma(\lambda),
+\end{equation}
+with
+\begin{equation}\label{inf:high-schur-remainder}
+ \nrm{\mathsf W_H^{-1}(\partial_\varsigma^k\widehat{\mathcal R}_\varsigma)
+                         \mathsf W_H^{-1}}
+ \le C\theta^2(W_{\mathrm{flow}}^{-1}+p^{-1}),\quad k=0,1.
+\end{equation}
+A nonzero full eigenvector in this band has $v=\PP_Hu\ne0$ and
+$\nrm{u}\le C\nrm v$, uniformly also as $\tau\downarrow0$.
+\end{lemma}
+\begin{proof}
+The trace ratio and \eqref{inf:rho-equation} give
+$R=2p+3+O(p^{-1})$. Normalize the seed radial function by
+$f'(R)=1$, $f(R)=\chi=\theta/(4Rp)$.
+The collar equation has bounded coefficients and one bounded
+derivative for fixed angular index. On $|y|\le2|\chi|$ its integral
+equation yields $f'(R+y)=1+O(|\chi|)$. The endpoint values have
+opposite signs, and the derivative has positive sign.
+Its unique zero in the collar is
+$R-\chi+O(\chi^2)$. Squaring gives
+$d_2=-2R\chi+O(R\chi^2)=-\theta/(2p)+O(\theta^2p^{-3})$,
+uniformly for arbitrarily small nonzero $\theta$.
+
+For $j=5$ use \eqref{inf:resonant-trace} with $c_5=18$.
+The same collar argument places its zero at
+$R-18/p+O(p^{-2})$, giving the second offset in
+\eqref{inf:low-offsets}. For $0\le j<8$ other than $2,5$, the
+finite recurrence \eqref{inf:finite-q-recurrence} has nonzero
+limiting value at $k=2j-1$. Its derivative trace stays bounded.
+The collar equation excludes a zero in a fixed positive-width
+collar of $R$. Such an index is therefore outside every fixed
+energy window for large $p$. The radial spacing excludes a second
+state in each remaining index.
+
+The first-order operator has no $L$--$\PP_H$ coupling or coupling
+between the two $L$ states. Their angular distances are at least
+three, whereas both matrices in
+\eqref{inf:transport-identity} have angular bandwidth two.
+The seed diagonal is
+\[
+ \sigma_2=d_2+\frac{\theta z_2^2}{pR^2}
+          =\frac{\theta}{2p}+O(\theta^2p^{-3}),
+\]
+because $(T_\varsigma)_{22}=1/p$ exactly. The other diagonal tends to $-72$
+and its perturbation is $O(\tau/p)$.
+For $|\lambda|\le\omega_p$, these two uncorrected diagonal entries
+have modulus at least $\tau/(4p)$ and $36$, respectively.
+The remainder block has norm at most
+$C\theta^2(W_{\mathrm{flow}}^{-1}+p^{-1})p^{-2}$ because
+$w_2,w_5\le6/p$. A two-dimensional Neumann series gives
+\[
+ \nrm{F_L^{-1}}+\nrm{\partial_{\varsigma}F_L^{-1}}\le Cp/\tau.
+\]
+For the derivative use
+$(F_L^{-1})'=-F_L^{-1}F'_LF_L^{-1}$ and
+$\nrm{F'_L}\le C\tau/p$, which follows from the diagonal structure
+and the angular derivative bound. In particular,
+\begin{equation}\label{inf:weighted-low-inverse}
+ \nrm{\mathsf W_LF_L^{-1}\mathsf W_L}+
+ \nrm{\mathsf W_L(\partial_{\varsigma}F_L^{-1})\mathsf W_L}
+ \le C/(p\tau).
+\end{equation}
+The second elimination has remainder
+\[
+ \widehat{\mathcal R}
+ =\mathcal R_{HH}-\mathcal R_{HL}F_L^{-1}\mathcal R_{LH}.
+\]
+Put $a_*=C\theta^2(W_{\mathrm{flow}}^{-1}+p^{-1})$.
+The weighted new term and its derivative are at most
+$Ca_*^2/(p\tau)$ by \eqref{inf:weighted-low-inverse}.
+For $\tau\le20$ this is absorbed in $a_*$ after increasing the
+$p$ threshold, proving \eqref{inf:high-schur-remainder}.
+Reconstruction gives
+\[
+ \nrm{u_L}\le C\tau(W_{\mathrm{flow}}^{-1}+p^{-1})
+                           \nrm{\mathsf W_Hv}.
+\]
+Combining this with \eqref{inf:flow-Q-reconstruction} proves
+$\nrm u\le C\nrm v$ and the nonvanishing assertion.
+The inverse factors $1/\tau$ are paired with the quadratic
+remainders, giving uniform reconstruction for $0<\tau\le20$.
+\end{proof}
+
+\begin{lemma}[Ordered eigenvalue derivatives]\label{inf:ordered-eigenvalues}
+For the common $C^1$ closed-form family above, the ordered
+eigenvalues are locally Lipschitz. At an interior parameter
+$\varsigma_0\in(1/64,1/16)$, suppose an eigenvalue $\lambda$ has multiplicity
+$m$ and occupies ordered positions $i,\ldots,i+m-1$.
+Let $\mu_1\le\cdots\le\mu_m$ be the eigenvalues of the derivative
+form restricted to its Hilbert eigenspace. The one-sided
+derivatives exist and satisfy
+\begin{equation}\label{inf:one-sided-eigenvalues}
+ \lambda'_{i+r-1,+}(\varsigma_0)=\mu_r,\qquad
+ \lambda'_{i+r-1,-}(\varsigma_0)=\mu_{m-r+1},\qquad 1\le r\le m.
+\end{equation}
+Thus every one-sided derivative is an eigenvalue of the
+compressed derivative form. An ordered eigenvalue need not
+have a two-sided derivative at a multiple crossing.
+\end{lemma}
+\begin{proof}
+A fixed positive shift has inverse that is norm $C^1$, by the
+inverse identity on the common form space. Its compact resolvent
+admits a contour surrounding the isolated finite cluster in
+question. The contour integral gives a $C^1$ finite-rank
+projection, also with values in the form domain. Local unitary
+transport of this projection identifies its range with a fixed
+finite-dimensional space. Restricting the resolvent there and
+inverting that finite matrix gives a $C^1$ self-adjoint matrix
+for the original spectral cluster; see also
+\cite[Chapter~II, Theorem~5.4 and Theorem~6.8]{inf:kato}.
+At $\varsigma_0$ it is $\lambda I$. Its derivative is the
+restricted derivative form: differentiation of its unitary
+transport contributes a commutator with $\lambda I$, which is
+zero. The matrix expansion is therefore $\lambda I+hB+o(|h|)$,
+with $B$ having eigenvalues $\mu_r$.
+The finite-dimensional min--max principle bounds changes of
+ordered eigenvalues by the operator norm of the remainder.
+For $h>0$ the order of $h\mu_r$ is unchanged, and for $h<0$ it
+is reversed. Division by $h$ gives
+\eqref{inf:one-sided-eigenvalues}.
+The same estimate for two nearby parameters gives local
+Lipschitz continuity. Compactness of the parameter interval
+gives absolute continuity for each fixed ordered curve, hence
+a two-sided derivative almost everywhere.
+\end{proof}
+
+\begin{theorem}[Local spectral flow]\label{inf:flow-theorem}
+For all sufficiently large $p\in\mathcal P_{\mathrm{bd}}$, let $R,\theta$
+be as in Lemma~\ref{inf:detuning}. There are absolute constants
+$c_{\mathrm{flow}}>0$ and $P_{\mathrm{flow}}<\infty$ such that
+every ordered eigenvalue offset $\lambda_i(\varsigma)$ of $H_\varsigma-R^2$
+satisfies
+\begin{equation}\label{inf:flow-conclusion}
+ \operatorname{sign}(\theta)\lambda_i'(\varsigma)
+ \ge c_{\mathrm{flow}}\tau/p
+ \quad\hbox{for almost every }\varsigma\hbox{ with }
+ |\lambda_i(\varsigma)|<\tau/(16p),
+\end{equation}
+when $p\ge P_{\mathrm{flow}}$. The constants are uniform in
+$0<\tau\le20$.
+\end{theorem}
+\begin{proof}
+Fix an eigenvalue $\lambda$ in the band and a vector $u$ in its
+entire eigenspace. Put $v=\PP_Hu$. The two exact eliminations show
+that $v\ne0$. With $v,\lambda$ held fixed, differentiation of the
+reconstructed quadratic form gives
+\begin{equation}\label{inf:feshbach-derivative}
+ \langle u,H'_{\varsigma}u\rangle
+ =\langle v,\partial_{\varsigma}F_H(\varsigma,\lambda)v\rangle.
+\end{equation}
+Indeed, terms differentiating the reconstruction lie in
+$\PP^\perp+L$, and their pairing with the operator vanishes by the
+eliminated equations. The bounded normalized inverses above
+make the reconstruction differentiable in the common form norm.
+
+The transport identity gives
+\[
+ \partial_{\varsigma}F_H
+ =\theta Z_H(T_H^{\mathrm{ang}})'Z_H
+          -[D_H,\mathcal S'_{HH}]+\partial_\varsigma\widehat{\mathcal R}.
+\]
+The first term, after multiplication by $\operatorname{sign}\theta$,
+is at least $c_1\tau\nrm{\mathsf W_Hv}^2$ in quadratic form.
+Here Lemma~\ref{inf:angular-positive} applies to all the retained
+indices, and $z_i/R\to1$ uniformly in the fixed window; $c_1>0$
+is absolute.
+Estimate the transport term on the actual kernel vector, using
+\eqref{inf:high-schur}:
+$D_Hv=\lambda v-(B_{1,HH}+\widehat{\mathcal R})v$.
+Since $\mathcal S'_{HH}$ is skew-adjoint, its real pairing with $\lambda v$
+vanishes. Thus
+\begin{align*}
+ |\langle v,[D_H,\mathcal S'_{HH}]v\rangle|
+ &\le2\nrm{(B_{1,HH}+\widehat{\mathcal R})v}
+                                  \nrm{\mathcal S'_{HH}v}\\
+ &\le C\theta^2p^{-1}\nrm{\mathsf W_Hv}^2.
+\end{align*}
+The final remainder is at most
+$C\theta^2(W_{\mathrm{flow}}^{-1}+p^{-1})
+\nrm{\mathsf W_Hv}^2$.
+Choose one constant $C_{\mathrm{flow,err}}$ dominating the
+transport-error constant and the constants in
+\eqref{inf:flow-schur-remainder} and
+\eqref{inf:high-schur-remainder}. It is independent of
+$W_{\mathrm{flow}}$, under their stated lower bound on that
+window. The combined error is at most
+$C_{\mathrm{flow,err}}\theta^2(W_{\mathrm{flow}}^{-1}+2p^{-1})
+\nrm{\mathsf W_Hv}^2$.
+Choose $W_{\mathrm{flow}}$ so large that
+$20C_{\mathrm{flow,err}}/W_{\mathrm{flow}}<c_1/4$ and the
+complementary-inverse conditions hold. Next choose $p$ large
+enough that $40C_{\mathrm{flow,err}}/p<c_1/4$.
+The other window-dependent requirements are
+$p^2\ge W_{\mathrm{flow}}$, $2W_{\mathrm{flow}}/R<1/10$,
+and the fixed-index asymptotic threshold in
+Lemma~\ref{inf:flow-low-block}. Also impose the near-crossing
+low-degree threshold in Proposition~\ref{inf:low-exclusion}. Equations
+\eqref{inf:feshbach-derivative} and these bounds give
+\begin{equation}\label{inf:weighted-flow-margin}
+ \operatorname{sign}(\theta)\langle u,H'_{\varsigma}u\rangle
+ \ge(c_1/2)\tau\nrm{\mathsf W_Hv}^2.
+\end{equation}
+
+To turn the weighted bound into a $1/p$ margin, put
+$J_p=\lfloor\sqrt p/16\rfloor$.
+For large $p$ every index $j<J_p$ other than the removed seed is in
+the exclusion range of Proposition~\ref{inf:low-exclusion}.
+Its ball offset has modulus greater than $32$.
+On those rows of \eqref{inf:high-schur}, invert $D_H-\lambda$,
+whose inverse norm is at most $1/31$, to get
+\[
+ \nrm{v_{j<J_p}}\le C\tau\nrm{\mathsf W_Hv}.
+\]
+On the other indices $w_j\ge c/\sqrt p$, giving
+$\nrm{v_{j\ge J_p}}\le C\sqrt p\nrm{\mathsf W_Hv}$.
+Lemma~\ref{inf:flow-low-block} therefore yields
+$\nrm{\mathsf W_Hv}^2\ge cp^{-1}\nrm u^2$.
+The further resonant low states $j=8,11,\ldots$ in a large fixed
+window are included in this argument: they remain in $\PP_H$,
+are covered by its positive angular variation, and are excluded
+from the near-zero mass by the last row estimate.
+Substitution into \eqref{inf:weighted-flow-margin} proves the
+claimed derivative lower bound on the entire eigenspace.
+
+By Lemma~\ref{inf:ordered-eigenvalues}, every one-sided derivative
+of an ordered eigenvalue in the band is an eigenvalue of this
+compressed derivative form. Its signed lower bound therefore
+applies at every differentiability point, and almost everywhere
+on each absolutely continuous curve. This proves
+\eqref{inf:flow-conclusion}, including multiple crossings.
+\end{proof}

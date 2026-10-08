@@ -1,0 +1,157 @@
+\section{The logarithmic family and fixed-order closure}
+\label{inf:sec-logarithmic}
+
+\begin{definition}[The logarithmic input family]\label{inf:log-family}
+With $m_0$ as in Definition~\ref{inf:input-families}, put
+\[
+ \mathcal P_{\log}=\left\{p\in\tfrac12\Z:p>1,\quad
+ \exists m\ge m_0:\ |p-\widehat p_m|\le\frac{\log p}{8p}\right\}.
+\]
+The root $R$ and detuning are obtained by continuation from this
+crossing. For sufficiently large members the crossing is unique,
+and \eqref{inf:log-detuning-relation} gives $0<\tau\le\log p$.
+Indeed $16\delta_0<8$, and non-coincidence excludes $p=\widehat p_m$.
+Every fixed-width family $\mathcal P_{\mathrm{fix}}(C_{\mathrm{ap}})$ is contained
+in $\mathcal P_{\log}$ from some point on.
+\end{definition}
+
+\begin{lemma}[Multipliers giving unbounded detuning]\label{inf:log-multiplier}
+In each parity, $\mathcal P_{\log}$ has an unbounded selection with
+$\widehat p_m|p-\widehat p_m|\to\infty$ and $\tau\to\infty$.
+\end{lemma}
+\begin{proof}
+The congruence and shifted congruence lemmas give infinitely many
+pairs $(P,Q)$ with $Q\equiv1\pmod4$, either desired parity of $P$,
+and $0<e=Q|Q\alpha_{\mathrm{ar}}-P|<9/2$.
+For each sufficiently large $Q$ choose the largest positive
+$l\equiv1\pmod4$ with
+\[
+ l^2e\le\tfrac1{10}\log(lQ).
+\]
+There is such a multiplier eventually, and the set is finite since
+$l^2/\log(lQ)\to\infty$ at fixed $Q$. Moreover $l\to\infty$:
+every fixed admissible multiplier eventually satisfies the inequality
+because $e<9/2$. Failure at $l+4$ gives the explicit two-sided bound
+\begin{equation}\label{inf:multiplier-two-sided}
+ \left(\frac l{l+4}\right)^2\frac{\log(lQ)}{10}
+ <l^2e\le\frac{\log(lQ)}{10}.
+\end{equation}
+Set $P'=lP$, $Q'=lQ$, $p'=(P'-3)/2$ and let $p_0'$ be the
+crossing with index $(Q'-1)/4$. Then $Q'\equiv1\pmod4$ and the
+parity of $2p'$ is preserved. The crossing expansion gives
+\[
+ p_0'(p'-p_0')
+ =-\frac{\alpha_{\mathrm{ar}}}{4}l^2Q(Q\alpha_{\mathrm{ar}}-P)
+          +d_{\mathrm{ar}}+o(1).
+\]
+Since $l/(l+4)\ge1/5$, it follows that
+\[
+ \frac{\alpha_{\mathrm{ar}}}{1000}\log Q'-C
+ \le p_0'|p'-p_0'|
+ \le\frac{\alpha_{\mathrm{ar}}}{40}\log Q'+C.
+\]
+Here $p'/Q'\to\alpha_{\mathrm{ar}}/2$ and
+$p_0'/p'\to1$. As $\alpha_{\mathrm{ar}}/40<1/8$, the upper bound
+puts these inputs in $\mathcal P_{\log}$ eventually; the lower
+bound tends to infinity. Equation~\eqref{inf:log-detuning-relation}
+then gives $\tau\to\infty$. Successive primary crossings are
+separated by $2\alpha_{\mathrm{ar}}+o(1)$, so another crossing
+cannot place these same inputs in a fixed-width family.
+\end{proof}
+
+\begin{theorem}[Newton closure at order twenty]\label{inf:fixed-order-newton}
+Fix $5/3<q_{\mathrm{gap}}<2$ and
+$0<\xi_{\mathrm{inv}}<2-q_{\mathrm{gap}}$, a compact split interval,
+and a positive gap constant. At every sufficiently large logarithmic
+input whose quartic domain has gap at least
+$\gamma=\kappa_{\mathrm{gap}}\tau p^{-q_{\mathrm{gap}}}$,
+the order-$20$ centre has an exact real zero within
+\[
+ \nrm{z_*-z_0}_{\Xc_p}\le\tau p^{-11}.
+\]
+The zero gives a bounded strictly convex non-ball analytic domain
+with the frequency-one Schiffer data.
+\end{theorem}
+\begin{proof}
+Fix the parameters in the statement. Choose
+$\alpha_{\mathrm{loc}}>0$ and an internal loss smaller than
+$\xi_{\mathrm{inv}}$ as in Theorem~\ref{inf:mixed-conditioning}.
+Fix the angular window constant and then $K_{\mathrm{core}}$ to
+control the global Green sums. Fix the radial head cutoff.
+Take $N=20$ and fix the complex angular disc and coefficient moments
+needed by the centre, clamping and material estimates.
+These choices all precede the threshold in $p$.
+
+Lemma~\ref{inf:detuning-dependencies} supplies the true-centre
+hypothesis of Theorem~\ref{inf:mixed-conditioning} and the
+same-space residual and material factorization. Its row 12 supplies
+the sharp material and nonlinear bounds uniformly in this range.
+They give
+\[
+ \nrm{\AN}\le\tau^{-1}p^{B_{\log}+o(1)},\qquad
+ B_{\log}=\tfrac92+q_{\mathrm{gap}}+\xi_{\mathrm{inv}}<\tfrac{13}2,
+ \qquad \sup\nrm{D^2\Fnl}\le p^{3+o(1)},
+\]
+where $\AN=\Qmat^{-1}J_D^{-1}$ is a bounded isomorphism.
+On the closed ball of radius $\mathfrak r_p=\tau p^{-11}$,
+the three contraction quantities are bounded by
+\begin{align}
+ \nrm{\AN\Fnl(z_0)}/\mathfrak r_p
+ &\le p^{B_{\log}-7+o(1)}\le p^{-1/2+o(1)},
+ \label{inf:log-gate-one}\\
+ \nrm{I-\AN D\Fnl(z_0)}
+ &\le\tau p^{B_{\log}-17+o(1)}
+       \le(\log p)p^{-21/2+o(1)},\label{inf:log-gate-two}\\
+ \sup\nrm{\AN D^2\Fnl}\,\mathfrak r_p
+ &\le p^{B_{\log}-8+o(1)}\le p^{-3/2+o(1)}.
+ \label{inf:log-gate-three}
+\end{align}
+All tend to zero uniformly in $0<\tau\le\log p$.
+The source displacement is below one and the total shape norm
+below $1/4$, so the entire closed ball is in the working region.
+For large $p$ the map $z\mapsto z-\AN\Fnl(z)$ maps that ball
+to itself and has Lipschitz constant at most $1/2$, by the same
+Taylor integral inequalities used in Theorem~\ref{inf:newton-threshold}.
+Completeness and injectivity of $\AN$ give an exact real zero.
+
+Its normalized $C^2$ shape is $O(\tau p^{-2})+O(\tau p^{-11})$,
+which tends to zero. The physical seed coefficient is
+$-\theta/(16r(1-r)p)+O(\tau p^{-2}\mathfrak P_{20}(\log p))$;
+the correction changes it by at most $C\tau p^{-10}$.
+Division by $\tau/p$ makes both errors tend to zero.
+Thus the curvature and non-ball arguments in
+Section~\ref{inf:sec-geometry} apply. The completed-space
+identification in Proposition~\ref{inf:classical-solution} supplies
+the classical field and its two boundary traces in the integer
+dimension $2p$.
+\end{proof}
+
+\begin{proposition}[Assembly of the logarithmic family]\label{inf:log-assembly}
+For every fixed $0<\varepsilon_{\mathrm{sp}}<1/4$ and $0<\eta_{\mathrm{cnt}}<1/3$,
+every sufficiently large $p\in\mathcal P_{\log}$ has the domains of
+Theorem~\ref{inf:fixed-order-newton} at all but
+$O_{\mathrm{sp},\eta_{\mathrm{cnt}}}(p^{2/3+\eta_{\mathrm{cnt}}})$ interior integer splits.
+Distinct retained splits give pairwise non-similar domains.
+The similarity-class lower limit is at least $1/2$ after division
+by $n=2p$, along this family's dimensions.
+\end{proposition}
+\begin{proof}
+Choose
+\[
+ q_{\mathrm{gap}}=2-\eta_{\mathrm{cnt}}/2,\qquad
+ \xi_{\mathrm{inv}}=\eta_{\mathrm{cnt}}/4,\qquad
+ \alpha_{\mathrm{loc}}=\eta_{\mathrm{cnt}}/16.
+\]
+These obey all strict inequalities in the conditioning argument.
+Definition~\ref{inf:log-family} and
+Lemma~\ref{inf:detuning-dependencies} supply its arithmetic,
+low-state and uniform-constant hypotheses.
+Corollary~\ref{inf:log-flow-count} gives the selected quartic gaps
+and at most $C\sqrt{\log p}\,p^{2/3+\eta_{\mathrm{cnt}}/2}
+=O(p^{2/3+\eta_{\mathrm{cnt}}})$ exceptions.
+For every retained split apply Theorem~\ref{inf:fixed-order-newton}
+at the single fixed accuracy twenty. All its thresholds are
+uniform over the compact split interval. Lemma~\ref{inf:similarity-classes}
+proves non-similarity and the lower-limit conclusion by the same
+integer count and then by letting the fixed margin tend to zero.
+\end{proof}

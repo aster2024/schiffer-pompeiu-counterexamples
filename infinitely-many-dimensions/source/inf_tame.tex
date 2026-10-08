@@ -1,0 +1,329 @@
+\section{Uniform dependence on the detuning bound}\label{inf:sec-tame}
+
+Fix the compact split interval, a finite centre accuracy $N$, and
+every finite derivative order and complex disc required for that
+centre. Constants in this section depend on these choices.
+Coefficient and mixed operator estimates are at integer block sizes;
+the intervening flow parameters use the weighted realization of
+Proposition~\ref{inf:flow-form}.
+They are independent of $p$ and of $0<\tau\le T\le\log p$.
+We may replace $T$ by $\max(1,T)$ when forming an envelope.
+
+\begin{lemma}[Detuning-dependent estimates]\label{inf:detuning-dependencies}
+Suppose $|p-p_0|\le C_{\mathrm{ap}}/p_0$, where
+$C_{\mathrm{ap}}\le C_*\log p_0$ with fixed $C_*$, and the continued
+zero has $0<\tau\le T\le\log p$. There are finite integers
+$k_N,d_N^{\mathrm{tame}}$ and constants $c_N,C_N>0$ such that the
+finite-centre estimates hold on
+\[
+ |\eps|\le c_N(1+T)^{-k_N},\qquad
+ \mathfrak P_N(T)=(1+T)^{d_N^{\mathrm{tame}}},\qquad
+ \mathcal B_N(T)=C_N\mathfrak P_N(T)e^{C_N\sqrt T}.
+\]
+Increasing the fixed exponents and constants when necessary, every
+bound in the following table holds. Here $E=K_{\mathrm{flow}}(1+\tau)$,
+$W=C_{\mathrm{cond}}(1+\tau)$, and $\delta$ is the strong centre size.
+The labels in the first column specify the inherited statement
+and the quantity whose bound is being extended.
+
+\begingroup\small\normalfont
+\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.06\textwidth}>{\raggedright\arraybackslash}p{.38\textwidth}>{\raggedright\arraybackslash}p{.48\textwidth}@{}}
+\toprule & Quantity and statement & Uniform bound / small parameter\\\midrule
+\endfirsthead
+\toprule & Quantity and statement & Uniform bound / small parameter\\\midrule
+\endhead
+1 & Root continuation, \ref{inf:detuning} &
+$R-R_{\mathrm{alg}}=-(2\delta_0+O(p^{-1}))(p-p_0)$.\\
+2 & Denominator in \eqref{inf:trace-ratio-exact} &
+$2R^2-4(p+1)(p+2)=4p^2(1+O(p^{-1}))$.\\
+3 & Low-state transfer, \ref{inf:wide-low-transfer} &
+$C C_{\mathrm{ap}}(\ell+1)/p+C C_{\mathrm{ap}}(1+C_{\mathrm{ap}})/p^2$.\\
+4 & Radius equation, \eqref{inf:rho-equation} &
+Analytic in $(\eps,w)$, $w=\theta\eps^2$; $|w|\le T/p^2$.\\
+5 & Finite centre jet, \ref{inf:centres} &
+Each fixed $\eps$ coefficient is polynomial in $\theta$;
+common $\eps$ radius $c_N(1+T)^{-k_N}$.\\
+6 & Collar and complex angular disc, \eqref{inf:collar-ode} &
+Fixed discs; physical displacement $C\tau/p$.\\
+7 & Two physical defects, \eqref{inf:centre-complex-defect} &
+$C_N\theta^2p^{-N}\mathfrak P_N(T)$, also in the weighted
+coefficient norms of \ref{inf:centre-coefficient-defect}.\\
+8 & Quartic comparison, \eqref{inf:centre-profile} &
+Physical error $C_N\tau p^{-3}\mathfrak P_N(T)$;
+normalized error $C_N\tau p^{-4}\mathfrak P_N(T)$.\\
+9 & Density, \eqref{inf:density-graph-bounds} &
+$\nrm{m^{\pm1}}\le e^{Cp\delta}$,
+$\delta\le C\tau/p^2$, so $p\delta\le CT/p$.\\
+10 & Radial modes, \ref{inf:radial-centre-norm} &
+$C_{N,k}p^{k+1}$; normalization units remain separated from zero.\\
+11 & Known-mode composition, \eqref{inf:composition-bound} &
+Head factor $e^{C_N\sqrt T}$; tail step factor
+$e^{C_N\sqrt T/p}$ against Bessel ratio $1/4$.\\
+12 & Clamped centre and material,
+\ref{inf:centre-source-norm}, \ref{inf:sharp-material} &
+$\nrm{U_0}\le p\mathcal B_N(T)$;
+$\nrm{g_0}\le p^3\mathcal B_N(T)$;
+$\nrm{\Qmat^{-1}}\le p^2\mathcal B_N(T)$;
+$\sup\nrm{D^2\Fnl}\le p^3\mathcal B_N(T)$.\\
+13 & Relative flow form, \ref{inf:flow-relative} &
+$C\tau p^{-2}$ and $C\tau^2p^{-3}$;
+series ratio $C\tau/p^2$.\\
+14 & Flow complement, \ref{inf:flow-complement} &
+Choose $E=K_{\mathrm{flow}}(1+\tau)$; ratio $C\tau/E$.\\
+15 & Schur derivative, \eqref{inf:flow-schur-remainder} &
+$C\tau^2(E^{-1}+p^{-1})$;
+$\tau^3/E^2\le\tau^2/K_{\mathrm{flow}}E$.\\
+16 & Seed diagonal, \ref{inf:flow-low-block} &
+$\theta/(2p)+O(\theta^2p^{-3})$;
+weighted low remainder $C\tau^2(E^{-1}+p^{-1})p^{-2}$.\\
+17 & Index-five diagonal, \eqref{inf:low-offsets} &
+$-72+O((1+T)/p)$; primary perturbation $O(\tau/p)$.\\
+18 & Low feedback, \eqref{inf:weighted-low-inverse} &
+For $a_*=C\tau^2(E^{-1}+p^{-1})$, bound $Ca_*^2/(p\tau)$;
+ratio to $\tau$ tends to zero.\\
+19 & Transport, \eqref{inf:transport-bounds} &
+$C\tau^2/p$ in the weighted derivative form;
+ratio to the main margin $O(\tau/p)$.\\
+20 & Norm recovery, \ref{inf:flow-theorem} &
+$\nrm u\le C(\sqrt p+\tau)\nrm{\mathsf Wv}$;
+slope at least $c\tau/p$.\\
+21 & Phase/count, \ref{inf:window-isolation}--\ref{inf:global-count} &
+Phase thickness $C(1+W)/p$;
+count $C\sqrt{1+W}\,p^{2/3}$ for $W\le C\log p$.\\
+22 & Shell and split count, \ref{inf:quartic-count-window},
+\ref{inf:many-splits} &
+Shell $C\tau/p^2$; count window $C(1+\tau)$;
+bad splits $C\sqrt{1+\tau}(p^{2/3}+p^{8/3-q_{\mathrm{gap}}})$.\\
+23 & Radial conditioning, \ref{inf:radial-poles} &
+Complementary graph $Cp$, Neumann ratio $C\tau/p$.\\
+24 & Linear spectral comparison, \ref{inf:centre-form-comparison} &
+Error $C\tau^2p^{-2}$; divided by $\gamma$ it is
+$C\tau p^{q_{\mathrm{gap}}-2}$.\\
+25 & Angular conditioning window &
+$W=C_{\mathrm{cond}}(1+\tau)$; every principal inverse $2/W$.\\
+26 & High core, \ref{inf:critical-strips} &
+Diameter $L_{\mathrm{core}}+C\sqrt{W+1}$;
+condition factor $e^{C(L_{\mathrm{core}}+\sqrt{W+1})}
+\sqrt{L_{\mathrm{core}}+C\sqrt{W+1}+1}$.\\
+27 & High barrier, \ref{inf:off-core-table} &
+$\log(L_{\mathrm{core}}^2/[C(1+\tau)])\ge
+\tfrac12\log\log p$; choose $K_{\mathrm{core}}$ before $p$.\\
+28 & Low core, \ref{inf:path-valuation} &
+$j\le C\sqrt{1+\tau}$; one-step coefficient
+$C(j+1)/p$, downward coefficients $C(j+1)^2/p^2$.\\
+29 & Low-core off-diagonal, \ref{inf:off-core-table} &
+$C\tau(1+\tau)^2p^{-2}$ in coefficient and Hilbert norms.\\
+30 & Singleton off-core, \eqref{inf:global-off-core} &
+$C\tau(1+\tau)^2p^{-2+2\alpha_{\mathrm{loc}}}$.\\
+31 & True-centre graph, \ref{inf:quadratic-graph} &
+$C_N\tau p^{-4}(\mathfrak P_N(T)+\tau)$;
+restore in $\Mmix$ before coefficient conversion.\\
+32 & Radial conversion, \ref{inf:head-tail} &
+One factor $\sqrt p$; tail inverse uniformly bounded.\\
+33 & Convexity, \ref{inf:geometry-convexity} &
+Normalized $C^2$ shape $C\tau p^{-2}$ plus Newton correction.\\
+34 & Non-ball witness, \ref{inf:geometry-nonball} &
+Leading physical coefficient $-\theta/(16r(1-r)p)$;
+centre error $C_N\tau p^{-2}\mathfrak P_N(T)$.\\
+\bottomrule
+\end{longtable}
+\endgroup
+The double lift, residual, and material-defect bounds are
+\begin{equation}\label{inf:tame-residuals}
+ \nrm{\ell_N}\le C_N\theta^2p^{-N}\mathfrak P_N(T),\quad
+ \nrm{\Fnl(z_0)}\le C_N\theta^2p^{2-N}\mathfrak P_N(T),\quad
+ \nrm{\mathcal V_{\mathrm{res}}}\le
+                  C_N\theta^2p^{3-N}\mathfrak P_N(T).
+\end{equation}
+The normal Hessian satisfies
+$\nrm{D_p^{-1}}_{\Ec_1}\le C_Np^{-2}\mathcal B_N(T)$.
+The scalar fixed-centre graph difference is $C\tau p^{-2}$ and
+the unitary relative bound is $C(\delta+p\delta^2)$.
+Every $o(1)$ obtained from these envelopes is uniform in
+$0<\tau\le\log p$. The local cluster/cofactor bound is used only
+with fixed $T$; the growing-window inverse is
+Theorem~\ref{inf:mixed-conditioning}.
+\end{lemma}
+\begin{proof}
+We give the dependence calculations in the order of their inputs.
+
+\emph{Roots and low states.}
+Equation~\eqref{inf:order-derivative} has error $O(p^{-2})$ and its
+comparison function is smooth near $1/2$. Throughout the stated
+interval, $p/R=1/2+O(p^{-1})$ and $R\to\infty$.
+Thus $R'=2\pi/(3\sqrt3)+O(p^{-1})$ and
+$R'_{\mathrm{alg}}=2+O(p^{-2})$.
+Integrating their difference retains exactly the factor $p-p_0$.
+Substitution in \eqref{inf:trace-ratio-exact} proves rows 1--2 and
+\begin{equation}\label{inf:log-detuning-relation}
+ \theta=(16\delta_0+O(p^{-1}))p_0(p-p_0),\qquad
+ R=2p+3+O((1+C_{\mathrm{ap}})/p).
+\end{equation}
+There is no additive detuning error. Row 3 is
+\eqref{inf:wide-low-error}.
+
+\emph{Finite jets and their remainders.}
+The radius equation is analytic in $(\eps,w)$ with
+$w=\theta\eps^2$. Coefficient extraction in the finite recurrence,
+the collar ODE, the monic products, and the update
+\eqref{inf:formal-update} shows inductively that every fixed
+$\eps$ coefficient is a polynomial in $\theta$.
+All leading divisors are independent of $\theta$: they are the
+normalization units, $-1/8$, $c_j$, and nonzero functions of $r$.
+For this fixed finite jet choose $k_N$ larger than the finitely
+many ratios of positive $\theta$ degrees to positive $\eps$ orders.
+On $|\eps|\le c_N(1+T)^{-k_N}$, $|\theta|\le2(T+1)$, its
+amplitudes and displacement are uniformly small by choosing $c_N$.
+The variable $w$, the collar denominators $\rho+\eps y$, and every
+finite normalization remain in fixed compact analytic sets.
+The same choice works on the prescribed fixed complex angular disc.
+
+The exact defects of the evaluated finite jet vanish through the
+required order in $\eps$. They have an analytic factor $\theta^2$
+by the identical field/boundary linear seed, as proved in
+Theorem~\ref{inf:centres}. Divide by this factor; the maximum
+principle on the larger $\theta$ circle bounds the quotient
+uniformly on the smaller disc. The Cauchy remainder estimate in
+$\eps$ costs at most a fixed power $(1+T)^{d_N^{\mathrm{tame}}}$.
+The same argument applied to $(h_N-h_{\mathrm q})/\theta$ uses its
+vanishing first three $\eps$ coefficients and gives row 8.
+For $T\le\log p$ the condition
+$p^{-1}(1+T)^{k_N}\to0$ puts the real input inside the chosen disc.
+Lemma~\ref{inf:analytic-coefficients} transfers the bounds to every
+fixed coefficient moment and radius. This proves rows 4--8.
+
+The first term of the normalized shape has size $C\tau p^{-2}$,
+with a constant independent of the fixed order. Its remainder is
+$C_N\tau p^{-4}\mathfrak P_N(T)$; its ratio to the leading size
+tends to zero. Thus $\delta\le C\tau p^{-2}$ in the strong norm.
+The scalar estimates in the proof of Theorem~\ref{inf:relative-graph}
+are $C(\delta+p\delta^2)$, with no fixed-$T$ compactness constant.
+Since $p\delta=O(T/p)\to0$, the density series give row 9 and the
+stated graph bounds.
+
+The mode-normalization ratios in
+Lemma~\ref{inf:radial-centre-norm} are finite recurrence functions
+of $(\eps,w)$ and tend to the same nonzero constants. Its Parseval
+head bound and the real-order tail ratio therefore hold uniformly.
+For composition, the argument of the square root in
+\eqref{inf:composition-bound} is $C_N\tau p^{-2}s(2s+\beta+1)$.
+It is $O_N(T)$ on the $s=O_N(p)$ head, and on the tail gives an
+extra geometric step $e^{C_N\sqrt T/p}$, absorbed by the ratio
+$1/4$. The finite amplitudes stay bounded on the real input.
+This proves rows 10--11 and the old membership/moment estimates
+with envelope $\mathcal B_N(T)$.
+The exact lift columns and their Laplacians give
+\eqref{inf:tame-residuals} by precisely the two-layer calculation
+of Proposition~\ref{inf:residual-estimates}.
+The inverse multiplier series preserve every fixed moment since
+$C\tau/p^2\to0$.
+The normal Hessian identity \eqref{inf:normal-hessian} now gives
+its stated inverse bound. Repeating the two norm absorptions in
+Proposition~\ref{inf:sharp-material} yields row 12; finite products
+of its envelopes are included by increasing $d_N^{\mathrm{tame}},C_N$.
+These arguments use composition only for the known finite modes,
+clamped gains only on $\Gc_p$, and all-layer Poisson estimates
+for $\mathfrak f_0$.
+
+\emph{Uniform flow.}
+The series in Lemma~\ref{inf:flow-relative} is dominated by
+$\sum h^6(C\tau/p^2)^h$, proving row 13 with an absolute constant
+for the fixed split interval. In the complementary proof choose
+$E=K_{\mathrm{flow}}(1+\tau)$ independently of $\varsigma$.
+Then $C\tau/E\le C/K_{\mathrm{flow}}$ and $E/p^2\to0$.
+The differentiated complementary inverse adds
+$C\tau^3/E^2$, bounded as in row 15. Thus rows 14--15 hold
+without differentiating a moving window projection.
+The finite recurrence and the collar root argument give rows
+16--17 with their displayed factors of $\theta$.
+In the low feedback calculation
+\[
+ \frac{a_*^2}{p\tau}
+ \le C\left(\frac{\tau}{pK_{\mathrm{flow}}^2}
+       +\frac{\tau^2}{p^2K_{\mathrm{flow}}}
+       +\frac{\tau^3}{p^3}\right)=o(\tau).
+\]
+The transport error is $C\tau^2/p=o(\tau)$.
+Choose $K_{\mathrm{flow}}$ to absorb $C\tau/K_{\mathrm{flow}}$
+into the positive angular margin and then take $p$ large.
+Low-state transfer from row 3 gives the same $32$ exclusion on
+indices below $\lfloor\sqrt p/16\rfloor$.
+The norm recovery in the last paragraph of
+Theorem~\ref{inf:flow-theorem} is
+$\nrm u\le C(\sqrt p+\tau)\nrm{\mathsf Wv}$;
+$\tau\le\log p=o(\sqrt p)$ proves rows 18--20.
+
+\emph{Counting.}
+The proof of Lemma~\ref{inf:window-isolation} needs only
+$2W/R<1/10$ and a frequency interval shorter than $\pi$.
+These hold for $W\le C\log p$.
+In Lemma~\ref{inf:phase-strip}, the Debye error is independent of
+$W$ and replacing the zero by $R$ costs at most $C W/p$.
+Its thickness is therefore $C(1+W)/p$.
+On each dyadic band the determinant error in
+Lemma~\ref{inf:lattice-strip} has its same fixed curvature term
+and additional error $O(Wp^{-2/3})=o(1)$.
+Its number of collinear points is at most $C\sqrt{1+W}$.
+Summing the dyadic intervals as in Theorem~\ref{inf:global-count}
+gives row 21; the turning strip has only $O(p^{2/3})$ indices
+uniformly in this range of $W$.
+The shell width $C\tau/p^2$ gives count window $C(1+\tau)$ by
+indexwise min--max. The grid proof of Lemma~\ref{inf:many-splits}
+then gives row 22 with its explicit square-root factor.
+
+\emph{Conditioning and geometry.}
+Rows 23--32 are the estimates proved in
+Section~\ref{inf:sec-conditioning}, which kept $\tau\le\log p$
+throughout. Row 8 supplies its true-centre hypothesis with
+$\mathfrak E_N(p)=C_N\mathfrak P_N(\log p)$.
+The high-core diameter in row 26 is linear in $\sqrt W$;
+its exponential is therefore subpolynomial. Its barrier gain is
+row 27. The three low-core facts used in rows 28--29 are: its
+indices have residue two modulo three; every primary edge lands
+on a nonresonant index with denominator $cp$; a feedback edge
+that lands on another resonant index has displacement three and
+the extra coefficient $(j+1)/p$. These are the statements proved
+in Lemmas~\ref{inf:critical-strips} and \ref{inf:path-valuation}.
+The full off-diagonal estimates are operator norms as in
+Lemma~\ref{inf:off-core-table}. The factor in row 31 is multiplied
+by the mixed graph inverse, yielding
+$p^{q_{\mathrm{gap}}+\xi_{\mathrm{inv}}-2+o(1)}\to0$.
+The final radial conversion costs just row 32.
+Rows 33--34 now follow from the fixed-order shape comparisons and
+the dimension-independent $C^2$ embedding.
+
+Finally
+\[
+ \mathcal B_N(\log p)
+ =\exp\{O_N(\log\log p+\sqrt{\log p})\}=p^{o(1)}.
+\]
+The other envelopes in the table are fixed powers of $\log p$ or
+have the form
+\[
+ \exp\{O(\log p/\log\log p+\sqrt{\log p})\}.
+\]
+The strict power margins absorb all of them. The two factors in
+\eqref{inf:tame-residuals} are $\theta^2$, the inverse has only
+$\tau^{-1}$, and the radius and witness carry $\tau$.
+No positive lower bound for $\tau$ has been used.
+\end{proof}
+
+\begin{corollary}[Uniform logarithmic flow and grid count]
+\label{inf:log-flow-count}
+For the inputs above, the signed slope is at least $c\tau/p$ in
+$|\lambda|<\tau/(16p)$. For any fixed $5/3<q_{\mathrm{gap}}<2$,
+all but
+\begin{equation}\label{inf:log-bad-splits}
+ C\sqrt{1+\tau}\bigl(p^{2/3}+p^{8/3-q_{\mathrm{gap}}}\bigr)
+\end{equation}
+interior integer splits have actual quartic gap at least
+$\kappa_{\mathrm{gap}}\tau p^{-q_{\mathrm{gap}}}$.
+\end{corollary}
+\begin{proof}
+Rows 13--22 of Lemma~\ref{inf:detuning-dependencies} establish the
+flow, count, and spacing hypotheses. Apply the clipped-curve
+argument of Lemma~\ref{inf:many-splits} with its explicitly stated
+number of curves. The expression in \eqref{inf:log-bad-splits}
+is $o(p)$ because $q_{\mathrm{gap}}>5/3$.
+\end{proof}

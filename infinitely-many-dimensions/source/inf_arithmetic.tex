@@ -1,0 +1,505 @@
+\section{Primary crossings and a continued-fraction sequence}\label{inf:sec-arithmetic}
+
+The real crossing orders and the integer orders are different objects.
+We denote a real crossing by $\widehat p_m$ and use $\mathcal P$ for
+the selected set of integers.
+
+\subsection{A congruence approximation lemma}
+
+\begin{lemma}[Congruence approximation]\label{inf:congruence}
+For every positive irrational number $\alpha$ there are infinitely many
+integer pairs $(P,Q)$ with
+\begin{equation}\label{inf:congruence-target}
+ P\equiv1\pmod2,\qquad Q\equiv1\pmod4,\qquad Q>0,
+ \qquad Q|Q\alpha-P|<\frac92.
+\end{equation}
+They can be selected by the finite case rule in the proof from every
+sufficiently late pair of consecutive continued-fraction convergents.
+\end{lemma}
+\begin{proof}
+Write the convergents as $P_j^{\mathrm{cf}}/Q_j^{\mathrm{cf}}$ and put $v_j=(P_j^{\mathrm{cf}},Q_j^{\mathrm{cf}})$.
+Use indices for which all the three preceding denominators are positive.
+The determinant of consecutive vectors has absolute value one. Set
+\[
+ \rho_j=Q_{j-1}^{\mathrm{cf}}/Q_j^{\mathrm{cf}}\in(0,1),\qquad
+ T_j^{\mathrm{cf}}=[a_{j+1};a_{j+2},\ldots]>1.
+\]
+The identity
+$\alpha=(T_j^{\mathrm{cf}}P_j^{\mathrm{cf}}+P_{j-1}^{\mathrm{cf}})/(T_j^{\mathrm{cf}}Q_j^{\mathrm{cf}}+Q_{j-1}^{\mathrm{cf}})$ gives, for
+$(P,Q)=Av_j+Bv_{j-1}$ and nonnegative integers $A,B$,
+\begin{equation}\label{inf:cf-error}
+ Q|Q\alpha-P|=\frac{(A+B\rho_j)|A-BT_j^{\mathrm{cf}}|}{T_j^{\mathrm{cf}}+\rho_j}.
+\end{equation}
+Denote this expression by $E(A,B)$ when the index is understood.
+Directly from \eqref{inf:cf-error},
+\begin{equation}\label{inf:cf-basic-bounds}
+ E(1,0)<1,\quad E(1,1)<2,\quad E(2,1)<3,
+ \quad E(1,2)<2(1+2\rho_j).
+\end{equation}
+For $E(2,1)$, split at $T_j^{\mathrm{cf}}=2$. On $1<T_j^{\mathrm{cf}}<2$ the quotient has
+maximum at $T_j^{\mathrm{cf}}=1$ and is at most $(2+\rho_j)/(1+\rho_j)<2$.
+On $T_j^{\mathrm{cf}}\ge2$ it is less than $2+\rho_j<3$.
+The other three inequalities follow by bounding respectively
+$1/(T_j^{\mathrm{cf}}+\rho_j)<1$, $(T_j^{\mathrm{cf}}-1)/(T_j^{\mathrm{cf}}+\rho_j)<1$, and
+$(2T_j^{\mathrm{cf}}-1)/(T_j^{\mathrm{cf}}+\rho_j)<2$.
+
+We first give a helper rule. Suppose $v_k$ has even numerator and odd
+denominator, $v_{k-1}$ has odd numerator and even denominator, and
+$Q_k^{\mathrm{cf}}+Q_{k-1}^{\mathrm{cf}}\equiv3\pmod4$. The vector
+$S=3v_k+v_{k-1}$ has the target residues. Put $T=T_k^{\mathrm{cf}}$ and
+$\rho=\rho_k$. If $T\ge2$, its error is less than four: for
+$2\le T\le3$ it is at most $(3+\rho)/(2+\rho)<3/2$, and for
+$T\ge3$ it is less than $3+\rho<4$.
+If $1<T<2$, then $a_{k+1}=1$ and $v_{k+1}=v_k+v_{k-1}$.
+The alternative $D=3v_{k+1}$ also has the target residues. Their
+error products are
+\[
+ E_S=\frac{(3+\rho)(3-T)}{T+\rho},\qquad
+ E_D=\frac{9(1+\rho)(T-1)}{T+\rho}.
+\]
+The inequalities $E_S\le3$ and $E_D\le3$ hold respectively when
+\[
+ T\ge\frac9{6+\rho},\qquad
+ T\le\frac{3+4\rho}{2+3\rho}.
+\]
+These two ranges cover $(1,2)$, because
+$(3+4\rho)(6+\rho)-9(2+3\rho)=4\rho^2\ge0$.
+Choose the candidate with smaller error. This fixes the helper rule
+and always gives error less than four, with positive denominator at
+least $Q_{k-1}^{\mathrm{cf}}$.
+
+Consider now $v_j,v_{j-1}$. There are two cases.
+
+\emph{Case I: one vector has both entries odd.}
+Call that vector $v_k$, where $k=j$ or $j-1$.
+If $Q_k^{\mathrm{cf}}\equiv1\pmod4$, take $v_k$ itself.
+Otherwise $Q_k^{\mathrm{cf}}\equiv3\pmod4$.
+If $Q_{k-1}^{\mathrm{cf}}$ is even, its numerator is odd by the determinant condition.
+For even $a_{k+1}$, take $3v_k$; here $T_k^{\mathrm{cf}}>2$ and its error is
+$9/(T_k^{\mathrm{cf}}+\rho_k)<9/2$.
+For odd $a_{k+1}$, the vector $v_{k+1}$ has even numerator and odd
+denominator. Take $2v_{k+1}+v_k$. Its denominator is $1$ modulo four,
+its numerator is odd, and \eqref{inf:cf-basic-bounds} at index $k+1$
+gives error less than three.
+
+If $Q_{k-1}^{\mathrm{cf}}$ is odd, its numerator is even.
+When $a_k\ge2$ one has $\rho_k<1/2$; take
+$v_k+2v_{k-1}$. Its denominator is $1$ modulo four and its error is
+less than $2(1+2\rho_k)<4$.
+When $a_k=1$, the vector $v_{k-2}=v_k-v_{k-1}$ has odd numerator
+and even denominator. The pair $v_{k-1},v_{k-2}$ satisfies the helper
+hypotheses, since its denominator sum is $Q_k^{\mathrm{cf}}\equiv3\pmod4$.
+Apply the helper rule at index $k-1$.
+
+\emph{Case II: neither vector has both entries odd.}
+Their types modulo two must be (even, odd) and (odd, even): neither
+vector is zero modulo two, and their determinant is odd.
+If $Q_j^{\mathrm{cf}}+Q_{j-1}^{\mathrm{cf}}\equiv1\pmod4$, use their sum, whose error is less
+than two. If that sum is $3$ modulo four and $Q_j^{\mathrm{cf}}$ is odd, apply the
+helper rule directly.
+
+It remains that $v_j$ has odd numerator and even denominator $Q_{\mathrm e}$,
+$v_{j-1}$ has even numerator and odd denominator $Q_{\mathrm o}$, and
+$Q_{\mathrm e}+Q_{\mathrm o}\equiv3\pmod4$.
+Thus $Q_{\mathrm e}-Q_{\mathrm o}\equiv1\pmod4$.
+Use $v_{j-2}=v_j-a_jv_{j-1}$ and distinguish the residue of $a_j$.
+If $a_j\equiv1\pmod4$, take $v_{j-2}$.
+If $a_j\equiv2\pmod4$, take $v_{j-1}+v_{j-2}$; its error is less
+than two by \eqref{inf:cf-basic-bounds} at index $j-1$.
+If $a_j\equiv3\pmod4$, the denominator of $v_{j-2}$ is $3$ modulo
+four; take $2v_{j-1}+v_{j-2}$, whose error is less than three.
+In these three choices the numerator is odd and the denominator is
+$1$ modulo four. If $a_j\equiv0\pmod4$, the pair
+$v_{j-1},v_{j-2}$ has the helper types and denominator sum $3$ modulo
+four, so apply that rule at index $j-1$.
+
+Every selected denominator is positive and at least $Q_{j-3}^{\mathrm{cf}}$.
+These lower bounds tend to infinity. Thus infinitely many distinct
+pairs have been constructed, and all their errors are strictly below
+$9/2$.
+\end{proof}
+
+\subsection{The crossing expansion}
+
+Define the fixed constants
+\begin{equation}\label{inf:arithmetic-constants}
+ c_{\mathrm{ar}}=\sqrt3-\frac\pi3,
+ \qquad \alpha_{\mathrm{ar}}=\frac\pi{2c_{\mathrm{ar}}},
+ \qquad d_{\mathrm{ar}}=\frac5{9\sqrt3c_{\mathrm{ar}}},
+ \qquad \delta_0=1-\frac\pi{3\sqrt3}.
+\end{equation}
+Also write
+\begin{equation}\label{inf:algebraic-radius}
+ R_{\mathrm{alg}}(v)=2\sqrt{(v+1)(v+2)},\qquad
+ A_m=\frac{\alpha_{\mathrm{ar}}(4m+1)-3}{2}.
+\end{equation}
+These constants are unrelated to the block parameters $\ab,\bb$.
+
+\begin{proposition}[Primary-crossing expansion]\label{inf:primary-expansion}
+For every sufficiently large integer $m$, there is a unique primary
+crossing $\widehat p_m$ in a fixed $O(A_m^{-1})$ neighbourhood of $A_m$,
+meaning
+\[
+ J_{\widehat p_m}(R_{\mathrm{alg}}(\widehat p_m))
+ =J_{\widehat p_m+3}(R_{\mathrm{alg}}(\widehat p_m))=0.
+\]
+It satisfies
+\begin{equation}\label{inf:root-expansion}
+ \widehat p_m=A_m-\frac{d_{\mathrm{ar}}}{A_m}+O(A_m^{-2}),
+\end{equation}
+with an absolute remainder constant. No positive integer or
+half-integer is a primary crossing.
+\end{proposition}
+\begin{proof}
+At a zero $R$ of $J_v$, the three-term recurrence gives
+\begin{equation}\label{inf:crossing-recurrence}
+ \frac{J_{v+3}(R)}{J_{v-1}(R)}
+ =1-\frac{4(v+1)(v+2)}{R^2}.
+\end{equation}
+The denominator is nonzero. Thus the crossing equation is precisely
+$J_v(R_{\mathrm{alg}}(v))=0$.
+
+At $R=R_{\mathrm{alg}}(v)$, direct Taylor expansion gives
+\begin{align*}
+ \sqrt{R^2-v^2}&=\sqrt3v+2\sqrt3-\frac2{\sqrt3v}+O(v^{-2}),\\
+ v\arccos(v/R)&=\frac{\pi v}{3}+\frac{\sqrt3}{2}
+                       -\frac{11}{4\sqrt3v}+O(v^{-2}).
+\end{align*}
+Consequently the phase of Lemma~\ref{inf:debye-first} is
+\[
+ \Xi(v,R)=c_{\mathrm{ar}}v+\frac{3\sqrt3}{2}-\frac\pi4
+                         +\frac{\sqrt3}{4v}+O(v^{-2}),
+\]
+and its first sine coefficient is
+$b(v,R)=7/(36\sqrt3v)+O(v^{-2})$.
+Lemma~\ref{inf:debye-first} applies uniformly since $R/v\to2$.
+In particular, the remainder is $O(v^{-2})$ for these varying
+arguments.
+
+The identity
+$c_{\mathrm{ar}}A_m+3\sqrt3/2-\pi/4=\pi(m+1/2)$ is exact.
+At $v=A_m\pm K/A_m$, for a sufficiently large fixed $K$, the leading
+cosine changes sign with magnitude exceeding the first correction
+and its remainder. The intermediate value theorem gives a zero.
+Every such zero obeys
+\[
+ \Xi(v,R)=\pi(m+1/2)+\frac7{36\sqrt3v}+O(v^{-2}).
+\]
+Substitution of the phase expansion proves
+\eqref{inf:root-expansion}, since
+$\{7/(36\sqrt3)-\sqrt3/4\}/c_{\mathrm{ar}}=-d_{\mathrm{ar}}$.
+
+For uniqueness, the zero lies on one of the analytic curves
+$R=j_{v,k}$, because the zeros are simple. On the interval under
+consideration, Lemma~\ref{inf:bessel-order} gives
+$\partial_vj_{v,k}\le\pi/2$, whereas
+$R'_{\mathrm{alg}}(v)=(2v+3)/\sqrt{(v+1)(v+2)}>2$.
+Thus each difference $R_{\mathrm{alg}}(v)-j_{v,k}$ is strictly
+increasing. Two different indices cannot cross the algebraic radius
+in an interval of length $O(A_m^{-1})$: their roots are separated by
+more than $\pi$, while both the algebraic radius and the zero curves
+move by $O(A_m^{-1})$ there. This proves uniqueness for large $m$.
+
+Finally, for integer $v$, two distinct nonnegative integer-order
+Bessel functions have no common positive zero (Bourget's theorem).
+This classical consequence of Siegel's theorem is stated in
+\cite[\S10.21(i)]{inf:dlmf}, with the source
+\cite[\S15.28]{inf:watson}. Applying it to orders $v$ and $v+3$
+excludes an integer primary crossing. For positive half-integers,
+Lemma~\ref{inf:half-integer-noncoincidence} gives the same conclusion.
+\end{proof}
+
+\begin{definition}[Selected integer sequence]\label{inf:integer-sequence}
+Apply the case rule in Lemma~\ref{inf:congruence} to
+$\alpha=\alpha_{\mathrm{ar}}$, with convergents indexed starting at
+$0$, for each index $j\ge6$. In its helper choose the candidate with
+smaller error. Remove repeated pairs and list the resulting integers
+$(P-3)/2$ in increasing order. Their set is $\mathcal P$; its increasing
+enumeration is denoted by $(p_m)$.
+The integer $m$ in $(p_m)$ is an enumeration index, whereas the primary
+crossing associated to a selected pair has index $(Q-1)/4$.
+\end{definition}
+
+\begin{definition}[Near-primary half-lattice inputs]\label{inf:input-families}
+Fix an integer $m_0$ beyond which Proposition~\ref{inf:primary-expansion}
+holds. For $C_{\mathrm{ap}}>0$ set
+\begin{gather*}
+ \mathcal P_{\mathrm{fix}}(C_{\mathrm{ap}})=
+ \left\{p\in\tfrac12\Z:p>0,\ 
+ \exists m\ge m_0:\ |p-\widehat p_m|<C_{\mathrm{ap}}/\widehat p_m\right\},\\
+ \mathcal P_{\mathrm{bd}}=\mathcal P_{\mathrm{fix}}(31/10).
+\end{gather*}
+The continued-fraction set $\mathcal P$ remains the selected integer
+subsequence of Definition~\ref{inf:integer-sequence}. The symbol
+$p_0$ denotes the crossing associated to the current input. It is
+unique for sufficiently large inputs in each fixed-width family,
+since successive crossings have separation $2\alpha_{\mathrm{ar}}+o(1)$.
+\end{definition}
+
+\begin{theorem}[Near-integer primary crossings]\label{inf:near-integer}
+The set $\mathcal P$ is unbounded. For every sufficiently large selected
+pair $(P,Q)$, the integer $p=(P-3)/2$ and the primary crossing
+$p_0=\widehat p_{(Q-1)/4}$ satisfy
+\begin{equation}\label{inf:near-integer-bound}
+ 0<|p-p_0|<\frac{31}{10p_0}.
+\end{equation}
+Thus the assertion holds for every sufficiently large member of
+$\mathcal P$, with its associated crossing. The threshold is implicit.
+\end{theorem}
+\begin{proof}
+The number $\alpha_{\mathrm{ar}}$ is irrational. Indeed, a rational
+value would imply
+$\pi(1+2\alpha_{\mathrm{ar}}/3)=2\alpha_{\mathrm{ar}}\sqrt3$,
+contradicting the transcendence of $\pi$.
+For $Q=4m+1$ and $p=(P-3)/2$, the expansion
+\eqref{inf:root-expansion} gives
+\[
+ p_0|p_0-p|\le\frac{p_0}{2}|Q\alpha_{\mathrm{ar}}-P|
+              +d_{\mathrm{ar}}\frac{p_0}{A_m}+O(A_m^{-1}).
+\]
+Here $p_0/Q\to\alpha_{\mathrm{ar}}/2$ and $p_0/A_m\to1$.
+The congruence error bound therefore yields
+\begin{equation}\label{inf:arithmetic-limsup}
+ \limsup p_0|p_0-p|
+ \le\frac98\alpha_{\mathrm{ar}}+d_{\mathrm{ar}}<\frac{31}{10}.
+\end{equation}
+The final comparison follows from rational bounds. From
+$\pi<22/7$ and $\sqrt3>19/11$ one obtains
+$c_{\mathrm{ar}}>157/231$, $\alpha_{\mathrm{ar}}<363/157$, and
+\[
+ \frac98\alpha_{\mathrm{ar}}+d_{\mathrm{ar}}
+ <\frac{220099}{71592}<\frac{31}{10},
+ \qquad 31\cdot71592-10\cdot220099=18362>0.
+\]
+Bourget's theorem gives $p\ne p_0$. The denominators tend to infinity
+and $P/Q\to\alpha_{\mathrm{ar}}>0$, so the selected integers are
+unbounded. Distinct sufficiently large $Q$ cannot give the same
+integer $p$: the corresponding numerators would be equal, while
+$\alpha_{\mathrm{ar}}|Q-Q'|\le9/(2Q)+9/(2Q')$ would tend to zero.
+This also removes any ambiguity in the associated crossing for large
+members of the sequence.
+\end{proof}
+
+\begin{corollary}[Sparsity]\label{inf:sequence-sparsity}
+The selected integer set satisfies $\#(\mathcal P\cap[1,X])=O(\log X)$.
+\end{corollary}
+\begin{proof}
+The rule selects at most one pair at each continued-fraction index $j$,
+and its denominator is at least $Q_{j-3}^{\mathrm{cf}}$. These denominators grow at
+least as the Fibonacci sequence. If the selected integer is at most
+$X$, its error bound gives $Q=O(X)$, since
+$P=2p+3=\alpha_{\mathrm{ar}}Q+O(Q^{-1})$.
+Hence only $O(\log X)$ indices can contribute. Removing duplicates
+cannot increase the count.
+\end{proof}
+
+\subsection{The detuning parameter}
+
+Continue the zero at a primary crossing $p_0$ as $R(p)=j_{p,k_0}$.
+In this paragraph $p$ is real on the continuation interval; its
+selected endpoint belongs to $\tfrac12\Z$. Put
+\begin{equation}\label{inf:detuning-definition}
+ \chi=\frac{J_{p+3}(R)}{J'_{p+3}(R)-(p-1)J_{p+3}(R)/R},
+ \qquad \theta=4Rp\chi,\qquad \tau=|\theta|.
+\end{equation}
+
+\begin{lemma}[Uniform bounded detuning]\label{inf:detuning}
+At every sufficiently large $p\in\mathcal P_{\mathrm{bd}}$,
+\begin{equation}\label{inf:detuning-range}
+ R=2p+3+O(p^{-1}),\qquad 0<|\theta|<20.
+\end{equation}
+More precisely, uniformly for $|p-p_0|\le31/(10p_0)$,
+\begin{equation}\label{inf:detuning-asymptotic}
+ \theta=(16\delta_0+o(1))p_0(p-p_0).
+\end{equation}
+The denominator in \eqref{inf:detuning-definition} is nonzero in this
+interval for large $p_0$.
+\end{lemma}
+\begin{proof}
+Repeated use of the Bessel recurrences at $J_p(R)=0$ gives the exact
+identity
+\begin{equation}\label{inf:trace-ratio-exact}
+ \chi=-\frac R{2(p+1)}\frac{R^2-4(p+1)(p+2)}{2R^2-4(p+1)(p+2)}.
+\end{equation}
+The omitted common factor in numerator and denominator is
+$J_{p-1}(R)$, which is nonzero. The denominator in the rational
+expression is $4p^2+O(p)$ throughout the interval, so the physical
+normal-trace denominator is also nonzero.
+Lemma~\ref{inf:bessel-order}, $R/p\to2$, and $R\to\infty$ give
+\[
+ R'(p)=\frac{2\pi}{3\sqrt3}+o(1),\qquad
+ R'_{\mathrm{alg}}(p)=2+o(1),
+\]
+uniformly on that interval. Since the two radii agree at $p_0$,
+\[
+ R(p)-R_{\mathrm{alg}}(p)=-(2\delta_0+o(1))(p-p_0).
+\]
+Substitute this in \eqref{inf:trace-ratio-exact} and multiply by
+$4Rp$ to prove \eqref{inf:detuning-asymptotic}.
+The radius assertion follows from the same comparison and
+$R_{\mathrm{alg}}(p)=2p+3+O(p^{-1})$.
+The inequality $\delta_0<2/5$ and the defining distance bound
+give eventually
+$\tau<16(2/5)(31/10)+o(1)=19.84+o(1)<20$.
+The difference of the two radii has a strictly negative derivative,
+because $R'\le\pi/2<2<R'_{\mathrm{alg}}$. It vanishes only at
+$p=p_0$. Proposition~\ref{inf:primary-expansion} excludes that equality
+on $\tfrac12\Z$. Hence $\chi\ne0$ and $\theta\ne0$ at every input.
+\end{proof}
+
+\subsection{Low angular degrees at near-primary inputs}
+
+\begin{lemma}[A radial pole estimate]\label{inf:riccati-gap}
+Let $p\ge64$, $R=R_{\mathrm{alg}}(p)$, and
+$\nu=p+\ell-1<2p+3$. If $J_\nu(R)\ne0$, set
+$M_\ell=J'_\nu(R)/J_\nu(R)-(p-1)/R$. Then every positive zero $z$
+of $J_\nu$ satisfies
+\begin{equation}\label{inf:riccati-distance}
+ |z^2-R^2|\ge\frac{2(R-1)}{|M_\ell|+2}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For positive $\lambda$ away from poles define
+$w(\lambda)=\sqrt\lambda J'_\nu(R\sqrt\lambda)/
+J_\nu(R\sqrt\lambda)$. Bessel's equation implies
+\[
+ w'(\lambda)=-\frac R{2\lambda}
+             \left(w(\lambda)^2+\lambda-\frac{\nu^2}{R^2}\right).
+\]
+Put $\eta=1/R$ and $A=\sqrt{1+\eta}$. On
+$[1-\eta,1+\eta]$ one has
+$|\lambda-\nu^2/R^2|\le1+\eta$, because $\nu^2<R^2+1$.
+Consequently
+\[
+ \left|\frac d{d\lambda}\arctan\frac{w(\lambda)}A\right|
+ \le\frac{RA}{2(1-\eta)}.
+\]
+At the first pole on either side of one the arctangent tends to an
+endpoint $\pm\pi/2$. Its distance to that endpoint at $\lambda=1$
+is at least $\arctan(A/|w(1)|)\ge A/(|w(1)|+A)$.
+(The latter inequality follows by differentiating
+$\arctan u-u/(1+u)$.) A pole in this interval is therefore at
+$\lambda$-distance at least
+$2(1-\eta)/(R(|w(1)|+A))$ from one.
+Now $|w(1)|+A<|M_\ell|+2$, since $(p-1)/R<1/2$ and
+$A<3/2$. Multiplication by $R^2$ proves
+\eqref{inf:riccati-distance} for these poles. A pole outside the
+interval gives $|z^2-R^2|\ge R$, which is at least the claimed
+right-hand side. Poles beyond the first on either side are farther
+away. This proves the bound for the entire radial spectrum.
+\end{proof}
+
+\begin{lemma}[Uniform recurrence remainder]\label{inf:low-recurrence}
+At a real primary crossing $p\ge10^6$, put $s_0=R_{\mathrm{alg}}(p)/2$
+and define
+\[
+ q_{-1}=1,\quad q_0=0,\quad
+ q_{k+1}=\frac{p+k}{s_0}q_k-q_{k-1}.
+\]
+Let $\mathsf a_{-1}=1,\mathsf a_0=0$,
+$\mathsf a_{k+1}=\mathsf a_k-\mathsf a_{k-1}$, and
+$\mathsf b_{-1}=\mathsf b_0=0$,
+$\mathsf b_{k+1}=\mathsf b_k-\mathsf b_{k-1}+(k-3/2)\mathsf a_k$.
+Set $\mathsf e_k=q_k-\mathsf a_k-\mathsf b_k/p$ and
+$\nrm{(u,v)}_\triangle=\max(|u|,|v|,|u-v|)$. Then
+\begin{equation}\label{inf:low-remainder}
+ \nrm{(\mathsf e_k,\mathsf e_{k-1})}_\triangle
+ \le e^{k(k+3)/p}\frac{(k+2)^4}{4p^2},\qquad
+ \mathsf b_{3h}=(-1)^h3h(h-1).
+\end{equation}
+\end{lemma}
+\begin{proof}
+The transformation $(u,v)\mapsto(u-v,u)$ preserves the norm
+$\max(|u|,|v|,|u-v|)$. The sequence $\mathsf a_k$ has period six and norm one.
+Write $\delta_k=(p+k)/s_0-1$. From
+$p+3/2-s_0=1/[4(p+3/2+s_0)]$ one obtains
+\[
+ \left|\delta_k-\frac{k-3/2}p\right|
+ \le\frac{3(k+2)}{2p^2},\qquad
+ |\delta_k|\le\frac{2(k+2)}p.
+\]
+Summing the first-order recurrence in the invariant norm bounds its
+vector by $k(k+3)/2$. Subtracting the first-order approximation from
+the exact recurrence then bounds the next remainder vector by
+$(1+|\delta_k|)$ times the current vector plus $(k+2)^3/p^2$.
+Iteration and $1+u\le e^u$ give an exponential no greater than
+$e^{k(k+3)/p}$; the sum of the cubics is at most $(k+2)^4/4$.
+This proves the first bound. Three successive steps of the recurrence
+for $\mathsf b_k$ give
+$\mathsf b_{3(h+1)}=-\mathsf b_{3h}+6h(-1)^{h+1}$. Its initial value is zero,
+so induction gives the second formula.
+\end{proof}
+
+\begin{proposition}[Low-degree exclusion]\label{inf:low-exclusion}
+Let $p_0\ge10^6$ be a sufficiently large primary crossing and
+$R_0=R_{\mathrm{alg}}(p_0)$. Apart from the degree-four state at $R_0$,
+every even degree $\ell\ge0$ with
+$\ell-1\le\sqrt{p_0}/4$ has its ball Dirichlet spectrum at distance
+greater than $64$ from $R_0^2$.
+At any real $p$ with $|p-p_0|\le31/(10p_0)$ and continued radius
+$R=j_{p,k_0}$, those nonseed degrees have their spectrum outside
+$[R^2-32,R^2+32]$. The seed's other radial states are outside this
+window as well.
+\end{proposition}
+\begin{proof}
+At the crossing the recurrence is exactly
+$q_k=J_{p_0+k}(R_0)/J_{p_0-1}(R_0)$.
+Put $k=\ell-1$, initially $k\ge7$ with $k^2\le p_0/16$.
+The first-order contribution in the invariant vector norm is at most
+$5/112$ and the remainder in \eqref{inf:low-remainder} is at most
+$81/8192$; their sum is less than $1/16$.
+If $3\nmid k$, this gives $|q_k|>15/16$, $|q_{k-1}|<17/16$,
+and hence
+\[
+ |M_{k+1}|=
+ \left|\frac{q_{k-1}}{q_k}-\frac{2p_0+k-1}{R_0}\right|<4.
+\]
+If $3\mid k$ and $k\ge15$, then
+$|\mathsf b_k|=k(k-3)/3\ge4k^2/15$. The remainder is at most
+$648k^4/(625p_0^2)$, which is less than $|\mathsf b_k|/(4p_0)$.
+It follows that
+\[
+ |q_k|\ge\frac{k^2}{5p_0},\qquad |q_k|<\frac1{32},
+ \qquad |M_{k+1}|\le\frac{10p_0}{k^2}.
+\]
+For the last estimate use $|q_{k-1}|<17/16$ and
+$(2p_0+k-1)/R_0<2$.
+Lemma~\ref{inf:riccati-gap} now bounds the inverse distance by
+\[
+ \frac{|M_{k+1}|+2}{2(R_0-1)}
+ \le\frac{27}{8k^2}\le\frac{27}{1800}<\frac1{64}
+\]
+in the resonant range. In the nonresonant range it gives a smaller
+bound for $p_0\ge10^6$.
+
+The remaining resonant index is $k=9$.
+Equation~\eqref{inf:low-remainder} gives
+$|q_9|\ge(18-3661/p_0)/p_0>17.99/p_0$ and
+$|q_8|\le1+44/p_0+2501/p_0^2<1.001$.
+Thus $|M_{10}|<p_0/17+2$, and its inverse distance is less than
+$(p_0/17+4)/(4p_0-2)<1/64$.
+For $\ell=2$ use $q_1=-1,q_0=0$, giving $|M_2|<1$.
+For $\ell=6$ the exact values
+$q_4=(p_0+1)/s_0$ and $q_5=(p_0+4)/(p_0+2)$ give $|M_6|<2$.
+For $\ell=0$ one has $M_0=0$ by \eqref{inf:ball-traces}.
+These exhaust the low even degrees except $\ell=4$.
+Its remaining radial states are separated by Lemma~\ref{inf:bessel-spacing}.
+
+To pass to $p$, continue each radial zero in its order.
+Both relevant orders exceed eight along the interval, so
+\eqref{inf:order-lipschitz} bounds the difference of any two such
+order derivatives by less than $3/5$.
+Consequently $j_{p+\ell-1,k}-R(p)$ changes by less than
+$93/(50p_0)<2/p_0$.
+If its squared-energy offset at $p$ had absolute value at
+most $32$, then $R(p)>2p_0$ and
+$j_{p+\ell-1,k}+R(p)\ge(39/10)p_0$ for large $p_0$.
+Its radius offset would have absolute value below $9/p_0$,
+and at $p_0$ below $11/p_0$. Its squared offset at the crossing
+would then be less than
+\[
+ \frac{11}{p_0}\left(4p_0+6+\frac{11}{p_0}\right)<55,
+\]
+contradicting the bound $64$. The other radial seed states remain
+separated by the spacing and the same Lipschitz estimate.
+\end{proof}

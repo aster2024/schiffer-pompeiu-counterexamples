@@ -1,0 +1,263 @@
+\section{Computable spectral gap enclosures}\label{inf:sec-gap-enclosures}
+
+This appendix supplies the optional selection rule of
+Remark~\ref{inf:split-selection} and is not part of the proof
+chain of Theorems~\ref{inf:theorem-A} and \ref{inf:theorem-B}.
+
+Fix an input $p,R,\theta$ and the finite set of integer splits in a
+compact interval of Section~\ref{inf:sec-widened}. Represent each
+quartic Dirichlet operator $H_a$ on $\Hc$ by the harmonic chart
+\[
+ q=1+z_{\mathrm q}S_2,\qquad d=1+5z_{\mathrm q}S_2,\qquad
+ z_{\mathrm q}=-\frac{\theta\mathsf H_2(1)}{2R^2pg_2}.
+\]
+All parameters of this chart are computable from an isolated
+Neumann zero $R$ and the rational block parameters. The following
+bound supplies a strict starting condition for the spectral enclosure.
+
+\begin{lemma}[A computable quartic relative bound]
+\label{inf:quartic-computable-relative}
+Assume integer block sizes with $a+b=2p$, $\bb\ge\ab\ge16$,
+$p\ge64$, and
+$\mu_{\mathrm{alg}}=|z_{\mathrm q}|\le1/(100p)$.
+Then the positive unitary quartic operator satisfies
+\begin{equation}\label{inf:algorithm-relative-bound}
+ \nrm{(H_a-H_0)H_0^{-1}}_{\Hc\to\Hc}
+ \le\eta_{\mathrm{alg}},\qquad
+ \eta_{\mathrm{alg}}=4000p\mu_{\mathrm{alg}}.
+\end{equation}
+For each fixed compact split interval, the condition
+$\eta_{\mathrm{alg}}<1/2$ holds at every sufficiently large
+input of either theorem, uniformly over its candidate splits.
+\end{lemma}
+\begin{proof}
+Write $\mu=\mu_{\mathrm{alg}}$ within this proof.
+The endpoint proof in Lemma~\ref{inf:angular-sup} uses
+$\bb-1\ge\ab-1\ge0$ and therefore applies to these parameters.
+Homogeneity and its derivative bounds, at degree four, give
+\[
+ \nrm{S_2}_\infty\le1,\qquad
+ \nrm{\nabla S_2}_\infty\le4\sqrt2<6,
+ \qquad \nrm{D^2S_2}_{\mathrm{op},\infty}\le32.
+\]
+For the last bound, at a unit point the radial-radial entry is
+$12G_2$, the radial-tangential entries are $3\nabla_SG_2$, and
+the tangential block is $\nabla_S^2G_2+4G_2g_S$.
+The diagonal blocks have norm at most twenty and the off-diagonal
+block at most twelve. Homogeneity gives the same bound inside the ball.
+
+Thus $q,d>0$, $q^{-1},d^{-1}\le2$, and
+\[
+ \nrm{D\Phi^{-1}}_{\mathrm{op},\infty}\le3,\qquad
+ \nrm{A_q}_{\mathrm{op},\infty}\le9,
+ \qquad \nrm{A_q-I}_{\mathrm{op},\infty}\le200\mu.
+\]
+Indeed the inverse is $q^{-1}(I-y\otimes\nabla q/d)$.
+In \eqref{inf:pullback-metric}, the last bound follows from
+\[
+ |q^{-2}-1|\le8\mu,\qquad
+ q^{-2}\left(2|\nabla q|/d+|\nabla q|^2/d^2\right)
+ \le96\mu+576\mu^2.
+\]
+The drift vector in the scalar coordinate formula is
+$-D\Phi^{-1}(2A_q\nabla q+y(A_q:D^2q))$.
+Its norm is at most
+$3(108+288n)\mu\le2000p\mu$, using $n=2p$.
+For $u=H_0^{-1}f$, the ball estimates give
+$\nrm{D^2u}_2\le\nrm f_2$ and
+$\nrm{\nabla u}_2\le(p-1)^{-1}\nrm f_2$.
+The Frobenius norm of a symmetric $n$-matrix is at most $\sqrt n$
+times its operator norm. Consequently, for $H_\Phi=-P_\Phi\Delta$,
+\begin{equation}\label{inf:algorithm-scalar-bound}
+ \nrm{(H_\Phi-H_0)H_0^{-1}}
+ \le200\sqrt{2p}\,\mu+\frac{2000p\mu}{p-1}
+ \le500p\mu.
+\end{equation}
+
+Put $m=q^{p-1/2}d^{1/2}$ and $l=\log m$.
+Since $p\mu\le1/100$, the inequalities
+$\log(1+t)\le t$ and $-\log(1-t)\le2t$ on $0\le t\le1/2$
+give $\nrm m_\infty,\nrm{m^{-1}}_\infty\le2$.
+Harmonicity of $q,d$ gives
+\[
+ \nrm{\nabla l}_\infty\le13p\mu,
+ \qquad \nrm{\Delta l}_\infty\le200p\mu^2.
+\]
+For example the gradient bound follows from
+$2(p-1/2)6\mu+5\cdot6\mu\le13p\mu$;
+the Laplacian bound follows from
+$4p(6\mu)^2+2(30\mu)^2\le200p\mu^2$.
+The identity
+$\Delta m^{-1}=m^{-1}(|\nabla l|^2-\Delta l)$ therefore yields
+\[
+ \nrm{[H_0,m^{-1}]H_0^{-1}}
+ \le2\left\{\frac{26p\mu}{p-1}
+      +\frac{169p^2\mu^2+200p\mu^2}{(p-1)^2}\right\}
+ \le60\mu.
+\]
+Here $p\ge64$ and $\mu\le1/(100p)$ bound the braces by $30\mu$.
+It follows that $\nrm{H_0m^{-1}H_0^{-1}}\le3$.
+Finally use $H_a=mH_\Phi m^{-1}$ and the exact factorization
+\begin{align*}
+ (H_a-H_0)H_0^{-1}
+ ={}&m(H_\Phi-H_0)H_0^{-1}(H_0m^{-1}H_0^{-1})\\
+    &+m[H_0,m^{-1}]H_0^{-1}.
+\end{align*}
+Its norm is at most $2(1500p\mu+60\mu)\le4000p\mu$.
+All estimates hold on the Dirichlet graph core and extend by its
+density. In the families under consideration,
+$\mu_{\mathrm{alg}}\le C_{\mathrm{sp}}\tau p^{-2}$, hence
+$\eta_{\mathrm{alg}}\le C_{\mathrm{sp}}\tau/p\to0$ uniformly for
+fixed detuning bounds and for $\tau\le\log p$.
+\end{proof}
+
+\begin{lemma}[Convergent gap enclosures]\label{inf:gap-enclosures}
+For a computable input satisfying the hypotheses of
+Lemma~\ref{inf:quartic-computable-relative} and
+$\eta_{\mathrm{alg}}<1/2$, the capped gap
+\[
+ g_a=\min\{R^2,\dist(R^2,\spec H_a)\}
+\]
+has rational lower and upper enclosures of arbitrarily small
+prescribed width.
+\end{lemma}
+\begin{proof}
+Set $\mathcal R_{\mathrm{alg},a}=(H_a-H_0)H_0^{-1}$ and
+$\mathcal K_a=H_a^{-1}$. The strict relative bound gives
+\begin{equation}\label{inf:compact-inverse-series}
+ \mathcal K_a=H_0^{-1}\sum_{v=0}^{\infty}(-\mathcal R_{\mathrm{alg},a})^v,
+ \qquad
+ \left\|H_0^{-1}\sum_{v>L}(-\mathcal R_{\mathrm{alg},a})^v\right\|
+ \le\frac{\eta_{\mathrm{alg}}^{L+1}}
+ {(p-1)^2(1-\eta_{\mathrm{alg}})}.
+\end{equation}
+The operator $\mathcal K_a$ is compact, positive and self-adjoint.
+Use the orthonormal Bessel--Jacobi basis of $H_0$ and the rectangular
+projection $\Pi^{\mathrm{alg}}_{J,K_{\mathrm{rad}}}$ onto
+$0\le j\le J$, $1\le k\le K_{\mathrm{rad}}$.
+The radial min--max principle gives
+\[
+ z_{j,k}^2\ge\nu_j^2-1/4+\pi^2 k^2.
+\]
+Thus one may take the omitted-eigenvalue lower bound
+\[
+ \Lambda_{\mathrm{miss}}=\min\{\nu_{J+1}^2-1/4+\pi^2,
+                   \ \nu_0^2-1/4+\pi^2(K_{\mathrm{rad}}+1)^2\}.
+\]
+It tends to infinity as $J,K_{\mathrm{rad}}\to\infty$.
+For this projection, abbreviated $\Pi^{\mathrm{alg}}$, commutation
+with $H_0^{-1}$ and self-adjointness give
+\begin{equation}\label{inf:compact-inverse-tail}
+ \nrm{\mathcal K_a-\Pi^{\mathrm{alg}}\mathcal K_a\Pi^{\mathrm{alg}}}
+ \le\frac{2}{(1-\eta_{\mathrm{alg}})\Lambda_{\mathrm{miss}}}.
+\end{equation}
+Indeed $(I-\Pi^{\mathrm{alg}})\mathcal K_a$ is bounded by the
+right side without its factor two, using
+$\mathcal K_a=H_0^{-1}(I+\mathcal R_{\mathrm{alg},a})^{-1}$.
+Its adjoint has the same bound, and their sum gives
+\eqref{inf:compact-inverse-tail}.
+
+We describe the finite matrix computations in these two truncations.
+The basis values and derivatives are computable from the convergent
+Bessel series, finite Jacobi polynomials and their normalizations.
+The positive roots are simple and separated by more than $\pi$.
+The sine comparison in Lemma~\ref{inf:radial-poles}, applied on
+disjoint length-four intervals beyond $2\nu$, gives the coarse
+bound $j_{\nu,k}\le2\nu+8k$. Since the first root exceeds
+$\nu>1$, a rational mesh starting at one, with gaps below $\pi$,
+finds every root up to a prescribed index by sign changes.
+Mesh points can be chosen with certified nonzero values: of two
+candidate points less than $\pi$ apart, at least one is not a zero,
+and successive series enclosures detect that value. Choosing them
+in small disjoint neighbourhoods of an initial mesh preserves
+its order and gap bound. The same procedure refines each isolated
+root interval. Simplicity then gives a nonzero derivative bound
+after finitely many refinements, supplying its normalization.
+
+For a finite basis sum $v$, the function
+$\mathcal R_{\mathrm{alg},a}v$ is an explicit smooth invariant
+function. Its coefficients and its squared norm are integrals in
+the radial and angular variables with positive weights.
+Every chart denominator is bounded away from zero by
+$q\ge1-\mu_{\mathrm{alg}}$, $d\ge1-5\mu_{\mathrm{alg}}$.
+The regular Bessel series times solid harmonics gives computable
+uniform bounds for the function and its required derivatives on
+the closed ball: each derivative series has factorial tails and
+only finitely many input modes occur.
+After the coordinate substitution, use an endpoint cutoff
+$0<\epsilon_{\mathrm{cut}}<1/2$. The normalized radial and angular
+densities are $2p\zeta^{2p-1}$ and
+$x^{\ab-1}(1-x)^{\bb-1}/B(\ab,\bb)$. Their omitted endpoint
+measures are bounded, respectively, by
+\[
+ \frac{2p\epsilon_{\mathrm{cut}}^{2p}}{2p},\qquad
+ \frac{\epsilon_{\mathrm{cut}}^{\ab}}{\ab B(\ab,\bb)},\qquad
+ \frac{\epsilon_{\mathrm{cut}}^{\bb}}{\bb B(\ab,\bb)}
+\]
+at the origin and the two angular endpoints. Multiplying by the
+computed supremum bounds controls those tails.
+On the remaining compact rectangle, derivative bounds give a
+computable modulus of continuity and rational interval Riemann
+sums converge from above and below. Here
+$B(\ab,\bb)=\Gamma(\ab)\Gamma(\bb)/\Gamma(p)$.
+For these integer or half-integer parameters the Gamma formulas
+give convergent rational enclosures; a positive lower enclosure
+of $B(\ab,\bb)$ gives the required upper bound for its reciprocal.
+Equivalently one can obtain this lower enclosure from its positive
+integral. Thus the tail constants $2p$ and $1/B(\ab,\bb)$ have
+computable rational upper bounds. This constructs convergent
+rational enclosures of every required integral.
+
+To approximate the image of a finite vector, use Parseval in this
+complete basis. For a larger finite projection $\Pi'$, its squared
+residual is
+\[
+ \nrm{\mathcal R_{\mathrm{alg},a}v}^2
+ -\sum_{i\in\Pi'}
+       |\langle\mathcal R_{\mathrm{alg},a}v,e_i\rangle|^2.
+\]
+Its upper enclosure eventually falls below any positive target by
+completeness, increasing the projection and integration precision.
+This supplies a terminating precision search for each application
+of $\mathcal R_{\mathrm{alg},a}$. An input error is multiplied by at
+most $\eta_{\mathrm{alg}}$ and added to the next approximation error.
+There are only finitely many applications in the truncated series
+\eqref{inf:compact-inverse-series}. Taking errors sufficiently small
+for its finitely many input columns gives a rational approximation
+to the finite compression in operator norm. A column error at most
+the requested tolerance divided by the number of columns suffices,
+by Cauchy--Schwarz. Symmetrization preserves
+that error bound.
+
+The spectrum of a finite rational symmetric matrix can be enclosed
+by rational arithmetic. One construction enumerates rational
+orthogonal matrices formed from coordinate reflections and plane
+rotations with entries
+$(1-t^2)/(1+t^2)$ and $2t/(1+t^2)$, $t\in\mathbb Q$.
+This family is dense in the orthogonal group. Continue until the
+off-diagonal Frobenius norm of the conjugated matrix is below a
+prescribed tolerance. The spectral theorem guarantees termination,
+and the diagonal entries then enclose its spectrum with that error.
+For self-adjoint operators an operator-norm error bounds their
+spectral Hausdorff distance: outside that neighbourhood the
+resolvent identity and a Neumann series give invertibility, in both
+directions. Combining this fact with
+\eqref{inf:compact-inverse-series}--\eqref{inf:compact-inverse-tail}
+gives arbitrary norm-accurate finite spectral enclosures of
+$\mathcal K_a$, with zero adjoined for the infinite complement.
+
+Finally put
+\[
+ f_R(t)=\min\{R^2,|t^{-1}-R^2|\}\quad(t>0),\qquad
+ f_R(t)=R^2\quad(t\le0).
+\]
+It is continuous and Lipschitz with constant $4R^4$: its nonconstant
+part has $t\ge1/(2R^2)$ and derivative of absolute value at most
+$1/t^2$. Also it is Lipschitz with constant one as a function of
+$R^2$, so the input radius can be enclosed at the same time.
+Spectral inversion gives
+$g_a=\min f_R(\spec\mathcal K_a)$.
+The preceding finite spectral enclosures therefore give rational
+bounds on $g_a$ with error tending to zero. Clipping the lower bound
+at zero preserves the enclosure. This proves the assertion.
+\end{proof}

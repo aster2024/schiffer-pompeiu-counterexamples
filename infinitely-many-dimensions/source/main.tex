@@ -1,0 +1,129 @@
+\documentclass[11pt]{amsart}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{booktabs,graphicx,array}
+\usepackage{enumitem}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{longtable}
+\hypersetup{pdftitle={Convex non-ball Schiffer domains in infinitely many dimensions},pdfauthor={Jizhou Guo}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{maintheorem}{Theorem}
+\renewcommand{\themaintheorem}{\Alph{maintheorem}}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Gc}{\mathcal{G}}
+\newcommand{\Fc}{\mathcal{F}}
+\newcommand{\Nc}{\mathcal{N}}
+\newcommand{\Bc}{\mathcal{B}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\bw}{\overline{w}}
+\newcommand{\jst}{j_*}
+\newcommand{\sU}{\mathsf{U}}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\dist}{dist}
+\newcommand{\nrm}[1]{\lVert #1\rVert}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\kf}{\mathfrak{k}}
+\newcommand{\tf}{\mathfrak{t}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\Yc}{\mathcal Y}
+\newcommand{\Ecal}{\mathcal E}
+\newcommand{\PP}{\mathsf P}
+\newcommand{\QQ}{\mathsf Q}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\acosh}{acosh}
+\newcommand{\Cc}{\mathcal C}
+\newcommand{\Mmix}{\mathcal M}
+\newcommand{\Ec}{\mathcal E}
+\newcommand{\Xc}{\mathcal X}
+\newcommand{\Dom}{\operatorname{Dom}}
+\newcommand{\Euler}{\mathsf E}
+\newcommand{\SeedA}{\mathfrak A}
+\newcommand{\Hu}{\widehat H_\Phi}
+\newcommand{\HP}{\mathcal H_{\mathrm{ext}}}
+\newcommand{\KD}{K_{\!D}}
+\newcommand{\ab}{\alpha_b}
+\newcommand{\bb}{\beta_b}
+\newcommand{\wt}{\varpi_p}
+\newcommand{\Fnl}{\mathcal F}
+\newcommand{\Feff}{F_{\mathrm{eff}}}
+\newcommand{\Qmat}{\mathcal Q_{\mathrm{mat}}}
+\newcommand{\AN}{\mathsf T_{\mathrm{Newt}}}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\spanop}{span}
+\DeclareMathOperator{\rank}{rank}
+\title{Convex non-ball Schiffer domains in infinitely many dimensions}
+\author{Jizhou Guo}
+\address{Dots Studio, Rednote}
+\email{mitsuha2021b@gmail.com, sjtu18640985163@sjtu.edu.cn}
+\date{October 8, 2026}
+\begin{document}
+\begin{abstract}
+We construct bounded strictly convex non-ball Schiffer domains with
+real-analytic boundary in two arithmetic families of dimensions $2p$,
+with $p$ integral or half-integral. The bounded-detuning family uses
+a cofactor inverse and includes infinitely many dimensions in every
+residue class, with a bound depending on the modulus. A second family
+contains every sufficiently large half-lattice input within
+$\log p/(8p)$ of a primary crossing and has unbounded detuning in both
+parities. Its mixed conditioning estimate closes finite-order centres
+at accuracy twenty. In each family all but a sublinear number of
+interior integer block splits yield pairwise non-similar domains.
+The constructions use one graded Jacobi coefficient space and a quartic
+angular seed. The thresholds and splits are implicit. Each fixed-width
+candidate family and the logarithmic family have density zero.
+Green's identity gives failure
+of the Pompeiu property for the resulting domains.
+\end{abstract}
+\maketitle
+\tableofcontents
+\input{inf_introduction}
+\input{inf_reduction}
+\input{inf_bessel}
+\input{inf_arithmetic}
+\input{inf_parity}
+\input{inf_centres}
+\input{inf_flow}
+\input{inf_gap}
+\input{inf_spaces}
+\input{inf_material}
+\input{inf_mixed}
+\input{inf_localization}
+\input{inf_inverse}
+\input{inf_newton}
+\input{inf_geometry}
+\input{inf_constants}
+\input{inf_widened}
+\input{inf_sharp}
+\input{inf_conditioning}
+\input{inf_tame}
+\input{inf_logarithmic}
+\input{inf_shape}
+\appendix
+\input{inf_notation}
+\input{inf_positivity}
+\input{inf_gap_enclosures}
+\section*{Use of AI}
+AI systems, including GPT-6 Astra, GPT-6.1 Sol and Claude Opus~5.5, were
+used in developing the proofs and preparing the manuscript. The author
+takes responsibility for the content.
+
+\input{inf_references}
+\end{document}

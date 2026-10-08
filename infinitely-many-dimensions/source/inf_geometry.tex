@@ -1,0 +1,223 @@
+\section{Geometry, classical solutions, and the Pompeiu conclusion}
+\label{inf:sec-geometry}
+
+\begin{lemma}[Analyticity and full-dimensional strict convexity]
+\label{inf:geometry-convexity}
+Let $f\in\Ec_1$ be real with
+$\nrm f_\infty+\nrm{\nabla_S^2f}_{\mathrm{op},\infty}<1/4$.
+The radial graph $\{(1+f(\omega))\omega:\omega\in S^{2p-1}\}$
+is a closed analytic hypersurface bounding a bounded strictly
+convex domain. It is invariant under $O(a)\times O(b)$.
+The conclusion concerns all ambient directions, including the
+block-orbit directions and the axes.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{inf:space-embedding}, $f$ is holomorphic in a
+complex neighbourhood of $x\in[0,1]$. On the real sphere
+$x=|X|^2$ is a polynomial. The radial parametrization is therefore
+analytic, including at $x=0,1$. Its radius is positive and its
+radial derivative is nonsingular, so it is an embedded closed
+hypersurface. Its symmetry follows from dependence on $x$ alone.
+
+Put $r_f=1+f$ and let $g_S$ be the sphere metric.
+Differentiating the radial parametrization and its outward normal
+gives the second fundamental form with positive denominator and
+numerator
+\begin{equation}\label{inf:curvature-numerator}
+ r_f^2g_S+2\,df\otimes df-r_f\nabla_S^2f.
+\end{equation}
+Since $3/4<r_f<5/4$, its quadratic form on every unit tangent
+vector is at least $9/16-5/16=1/4$.
+This proves positivity in the full tangent space.
+To make the block directions explicit, at $0<x<1$ a unit
+$X$-orbit tangent vector has
+$\nabla_S^2x(v,v)=2(1-x)$ and $dx(v)=0$; a unit $Y$-orbit
+tangent vector has $\nabla_S^2x(v,v)=-2x$.
+Their numerators in \eqref{inf:curvature-numerator} are
+$r_f^2-2r_f(1-x)f'$ and $r_f^2+2r_fx f'$.
+For the unit meridian direction the numerator is
+\[
+ r_f^2+8x(1-x)(f')^2
+   -r_f\{4x(1-x)f''+2(1-2x)f'\}.
+\]
+The coordinate-free positive bound already controls all three
+expressions and their limits at the axes.
+The global convexity theorem for compact hypersurfaces with
+positive second fundamental form (Hadamard's theorem, in the form
+given by \cite{inf:doCarmoLima}; see also \cite{inf:sacksteder})
+now makes the enclosed radial domain
+strictly convex. Its hypotheses hold: the hypersurface is smooth,
+compact, connected and embedded, and every principal curvature
+is positive. The convex boundary contains no line segment, since
+an interior point of such a segment would have zero normal
+curvature in its direction. Thus the convexity is strict.
+Boundedness follows from its bounded radius.
+\end{proof}
+
+\begin{lemma}[The non-ball witness survives the correction]
+\label{inf:geometry-nonball}
+At the zero supplied by Corollary~\ref{inf:Newton-zero}, the
+normalized shape $f_*$ satisfies the hypotheses of
+Lemma~\ref{inf:geometry-convexity} for large $p$, and its domain
+is not a ball.
+\end{lemma}
+\begin{proof}
+The fixed centre has normalized $C^2$ size at most
+$CC_0\tau p^{-2}$ by \eqref{inf:shape-C2},
+$\nrm{f_N}_{\Ec_1}\le\delta$, and \eqref{inf:uniform-delta}.
+The correction has normalized $C^2$ size at most
+$C\tau p^{-L_{\mathrm{Newt}}}$ by \eqref{inf:shape-C2} and
+\eqref{inf:Newton-correction}. Their sum is below $1/4$ for
+large $p$, uniformly for $\tau\le20$.
+
+Consider the physical monic seed functional
+$\mathfrak W_p(f)=R[\mathsf H_2]f=Rf_2/\mathsf H_2(1)$.
+Its dual norm on $\Ec_1$ is at most $Cp$, since $R=O(p)$ and
+$\mathsf H_2(1)=(\bb)_2/(p+1)_2$ is bounded away from zero uniformly
+in the split. At the centre,
+\[
+ \mathfrak W_p(f_N)
+ =-\frac{\theta}{16r(1-r)p}+O_N(\tau p^{-2}),
+\]
+so its absolute value is at least $c\tau/p$ for large $p$.
+The correction changes it by at most
+$Cp\tau p^{-L_{\mathrm{Newt}}}=o(\tau/p)$ since $L_{\mathrm{Newt}}>2$.
+It remains nonzero.
+Any ball invariant under both orthogonal block groups has centre
+fixed by both groups, hence centre zero. Its radial function
+would be constant and would have zero monic degree-two angular
+coefficient. The nonzero functional excludes such a ball.
+\end{proof}
+
+\begin{proposition}[Identification of the zero with a classical solution]
+\label{inf:classical-solution}
+For a real zero $(g,f)$ of \eqref{inf:nonlinear-definition} in the
+small chart, set $U=1+Kg$, $\widehat\Omega=\Phi_f(B)$, and
+$w=U\circ\Phi_f^{-1}$. Then $w$ is a classical solution of
+\begin{equation}\label{inf:normalized-PDE}
+ \Delta w+R^2w=0\quad\hbox{in }\widehat\Omega,
+ \qquad w=1,\quad\nabla w=0\quad\hbox{on }\partial\widehat\Omega.
+\end{equation}
+It is smooth up to the boundary and real analytic there and in
+the interior. For $\Omega=R\widehat\Omega$ and $u(x)=w(x/R)$,
+one has $\Delta u+u=0$, boundary value one and zero boundary
+gradient. The field is nonconstant.
+\end{proposition}
+\begin{proof}
+The source $g$ is an actual $L^2$ function by
+Lemma~\ref{inf:space-embedding}. Its Poisson field belongs to
+$H^2(B)\cap H^1_0(B)$, so $U\in H^2(B)$ and its Dirichlet
+trace is one. The completed-space trace identity
+\eqref{inf:poisson-trace} makes its normal trace zero because
+$g\in\Gc_p$.
+The tangential trace of its gradient is the tangential derivative
+of its constant Dirichlet trace, hence zero in the Sobolev trace
+sense. Equivalently, finite clamped Poisson sums have zero full-gradient
+trace and converge to $U$ in $H^2$; continuity of the gradient
+trace gives the same conclusion on the completion. Thus the
+whole gradient trace is zero.
+The map $\Phi_f$ is a smooth diffeomorphism of closed domains;
+composition transports $U$ to an $H^2$ field on
+$\widehat\Omega$. Proposition~\ref{inf:nonlinear-map} identifies
+its coefficient equation with the weak physical equation in
+\eqref{inf:normalized-PDE}.
+The trace chain rule
+$\nabla w\circ\Phi_f=D\Phi_f^{-T}\nabla U$ transports the zero
+full-gradient trace as well.
+
+Dirichlet elliptic regularity on a smooth bounded domain applies
+to $\Delta w=-R^2w$ and the constant boundary data. Starting from
+$H^2$, each application improves regularity by two derivatives;
+iteration gives all Sobolev orders, hence $C^\infty$ up to the
+boundary in the fixed dimension; see \cite[Chs.~6, 8, 9]{inf:GT}.
+The boundary is analytic by Lemma~\ref{inf:space-embedding}, the
+operator has analytic constant coefficients, and its Dirichlet
+data are analytic. Analytic interior regularity \cite{inf:MorreyNirenberg} and
+analytic Dirichlet boundary regularity \cite{inf:MorreyBoundary}
+give real analyticity up to that boundary. The scalar Laplacian
+is strongly elliptic, and the Dirichlet condition is its
+complementing boundary condition; the lower-order term $R^2$
+has analytic coefficients. Its now classical gradient trace agrees with the zero
+Sobolev trace. This proves \eqref{inf:normalized-PDE} pointwise.
+
+The dilation gives
+$\Delta_xu=R^{-2}(\Delta w)(x/R)=-u$ and preserves both boundary
+conditions. The only constant solution of $\Delta u+u=0$ is zero,
+which is incompatible with boundary value one. Hence $u$ is
+nonconstant.
+\end{proof}
+
+\begin{remark}[The symmetry sector]\label{inf:sector-distinction}
+The Dirichlet inverse throughout the construction is only in the
+$O(a)\times O(b)$ invariant sector. At the exact solution, Cartesian
+derivatives of $u$ satisfy the frequency-one equation and have zero
+Dirichlet trace. At least one is nonzero, so the full ambient
+Dirichlet operator has eigenvalue one. Since $u$ is invariant,
+its $X$-derivatives
+transform as the standard $O(a)$ representation and its
+$Y$-derivatives as the standard $O(b)$ representation. Averaging
+any of these derivatives over the corresponding reflection group
+gives zero. They therefore have zero invariant projection.
+Within the invariant sector the graph inverse used above includes
+every mode, in particular the degree-four seed and the harmonic
+source layer.
+\end{remark}
+
+\begin{proposition}[Failure of the Pompeiu property]\label{inf:Pompeiu}
+Every bounded domain carrying a classical field constructed above fails
+the Pompeiu property.
+\end{proposition}
+\begin{proof}
+For any $\xi\in\R^{2p}$ with $|\xi|=1$, put
+$v(x)=e^{i\xi\cdot x}$. Both $u$ and $v$ solve the frequency-one
+Helmholtz equation. Green's second identity gives
+\[
+ 0=\int_{\partial\Omega}(u\partial_\nu v-v\partial_\nu u)
+   =\int_{\partial\Omega}\partial_\nu v
+   =\int_\Omega\Delta v=-\int_\Omega e^{i\xi\cdot x}\,dx.
+\]
+Thus the Fourier transform of the indicator vanishes on the unit
+sphere. Fix a unit vector $\xi_0$.
+For every orthogonal map $\mathsf O$ and translation vector $x_{\mathrm{tr}}$,
+\[
+ \int_{x_{\mathrm{tr}}+\mathsf O\Omega}e^{i\xi_0\cdot x}\,dx
+ =e^{i\xi_0\cdot x_{\mathrm{tr}}}\int_\Omega e^{i(\mathsf O^T\xi_0)\cdot y}\,dy=0.
+\]
+Taking real parts provides the nonzero continuous real function
+$\cos(\xi_0\cdot x)$ whose integrals over all rigid copies of
+$\Omega$ vanish. This is the failure of the Pompeiu property.
+\end{proof}
+
+\begin{corollary}[The bounded base construction]\label{inf:bounded-basic}
+For every sufficiently large $p\in\mathcal P_{\mathrm{bd}}$, some
+integer $a\in[p/2,3p/4]$ gives a bounded strictly convex analytic
+non-ball domain with $O(a)\times O(2p-a)$ symmetry and the data
+\eqref{inf:main-equations}. The construction uses
+$0<\tau\le20$ and the cofactor order $N=4M+40$.
+\end{corollary}
+\begin{proof}
+Lemma~\ref{inf:shifted-arithmetic} supplies unbounded inputs of both
+parities; Lemma~\ref{inf:detuning} supplies their radii and
+$0<\tau<20$. Theorem~\ref{inf:integer-gap} selects an integer
+split for every sufficiently large member. Fix the order of
+constants \eqref{inf:constant-order} and the resulting one finite
+accuracy order $N$.
+The centre exists at every selected split by
+Theorem~\ref{inf:centres}; its gap transfers by
+Proposition~\ref{inf:centre-gap-transfer}.
+Theorem~\ref{inf:coefficient-inverse},
+Theorem~\ref{inf:material-isomorphism}, and the second-derivative
+and residual bounds give the exact zero in
+Corollary~\ref{inf:Newton-zero}.
+Lemmas~\ref{inf:geometry-convexity} and
+\ref{inf:geometry-nonball} give its analytic strictly convex
+non-ball domain with the required block symmetry.
+Proposition~\ref{inf:classical-solution} gives the classical
+frequency-one field, and Proposition~\ref{inf:Pompeiu} gives the
+Pompeiu assertion.
+There are only finitely many thresholds after the constants and
+$N$ have been fixed; all are uniform in the split and in the
+nonzero detuning range. Their maximum discards only finitely
+many members of $\mathcal P_{\mathrm{bd}}$. Its remaining members have
+unbounded distinct dimensions $2p$, as required.
+\end{proof}

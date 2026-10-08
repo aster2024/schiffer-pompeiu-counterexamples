@@ -1,0 +1,288 @@
+\section{Two-block reduction and normalizations}\label{inf:sec-reduction}
+
+Fix $p\ge64$ with $2p\in\Z$ and an integer $a$ with
+$p/2\le a\le3p/4$. Write
+\begin{equation}\label{inf:block-parameters}
+ n=2p,\qquad b=2p-a,\qquad
+ \ab=\frac a2=pr,\qquad \bb=\frac b2=p(1-r),
+ \qquad \frac14\le r\le\frac38.
+\end{equation}
+For the spectral deformation argument the parameters $\ab,\bb$ will also
+be allowed to be positive real numbers with sum $p$. All constructions
+that define Euclidean domains are made at integer block sizes.
+In particular $a,b\ge3$ and $\ab,\bb>1$ in this range.
+We use $y=(X,Y)\in\R^a\times\R^b$ and, away from the origin, set
+\begin{equation}\label{inf:coordinates}
+ \varrho=|y|,\qquad t=|y|^2,\qquad
+ x=\frac{|X|^2}{|X|^2+|Y|^2}.
+\end{equation}
+Here $t$ always denotes squared radius. A nonsquared reference radial
+coordinate used later will be denoted by $\zeta$.
+
+\begin{lemma}[Invariant differential operator]\label{inf:reduction}
+For a twice differentiable invariant function $u(\varrho,x)$,
+\begin{equation}\label{inf:invariant-laplacian}
+ \Delta u=u_{\varrho\varrho}+\frac{2p-1}{\varrho}u_\varrho
+ +\frac4{\varrho^2}\left\{x(1-x)u_{xx}+(\ab-px)u_x\right\}.
+\end{equation}
+Normalized spherical measure induces on $x$ the probability measure
+\begin{equation}\label{inf:beta-measure}
+ d\mu_r(x)=\frac{x^{\ab-1}(1-x)^{\bb-1}}{B(\ab,\bb)}\,dx.
+\end{equation}
+Normalized invariant volume measure on the unit ball is
+$p t^{p-1}\,dt\,d\mu_r(x)$. Each angular polynomial occurs with
+multiplicity one in this invariant sector.
+\end{lemma}
+\begin{proof}
+Put $u(y)=v(q_X,q_Y)$, where $q_X=|X|^2$ and $q_Y=|Y|^2$.
+Differentiating in each Euclidean coordinate and summing gives
+\[
+ \Delta u=4q_Xv_{q_Xq_X}+2av_{q_X}
+          +4q_Yv_{q_Yq_Y}+2bv_{q_Y}.
+\]
+Use $q_X=\varrho^2x$ and $q_Y=\varrho^2(1-x)$ in this identity.
+The mixed second derivatives in $\varrho,x$ cancel, and the remaining
+coefficients are those in \eqref{inf:invariant-laplacian}.
+Alternatively, the coefficients of $u_{xx}$ and $u_x$ follow directly
+from $|\nabla_S x|^2=4x(1-x)$ and
+$\Delta_S x=4(\ab-px)$.
+
+Polar integration in the two blocks has volume element proportional to
+$q_X^{\ab-1}q_Y^{\bb-1}\,dq_X\,dq_Y$. The determinant of the change
+$(t,x)\mapsto(tx,t(1-x))$ has absolute value $t$. Its angular integral
+is $B(\ab,\bb)$; its radial integral over $0<t<1$ is $1/p$.
+Division by these two integrals proves the measure assertions.
+An invariant function is a function of $\varrho,x$, so each angular
+polynomial below occurs once.
+\end{proof}
+
+\subsection{The angular polynomials}
+
+Let $\mathsf H_j(x)$ be the monic degree-$j$ orthogonal polynomial for $\mu_r$,
+and define
+\begin{equation}\label{inf:angular-normalization}
+ G_j(x)=\frac{\mathsf H_j(x)}{\mathsf H_j(1)},\qquad
+ \eta_j^2=\int_0^1G_j(x)^2\,d\mu_r(x),\qquad
+ P_j(x)=\eta_j^{-1}G_j(x).
+\end{equation}
+The sign of $P_j$ is chosen to give a positive leading coefficient.
+The two uses of Jacobi polynomials in this paper are distinguished by
+letters: $G_j$ is angular, whereas $J_s^{\beta}$ below is radial.
+The symbol $J_\nu$ without an upper index denotes the Bessel function.
+
+\begin{lemma}[Angular formulas]\label{inf:angular-formulas}
+For $j\ge0$,
+\begin{align}
+ G_j(x)&=\frac{P_j^{(\bb-1,\ab-1)}(2x-1)}{(\bb)_j/j!},
+ &\mathsf H_j(1)&=\frac{(\bb)_j}{(p+j-1)_j},\label{inf:angular-jacobi}\\
+ \eta_j^2&=\frac{(p-1)(\ab)_j j!}
+ {(2j+p-1)(p-1)_j(\bb)_j},
+ &\Lambda_rG_j&=\lambda_jG_j,\label{inf:angular-norm}\\
+ \Lambda_r&=-4x(1-x)\partial_x^2-4(\ab-px)\partial_x,
+ &\lambda_j&=4j(j+p-1).\nonumber
+\end{align}
+The convention for a rising factorial of length zero is $(z)_0=1$.
+In the orthonormal basis multiplication by $x$ is
+\begin{equation}\label{inf:jacobi-matrix}
+ xP_j=\mathfrak a_{j+1}P_{j+1}+\mathfrak b_jP_j
+       +\mathfrak a_jP_{j-1},
+\end{equation}
+where $\mathfrak a_0=0$ and
+\begin{align}
+ \mathfrak a_j^2&=
+ \frac{j(j+\ab-1)(j+\bb-1)(j+p-2)}
+ {(2j+p-2)^2(2j+p-1)(2j+p-3)},\quad j\ge1,
+ \label{inf:recurrence-a}\\
+ \mathfrak b_j&=\frac12+
+ \frac{(r-1/2)p(p-2)}{(2j+p-2)(2j+p)}.
+ \label{inf:recurrence-b}
+\end{align}
+All these identities hold also for real positive $\ab,\bb$ with $p\ge64$.
+\end{lemma}
+\begin{proof}
+The shifted Rodrigues identity is
+\[
+ x^{\ab-1}(1-x)^{\bb-1}P_j^{(\bb-1,\ab-1)}(2x-1)
+ =\frac{(-1)^j}{j!}\frac{d^j}{dx^j}
+       \{x^{\ab+j-1}(1-x)^{\bb+j-1}\}.
+\]
+Repeated integration by parts against a polynomial of degree less than
+$j$ proves orthogonality. The endpoint value is $(\bb)_j/j!$ and the
+leading coefficient is $(p+j-1)_j/j!$. Their quotient proves the
+second identity in \eqref{inf:angular-jacobi}. The integrations by parts
+are valid: at each intermediate stage the endpoint powers in the
+boundary terms have positive exponent. Differentiation of the Rodrigues
+identity gives the displayed angular differential equation.
+
+A further integration by parts against the degree-$j$ polynomial gives
+\[
+ \int_0^1\bigl(P_j^{(\bb-1,\ab-1)}(2x-1)\bigr)^2\,d\mu_r
+ =\frac{(p-1)(\ab)_j(\bb)_j}
+        {(2j+p-1)(p-1)_j j!}.
+\]
+Dividing by the squared endpoint value proves
+\eqref{inf:angular-norm}. Orthogonality makes multiplication by $x$
+tridiagonal and symmetric. The ratio of the leading coefficients of
+$P_{j-1}$ and $P_j$, followed by the norm formula, gives
+\eqref{inf:recurrence-a}. Comparing the coefficients of $x^j$ in the
+monic recurrence gives \eqref{inf:recurrence-b}. These computations
+hold for these positive real parameters.
+\end{proof}
+
+\begin{lemma}[Endpoint bound and angular derivatives]\label{inf:angular-sup}
+For the parameters in \eqref{inf:block-parameters},
+\[
+ |G_j(x)|\le1\quad(0\le x\le1),\qquad 0<\eta_j\le1.
+\]
+On the unit sphere the homogeneous extension
+$S_j(y)=|y|^{2j}G_j(x)$ satisfies
+\begin{equation}\label{inf:angular-derivatives}
+ \nrm{G_j}_{L^\infty(S^{2p-1})}\le1,\qquad
+ \nrm{\nabla_S G_j}_\infty\le2j,\qquad
+ \nrm{\nabla_S^2G_j}_{\mathrm{op},\infty}\le4j^2.
+\end{equation}
+The constants are independent of $p$ and of the admissible split.
+\end{lemma}
+\begin{proof}
+For a Jacobi polynomial $v(z)=P_j^{(\alpha,\beta)}(z)$ with
+$\alpha=\bb-1\ge\beta=\ab-1\ge0$ and $j>0$, write
+$\kappa=j(j+\alpha+\beta+1)$. Its equation implies
+\[
+ \frac d{dz}\left(v^2+\frac{1-z^2}{\kappa}(v')^2\right)
+ =\frac2\kappa\{\alpha-\beta+(\alpha+\beta+1)z\}(v')^2.
+\]
+The factor in braces is increasing. The expression in parentheses
+therefore first decreases and then increases, with either interval
+possibly empty. Its maximum is attained at an endpoint. The absolute
+endpoint values are $(\alpha+1)_j/j!$ and $(\beta+1)_j/j!$; the former
+is at least the latter. Division by the former proves the supremum
+bound. The case $j=0$ is constant. The bound for $\eta_j$ follows by
+integration against a probability measure.
+
+The restriction to any great circle of the polynomial $S_j$ is a
+trigonometric polynomial of degree at most $2j$. The first and second
+Bernstein inequalities give bounds $2j$ and $4j^2$ for its derivatives
+along that circle \cite[Vol.~II, Ch.~X, Theorem~3.13]{inf:zygmund}.
+Great circles with prescribed unit tangent vector
+compute the spherical gradient and the diagonal values of the
+spherical Hessian. A real symmetric bilinear form has operator norm
+equal to the supremum of its absolute diagonal values on unit vectors.
+This proves \eqref{inf:angular-derivatives}.
+\end{proof}
+
+\begin{lemma}[Solid harmonics and radial profiles]\label{inf:solid-harmonics}
+The function
+\begin{equation}\label{inf:solid-definition}
+ S_j(y)=t^jG_j(x)
+\end{equation}
+is an invariant homogeneous harmonic polynomial of degree $2j$.
+For a twice differentiable radial profile $v$,
+\begin{equation}\label{inf:profile-laplacian}
+ \Delta\{S_jv(t)\}=4S_j\{tv''+(2j+p)v'\}.
+\end{equation}
+The regular solutions of $(\Delta+1)u=0$ in angular degree $2j$ are
+multiples of
+\begin{equation}\label{inf:regular-bessel-mode}
+ \varrho^{1-p}J_{\nu_j}(\varrho)G_j(x),\qquad
+ \nu_j=p-1+2j.
+\end{equation}
+Their apparent singularities at the origin are removable.
+\end{lemma}
+\begin{proof}
+As $G_j$ is a polynomial of degree $j$, multiplication by $t^j$
+expresses $S_j$ as a polynomial in $q_X,q_Y$. Applying
+\eqref{inf:invariant-laplacian} and using its angular eigenvalue proves
+harmonicity. For the product with $v(t)$, use
+$\nabla t=2y$, $\Delta t=4p$, and $y\cdot\nabla S_j=2jS_j$.
+The product rule gives \eqref{inf:profile-laplacian}.
+Substituting $\varrho^{1-p}w(\varrho)$ in the radial Helmholtz equation
+gives Bessel's equation of order $\nu_j$. Its regular solution is
+$J_{\nu_j}$. Its convergent expansion is a constant times
+$\varrho^{2j}$ multiplied by a power series in $\varrho^2$.
+The factor $\varrho^{2j}G_j$ is the polynomial just constructed, which
+proves regularity at the origin and across both block axes.
+\end{proof}
+
+\subsection{The ball field and the invariant Dirichlet spectrum}
+
+Write $j_{\nu,k}$ for the $k$th positive zero of $J_\nu$ and set
+$z_{j,k}=j_{\nu_j,k}$. All radial zero indices $k$ start at $1$.
+Choose a positive zero $R=j_{p,k_0}$, where $k_0$ will be specified by
+the arithmetic construction. The radial field with boundary value one is
+\begin{equation}\label{inf:ball-field}
+ u_0(\varrho)=
+ \frac{\varrho^{1-p}J_{p-1}(\varrho)}{R^{1-p}J_{p-1}(R)}.
+\end{equation}
+Consecutive orders have no common positive zero: their recurrences
+would give both the value and derivative of one solution equal to zero,
+contradicting uniqueness for the Bessel equation. Thus the denominator
+in \eqref{inf:ball-field} is nonzero.
+The derivative identity
+$(\varrho^{1-p}J_{p-1}(\varrho))'
+=-\varrho^{1-p}J_p(\varrho)$ proves
+\begin{equation}\label{inf:ball-traces}
+ u_0(R)=1,\qquad u_0'(R)=0,\qquad u_0''(R)=-1.
+\end{equation}
+The last equality follows from the radial equation.
+
+\begin{proposition}[Invariant Dirichlet realization]\label{inf:ball-spectrum}
+The Friedrichs Dirichlet Laplacian $H_0=-\Delta_D$ in the invariant
+subspace of the unit ball has eigenvalues $z_{j,k}^2$, one radial
+sequence for each $j\ge0$, with repetitions retained. It has compact
+resolvent. After the unitary radial substitution
+$v(\zeta)=\sqrt{2p}\,\zeta^{p-1/2}u(\zeta)$ and the angular basis $P_j$, its
+$j$th radial operator is
+\begin{equation}\label{inf:radial-schrodinger}
+ -\frac{d^2}{d\zeta^2}+\frac{\nu_j^2-1/4}{\zeta^2},
+ \qquad 0<\zeta<1,
+\end{equation}
+with Friedrichs condition at zero and Dirichlet condition at one.
+The spectrum does not depend on the split $r$.
+\end{proposition}
+\begin{proof}
+The orthogonal group action commutes with the Dirichlet form. Averaging
+over it is an orthogonal projection preserving $H^1_0$, so restriction
+to the invariant subspace gives a closed Dirichlet form. Compactness of
+$H^1_0(B)\hookrightarrow L^2(B)$ implies compact resolvent for this
+restriction. The polynomials $P_j$ form a complete angular orthonormal
+basis; this follows from density of polynomials in the continuous
+functions on $[0,1]$ and density of continuous functions in $L^2(\mu_r)$.
+Separation of variables gives \eqref{inf:radial-schrodinger}. Its
+regular solution at energy $z^2$ is a multiple of
+$\sqrt\zeta J_{\nu_j}(z\zeta)$. The other independent solution is not
+in the Friedrichs form domain, as $\nu_j\ge p-1>1$.
+The boundary condition at one is $J_{\nu_j}(z)=0$.
+Neither $\nu_j$ nor the separated eigenvalue equation contains $r$.
+\end{proof}
+
+\begin{lemma}[Radial polynomial orthogonality]\label{inf:radial-polynomials}
+Set $\beta_j=2j+p-1$ and
+\begin{equation}\label{inf:radial-basis}
+ J_s^\beta(t)=P_s^{(0,\beta)}(2t-1),\qquad
+ \Psi_{j,s}(y)=S_j(y)J_s^{\beta_j}(t),\quad s\ge0.
+\end{equation}
+Then $J_s^\beta(1)=1$ and
+\begin{align}
+ J_s^\beta(t)&=\sum_{h=0}^s(-1)^{s-h}\binom sh
+                         \binom{s+\beta+h}{s}t^h,
+                         \label{inf:radial-expansion}\\
+ \int_0^1t^\beta J_s^\beta J_v^\beta\,dt
+ &=\frac{\delta_{sv}}{2s+\beta+1},\qquad
+ \nrm{\Psi_{j,s}}_{L^2(B)}^2
+ =\eta_j^2\frac p{p+2j+2s}.
+ \label{inf:radial-norm}
+\end{align}
+Here volume is normalized as in Lemma~\ref{inf:reduction}. All invariant
+polynomials are finite linear combinations of these basis elements.
+\end{lemma}
+\begin{proof}
+Apply the Rodrigues computation of Lemma~\ref{inf:angular-formulas}
+with Jacobi parameters $0,\beta$. It gives the coefficient formula,
+endpoint value, and integral norm. Multiplication by $S_j=t^jG_j$
+changes the radial weight $p t^{p-1}$ to $p t^{\beta_j}$; angular
+orthogonality then proves the last identity.
+A monomial in $q_X,q_Y$ is $t^d$ times a polynomial in $x$ of degree
+at most $d$. Expand that polynomial in the $G_j$, $j\le d$, and expand
+the remaining power $t^{d-j}$ in the $J_s^{\beta_j}$. This proves the
+spanning assertion.
+\end{proof}

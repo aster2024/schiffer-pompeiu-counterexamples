@@ -1,0 +1,210 @@
+\section{Sharper clamped and material estimates}\label{inf:sec-sharp}
+
+The spaces in this section remain $\Cc$ and $\Xc_p=\Gc_p\times\Ec_1$.
+The centre and the fixed material field have the membership supplied
+by Section~\ref{inf:sec-material}. The estimates below follow from
+their exact equations.
+For fixed wider parameter ranges use the extensions in
+Lemmas~\ref{inf:split-extension} and \ref{inf:fixed-detuning-extension}.
+
+\begin{lemma}[The harmonic gradient coefficient sum]\label{inf:pole-sum}
+For endpoint-normalized solid harmonics $S_i,S_j$,
+\begin{equation}\label{inf:pole-sum-identity}
+ \nabla S_i\cdot\nabla S_j
+ =\sum_{k<i+j}2h(h+2k+p-1)c_{ij}^kS_kt^{h-1},\quad h=i+j-k,
+ \qquad
+ \sum_{k<i+j}2h(h+2k+p-1)c_{ij}^k=4ij.
+\end{equation}
+Consequently, for $H_u=\HP h_u$,
+\begin{equation}\label{inf:sharp-gradient-multiplier}
+ \nrm{M_{\nabla H_1\cdot\nabla H_2}}_{\Cc\to\Cc}
+ \le4\nrm{h_1}_{\Ec_1}\nrm{h_2}_{\Ec_1}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The product rule for two harmonic polynomials gives
+$2\nabla S_i\cdot\nabla S_j=\Delta(S_iS_j)$.
+Apply \eqref{inf:profile-laplacian} to each term of the positive solid
+product to obtain the first identity. At a unit point of the $x=1$
+block axis, $S_i=S_j=1$ and their tangential gradients vanish.
+Their full gradients are $2iy$ and $2jy$. Evaluation therefore gives
+the second identity; the coefficients are all nonnegative.
+
+Every multiplier $S_kt^{h-1}$ has total degree $2i+2j-2$ and norm
+at most $2^k\wt(2i+2j-2)$ by Proposition~\ref{inf:module}.
+This is at most $2^{i+j}\wt(2i)\wt(2j)$.
+The positive coefficient sum is $4ij\le4(1+i)(1+j)$.
+Sum the absolute shape coefficients with their $\Ec_1$ weights
+to get \eqref{inf:sharp-gradient-multiplier}. A constant harmonic
+has zero gradient, and completion gives the assertion for all shapes.
+\end{proof}
+
+\begin{proposition}[Sharp centre and material bounds]\label{inf:sharp-material}
+Under the root and centre hypotheses of
+Lemma~\ref{inf:detuning-dependencies}, for each fixed centre order
+$N\ge4$, uniformly in
+$0<\tau\le T\le\log p$ and on the working region
+\eqref{inf:nonlinear-working-region},
+\begin{equation}\label{inf:sharp-three-bounds}
+ \nrm{g_0}_\Cc\le p^3\mathcal B_N(T),\qquad
+ \nrm{\Qmat^{-1}}\le p^2\mathcal B_N(T),\qquad
+ \sup\nrm{D^2\Fnl}\le p^3\mathcal B_N(T).
+\end{equation}
+Here $\mathcal B_N(T)=C_N(1+T)^{d_N^{\mathrm{tame}}}e^{C_N\sqrt T}$
+is the envelope of Lemma~\ref{inf:detuning-dependencies}, enlarged
+if necessary; $C_N,d_N^{\mathrm{tame}}$ depend on the fixed order
+and compact split interval. For fixed $T$ it is a constant.
+The inverse identities are those of
+Theorem~\ref{inf:material-isomorphism}.
+\end{proposition}
+\begin{proof}
+In the proof of Proposition~\ref{inf:nonlinear-map}, replace
+\eqref{inf:gradient-multiplier} by
+\eqref{inf:sharp-gradient-multiplier}. Every other grouped estimate
+there has a constant independent of $p$.
+In particular \eqref{inf:second-shape-clamped} and
+\eqref{inf:mixed-shape-clamped} are applied to clamped sources, as
+their statements require. The inverse multiplier series and their
+first two derivatives are bounded on the working ball. Thus
+\begin{equation}\label{inf:sharp-nonlinear}
+ \nrm{D_f\Fnl(g,f)}\le C\nrm g_\Cc,
+ \qquad \nrm{D^2\Fnl(g,f)}\le C(1+\nrm g_\Cc).
+\end{equation}
+The frequency term is affine in $g$ and independent of the shape.
+
+Put $\mathcal R_{\mathrm{sc}}=(P_{\Phi_N}\Delta-\Delta)\KD$.
+Equation~\eqref{inf:relative-scalar} gives
+$\nrm{\mathcal R_{\mathrm{sc}}}\le C\tau p^{-2}<1/2$ at the fixed
+centre. Since $U_0=1+Kg_0$, its residual equation is exactly
+\[
+ E_0=(I+\mathcal R_{\mathrm{sc}})g_0+R^2U_0.
+\]
+Use $\nrm{g_0}\le2\nrm{(I+\mathcal R_{\mathrm{sc}})g_0}$ and
+$\nrm{U_0}\le C_Np$ from \eqref{inf:centre-norm-bounds}.
+This yields $\nrm{g_0}\le C_Np^3$ and hence the last bound in
+\eqref{inf:sharp-three-bounds} by \eqref{inf:sharp-nonlinear}.
+This is norm absorption on the already defined clamped source.
+
+The fixed material field is
+$\mathfrak f_0=d_0^{-1}\Euler U_0=d_0^{-1}\Euler Kg_0$.
+The all-source estimate for $\Euler\KD$ in
+\eqref{inf:poisson-operator-bounds} gives
+$\nrm{\mathfrak f_0}\le C_Np^2$. Its zero Dirichlet trace and
+$\Delta\mathfrak f_0\in\Cc$, already proved in
+\eqref{inf:fixed-material-field}, give
+$\mathfrak f_0=\KD\Delta\mathfrak f_0$.
+Apply the material identity to the constant shape variation one:
+\[
+ B_{\Phi_N}\mathfrak f_0
+ =d_0^{-1}\Euler E_0-D_f\Fnl(z_0)[1].
+\]
+The residual bound and \eqref{inf:sharp-nonlinear} bound this by
+$C_Np^3$. On the other hand it equals
+$(I+\mathcal R_{\mathrm{sc}})\Delta\mathfrak f_0+R^2\mathfrak f_0$.
+The same norm absorption proves
+\begin{equation}\label{inf:sharp-material-field}
+ \nrm{\Delta\mathfrak f_0}\le C_Np^4.
+\end{equation}
+For an unknown shape $\eta$,
+\[
+ \Delta T_\eta=(\HP\eta)\Delta\mathfrak f_0
+ +2\nabla(\HP\eta)\cdot\nabla\KD\Delta\mathfrak f_0.
+\]
+The module estimate and the all-source gradient bound
+\eqref{inf:gradient-C-one} give
+$\nrm{\Delta T_\eta}\le C_Np^4\nrm\eta_{\Ec_1}$.
+The exact reconstruction \eqref{inf:material-reconstruction} has
+$\nrm\eta_{\Ec_1}\le C_Np^{-2}\nrm\psi_\Cc$, by its normal trace
+and the normal Hessian bound. It follows that
+$\nrm{\delta g}+\nrm\eta\le C_Np^2\nrm\psi$.
+Both inverse identities were proved before estimating this expression,
+so this proves the middle bound in \eqref{inf:sharp-three-bounds}.
+The dependence on $T$ in these same steps is given by row 12 and
+the clamped-source and material calculations in the proof of
+Lemma~\ref{inf:detuning-dependencies}, yielding the stated envelope.
+\end{proof}
+
+\begin{lemma}[Quadratic graph remainder at a polynomial chart]
+\label{inf:quadratic-graph}
+Let $H$ be a real invariant harmonic polynomial of fixed angular degree,
+with size $\delta$ in a fixed multiplier norm including its first
+four Euler derivatives. For $p\delta$ sufficiently small put
+$q=1+H$, $d=q+\Euler q$, $m=q^{p-1/2}d^{1/2}$, and denote its
+unitary Dirichlet operator by $\widehat H_H$. Its first variation is
+\[
+ V_1(H)=2H\Delta+2\nabla H\cdot\nabla\Euler
+                         +2\nabla l_{\mathrm{lin}}\cdot\nabla,
+ \qquad l_{\mathrm{lin}}=pH+\tfrac12\Euler H.
+\]
+In each of the mixed and Hilbert matrix norms at fixed exponential
+weight,
+\begin{equation}\label{inf:quadratic-graph-bound}
+ \nrm{(\widehat H_H-H_0-V_1(H))K_0^{-1}}\le C\delta^2.
+\end{equation}
+The constant may depend on the fixed degree and weights. This is
+an all-source estimate at a fixed polynomial chart.
+\end{lemma}
+\begin{proof}
+Lemma~\ref{inf:pole-sum} also gives a $p$-independent multiplier
+bound for fixed-degree gradient products in $\Mmix$: each positive
+solid multiplier is bounded by Lemma~\ref{inf:mixed-multipliers}.
+In $\Hc$ use its fixed bandwidth and the pointwise gradient bound
+as in \eqref{inf:Hilbert-gradient-product}. These bounds apply to
+$H$ and each of its fixed Euler derivatives.
+With $l=\log m$, harmonicity of $q,d$ gives
+\[
+ \Delta l=-(p-\tfrac12)q^{-2}|\nabla H|^2
+       -\tfrac12d^{-2}|\nabla(1+\Euler)H|^2.
+\]
+Thus $\Delta l=O(p\delta^2)$,
+$|\nabla l|^2=O(p^2\delta^2)$, and
+$\Euler l,\Euler^2l=O(p\delta)$ in the multiplier norms.
+Subtracting $l_{\mathrm{lin}}$ in its gradient leaves harmonic
+gradients times coefficients of size $O(p\delta)$; after
+$\nabla\KD$ the result is $O(\delta^2)$.
+The exact conjugations are
+\begin{align*}
+ m\Delta m^{-1}&=\Delta-2\nabla l\cdot\nabla
+                            +|\nabla l|^2-\Delta l,\\
+ m(\nabla H\cdot\nabla\Euler)m^{-1}
+ &=\nabla H\cdot\nabla\Euler-(\nabla H\cdot\nabla l)\Euler
+       -(\Euler l)\nabla H\cdot\nabla\\
+ &\quad +(\Euler l)(\nabla H\cdot\nabla l)
+                         -\nabla H\cdot\nabla\Euler l,\\
+ m\Euler(\Euler+1)m^{-1}
+ &=\Euler(\Euler+1)-2(\Euler l)\Euler
+             +(\Euler l)^2-\Euler^2l-\Euler l,\\
+ m\Euler m^{-1}&=\Euler-\Euler l.
+\end{align*}
+Insert these in the negative scalar pullback
+\eqref{inf:scalar-pullback}. Its linear part is exactly $V_1(H)$;
+there is no linear potential because $\Delta l_{\mathrm{lin}}=0$.
+The following table records every remainder after composition with
+$\KD$; all Poisson and gradient bounds are the all-layer bounds in
+Lemma~\ref{inf:mixed-Poisson}.
+\begin{center}\small\normalfont
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.60\textwidth}>{\raggedright\arraybackslash}p{.33\textwidth}@{}}
+\toprule Remainder & Bound after $\KD$\\\midrule
+Quadratic part of $q^{-2}\Delta$ & $C\delta^2$\\
+Nonlinear density-gradient terms & $Cp\delta^2\cdot p^{-1}$\\
+Density potential & $Cp^2\delta^2\cdot p^{-2}$\\
+Nonlinear coefficient of $\nabla H\cdot\nabla\Euler$
+ & $C\delta\cdot\delta$\\
+$(\nabla H\cdot\nabla l)\Euler$ and
+$(\Euler l)\nabla H\cdot\nabla$ & $Cp\delta^2\cdot p^{-1}$\\
+Their zero-order terms & $C(p^2\delta^3+p\delta^2)p^{-2}$\\
+$|\nabla H|^2\Euler(\Euler+1)$ & $C\delta^2$\\
+Its density corrections & $C(\delta^3+\delta^4+\delta^3/p)$\\
+The scalar $\Euler$ coefficient involving $C_q$ & $C\delta^2/p$\\
+Its density potential & $Cp\delta^3\cdot p^{-2}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Formula~\eqref{inf:Cq-identity} makes $C_q$ quadratic in the fixed
+harmonic gradients and Euler derivatives. The inverse multipliers
+have convergent series in both matrix algebras. Every row is bounded
+by $C\delta^2$, including the possible $p^2$ potentials. The identities
+first hold on the polynomial source core and extend by the graph
+bounds. Multiplying the $\KD$ version by the angular-diagonal
+contraction $H_0K_0^{-1}$ proves \eqref{inf:quadratic-graph-bound}.
+\end{proof}

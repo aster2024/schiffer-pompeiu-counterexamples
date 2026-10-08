@@ -1,0 +1,126 @@
+\section{The Newton threshold and the exact zero}\label{inf:sec-newton}
+
+The closing argument uses a threshold for the residual and two
+polynomial operator bounds in the same spaces. It requires the
+actual integer-split gap already obtained.
+
+\begin{theorem}[Polynomial Newton threshold]\label{inf:newton-threshold}
+Suppose fixed exponents $b_{\mathrm{inv}},m_{\mathrm{mat}},d_{\mathrm{nl}}\ge0$ have been chosen independently
+of the centre accuracy $N$. Assume, uniformly in $0<\tau=|\theta|\le20$
+and the admissible splits, for all sufficiently large $p$, that
+in the real Banach spaces $\Xc_p,\Cc$ of
+Definition~\ref{inf:spaces} a centre $z_0$ satisfies
+\begin{align*}
+ D\Fnl(z_0)&=J_D\Qmat+\mathcal V_{\mathrm{res}},&
+ \nrm{\Fnl(z_0)}&\le C_N\theta^2p^{2-N},\\
+ \nrm{\mathcal V_{\mathrm{res}}}&\le C_N\theta^2p^{3-N},&
+ \nrm{J_D^{-1}}&\le C_Np^{b_{\mathrm{inv}}}/(c_{\mathrm{gap}}\tau p^{-5/3}),\\
+ \nrm{\Qmat^{-1}}&\le C_Np^{m_{\mathrm{mat}}},&
+ \sup\nrm{D^2\Fnl}&\le C_Np^{d_{\mathrm{nl}}}.
+\end{align*}
+Here $J_D$ and $\Qmat$ are bounded isomorphisms, and the last bound
+holds on the valid closed centre ball considered below, on which
+$\Fnl$ is $C^2$.
+Put
+\begin{equation}\label{inf:threshold-exponents}
+ B_{\mathrm{Newt}}=b_{\mathrm{inv}}+m_{\mathrm{mat}}+5/3,\qquad
+ L_{\mathrm{Newt}}=B_{\mathrm{Newt}}+d_{\mathrm{nl}}+4.
+\end{equation}
+Assume that the accuracy order satisfies
+\begin{equation}\label{inf:threshold-accuracy}
+ N\ge\lceil2B_{\mathrm{Newt}}+d_{\mathrm{nl}}+8\rceil.
+\end{equation}
+For $p$ above a threshold depending on the fixed constants and
+$N$, the closed ball of radius
+$\mathfrak r_p=\tau p^{-L_{\mathrm{Newt}}}$ about $z_0$ contains a
+real zero of $\Fnl$, provided that ball is inside the domain of the
+map. The threshold is uniform for $0<\tau\le20$.
+\end{theorem}
+\begin{proof}
+Let $\AN=\Qmat^{-1}J_D^{-1}$. This isomorphism
+$\Cc\to\Xc_p$ satisfies
+$\nrm{\AN}\le C_Np^{B_{\mathrm{Newt}}}/\tau$.
+The three quantities controlling the contraction are
+\begin{align}
+ \frac{\nrm{\AN\Fnl(z_0)}}{\mathfrak r_p}
+ &\le C_Np^{B_{\mathrm{Newt}}+L_{\mathrm{Newt}}+2-N}
+                                      \le C_Np^{-2},
+ \label{inf:newton-gate-one}\\
+ \nrm{I-\AN D\Fnl(z_0)}
+ &\le C_N\tau p^{B_{\mathrm{Newt}}+3-N}\le20C_Np^{-5},
+ \label{inf:newton-gate-two}\\
+ \sup\nrm{\AN D^2\Fnl}\,\mathfrak r_p
+ &\le C_Np^{B_{\mathrm{Newt}}+d_{\mathrm{nl}}-L_{\mathrm{Newt}}}
+                                      =C_Np^{-4}.
+ \label{inf:newton-gate-three}
+\end{align}
+The exact factorization gives
+$I-\AN D\Fnl(z_0)=-\AN\mathcal V_{\mathrm{res}}$, proving
+the second estimate. The exponents follow from
+\eqref{inf:threshold-exponents} and \eqref{inf:threshold-accuracy}.
+Increase $p$ until each quantity is at most $1/4$.
+For $\mathcal T(z)=z-\AN\Fnl(z)$, Taylor's integral formula
+bounds its displacement from the centre on the closed ball by
+$\mathfrak r_p/4+\mathfrak r_p/4+\mathfrak r_p/8<\mathfrak r_p$.
+The same formula for its derivative gives Lipschitz constant at
+most $1/4+1/4=1/2$.
+The ball is complete, so Banach's contraction theorem supplies
+a fixed point. Since $\AN$ is injective, its fixed-point equation
+implies $\Fnl(z)=0$. All the smallness conditions are uniform for
+$0<\tau\le20$, as the displayed powers show.
+\end{proof}
+
+\begin{corollary}[Instantiation for the centre family]
+\label{inf:Newton-zero}
+Fix the constants in the following order:
+\begin{equation}\label{inf:constant-order}
+ \begin{aligned}
+ C_0&\longrightarrow C_{\mathrm{rel}}\longrightarrow
+ E_{\mathrm{inv}}\longrightarrow M=M_{20E_{\mathrm{inv}}}\\
+ &\longrightarrow (D_{\mathrm{sep}},K_{\mathrm{head}})
+ \longrightarrow b_{\mathrm{inv}}=2M+3
+ \longrightarrow N=4M+40.
+ \end{aligned}
+\end{equation}
+Here $C_0$ and $C_{\mathrm{rel}}$ are those of
+\eqref{inf:uniform-delta} and \eqref{inf:relative-two-norms}.
+For every sufficiently large $p\in\mathcal P_{\mathrm{bd}}$, choose a split
+from Theorem~\ref{inf:integer-gap} and the order-$N$ centre at
+that split. There is an exact real zero $z_*=(g_*,f_*)$ with
+\begin{equation}\label{inf:Newton-correction}
+ \nrm{z_*-z_0}_{\Xc_p}\le\tau p^{-L_{\mathrm{Newt}}},\qquad
+ B_{\mathrm{Newt}}=2M+32/3,\quad L_{\mathrm{Newt}}=2M+62/3.
+\end{equation}
+\end{corollary}
+\begin{proof}
+The centre gap follows from Theorem~\ref{inf:integer-gap} and
+Proposition~\ref{inf:centre-gap-transfer} at the now fixed order.
+The coefficient inverse has exponent $b_{\mathrm{inv}}$ by
+Theorem~\ref{inf:coefficient-inverse}.
+The material inverse and second derivative have exponents
+$m_{\mathrm{mat}}=d_{\mathrm{nl}}=6$ by \eqref{inf:Qmat-bounds} and \eqref{inf:p6-second}.
+The residuals and factorization are
+\eqref{inf:residual-moments}, \eqref{inf:residual-material-bound},
+and \eqref{inf:material-factorization}.
+Thus all hypotheses of Theorem~\ref{inf:newton-threshold} hold
+in exactly $\Xc_p=\Gc_p\times\Ec_1$ and $\Cc_{p,2}$.
+The choice $N=4M+40$ exceeds
+$\lceil2B_{\mathrm{Newt}}+14\rceil$.
+The three gate exponents in this instance are
+\[
+ B_{\mathrm{Newt}}+L_{\mathrm{Newt}}+2-N=-20/3,\qquad
+ B_{\mathrm{Newt}}+3-N=-2M-79/3,\qquad
+ B_{\mathrm{Newt}}+6-L_{\mathrm{Newt}}=-4.
+\]
+The second gate retains its factor $\tau$; the first and third
+have no residual negative power of it.
+Since $\nrm{f_N}_{\Ec_1}=O_N(\tau p^{-2})$ and
+$\mathfrak r_p\to0$ uniformly for $\tau\le20$, the closed ball
+is eventually in the product region
+\eqref{inf:nonlinear-working-region}: its source displacement is
+at most one and its total shape norm is at most $1/4$. Increase the threshold to meet all preceding estimates
+for this one fixed $N$ and apply the threshold theorem.
+The spaces, centre and operators are real by
+Definition~\ref{inf:spaces} and their defining formulas, so the
+contraction acts on the real closed ball.
+\end{proof}

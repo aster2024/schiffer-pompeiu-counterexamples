@@ -1,0 +1,122 @@
+\section{Choosing an integer split}\label{inf:sec-gap}
+
+The counting window in this section is denoted by $W_{\mathrm{count}}$.
+It comes from a radial shell comparison and is independent of the
+wide window $W_{\mathrm{flow}}$ used in the spectral-flow proof.
+
+\begin{lemma}[Avoiding narrow bands on a discrete grid]
+\label{inf:grid-avoidance}
+Let a compact interval contain at least $p/8$ grid points separated
+by at least $1/(9p)$. Fix $C_*>0$ and suppose at most
+$C_*p^{2/3}$ absolutely
+continuous real functions can enter $[-1,1]$, and for each such
+function $\lambda_i$ one has
+$\epsilon_{\mathrm{sgn}}\lambda_i'\ge\mu>0$ almost everywhere on
+$|\lambda_i|<\omega$, where $\epsilon_{\mathrm{sgn}}\in\{-1,1\}$ is fixed
+and $0<\omega<1$. If $p$ is sufficiently large depending on $C_*$
+and $\gamma=\mu/(576C_*p^{2/3})<\omega$, then some grid point
+satisfies $|\lambda_i|\ge\gamma$ for every $i$.
+\end{lemma}
+\begin{proof}
+Clip $\epsilon_{\mathrm{sgn}}\lambda_i$ to $[-\omega,\omega]$.
+The chain rule for absolutely continuous functions says that its
+derivative is zero almost everywhere outside the open band and is
+at least $\mu$ inside. On a level set an absolutely continuous
+function has derivative zero almost everywhere, so the two band
+endpoints introduce no exceptional contribution. The clipped
+function is therefore nondecreasing. The preimage of
+$(-\gamma,\gamma)$ is an interval, and its length is at most
+$2\gamma/\mu$: integrate the derivative between any two points
+of that interval. It contains at most $1+18p\gamma/\mu$ grid points.
+The union of all excluded grid points has cardinality at most
+\[
+ C_*p^{2/3}(1+18p\gamma/\mu)
+ =C_*p^{2/3}+p/32\le p/16<p/8
+\]
+for large $p$. A remaining point has the asserted property.
+Functions that never enter $[-1,1]$ exclude no point.
+\end{proof}
+
+\begin{lemma}[A fixed counting window]\label{inf:quartic-count-window}
+For $p\ge64$, $R\in[2p-1,2p+4]$, $|\theta|\le20$, and every
+$\varsigma\in I$, the quartic domain lies in the radial shell
+$B_{1-3/p^2}\subset\Omega_{\mathrm q}/R\subset B_{1+3/p^2}$.
+Every ordered eigenvalue curve that enters the unit energy
+window about $R^2$ has its ball counterpart in the fixed window
+$W_{\mathrm{count}}=40$. This statement holds also for real block
+parameters in their weighted Dirichlet realization.
+\end{lemma}
+\begin{proof}
+The radius differs from one by at most $10/R^2$, using
+$\nrm{T_\varsigma}_\infty<1$. For $p\ge64$,
+$10/(2p-1)^2\le3/p^2$, because
+$2p^2-12p+3>0$. Set $\delta=3/p^2$.
+The ordered min--max shell comparison implies that
+$\lambda_i(\Omega_{\mathrm q}/R)\in[R^2-1,R^2+1]$ forces
+\[
+ (1-\delta)^2(R^2-1)\le\lambda_i(B)
+              \le(1+\delta)^2(R^2+1).
+\]
+Since $(2p+4)^2+1\le5p^2$ for $p\ge64$, the upper displacement
+from $R^2$ is at most
+$1+5(6+9/p^2)<32$; the lower displacement is at most $31$.
+Both are below $40$. These are indexwise inequalities for every
+split, and the ball eigenvalue is split independent.
+The weighted min--max comparison has the same dilation factors,
+so the proof includes real block parameters.
+\end{proof}
+
+\begin{theorem}[Integer-split gap]\label{inf:integer-gap}
+There are absolute constants $c_{\mathrm q}>0$ and $P_{\mathrm q}$
+such that for every $p\in\mathcal P_{\mathrm{bd}}$ with $p\ge P_{\mathrm q}$,
+there is an integer $a\in[p/2,3p/4]$ for which the actual quartic
+domain satisfies
+\begin{equation}\label{inf:quartic-gap}
+ \dist\bigl(R^2,\spec(-\Delta_D|_{O(a)\times O(2p-a)};
+                               \Omega_{\mathrm q}/R)\bigr)
+ \ge c_{\mathrm q}\tau p^{-5/3}.
+\end{equation}
+For each fixed centre accuracy $N$, the same split gives centre gap
+\begin{equation}\label{inf:centre-gap}
+ \gamma_p=c_{\mathrm{gap}}\tau p^{-5/3},\qquad
+ c_{\mathrm{gap}}=c_{\mathrm q}/2,
+\end{equation}
+for all $p$ above a further threshold depending on $N$.
+\end{theorem}
+\begin{proof}
+Lemma~\ref{inf:quartic-count-window} places every ball counterpart
+of a curve entering $[-1,1]$ about $R^2$ in the fixed window
+$W_{\mathrm{count}}=40$, independently of $\varsigma,\theta$.
+Theorem~\ref{inf:global-count} therefore bounds the number of
+possible ordered indices by $C_*p^{2/3}$, where one may fix
+$C_*=\max(1,C_{40})$.
+This count concerns the ball spectrum, which is independent of
+$\varsigma$; the single ball count bounds all curves that can enter
+the band.
+
+The integers $a\in[p/2,3p/4]$ provide at least $p/4-1$ points
+$\varsigma_a=(a/(2p)-1/2)^2$ in $I$. For consecutive admissible integers, put
+$d_a=1/2-a/(2p)$. Both $d_a,d_{a+1}$ are at least $1/8$, so
+\[
+ \varsigma_a-\varsigma_{a+1}
+ =(d_a-d_{a+1})(d_a+d_{a+1})
+ =\frac{d_a+d_{a+1}}{2p}\ge\frac1{8p}.
+\] In particular the weaker constants
+$p/8$ and $1/(9p)$ in Lemma~\ref{inf:grid-avoidance} hold for
+large $p$. Apply that lemma with
+\[
+ \epsilon_{\mathrm{sgn}}=\operatorname{sign}\theta,\qquad
+ \mu=c_{\mathrm{flow}}\tau/p,\qquad
+ \omega=\tau/(16p).
+\]
+The flow hypothesis is Theorem~\ref{inf:flow-theorem}.
+For large $p$ the resulting
+$\gamma=(c_{\mathrm{flow}}/(576C_*))\tau p^{-5/3}$ is smaller
+than $\omega$. Thus a grid point has the full invariant gap
+\eqref{inf:quartic-gap}, with
+$c_{\mathrm q}=c_{\mathrm{flow}}/(576C_*)$.
+At that grid point the weighted realization is the Euclidean
+invariant realization by Proposition~\ref{inf:flow-form}.
+Finally Proposition~\ref{inf:centre-gap-transfer} transfers half of
+the gap to every fixed-order centre after increasing its threshold.
+\end{proof}

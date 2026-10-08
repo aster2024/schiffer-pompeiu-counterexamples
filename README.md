@@ -23,6 +23,14 @@ For n = 2 the domain is strictly convex; it is the first convex planar counterex
 - **n = 5 (second proof), 9, 11, 12, 13, 15, 16, 17, 18, 20, 21:** axisymmetric domains, by one dimension-parametrised argument based on the exact inverse; one single-file verifier.
 - **Existence proofs:** Newton–Kantorovich (radii-polynomial) arguments. Finite blocks are verified in Arb ball arithmetic, and every infinite tail is controlled by explicit analytic bounds.
 
+## Second paper: infinitely many dimensions
+
+[`infinitely-many-dimensions/`](infinitely-many-dimensions/) contains the paper *Convex non-ball Schiffer domains in infinitely many dimensions* (112 pages, 8 October 2026; [PDF](infinitely-many-dimensions/paper.pdf)).
+
+**Theorem.** There are infinitely many dimensions n, both odd and even and in every residue class modulo every integer, for which ℝⁿ contains a bounded strictly convex domain, not a ball, with real-analytic boundary, carrying a nonconstant solution of Δu + u = 0 with u = 1 and ∇u = 0 on the boundary. The domains are invariant under O(a) × O(n − a), and along each family the number of pairwise non-similar such domains in dimension n is at least (1/2 − o(1))·n.
+
+The dimensions are n = 2p for the sufficiently large integers and half-integers p close to a zero in the order of J_p(2·sqrt((p+1)(p+2))); the precise families are in the [README](infinitely-many-dimensions/README.md) of that directory. The proofs in this paper are analytic.
+
 ## Contents
 
 | Path | Description |
@@ -37,6 +45,7 @@ For n = 2 the domain is strictly convex; it is the first convex planar counterex
 | `verification/gd/` | n = 5, 9, 11, 12, 13, 15, 16, 17, 18, 20, 21: `verify_axisym_exact_v2.py`, frozen centres and receipts. |
 | `verification/berenstein/`, `verification/diagnostics/berenstein/` | The convex planar domain for Berenstein's problem: `verify_berenstein_planar_convex_v3.py`, centre and receipt; numerical diagnostics. |
 | `SHA256SUMS`, `verification/**/SHA256SUMS` | Checksums. |
+| `infinitely-many-dimensions/` | The second paper (112 pages): PDF, LaTeX source and checksums. |
 
 The directory `verification/` is identical to the ancillary directory `anc/` of the arXiv submission. The repository was previously named `schiffer-pompeiu-r4`; its first releases contained only the four- and six-dimensional results, and release 3.0 the dimensions 3, 4, 6, 8, 10 and 14.
 
@@ -46,7 +55,7 @@ The requirements are Python ≥ 3.10, `python-flint` 0.9.0, NumPy and, for some 
 
 ## Status
 
-These are computer-assisted proofs. The paper has not yet been peer reviewed.
+The proofs of the first paper are computer-assisted; the proofs of the second paper are analytic.
 
 ## Author and acknowledgement
 

@@ -1,0 +1,261 @@
+\section{Half-integer orders and the Euclidean chain}\label{inf:sec-parity}
+
+The order parameter belongs to $\tfrac12\Z$ at a Euclidean input.
+The block dimensions $a,b$ and the angular and radial degree indices
+are integers; the Jacobi parameters and the Bessel orders may be
+half-integers.
+
+\begin{lemma}[Half-integer non-coincidence]\label{inf:half-integer-noncoincidence}
+For $\nu\in\{1/2,3/2,\ldots\}$, $J_\nu$ has no positive algebraic
+zero. Two distinct positive half-integer orders have no common positive
+zero. In particular $J_p$ and $J_{p+3}$ have no common positive zero
+for $p\in\Z+1/2$, $p>0$.
+\end{lemma}
+\begin{proof}
+Write $\nu=l+1/2$, $l\ge0$. The half-order identities and recurrence
+\cite[\S\S10.6, 10.16]{inf:dlmf} give
+\[
+ \sqrt{\pi x/2}\,J_{l+1/2}(x)
+ =\mathsf F_l(x)\sin x+\mathsf G_l(x)\cos x,
+\]
+where $\mathsf F_l,\mathsf G_l\in\mathbb Q[x^{-1}]$ and
+\[
+ (\mathsf F_{-1},\mathsf G_{-1})=(0,1),\qquad
+ (\mathsf F_0,\mathsf G_0)=(1,0),\qquad
+ (\mathsf F_{l+1},\mathsf G_{l+1})
+ =\frac{2l+1}{x}(\mathsf F_l,\mathsf G_l)
+       -(\mathsf F_{l-1},\mathsf G_{l-1}).
+\]
+The determinant of the successive rows $(l,l-1)$ is one: the
+recurrence preserves it and the initial determinant is one.
+Thus the two entries in row $l$ never vanish together at $x\ne0$.
+If $x>0$ were algebraic and a zero, the real algebraic numbers
+$\mathsf F_l(x),\mathsf G_l(x)$ would satisfy
+\[
+ e^{2ix}=-\frac{\mathsf G_l(x)+i\mathsf F_l(x)}
+                  {\mathsf G_l(x)-i\mathsf F_l(x)}.
+\]
+The denominator is nonzero. This contradicts the Hermite--Lindemann
+theorem, which states that $e^z$ is transcendental for each nonzero
+algebraic complex number $z$ \cite[\S1.2]{inf:BakerWustholz}.
+
+At a zero $x$ of $J_\nu$, $J_{\nu+1}(x)\ne0$: otherwise the derivative
+recurrence and uniqueness for Bessel's equation give $J_\nu=0$
+identically. Define the Lommel polynomials by
+\[
+ \mathsf L^{\mathrm{Lom}}_{0,\mu}(x)=1,\qquad
+ \mathsf L^{\mathrm{Lom}}_{1,\mu}(x)=2\mu/x,\qquad
+ \mathsf L^{\mathrm{Lom}}_{k+1,\mu}(x)
+ =\frac{2(\mu+k)}x\mathsf L^{\mathrm{Lom}}_{k,\mu}(x)
+     -\mathsf L^{\mathrm{Lom}}_{k-1,\mu}(x).
+\]
+The Bessel recurrence implies
+$J_{\nu+k}(x)=\mathsf L^{\mathrm{Lom}}_{k-1,\nu+1}(x)J_{\nu+1}(x)$
+for $k\ge1$; see \cite{inf:watson}.
+For $k\ge2$ this is a nonzero polynomial in $x^{-1}$ with rational
+coefficients and leading coefficient $\prod_{h=1}^{k-1}2(\nu+h)$.
+A common zero would therefore make $x$ algebraic, contrary to the
+first assertion. For $k=1$ the non-coincidence was already proved.
+For the primary pair the identity specializes to
+\[
+ J_{p+3}(x)=\left\{\frac{4(p+1)(p+2)}{x^2}-1\right\}J_{p+1}(x)
+ \quad\text{when }J_p(x)=0.
+\]
+\end{proof}
+
+\begin{lemma}[Shifted congruence approximation]\label{inf:shifted-arithmetic}
+The set $\mathcal P_{\mathrm{bd}}$ has infinitely many members in each
+of $\Z$ and $\Z+1/2$. For the pairs produced by
+Lemma~\ref{inf:congruence} applied to $\alpha_{\mathrm{ar}}+1$, set
+$\widetilde P=P-Q$ and $p=(\widetilde P-3)/2$. Along this particular
+half-integer selection,
+\[
+ \limsup\widehat p_{(Q-1)/4}|p-\widehat p_{(Q-1)/4}|
+ \le\frac98\alpha_{\mathrm{ar}}+d_{\mathrm{ar}}<31/10.
+\]
+\end{lemma}
+\begin{proof}
+Both $P,Q$ are odd, so $\widetilde P$ is even and $2p$ is odd.
+Moreover $Q\equiv1\pmod4$ and
+\[
+ Q|Q\alpha_{\mathrm{ar}}-\widetilde P|
+ =Q|Q(\alpha_{\mathrm{ar}}+1)-P|<9/2.
+\]
+The denominators tend to infinity. Put $m=(Q-1)/4$ and use
+\eqref{inf:root-expansion}; multiplication by $\widehat p_m$ gives
+\[
+ \widehat p_m|p-\widehat p_m|
+ \le\tfrac12\widehat p_m|Q\alpha_{\mathrm{ar}}-\widetilde P|
+       +d_{\mathrm{ar}}\widehat p_m/A_m+O(A_m^{-1}).
+\]
+Now $\widehat p_m/Q\to\alpha_{\mathrm{ar}}/2$ and
+$\widehat p_m/A_m\to1$. The rational comparison in
+\eqref{inf:arithmetic-limsup} proves the bound. Positivity of $p$ and
+$m\ge m_0$ hold eventually. Lemma~\ref{inf:half-integer-noncoincidence}
+excludes zero distance. The integer selection is
+Theorem~\ref{inf:near-integer}.
+\end{proof}
+
+\begin{proposition}[The half-lattice analytic chain]\label{inf:parity-chain}
+The analytic statements listed in the table below that use a
+near-primary input hold for
+$p\in\mathcal P_{\mathrm{bd}}$, uniformly for $0<\tau\le20$ and
+$r\in[1/4,3/8]$, with integer $a,b$ for each Euclidean conclusion.
+The remaining analytic statements hold under their displayed real
+parameter hypotheses.
+\end{proposition}
+\begin{proof}
+The chain is given below, with its integer objects and the identities
+that determine the permissible parameters. Each row is applied under
+the hypotheses of its indicated statements.
+\begingroup\small\normalfont
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.32\textwidth}>{\raggedright\arraybackslash}p{.62\textwidth}@{}}
+\toprule Statements & Parameter dependence\\\midrule
+\endfirsthead
+\toprule Statements & Parameter dependence\\\midrule
+\endhead
+Lemma~\ref{inf:reduction} &
+The coordinate Laplacian and beta measure use integer $a,b$ and
+$p=(a+b)/2$. The invariant angular multiplicity is one.\\
+Lemma~\ref{inf:angular-formulas} &
+Rodrigues integration and rising factorials use positive real
+$\ab,\bb$; $j$ is the integer polynomial degree.\\
+Lemma~\ref{inf:angular-sup} &
+The endpoint comparison needs $\bb-1\ge\ab-1\ge0$.
+Bernstein applies on great circles in every integer dimension.\\
+Lemma~\ref{inf:solid-harmonics} &
+$t^jG_j$ is a polynomial in $q_X,q_Y$.
+The regular Bessel mode is this polynomial times an entire power
+series in $\varrho^2$, including the origin and axes.\\
+Proposition~\ref{inf:ball-spectrum} &
+The radial order $p-1+2j>1$ is real; its singular solution is
+outside the Friedrichs form domain. Integer blocks identify the
+Euclidean invariant realization.\\
+Lemma~\ref{inf:radial-polynomials} &
+The radial parameter $2j+p-1$ is real. Rodrigues and generalized
+binomial identities require only integer polynomial indices.\\
+Lemmas~\ref{inf:bessel-spacing}, \ref{inf:bessel-order} &
+The radial ODE, Poincar\'e inequality and Watson integral have
+their stated real-order hypotheses.\\
+Lemmas~\ref{inf:debye-first}, \ref{inf:debye-finite} &
+The outgoing Volterra equation is for real $\nu>0$;
+only its finite expansion order is integral.\\
+Lemma~\ref{inf:window-isolation} &
+The recurrence shifts the real Bessel order by two.
+Its frequency spacing concerns all radial indices.\\
+Lemma~\ref{inf:phase-strip}, Theorem~\ref{inf:global-count} &
+The lattice coordinates are the integer angular index and
+integer phase index; their offsets may depend on real $p$.\\
+Lemma~\ref{inf:congruence}, Theorem~\ref{inf:near-integer},
+Lemma~\ref{inf:shifted-arithmetic} &
+Apply the same irrational approximation to $\alpha_{\mathrm{ar}}$
+or $\alpha_{\mathrm{ar}}+1$. The latter changes $P$ to $P-Q$
+and preserves the error product.\\
+Proposition~\ref{inf:primary-expansion} &
+The root expansion and uniqueness use real-order continuation.
+Bourget and Lemma~\ref{inf:half-integer-noncoincidence}
+exclude both half-lattice coincidences.\\
+Lemma~\ref{inf:detuning} &
+The exact rational trace identity and the real-order derivative
+give the same multiplicative detuning relation.\\
+Lemmas~\ref{inf:riccati-gap}, \ref{inf:low-recurrence} &
+The finite integer order shifts leave the base order real.
+The period-six sequence comes from the limiting recurrence.\\
+Proposition~\ref{inf:low-exclusion} &
+All relevant zeros are continued on a real interval in their
+orders; the selected endpoint may be a half-integer.\\
+Lemma~\ref{inf:angular-weighted} &
+The entry and derivative formulas are rational identities for
+positive real beta parameters with sum $p$.\\
+Lemma~\ref{inf:angular-positive} &
+The coefficient certificates hold for all real $p\ge64$.
+The recurrence-ratio bounds use $\ab,\bb\ge16$.\\
+Proposition~\ref{inf:flow-form} &
+Axis cutoffs use $\ab,\bb>1$ and the origin cutoff $p>1$.
+Integer blocks identify the weighted and Euclidean closures.\\
+Lemmas~\ref{inf:flow-relative}, \ref{inf:transport} &
+The band estimates and Green identity use real Jacobi parameters
+and radial Bessel norms; both angular parities are retained.\\
+Lemma~\ref{inf:flow-complement} &
+The complementary inverse is radial spectral calculus and a
+relative-form Neumann series on every complementary radial state.\\
+Lemma~\ref{inf:flow-low-block} &
+The finite recurrence gives seed offset $-\theta/(2p)$ and
+index-five offset $-72$ in either ambient parity.\\
+Lemma~\ref{inf:ordered-eigenvalues}, Theorem~\ref{inf:flow-theorem} &
+Finite Riesz reduction and the weighted derivative margin apply
+on the common real-parameter form domain, in the stated narrow band.\\
+Theorem~\ref{inf:integer-gap} &
+Integers in $[p/2,3p/4]$ number at least $p/4-1$ and have
+$\varsigma$ spacing at least $1/(8p)$.
+$2p\in\Z$ ensures integer $b=2p-a$.\\
+Theorem~\ref{inf:centres} &
+The finite recursion uses $\eps=1/p$, fixed degree indices,
+the divisor $-1/8$, positive $c_j$ and powers of $r(1-r)$.\\
+Lemma~\ref{inf:analytic-coefficients},
+Corollary~\ref{inf:centre-coefficient-defect} &
+The analytic coefficient transfer uses any positive measure and
+$0<\mathsf H_j(1)=(\bb)_j/(p+j-1)_j\le1$.\\
+Proposition~\ref{inf:centre-gap-transfer} &
+Indexwise min--max and radial dilation hold in every integer dimension;
+the normalized error is $O_N(\tau p^{-4})$.\\
+Definition~\ref{inf:spaces}, Lemma~\ref{inf:radial-stencils},
+Proposition~\ref{inf:module} &
+The grade exponent is real. Gasper uses real Jacobi parameters;
+the integer raising/lowering shifts are angular degree differences.\\
+Lemma~\ref{inf:poisson-columns}, Proposition~\ref{inf:poisson-bounds} &
+The radial columns are rational in the real parameter $\beta$;
+the separate harmonic source column remains included.\\
+Lemmas~\ref{inf:raising-coupling}, \ref{inf:clamped-smoothing} &
+Positive radial stencils and their coupling use real $\beta\ge0$;
+the smoothing gain acts on the clamped layers $s\ge1$.\\
+Lemma~\ref{inf:gradient-profiles},
+Proposition~\ref{inf:grouped-shapes} &
+The solid product identity uses integer solid degrees and real $p$;
+the grouped high-shape estimates have clamped source domains.\\
+Lemmas~\ref{inf:double-lift}, \ref{inf:derivative-moments} &
+The two lift columns and derivative columns use real radial
+parameters; their reference normal factor is $R=O(p)$.\\
+Lemma~\ref{inf:radial-centre-norm},
+Proposition~\ref{inf:centre-source-norm} &
+Rodrigues--Sonine, Lommel--Parseval and the positive Bessel ratio
+hold for real orders. The head cutoff satisfies $\nu+1+2S\ge2R$;
+composition uses the finite list of known centre modes.\\
+Lemma~\ref{inf:pullback}, Proposition~\ref{inf:nonlinear-map} &
+The Jacobian is $q^{2p-1}d=q^{n-1}d$ at integer $n$.
+The nonlinear map has clamped source domain $\Gc_p\times\Ec_1$.\\
+Proposition~\ref{inf:residual-estimates},
+Theorem~\ref{inf:material-isomorphism} &
+The double lift, normal Hessian and material identities use the
+same real parameters; the $L^2$ completion is at fixed integer $n$.\\
+Lemmas~\ref{inf:mixed-algebra}, \ref{inf:mixed-Poisson},
+\ref{inf:mixed-domain}, Theorem~\ref{inf:relative-graph} &
+The radial Hilbert blocks use real weights; density uses real
+binomial powers. Hilbert and coefficient estimates retain their
+respective graph domains and all radial layers.\\
+Theorem~\ref{inf:local-count}, Corollary~\ref{inf:clusters} &
+The integer phase lattice and real turning-point ODE give the
+same local count and cluster cardinality.\\
+Lemma~\ref{inf:cluster-inverse},
+Proposition~\ref{inf:mixed-inverse} &
+The cofactor argument is finite linear algebra, followed by the
+radial graph reconstruction in both spaces.\\
+Lemma~\ref{inf:head-tail}, Theorem~\ref{inf:coefficient-inverse} &
+The head has at most $K_{\mathrm{head}}p+1$ radial indices;
+the infinite tail uses the same all-layer Poisson columns.\\
+Theorem~\ref{inf:newton-threshold}, Corollary~\ref{inf:Newton-zero} &
+The contraction uses the displayed powers of $p,\tau$ in the same
+real Banach spaces; its centre order is fixed first.\\
+Lemmas~\ref{inf:geometry-convexity}, \ref{inf:geometry-nonball},
+Propositions~\ref{inf:classical-solution}, \ref{inf:Pompeiu} &
+The sphere and elliptic arguments require integer $n,a,b$.
+The regular solid expansion covers the axes and origin in each parity.\\
+\bottomrule
+\end{longtable}
+\endgroup
+The only lattice changes are thus the non-coincidence theorem,
+the arithmetic choice of $p$, the integer split grid, and the
+integer block realization. All estimates in the table retain their
+stated constants on this half-lattice.
+\end{proof}

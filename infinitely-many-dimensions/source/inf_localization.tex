@@ -1,0 +1,167 @@
+\section{Local counts and cluster inversion}\label{inf:sec-localization}
+
+The window in this section is an arbitrary fixed number
+$W_{\mathrm{loc}}>0$.
+The local count depends on this number, but neither on the centre
+order nor on the detuning or split.
+
+\begin{theorem}[Local logarithmic count]\label{inf:local-count}
+There is an integer $M_{W_{\mathrm{loc}}}\ge1$ with the following
+quantifier order: for every fixed $D>0$ there is
+$P_{W_{\mathrm{loc}},D}<\infty$ such that every angular interval
+of length $D\log p$ contains at most $M_{W_{\mathrm{loc}}}$
+states of $\mathcal W_p(W_{\mathrm{loc}})$ whenever
+$p\ge P_{W_{\mathrm{loc}},D}$ and $R\in[2p-1,2p+4]$.
+In particular the count bound is independent of $D$.
+\end{theorem}
+\begin{proof}
+In the oscillatory region $R-\nu\ge p^{2/3}/2$,
+Lemma~\ref{inf:phase-strip} assigns to each state a lattice point
+with $|m-\varphi_p(j)|\le C_{W_{\mathrm{loc}}}/p$.
+Dividing \eqref{inf:phase-strip-bound} by $\pi$ gives the
+stronger bound $C_{W_{\mathrm{loc}}}/(\pi p)$; we use the same
+constant in the weaker bound above. The threshold includes those
+of Lemmas~\ref{inf:window-isolation} and \ref{inf:phase-strip}
+for this window and the condition $2C_{W_{\mathrm{loc}}}/p<1$.
+Its curvature satisfies
+\[
+ c/p\le\varphi_p''(j)\le Cp^{-5/6}.
+\]
+The lower bound uses $\kappa\le Cp$; the upper uses
+$\kappa\ge cp^{5/6}$. On an interval of length $D\log p$,
+\[
+ \tfrac12Cp^{-5/6}(D\log p)^3
+       +2C_{W_{\mathrm{loc}}}D\log p/p<1
+\]
+for large $p$. Lemma~\ref{inf:lattice-strip} therefore bounds the
+number of states by
+$2+4\sqrt{C_{W_{\mathrm{loc}}}/c}$.
+This number is independent of $D$; only the threshold of the
+last inequality depends on $D$.
+
+In the turning region $\nu\ge R-2p^{2/3}$, suppose two states
+have angular distance at most $D\log p$.
+Their original roots are within $O_{W_{\mathrm{loc}}}(p^{-1})$
+of $R$. Transport the root of the larger order to the smaller
+order $\nu_0$, keeping its radial index fixed.
+Lemma~\ref{inf:bessel-order} moves it by at most
+$\pi D\log p$. Every intervening root stays of order $p$.
+If the two radial indices were equal, the lower derivative bound
+in that lemma would make the original roots differ by at least
+$2(1-o(1))$, because the angular indices differ by at least one.
+That contradicts their original window width $O(p^{-1})$.
+Thus there are two distinct zeros of $J_{\nu_0}$ in an interval
+of length $O_{W_{\mathrm{loc}},D}(\log p)$ about $R$.
+
+Throughout that interval the coefficient in
+\[
+ v''+\left(1-\frac{\nu_0^2-1/4}{x^2}\right)v=0,
+ \qquad v(x)=\sqrt xJ_{\nu_0}(x),
+\]
+is at most $(2+o(1))p^{-1/3}$, uniformly for the fixed window
+and interval constant, because
+$\nu_0\ge R-2p^{2/3}$ and $x=R+O(\log p)$.
+Between the two zeros, integration and the Dirichlet Poincar\'e
+inequality give
+$\pi^2/\ell^2\le Cp^{-1/3}$ for their separation $\ell$.
+Hence $\ell\ge(\pi/\sqrt2+o(1))p^{1/6}$, in particular
+$\ell\ge2.2p^{1/6}$ for large $p$, contradicting its logarithmic upper
+bound for large $p$. The turning interval therefore contains
+at most one state.
+
+The two regions overlap by an order interval of length
+$3p^{2/3}/2$. An angular interval of length $D\log p$ has order
+length $2D\log p$, which is smaller than this overlap for large
+$p$. If it is not entirely in the oscillatory region, all its
+possible window points are in the turning region.
+There is at most one radial state per angular index by
+Lemma~\ref{inf:window-isolation}. Rounding up the oscillatory
+count and increasing it to at least one proves the theorem.
+\end{proof}
+
+\begin{corollary}[Bounded cluster cardinality]\label{inf:clusters}
+Fix $D>0$ and connect consecutive angular indices of
+$\mathcal W_p(W_{\mathrm{loc}})$ when their separation is at most
+$D\log p$. For all sufficiently large $p$, every resulting
+cluster has at most $M_{W_{\mathrm{loc}}}$ states, and distinct
+clusters are separated by more than $D\log p$.
+A cluster may have diameter as large as
+$(M_{W_{\mathrm{loc}}}-1)D\log p$.
+The same cardinality bound holds for every subset of the window.
+\end{corollary}
+\begin{proof}
+If a cluster had $M_{W_{\mathrm{loc}}}+1$ states, its first that
+many states would span at most
+$M_{W_{\mathrm{loc}}}D\log p$.
+Apply Theorem~\ref{inf:local-count} with the fixed constant
+$M_{W_{\mathrm{loc}}}D$ in place of $D$.
+Its bound is still $M_{W_{\mathrm{loc}}}$, a contradiction.
+The separation and diameter statements follow from the definition.
+Removing states can split clusters but cannot join two clusters
+of the larger set, proving the assertion for subsets.
+\end{proof}
+
+\begin{lemma}[Inversion with arbitrary diagonal Hilbert weights]
+\label{inf:cluster-inverse}
+Fix positive constants $c,C,q_{\mathrm{gap}},\sigma$ and an integer $M\ge1$.
+Let $D$ satisfy $\sigma D>q_{\mathrm{gap}}M+q_{\mathrm{gap}}+2$.
+Let $\tau>0$ and let $F$ be a finite matrix whose indices
+carry angular degrees, partitioned into clusters of at most $M$
+indices separated by more than $D\log p$.
+Assume that:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $F$ is self-adjoint for a positive diagonal Hilbert inner
+product and $\nrm{Fv}_H\ge\gamma_F\nrm v_H$, where
+$\gamma_F=c\tau p^{-q_{\mathrm{gap}}}$;
+\item in a weighted coefficient $\ell^1$ norm,
+$\nrm F_1\le C\tau$;
+\item deleting all inter-cluster entries has error at most
+$C\tau p^{-\sigma D}$ in both that coefficient norm and the
+specified Hilbert operator norm.
+\end{enumerate}
+Then, for sufficiently large $p$ depending only on
+$c,C,q_{\mathrm{gap}},\sigma,M,D$,
+\begin{equation}\label{inf:cofactor-inverse-bound}
+ \nrm{F^{-1}}_1\le C'\tau^{-1}p^{q_{\mathrm{gap}}M}.
+\end{equation}
+The assertion is uniform as $\tau\downarrow0$.
+\end{lemma}
+\begin{proof}
+Let $F_{\mathrm b}$ keep the diagonal cluster blocks.
+The symmetric deletion of paired entries preserves
+self-adjointness in the diagonal Hilbert structure.
+The Hilbert error is at most $\gamma_F/2$ for large $p$, since
+$\sigma D>q_{\mathrm{gap}}$. Thus
+\[
+ \nrm{F_{\mathrm b}v}_H\ge
+ (\gamma_F-C\tau p^{-\sigma D})\nrm v_H\ge(\gamma_F/2)\nrm v_H.
+\]
+Every eigenvalue of every cluster block is real and has modulus
+at least $\gamma_F/2$.
+
+Conjugate a cluster block of size $m\le M$ by its coefficient
+weights, so its $\ell^1$ norm is the unweighted column norm.
+All its entries have modulus at most $C\tau$.
+The determinant is invariant under this conjugation and has
+modulus at least $(\gamma_F/2)^m$.
+Expansion of each cofactor as a sum of $(m-1)!$ products gives
+its absolute value at most $(m-1)!(C\tau)^{m-1}$.
+For $m=1$ the empty product is one.
+Cramer's formula and summing each inverse column give
+\[
+ \nrm{F_{\mathrm b,m}^{-1}}_1
+ \le m!(C\tau)^{m-1}(2/\gamma_F)^m
+ \le C_{M,c,C}\tau^{-1}p^{q_{\mathrm{gap}}M}.
+\]
+The block diagonal inverse has the maximum of these norms.
+Its product with the discarded coefficient error is at most
+$C'p^{q_{\mathrm{gap}}M-\sigma D}$, below $1/2$ for large $p$.
+A Neumann series restores that error and proves
+\eqref{inf:cofactor-inverse-bound}.
+In both absorptions the factor $\tau$ cancels. The inverse has
+exactly one remaining factor $\tau^{-1}$.
+For an empty index set the bound is vacuous.
+\end{proof}
+
+The next section uses a window scaled by $\tau$,
+and applies the local count to a fixed larger window containing it.

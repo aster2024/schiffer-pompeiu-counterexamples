@@ -1,0 +1,339 @@
+\section{The full inverse in coefficient norm}\label{inf:sec-inverse}
+
+Fix any centre order $N$. All constants and exponents in this section are fixed
+independently of that order. Only the large-$p$ threshold may
+depend on it. We assume the actual centre gap
+\eqref{inf:centre-gap}, supplied by Theorem~\ref{inf:integer-gap}.
+Write
+\[
+ \mathcal A=\Hu-R^2,\qquad \mathcal D_0=H_0-R^2,
+ \qquad K_0=H_0+R^2.
+\]
+The actual scalar Dirichlet graph operator is
+$J_D=B_{\Phi_N,D}\KD$ and includes the harmonic source layer and
+the seed.
+
+\subsection{A detuning-scaled window}
+
+Let $C_{\mathrm{rel}}\ge1$ be a constant in
+\eqref{inf:relative-two-norms}. Fix
+$E_{\mathrm{inv}}\ge64C_{\mathrm{rel}}$, and define
+\begin{equation}\label{inf:inverse-window}
+ \Pi=\one_{[-E_{\mathrm{inv}}\tau,E_{\mathrm{inv}}\tau]}
+                                    (H_0-R^2),\qquad Q=I-\Pi.
+\end{equation}
+This is the full ball spectral projection, including every radial
+state in the interval. It is distinct from the fixed flow-window
+projection. The local count will use
+$W_{\mathrm{loc}}=20E_{\mathrm{inv}}$.
+
+\begin{lemma}[Inverse on the full complement]\label{inf:inverse-complement}
+For $E_{\mathrm{inv}}\ge64C_{\mathrm{rel}}$ and all $p$ above a
+threshold depending on $C_{\mathrm{rel}},E_{\mathrm{inv}},N$,
+the operator $\mathcal A_Q=Q\mathcal AQ$ is
+invertible on its graph domain, and
+\begin{equation}\label{inf:inverse-complement-bound}
+ \nrm{K_0\mathcal A_Q^{-1}Q}_{\Mmix,1}
+ +\nrm{K_0\mathcal A_Q^{-1}Q}_{\Hc,1}
+ \le Cp^2/(E_{\mathrm{inv}}\tau).
+\end{equation}
+The two inverses coincide on their common sources.
+\end{lemma}
+\begin{proof}
+The projections in \eqref{inf:inverse-window} are diagonal in
+angular degree and orthogonal in each radial Hilbert space.
+Their norms in both matrix algebras and both underlying spaces
+are at most one.
+Put $D_Q=Q\mathcal D_0Q$. Radial spectral calculus gives
+\begin{equation}\label{inf:ball-complement-bound}
+ \nrm{K_0D_Q^{-1}Q}\le1+\frac{2R^2}{E_{\mathrm{inv}}\tau}
+\end{equation}
+in all four norms.
+Since $R/p\le33/16$ for $p\ge64$, its product with
+\eqref{inf:relative-two-norms} is at most
+\[
+ \frac{20C_{\mathrm{rel}}}{p^2}
+ +\frac{1089C_{\mathrm{rel}}}{128E_{\mathrm{inv}}}.
+\]
+The chosen window and $p^2\ge80C_{\mathrm{rel}}$ make this at
+most $1/4+1089/8192<1/2$. The window is fixed before this
+threshold is imposed.
+Factor
+\[
+ \mathcal A_Q=(I+Q\mathcal VK_0^{-1}K_0D_Q^{-1}Q)D_Q.
+\]
+The norm-convergent Neumann series in each matrix algebra gives
+\[
+ \nrm{K_0\mathcal A_Q^{-1}Q}
+ \le2\left(1+\frac{2R^2}{E_{\mathrm{inv}}\tau}\right).
+\]
+Increasing the threshold to include $p^2\ge40E_{\mathrm{inv}}$
+absorbs the constant term into $Cp^2/(E_{\mathrm{inv}}\tau)$,
+proving \eqref{inf:inverse-complement-bound}.
+It maps sources into the graph domain because of its leading
+$D_Q^{-1}$ factor and the bound after multiplication by $K_0$.
+By the graph realizations of Lemma~\ref{inf:mixed-domain}, the
+embedding $\Mmix\subset\Hc$, and uniqueness of the Hilbert
+inverse, the two constructions agree on common sources.
+\end{proof}
+
+\begin{proposition}[The Schur matrix and its actual gap]
+\label{inf:inverse-Schur}
+Define the exact Schur matrix at spectral parameter zero by
+\begin{equation}\label{inf:effective-matrix}
+ \Feff=\Pi\mathcal A\Pi-
+               \Pi\mathcal AQ\mathcal A_Q^{-1}Q\mathcal A\Pi.
+\end{equation}
+For large $p$, each angular index occurs at most once in its index
+set. In radial unit vectors with the original angular $G_j$,
+its Hilbert inner product has diagonal weights $\eta_j^2$.
+It is self-adjoint for that inner product, satisfies
+\begin{equation}\label{inf:effective-norm}
+ \nrm{\Feff}_{\Mmix,1}+\nrm{\Feff}_{\Hc,1}
+                                  \le C_{E_{\mathrm{inv}}}\tau,
+\end{equation}
+and has the Hilbert gap
+\begin{equation}\label{inf:effective-gap}
+ \nrm{\Feff v}_\Hc\ge\gamma_p\nrm v_\Hc.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The containing fixed window is $20E_{\mathrm{inv}}$.
+Lemma~\ref{inf:window-isolation} gives one radial state per angular
+index. The normalized radial basis therefore identifies the
+mixed norm on this finite space with $\ell^1(2^j)$ exactly.
+Self-adjointness of \eqref{inf:effective-matrix} follows from
+that of $\mathcal A$ and the complementary Hilbert inverse.
+The stated diagonal Hilbert weights follow from
+\eqref{inf:true-H-norm}.
+
+On $\Pi$, $K_0$ has norm at most $Cp^2$.
+Equation~\eqref{inf:relative-two-norms} gives
+$\nrm{\Pi\mathcal V\Pi}\le C\tau$ in both weighted norms.
+The feedback factors as
+\[
+ (\Pi\mathcal VK_0^{-1})Q(K_0\mathcal A_Q^{-1}Q)
+                     (\mathcal VK_0^{-1})(K_0\Pi).
+\]
+Its four factors have sizes $C\tau/p^2$,
+$Cp^2/(E_{\mathrm{inv}}\tau)$, $C\tau/p^2$, and $Cp^2$,
+respectively. Its norm is at most $C\tau/E_{\mathrm{inv}}$.
+The unperturbed diagonal has norm at most $E_{\mathrm{inv}}\tau$.
+Submultiplicativity from Lemma~\ref{inf:mixed-algebra} proves
+\eqref{inf:effective-norm}, including
+exponential angular decay of the feedback.
+
+For $v\in\Pi\Hc$ set
+$u=v-\mathcal A_Q^{-1}Q\mathcal A\Pi v$.
+It belongs to the graph domain and obeys
+$Q\mathcal Au=0$, $\Pi\mathcal Au=\Feff v$.
+Orthogonality gives $\nrm u_\Hc\ge\nrm v_\Hc$.
+The actual centre-domain gap implies
+$\nrm{\mathcal Au}_\Hc\ge\gamma_p\nrm u_\Hc$.
+These equalities prove \eqref{inf:effective-gap} for the exact
+Schur matrix.
+\end{proof}
+
+\begin{corollary}[Finite-matrix coefficient inverse]
+\label{inf:effective-inverse}
+Let $M=M_{20E_{\mathrm{inv}}}$ be the local-count bound from
+Theorem~\ref{inf:local-count}. Then
+\begin{equation}\label{inf:effective-inverse-bound}
+ \nrm{\Feff^{-1}}_{\ell^1(2^j)}
+                         \le C\tau^{-1}p^{5M/3}
+\end{equation}
+for all sufficiently large $p$.
+Its constant and exponent are independent of the centre order.
+\end{corollary}
+\begin{proof}
+Take clusters at separation $D_{\mathrm{sep}}\log p$ in the
+actual window. Corollary~\ref{inf:clusters}, applied to its fixed
+superset of width $20E_{\mathrm{inv}}$, bounds their cardinalities
+by $M$, independently of $D_{\mathrm{sep}}$.
+Deleting inter-cluster entries in \eqref{inf:effective-norm}
+costs at most $C\tau p^{-D_{\mathrm{sep}}}$ in the coefficient
+norm by weighted column sums and in the Hilbert norm by its
+weighted row and column sums. Apply
+Lemma~\ref{inf:cluster-inverse} with $q_{\mathrm{gap}}=5/3$, $\sigma=1$, and
+$c=c_{\mathrm{gap}}$.
+Choose once and for all
+$D_{\mathrm{sep}}>5M/3+5$.
+This proves \eqref{inf:effective-inverse-bound} and its stated
+independence.
+\end{proof}
+
+\subsection{Recovering the full radial graph}
+
+\begin{proposition}[Mixed-space inverse]\label{inf:mixed-inverse}
+The full operator $\mathcal A$ and scalar graph $J_D$ have
+inverses on the mixed space, with
+\begin{equation}\label{inf:mixed-inverse-bound}
+ \nrm{K_0\mathcal A^{-1}}_{\Mmix\to\Mmix}
+       +\nrm{J_D^{-1}}_{\Mmix\to\Mmix}
+ \le C\tau^{-1}p^{2+5M/3}.
+\end{equation}
+These inverses agree with their Hilbert realizations.
+\end{proposition}
+\begin{proof}
+For a source $f\in\Mmix$, the exact block solution is
+\[
+ v=\Feff^{-1}(\Pi f-\Pi\mathcal VQ\mathcal A_Q^{-1}Qf),\qquad
+ Qu=\mathcal A_Q^{-1}(Qf-Q\mathcal V\Pi v),\qquad u=v+Qu.
+\]
+The first off-diagonal factor has norm at most $C/E_{\mathrm{inv}}$,
+by \eqref{inf:relative-two-norms} and
+\eqref{inf:inverse-complement-bound}. The input $Q\mathcal V\Pi$
+has norm at most $C\tau$, and $K_0\Pi$ costs $Cp^2$.
+Combining these bounds with \eqref{inf:effective-inverse-bound}
+gives $\nrm{K_0u}\le C\tau^{-1}p^{2+5M/3}\nrm f$.
+By Lemma~\ref{inf:mixed-domain}, the reconstruction lies in the
+mixed graph domain and solves the
+full equation, whose Hilbert solution is unique by the centre gap.
+This proves the first inverse and identifies it with the Hilbert one.
+
+For the scalar equation $B_{\Phi_N}W=f$, the unitary equation is
+$\mathcal A(mW)=-mf$. Equation~\eqref{inf:density-graph-bounds}
+bounds multiplication by $m$ and $H_0m^{-1}H_0^{-1}$ on $\Mmix$.
+Since $H_0K_0^{-1}$ is an angular-diagonal radial contraction,
+it also bounds $H_0m^{-1}K_0^{-1}$ by an absolute constant.
+Thus
+\[
+ J_D^{-1}f=\Delta W
+ =(H_0m^{-1}K_0^{-1})(K_0\mathcal A^{-1})(mf),
+\]
+which proves the second bound in \eqref{inf:mixed-inverse-bound}.
+Its signs use $\Delta=-H_0$ and $mW=-\mathcal A^{-1}mf$.
+Both inverse identities follow from the graph-domain equation and
+Hilbert uniqueness. Every radial and angular source, including the
+harmonic layer and the seed, is part of this reconstruction.
+\end{proof}
+
+\subsection{Finite head, infinite tail, and membership}
+
+\begin{lemma}[Radial tail and finite-head conversion]
+\label{inf:head-tail}
+For this lemma the scalar hypotheses on the fixed real finite-centre
+chart are $R\in[2p-1,2p+4]$ and
+\begin{equation}\label{inf:head-tail-hypotheses}
+ \nrm{(P_{\Phi_N}\Delta-\Delta)\KD}_{\Cc\to\Cc}
+ +\nrm{(P_{\Phi_N}\Delta-\Delta)\KD}_{\Mmix\to\Mmix}
+ \le\frac14.
+\end{equation}
+There is a fixed $K_{\mathrm{head}}$ independent of the centre order
+such that, with coefficient projections
+\[
+ \Pi_T=\one_{\{j+s\le K_{\mathrm{head}}p\}},\qquad Q_T=I-\Pi_T,
+\]
+the compressed operator $Q_TJ_DQ_T$ has inverse of norm at most
+two in both $Q_T\Cc$ and $Q_T\Mmix$ for large $p$.
+Moreover
+\begin{equation}\label{inf:head-conversion}
+ \nrm{\Pi_Tg}_\Cc\le C_{K_{\mathrm{head}}}\sqrt p\,
+                                                   \nrm g_{\Mmix}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The Poisson columns in Lemma~\ref{inf:poisson-columns} have radial
+bandwidth one and satisfy the column bound
+\eqref{inf:poisson-column-bounds}, including the harmonic column.
+On the indicated tail this is at most
+$C/((1+2K_{\mathrm{head}})p-1)^2$.
+The ratio of neighbouring coefficient weights is at most $e^{2/p}$.
+Therefore
+\[
+ \nrm{R^2Q_T\KD Q_T}_{\Cc\to\Cc}
+ \le C/(1+2K_{\mathrm{head}})^2.
+\]
+For the mixed bound, normalize the radial polynomials by their
+squared norms $n_{j,s}=p/(p+2j+2s)$.
+The neighbouring ratios of $n_{j,s}$ and their inverses are
+bounded by two. After this normalization the tridiagonal
+Poisson matrix has row and column sums bounded by the same
+quantity up to an absolute factor: adjacent denominators differ
+by two and are comparable. Removing entries by $Q_T$ does not
+increase those absolute sums. The radial Schur inequality in
+each angular block gives
+$\nrm{R^2Q_T\KD Q_T}_{\Mmix\to\Mmix}
+\le C/(1+2K_{\mathrm{head}})^2$ as well.
+
+Choose the fixed cutoff so that both bounds are below $1/4$.
+The hypothesis \eqref{inf:head-tail-hypotheses} bounds the norm of
+$Q_T(P_{\Phi_N}\Delta-\Delta)\KD Q_T$ by $1/4$ in both spaces.
+Since
+\[
+ Q_TJ_DQ_T=I_{Q_T}+R^2Q_T\KD Q_T
+                   +Q_T(P_{\Phi_N}\Delta-\Delta)\KD Q_T,
+\]
+a Neumann series proves both tail inverses and their norm bound.
+The two series agree on common sources.
+
+On the head, $\wt(2j+2s)\le e^{2K_{\mathrm{head}}}$ and
+$n_{j,s}\ge(1+2K_{\mathrm{head}})^{-1}$.
+Each angular block contains at most $K_{\mathrm{head}}p+1$ radial
+coefficients. Cauchy--Schwarz gives
+\[
+ \sum_{s\le K_{\mathrm{head}}p-j}\wt(2j+2s)|g_{j,s}|
+ \le e^{2K_{\mathrm{head}}}
+ \sqrt{(K_{\mathrm{head}}p+1)(1+2K_{\mathrm{head}})}
+ \left(\sum_s n_{j,s}|g_{j,s}|^2\right)^{1/2}.
+\]
+Multiply by $2^j$ and sum in $j$ to prove
+\eqref{inf:head-conversion}. The common angular coefficient
+structure gives the loss $\sqrt p$.
+\end{proof}
+
+\begin{theorem}[Two-sided coefficient inverse]\label{inf:coefficient-inverse}
+For every fixed centre order $N$ and all sufficiently large $p$,
+$J_D$ is a bounded isomorphism of $\Cc$, and
+\begin{equation}\label{inf:coefficient-inverse-bound}
+ \nrm{J_D^{-1}}_{\Cc\to\Cc}
+ \le C\tau^{-1}p^{5/2+5M/3}
+ \le C\frac{p^{b_{\mathrm{inv}}}}{\gamma_p},
+ \qquad b_{\mathrm{inv}}=2M+3.
+\end{equation}
+The constants and exponent are independent of $N$; its threshold
+may depend on $N$. The estimates are uniform in
+$0<\tau\le20$ and all admissible splits with the stated gap.
+\end{theorem}
+\begin{proof}
+Equation~\eqref{inf:relative-scalar} of
+Theorem~\ref{inf:relative-graph} bounds the sum in
+\eqref{inf:head-tail-hypotheses} by $C\tau p^{-2}\le1/4$
+for $0<\tau\le T$ and $p$ above the fixed-order threshold,
+after increasing it depending on the fixed $T$.
+Together with $R\in[2p-1,2p+4]$, this supplies the hypotheses
+of Lemma~\ref{inf:head-tail}; here $T=20$, and arbitrary fixed
+$T$ is covered by Lemma~\ref{inf:fixed-detuning-extension}.
+For $f\in\Cc$, first solve $J_Dg=f$ in $\Mmix$ by
+Proposition~\ref{inf:mixed-inverse}.
+The head $\Pi_Tg$ is finite dimensional and belongs to $\Cc$,
+with bound \eqref{inf:head-conversion}.
+The full $J_D$ is bounded on $\Cc$ by an absolute constant:
+use $J_D=I+R^2\KD+(P_{\Phi_N}\Delta-\Delta)\KD$,
+\eqref{inf:poisson-operator-bounds}, $R^2=O(p^2)$, and
+\eqref{inf:relative-scalar}.
+Thus the tail equation with source
+$Q_Tf-Q_TJ_D\Pi_Tg$ has a solution $z\in Q_T\Cc$ and
+\[
+ \nrm z_\Cc\le C(\nrm f_\Cc+\nrm{\Pi_Tg}_\Cc).
+\]
+By the embedding into $\Mmix$ and uniqueness of its tail equation,
+this $z$ is exactly $Q_Tg$.
+This proves membership in $\Cc$ before applying a norm estimate
+to the full solution. Hence
+\[
+ \nrm g_\Cc\le C\nrm f_\Cc+
+                      C\sqrt p\nrm g_{\Mmix}
+ \le C\tau^{-1}p^{5/2+5M/3}\nrm f_\Cc.
+\]
+The last bound absorbs the first term since $M\ge1$ and
+$\tau\le20$.
+The constructed right inverse is injective on $\Cc$ by the
+Hilbert realization and its gap, so both inverse identities hold.
+Finally
+$5/2+5M/3-5/3=5M/3+5/6\le2M+3$.
+Using \eqref{inf:centre-gap} gives the second inequality in
+\eqref{inf:coefficient-inverse-bound}.
+Every constant used in the matrix, reconstruction and tail steps
+was fixed before the centre order.
+\end{proof}

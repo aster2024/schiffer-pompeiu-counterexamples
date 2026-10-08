@@ -1,0 +1,776 @@
+\section{Phase geometry and mixed conditioning}\label{inf:sec-conditioning}
+
+Fix the compact split interval of Section~\ref{inf:sec-widened}
+and an integer split $a,b$ in it, with $a+b=2p\in\mathbb N$.
+In this section $R\in[2p-1,2p+4]$ is the continued primary Neumann
+zero, $0<\tau\le\log p$, and $|p-p_0|=O(\log p/p)$.
+All assertions are for sufficiently large $p$, with constants
+independent of $\tau$ in that range. Fix
+$1<q_{\mathrm{gap}}<2$ and $0<\xi_{\mathrm{inv}}<2-q_{\mathrm{gap}}$.
+Assume that the actual quartic domain has invariant gap at least
+\[
+ \gamma=\kappa_{\mathrm{gap}}\tau p^{-q_{\mathrm{gap}}},\qquad
+ \kappa_{\mathrm{gap}}>0\text{ fixed}.
+\]
+The low-state structure is that of
+Lemma~\ref{inf:wide-low-transfer} and the finite recurrence
+\eqref{inf:finite-q-recurrence}.
+
+\subsection{One radial pole at each angular index}
+
+\begin{lemma}[Radial projection and complement]\label{inf:radial-poles}
+For $0\le j\le\lfloor2p\rfloor$, choose the positive zero $z_j$
+of $J_{\nu_j}$ closest in frequency to $R$, choosing the smaller
+root in a tie. Let $\Pi_{\mathrm{rad}}$ retain its unit radial vector
+and let $Q_{\mathrm{rad}}=I-\Pi_{\mathrm{rad}}$. These are contractions
+in $\Mmix$ and $\Hc$. Put $d_j^{\mathrm{pole}}=z_j^2-R^2$. Then
+\begin{equation}\label{inf:radial-pole-bounds}
+ \nrm{K_0\{Q_{\mathrm{rad}}(H_0-R^2)Q_{\mathrm{rad}}\}^{-1}
+                        Q_{\mathrm{rad}}}\le Cp,
+ \qquad \nrm{K_0\Pi_{\mathrm{rad}}}\le Cp^2
+\end{equation}
+in both spaces and their angular-diagonal matrix norms.
+On the retained space the mixed norm is exactly $\ell^1(2^j)$;
+the Hilbert metric is $\diag(\eta_j^2)$.
+\end{lemma}
+\begin{proof}
+The projections are radial orthogonal projections in each angular
+block. Lemma~\ref{inf:mixed-algebra} proves the contraction statements.
+Spacing greater than $\pi$ implies that every nonretained zero in a
+retained block is at distance at least $\pi/2$ from $R$.
+For $j>2p$ one has $\nu_j>5p-1$, so the centrifugal lower bound
+puts its entire spectrum above $(5p-1)^2$. The scalar spectral
+ratio $(z^2+R^2)/|z^2-R^2|$ is therefore at most $Cp$ on the
+complement.
+
+The radial sine trial on $(1/2,1)$ in
+\eqref{inf:radial-schrodinger} bounds the first eigenvalue by
+$4\nu_j^2+4\pi^2$. Its first zero is thus at most $2\nu_j+7$.
+If $R\le2\nu_j$, comparison with that first zero gives
+$z_j\le\max\{2R,2\nu_j+7\}=O(p)$.
+If $R>2\nu_j$, the differential equation for
+$\sqrt xJ_{\nu_j}(x)$ has frequency square
+$1-(\nu_j^2-1/4)/x^2\ge3/4$ for $x\ge R$.
+Comparison with a sine on an interval of length
+$2\pi/\sqrt3$ gives a zero within a bounded distance beyond $R$.
+For a direct proof, put $\kappa_{\mathrm{cmp}}=\sqrt3/2$ and
+$w(x)=\sin(\kappa_{\mathrm{cmp}}(x-a))$ on
+$[a,a+\pi/\kappa_{\mathrm{cmp}}]$. If a solution $v$ of
+$v''+Q(x)v=0$, $Q\ge\kappa_{\mathrm{cmp}}^2$, had no zero there,
+choose its sign positive. Then
+$(v'w-vw')'=-(Q-\kappa_{\mathrm{cmp}}^2)vw\le0$,
+whereas the difference of the endpoint values is
+$\kappa_{\mathrm{cmp}}(v(a)+v(a+\pi/\kappa_{\mathrm{cmp}}))>0$.
+This contradiction proves the comparison.
+Again the closest zero has size $Cp$. Thus its $K_0$ eigenvalue is
+at most $Cp^2$. The norm identifications follow from the radial
+normalization and \eqref{inf:true-H-norm}.
+\end{proof}
+
+\begin{lemma}[Linear quartic reduction]\label{inf:centre-form-comparison}
+Let $H_{\mathrm q}=z_{\mathrm q}S_2$ be the harmonic extension of
+$f_{\mathrm q}$, so $|z_{\mathrm q}|\le C\tau p^{-2}$, and put
+$L_{\mathrm q}=H_0+V_1(H_{\mathrm q})-R^2$.
+The radial complementary inverse exists and its exact pole Schur
+matrix is
+\begin{equation}\label{inf:pole-schur-bands}
+ \mathcal S_{\mathrm{pole}}
+ =\diag(d_j^{\mathrm{pole}})+\mathcal B_{\mathrm{pole},2}
+       +p^{-1}\mathcal B_{\mathrm{pole},4}
+       +\mathsf R_{\mathrm{pole},6},
+\end{equation}
+where the first two bands have bandwidths two and four and
+\begin{equation}\label{inf:pole-band-bounds}
+ \nrm{\mathcal B_{\mathrm{pole},2}}\le C\tau,\quad
+ \nrm{\mathcal B_{\mathrm{pole},4}}\le C\tau^2,\quad
+ \nrm{\mathsf R_{\mathrm{pole},6}}\le C\tau^3p^{-2}
+\end{equation}
+in the coefficient column norm and Hilbert row/column norms.
+Define the second-order interaction truncation by
+\[
+ \mathcal S_{\mathrm{pole}}^{(0)}
+ =\diag(d_j^{\mathrm{pole}})+\mathcal B_{\mathrm{pole},2}
+                         +p^{-1}\mathcal B_{\mathrm{pole},4}.
+\]
+It deletes the entire remainder, which contains all paths with
+at least three interactions and need not have bandwidth six.
+The exact matrix and this bandwidth-four truncation have Hilbert
+gap at least $c\gamma$.
+\end{lemma}
+\begin{proof}
+For this degree-four harmonic chart the first variation gives
+\[
+ V_1(H_{\mathrm q})\KD
+ =2z_{\mathrm q}M_{S_2}
+ +2z_{\mathrm q}\nabla S_2\cdot\nabla\Euler\KD
+ +(2p+4)z_{\mathrm q}\nabla S_2\cdot\nabla\KD.
+\]
+The exact radial profiles in Lemma~\ref{inf:gradient-profiles}
+factor each angular block into $c_{2,j}^i$ times a radial operator
+of norm at most $C|z_{\mathrm q}|$.
+Lemmas~\ref{inf:mixed-multipliers} and \ref{inf:mixed-Poisson}
+bound its relative graph norm by $C\tau p^{-2}$ in both matrix
+algebras. By \eqref{inf:radial-pole-bounds}, the radial complementary
+Neumann ratio is $C\tau/p$. Direct projection has size $C\tau$;
+one complementary inverse gives size $C\tau^2/p$ and bandwidth four.
+Each further inverse/perturbation factor contributes $C\tau/p$.
+Summing the convergent series proves \eqref{inf:pole-band-bounds},
+including all complementary radial states.
+
+For the spectral comparison the exact unitary form is
+\[
+ \int A_q(\nabla u-u\nabla\log m)\cdot
+                  \overline{(\nabla u-u\nabla\log m)}.
+\]
+Its linear density term integrates to
+$\int\Delta l_{\mathrm{lin}}|u|^2=0$.
+The linear form has principal coefficient
+$(1-2H_{\mathrm q})I-y\otimes\nabla H_{\mathrm q}
+-\nabla H_{\mathrm q}\otimes y$ and is uniformly comparable
+to the ball form. The remaining form error
+is bounded by
+$C|z_{\mathrm q}|^2(\nrm{\nabla u}_2^2+p^2\nrm u_2^2)$.
+The ball Poincar\'e bound absorbs the second term into the first.
+Indexwise min--max therefore changes eigenvalues near $R^2$ by at most
+$C\tau^2p^{-2}=o(\gamma)$, since
+$\tau p^{q_{\mathrm{gap}}-2}\to0$ uniformly here.
+Thus $L_{\mathrm q}$ has at least half the actual quartic gap.
+For a pole vector reconstruct the radial complementary component;
+the full image is exactly its Schur image and its Hilbert norm
+is at least that of the pole vector. This gives the Schur gap as
+in Proposition~\ref{inf:inverse-Schur}.
+Deleting $\mathsf R_{\mathrm{pole},6}$ changes that gap by
+$C\tau^3p^{-2}=o(\gamma)$, proving the last assertion.
+\end{proof}
+
+\subsection{The two phase estimates}
+
+Use the corrected phase
+\begin{equation}\label{inf:corrected-phase}
+ \varphi_{\mathrm{Bes}}(\nu,x)=\Xi(\nu,x)-\arctan b(\nu,x)
+\end{equation}
+with the functions in \eqref{inf:phase-def}. Chebyshev polynomials
+of the second kind are denoted by $U_k^{\mathrm{Ch}}$, to distinguish
+them from the Debye polynomials $U_k$.
+
+\begin{lemma}[Two-sided phase and energy comparison]
+\label{inf:phase-eigenvalue-two-sided}
+Fix $0<c_*<1$. For $p-1\le\nu\le c_*R$, let $z$ be the zero of
+$J_\nu$ nearest to $R$. If
+$d_{\varphi}=\dist(\varphi_{\mathrm{Bes}}(\nu,R),\pi(\Z+1/2))$,
+then for all sufficiently large $p$,
+\begin{equation}\label{inf:phase-energy-comparison}
+ c p(d_{\varphi}-Cp^{-2})
+ \le |z^2-R^2|\le C p(d_{\varphi}+Cp^{-2}).
+\end{equation}
+The constants depend only on $c_*$.
+\end{lemma}
+\begin{proof}
+Put $c_1=\sqrt{1-c_*^2}/2$ and choose a fixed interval
+$|x-R|\le X_*$, $X_*=2\pi/c_1$. There $\kappa\ge cp$.
+Lemma~\ref{inf:debye-finite} at order one gives
+\[
+ \frac{J_\nu(x)}{\sqrt{2/\pi}\kappa^{-1/2}}
+ =\sqrt{1+b^2}\cos\varphi_{\mathrm{Bes}}(\nu,x)+e(x),
+ \qquad |e(x)|\le C p^{-2}.
+\]
+The explicit phase derivatives give
+$c_1\le\partial_x\varphi_{\mathrm{Bes}}\le1$ after increasing
+$p$. At a zero the distance of its phase from $\pi(\Z+1/2)$ is
+at most $Cp^{-2}$. Conversely, on either side of a lattice phase at
+phase distance $2Cp^{-2}$, enlarge $C$ to dominate the error above.
+The two values have opposite signs, so the intermediate value
+theorem supplies a zero between them. Every lattice phase whose
+distance from both endpoints of the phase interval is greater
+than $2Cp^{-2}$ has such a zero inside the argument interval.
+Since $\partial_x\varphi_{\mathrm{Bes}}\ge c_1$ and
+$X_*=2\pi/c_1$, the phase interval contains
+$[\varphi_{\mathrm{Bes}}(\nu,R)-2\pi,
+\varphi_{\mathrm{Bes}}(\nu,R)+2\pi]$.
+The lattice phase nearest to $\varphi_{\mathrm{Bes}}(\nu,R)$ is
+at distance at most $\pi/2$, so it has a fixed positive endpoint
+margin and satisfies this condition for all sufficiently large $p$.
+
+Choose the lattice phase nearest to the phase at $R$ and a zero
+$z'$ associated to it. The derivative lower bound gives
+$|z'-R|\le(d_{\varphi}+Cp^{-2})/c_1$. Thus the nearest frequency
+zero $z$ also lies in the chosen interval and obeys that upper bound.
+For its lower bound, its phase is within $Cp^{-2}$ of some lattice
+phase, whence
+$d_{\varphi}\le|\varphi_{\mathrm{Bes}}(\nu,z)
+-\varphi_{\mathrm{Bes}}(\nu,R)|+Cp^{-2}\le|z-R|+Cp^{-2}$.
+Finally $cp\le z+R\le Cp$ on this interval. Multiplication proves
+\eqref{inf:phase-energy-comparison}. This proof uses the order-one
+finite expansion for all $x/\nu>1$ bounded away from one, including
+the ratios below $3/2$ required for the high critical regions.
+\end{proof}
+
+\begin{lemma}[Finite-shift resonance through Lommel polynomials]
+\label{inf:lommel-resonance}
+Fix $0<\alpha_{\mathrm{loc}}<1$. If retained indices $j,j+d$,
+$1\le d\le4$, both satisfy
+$|d_j^{\mathrm{pole}}|,|d_{j+d}^{\mathrm{pole}}|\le p^{1-\alpha_{\mathrm{loc}}}$,
+then
+\[
+ |U_{2d-1}^{\mathrm{Ch}}(\nu_j/R)|\le Cp^{-\alpha_{\mathrm{loc}}}.
+\]
+The ratio $\nu_j/R$ is within $Cp^{-\alpha_{\mathrm{loc}}}$ of
+\begin{equation}\label{inf:critical-ratios}
+ \mathcal T_{\mathrm{crit}}=
+ \{1/2,1/\sqrt2,\sqrt3/2,\cos(\pi/8)\}.
+\end{equation}
+In particular $d=1$ is impossible for large $p$.
+\end{lemma}
+\begin{proof}
+Write $\nu=\nu_j$, $\mu=\nu+2d$, and let $z,z'$ be the two retained
+zeros. Their distances from $R$ are at most $Cp^{-\alpha_{\mathrm{loc}}}$.
+At $J_\nu(z)=0$, one has $J_{\nu+1}(z)\ne0$ by ODE uniqueness.
+Dividing the Bessel recurrence by this nonzero value gives the
+finite Lommel recurrence, with initial values zero and one at
+shifts zero and one. This identity holds for every real order.
+For the finitely many shifts at most nine its recurrence coefficients
+are $2\nu/z+O(p^{-1})$. The recurrence
+$U_{k+1}^{\mathrm{Ch}}(t)=2tU_k^{\mathrm{Ch}}(t)-U_{k-1}^{\mathrm{Ch}}(t)$
+therefore gives, by induction,
+\[
+ \frac{J_{\nu+m}(z)}{J_{\nu+1}(z)}
+ =U_{m-1}^{\mathrm{Ch}}(\nu/z)+O(p^{-1}),\qquad 1\le m\le9.
+\]
+The ratios and the derivative ratio of $J_\mu$ are bounded by an
+absolute constant there, using the derivative recurrence.
+On the interval joining $z,z'$, the coefficients of the system for
+$(J_\mu,J'_{\mu})$ are uniformly bounded: $x\asymp p$ and
+$\mu<z'\le R+Cp^{-\alpha_{\mathrm{loc}}}$.
+Its integral equation and Gronwall's inequality give
+$\sup|J_\mu'|\le C|J_{\nu+1}(z)|$ on that interval.
+Since $J_\mu(z')=0$, integration proves
+$|J_\mu(z)|\le Cp^{-\alpha_{\mathrm{loc}}}|J_{\nu+1}(z)|$.
+Divide and use the preceding recurrence; replacing $z$ by $R$
+changes its polynomial argument by $O(p^{-1-\alpha_{\mathrm{loc}}})$.
+This proves the bound, including near the turning region.
+
+The zeros of $U_{2d-1}^{\mathrm{Ch}}$ are the simple numbers
+$\cos(h\pi/(2d))$, $1\le h<2d$; this follows from
+$U_k^{\mathrm{Ch}}(\cos\beta)=\sin((k+1)\beta)/\sin\beta$.
+Here $\nu/R\ge1/2-o(1)$ and is at most $1+o(1)$.
+The roots in this range, for $d=1,2,3,4$, are respectively
+none, $1/\sqrt2$, $1/2,\sqrt3/2$, and
+$1/\sqrt2,\cos(\pi/8)$. Simplicity and
+$U_{2d-1}^{\mathrm{Ch}}(1)=2d$ prove the remaining assertions.
+\end{proof}
+
+\subsection{Core geometry and Green propagation}
+
+Choose $\alpha_{\mathrm{loc}}>0$ with
+$q_{\mathrm{gap}}+\xi_{\mathrm{inv}}<2-2\alpha_{\mathrm{loc}}$.
+Set $W_{\mathrm{cond}}=C_{\mathrm{cond}}(1+\tau)$, with a fixed
+sufficiently large $C_{\mathrm{cond}}$, and
+\[
+ \mathcal I_{\mathrm{win}}=\{j:|d_j^{\mathrm{pole}}|\le W_{\mathrm{cond}}\}.
+\]
+The angular complement of this set in the bandwidth-four matrix
+$\mathcal S_{\mathrm{pole}}^{(0)}$ has every principal inverse
+bounded by $2/W_{\mathrm{cond}}$. Indeed its band perturbation has
+norm $C\tau$ and division by the unperturbed diagonal has norm at most
+$1/W_{\mathrm{cond}}$, also after any coordinate restriction.
+Denote its exact window Schur matrix by $\mathcal F_{\mathrm{win}}$.
+It is self-adjoint for $\diag(\eta_j^2)$ and has Hilbert gap $c\gamma$
+by the reconstruction argument already used.
+
+\begin{lemma}[Critical strips and the true minima]\label{inf:critical-strips}
+For $c_{\mathrm{cr}}\in\mathcal T_{\mathrm{crit}}$ let
+\[
+ \mathcal N_{c_{\mathrm{cr}}}
+ =\{j\in\R:|p+2j-1-Rc_{\mathrm{cr}}|
+                       \le2p^{1-\alpha_{\mathrm{loc}}/2}\}.
+\]
+These neighbourhoods are disjoint for large $p$.
+Write $c_{\mathrm{cr}}=\cos(\ell_{c_{\mathrm{cr}}}\pi/(2d_{c_{\mathrm{cr}}}))$
+with reduced pairs
+$(\ell_{c_{\mathrm{cr}}},d_{c_{\mathrm{cr}}})=(2,3),(1,2),(1,3),(1,4)$,
+respectively, and put
+\[
+ f_{c_{\mathrm{cr}}}(j)=\varphi_{\mathrm{Bes}}(p+2j-1,R)
+                      +\ell_{c_{\mathrm{cr}}}\pi j/d_{c_{\mathrm{cr}}}.
+\]
+On $\mathcal N_{c_{\mathrm{cr}}}$ its second derivative is between
+$c_{\mathrm{curv}}/p$ and $C_{\mathrm{curv}}/p$, where
+$c_{\mathrm{curv}},C_{\mathrm{curv}}>0$ are fixed, and
+$|f'_{c_{\mathrm{cr}}}|\le Cp^{-\alpha_{\mathrm{loc}}/2}$.
+Its true minimum is attained at
+\begin{equation}\label{inf:true-phase-minimum}
+ j_{c_{\mathrm{cr}}}^*=\{Rc_{\mathrm{cr}}-(p-1)\}/2+O(p^{-1}).
+\end{equation}
+Connect successive window vertices in each high neighbourhood
+$c_{\mathrm{cr}}>1/2$ if their distance is at most
+$L_{\mathrm{core}}(p)=K_{\mathrm{core}}\log p/\log\log p$.
+Each resulting component has a common phase level and residue and
+diameter at most
+\begin{equation}\label{inf:sharp-core-diameter}
+ L_{\mathrm{core}}(p)+C\sqrt{W_{\mathrm{cond}}+1}.
+\end{equation}
+Its indices satisfy $j\ge c_2p$ for a fixed $c_2>0$.
+The low core consists of window indices $j\le C\sqrt{W_{\mathrm{cond}}+1}$,
+all congruent to two modulo three. Every other low-neighbourhood
+window vertex has $j\ge c\sqrt p$ and is isolated at scale
+$L_{\mathrm{core}}(p)$.
+For the nonseed indices of the low core one also has the uniform formula
+\begin{equation}\label{inf:low-core-offsets}
+ \begin{gathered}
+ d_j^{\mathrm{pole}}=-\frac43(2j-1)(2j-4)
+             +O\bigl((1+\log p)^2/p\bigr),\\
+ j\equiv2\pmod3,\qquad 5\le j\le C\sqrt{W_{\mathrm{cond}}+1}.
+ \end{gathered}
+\end{equation}
+This offset formula is recorded separately; the closure uses the
+strip geometry and does not use \eqref{inf:low-core-offsets}.
+\end{lemma}
+\begin{proof}
+The derivatives in the proof of Lemma~\ref{inf:phase-strip} give
+$f_{c_{\mathrm{cr}}}''=4/\kappa+O(p^{-3})$. At
+$j_{c_{\mathrm{cr}}}=\{Rc_{\mathrm{cr}}-(p-1)\}/2$ the derivative of the leading phase cancels
+the added linear term, while the corrected derivative is
+$-2b_\nu/(1+b^2)<0$, of size $O(p^{-2})$.
+Its strictly positive second derivative
+therefore puts its unique minimum at distance $O(p^{-1})$, proving
+\eqref{inf:true-phase-minimum}.
+
+By Lemma~\ref{inf:phase-eigenvalue-two-sided}, window vertices lie
+within $C(W_{\mathrm{cond}}+1)/p$ of a level of the lattice
+$\pi(\Z+1/2)+\ell_{c_{\mathrm{cr}}}\pi j/d_{c_{\mathrm{cr}}}$.
+Levels are spaced by $\pi/d_{c_{\mathrm{cr}}}$.
+An edge of length at most $L_{\mathrm{core}}$ changes $f_{c_{\mathrm{cr}}}$ by
+$o(1)$, so its endpoints have the same level; reduction of
+$(\ell_{c_{\mathrm{cr}}},d_{c_{\mathrm{cr}}})$ makes their residues equal.
+Every component thus lies in one strip
+$|f_{c_{\mathrm{cr}}}-g|\le C(W_{\mathrm{cond}}+1)/p$.
+If $f''\ge m>0$, either monotone side of $|f-g|\le\delta$
+has length at most $2\sqrt{\delta/m}$: its variation over length
+$h$ is at least $mh^2/2$ and at most $2\delta$.
+A connected chain either stays on one side or has an edge of
+length at most $L_{\mathrm{core}}$ joining the two sides.
+This proves \eqref{inf:sharp-core-diameter}. High neighbourhoods
+have $j\asymp p$ by their definitions.
+
+For $c_{\mathrm{cr}}=1/2$ the seed $j=2$ anchors the first level, since
+$d_2^{\mathrm{pole}}=-\theta/(2p)+O(\theta^2p^{-3})$.
+For $j\le c\sqrt p$ the phase cannot reach another level.
+The curvature bound then gives $j\le C\sqrt{W_{\mathrm{cond}}+1}$,
+and the first-level residue is $j\equiv2\pmod3$.
+Beyond this first group, a window vertex has $j\ge c\sqrt p$.
+There $f'_{c_{\mathrm{cr}}}\ge cj/p$; moving by an integer between one and
+$L_{\mathrm{core}}$ changes its level by more than
+$2C(W_{\mathrm{cond}}+1)/p$ and less than
+$\pi/3-2C(W_{\mathrm{cond}}+1)/p$.
+Hence such vertices are isolated at that scale.
+To obtain \eqref{inf:low-core-offsets}, apply
+Lemma~\ref{inf:low-recurrence} at the associated primary crossing
+$p_0$. For $j\equiv2\pmod3$, $j\ge5$, its value/normal ratio is
+$c_j/p_0+O((j+1)^4/p_0^2)$: the numerator has the stated
+first-order recurrence coefficient, and the normal denominator
+is its nonzero limiting sign plus $O((j+1)^2/p_0)$.
+The collar ODE is uniformly bounded for
+$j=O(\sqrt{\log p})$; its nearby zero therefore has squared
+offset $-4c_j+O((j+1)^4/p_0)$.
+Continue this zero and the Neumann zero to $p$.
+Their frequency difference stays $O(\log p/p)$ by the global
+order derivative bound, so spacing identifies the continued zero
+with the retained pole. Repeating the refined derivative comparison
+in the proof of Lemma~\ref{inf:wide-low-transfer} gives
+$|z'(t)-R'(t)|\le C(j+1)/p+C(\log p)/p^2$.
+The interval has length $O(\log p/p)$; the change of squared
+offset is consequently at most
+$C(\log p)(j+1)/p+C(\log p)^2/p^2$.
+Since $j\le C\sqrt{W_{\mathrm{cond}}+1}=O(\sqrt{\log p})$,
+these errors give \eqref{inf:low-core-offsets}.
+\end{proof}
+
+\begin{lemma}[Bin-elimination Green bound]\label{inf:bin-green}
+Let a matrix on a finite subset of integer sites be
+$\diag(d_j)+B$, where $B$ has bandwidth four and norm at
+most $b_*\ge0$ in a weighted coordinate $\ell^1$ norm or a diagonal
+Hilbert norm. Suppose $W>0$, $|d_j|>W$, $b_*/W<1/4$, and all coordinate
+compressions are contractions. Assume the same band bound on
+principal restrictions. Divide the sites into consecutive bins of
+width four. Every principal inverse has norm at most $2/W$.
+If a run of $m$ intervening bins has all $|d_j|\ge L>0$, with
+$L\ge4(b_*+2b_*^2/W)$, then its bin-to-bin Green propagation has
+bound
+\begin{equation}\label{inf:bin-green-bound}
+ \frac{C}{W}(2b_*/L)^m.
+\end{equation}
+Without the stronger diagonals there is exponential decay in the
+number of intervening bins. Empty bins disconnect the matrix.
+\end{lemma}
+\begin{proof}
+Diagonal division and a Neumann series bound every principal inverse
+by $1/(W-b_*)\le2/W$. The bin matrix is block tridiagonal.
+Eliminate bins from the right. The inverse of each right Schur
+block is the compression of the corresponding tail inverse, so
+has norm at most $2/W$. The diagonal block at a strong bin differs
+from the restriction of $\diag(d_j)$ by at most $b_*+2b_*^2/W$.
+Another diagonal Neumann series therefore bounds its inverse by
+$2/L$. On a homogeneous row, backward elimination gives exactly
+$u_b=-G_bT_{b,b-1}u_{b-1}$, with $\nrm{T_{b,b-1}}\le b_*$.
+Iteration across the strong run gives $(2b_*/L)^m$.
+For a source bin, eliminate on both sides; its resulting solution
+operator is a compression of the full inverse and costs $2/W$.
+This proves \eqref{inf:bin-green-bound}. Replacing $L$ by the
+ordinary Schur bound gives ratio $2b_*/W<1/2$ on other bins.
+The argument is valid separately in either specified norm; no
+change of coordinates occurs inside the propagation estimate.
+\end{proof}
+
+\begin{lemma}[Valuations of low angular paths]\label{inf:path-valuation}
+Uniformly for $j\le C\sqrt{1+\tau}+4$, the quartic angular
+coefficients satisfy
+\begin{equation}\label{inf:low-coefficient-valuations}
+ \begin{aligned}
+ c_{2,j}^{j+2}&=O(1),&
+ c_{2,j}^{j+1},c_{2,j}^j&=O((j+1)/p),\\
+ c_{2,j}^{j-1},c_{2,j}^{j-2}&=O((j+1)^2/p^2).
+ \end{aligned}
+\end{equation}
+Every path of quartic interactions and angular-diagonal radial
+resolvents carries the product of its angular coefficients.
+This factorization applies to the feedback band
+$p^{-1}\mathcal B_{\mathrm{pole},4}$ and to every further complementary path.
+A two-interaction path starting at a low index $j$ in the stated
+range has an extra factor $C(j+1)/p$ in its angular coefficient
+product in each of the two cases of net displacement $+3$ and $-3$.
+\end{lemma}
+\begin{proof}
+Put
+\[
+ \mathfrak u_j=\frac{\mathsf H_{j+1}(1)}{\mathsf H_j(1)},\qquad
+ \mathfrak v_j=\mathfrak a_j^2
+              \frac{\mathsf H_{j-1}(1)}{\mathsf H_j(1)},\qquad
+ a_{\mathrm{quad}}=\frac{2(\ab+1)}{p+2},
+\]
+with $\mathfrak v_0=0$. The normalized recurrence is
+$xG_j=\mathfrak u_jG_{j+1}+\mathfrak b_jG_j+\mathfrak v_jG_{j-1}$.
+Two applications give the exact coefficients
+\begin{align*}
+ \mathsf H_2(1)c_{2,j}^{j+2}&=\mathfrak u_j\mathfrak u_{j+1},\\
+ \mathsf H_2(1)c_{2,j}^{j-2}&=\mathfrak v_j\mathfrak v_{j-1},\\
+ \mathsf H_2(1)c_{2,j}^{j+1}
+ &=\mathfrak u_j(\mathfrak b_j+\mathfrak b_{j+1}-a_{\mathrm{quad}}),\\
+ \mathsf H_2(1)c_{2,j}^{j-1}
+ &=\mathfrak v_j(\mathfrak b_j+\mathfrak b_{j-1}-a_{\mathrm{quad}}),\\
+ \mathsf H_2(1)c_{2,j}^{j}
+ &=\mathfrak u_j\mathfrak v_{j+1}+\mathfrak v_j\mathfrak u_{j-1}
+                                      +\mathsf H_2(\mathfrak b_j).
+\end{align*}
+Terms outside the nonnegative index range are zero.
+The formulas \eqref{inf:recurrence-a}--\eqref{inf:recurrence-b}
+and \eqref{inf:angular-jacobi} give explicitly
+\begin{align*}
+ \mathfrak u_j&=\frac{(p(1-r)+j)(p+j-1)}{(p+2j)(p+2j-1)},\\
+ \mathfrak v_j&=\frac{j(pr+j-1)}{(p+2j-1)(p+2j-2)},\\
+ \mathfrak b_j-r&=\frac{2j(p+j-1)(1-2r)}{(p+2j)(p+2j-2)},
+ \qquad a_{\mathrm{quad}}-2r=\frac{2(1-2r)}{p+2}.
+\end{align*}
+Their denominators are comparable to the displayed powers of $p$
+uniformly for $j\le C\sqrt{1+\tau}+4$. In particular
+$\mathfrak u_j=O(1)$, $\mathfrak v_j=O((j+1)/p)$,
+$\mathfrak b_j-r=O((j+1)/p)$, and $a_{\mathrm{quad}}-2r=O(p^{-1})$.
+The endpoint ratios are bounded above and below on this range,
+and $\mathsf H_2(1)\ge c_{\mathrm{sp}}>0$.
+Writing \eqref{inf:H2} in powers of $x-r$ gives
+$\mathsf H_2(\mathfrak b_j)=O((j+1)^2/p^2+p^{-1})$.
+Since $j=O(\sqrt{\log p})$, every displayed coefficient has exactly
+the bound in \eqref{inf:low-coefficient-valuations}.
+
+The exact block formula in the proof of
+Lemma~\ref{inf:centre-form-comparison} factors one interaction as
+$c_{2,j}^i$ times its radial operator. An angular-diagonal radial
+resolvent preserves this scalar factor. Induction on the number
+of interactions therefore gives the product on any path, followed
+by the product of its bounded radial norms. The Hilbert endpoint
+ratio $\eta_i/\eta_j$ telescopes along the path.
+Two steps of lengths at most two with net displacement three
+must include a one-step edge. Equation~\eqref{inf:low-coefficient-valuations}
+gives the asserted extra factor. Positive coefficient sums and
+bounded bandwidth convert these bounds to column estimates,
+without a factor for the number of low indices.
+\end{proof}
+
+\begin{lemma}[The seven off-core block types]\label{inf:off-core-table}
+Take the high components of Lemma~\ref{inf:critical-strips}, its
+low core, and all remaining window vertices as singleton cores.
+For sufficiently large fixed $K_{\mathrm{core}}$, in both the
+coefficient operator norm and the Hilbert operator norm,
+\begin{equation}\label{inf:global-off-core}
+ \nrm{\operatorname{Off}_{\mathrm{cores}}\mathcal F_{\mathrm{win}}}
+ \le C\tau(1+\tau)^2p^{-2+2\alpha_{\mathrm{loc}}}.
+\end{equation}
+The low-core internal off-diagonal part has the stronger bound
+$C\tau(1+\tau)^2p^{-2}$ in both norms.
+\end{lemma}
+\begin{proof}
+Call an outside singleton one outside all $\mathcal N_{c_{\mathrm{cr}}}$, and a low
+singleton one in $\mathcal N_{1/2}$ beyond its low core.
+The following seven types exhaust all pairs of distinct cores;
+the last row takes precedence when the neighbourhoods differ.
+\begin{center}\small\normalfont
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.37\textwidth}>{\raggedright\arraybackslash}p{.56\textwidth}@{}}
+\toprule Block type & Estimate and mechanism\\\midrule
+Outside--outside & $C\tau(1+\tau)^2p^{-2+2\alpha_{\mathrm{loc}}}$;
+two attenuated endpoints.\\
+Outside--low singleton & Same bound; the low endpoint has the
+stronger attenuation $C\tau/p$.\\
+Low singleton--low singleton & Same bound; two primary edges
+cannot join distinct such vertices.\\
+Outside--high component & Faster than any chosen power,
+including pairs crossing a critical-neighbourhood boundary.\\
+High component--high component in one neighbourhood &
+Convex phase barrier; $C\tau p^{-B_*}$ for any prescribed fixed $B_*$.\\
+Low core--other core in its neighbourhood or outside &
+Generic Green decay across distance at least $c\sqrt p$.\\
+Cores in different critical neighbourhoods &
+Generic Green decay across distance at least $cp$.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Here are the operator estimates behind the table. An outside vertex
+has every complementary neighbour within four sites at energy
+distance greater than $p^{1-\alpha_{\mathrm{loc}}}$, by
+Lemma~\ref{inf:lommel-resonance}; otherwise it would lie in the
+smaller critical neighbourhood of radius $Cp^{1-\alpha_{\mathrm{loc}}}$.
+Thus either endpoint map, with its adjacent diagonal inverse,
+has norm $C\tau p^{-1+\alpha_{\mathrm{loc}}}$.
+At a low singleton, for $h=\pm1,\pm2$ the phase change to $j+h$
+is $-2h\pi/3+o(1)$, because $j/p\to0$ in the low neighbourhood
+and $\partial_\nu\varphi_{\mathrm{Bes}}=-\arccos(\nu/R)+O(p^{-2})$.
+Thus primary neighbours have phase separated from the zero lattice
+by a fixed amount and denominators at least $cp$.
+Feedback edges
+already have size $C\tau^2/p$, and their denominator is at least
+$W_{\mathrm{cond}}$. They give the endpoint bound $C\tau/p$.
+All these maps have fixed bandwidth, so the estimates hold on
+whole columns and, in Hilbert coordinates, on rows as well.
+
+No direct band-four entry connects two distinct singleton cores.
+Nor can two primary edges connect them: the endpoints would be
+two window vertices within four sites and hence in the same
+critical component. A length-two path between distinct singletons
+therefore includes a feedback edge. With one such edge put the
+diagonal inverse at the primary endpoint, giving
+$C\tau^3p^{-2+\alpha_{\mathrm{loc}}}$; with two use
+$C\tau^4/(p^2W_{\mathrm{cond}})$.
+For all paths of length at least three, the resolvent identity
+places a diagonal inverse at each endpoint and a bounded
+Neumann inverse between them. Their global bound is
+$C\tau^3p^{-2+2\alpha_{\mathrm{loc}}}$.
+This proves the first three rows as operator norms, with no
+sum over the total number of vertices.
+
+For two distinct high components in one neighbourhood, let their
+nearest endpoints be $u<v$, with $D=v-u>L_{\mathrm{core}}$, and set
+\[
+ h=\pi/d_{c_{\mathrm{cr}}},\qquad
+ \delta=C(W_{\mathrm{cond}}+1)/p.
+\]
+Here $h$ is the spacing of the union of the phase levels of all
+integer residues. If their phase levels differ,
+there is an intervening phase interval a fixed distance from all
+levels. Since $|f'_{c_{\mathrm{cr}}}|\le Cp^{-\alpha_{\mathrm{loc}}/2}$,
+this supplies at least $cp^{\alpha_{\mathrm{loc}}/2}$ consecutive
+sites with denominator $cp$ by
+\eqref{inf:phase-energy-comparison}. If both endpoints have level
+$g$, define their excursion by
+$\mathfrak e=g-\min_{[u,v]}f_{c_{\mathrm{cr}}}$.
+The convexity inequality gives
+$g-f_{c_{\mathrm{cr}}}(x)\ge cD^2/p-\delta$
+on $[u+D/4,v-D/4]$.
+If $\mathfrak e\ge h/4$, continuity supplies the phase interval
+$[g-h/4,g-h/8]$, a fixed distance from every level;
+use the preceding barrier on its preimage.
+If $\mathfrak e<h/4$, the middle half has matching-residue
+denominators at least $cD^2$, and all other residues have
+denominators at least $cp$. This branch forces $D\le C\sqrt p$,
+so, after decreasing its fixed constant, take $L=cD^2\le cp$.
+Since $D>L_{\mathrm{core}}$ and
+$L_{\mathrm{core}}^2/(1+\tau)\to\infty$, one has
+$L\ge4(b_*+2b_*^2/W_{\mathrm{cond}})$ with $b_*=C\tau$.
+The middle half contains at least $D/8-2$ complete bins of width
+four. Their diagonals exceed $W_{\mathrm{cond}}$ for large $p$.
+Lemma~\ref{inf:bin-green} bounds propagation
+by $\exp\{-cD\log(D^2/[C(1+\tau)])\}$.
+Uniformly for $\tau\le\log p$,
+\[
+ \log\frac{L_{\mathrm{core}}(p)^2}{C(1+\tau)}
+ \ge\tfrac12\log\log p
+\]
+eventually. Choose $K_{\mathrm{core}}$ to give any fixed power
+$p^{-B_*-2}$. There are only $O(p)$ retained vertices; summing
+the already weighted entry bounds gives all coefficient columns
+and Hilbert rows and columns with the desired power.
+Each such Schur term has two exterior couplings. Together with
+the source factor $1/W_{\mathrm{cond}}$ their size is at most
+$C\tau^2/W_{\mathrm{cond}}\le C\tau$, giving the detuning factor
+in the high-component rows of the table.
+
+At a boundary of $\mathcal N_{c_{\mathrm{cr}}}$, $|f'_{c_{\mathrm{cr}}}|$ is comparable to
+$p^{-\alpha_{\mathrm{loc}}/2}$. Two window points on opposite
+sides of that boundary cannot have the same level at integer
+distance between one and $cp^{\alpha_{\mathrm{loc}}/2}$:
+their phase change exceeds $C(W_{\mathrm{cond}}+1)/p$.
+Different levels require at least that distance as well.
+Thus generic exponential Green decay proves the outside--high
+row, including these boundary pairs. Distinct neighbourhoods are
+separated by $cp$. The low core is separated from other vertices
+of its neighbourhood by $c\sqrt p$. These facts prove the last
+two rows.
+
+It remains to bound the internal low-core off-diagonal part.
+Its vertices have residue two modulo three, so there is no direct
+primary edge between distinct vertices. The direct feedback of
+displacement three has size
+$C\tau^2(j+1)p^{-2}$ by Lemma~\ref{inf:path-valuation}.
+A primary endpoint lands on a nonresonant index with denominator
+$cp$, uniformly for $j\le C\sqrt{1+\tau}$.
+Indeed $f_{1/2}(j)-f_{1/2}(2)=O((j+1)^2/p)=O(W_{\mathrm{cond}}/p)$,
+while either of the other two residues has its zero lattice shifted
+by $\pi/3$ from this level. Lemma~\ref{inf:phase-eigenvalue-two-sided}
+therefore supplies that lower bound also for the neighbouring indices.
+A feedback endpoint of displacement one, two or four also lands
+on a nonresonant index; displacement three retains the extra
+coefficient $(j+1)/p$ even if its denominator is only
+$W_{\mathrm{cond}}$. Two-primary-edge paths of net displacement
+three gain the same extra coefficient and a $cp$ denominator.
+A zero-displacement step stays at its window index and is therefore
+absent from an endpoint map into the angular complement.
+Consequently each endpoint map has coefficient norm at most
+$C\tau/p$. A two-edge term containing a feedback edge is bounded by
+$C\tau^3p^{-2}+C\tau^4/(p^2W_{\mathrm{cond}})$, placing the inverse
+at the primary endpoint when one is present.
+The resolvent identity bounds the sum of paths with at least three
+edges by $C\tau^3p^{-2}$, using the two endpoint bounds and a
+bounded middle Neumann inverse. Bounded-band column sums therefore give
+$C\tau(1+\tau)^2p^{-2}$ for the entire low-core off-diagonal matrix.
+It is self-adjoint in a positive diagonal metric. Its Hilbert
+operator norm equals its spectral radius, which is at most its
+coefficient operator norm. This supplies the Hilbert bound without
+any factor for the growing low-core cardinality.
+\end{proof}
+
+\begin{theorem}[Mixed conditioning and restoration]
+\label{inf:mixed-conditioning}
+Under the hypotheses of this section the linear quartic operator
+has a two-sided mixed graph inverse with
+\begin{equation}\label{inf:linear-mixed-inverse}
+ \nrm{K_0L_{\mathrm q}^{-1}}_{\Mmix\to\Mmix}
+ \le C p^{2+\xi_{\mathrm{inv}}}/\gamma.
+\end{equation}
+For a fixed order $N$, suppose its true centre has bounded degree,
+strong size $C\tau p^{-2}$, and
+\begin{equation}\label{inf:conditioning-centre-hypothesis}
+ \nrm{f_N-f_{\mathrm q}}_{\mathrm{strong}}
+ \le\tau p^{-4}\mathfrak E_N(p),\qquad
+ \mathfrak E_N(p)=p^{o(1)}
+\end{equation}
+uniformly in the parameters. Then its actual scalar graph is a
+bounded isomorphism on $\Cc$ and
+\begin{equation}\label{inf:conditioning-final-inverse}
+ \nrm{J_D^{-1}}_{\Cc\to\Cc}
+ \le C_Np^{5/2+\xi_{\mathrm{inv}}}/\gamma.
+\end{equation}
+The threshold may depend on the compact split interval,
+$N,q_{\mathrm{gap}},\xi_{\mathrm{inv}},\kappa_{\mathrm{gap}}$, and
+the envelope in \eqref{inf:conditioning-centre-hypothesis}.
+\end{theorem}
+\begin{proof}
+Reserve half of $\xi_{\mathrm{inv}}$ for the subpolynomial factors.
+Delete cross-core entries of
+$\mathcal F_{\mathrm{win}}$. Their Hilbert norm is $o(\gamma)$ by
+\eqref{inf:global-off-core}, so every core retains Hilbert gap
+$c\gamma$. In a high core, the exact ratio
+\begin{equation}\label{inf:core-conditioning}
+ \frac{\eta_{j+1}^2}{\eta_j^2}
+ =\frac{2j+p-1}{2j+p+1}
+   \frac{(pr+j)(j+1)}{(p(1-r)+j)(p-1+j)}
+\end{equation}
+is bounded above and below by fixed positive constants since
+$j\ge c_2p$ and $j=O(p)$. In coordinates
+$\widetilde u_j=2^ju_j$, the coefficient norm is unweighted
+$\ell^1$ and the Hilbert weights are $\eta_j/2^j$.
+Their consecutive ratios have the same boundedness property.
+The diagonal similarity over the core diameter, followed by
+$\ell^2$--$\ell^1$ comparison over its cardinality, therefore costs at most
+\[
+ \exp\{C L_{\mathrm{core}}(p)+C\sqrt{W_{\mathrm{cond}}+1}\}
+ \sqrt{L_{\mathrm{core}}(p)+C\sqrt{W_{\mathrm{cond}}+1}+1}
+ =p^{o(1)}.
+\]
+For a singleton the cost is one. On the low core, delete its
+internal off-diagonal part in the Hilbert norm. Each diagonal
+entry then has modulus at least $c\gamma$. Restoring that part
+by a coefficient diagonal Neumann series gives inverse $C/\gamma$,
+because $(1+\tau)^2p^{q_{\mathrm{gap}}-2}\to0$.
+
+The direct sum of all core inverses has coefficient norm at most
+$Cp^{\xi_{\mathrm{inv}}}/\gamma$ with the smaller internal exponent
+understood. Its product with the off-core error is bounded by
+$C(1+\tau)^2p^{q_{\mathrm{gap}}+\xi_{\mathrm{inv}}-2+2\alpha_{\mathrm{loc}}}=o(1)$.
+Thus $\mathcal F_{\mathrm{win}}^{-1}$ has that same bound.
+Recovering the angular complement costs bounded factors, since
+$\tau/W_{\mathrm{cond}}$ is small. Restoring
+$\mathsf R_{\mathrm{pole},6}$ costs
+$C\tau^2p^{q_{\mathrm{gap}}+\xi_{\mathrm{inv}}-2}=o(1)$.
+Hence the exact pole Schur inverse has the same coefficient bound.
+
+The radial complementary reconstruction has reduced right side
+of norm at most $(1+C\tau/p)\nrm f_{\Mmix}$.
+The pole component costs $Cp^{\xi_{\mathrm{inv}}}\nrm f/\gamma$;
+its $K_0$ norm costs a further $Cp^2$.
+The complementary graph norm is bounded by
+$Cp(\nrm f+C\tau\nrm{\Pi_{\mathrm{rad}}u})$.
+This proves \eqref{inf:linear-mixed-inverse} on the entire graph
+domain, with all radial states included. Lemma~\ref{inf:mixed-domain}
+applies to the small relative perturbation $V_1(H_{\mathrm q})$;
+the bounded scalar shift leaves its graph domain unchanged.
+The reconstructions converge in that graph norm. The embeddings and
+uniqueness identify this inverse with the Hilbert inverse on
+mixed sources, and prove both inverse identities.
+
+For the actual centre put $\Phi=\Phi_N$. Apply
+Lemma~\ref{inf:quadratic-graph} with $H=\HP f_N$ and use
+\eqref{inf:conditioning-centre-hypothesis}. They give
+\[
+ \nrm{(\Hu-H_0-V_1(H_{\mathrm q}))K_0^{-1}}
+ \le C_N\tau p^{-4}(\mathfrak E_N(p)+\tau)=\tau p^{-4+o(1)}.
+\]
+Multiply by the mixed graph inverse before any radial coefficient
+conversion. Its product is
+$p^{q_{\mathrm{gap}}+\xi_{\mathrm{inv}}-2+o(1)}=o(1)$.
+A Neumann series restores the true centre on $\Mmix$.
+On $\Hc$, its linear graph inverse satisfies
+$\nrm{K_0L_{\mathrm q}^{-1}}\le Cp^2/\gamma$.
+Indeed, for $L_{\mathrm q}u=f$ write
+$K_0u=f+2R^2u-V_1(H_{\mathrm q})u$, use the Hilbert gap
+$\nrm u\le C\gamma^{-1}\nrm f$, and absorb
+$\nrm{V_1(H_{\mathrm q})K_0^{-1}}<1/2$.
+The same centre perturbation therefore has Hilbert product
+$p^{q_{\mathrm{gap}}-2+o(1)}=o(1)$.
+The restored Hilbert and mixed inverses agree on mixed sources
+by the embedding and Hilbert uniqueness.
+The density and graph-conjugation proof of
+\eqref{inf:density-graph-bounds} uses only $p\delta$ small;
+its binomial bound is
+$\exp(Cp\delta)=\exp(O(\tau/p))$, hence bounded.
+The scalar return therefore preserves the mixed inverse exponent.
+The scalar estimates in the proof of Theorem~\ref{inf:relative-graph}
+bound the sum of the $\Cc$ and $\Mmix$ relative norms by
+$C(\delta+p\delta^2)\le C\tau p^{-2}$.
+Thus \eqref{inf:head-tail-hypotheses} holds for large $p$.
+The finite-head/infinite-tail proof of Lemma~\ref{inf:head-tail}
+now costs exactly
+$\sqrt p$. Its tail is solved in $\Cc$ and its head is converted
+from the already constructed mixed solution. This proves
+coefficient membership, both inverse identities, and
+\eqref{inf:conditioning-final-inverse}.
+All perturbations retain a factor $\tau$; only the final inverse
+has a factor $\tau^{-1}$.
+\end{proof}

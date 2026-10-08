@@ -1,0 +1,191 @@
+\section{Shape and scope}\label{inf:sec-shape}
+
+\begin{proposition}[Quartic shape and Hermite limit]\label{inf:shape}
+Fix a construction with a compact interior split interval and a fixed
+centre order. For its domains
+write the physical boundary as $\varrho=R+h(x)$ and set
+$v_r=r(1-r)$. In either family, uniformly in every fixed $C_x^k$ norm,
+\begin{equation}\label{inf:shape-leading}
+ h(x)=-\frac{\theta}{16v_rp}\mathsf H_2(x)+O(\tau p^{-2}),
+ \qquad
+ \frac{p^2}{\theta}\left(\frac{\varrho(x)}R-1\right)
+ =-\frac{(x-r)^2}{32v_r}+O(p^{-1}).
+\end{equation}
+For $y$ in a fixed compact interval the concentration-scale limit is
+\begin{equation}\label{inf:Hermite-limit}
+ \frac{p^2}{\theta}h(r+\sqrt{v_r/p}\,y)
+ =-\frac{\operatorname{He}_2(y)}{16}+O(p^{-1/2}),
+ \qquad \operatorname{He}_2(y)=y^2-1.
+\end{equation}
+The constants may depend on the fixed centre order in the bounded
+family; the logarithmic family uses order twenty.
+\end{proposition}
+\begin{proof}
+For fixed bounded detuning, \eqref{inf:centre-profile} and the
+cofactor Newton radius give
+\[
+ h=-(2\chi/g_2)\mathsf H_2+O(\tau p^{-3}).
+\]
+For logarithmic detuning the same formula holds with remainder
+$C\tau p^{-3}\mathfrak P_{20}(\log p)$ by row 8 of
+Lemma~\ref{inf:detuning-dependencies}; the physical Newton correction
+is $O(\tau p^{-10})$.
+The ellipse estimate in the proof of Lemma~\ref{inf:space-embedding}
+is $|G_j(z)|\le2(j+1)\rho_{\mathrm{ell}}^j$ for fixed
+$1<\rho_{\mathrm{ell}}<2$. Cauchy's formula on a smaller ellipse
+therefore bounds each fixed $x$ derivative by
+$C_k(j+1)\rho_{\mathrm{ell}}^j$, absorbed by the coefficient
+weight $(j+1)2^j$. Thus these comparisons hold in every fixed
+$C_x^k$ norm.
+Now $\chi=\theta/(4Rp)$, $R=2p+3+O(\log p/p)$ and
+$g_2=4v_r/p+O(p^{-2})$.
+Fixed powers of $\log p$ divided by $p$ tend to zero.
+These estimates prove \eqref{inf:shape-leading}.
+
+The exact identity following from \eqref{inf:H2} is
+\[
+ \mathsf H_2(x)=(x-r)^2-
+ \frac{2(1-2r)}{p+2}(x-r)-\frac{v_r}{p+1}.
+\]
+At $x=r+\sqrt{v_r/p}\,y$ it equals
+$v_rp^{-1}(y^2-1)+O(p^{-3/2})$ on compact $y$ intervals.
+The sharper quartic comparison above, multiplied by $p^2/\theta$,
+has error at most $C\mathfrak P_{20}(\log p)/p=O(p^{-1/2})$ in
+the logarithmic family, and $O(p^{-1})$ in the bounded family.
+This proves \eqref{inf:Hermite-limit}. Every error before division
+contains $\tau$, so the assertions are uniform as $\tau\downarrow0$.
+\end{proof}
+
+\begin{remark}[Recorded trace differentiation on two zero curves]
+\label{inf:trace-curve-derivative}
+Fix an odd integer $m\ge3$. Suppose two actual simple Bessel zero
+curves $R_N(p)=j_{p,k_N}$ and $R_D(p)=j_{p+m,k_D}$ meet at
+$(p_0,R_0)$, where $p_0\to\infty$ and
+$R_0/p_0\to\sec\beta_{\mathrm{tr}}$,
+$0<\beta_{\mathrm{tr}}<\pi/2$. The indices $k_N,k_D$ are fixed on each local
+continuation and may vary with the chosen crossing.
+Define along the Neumann curve
+\[
+ \chi_m(p)=\frac{J_{p+m}(R_N(p))}
+ {J'_{p+m}(R_N(p))-(p-1)J_{p+m}(R_N(p))/R_N(p)}.
+\]
+Then
+\begin{equation}\label{inf:true-zero-derivative}
+ \begin{aligned}
+ \chi_m'(p_0)&=R_N'(p_0)-R_D'(p_0),\\
+ \left.\frac d{dp}(4R_N(p)p\chi_m(p))\right|_{p=p_0}
+ &=\left(\frac{4m(\tan\beta_{\mathrm{tr}}-\beta_{\mathrm{tr}})
+                    \cos\beta_{\mathrm{tr}}}{\sin^3\beta_{\mathrm{tr}}}
+        +o(1)\right)p_0.
+ \end{aligned}
+\end{equation}
+For the primary quartic crossing this coefficient is $16\delta_0$.
+The detuning comparison in Lemma~\ref{inf:detuning} follows
+from the exact quotient \eqref{inf:trace-ratio-exact}.
+\end{remark}
+\begin{proof}
+At a Dirichlet zero the denominator of the trace quotient equals
+$J'_{p+m}(R_D(p))\ne0$. Its partial derivative with respect to
+its radius argument is therefore one. Differentiating its zero
+value along the actual Dirichlet curve gives partial order
+derivative $-R_D'(p_0)$. The chain rule on $R_N$ proves the first
+identity.
+By \eqref{inf:order-derivative},
+\[
+ R_N'-R_D'
+ =f_{\mathrm{ord}}(p_0/R_0)
+       -f_{\mathrm{ord}}((p_0+m)/R_0)+O(p_0^{-2}).
+\]
+For $x=\cos\beta_{\mathrm{tr}}$ one has
+$f'_{\mathrm{ord}}(x)=-\cos\beta_{\mathrm{tr}}
+(\tan\beta_{\mathrm{tr}}-\beta_{\mathrm{tr}})/\sin^3\beta_{\mathrm{tr}}$.
+Taylor expansion therefore makes the difference
+$\{m(\tan\beta_{\mathrm{tr}}-\beta_{\mathrm{tr}})
+\cos^2\beta_{\mathrm{tr}}/\sin^3\beta_{\mathrm{tr}}+o(1)\}/p_0$.
+Since $\chi_m(p_0)=0$, differentiating its prefactor $4R_Np$
+adds zero. Multiplication by $4R_0p_0$ proves the second identity.
+For $m=3$, $\beta_{\mathrm{tr}}=\pi/3$, it reduces to $16\delta_0$.
+\end{proof}
+
+\begin{proposition}[Density of the arithmetic families]
+\label{inf:arithmetic-density}
+Each fixed-width candidate family $\mathcal P_{\mathrm{fix}}(C_{\mathrm{ap}})$ and
+the candidate family $\mathcal P_{\log}$ has natural density zero
+in either parity lattice. Their dimension sets have density zero
+in $\mathbb N$.
+\end{proposition}
+\begin{proof}
+The crossing expansion shows that membership implies
+\[
+ \left\|\frac{c_{\mathrm{ar}}}{\pi}p+b_{\mathrm{ph}}\right\|_{\R/\Z}
+ \le C\frac{1+\log p}{p}
+\]
+with $b_{\mathrm{ph}}=3\sqrt3/(2\pi)-3/4$; a fixed-width family
+has the stronger numerator $C$.
+The frequency $c_{\mathrm{ar}}/\pi=\sqrt3/\pi-1/3$ is irrational
+by transcendence of $\pi$. On either lattice $p=k$ or $k+1/2$,
+each nonconstant integer Fourier mode of this rotation has a bounded
+geometric partial sum, so its average tends to zero.
+Continuous trigonometric majorants and minorants of a fixed arc
+\cite{inf:zygmund} then give its frequency equal to its length. For any fixed
+$0<\zeta<1/2$, all sufficiently late candidate points lie in
+the fixed arc of radius $\zeta$ because $(1+\log p)/p\to0$.
+Their upper density is at most $2\zeta$. Letting $\zeta$ tend to
+zero proves the assertion on both lattices; combining them and
+rescaling by two proves the dimension statement.
+\end{proof}
+
+The existence assertions use the quartic angular seed. Extending this
+construction to other angular seeds requires a centre construction,
+a signed-flow estimate for its wider angular interaction, and a
+closure in the resulting amplitude scale. The density statement
+above describes the listed arithmetic families; it leaves the set
+of all dimensions supporting Schiffer domains undetermined.
+
+\begin{lemma}[The spectral cap is inactive]\label{inf:cap-inactive}
+For every sufficiently large input in either family and every
+candidate split in a fixed compact interval, the actual quartic
+invariant Dirichlet gap is less than $R^2$. Thus
+\[
+ \min\{R^2,\dist(R^2,\spec H_a)\}
+                  =\dist(R^2,\spec H_a),
+\]
+where $H_a$ is the quartic Dirichlet operator in unit-ball normalization.
+\end{lemma}
+\begin{proof}
+In the radial angular-zero sector of the ball, the sine trial on
+$(1/2,1)$ gives
+$\lambda_1(B)\le4(p-1)^2+4\pi^2$.
+The quartic shell has relative width $\delta\le C_{\mathrm{sp}}\tau/p^2$.
+Min--max and dilation imply
+\[
+ 0<\lambda_1(H_a)\le4(p-1)^2+4\pi^2+C_{\mathrm{sp}}\tau
+       <(2p-1)^2\le R^2
+\]
+for fixed $T$ or $\tau\le\log p$ and sufficiently large $p$.
+The gap is at most $R^2-\lambda_1(H_a)<R^2$, proving the claim.
+\end{proof}
+
+\begin{remark}[Choosing a split from strict gap enclosures]
+\label{inf:split-selection}
+For the finite set of candidate splits, first enclose the strict
+conditions $\eta_{\mathrm{alg}}<1/2$ of
+Lemma~\ref{inf:quartic-computable-relative}. They hold for all
+candidates at sufficiently large inputs. Lemma~\ref{inf:gap-enclosures}
+then supplies rational enclosures $[L_a,U_a]$ of their capped gaps
+with widths tending to zero. At each precision set $U=\max_aU_a$
+and retain the least $a$
+with $L_a>0$ and $2L_a>U$, when one exists.
+For sufficiently large family inputs, let $G$ be the maximum actual
+gap. Lemma~\ref{inf:cap-inactive}
+makes the caps inactive. Whenever $G>0$, this selection terminates:
+an index attaining $G$ has $L_a\to G$, while $U\to G$.
+Its output has actual gap at least $L_a>G/2$.
+For fixed-detuning inputs Theorem~\ref{inf:integer-gap}, with the
+fixed-parameter extension, gives $G\ge c_T\tau p^{-5/3}$.
+For logarithmic inputs Corollary~\ref{inf:log-flow-count} gives,
+for each fixed $5/3<q_{\mathrm{gap}}<2$,
+$G\ge c_q\tau p^{-q_{\mathrm{gap}}}$. Either bound supplies the
+positive gap and the appropriate closure. This strict-comparison
+rule needs no decision of equality between two spectral gaps.
+\end{remark}

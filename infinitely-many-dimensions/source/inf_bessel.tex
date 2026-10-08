@@ -1,0 +1,490 @@
+\section{Bessel estimates with uniform remainders}\label{inf:sec-bessel}
+
+The large-order estimates needed here are uniform as the ratio of
+argument to order varies. We derive them from an outgoing integral
+equation. The only asymptotic normalization used in that derivation is
+the fixed-order, large-argument normalization of the Hankel function.
+The recurrence identities and that normalization are as in
+\cite[\S\S10.6, 10.17]{inf:dlmf}; the order derivative formula used
+below is \cite[Eq.~10.21.17]{inf:dlmf}.
+
+We write $Y_\nu$ for the Bessel function of the second kind and
+$H^{(1)}_\nu=J_\nu+iY_\nu$ for the outgoing Hankel function.
+The modified Bessel functions of the second kind are denoted by
+$\mathrm K_\nu$.
+
+\subsection{Zeros, radial norms, and differentiation in the order}
+
+\begin{lemma}[Spacing and boundary normalization]\label{inf:bessel-spacing}
+Let $\nu>1/2$. Every positive zero of $J_\nu$ is simple,
+$j_{\nu,k}>\nu$, and
+\begin{equation}\label{inf:bessel-spacing-bound}
+ j_{\nu,k+1}-j_{\nu,k}>\pi.
+\end{equation}
+At a zero $z=j_{\nu,k}$ one has
+\begin{equation}\label{inf:lommel}
+ \int_0^1\zeta J_\nu(z\zeta)^2\,d\zeta
+ =\frac12J_\nu'(z)^2.
+\end{equation}
+Consequently a radial Dirichlet eigenfunction, normalized in its radial
+$L^2$ space and with its sign chosen appropriately, has boundary
+normal derivative $\sqrt2\,z$.
+\end{lemma}
+\begin{proof}
+A simultaneous zero of $J_\nu$ and $J'_\nu$ would give the zero solution
+of its nonsingular ordinary differential equation at that point.
+Let $v(x)=\sqrt{x}J_\nu(x)$. On an interval between two positive zeros,
+\[
+ \int |v'|^2=\int\left(1-\frac{\nu^2-1/4}{x^2}\right)|v|^2
+ <\int|v|^2.
+\]
+The Dirichlet Poincar\'e inequality on an interval of length $L$ gives
+$\pi^2/L^2<1$, proving \eqref{inf:bessel-spacing-bound}.
+On $(0,1)$ the lowest eigenvalue of
+$-\partial_\zeta^2+(\nu^2-1/4)/\zeta^2$ is at least
+$\pi^2+\nu^2-1/4>\nu^2$, by the same Poincar\'e inequality and
+$\zeta^{-2}\ge1$. Every eigenvalue is at least this lower bound, so
+$j_{\nu,k}>\nu$.
+
+For the integral identity put $w(\zeta,z)=J_\nu(z\zeta)$.
+Subtract the equation for $w$ multiplied by $\partial_z w$ from its
+$z$ derivative multiplied by $w$. Integration gives
+\[
+ [\zeta\{w(\partial_z w)_\zeta-w_\zeta\partial_z w\}]_0^1
+ =-2z\int_0^1\zeta w^2\,d\zeta.
+\]
+At a zero $z$, $w(1,z)=0$, $w_\zeta(1,z)=zJ'_\nu(z)$ and
+$\partial_z w(1,z)=J'_\nu(z)$. The term at zero vanishes by the
+regular Bessel series. This proves \eqref{inf:lommel}. The radial
+mass-unitary function is $\sqrt\zeta J_\nu(z\zeta)$, whose derivative
+at one is $zJ'_\nu(z)$ and whose squared norm is the integral in
+\eqref{inf:lommel}. Their ratio proves the last assertion.
+\end{proof}
+
+\begin{lemma}[Order derivative]\label{inf:bessel-order}
+For $\nu\ge1/2$ and $x=j_{\nu,k}$,
+\begin{equation}\label{inf:order-derivative}
+ 0\le \frac{\arccos(\nu/x)}{\sqrt{1-(\nu/x)^2}}
+       -\frac{\partial j_{\nu,k}}{\partial\nu}
+ \le\frac{\pi}{16x^2}.
+\end{equation}
+In particular,
+\begin{equation}\label{inf:order-lipschitz}
+ 1-\frac\pi{16x^2}\le\frac{\partial j_{\nu,k}}{\partial\nu}
+ \le\frac\pi2.
+\end{equation}
+The estimates are independent of $k$. If $x/\nu\to2$ and
+$x\to\infty$, then
+$\partial_\nu j_{\nu,k}\to2\pi/(3\sqrt3)$, also when $k$ varies.
+\end{lemma}
+\begin{proof}
+Watson's order-derivative identity uses the modified Bessel function
+$\mathrm K_0$ and reads
+\[
+ \frac{\partial j_{\nu,k}}{\partial\nu}
+ =2x\int_0^\infty \mathrm K_0(2x\sinh v)e^{-2\nu v}\,dv.
+\]
+It applies to the simple positive zeros and positive orders in question.
+At $\nu=1/2$ the regular Schr\"odinger solution is a multiple of
+$\sin x$, so its positive zeros also satisfy $x>\nu$. For larger
+orders this follows from Lemma~\ref{inf:bessel-spacing}.
+Replacing $\sinh v$ by $v$ increases the integral. The replacement
+integral is
+\[
+ 2x\int_0^\infty \mathrm K_0(2xv)e^{-2\nu v}\,dv
+ =\frac{\arccos(\nu/x)}{\sqrt{1-(\nu/x)^2}}.
+\]
+Insert the integral representation
+\[
+ \mathrm K_0(u)=\int_0^\infty e^{-u\cosh w}\,dw
+\]
+and integrate first in $v$. The result is
+$\int_0^\infty(\cosh w+\nu/x)^{-1}\,dw$.
+The substitution $z=\tanh(w/2)$ evaluates this integral to the
+quotient above.
+
+Since $-\mathrm K'_0=\mathrm K_1$ and $\mathrm K_1$ is positive and decreasing,
+\[
+ 0\le \mathrm K_0(2xv)-\mathrm K_0(2x\sinh v)
+ \le2x(\sinh v-v)\mathrm K_1(2xv).
+\]
+Taylor's integral formula gives $\sinh v-v\le v^3\cosh v/6$.
+The hypothesis $\nu\ge1/2$ implies
+$e^{-2\nu v}\cosh v\le1$. The error in the order derivative is
+therefore at most
+\[
+ \frac{4x^2}{6}\int_0^\infty v^3\mathrm K_1(2xv)\,dv
+ =\frac1{24x^2}\int_0^\infty u^3\mathrm K_1(u)\,du
+ =\frac\pi{16x^2}.
+\]
+To evaluate the last integral, use
+$\mathrm K_1(u)=\int_0^\infty e^{-u\cosh w}\cosh w\,dw$.
+Tonelli's theorem and the elementary gamma integral give
+$6\int_0^\infty\operatorname{sech}^3w\,dw=3\pi/2$.
+The quotient in \eqref{inf:order-derivative}, written as
+$\beta/\sin\beta$ for $0<\beta<\pi/2$, lies in $[1,\pi/2]$.
+This proves \eqref{inf:order-lipschitz}. If $x/\nu\to2$ and
+$x\to\infty$, the error $\pi/(16x^2)$ tends to zero, and the
+quotient in \eqref{inf:order-derivative} tends to
+$2\pi/(3\sqrt3)$, proving the limit.
+\end{proof}
+
+\subsection{The outgoing integral equation}
+
+For $z>1$ define
+\begin{align}
+ \mathfrak s(z)&=\sqrt{z^2-1}-\arccos(1/z),
+ &A_{\mathrm{Deb}}(z)&=(z^2-1)^{-1/4},\label{inf:debye-definitions}\\
+ I(z)&=\frac1{4\sqrt{z^2-1}}+
+                \frac5{12(z^2-1)^{3/2}},
+ &V(z)&=\frac{z^2(z^2+4)}{4(z^2-1)^3}.\nonumber
+\end{align}
+The letters $I,V$ in this subsection denote scalar functions only.
+The perturbation operator in the inverse argument will be denoted by
+$\mathcal V$.
+
+\begin{lemma}[First uniform correction]\label{inf:debye-first}
+Let $\nu\ge1$, $z\ge3/2$, and set
+\[
+ \phi=\nu\mathfrak s(z)-\frac\pi4,\qquad
+ \mathcal A_\nu(z)=\sqrt{\frac2{\pi\nu}}A_{\mathrm{Deb}}(z),
+ \qquad b_\nu(z)=\frac{I(z)}{2\nu}.
+\]
+Then
+\begin{align}
+ \left|\frac{J_\nu(\nu z)}{\mathcal A_\nu(z)}
+           -\cos\phi-b_\nu(z)\sin\phi\right|&\le\mathsf R_\nu^{\mathrm{Deb}}(z),
+ \label{inf:debye-J}\\
+ \left|\frac{Y_\nu(\nu z)}{\mathcal A_\nu(z)}
+           -\sin\phi+b_\nu(z)\cos\phi\right|&\le\mathsf R_\nu^{\mathrm{Deb}}(z),
+ \label{inf:debye-Y}\\
+ \mathsf R_\nu^{\mathrm{Deb}}(z)&=
+ \frac1{2\nu^2}\left\{V(z)+\frac{I(z)^2}{1-I(z)/\nu}\right\}
+ <\frac6{5\nu^2}.\label{inf:debye-remainder}
+\end{align}
+Thus the same bound holds on every compact interval about $z=2$,
+including a value of $z$ depending on $\nu$.
+\end{lemma}
+\begin{proof}
+Put $\xi=\mathfrak s(z)$ and write
+$H_\nu^{(1)}(\nu z)=A_{\mathrm{Deb}}(z)w(\xi)$.
+Here $\mathfrak s'(z)=\sqrt{z^2-1}/z$ and
+\[
+ 2\frac{A_{\mathrm{Deb}}'}{A_{\mathrm{Deb}}}
+ +\frac{\mathfrak s''}{\mathfrak s'}+\frac1z=0,
+ \qquad
+ A_{\mathrm{Deb}}''+z^{-1}A_{\mathrm{Deb}}'
+ =\frac{z^2+4}{4(z^2-1)^{9/4}}.
+\]
+Thus substitution in Bessel's equation cancels the first derivative
+and gives
+\[
+ w_{\xi\xi}+\nu^2w=\psi(\xi)w,\qquad
+ \psi(\mathfrak s(z))=-V(z).
+\]
+The outgoing Hankel normalization for fixed $\nu$ at infinity is
+$w\sim\sqrt{2/(\pi\nu)}e^{i\nu\xi-i\pi/4}$, with the differentiated
+normalization as well. This fixes the outgoing solution integrated
+from infinity.
+Define $g$ by
+$w=\sqrt{2/(\pi\nu)}e^{i\nu\xi-i\pi/4}g$. Variation of constants yields
+\begin{equation}\label{inf:volterra}
+ g(\xi)=1+\frac1{2i\nu}\int_\xi^\infty
+       \{e^{2i\nu(v-\xi)}-1\}\psi(v)g(v)\,dv.
+\end{equation}
+The potential is integrable. Indeed, with $u=\sqrt{z^2-1}$,
+\begin{equation}\label{inf:potential-integral}
+ \int_{\mathfrak s(z)}^\infty|\psi(v)|\,dv
+ =\int_z^\infty\frac{y(y^2+4)}{4(y^2-1)^{5/2}}\,dy=I(z).
+\end{equation}
+The iterated integral of order $k$ in \eqref{inf:volterra} has norm at
+most $(I(z)/\nu)^k/k!$. The series converges absolutely and gives the
+unique bounded outgoing amplitude. Integrating first to a finite
+endpoint and then using the Hankel normalization identifies that
+solution with the given Hankel function. It follows that
+$|g-1|\le e^{I/\nu}-1$.
+
+The first iterate has nonoscillatory term $-iI/(2\nu)$. Its oscillatory
+term has absolute value at most $V/(2\nu^2)$. To see this, integrate by
+parts once and use
+\[
+ V'(z)=-\frac{z(z^4+10z^2+4)}{2(z^2-1)^4}<0,
+ \qquad
+ \int_\xi^\infty|\psi'(v)|\,dv=V(z).
+\]
+The contribution of the remaining iterates is bounded by
+\[
+ \frac1\nu\int_\xi^\infty |\psi(v)|
+                       (e^{I(v)/\nu}-1)\,dv
+ =e^{I/\nu}-1-I/\nu
+ \le\frac{I^2}{2\nu^2(1-I/\nu)}.
+\]
+The final inequality follows by expanding the exponential and bounding
+$1/k!\le1/2$ for $k\ge2$.
+Thus $|g-(1-iI/(2\nu))|\le\mathsf R_\nu^{\mathrm{Deb}}$.
+Taking real and imaginary parts after multiplication by $e^{i\phi}$
+proves \eqref{inf:debye-J} and \eqref{inf:debye-Y}.
+
+For $z\ge3/2$, $I(z)\le7/(6\sqrt5)<21/40$ and $V(z)\le9/5$.
+In particular $I(z)/\nu<1$. Substitution gives
+\[
+ \mathsf R_\nu^{\mathrm{Deb}}(z)
+ <\frac1{2\nu^2}\left(\frac95+
+          \frac{(21/40)^2}{1-21/40}\right)
+ =\frac{1809}{1520\nu^2}<\frac6{5\nu^2}.
+\]
+\end{proof}
+
+\begin{lemma}[Any fixed order]\label{inf:debye-finite}
+Let $z>1$, $\nu>0$, and $v=(z^2-1)^{-1/2}$. Define polynomials
+$U_k(v)$ by $U_0=1$ and
+\begin{equation}\label{inf:debye-recursion}
+ U_{k+1}(v)=\frac{v^2(1+v^2)}2U_k'(v)
+           +\frac18\int_0^v(1+5w^2)U_k(w)\,dw.
+\end{equation}
+For every fixed integer $L\ge0$, the amplitude in
+\eqref{inf:volterra} satisfies
+\begin{equation}\label{inf:debye-all-orders}
+ \left|g-\sum_{k=0}^L\frac{U_k(v)}{(i\nu)^k}\right|
+ \le\frac{2U_{L+1}(v)}{\nu^{L+1}}e^{I(z)/\nu}.
+\end{equation}
+If $I(z)/\nu<1$, the exponential can be replaced by
+$(1-I(z)/\nu)^{-1}$. In particular,
+\begin{equation}\label{inf:debye-polynomials}
+ U_1(v)=\frac v8+\frac{5v^3}{24},\qquad
+ U_2(v)=\frac{81v^2+462v^4+385v^6}{1152}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+One has $dv/d\xi=-v^2(1+v^2)$ and
+$V=v^2(1+v^2)(1+5v^2)/4$. The recursion is equivalent to
+\[
+ 2\frac{dU_{k+1}}{d\xi}
+ =\psi U_k-\frac{d^2U_k}{d\xi^2},\qquad U_{k+1}(\infty)=0.
+\]
+Every coefficient in \eqref{inf:debye-recursion} is nonnegative.
+It follows that $U_k\ge0$, $dU_k/d\xi\le0$ and
+$d^2U_k/d\xi^2\ge0$. Substitution of the truncated sum $g_L$ into
+$g''+2i\nu g'-\psi g=0$ leaves only
+$(U_L''-\psi U_L)/(i\nu)^L$. This numerator is nonnegative and
+\[
+ \int_\xi^\infty(U_L''+VU_L)\,d\xi=2U_{L+1}(v).
+\]
+The integral equation for $g-g_L$ has a forcing term bounded by
+$2U_{L+1}/\nu^{L+1}$. In each iterated potential integral, its value
+at a later point is no greater than its value at the initial point.
+The same ordered-simplex estimate as for \eqref{inf:volterra}
+therefore multiplies this bound by at most $e^{I/\nu}$. This proves
+\eqref{inf:debye-all-orders}. The inequality
+$e^w\le(1-w)^{-1}$ for $0\le w<1$ proves the alternative bound.
+The two polynomials follow by integrating the recursion twice.
+\end{proof}
+
+\subsection{Fixed spectral windows}
+
+\begin{lemma}[One radial state and no adjacent angular states]
+\label{inf:window-isolation}
+For each fixed $W>0$ there is $P_W$ such that for real $p\ge P_W$ and
+$R\in[2p-1,2p+4]$, the set
+\begin{equation}\label{inf:ball-window}
+ \mathcal W_p(W)=\{(j,k):|z_{j,k}^2-R^2|\le W\}
+\end{equation}
+contains at most one state for each angular index $j$ and has no pair
+of angular indices differing by one. The threshold is independent of
+the split.
+\end{lemma}
+\begin{proof}
+The argument interval has length $O_W(p^{-1})$, which is less than
+$\pi$ for large $p$. Lemma~\ref{inf:bessel-spacing} proves the first
+assertion. For the second we prove an explicit elementary separation.
+Let $z\ge8$ be a zero of $J_\nu$, with $1/3\le\nu/z<1$, and set
+$y(v)=J_{\nu+2}(z+v)/J_{\nu+1}(z)$. Consecutive orders have no common
+positive zero, so this normalization is valid. The recurrences give
+\[
+ y(0)=\frac{2(\nu+1)}z\in[2/3,9/4],\qquad
+ y'(0)=1-\frac{2(\nu+1)(\nu+2)}{z^2},\quad |y'(0)|\le2.
+\]
+For $|v|\le1/10$, both coefficients
+$(z+v)^{-1}$ and $1-(\nu+2)^2/(z+v)^2$ of the differential equation
+have absolute value below one. In fact
+$(\nu+2)/(z-1/10)\le(z+2)/(z-1/10)\le100/79<\sqrt2$.
+The first-order system for $(y,y')$ has maximum row norm at most two.
+Its integral equation gives
+$\max(|y(v)|,|y'(v)|)\le(9/4)e^{1/5}<3$. Therefore
+$y(v)\ge2/3-3/10>0$ on this interval.
+
+Two roots in \eqref{inf:ball-window} differ in argument by at most
+$2W/R$ for large $p$, which is below $1/10$ after increasing $P_W$.
+Their orders are at least $p-1$ and smaller than their roots.
+Thus the smaller order and its root satisfy $1/3\le\nu/z<1$.
+The separation just proved excludes adjacent angular indices.
+\end{proof}
+
+\begin{lemma}[Thin phase strip]\label{inf:phase-strip}
+For each fixed $W>0$ there are $C_W,P_W<\infty$ with the following
+property. Suppose $p\ge P_W$, $R\in[2p-1,2p+4]$, and
+$p-1\le\nu\le R-p^{2/3}/2$. Define
+\begin{align}
+ \kappa(\nu,z)&=\sqrt{z^2-\nu^2},\nonumber\\
+ \Xi(\nu,z)&=\kappa(\nu,z)-\nu\arccos(\nu/z)-\pi/4,\label{inf:phase-def}\\
+ b(\nu,z)&=\frac1{8\kappa(\nu,z)}+
+                       \frac{5\nu^2}{24\kappa(\nu,z)^3}.\nonumber
+\end{align}
+If $J_\nu(z)=0$ and $|z^2-R^2|\le W$, then
+\begin{equation}\label{inf:phase-strip-bound}
+ \dist\bigl(\Xi(\nu,R)-\arctan b(\nu,R),
+                   \pi(\Z+1/2)\bigr)\le C_W/p.
+\end{equation}
+For $\nu=p-1+2j$, put
+\begin{equation}\label{inf:phase-graph}
+ \varphi_p(j)=\pi^{-1}\{\Xi(p-1+2j,R)
+                    -\arctan b(p-1+2j,R)\}-\tfrac12.
+\end{equation}
+On a band $D_0\le R-\nu\le2D_0$ with
+$D_0\ge p^{2/3}/2$ one has
+\begin{equation}\label{inf:phase-curvature}
+ \frac{c}{\sqrt{pD_0}}\le\varphi_p''(j)
+ \le\frac{C}{\sqrt{pD_0}},
+\end{equation}
+where $c,C>0$ are absolute and the threshold may depend on $W$.
+\end{lemma}
+\begin{proof}
+Write $D=R-\nu$. In the stated region and for
+$|z-R|\le W/R$, one has $\nu\asymp p$, $z+\nu\asymp p$, and
+$\kappa^2\asymp pD$, with absolute comparison constants. The case
+$L=1$ of Lemma~\ref{inf:debye-finite} gives
+\[
+ \frac{J_\nu(z)}{\sqrt{2/\pi}\,\kappa^{-1/2}}
+ =\cos\Xi+b\sin\Xi+e,\qquad
+ |e|\le\frac{2U_2(\nu/\kappa)}{\nu^2(1-I(z/\nu)/\nu)}.
+\]
+Here
+$I(z/\nu)/\nu=1/(4\kappa)+5\nu^2/(12\kappa^3)
+=O(p^{1/2}D^{-3/2})=O(p^{-1/2})$.
+The explicit polynomial $U_2$ gives
+$|e|=O(pD^{-3})=O(p^{-1})$. Thus the denominator is bounded away
+from zero uniformly. At a zero, divide by $\sqrt{1+b^2}$ and use
+$\arcsin u\le2u$ for $0\le u\le1/2$ to obtain a distance
+$O(p^{-1})$ from $\Xi-\arctan b$ to $\pi(\Z+1/2)$.
+Now $\Xi_z=\kappa/z\le1$ and
+\[
+ b_z=-\frac z{8\kappa^3}-\frac{5\nu^2z}{8\kappa^5}=o(1).
+\]
+Replacing $z$ by $R$ changes the phase by $O_W(p^{-1})$, proving
+\eqref{inf:phase-strip-bound}.
+
+At fixed $R$, $\Xi_{\nu\nu}=1/\kappa$ and direct differentiation gives
+\[
+ b_\nu=\frac{13\nu}{24\kappa^3}+\frac{5\nu^3}{8\kappa^5},\qquad
+ b_{\nu\nu}=\frac{13}{24\kappa^3}
+               +\frac{7\nu^2}{2\kappa^5}
+               +\frac{25\nu^4}{8\kappa^7}.
+\]
+It follows that
+\[
+ \kappa\,| (\arctan b)_{\nu\nu}|
+ \le\kappa\{|b_{\nu\nu}|+2|b||b_\nu|^2\}
+ =O(pD^{-3})+O(p^2D^{-6})=O(p^{-1}).
+\]
+The constants are absolute throughout the region. Therefore
+$\varphi_p''=(4/\pi)\kappa^{-1}(1+O(p^{-1}))$.
+Since $\kappa\asymp\sqrt{pD_0}$ on the band, this proves
+\eqref{inf:phase-curvature}.
+\end{proof}
+
+\begin{lemma}[Convex lattice strip]\label{inf:lattice-strip}
+Let $f\in C^2(I)$, where $I$ has length at most $L$, and suppose
+$0<m_0\le f''\le M_0$. Let $\delta>0$ satisfy
+\[
+ \frac12M_0L^3+2\delta L<1.
+\]
+Then the integer points $(j,k)$ with $j\in I$ and
+$|k-f(j)|\le\delta$ are collinear. If there is at most one such point
+at each $j$, their number is at most
+$2+4\sqrt{\delta/m_0}$, with an integer upper bound understood.
+\end{lemma}
+\begin{proof}
+For three such points, the determinant with rows $(1,j,k)$ is an
+integer. The determinant of the three graph values is
+$(x_2-x_1)(x_3-x_1)(x_3-x_2)f[x_1,x_2,x_3]$ when the abscissae
+are distinct. The integral formula for the second divided
+difference bounds its absolute value by $M_0/2$, so this
+contribution is at most $M_0L^3/2$. If two abscissae coincide,
+the graph determinant is zero and the same bound holds. The three vertical errors contribute at most
+$2\delta L$: for ordered abscissae their coefficient absolute values
+sum to twice the largest separation. Thus the determinant has
+absolute value less than one and is zero. If there are at least three
+points, fixing the two extreme ones shows that every point lies on
+their line.
+
+Take a middle point with abscissa $x_2$ and extreme abscissae
+$x_1,x_3$. The chord of $f$ satisfies
+\[
+ \operatorname{chord}(x_2)-f(x_2)
+ \ge\frac{m_0}{2}(x_2-x_1)(x_3-x_2).
+\]
+One proof subtracts $m_0x^2/2$ from $f$ and uses convexity of the
+result. Since the three integer points are collinear, their errors
+bound the same chord deficit by $2\delta$. Among $n$ distinct integer
+abscissae choose a middle one; its two separations have product at
+least $(n-2)^2/4$. Therefore $(n-2)^2\le16\delta/m_0$.
+The assertions for zero, one or two points need no determinant.
+\end{proof}
+
+\begin{theorem}[Sublinear window count]\label{inf:global-count}
+For every fixed $W>0$ there are $C_W,P_W<\infty$ such that, for
+$p\ge P_W$ and $R\in[2p-1,2p+4]$,
+\begin{equation}\label{inf:global-count-bound}
+ \#\mathcal W_p(W)\le C_Wp^{2/3}.
+\end{equation}
+The bound holds for real $p$, and is independent of the split.
+\end{theorem}
+\begin{proof}
+There is at most one radial state per angular index by
+Lemma~\ref{inf:window-isolation}. Also $z_{j,k}>\nu_j$, so the
+region $\nu_j>R-p^{2/3}$ has only $O_W(p^{2/3})$ possible indices.
+In the remaining region Lemma~\ref{inf:phase-strip} assigns to each
+state a lattice point $(j,m)$ with
+$|m-\varphi_p(j)|\le\delta=C_W'/p$. This assignment is injective:
+there is at most one radial state at a given $j$, and $2\delta<1$.
+
+Divide $D=R-\nu_j$ into dyadic bands $D_0\le D\le2D_0$, from
+$p^{2/3}$ up to $O(p)$. On each band
+$f''\asymp(pD_0)^{-1/2}$ for $f=\varphi_p$. Divide its horizontal
+interval into intervals of length
+$L=c_*(pD_0)^{1/6}$, with $c_*>0$ fixed so small that
+$M_0L^3/2\le1/4$. Since $D_0=O(p)$, the other term
+$2\delta L=O_W(p^{-2/3})$ is below $1/4$ for large $p$.
+Lemma~\ref{inf:lattice-strip} bounds the number of points per interval
+by an absolute multiple of $1+\sqrt{C'_W}$, because
+$\delta/m_0=O_W(\sqrt{D_0/p})=O_W(1)$.
+
+The band has horizontal length $O(D_0)$, so it requires
+$O(p^{-1/6}D_0^{5/6}+1)$ such intervals. The sum of $D_0^{5/6}$ over
+the dyadic bands is $O(p^{5/6})$; the sum of the additive ones is
+$O(\log p)$. This proves \eqref{inf:global-count-bound} after adding
+the turning region. Every constant and threshold in this proof is
+fixed once $W$ is fixed.
+\end{proof}
+
+\begin{corollary}[Domains in a thin shell]\label{inf:shell-count}
+Fix $W,C_{\mathrm{shell}}>0$ and integer blocks $a,b$ with
+$a+b=2p$ in the admissible range. If a two-block invariant domain in the unit-ball
+normalization satisfies
+$B_{1-C_{\mathrm{shell}}/p^2}\subset\Omega\subset B_{1+C_{\mathrm{shell}}/p^2}$, then its invariant
+Dirichlet spectrum has at most $C_{W,C_{\mathrm{shell}}}p^{2/3}$ eigenvalues in
+$[R^2-W,R^2+W]$ for large $p$ and $R\in[2p-1,2p+4]$.
+The constants are uniform in the admissible integer splits.
+\end{corollary}
+\begin{proof}
+Zero extension preserves invariance. The min--max principle and radial
+dilation give, for each ordered eigenvalue index $i$,
+\[
+ (1+C_{\mathrm{shell}}/p^2)^{-2}\lambda_i(B)
+ \le\lambda_i(\Omega)\le
+ (1-C_{\mathrm{shell}}/p^2)^{-2}\lambda_i(B).
+\]
+Any index counted for $\Omega$ has its ball eigenvalue in
+$[R^2-W',R^2+W']$, where $W'$ depends only on $W,C_{\mathrm{shell}}$ since
+$R^2=O(p^2)$. Apply Theorem~\ref{inf:global-count}.
+\end{proof}

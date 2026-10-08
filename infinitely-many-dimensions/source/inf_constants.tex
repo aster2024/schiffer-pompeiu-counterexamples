@@ -1,0 +1,50 @@
+\section{Constants}\label{inf:sec-constants}
+
+After the constants and centre order have been fixed, the proof
+uses the maximum of finitely many thresholds. The exponents are
+\[
+ b_{\mathrm{inv}}=2M+3,\qquad
+ B_{\mathrm{Newt}}=2M+32/3,\qquad
+ L_{\mathrm{Newt}}=2M+62/3,\qquad N=4M+40.
+\]
+The constants in the finite-centre remainder, the material inverse,
+and the second derivative depend on this fixed $N$.
+All estimates use this one fixed order.
+
+The main cost of the coefficient inverse is the cofactor exponent
+$5M/3$. Its cluster count is for the fixed containing window
+$W_{\mathrm{loc}}=20E_{\mathrm{inv}}$.
+The local-count proof is used at angular length
+$M D_{\mathrm{sep}}\log p$.
+It requires, among other conditions,
+\begin{align}
+ \tfrac12C p^{-5/6}(M D_{\mathrm{sep}}\log p)^3
+ +\frac{2C_{20E_{\mathrm{inv}}}}p
+                  M D_{\mathrm{sep}}\log p&<1,
+ \label{inf:constant-lattice}\\
+ c_t p^{1/6}&>\pi M D_{\mathrm{sep}}\log p
+                       +O(E_{\mathrm{inv}}/p).
+ \label{inf:constant-turning}
+\end{align}
+In the turning comparison any fixed $0<c_t<\pi/\sqrt2$ is available
+after increasing its threshold, by the proof of Theorem~\ref{inf:local-count}.
+The determinant step also requires
+$D_{\mathrm{sep}}>5M/3+5$.
+The inverse window is fixed by $E_{\mathrm{inv}}\ge64C_{\mathrm{rel}}$.
+Its local-count bound is
+\[
+ M=\left\lceil 2+4\sqrt{C_{20E_{\mathrm{inv}}}/c}\right\rceil,
+\]
+with the phase-strip constant and curvature lower constant from
+Theorem~\ref{inf:local-count}. Its integer $M$ is fixed before
+$D_{\mathrm{sep}}$ and $N$, in the order
+\eqref{inf:constant-order}.
+
+The final threshold includes the Bessel and arithmetic estimates,
+the flow and integer-grid gap, the centre construction and gap
+transfer, the relative graph bounds, the local count at angular
+length $MD_{\mathrm{sep}}\log p$, the cofactor absorption, the
+head--tail bounds, the three Newton gates, and the geometric
+smallness conditions. Each threshold is finite for the fixed
+constants and order; their maximum is uniform in the admissible
+split and in $0<\tau\le20$.

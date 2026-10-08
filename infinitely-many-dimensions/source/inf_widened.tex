@@ -1,0 +1,678 @@
+\section{Bounded detuning, interior splits, and residue classes}
+\label{inf:sec-widened}
+
+Fix $0<\varepsilon_{\mathrm{sp}}<1/4$ and write
+\[
+ I_{\mathrm{sp}}=[\varepsilon_{\mathrm{sp}}^2,
+                         (1/2-\varepsilon_{\mathrm{sp}})^2],\qquad
+ \varepsilon_{\mathrm{sp}}\le r\le1/2-\varepsilon_{\mathrm{sp}}.
+\]
+Constants in this section may depend on this interval and on a fixed
+upper bound $T$ for $\tau$. The coefficient spaces and their angular
+radius two remain those of Definition~\ref{inf:spaces}.
+
+\begin{lemma}[Low-state transfer on a fixed wider window]
+\label{inf:wide-low-transfer}
+Fix $C_{\mathrm{ap}}>0$. The second conclusion of
+Proposition~\ref{inf:low-exclusion} holds for
+$|p-p_0|\le C_{\mathrm{ap}}/p_0$, after increasing the threshold
+depending on $C_{\mathrm{ap}}$. More generally, its proof is uniform
+for $C_{\mathrm{ap}}=O(\log p_0)$.
+\end{lemma}
+\begin{proof}
+Suppose a nonseed low degree $\ell$ has a zero $z(p)$ with
+$|z(p)^2-R(p)^2|\le32$. Continue it and the Neumann zero along the
+interval to $p_0$. Equation~\eqref{inf:order-lipschitz} first gives
+$|z(t)-R(t)|\le C(1+C_{\mathrm{ap}})/p_0$ there, so both radii are
+comparable to $2p_0$ and both order-to-radius ratios belong to
+$[1/3,2/3]$. Put
+\[
+ f_{\mathrm{ord}}(x)=\arccos x/\sqrt{1-x^2}.
+\]
+Its derivative is bounded on that compact interval.
+Equation~\eqref{inf:order-derivative} therefore gives
+\[
+ |z'(t)-R'(t)|\le C(\ell+1)/p_0
+                         +C(1+C_{\mathrm{ap}})/p_0^2.
+\]
+Integration, followed by multiplication by $z+R$, bounds the change
+in squared-energy offset by
+\begin{equation}\label{inf:wide-low-error}
+ C C_{\mathrm{ap}}(\ell+1)/p_0
+       +C C_{\mathrm{ap}}(1+C_{\mathrm{ap}})/p_0^2.
+\end{equation}
+For $\ell=O(\sqrt{p_0})$ this tends to zero in both stated ranges.
+The offset at $p_0$ is then less than $64$, contradicting the first
+conclusion of Proposition~\ref{inf:low-exclusion}. The other radial
+seed states are excluded by their frequency spacing and the same
+continuation estimate.
+\end{proof}
+
+\begin{lemma}[Extension of the split interval]\label{inf:split-extension}
+The reduction, centre, flow, coefficient-space, material, mixed,
+localization and cofactor estimates above hold on $I_{\mathrm{sp}}$
+with the replacements in the following table. Every constant may
+depend on $\varepsilon_{\mathrm{sp}}$; their powers of $p$ and their
+order of choice are unchanged. The weighted reduction, centre and
+flow statements allow real $r$ on this interval. The Euclidean
+coefficient, material, mixed and closing estimates are applied at
+integer block sizes $a,b$ with $a+b=2p$.
+For the $\tau\le20$ counting estimate
+one may use
+\[
+ K_{\mathrm{sp}}=\frac4{\varepsilon_{\mathrm{sp}}
+                            (1-\varepsilon_{\mathrm{sp}})},\qquad
+ W_{\mathrm{sp}}=40K_{\mathrm{sp}}.
+\]
+\begingroup\small\normalfont
+\renewcommand{\arraystretch}{1.13}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.29\textwidth}>{\raggedright\arraybackslash}p{.29\textwidth}>{\raggedright\arraybackslash}p{.35\textwidth}@{}}
+\toprule Statement & Where the interval enters & Replacement\\\midrule
+\endfirsthead
+\toprule Statement & Where the interval enters & Replacement\\\midrule
+\endhead
+\ref{inf:reduction}, \ref{inf:angular-sup}, \ref{inf:flow-form} &
+Positive beta parameters, endpoint orientation, axis cutoffs &
+$\ab,\bb\ge\varepsilon_{\mathrm{sp}}p>1$ and $\bb\ge\ab$;
+integer blocks for the Euclidean identification.\\
+\ref{inf:quartic-normalization} & $pg_2>9/16$,
+$\nrm{\mathsf H_2}_\infty<9/16$, $\nrm{T_\varsigma}_\infty<1$ &
+$pg_2\ge2\varepsilon_{\mathrm{sp}}(1-\varepsilon_{\mathrm{sp}})$,
+$pg_2<1$, $\nrm{\mathsf H_2}_\infty\le1$,
+$\nrm{T_\varsigma}_\infty\le K_{\mathrm{sp}}$.\\
+\ref{inf:angular-weighted} & Derivatives of $\sqrt\varsigma$,
+lower bound on $\mathfrak D_j$ &
+$\varsigma\ge\varepsilon_{\mathrm{sp}}^2$,
+$\mathfrak D_j\ge c_{\mathrm{sp}}(p+j)^2$;
+constants $C_{\mathrm{sp}}$ in the same weighted estimates.\\
+\ref{inf:angular-positive} & Adjacent coefficient ratio;
+the upper bound $g_2<1/p$ &
+$\ab,\bb\ge16$ suffices for the same ratio bounds;
+$\mathcal N_j,\mathcal E_j$ and their certificates are
+independent of $\varsigma$.\\
+\ref{inf:centres}, \ref{inf:centre-coefficient-defect} &
+Compact parameter set and divisors $r(1-r)$ &
+Use $r\in[\varepsilon_{\mathrm{sp}},1/2-\varepsilon_{\mathrm{sp}}]$;
+the same finite recursion and each prescribed complex disc.\\
+\ref{inf:flow-relative}--\ref{inf:flow-theorem} &
+Quartic multiplier bounds and positive angular margin &
+$C_{\mathrm{sp}}$ replaces numerical interval constants;
+then choose $W_{\mathrm{flow}}$ and the threshold.\\
+\ref{inf:quartic-count-window} & Supremum of $T_\varsigma$ &
+Shell width $3K_{\mathrm{sp}}/p^2$ and window
+$W_{\mathrm{sp}}$ for sufficiently large $p$.\\
+\ref{inf:grid-avoidance}, \ref{inf:integer-gap} &
+Grid size and spacing &
+$\#\{a:2\varepsilon_{\mathrm{sp}}p\le a\le
+(1-2\varepsilon_{\mathrm{sp}})p\}$ and spacing
+at least $\varepsilon_{\mathrm{sp}}/p$.\\
+\eqref{inf:gasper-hypothesis}, Section~\ref{inf:sec-spaces} &
+Gasper margin for $\bb-\ab\le p/2$ &
+Set $u=p-1$, $v=\bb-\ab\le u$; the lower margin is
+$18u^3+63u^2+45u>0$.\\
+\ref{inf:uniform-centre-size}, \ref{inf:relative-graph} &
+The bounds for $pg_2$ and $\mathsf H_2$ &
+$C_0,C_{\mathrm{rel}}$ depend on the split interval;
+choose $E_{\mathrm{inv}}$, then $M$, thereafter.\\
+\ref{inf:material-isomorphism}, \ref{inf:geometry-nonball} &
+Normal Hessian and the physical seed coefficient &
+$\nrm{D_p^{-1}}_{\Ec_1}\le C_{N,\mathrm{sp}}p^{-2}$ and
+$\mathsf H_2(1)\ge c_{\mathrm{sp}}>0$;
+the seed is $-\theta/(16r(1-r)p)+O_{N,\mathrm{sp}}(\tau p^{-2})$.\\
+\bottomrule
+\end{longtable}
+\endgroup
+\end{lemma}
+\begin{proof}
+The rational identity \eqref{inf:g2-exact} is valid for all these real
+parameters. Its leading term is $pg_2\to4r(1-r)$ uniformly on the
+compact interval, and its negative $\varsigma$ coefficient gives
+$pg_2<1$ as before. The two endpoint values of $\mathsf H_2$ tend
+uniformly to $r^2$ and $(1-r)^2$; its negative minimum is
+$O(p^{-1})$. This proves the displayed replacement bounds and
+$\mathsf H_2(1)\ge c_{\mathrm{sp}}$. The formulas for
+$\mathfrak D_j$, $\mathfrak a_j$, and $\mathfrak b_j$ in
+Lemma~\ref{inf:angular-weighted} then give every entry and derivative
+estimate with $C_{\mathrm{sp}}$.
+
+For positivity, impose $p\varepsilon_{\mathrm{sp}}\ge16$. The two
+adjacent-ratio computations in Lemma~\ref{inf:angular-positive} use
+only $\ab,\bb\ge16$, $j\ge7$, and $2j+p\ge78$.
+Its numerators \eqref{inf:N-angular}, \eqref{inf:E-angular} and
+\eqref{inf:half-diagonal} have no $\varsigma$. The last lower bound
+uses $g_2<1/p$, which was retained. The same positive variation
+therefore holds. In the form proof all series converge when
+$C_{\mathrm{sp}}\tau/p^2$ is small; its two Schur reductions then
+give the stated flow estimates with the changed constants.
+
+For the counting row, the normalized radius displacement is at most
+$10K_{\mathrm{sp}}/R^2\le3K_{\mathrm{sp}}/p^2$ for $\tau\le20$.
+The min--max calculation of Lemma~\ref{inf:quartic-count-window}
+then gives a containing window $40K_{\mathrm{sp}}$ for all sufficiently
+large $p$ depending on $K_{\mathrm{sp}}$. For consecutive integers $a$,
+integrating $|d\varsigma/da|=|r-1/2|/p$ gives spacing at least
+$\varepsilon_{\mathrm{sp}}/p$. Use this spacing in the clipped-curve count.
+For the one-split gap, take $\gamma=c_{\mathrm{sp}}'\tau p^{-5/3}$.
+The clipped-curve count is at most
+$C_{\mathrm{sp}}p^{2/3}+C_{\mathrm{sp}}c_{\mathrm{sp}}'p$.
+Choose $c_{\mathrm{sp}}'>0$ so the second term is less than half
+the leading grid cardinality, then increase $p$ to absorb the first.
+This gives the $p^{-5/3}$ gap on the extended interval as well.
+
+For the algebra put $u=\ab+\bb-1=p-1$ and $v=\bb-\ab$.
+If $u^2-7u-24\le0$, \eqref{inf:gasper-hypothesis} holds directly.
+Otherwise its left-minus-right side is minimized on $0\le v\le u$
+at $v=u$, where it equals $18u^3+63u^2+45u$.
+Positive products, endpoint bounds and real radial stencils follow.
+The material and mixed proofs subsequently use these products and
+the strong norm of the finite centre; their numerical use of $9/16$
+is replaced by the first two rows. The recurrence for that centre
+divides only by nonzero units, $-1/8$, $c_j$ and powers of $r(1-r)$.
+These divisors stay uniformly away from zero on the compact interval.
+Thus all listed estimates follow in their stated order.
+\end{proof}
+
+\begin{lemma}[Arbitrary fixed detuning bound]\label{inf:fixed-detuning-extension}
+Fix $0<C_{\mathrm{ap}},T<\infty$ and the split interval above.
+For half-lattice inputs with $|p-p_0|\le C_{\mathrm{ap}}/p_0$ and
+$0<\tau\le T$, the centre, flow, cofactor inverse, and Newton
+statements have the parameterized forms below. Fix
+$5/3<q_{\mathrm{gap}}<2$; the base case $q_{\mathrm{gap}}=5/3$
+is included with its original bounds. In the inverse and closing
+rows assume a selected quartic gap $\kappa\tau p^{-q_{\mathrm{gap}}}$,
+with fixed $\kappa>0$.
+Use $\varsigma\in I_{\mathrm{sp}}$, equivalently
+$r\in[\varepsilon_{\mathrm{sp}},1/2-\varepsilon_{\mathrm{sp}}]$;
+material and closing statements use integer blocks.
+Constants and thresholds may depend on these fixed data.
+Choose $W_{\mathrm{flow}}(T)$ above the base lower bound and the
+required multiples of $T$ and of the inverse angular margin.
+After $C_0,C_{\mathrm{rel}}$ choose $E_{\mathrm{inv}}$, then
+$W_{\mathrm{loc}}=TE_{\mathrm{inv}}$ and $M=M_{TE_{\mathrm{inv}}}$,
+then separation and the head cutoff, and finally the centre order.
+The last column identifies the proof line permitting each substitution.
+
+\begingroup\small\normalfont
+\def\UrlBreaks{\do\:\do\-}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.23\textwidth}>{\raggedright\arraybackslash}p{.16\textwidth}>{\raggedright\arraybackslash}p{.29\textwidth}>{\raggedright\arraybackslash}p{.25\textwidth}@{}}
+\toprule Base label & Parameter replaced & Parameterized bound & Proof line permitting replacement\\\midrule
+\endfirsthead
+\toprule Base label & Parameter replaced & Parameterized bound & Proof line permitting replacement\\\midrule
+\endhead
+\ref{inf:detuning}, \nolinkurl{inf:detuning};
+\ref{inf:low-exclusion}, \nolinkurl{inf:low-exclusion}
+& Scaled distance $31/10$, base detuning bound
+& Use $|p-p_0|\le C_{\mathrm{ap}}/p_0$ and
+$0<\tau\le T$; the radius and detuning comparison are
+\eqref{inf:log-detuning-relation}. Low exclusion retains its
+original energy bounds.
+& The exact quotient \eqref{inf:trace-ratio-exact} and the real
+zero derivative comparison hold on this fixed window;
+\ref{inf:wide-low-transfer} gives the continuation error
+\eqref{inf:wide-low-error}.\\
+\ref{inf:centres}, \nolinkurl{inf:centres};
+\ref{inf:centre-coefficient-defect}, \nolinkurl{inf:centre-coefficient-defect}
+& $|\theta|\le20$, base split interval
+& \eqref{inf:centre-complex-defect} and
+\eqref{inf:centre-coeff-defect-bound} are
+$C_{N,T,\mathrm{sp}}\theta^2p^{-N}$;
+\eqref{inf:centre-profile} has physical error
+$C_{N,T,\mathrm{sp}}\tau p^{-3}$.
+& In \eqref{inf:rho-equation} the $Z$ derivative at $(\eps,Z)=(0,4)$
+is $8$ for every $\theta$; the recursion divides by
+units, $-1/8$, $c_j$ and $r(1-r)$.\\
+\ref{inf:flow-relative}, \nolinkurl{inf:flow-relative};
+\ref{inf:flow-complement}, \nolinkurl{inf:flow-complement}
+& $\tau\le20$, absolute flow window
+& Relative bounds $C_{\mathrm{sp}}\tau p^{-2}$ and
+$C_{\mathrm{sp}}\tau^2p^{-3}$;
+\eqref{inf:flow-schur-remainder} is
+$C_{\mathrm{sp}}\tau^2(W_{\mathrm{flow}}(T)^{-1}+p^{-1})$.
+& The series is $\sum h^6(C_{\mathrm{sp}}\tau/p^2)^h$;
+the complement ratio is $C_{\mathrm{sp}}\tau/W_{\mathrm{flow}}(T)$.
+The derivative adds $C_{\mathrm{sp}}\tau^3/W_{\mathrm{flow}}(T)^2$.\\
+\ref{inf:flow-low-block}, \nolinkurl{inf:flow-low-block};
+\ref{inf:ordered-eigenvalues}, \nolinkurl{inf:ordered-eigenvalues};
+\ref{inf:flow-theorem}, \nolinkurl{inf:flow-theorem}
+& $\tau\le20$, $\varsigma_0\in(1/64,1/16)$
+& Use $\varsigma_0\in\operatorname{int}I_{\mathrm{sp}}$;
+the low inverse is $C_{T,\mathrm{sp}}/(p\tau)$.
+For $|\lambda|<\tau/(16p)$ the signed slope is
+at least $c_{T,\mathrm{sp}}\tau/p$.
+& The proof of \ref{inf:flow-low-block} adds the first-order term
+to give seed diagonal $\theta/(2p)+O_T(\theta^2p^{-3})$;
+\eqref{inf:low-offsets} keeps the index-five value
+$-72+O_T(p^{-1})$. Final norm recovery in
+\ref{inf:flow-theorem} costs $C_{T,\mathrm{sp}}\sqrt p$.\\
+\ref{inf:quartic-count-window}, \nolinkurl{inf:quartic-count-window}
+& $|\theta|\le20$, $W_{\mathrm{count}}=40$
+& Shell width $C_{\mathrm{sp}}\tau/p^2$ and containing
+count window $C_{\mathrm{sp}}(1+T)$.
+& \eqref{inf:quartic-domain} gives displacement
+$\tau\nrm{T_\varsigma}_\infty/(2R^2)$;
+indexwise shell bounds multiply $O(p^2)$ eigenvalues by
+$1+O_{\mathrm{sp}}(\tau/p^2)$.\\
+\ref{inf:grid-avoidance}, \nolinkurl{inf:grid-avoidance};
+\ref{inf:integer-gap}, \nolinkurl{inf:integer-gap}
+& Base split grid and $\tau\le20$
+& The interior grid has $\asymp_{\mathrm{sp}}p$ points and spacing
+at least $\varepsilon_{\mathrm{sp}}/p$; one split has gap
+$c_{T,\mathrm{sp}}\tau p^{-5/3}$.
+& The clipped-curve count is
+$C_{T,\mathrm{sp}}p^{2/3}(1+C_{T,\mathrm{sp}}p\gamma/\mu)$,
+with $\mu=c_{T,\mathrm{sp}}\tau/p$;
+choose the gap constant before the threshold.\\
+\ref{inf:uniform-centre-size}, \nolinkurl{inf:uniform-centre-size};
+\ref{inf:relative-graph}, \nolinkurl{inf:relative-graph}
+& Centre-size and relative constants on the base compact set
+& $\delta\le C_{0,\mathrm{sp}}\tau p^{-2}$;
+\eqref{inf:relative-scalar} and \eqref{inf:relative-two-norms}
+are $C_{\mathrm{rel},\mathrm{sp}}\tau p^{-2}$.
+These constants precede $N$.
+& The leading quartic size is $C_{\mathrm{sp}}\tau p^{-2}$;
+the finite-order remainder $C_{N,T,\mathrm{sp}}\tau p^{-4}$
+is absorbed by the threshold. The scalar graph line is
+$C(\delta+p\delta^2)$.\\
+\ref{inf:centre-source-norm}, \nolinkurl{inf:centre-source-norm};
+\ref{inf:residual-estimates}, \nolinkurl{inf:residual-estimates}
+& Fixed-centre constants for $\tau\le20$
+& \eqref{inf:centre-norm-bounds} retains powers $p^{k+1}$ and
+$p^{k+5}$ with $C_{N,k,T,\mathrm{sp}}$.
+Residual and material defect bounds are
+$C_{N,T,\mathrm{sp}}\theta^2p^{2-N}$ and
+$C_{N,T,\mathrm{sp}}\theta^2p^{3-N}$.
+& The known-mode head uses the finite factor $e^{C_N\sqrt T}$;
+the factorial radial tail stays geometric. The two-layer lift
+and \eqref{inf:Delta-moment} give the residual powers.\\
+\ref{inf:material-isomorphism}, \nolinkurl{inf:material-isomorphism};
+\eqref{inf:p6-second}, \nolinkurl{inf:p6-second}
+& Fixed-centre constants for $\tau\le20$
+& $\nrm{\Qmat^{-1}}\le C_{N,T,\mathrm{sp}}p^6$ and
+$\sup\nrm{D^2\Fnl}\le C_{N,T,\mathrm{sp}}p^6$
+on \eqref{inf:nonlinear-working-region}.
+& \eqref{inf:material-reconstruction} uses
+$\nrm{D_p^{-1}}\le C_{N,T,\mathrm{sp}}p^{-2}$ and
+$\nrm{\Delta T_\eta}\le C_{N,T,\mathrm{sp}}p^8\nrm\eta$;
+\eqref{inf:nonlinear-second} costs $Cp(1+\nrm g)$.\\
+\eqref{inf:inverse-window}, \nolinkurl{inf:inverse-window};
+\ref{inf:inverse-complement}, \nolinkurl{inf:inverse-complement};
+\ref{inf:inverse-Schur}, \nolinkurl{inf:inverse-Schur}
+& Containing window $20E_{\mathrm{inv}}$
+& The projection stays
+$\one_{[-E_{\mathrm{inv}}\tau,E_{\mathrm{inv}}\tau]}(H_0-R^2)$;
+its fixed superset has width $TE_{\mathrm{inv}}$.
+The Schur norm is $C_{E_{\mathrm{inv}},T,\mathrm{sp}}\tau$.
+& \eqref{inf:ball-complement-bound} and
+\eqref{inf:relative-two-norms} give complementary absorption;
+the four feedback factors give $C\tau/E_{\mathrm{inv}}$.\\
+\ref{inf:cluster-inverse}, \nolinkurl{inf:cluster-inverse}
+& $\tau\le20$, gap exponent
+& For every $\tau>0$, gap $c\tau p^{-q_{\mathrm{gap}}}$ and
+$\sigma D>q_{\mathrm{gap}}M+q_{\mathrm{gap}}+2$ give
+$\nrm{F^{-1}}_1\le C\tau^{-1}p^{q_{\mathrm{gap}}M}$.
+& The cofactor line is $m!(C\tau)^{m-1}(2/\gamma_F)^m$;
+$\tau$ cancels in both error absorptions.\\
+\ref{inf:effective-inverse}, \nolinkurl{inf:effective-inverse}
+& $M_{20E_{\mathrm{inv}}}$, $5M/3$, $D_{\mathrm{sep}}>5M/3+5$
+& $M=M_{TE_{\mathrm{inv}}}$,
+$\nrm{\Feff^{-1}}_1\le C\tau^{-1}p^{q_{\mathrm{gap}}M}$;
+choose $\sigma D_{\mathrm{sep}}>q_{\mathrm{gap}}M+q_{\mathrm{gap}}+2$.
+& \ref{inf:clusters} applies to the fixed superset;
+deleting inter-cluster entries costs
+$C\tau p^{-\sigma D_{\mathrm{sep}}}$, followed by the cofactor row.\\
+\ref{inf:mixed-inverse}, \nolinkurl{inf:mixed-inverse}
+& Exponent $2+5M/3$
+& \eqref{inf:mixed-inverse-bound} has right side
+$C\tau^{-1}p^{2+q_{\mathrm{gap}}M}$.
+& The block solution costs $C/E_{\mathrm{inv}}$ off diagonal,
+$C\tau$ into the window and $Cp^2$ for $K_0\Pi$;
+density graph multipliers are bounded.\\
+\ref{inf:coefficient-inverse}, \nolinkurl{inf:coefficient-inverse}
+& $\tau\le20$, exponent $5/2+5M/3$
+& $\nrm{J_D^{-1}}_\Cc\le C\tau^{-1}p^{5/2+q_{\mathrm{gap}}M}
+\le Cp^{2M+3}/\gamma_p$, with
+$\gamma_p=c_{\mathrm{gap}}\tau p^{-q_{\mathrm{gap}}}$.
+& \eqref{inf:head-conversion} costs $\sqrt p$;
+\eqref{inf:relative-scalar} gives \eqref{inf:head-tail-hypotheses}.
+Compare $5/2+q_{\mathrm{gap}}(M-1)\le2M+3$.\\
+\ref{inf:centre-gap-transfer}, \nolinkurl{inf:centre-gap-transfer}
+& Gap exponent $5/3$, $\tau\le20$
+& Quartic gap $c_{\mathrm q}\tau p^{-q_{\mathrm{gap}}}$
+gives centre gap $(c_{\mathrm q}/2)\tau p^{-q_{\mathrm{gap}}}$.
+& The min--max displacement is $C_{N,T,\mathrm{sp}}\tau p^{-2}$;
+require $p^{2-q_{\mathrm{gap}}}>2C_{N,T,\mathrm{sp}}/c_{\mathrm q}$.\\
+\ref{inf:newton-threshold}, \nolinkurl{inf:newton-threshold};
+\ref{inf:Newton-zero}, \nolinkurl{inf:Newton-zero}
+& $\tau\le20$, gap exponent $5/3$
+& Inverse hypothesis
+$C_Np^{b_{\mathrm{inv}}}/(c_{\mathrm{gap}}\tau p^{-q_{\mathrm{gap}}})$;
+$B=b_{\mathrm{inv}}+m_{\mathrm{mat}}+q_{\mathrm{gap}}$,
+$L=B+d_{\mathrm{nl}}+4$, $N\ge\lceil2B+d_{\mathrm{nl}}+8\rceil$.
+& \eqref{inf:newton-gate-one}--\eqref{inf:newton-gate-three} give
+$C_Np^{B+L+2-N}$, $C_N\tau p^{B+3-N}$ and
+$C_Np^{B+d_{\mathrm{nl}}-L}$; only the second uses $\tau\le T$.\\
+\ref{inf:geometry-convexity}, \nolinkurl{inf:geometry-convexity};
+\ref{inf:geometry-nonball}, \nolinkurl{inf:geometry-nonball}
+& Fixed-centre comparison constants
+& Normalized $C^2$ size
+$C_{N,T,\mathrm{sp}}\tau p^{-2}+O(\tau p^{-L})$;
+physical seed $-\theta/(16r(1-r)p)$ with error
+$C_{N,T,\mathrm{sp}}\tau p^{-2}+O(\tau p^{1-L})$.
+& \eqref{inf:curvature-numerator} applies when the shape tends
+to zero in $C^2$; dividing the witness error by $\tau/p$
+makes it tend to zero.\\
+\bottomrule
+\end{longtable}
+\endgroup
+In the Newton row take $b_{\mathrm{inv}}=2M+3$ and
+$m_{\mathrm{mat}}=d_{\mathrm{nl}}=6$. Thus
+$B=B_{\mathrm{bd}}=2M+9+q_{\mathrm{gap}}$,
+$L=L_{\mathrm{bd}}=B_{\mathrm{bd}}+10$ and $N=4M+40$;
+the three powers are those in \eqref{inf:bounded-gates}.
+Section~\ref{inf:sec-constants} records the special case
+$T=20$, $q_{\mathrm{gap}}=5/3$.
+These fixed-detuning families use the cofactor estimate
+with fixed local cluster cardinality.
+\end{lemma}
+\begin{proof}
+Lemma~\ref{inf:wide-low-transfer} supplies the low-state exclusion.
+The real root comparison and the exact ratio
+\eqref{inf:trace-ratio-exact} give $R=2p+3+O_{C_{\mathrm{ap}}}(p^{-1})$.
+For the centre choose a fixed complex $\theta$ disc containing
+$[-T,T]$ before its $\eps$ disc. Its radius equation has derivative
+eight at $(\eps,Z)=(0,4)$ for every $\theta$ on this fixed disc.
+The finite recursion has the same nonzero leading divisors, and its
+two defects have the same analytic factor $\theta^2$. Compactness
+therefore proves all the stated fixed-order centre bounds with
+$C_{N,T,\mathrm{sp}}$.
+
+In Lemma~\ref{inf:flow-relative} the dominating series is
+$\sum h^6(C_{\mathrm{sp}}\tau/p^2)^h$. Choose a fixed
+$W_{\mathrm{flow}}$ larger than the required multiples of $T$ and
+the inverse angular margin. The complementary series ratio is
+$C_{\mathrm{sp}}\tau/W_{\mathrm{flow}}$, and its derivative remainder
+is bounded by $C_{\mathrm{sp}}\tau^2(W_{\mathrm{flow}}^{-1}+p^{-1})$.
+The extra term $C\tau^3/W_{\mathrm{flow}}^2$ is absorbed by this
+bound. The seed diagonal is still
+$\theta/(2p)+O_T(\theta^2p^{-3})$, the index-five diagonal is
+$-72+O_T(p^{-1})$, and the weighted low inverse is $C_T/(p\tau)$.
+Its two exterior remainders retain their factors $\tau^2$.
+Choose the window and then $p$ so the errors are below the positive
+angular margin. The last step of Theorem~\ref{inf:flow-theorem}
+therefore gives $c_{T,\mathrm{sp}}\tau/p$ in its same narrow band.
+The shell count uses a fixed window $C_{\mathrm{sp}}(1+T)$.
+
+The leading quartic strong norm is bounded by
+$C_{\mathrm{sp}}\tau p^{-2}$ independently of the centre order.
+For each fixed $N$ its remainder is
+$C_{N,T,\mathrm{sp}}\tau p^{-4}$. Increasing only the threshold
+absorbs this remainder into the leading bound, as in
+Lemma~\ref{inf:uniform-centre-size}. Thus $C_0,C_{\mathrm{rel}}$
+are fixed before $N$. For the coefficient inverse choose
+$E_{\mathrm{inv}}$ from this relative graph constant. The
+containing window is now $TE_{\mathrm{inv}}$, so
+$M=M_{TE_{\mathrm{inv}}}$ is fixed. The determinant proof of
+Lemma~\ref{inf:cluster-inverse} retains exactly one power $\tau^{-1}$.
+Choose separation and head cutoff after $M$, and the finite centre
+order after those choices. The material and residual proofs use
+only the fixed-centre norms and the unchanged clamped estimates.
+Their constants may depend on $T$, while their exponents remain six.
+The three Newton gate estimates and the geometric comparisons
+retain their powers of $\tau$; replacing its upper bound twenty by
+$T$ changes only the threshold.
+\end{proof}
+
+\begin{lemma}[All but a sublinear number of interior splits]
+\label{inf:many-splits}
+Fix $C_{\mathrm{ap}},T$, $0<\eta_{\mathrm{cnt}}<1/3$, and
+$q_{\mathrm{gap}}=2-\eta_{\mathrm{cnt}}$. At every sufficiently large input of
+Lemma~\ref{inf:fixed-detuning-extension}, all but
+$O_{C_{\mathrm{ap}},T,\mathrm{sp},\eta_{\mathrm{cnt}}}
+ (p^{2/3+\eta_{\mathrm{cnt}}})$ integers
+\[
+ 2\varepsilon_{\mathrm{sp}}p\le a\le(1-2\varepsilon_{\mathrm{sp}})p
+\]
+give an actual quartic invariant gap at least
+$\kappa\tau p^{-q_{\mathrm{gap}}}$, where $\kappa>0$ depends only
+on the fixed data.
+\end{lemma}
+\begin{proof}
+The enlarged shell window gives at most $C_{T,\mathrm{sp}}p^{2/3}$
+possible ordered curves. Their clipped signed functions are
+nondecreasing by the absolute-continuity argument of
+Lemma~\ref{inf:grid-avoidance}, with slope at least
+$\mu=c_{T,\mathrm{sp}}\tau/p$ inside the narrow flow band.
+Since the grid spacing is at least $\varepsilon_{\mathrm{sp}}/p$,
+one curve excludes at most
+\[
+ 1+\frac{2p\kappa\tau p^{-q_{\mathrm{gap}}}}
+          {\varepsilon_{\mathrm{sp}}\mu}
+ \le 1+C p^{2-q_{\mathrm{gap}}}
+\]
+points. The gap lies inside the flow band eventually because
+$q_{\mathrm{gap}}>1$. Summing the exclusions gives
+$C(p^{2/3}+p^{8/3-q_{\mathrm{gap}}})\le C'p^{2/3+\eta_{\mathrm{cnt}}}$.
+One can exclude twice the stated radius first, which also covers
+equality at an endpoint. This proof uses $2p\in\Z$ only to obtain
+integer second block sizes.
+\end{proof}
+
+\begin{proposition}[Cofactor closure]
+\label{inf:bounded-assembly}
+Under the hypotheses of Lemma~\ref{inf:many-splits}, every retained
+split carries an analytic strictly convex non-ball domain and a
+solution of \eqref{inf:main-equations} with its prescribed block symmetry.
+The threshold in $p$ follows these choices.
+First fix $C_{\mathrm{ap}},T,\varepsilon_{\mathrm{sp}},q_{\mathrm{gap}}$.
+Next fix $C_0,C_{\mathrm{rel}},E_{\mathrm{inv}}$ and
+$M=M_{TE_{\mathrm{inv}}}$, then $D_{\mathrm{sep}}$ and
+$K_{\mathrm{head}}$. Finally set
+\[
+ b_{\mathrm{inv}}=2M+3,\qquad N=4M+40,\qquad
+ B_{\mathrm{bd}}=2M+9+q_{\mathrm{gap}},\qquad
+ L_{\mathrm{bd}}=B_{\mathrm{bd}}+10.
+\]
+The closed Newton ball has radius $\tau p^{-L_{\mathrm{bd}}}$.
+\end{proposition}
+\begin{proof}
+Fix the data in the order stated, choosing separation with
+$\sigma D_{\mathrm{sep}}>q_{\mathrm{gap}}M+q_{\mathrm{gap}}+2$
+and the head cutoff required by Lemma~\ref{inf:head-tail}.
+Use the parameterized statements of
+Lemma~\ref{inf:fixed-detuning-extension} throughout this chain.
+The centre-to-quartic normalized displacement is
+$C_{N,T,\mathrm{sp}}\tau p^{-4}$. The indexwise min--max proof of
+Proposition~\ref{inf:centre-gap-transfer} changes energies by
+$C_{N,T,\mathrm{sp}}\tau p^{-2}=o(\tau p^{-q_{\mathrm{gap}}})$.
+Thus the centre has half the selected gap.
+
+Use Lemma~\ref{inf:cluster-inverse} with this gap exponent.
+The Schur reconstruction and radial conversion in
+Section~\ref{inf:sec-inverse} give
+\[
+ \nrm{J_D^{-1}}\le C\tau^{-1}p^{5/2+q_{\mathrm{gap}}M}
+ \le C p^{2M+3}/(\tau p^{-q_{\mathrm{gap}}}),
+\]
+since $5/2+q_{\mathrm{gap}}(M-1)\le2M+3$.
+The separation inequality makes the off-cluster restoration small.
+The scalar estimate \eqref{inf:relative-scalar} supplies
+\eqref{inf:head-tail-hypotheses} for fixed $T$ and sufficiently
+large $p$, as in the proof of Theorem~\ref{inf:coefficient-inverse}.
+The material inverse and nonlinear bound still have exponent six,
+so $\AN=\Qmat^{-1}J_D^{-1}$ has norm at most
+$C_N\tau^{-1}p^{B_{\mathrm{bd}}}$.
+
+Apply the contraction proof of Theorem~\ref{inf:newton-threshold}
+with these explicit exponents. The three gate powers are
+\begin{equation}\label{inf:bounded-gates}
+ \begin{split}
+ B_{\mathrm{bd}}+L_{\mathrm{bd}}+2-N&=2q_{\mathrm{gap}}-10,\\
+ B_{\mathrm{bd}}+3-N&=-2M-28+q_{\mathrm{gap}},\\
+ B_{\mathrm{bd}}+6-L_{\mathrm{bd}}&=-4.
+ \end{split}
+\end{equation}
+The second carries the additional factor $\tau\le T$; all three
+tend to zero uniformly in $0<\tau\le T$. The working ball lies in
+\eqref{inf:nonlinear-working-region} for large $p$. The actual inverse
+identities in the same spaces give the exact real zero. The geometric
+and classical-solution arguments of Section~\ref{inf:sec-geometry}
+use the replacement constants in Lemma~\ref{inf:split-extension}.
+Its normalized $C^2$ size is
+$O_{N,T,\mathrm{sp}}(\tau p^{-2})+O(\tau p^{-L_{\mathrm{bd}}})\to0$,
+so Lemma~\ref{inf:geometry-convexity} gives strict convexity.
+The leading physical quartic coefficient has size comparable to
+$\tau/p$; both the centre remainder and the physical Newton
+correction are smaller after division by that quantity.
+This proves non-sphericity as well as strict convexity, and completes
+the cofactor chain uniformly for $0<\tau\le T$.
+\end{proof}
+
+\begin{lemma}[Orthogonal symmetry and similarity classes]
+\label{inf:similarity-classes}
+For a differentiable nonconstant radial graph about zero invariant
+under $O(a)\times O(n-a)$, its orthogonal symmetry Lie algebra is
+$\mathfrak{so}(a)\oplus\mathfrak{so}(n-a)$.
+Consequently constructed domains at distinct splits below $n/2$
+are pairwise non-similar. For a dimension family, define
+$\mathcal N_{\mathrm{sim}}(n)$ as the number of integers $0<a<n/2$
+for which the construction gives a domain on some fixed compact
+interior split interval, with its associated fixed centre order.
+Choosing any one such domain at each split gives this many
+similarity classes, independently of the choices.
+Suppose that, for every fixed $0<\varepsilon_{\mathrm{sp}}<1/4$
+and $0<\eta_{\mathrm{cnt}}<1/3$, all but
+$O(n^{2/3+\eta_{\mathrm{cnt}}})$ integer splits in
+$[\varepsilon_{\mathrm{sp}}n,(1/2-\varepsilon_{\mathrm{sp}})n]$
+give domains. Then along that family's dimensions,
+\[
+ \mathcal N_{\mathrm{sim}}(n)\ge
+ (1/2-2\varepsilon_{\mathrm{sp}})n-Cn^{2/3+\eta_{\mathrm{cnt}}},\qquad
+ \liminf_{n\to\infty}\frac{\mathcal N_{\mathrm{sim}}(n)}n\ge\frac12.
+\]
+The limit inferior is taken through that family's dimensions.
+A countable exhaustion by fixed compact split intervals suffices
+in the definition of $\mathcal N_{\mathrm{sim}}$.
+\end{lemma}
+\begin{proof}
+Write the radius on the sphere as $F(x)$, $x=|X|^2$.
+There is $x_0\in(0,1)$ with $F'(x_0)\ne0$.
+A skew matrix has diagonal blocks in the two block Lie algebras and
+off-diagonal blocks $M,-M^t$. Its infinitesimal action on $F$ is
+$2F'(x)X^tMY$. Vanishing for all $X,Y$ with squared norms
+$x_0,1-x_0$ forces $M=0$, by varying their directions. The block
+diagonal matrices are symmetries, proving the equality.
+
+All constructed domains have barycentre zero. A similarity between
+two has zero translation and conjugates their orthogonal symmetry
+Lie algebras. The dimension of the latter is
+$\{a(a-1)+(n-a)(n-a-1)\}/2$, whose change from $a$ to $a+1$ is
+$2a+1-n<0$ on the selected range. Thus different splits give different
+similarity classes. The assumed exceptional-split bound and integer
+counting give the displayed lower bound. Fixing any $\varepsilon_{\mathrm{sp}}>0$
+and then taking the lower limit proves a bound $1/2-2\varepsilon_{\mathrm{sp}}$.
+Taking the supremum over these fixed choices proves the last assertion;
+their thresholds need not be uniform as $\varepsilon_{\mathrm{sp}}\downarrow0$.
+\end{proof}
+
+\begin{theorem}[Dimensions in prescribed residue classes]
+\label{inf:residue-arithmetic}
+For every positive integer $L_{\mathrm{ap}}$ and every integer
+$b_{\mathrm{ap}}$, there is an unbounded selection of dimensions
+$n\equiv b_{\mathrm{ap}}\pmod{4L_{\mathrm{ap}}}$ with
+\[
+ |n/2-\widehat p_m|<32L_{\mathrm{ap}}^2/\widehat p_m,
+ \qquad 0<\tau<256L_{\mathrm{ap}}^2
+\]
+eventually. Every sufficiently large selected dimension has the
+domains and multiplicity just proved. The threshold may depend on
+the fixed modulus, residue, and split/counting parameters.
+In particular every residue modulo $L_{\mathrm{ap}}$ occurs
+infinitely often. For even $L_{\mathrm{ap}}$ the residue determines
+the parity; for odd $L_{\mathrm{ap}}$ both parities occur infinitely
+often in each residue class modulo $L_{\mathrm{ap}}$.
+\end{theorem}
+\begin{proof}
+Set $M_{\mathrm{ap}}=4L_{\mathrm{ap}}$. Consecutive convergent vectors
+of $\alpha_{\mathrm{ar}}$ form an invertible matrix modulo
+$M_{\mathrm{ap}}$. Choose representatives
+$A,B\in\{0,\ldots,M_{\mathrm{ap}}-1\}$ satisfying
+\[
+ P=A P_k^{\mathrm{cf}}+B P_{k-1}^{\mathrm{cf}}
+       \equiv b_{\mathrm{ap}}+3\pmod{M_{\mathrm{ap}}},\qquad
+ Q=A Q_k^{\mathrm{cf}}+B Q_{k-1}^{\mathrm{cf}}
+       \equiv1\pmod{M_{\mathrm{ap}}}.
+\]
+They cannot both vanish, so $Q\ge Q_{k-1}^{\mathrm{cf}}>0$.
+In \eqref{inf:cf-error}, for $T_k^{\mathrm{cf}}\ge A/B$ the expression is at
+most $B(A+B)$; when $1<T_k^{\mathrm{cf}}<A/B$ its maximum is attained at
+$T_k^{\mathrm{cf}}=1$ and then is at most
+$|A-B|\max\{A,(A+B)/2\}$. The cases $A=0$ or $B=0$ follow
+directly. Both bounds are at most $2(M_{\mathrm{ap}}-1)^2$.
+Set $m=(Q-1)/4$, $n=P-3$, and $p=n/2$. The crossing expansion gives
+\[
+ \limsup\widehat p_m|p-\widehat p_m|
+ \le\frac{\alpha_{\mathrm{ar}}}{2}(M_{\mathrm{ap}}-1)^2
+       +d_{\mathrm{ar}}<32L_{\mathrm{ap}}^2.
+\]
+For the last strict inequality use
+$\alpha_{\mathrm{ar}}<363/157$ and $d_{\mathrm{ar}}<1$.
+The dimensions tend to infinity and have the prescribed residue.
+Equation~\eqref{inf:log-detuning-relation}, with
+$C_{\mathrm{ap}}=32L_{\mathrm{ap}}^2$, gives eventually
+$\tau<(16\delta_0+o(1))32L_{\mathrm{ap}}^2<256L_{\mathrm{ap}}^2$;
+non-coincidence gives $\tau>0$. Apply
+Lemma~\ref{inf:fixed-detuning-extension} and
+Proposition~\ref{inf:bounded-assembly} with these fixed constants.
+Taking $\varepsilon_{\mathrm{sp}}=1/8$, the sublinear exclusions
+leave a split in $r\in[1/4,3/8]$ as well.
+For a residue modulo an odd $L_{\mathrm{ap}}$, its lifts
+$b_{\mathrm{ap}}$ and $b_{\mathrm{ap}}+L_{\mathrm{ap}}$ have opposite
+parities, giving the final assertion.
+\end{proof}
+
+\begin{corollary}[Almost every fixed split ratio]\label{inf:fixed-ratio}
+Use the explicit continued-fraction selections in
+Definition~\ref{inf:integer-sequence}, Lemma~\ref{inf:shifted-arithmetic}, and
+Theorem~\ref{inf:residue-arithmetic}, retaining their convergent
+index $k$. There is a set $\mathcal R_{\mathrm{split}}\subset(0,1/2)$
+of full Lebesgue measure such that, for every
+$r_0\in\mathcal R_{\mathrm{split}}$, each of these countably many
+selected dimension families $(n_k)$ eventually has a constructed
+Schiffer domain with split
+\[
+ a_k=\lfloor n_k r_0\rfloor.
+\]
+The starting index may depend on $r_0$ and the selected family.
+\end{corollary}
+\begin{proof}
+Fix one selected family and a compact ratio interval inside
+$(0,1/2)$. Choose a slightly larger compact interval for
+Lemma~\ref{inf:many-splits}; rounding changes the ratio by at most
+$1/n_k$, so it remains in that interval eventually.
+Take $\eta_{\mathrm{cnt}}=1/6$. At dimension $n_k$ at most
+$C n_k^{5/6}$ splits are excluded, with $C$ depending on this
+family's fixed detuning bound and the compact interval.
+Each integer split corresponds under $a=\lfloor n_k r\rfloor$
+to an interval of $r$ of length $1/n_k$. The set of ratios giving
+an excluded split therefore has measure at most $C n_k^{-1/6}$.
+
+The selected denominator is at least $Q^{\mathrm{cf}}_{k-3}$
+for the first two selections and at least $Q^{\mathrm{cf}}_{k-1}$
+for the residue-class selection. Continued-fraction denominators
+satisfy $Q^{\mathrm{cf}}_{k+2}\ge Q^{\mathrm{cf}}_{k+1}+Q^{\mathrm{cf}}_k
+\ge2Q^{\mathrm{cf}}_k$. Since the selected dimensions are asymptotic
+to $\alpha_{\mathrm{ar}}$ times their selected denominators,
+$n_k\ge c\,2^{k/2}$ eventually. Hence $\sum_k n_k^{-1/6}<\infty$.
+The measure of the union of the excluded-ratio events after index
+$K$ is bounded by the tail of this convergent series and tends
+to zero. Almost every ratio has only finitely many exclusions.
+
+Take a countable compact exhaustion of $(0,1/2)$ and then the
+intersection of these full-measure sets over the two primary
+selections and all fixed moduli and residues. Their exceptional
+sets have total measure zero. Proposition~\ref{inf:bounded-assembly}
+gives the domain at every eventual retained split, proving the
+assertion with the stated order of quantifiers.
+\end{proof}

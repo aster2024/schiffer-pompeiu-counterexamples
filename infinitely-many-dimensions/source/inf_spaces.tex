@@ -1,0 +1,729 @@
+\section{Coefficient spaces and clamped Poisson estimates}\label{inf:sec-spaces}
+
+From now on $p\in\tfrac12\Z$ and the integer split are fixed. Constants in operator
+estimates are uniform over $p\ge64$ and admissible splits unless a
+subscript explicitly permits dependence on the centre order.
+The angular coefficient radius is fixed at $\rho_w=2$ throughout
+the Newton argument. Larger radii will be used only to estimate the
+known centre.
+
+\subsection{The source, shape, and clamped subspaces}
+
+Define the degree weight
+\begin{equation}\label{inf:degree-weight}
+ \wt(\ell)=(1+\ell/p^2)^p,\qquad \ell\ge0.
+\end{equation}
+It is increasing and obeys
+\begin{equation}\label{inf:weight-properties}
+ \wt(\ell_1+\ell_2)\le\wt(\ell_1)\wt(\ell_2),\qquad
+ \frac{\wt(\ell+2)}{\wt(\ell)}\le e^{2/p},\qquad
+ \wt(\ell)\le e^{\ell/p}.
+\end{equation}
+These follow from $1+u+v\le(1+u)(1+v)$ and $1+u\le e^u$.
+
+\begin{definition}[The fixed Banach spaces]\label{inf:spaces}
+For the polynomial basis \eqref{inf:radial-basis}, let $\Cc=\Cc_{p,2}$
+be the completion with norm
+\begin{equation}\label{inf:C-norm}
+ \nrm f_\Cc=\sum_{j,s\ge0}2^j\wt(2j+2s)|f_{j,s}|.
+\end{equation}
+Its moment spaces have norms
+\begin{equation}\label{inf:C-moments}
+ \nrm f_{\Cc^{[k]}}=
+ \sum_{j,s\ge0}2^j\wt(2j+2s)(1+2j+2s)^k|f_{j,s}|.
+\end{equation}
+Let $\Gc_p=\{g\in\Cc:g_{j,0}=0\text{ for every }j\}$ and let
+$\Ec_1$ be the space of all boundary coefficient sequences with
+finite norm
+\begin{equation}\label{inf:E-norm}
+ h=\sum_{j\ge0}h_jG_j,\qquad
+ \nrm h_{\Ec_1}=\sum_{j\ge0}(1+j)2^j\wt(2j)|h_j|.
+\end{equation}
+Write $\HP  h=\sum_jh_jS_j$ for its harmonic extension, and
+$\Xc_p=\Gc_p\times\Ec_1$ with the sum norm.
+The Newton spaces are real; their complexifications are used for
+analytic maps and estimates. Dot products in algebraic differential
+identities are extended complex-bilinearly; Hilbert inner products
+and norms retain their Hermitian meaning.
+\end{definition}
+
+\begin{lemma}[Completions and shape regularity]\label{inf:space-embedding}
+The space $\Cc$ embeds injectively into invariant normalized
+$L^2(B)$ with norm at most one. Polynomial partial sums are dense.
+For each fixed $k$, harmonic extension sends $\Ec_1$ continuously
+into $C^k(\overline B)$, with constants depending on $k$ and the
+dimension. The first two boundary derivative bounds are independent
+of $p$.
+In particular
+\begin{equation}\label{inf:shape-C2}
+ \nrm h_{C^2(S^{2p-1})}\le C\nrm h_{\Ec_1},\qquad
+ \nrm{D((\HP h)y)}_{\mathrm{op},\infty}\le C\nrm h_{\Ec_1}.
+\end{equation}
+The boundary function $h$ is real analytic.
+\end{lemma}
+\begin{proof}
+By \eqref{inf:radial-norm}, every basis function has $L^2$ norm at
+most one. The triangle inequality gives the continuous embedding
+on finite sums and hence on their completion. Its injectivity
+follows by taking the inner product with each orthogonal basis
+function: all coefficients of a zero $L^2$ limit vanish.
+Weighted $\ell^1$ completeness and truncation give the remaining
+Banach-space assertions.
+
+Lemma~\ref{inf:angular-sup} bounds the first two boundary
+derivatives by $2j$ and $4j^2$. The ratios of these quantities to
+$(1+j)2^j\wt(2j)$ are uniformly bounded. Summing proves the first
+estimate in \eqref{inf:shape-C2}. Radial homogeneity gives
+$\partial_\varrho S_j=2j\varrho^{2j-1}G_j$;
+the tangential bound gives $|\nabla S_j|\le2\sqrt2j$ in the ball.
+The product rule proves the second estimate.
+For the full extension, choose any fixed $1<R_*<\sqrt2$.
+Homogeneity and the endpoint bound give
+$|S_j(y)|\le R_*^{2j}$ for real $|y|\le R_*$.
+Thus the series for $\HP h$ converges uniformly on each compact
+subset of $B_{\sqrt2}$, with supremum there controlled by the
+shape norm. Its finite sums are harmonic polynomials. Passing
+to the limit in the mean-value identity shows that the limit is
+harmonic in that larger ball. The Poisson formula on a ball of
+fixed radius about each point of $\overline B$ can therefore be
+differentiated any fixed number of times. It gives uniform
+convergence of all those derivatives on $\overline B$, with
+constants depending on the derivative order and fixed dimension.
+It also proves real analyticity of the extension on a
+neighbourhood of $\overline B$. The dimension-independent first
+two boundary bounds are the separate estimates above.
+
+To see analyticity of the boundary directly, expand $G_j$ in
+Chebyshev polynomials on $[0,1]$. Its real supremum is at most one,
+so each coefficient has absolute value at most two. On any
+Bernstein ellipse of parameter $1<\rho_{\mathrm{ell}}<2$ this gives
+$|G_j(z)|\le2(j+1)\rho_{\mathrm{ell}}^j$.
+The series for $h$ converges uniformly on that ellipse, since
+$\rho_{\mathrm{ell}}<2$, and defines a holomorphic function there. Composing
+with the polynomial $x=|X|^2$ on the real sphere proves real
+analyticity of the boundary function.
+\end{proof}
+
+\subsection{The positive multiplier module}
+
+For endpoint-normalized Jacobi polynomials with parameters
+$\alpha,\beta>-1$, put $u=\alpha+\beta+1$ and $v=\alpha-\beta$.
+Gasper's theorem \cite[Theorem~1]{inf:gasper} gives nonnegative
+linearization coefficients provided
+\begin{equation}\label{inf:gasper-hypothesis}
+ \alpha\ge\beta,\qquad
+ u(u+5)(u+3)^2\ge(u^2-7u-24)v^2.
+\end{equation}
+The normalization is at the endpoint corresponding to the larger
+Jacobi exponent $\alpha$. In the two-block parameters
+$\ab=a/2\le\bb=p-a/2$, this is $x=1$, the endpoint of the
+factor $(1-x)^{\bb-1}$.
+Here $\alpha=\bb-1\ge\beta=\ab-1$, $u=p-1$, and
+$0\le v=\bb-\ab\le p/2$. For $p\ge64$ the margin in
+\eqref{inf:gasper-hypothesis} is at least
+\[
+ \frac{3p^4+37p^3+64p^2-16p-64}{4}>0.
+\]
+Thus in our normalization
+\begin{equation}\label{inf:gasper-product}
+ G_iG_j=\sum_{|i-j|\le k\le i+j}c_{ij}^kG_k,
+ \qquad c_{ij}^k\ge0,\qquad\sum_kc_{ij}^k=1.
+\end{equation}
+The upper support follows from polynomial degree; the lower support
+follows from orthogonality, since a polynomial of degree below $i$
+has zero inner product with $G_i$. The sum equals one by evaluating
+at $x=1$.
+
+\begin{lemma}[Positive radial stencils]\label{inf:radial-stencils}
+For $\beta\ge0$ and $s\ge0$,
+\begin{align}
+ J_s^\beta&=\frac{s+\beta+1}{2s+\beta+1}J_s^{\beta+1}
+              +\frac{s}{2s+\beta+1}J_{s-1}^{\beta+1},
+ \label{inf:raising-stencil}\\
+ tJ_s^{\beta+1}&=\frac{s+\beta+1}{2s+\beta+2}J_s^\beta
+              +\frac{s+1}{2s+\beta+2}J_{s+1}^\beta.
+ \label{inf:lowering-stencil}
+\end{align}
+The term with index $-1$ in the first identity is zero.
+All coefficients are nonnegative and sum to one.
+Multiplication by $t$ in a fixed radial basis also has three
+nonnegative coefficients of sum one.
+\end{lemma}
+\begin{proof}
+Insert the finite binomial formula
+\eqref{inf:radial-expansion}. Comparing each power of $t$ and using
+$\binom{z+1}{s}=\binom z s+\binom z{s-1}$ gives
+\eqref{inf:raising-stencil} and \eqref{inf:lowering-stencil}.
+Their coefficients have the displayed signs and sums.
+For multiplication by $t$ in a fixed basis, orthogonality makes
+its matrix tridiagonal. The upper coefficient is the positive
+ratio of leading coefficients; symmetry and the positive squared
+norms give a positive lower coefficient. The diagonal coefficient
+is $\int t(J_s^\beta)^2t^\beta dt/\int(J_s^\beta)^2t^\beta dt$,
+which is nonnegative. Evaluation at $t=1$ gives their sum one.
+\end{proof}
+
+\begin{proposition}[Solid multipliers and the shape algebra]
+\label{inf:module}
+For integers $i,h\ge0$, multiplication by $S_it^h$ is bounded on $\Cc$ and
+\begin{equation}\label{inf:module-bound}
+ \nrm{M_{S_it^h}}_{\Cc\to\Cc}\le2^i\wt(2i+2h).
+\end{equation}
+The boundary space $\Ec_1$ is a Banach algebra, with
+$\nrm{h_1h_2}_{\Ec_1}\le\nrm{h_1}_{\Ec_1}\nrm{h_2}_{\Ec_1}$.
+In particular
+\begin{equation}\label{inf:harmonic-module}
+ \nrm{M_{\HP h}}\le\nrm h_{\Ec_1},\qquad
+ \nrm{M_{\Euler\HP h}}\le2\nrm h_{\Ec_1}.
+\end{equation}
+Here $\Euler=y\cdot\nabla$.
+\end{proposition}
+\begin{proof}
+A product $S_it^h\Psi_{j,s}$ has, by
+\eqref{inf:gasper-product}, output profiles
+$t^{i+j-k+h}J_s^{\beta_j}$ with positive angular coefficients of
+sum one. If $k\ge j$, raise the radial parameter by $2(k-j)$
+using \eqref{inf:raising-stencil}, then multiply by the remaining
+powers of $t$. If $k<j$, use $2(j-k)$ powers for lowering by
+\eqref{inf:lowering-stencil}. There are enough powers because
+$i+j-k\ge2(j-k)$ is equivalent to $k\ge j-i$, part of the
+triangle support. The remaining powers use the fixed-parameter
+positive multiplication stencil.
+Every conversion has coefficient sum one. The output total degree
+is at most the input degree plus $2i+2h$, and $2^k\le2^{i+j}$.
+Equation~\eqref{inf:weight-properties} proves
+\eqref{inf:module-bound}, first on basis columns and then by
+absolute summation and completion.
+
+For boundary products use the same angular support,
+$1+k\le(1+i)(1+j)$, and
+$\wt(2k)\le\wt(2i)\wt(2j)$.
+This proves the algebra inequality. The harmonic multiplier
+bounds follow by summing \eqref{inf:module-bound} and using
+$\Euler S_i=2iS_i$.
+These coefficient multipliers equal pointwise multiplication
+on $\Cc$: equality holds on finite source sums, which converge
+in $\Cc$ and hence in $L^2$, while multiplication by a fixed
+solid polynomial is continuous in $L^2$.
+For a shape extension its finite sums converge uniformly on
+the ball and in multiplier norm, so both limits give the same
+pointwise multiplier.
+\end{proof}
+
+\subsection{Exact Poisson columns and traces}
+
+Let $\KD=\Delta_D^{-1}$ on the unit ball, so $\KD=-H_0^{-1}$.
+Its sign is part of this convention. The same operator restricted
+to $\Gc_p$ will occasionally be denoted by $K$.
+
+\begin{lemma}[Poisson columns]\label{inf:poisson-columns}
+Fix an angular input $j$, and put $B=2j$, $\beta=B+p-1$,
+$b_0=\beta+1$, and $d_s=\beta+2s$.
+For $s\ge1$,
+\begin{align}
+ \KD\Psi_{j,s}&=S_jk_s(t),\nonumber\\
+ k_s&=\frac{J_{s-1}^\beta}{4d_s(d_s+1)}
+ -\frac{J_s^\beta}{2d_s(d_s+2)}
+ +\frac{J_{s+1}^\beta}{4(d_s+1)(d_s+2)}.\label{inf:poisson-profile}
+\end{align}
+For $s=0$,
+\begin{equation}\label{inf:poisson-harmonic}
+ k_0=\frac{t-1}{4b_0}
+     =\frac{J_1^\beta-J_0^\beta}{4b_0(b_0+1)}.
+\end{equation}
+For $s\ge1$ the derivative identities are
+\begin{align}
+ k_s'&=\frac{J_s^{\beta+1}-J_{s-1}^{\beta+1}}{4(d_s+1)},
+ \label{inf:poisson-derivative}\\
+ \beta k_s+tk_s'&=
+ \frac{J_{s+1}^{\beta-1}-J_s^{\beta-1}}{4(d_s+1)}.
+ \label{inf:poisson-lowered}
+\end{align}
+For $s=0$ their replacements are
+$k_0'=1/(4b_0)$ and
+$\beta k_0+tk_0'=J_1^{\beta-1}/(4b_0)$.
+\end{lemma}
+\begin{proof}
+Write $J_s^\beta(t)=\sum_{m=0}^s a_{s,m}t^m$, where
+\eqref{inf:radial-expansion} gives
+\[
+ a_{s,m}=(-1)^{s-m}\binom sm\binom{s+\beta+m}s.
+\]
+The coefficient equation for
+$4\{tk_s''+(\beta+1)k_s'\}=J_s^\beta$ is
+\[
+ [t^{m+1}]k_s=\frac{a_{s,m}}{4(m+1)(\beta+m+1)}.
+\]
+For $1\le m\le s$, the adjacent-layer ratios are
+\[
+ \frac{a_{s-1,m}}{a_{s,m}}=-\frac{s-m}{s+\beta+m},\qquad
+ \frac{a_{s+1,m}}{a_{s,m}}=-\frac{s+\beta+m+1}{s+1-m},
+\]
+whereas
+\[
+ \frac{a_{s,m-1}}{a_{s,m}}
+ =-\frac{m(\beta+m)}{(s+1-m)(s+\beta+m)}.
+\]
+With $d=d_s=\beta+2s$, the coefficient in the proposed formula,
+divided by $a_{s,m}$, is therefore
+\begin{align*}
+ &-\frac{s-m}{4d(d+1)(s+\beta+m)}-\frac1{2d(d+2)}
+ -\frac{s+\beta+m+1}{4(d+1)(d+2)(s+1-m)}\\
+ &\hspace{35mm}=-\frac1{4(s+1-m)(s+\beta+m)}.
+\end{align*}
+The equality follows by multiplication by the common denominator
+and substitution of $d=\beta+2s$; its right side is exactly
+$a_{s,m-1}/\{4m(\beta+m)a_{s,m}\}$.
+For the top coefficient use
+\[
+ \frac{a_{s+1,s+1}}{a_{s,s}}
+ =\frac{(d+2)(d+1)}{(s+1)(s+\beta+1)}.
+\]
+Finally the three column coefficients sum to zero, fixing the
+constant coefficient by $k_s(1)=0$. This proves
+\eqref{inf:poisson-profile} for every $s\ge1$.
+
+For \eqref{inf:poisson-derivative}, the coefficient of $t^m$ in
+$J_s^{\beta+1}-J_{s-1}^{\beta+1}$, divided by $a_{s,m}$, equals
+\[
+ \frac{s+\beta+m+1}{\beta+m+1}
+ +\frac{s-m}{\beta+m+1}
+ =\frac{d+1}{\beta+m+1}.
+\]
+This is exactly $4(d+1)[t^m]k_s'/a_{s,m}$.
+For \eqref{inf:poisson-lowered}, at $m\ge1$ the left coefficient is
+$(\beta+m)[t^m]k_s=a_{s,m-1}/(4m)$.
+The two binomial ratios in the right numerator give
+\[
+ \frac{[t^m](J_{s+1}^{\beta-1}-J_s^{\beta-1})}{a_{s,m-1}}
+ =\frac{s+\beta+m}{m}+\frac{s+1-m}{m}
+ =\frac{d+1}{m}.
+\]
+Their nonconstant coefficients agree. The previous derivative
+identity gives $k_s'(1)=0$; both sides of
+\eqref{inf:poisson-lowered} vanish at one, so their constants
+agree as well.
+For $s=0$, the elementary expression
+\eqref{inf:poisson-harmonic} solves the equation and gives both
+replacement derivative identities directly. In particular this
+layer has the denominator $4b_0$ in \eqref{inf:poisson-harmonic}.
+By \eqref{inf:profile-laplacian}, these polynomial functions solve
+the Dirichlet Poisson problem. Uniqueness identifies them with
+$\KD\Psi_{j,s}$.
+\end{proof}
+
+\begin{proposition}[Poisson bounds and exact clamping]
+\label{inf:poisson-bounds}
+On all of $\Cc$, including the layer $s=0$,
+\begin{equation}\label{inf:poisson-operator-bounds}
+ \nrm{\KD}\le\frac3{p(p+1)},\qquad
+ \nrm{\Euler\KD}\le C/p,\qquad
+ \nrm{\Euler^2\KD}\le C.
+\end{equation}
+More precisely, its weighted basis columns satisfy, for all $j,s\ge0$,
+\begin{align}
+ \nrm{\KD\Psi_{j,s}}_\Cc
+ &\le\frac{C}{(p+2j+2s)^2}\nrm{\Psi_{j,s}}_\Cc,\nonumber\\
+ \nrm{\Euler\KD\Psi_{j,s}}_\Cc
+ &\le\frac{C}{p-1+2j+2s}\nrm{\Psi_{j,s}}_\Cc.
+ \label{inf:poisson-column-bounds}
+\end{align}
+The normal trace is the bounded map
+\begin{equation}\label{inf:poisson-trace}
+ \partial_\nu\KD f=
+ \sum_{j\ge0}\frac{f_{j,0}}{2(2j+p)}G_j,
+ \qquad
+ \nrm{\partial_\nu\KD}_{\Cc\to\Ec_1}\le\tfrac12.
+\end{equation}
+Consequently $U=1+\KD g$ has Dirichlet trace one and normal trace
+zero exactly when $g\in\Gc_p$.
+\end{proposition}
+\begin{proof}
+The absolute sums of the columns in
+\eqref{inf:poisson-profile} and \eqref{inf:poisson-harmonic} are
+$1/(d_s(d_s+2))$ and $1/(2b_0(b_0+1))$.
+The only upward radial shift increases degree by two, whose
+weight ratio is at most $e^{2/p}<2$. This proves the first bound.
+On one profile,
+\[
+ \Euler\KD=Bk_s+2tk'_s,\qquad
+ \Euler^2\KD=B^2k_s+4(1-p)tk'_s+tJ_s^\beta.
+\]
+The second equality uses the Poisson equation to eliminate $k_s''$.
+The derivative column in parameter $\beta+1$ has sum at most
+$1/(2(d_s+1))$; multiplication by $t$ lowers it positively to
+parameter $\beta$. The separate $s=0$ column gives the same bound
+up to an absolute constant. Since $B\le d_s$ and $d_s\ge p-1$,
+these formulas prove the other two operator bounds and
+\eqref{inf:poisson-column-bounds}.
+
+At the boundary $S_j=G_j$ and
+$\partial_\nu(S_jk_s)=2jk_s(1)G_j+2k'_s(1)G_j$.
+Only $s=0$ contributes, giving \eqref{inf:poisson-trace}.
+Its weighted trace bound follows from
+$(1+j)/(2(2j+p))\le1/2$ and
+$\wt(2j)\le\wt(2j+2s)$.
+For a general coefficient source, approximate by finite sums.
+The embedding in $L^2$ and Dirichlet $H^2$ regularity give
+$\KD f_n\to\KD f$ in $H^2(B)$.
+The displayed trace maps converge in $\Ec_1$ and thus in every
+fixed boundary Sobolev norm, by exponential angular decay.
+The Sobolev trace theorem identifies this limit with the actual
+normal trace of the $H^2$ solution. Dirichlet traces are zero by
+Poisson construction. Finally orthogonality of the $G_j$ shows
+that the trace vanishes if and only if each $f_{j,0}$ vanishes.
+This proves the asserted characterization on the completed spaces.
+\end{proof}
+
+\subsection{Raising coupling and the clamped gain}
+
+\begin{lemma}[Contraction under parameter raising]\label{inf:raising-coupling}
+For $\beta\ge0$ and integers $s\ge1$, $m\ge0$, the coefficient
+vectors of $J_s^\beta$ and $J_{s-1}^\beta$ in parameter
+$\beta+m$ are probability vectors: their entries are nonnegative
+and sum to one by \eqref{inf:raising-stencil}. Their $\ell^1$
+distance is at most
+\begin{equation}\label{inf:coupling-bound}
+ 2e^2\frac z{z+m},\qquad z=2s+\beta+1.
+\end{equation}
+The bound is uniform in all its parameters.
+\end{lemma}
+\begin{proof}
+One raising step in \eqref{inf:raising-stencil} keeps index
+$\sigma$ or lowers it by one, with down probability
+$q_\sigma(b)=\sigma/(2\sigma+b+1)$.
+Couple the chains started at $s,s-1$ with one uniform random
+number at each step. Since $q_\sigma$ increases in $\sigma$,
+the indices remain adjacent or merge, and after merging remain
+equal. Before merging, at step $h$ their upper index is at most
+$s$ and their parameter is $b=\beta+h$. Their merging probability
+is at least
+\[
+ q_\sigma(b)-q_{\sigma-1}(b)
+ =\frac{b+1}{(2\sigma+b+1)(2\sigma+b-1)}
+ \ge\frac1{z+h}-\frac{2s}{(z+h)^2}.
+\]
+This also holds when the lower index is zero.
+The probability of no merger by step $m$ is at most
+\[
+ \exp\left(-\sum_{h<m}\frac1{z+h}
+                     +2s\sum_{h<m}\frac1{(z+h)^2}\right)
+ \le e^2\frac z{z+m}.
+\]
+Here the first sum is at least $\log((z+m)/z)$, and the second
+multiplied by $2s$ is at most
+$2s(z^{-1}+z^{-2})\le2$.
+The total variation distance of the two distributions is no greater
+than the nonmerger probability. Their $\ell^1$ distance is twice
+total variation, giving \eqref{inf:coupling-bound}.
+Every subsequent positive stencil of sum one is an $\ell^1$
+contraction, so it preserves this estimate.
+\end{proof}
+
+\begin{lemma}[Clamped multiplication gain]\label{inf:clamped-smoothing}
+For integers $c,h\ge0$ put $T=S_ct^h$ and $D=2c+2h$.
+On clamped sources, that is on $\Gc_p$,
+\begin{equation}\label{inf:clamped-gain}
+ \nrm{M_T\Euler K}_{\Gc_p\to\Cc}
+ \le C\frac{2^c\wt(D)}{p+D}.
+\end{equation}
+The constant is independent of $c,h$, the source indices, $p$ and
+the admissible split.
+\end{lemma}
+\begin{proof}
+Use a source $\Psi_{j,s}$ with $s\ge1$, and put $B=2j$,
+$\beta=B+p-1$, $d_s=\beta+2s$.
+For an angular output of degree $L=2k$ set
+\[
+ n_{\downarrow}=h+(2c+B-L)/2,\qquad
+ n_{\uparrow}=h+(2c-B+L)/2.
+\]
+There are $n_{\downarrow}$ powers of $t$. First raise the source
+parameter by $n_{\uparrow}$, then lower it with those
+$n_{\downarrow}$ powers; the net change is
+$n_{\uparrow}-n_{\downarrow}=L-B$.
+The triangle support guarantees $n_{\downarrow},n_{\uparrow}\ge0$.
+If $D\le8(B+p)$, the ordinary multiplier bound and the column
+bound $C/d_s$ for $\Euler K$ prove the claim, since
+$p+D\le9(B+p)\le9(d_s+1)$.
+
+Suppose $D>8(B+p)$. Then $n_{\uparrow}\ge D/4$.
+If $2c<D/2$, one has $h>D/4$ and $n_{\uparrow}\ge h$.
+If $2c\ge D/2$, the triangle inequality gives
+$n_{\uparrow}\ge h+2c-B>D/4$.
+Since $s\ge1$, the Poisson column has the zero-sum form
+\[
+ k_s=\frac{J_{s-1}^\beta-J_s^\beta}{4d_s(d_s+1)}
+       +\frac{J_{s+1}^\beta-J_s^\beta}{4(d_s+1)(d_s+2)}.
+\]
+After $n_{\uparrow}$ raises, Lemma~\ref{inf:raising-coupling} bounds its
+coefficient sum by $C/(d_s(d_s+n_{\uparrow}))$.
+The term $2tk_s'$ begins with the adjacent difference in
+\eqref{inf:poisson-derivative}, in parameter $\beta+1$.
+Raise it by $n_{\uparrow}$ and then lower with $n_{\downarrow}+1$
+powers, including its extra $t$. Its coefficient sum is at most
+$C/(d_s+n_{\uparrow})$.
+Since $B\le d_s$, the combination $Bk_s+2tk_s'$ is bounded by
+$C/(d_s+n_{\uparrow})\le C/(p+D)$.
+
+All output degrees are at most the input degree plus $D+2$.
+The extra factor $\wt(2)$ is bounded by two, and angular weights
+are at most $2^{c+j}$. Summing the positive angular coefficients
+in \eqref{inf:gasper-product}, and using
+\eqref{inf:weight-properties}, proves \eqref{inf:clamped-gain}.
+\end{proof}
+
+\subsection{Gradient estimates with one shape moment}
+
+\begin{lemma}[Gradient profiles on every source layer]
+\label{inf:gradient-profiles}
+Let $A=2i>0$, $B=2j$, $\ell_{\mathrm{out}}=2k$, and $h=(A+B-\ell_{\mathrm{out}})/2$ for an
+angular product output in \eqref{inf:gasper-product}. Put
+$Z_{\mathrm{grad}}=h+\ell_{\mathrm{out}}+p-1$.
+For $\KD\Psi_{j,s}=S_jk_s$ the two output profiles
+of $\nabla S_i\cdot\nabla\KD$ and
+$\nabla S_i\cdot\nabla\Euler\KD$, with the coefficient
+$c_{ij}^k$ suppressed, are respectively
+\begin{align}
+ &2hZ_{\mathrm{grad}}t^{h-1}k_s+2At^hk'_s,\label{inf:gradient-profile-one}\\
+ &At^hJ_s^\beta+
+ (4hZ_{\mathrm{grad}}-2AB-4A(p-1))t^hk'_s
+                  +2BhZ_{\mathrm{grad}}t^{h-1}k_s.\label{inf:gradient-profile-two}
+\end{align}
+The term with $h=0$ and a negative power of $t$ is absent.
+Consequently, including $s=0$,
+\begin{align}
+ \nrm{\nabla S_i\cdot\nabla\KD}_{\Cc\to\Cc}
+ &\le CA2^i\wt(A)/p,\label{inf:gradient-C-one}\\
+ \nrm{\nabla S_i\cdot\nabla\Euler\KD}_{\Cc\to\Cc}
+ &\le CA2^i\wt(A).\label{inf:gradient-C-two}
+\end{align}
+\end{lemma}
+\begin{proof}
+Since both solid factors are harmonic,
+$2\nabla S_i\cdot\nabla S_j=\Delta(S_iS_j)$.
+Use $S_iS_j=\sum c_{ij}^kS_kt^h$ and
+\eqref{inf:profile-laplacian}; its coefficient is $4hZ_{\mathrm{grad}}$.
+The derivative of the radial profile contributes $2At^hk_s'$,
+proving \eqref{inf:gradient-profile-one}.
+Apply that formula to $Bk_s+2tk_s'$.
+The Poisson equation gives
+$(Bk_s+2tk_s')'=J_s^\beta/2-(B+2p-2)k_s'$;
+substitution proves \eqref{inf:gradient-profile-two}.
+The triangle support gives $0\le h\le\min(A,B)$ and
+\begin{equation}\label{inf:hZ-bound}
+ hZ_{\mathrm{grad}}=h(A+B-h+p-1)\le A(B+p-1).
+\end{equation}
+For $A\le B$ the left side is increasing up to $h=A$.
+For $A\ge B$ use its value at $h=B$ and
+$B(A+p-1)\le A(B+p-1)$.
+
+In every nonsaturated output the positive parameter conversions of
+Lemma~\ref{inf:radial-stencils} apply separately to the two terms
+in \eqref{inf:gradient-profile-one}.
+When $\ell_{\mathrm{out}}<B$, the required lowerings are $B-\ell_{\mathrm{out}}$ for the $k_s$ term
+and $B-\ell_{\mathrm{out}}+1$ for the derivative term, whose parameter is $\beta+1$.
+The available powers are $h-1$ and $h$, respectively.
+They suffice whenever $\ell_{\mathrm{out}}\ge B-A+2$; the degrees are even.
+When $\ell_{\mathrm{out}}=B$, the $k_s$ term keeps its parameter.
+The derivative term starts in parameter $\beta+1$ and needs one
+lowering; one of its $h=i\ge1$ powers of $t$ supplies it.
+When $\ell_{\mathrm{out}}>B$, raise the $k_s$ term by
+$\ell_{\mathrm{out}}-B$ and the derivative term by
+$\ell_{\mathrm{out}}-B-1\ge1$, followed by their nonnegative
+remaining powers of $t$. The case $h=0$ omits the first term.
+Thus the only remaining case is $\ell_{\mathrm{out}}=B-A$, $h=A$, where the two
+terms combine exactly to
+\[
+ 2At^{A-1}(\beta k_s+tk_s').
+\]
+Use \eqref{inf:poisson-lowered} before the remaining $A-1$
+lowerings. This supplies the one missing lowering step.
+The separate harmonic-column identity in Lemma~\ref{inf:poisson-columns}
+proves the same statement at $s=0$.
+
+The absolute Poisson column sums are $O((B+p+2s)^{-2})$, and
+the two first-derivative columns have sums $O((B+p+2s)^{-1})$.
+Together with \eqref{inf:hZ-bound}, these give a per-output bound
+$CA/(B+p)$ for \eqref{inf:gradient-profile-one}.
+In \eqref{inf:gradient-profile-two} the three terms have bounds
+$CA$, $4CA$, and $2CA$ after positive conversion.
+In the saturated case use their combined expression
+\[
+ At^AJ_s^\beta+2ABt^{A-1}(\beta k_s+tk_s'),
+\]
+which gives the same bound, also at $s=0$.
+In that layer the coefficient norm of $k_0$ is
+$1/(2b_0(b_0+1))$, which supplies the factor $1/(B+p)$.
+All final degrees are at most input degree plus $A$.
+The positive angular coefficients sum to one and
+$2^k\le2^{i+j}$. Applying \eqref{inf:weight-properties} proves
+\eqref{inf:gradient-C-one}--\eqref{inf:gradient-C-two}.
+\end{proof}
+
+\begin{proposition}[Grouped shape derivatives]\label{inf:grouped-shapes}
+For $H_i=\HP h_i$, the following bounds hold, with absolute
+constants:
+\begin{align}
+ \nrm{M_{\nabla H_1\cdot\nabla H_2}}_{\Cc\to\Cc}
+ &\le Cp\nrm{h_1}_{\Ec_1}\nrm{h_2}_{\Ec_1},
+ \label{inf:gradient-multiplier}\\
+ \nrm{M_{\Euler(\Euler-1)H_1}\Euler K}_{\Gc_p\to\Cc}
+ &\le C\nrm{h_1}_{\Ec_1},\label{inf:second-shape-clamped}\\
+ \nrm{M_{\nabla H_1\cdot\nabla\Euler H_2}\Euler K}_{\Gc_p\to\Cc}
+ &\le C\nrm{h_1}_{\Ec_1}\nrm{h_2}_{\Ec_1}.
+ \label{inf:mixed-shape-clamped}
+\end{align}
+The last two bounds are on clamped sources in $\Gc_p$.
+\end{proposition}
+\begin{proof}
+For a pair of harmonics of degrees $A=2i,B=2j$, the product of
+gradients has output coefficient $2hZ_{\mathrm{grad}}$ and solid profile
+$S_kt^{h-1}$. It is zero if $h=0$; otherwise its total degree is
+$A+B-2$. From \eqref{inf:hZ-bound},
+$2hZ_{\mathrm{grad}}\le Cp(1+i)(1+j)$.
+The module bound and positive angular summation prove
+\eqref{inf:gradient-multiplier}.
+For the second inequality apply Lemma~\ref{inf:clamped-smoothing}
+to the harmonic degree $A$, with coefficient $A(A-1)$.
+The quotient $A(A-1)/(p+A)$ is at most $A$, leaving one shape
+moment.
+For the last inequality its pairwise coefficient is $2BhZ_{\mathrm{grad}}$.
+Apply the same clamped gain at degree $D=A+B-2$.
+For $h\ge1$, $Z_{\mathrm{grad}}=A+B-h+p-1\le p+A+B-2$, so
+\[
+ \frac{2BhZ_{\mathrm{grad}}}{p+A+B-2}\le2B\min(A,B)\le2AB.
+\]
+The grading and angular weights are bounded by the product of the
+two shape weights. Summation gives \eqref{inf:mixed-shape-clamped}.
+\end{proof}
+
+\subsection{Double-trace lifts and source moments}
+
+\begin{lemma}[Exact double-trace lift]\label{inf:double-lift}
+For each angular index define
+\begin{equation}\label{inf:lift-columns}
+ L_j^D=S_j[1-j(t-1)],\qquad L_j^N=\tfrac12S_j(t-1).
+\end{equation}
+Their Dirichlet and radial normal traces are $(G_j,0)$ and
+$(0,G_j)$, respectively. Their coefficient bounds and Laplacians
+are
+\begin{align}
+ \nrm{L_j^D}_\Cc&\le3\,2^j\wt(2j+2),&
+ \nrm{L_j^N}_\Cc&\le\frac{2^j\wt(2j+2)}{2j+p+1},
+ \label{inf:lift-column-bounds}\\
+ \Delta L_j^D&=-2j(4j+2p)S_j,&
+ \Delta L_j^N&=(4j+2p)S_j.\label{inf:lift-laplacians}
+\end{align}
+For the defects of Corollary~\ref{inf:centre-coefficient-defect},
+let $f_N=h_N/R$, $q_N=1+\HP f_N$ and
+$d_N=q_N+\Euler q_N$. Define
+\begin{equation}\label{inf:reference-defect}
+ N_N^{\mathrm{ref}}=R(d_N|_{\partial B})N_N^{\mathrm{phys}},
+ \qquad
+ \ell_N=\sum_j(D_{N,j}L_j^D+N_{N,j}^{\mathrm{ref}}L_j^N).
+\end{equation}
+For every fixed moment $k$ and $p\ge P_{N,k}$,
+\begin{equation}\label{inf:lift-estimates}
+ \nrm{\ell_N}_{\Cc^{[k]}}\le C_{N,k}\theta^2p^{-N},\qquad
+ \nrm{\Delta\ell_N}_{\Cc^{[k]}}\le C_{N,k}\theta^2p^{2-N}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Differentiating \eqref{inf:lift-columns} at $t=1$ gives their
+traces. The identity
+$t-1=(J_1^{\beta_j}-J_0^{\beta_j})/(\beta_j+2)$
+places both lifts in radial layers zero and one and gives
+\eqref{inf:lift-column-bounds}. Formula
+\eqref{inf:profile-laplacian} proves \eqref{inf:lift-laplacians}.
+The reference normal trace in \eqref{inf:reference-defect} follows
+by differentiating the physical composition $u_N(Rq_N(y)y)$ in
+the radial direction on the sphere: $D(q_Ny)\nu=d_N\nu$.
+
+The multiplier $d_N|_{\partial B}$ is a fixed-degree polynomial
+with uniformly bounded coefficients at any fixed angular radius.
+Thus \eqref{inf:centre-coeff-defect-bound} bounds its product with
+the physical defect, losing only the factor $R=O(p)$.
+The factor $(2j+p+1)^{-1}$ in the normal lift cancels that factor.
+Choose a slightly larger fixed angular radius in
+\eqref{inf:centre-coeff-defect-bound} to absorb
+$\wt(2j+2)\le e^{(2j+2)/p}$ and the prescribed angular moments.
+This proves the first estimate in \eqref{inf:lift-estimates}.
+The Laplacians in \eqref{inf:lift-laplacians}, including the extra
+$p$ in the reference normal trace, cost at most $C p^2$ after
+absorbing fixed powers of $j$ by the same radius choice. This proves
+the second estimate. The sums converge in all stipulated moment
+norms and their traces agree with the classical lifts by the same
+coefficient identities and smooth convergence.
+\end{proof}
+
+\begin{lemma}[Derivative columns and moments]\label{inf:derivative-moments}
+For $\beta\ge0$, $s\ge1$, and $0\le k<s$,
+\begin{equation}\label{inf:derivative-column}
+ \partial_tJ_s^\beta=\sum_{k<s}d_{s,k}J_k^\beta,
+ \quad d_{s,k}=(\beta+2k+1)
+ \left(1-(-1)^{s+k}\frac{\binom{k+\beta}{k}}{\binom{s+\beta}{s}}\right)
+ \ge0.
+\end{equation}
+For every $0\le m\le s$ the endpoint derivative is
+\begin{equation}\label{inf:Jacobi-endpoint-derivatives}
+ (J_s^\beta)^{(m)}(1)
+ =\frac{(s)_{\mathrm{fall},m}(s+\beta+1)_m}{m!}.
+\end{equation}
+In particular, the first derivative column has sum
+$s(s+\beta+1)$ and the second has sum
+$s(s-1)(s+\beta+1)(s+\beta+2)/2$.
+Consequently
+\begin{equation}\label{inf:Euler-moment}
+ \nrm{\Euler u}_{\Cc^{[k]}}\le Cp\nrm u_{\Cc^{[k+2]}}.
+\end{equation}
+The Laplacian has positive radial columns of sum at most
+$C(p+2j+2s)^4$ and does not raise total degree. For each fixed $k\ge0$,
+\begin{equation}\label{inf:Delta-moment}
+ \nrm{\Delta u}_{\Cc^{[k]}}
+ \le C_k\{p^4\nrm u_{\Cc^{[k]}}+\nrm u_{\Cc^{[k+4]}}\}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For $\beta>0$, integration by parts gives, since $k<s$,
+\[
+ \int_0^1t^\beta(J_s^\beta)'J_k^\beta\,dt
+ =1-\beta J_k^\beta(0)\int_0^1t^{\beta-1}J_s^\beta\,dt.
+\]
+To obtain this expression, subtract $J_k^\beta(0)$ in the
+integrated derivative term; its remaining factor is $t$ times a
+polynomial of degree below $s$, hence orthogonal to $J_s^\beta$.
+Rodrigues' formula and $s$ integrations by parts give the remaining
+integral as $(-1)^sB(\beta,s+1)$.
+Divide by the squared norm $(\beta+2k+1)^{-1}$ and use the endpoint
+value at zero to obtain \eqref{inf:derivative-column}.
+The formula at $\beta=0$ is its finite continuous limit.
+Monotonicity in $k$ of $\binom{k+\beta}{k}$ proves nonnegativity.
+Every further differentiation preserves coefficient positivity.
+For the endpoint values, write $J_s^\beta(1+z)=\sum_m\mathfrak d_mz^m$
+and use its differential equation
+\[
+ t(1-t)J''+\{\beta+1-(\beta+2)t\}J'
+                      +s(s+\beta+1)J=0.
+\]
+Its coefficient of $z^m$ gives
+$\mathfrak d_{m+1}=(s-m)(s+\beta+1+m)\mathfrak d_m/(m+1)^2$,
+with $\mathfrak d_0=1$.
+Iteration and multiplication by $m!$ prove
+\eqref{inf:Jacobi-endpoint-derivatives}. Evaluating the positive
+columns at one now gives their sums.
+
+On one solid profile $\Euler=B+2t\partial_t$.
+The positive $t$ stencil gives column sum
+$B+2s(s+\beta+1)\le Cp(1+2j+2s)^2$ and no increase in total degree.
+This proves \eqref{inf:Euler-moment}.
+The profile Laplacian is $4(t\partial_t^2+(\beta+1)\partial_t)$,
+so its column sum is
+$4((J_s^\beta)''(1)+(\beta+1)(J_s^\beta)'(1))$,
+bounded by $C(p+2j+2s)^4$.
+Each output degree is at most the input degree $D=2j+2s$, so
+its moment weight $(1+D_{\mathrm{out}})^k$ is at most $(1+D)^k$.
+Multiplying the column bound by this weight and using
+$(p+D)^4\le8(p^4+D^4)$ gives \eqref{inf:Delta-moment} after
+absolute summation.
+\end{proof}

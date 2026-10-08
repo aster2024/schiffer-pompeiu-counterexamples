@@ -1,0 +1,614 @@
+\section{Mixed norms and the exact relative graph bound}\label{inf:sec-mixed}
+
+The intermediate space keeps the radial variable Hilbertian and the
+angular coefficients summable and preserves radial spectral
+projections in endpoint-normalized angular coordinates.
+
+\begin{definition}[Mixed space and weighted matrix norms]
+\label{inf:mixed-spaces}
+Let $\Mmix$ be the space of all families $(u_j)_{j\ge0}$ with
+$u_j\in L^2((0,1),pt^{\beta_j}dt)$ and finite norm below,
+represented as $u=\sum_jS_ju_j(t)$. Put
+\begin{equation}\label{inf:mixed-norm}
+ \nrm u_{\Mmix}=\sum_j2^j\nrm{u_j}_{\beta_j},\qquad
+ \nrm v_\beta^2=p\int_0^1t^\beta|v(t)|^2\,dt.
+\end{equation}
+The actual invariant Hilbert space $\Hc$ has norm
+\begin{equation}\label{inf:true-H-norm}
+ \nrm u_\Hc^2=\sum_j\eta_j^2\nrm{u_j}_{\beta_j}^2.
+\end{equation}
+For an angular block matrix $T$ define, at fixed $\sigma>0$,
+\begin{align}
+ \nrm T_{\Mmix,\sigma}
+ &=\sup_j\sum_i2^{i-j}e^{\sigma|i-j|}
+                            \nrm{T_{ij}}_{\beta_j\to\beta_i},
+ \label{inf:M-matrix-norm}\\
+ \nrm T_{\Hc,\sigma}
+ &=\max\left\{
+ \sup_i\sum_je^{\sigma|i-j|}\nrm{T^H_{ij}},
+ \sup_j\sum_ie^{\sigma|i-j|}\nrm{T^H_{ij}}\right\},
+ \quad T^H_{ij}=\frac{\eta_i}{\eta_j}T_{ij}.
+ \label{inf:H-matrix-norm}
+\end{align}
+The block norms in the second line use the same radial Hilbert spaces;
+only the angular basis has been normalized.
+\end{definition}
+
+\begin{lemma}[Embedding and matrix algebra]\label{inf:mixed-algebra}
+There are norm-at-most-one embeddings
+$\Cc\hookrightarrow\Mmix\hookrightarrow\Hc$.
+The space $\Mmix$ is complete, and finite polynomial sums are
+dense in all three spaces.
+The two matrix norms in
+\eqref{inf:M-matrix-norm}--\eqref{inf:H-matrix-norm} are
+submultiplicative, have identity norm one, and dominate their
+respective operator norms. The spaces of matrices with finite such
+norms are complete. For a block-diagonal operator both reduce
+to the supremum of its radial block norms.
+\end{lemma}
+\begin{proof}
+The radial squared basis norm is
+$p/(p+2j+2s)\le1$. The triangle inequality gives the first
+embedding from \eqref{inf:C-norm}; the inequality $\eta_j\le1$
+and $\ell^2\le\ell^1$ give the second.
+Finite angular truncations and polynomial density for each positive
+radial weight give density in $\Mmix$ and $\Hc$; density in
+$\Cc$ is part of its definition. Completeness of $\Mmix$ follows
+from its description as a weighted $\ell^1$ sum of the complete
+radial Hilbert spaces: a Cauchy family has a limit in every
+radial block, and Fatou's inequality bounds the sum of the
+blockwise differences by its Cauchy bound.
+For products of blocks use
+$e^{\sigma|i-j|}\le e^{\sigma|i-k|}e^{\sigma|k-j|}$ and
+$2^{i-j}=2^{i-k}2^{k-j}$, then sum the positive block norm bounds.
+The ratios $\eta_i/\eta_j$ telescope through the intermediate
+index. This proves submultiplicativity for both row and column
+sums. The mixed operator bound follows from summing columns;
+the Hilbert bound is the block Schur inequality, obtained by
+Cauchy--Schwarz with these positive row and column sums.
+For completeness, a Cauchy sequence in either matrix norm is
+Cauchy in every block operator norm. Take its blockwise limits.
+Fatou's inequality for the positive row and column sums bounds
+the norm of each difference from that limit by the corresponding
+Cauchy bound, uniformly over the exterior index. The sequence
+therefore converges in the matrix norm, and the preceding operator
+bounds identify the limit with a bounded operator on the indicated
+space. For diagonal blocks all off-diagonal weights are one and
+only one term remains in each sum.
+\end{proof}
+
+\begin{lemma}[Solid multipliers in the two matrix norms]
+\label{inf:mixed-multipliers}
+For integers $i,h\ge0$,
+\begin{equation}\label{inf:mixed-multiplier-bounds}
+ \nrm{M_{S_it^h}}_{\Mmix,\sigma}\le2^ie^{\sigma i},\qquad
+ \nrm{M_{S_it^h}}_{\Hc,\sigma}\le(2i+1)e^{\sigma i}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+An angular product output has factor
+$t^{i+j-k+h}u_j$. Its squared radial weight has exponent
+\[
+ \beta_k+2(i+j-k+h)=\beta_j+2i+2h\ge\beta_j.
+\]
+Multiplication by that power of $t$ is a contraction between the
+indicated radial spaces. The positive angular coefficients sum to
+one, and $|k-j|\le i$; this proves the mixed bound.
+In the true Hilbert space multiplication has norm at most one
+because $|S_it^h|\le1$ on the ball. Every angular block is an
+orthogonal compression and has norm at most one. Its bandwidth
+is $i$, so each weighted row and column contains at most $2i+1$
+terms, proving the Hilbert bound.
+\end{proof}
+
+\begin{lemma}[Poisson and gradient estimates in mixed and Hilbert norms]
+\label{inf:mixed-Poisson}
+On all source layers one has
+\begin{equation}\label{inf:mixed-Poisson-bounds}
+ \nrm{\KD}\le Cp^{-2},\qquad
+ \nrm{\Euler\KD}\le Cp^{-1},\qquad
+ \nrm{\Euler^2\KD}\le C
+\end{equation}
+in both matrix norms. For $A=2i>0$,
+\begin{align}
+ \nrm{\nabla S_i\cdot\nabla\KD}_{\Mmix,\sigma}
+ &\le CA2^ie^{\sigma i}/p,&
+ \nrm{\nabla S_i\cdot\nabla\Euler\KD}_{\Mmix,\sigma}
+ &\le CA2^ie^{\sigma i},\label{inf:mixed-gradients}\\
+ \nrm{\nabla S_i\cdot\nabla\KD}_{\Hc,\sigma}
+ &\le CA(2i+1)e^{\sigma i}/p,&
+ \nrm{\nabla S_i\cdot\nabla\Euler\KD}_{\Hc,\sigma}
+ &\le CA(2i+1)e^{\sigma i}.
+ \label{inf:Hilbert-gradients}
+\end{align}
+The constants are absolute for fixed $\sigma$.
+\end{lemma}
+\begin{proof}
+In angular degree $B=2j$, let $\kf$ solve
+$4(t\kf''+(\beta+1)\kf')=f$, $\kf(1)=0$, $\beta=B+p-1$.
+The radial spectral lower bound gives
+$\nrm\kf_\beta\le C(B+p)^{-2}\nrm f_\beta$.
+Multiplication of the equation by $\overline\kf t^\beta$ and integration
+by parts give
+\[
+ 4\nrm{\kf'}_{\beta+1}^2
+ =-\operatorname{Re}\langle f,\kf\rangle_\beta,
+ \qquad
+ \nrm{\kf'}_{\beta+1}\le C(B+p)^{-1}\nrm f_\beta.
+\]
+These equalities first hold for polynomial sources; their
+extensions follow from the Dirichlet form and Poisson uniqueness.
+The profile identities
+$\Euler\KD=B\kf+2t\kf'$ and
+$\Euler^2\KD=B^2\kf+4(1-p)t\kf'+tf$
+then give \eqref{inf:mixed-Poisson-bounds} on each block, hence in
+both matrix norms.
+
+For the gradient operators use the two profiles
+\eqref{inf:gradient-profile-one}--\eqref{inf:gradient-profile-two}
+with the general source $f$ in place of $J_s^\beta$ and
+$\kf$ in place of $k_s$.
+When $h\ge1$, the output squared weight for $t^{h-1}\kf$ is
+$t^{\beta+A-2}$, which is bounded above by $t^\beta$ since
+$A\ge2$. The corresponding weight for $t^h\kf'$ is
+$t^{\beta+A}\le t^{\beta+1}$.
+The source term $t^hf$ is also a contraction between its two
+radial spaces. Equation~\eqref{inf:hZ-bound} and the preceding
+energy bounds give $CA/(B+p)$ for the first profile and $CA$ for
+the second. There is no negative-power term when $h=0$.
+Positive angular summation and the bandwidth weight prove
+\eqref{inf:mixed-gradients}.
+
+In Hilbert coordinates, homogeneity and
+Lemma~\ref{inf:angular-sup} give
+$\nrm{\nabla S_i}_\infty\le\sqrt2A$.
+For $u=\KD f$, the Dirichlet spectral lower bound gives
+$\nrm{\nabla u}_2\le(p-1)^{-1}\nrm f_2$.
+On the ball one also has
+\begin{equation}\label{inf:convex-Hessian}
+ \nrm{D^2u}_2\le\nrm{\Delta u}_2=\nrm f_2.
+\end{equation}
+For a smooth real Dirichlet function, integrate the divergence of
+$(\Delta u)\nabla u-D^2u\nabla u$.
+Its interior divergence is $(\Delta u)^2-|D^2u|^2$.
+At the boundary $\nabla u=(\partial_\nu u)\nu$ and
+$\Delta u=\partial_{\nu\nu}u+H_{\partial B}\partial_\nu u$,
+so the boundary integral is
+$\int_{\partial B}H_{\partial B}|\partial_\nu u|^2\ge0$.
+This proves \eqref{inf:convex-Hessian}; use real and imaginary
+parts and $H^2$ approximation for the general case.
+Since $\nabla\Euler u=\nabla u+(D^2u)y$, the unweighted Hilbert
+bounds for the two gradient operators are $CA/p$ and $CA$.
+Their angular bandwidth is $i$, as is also visible in the exact
+profiles. Compressing to blocks and summing at most $2i+1$
+weighted entries per row and column proves
+\eqref{inf:Hilbert-gradients}. This argument covers the harmonic
+source layer as well as all the others.
+\end{proof}
+
+\begin{lemma}[Closed mixed graph realization]\label{inf:mixed-domain}
+Let $H_0$ have its Hilbert Dirichlet realization. Its realization
+on $\Mmix$ has domain
+\[
+ \Dom_{\Mmix}(H_0)=\KD\Mmix
+ =\{u\in\Dom_{\Hc}(H_0):H_0u\in\Mmix\}.
+\]
+It is closed in $\Mmix$ and its graph norm is equivalent, for
+fixed $p$, to the norm of its source. Its realization on $\Cc$
+has the identical description with $\Cc$ in place of $\Mmix$.
+Let $V$ be defined on $\Dom_{\Hc}(H_0)$, and suppose
+$\nrm{VH_0^{-1}}<1$ both on $\Hc$ and on $\Mmix$.
+Then $H_0+V$ restricts to a closed operator on
+$\Dom_{\Mmix}(H_0)$, and
+\[
+ \{u\in\Dom_{\Hc}(H_0):(H_0+V)u\in\Mmix\}
+ =\Dom_{\Mmix}(H_0).
+\]
+The same conclusions hold with $\Cc$ in place of $\Mmix$ when
+the relative norm is below one on both $\Hc$ and $\Cc$.
+\end{lemma}
+\begin{proof}
+The Poisson estimates give a bounded map $\KD:\Mmix\to\Mmix$,
+and the Hilbert identification gives $H_0\KD f=-f$.
+Thus every element in its range is in the stated Hilbert domain
+and has source in $\Mmix$.
+Conversely, if $u$ lies in that Hilbert domain and $H_0u=f\in\Mmix$,
+Dirichlet uniqueness gives $u=-\KD f$, proving equality of the
+descriptions. The norm $\nrm{H_0u}_{\Mmix}$ is a complete norm
+on the domain, since $\KD$ is a bijection from the complete
+source space onto it. The Poisson bound makes it equivalent to
+$\nrm u_{\Mmix}+\nrm{H_0u}_{\Mmix}$.
+If $u_n\to u$ and $H_0u_n\to f$ in $\Mmix$, the embeddings
+imply the same convergence in $\Hc$. Closedness of the Hilbert
+operator gives $u\in\Dom_\Hc(H_0)$ and $H_0u=f$; hence the
+description just proved puts $u$ in the mixed domain. This
+proves closedness directly.
+The coefficient-space proof uses the coefficient Poisson bound
+and the same Hilbert embedding, so every step remains valid.
+
+In each indicated source space, the factor
+$I+VH_0^{-1}$ is bounded and boundedly invertible in the source
+space. The product
+$(H_0+V)=(I+VH_0^{-1})H_0$ therefore has an equivalent graph norm
+on the same complete domain and is closed. Adding a bounded
+scalar shift preserves closedness there.
+For a source in $\Mmix$, the partial sums of the Neumann series
+for $(I+VH_0^{-1})^{-1}$ agree with the Hilbert partial sums.
+Convergence in $\Mmix$ implies convergence in $\Hc$, so the
+two inverses coincide on these sources. If
+$u\in\Dom_{\Hc}(H_0)$ and $(H_0+V)u=f\in\Mmix$, Hilbert
+uniqueness gives
+$u=H_0^{-1}(I+VH_0^{-1})^{-1}f\in\Dom_{\Mmix}(H_0)$.
+The reverse inclusion follows by applying the mixed-space
+operator. This proves the displayed equality and the restriction
+property. Replacing $\Mmix$ by $\Cc$ gives the coefficient
+version. The same argument applies to
+a bounded angular-diagonal radial spectral projection, which
+commutes with $H_0$ and preserves the graph domain.
+\end{proof}
+
+\subsection{A centre-size bound independent of the accuracy order}
+
+\begin{lemma}[Order-independent leading size]\label{inf:uniform-centre-size}
+For a fixed centre order $N$, expand $f_N=\sum_j f_{N,j}G_j$ and put
+\begin{equation}\label{inf:strong-centre-norm}
+ \delta=\sum_j(1+j)^{10}(2e^2)^j\wt(2j)|f_{N,j}|.
+\end{equation}
+There is an absolute $C_0$ such that for every fixed $N$,
+\begin{equation}\label{inf:uniform-delta}
+ \delta\le C_0\tau p^{-2}\qquad(p\ge P_N).
+\end{equation}
+Only the threshold depends on $N$. This stronger norm is used for
+the known finite centre; the unknown Newton shape retains the
+space $\Ec_1$ with one moment and angular radius two.
+\end{lemma}
+\begin{proof}
+Equation~\eqref{inf:centre-profile} gives
+\[
+ f_N=-\frac{\theta}{2R^2pg_2}\mathsf H_2+O_N(\tau p^{-4})
+\]
+in every fixed polynomial coefficient norm.
+The leading term has only index two. Its coefficient is bounded
+by $C\tau p^{-2}$ independently of $N$, since $pg_2>9/16$ and
+$\mathsf H_2(1)\le1$. Its weight in \eqref{inf:strong-centre-norm} is an
+absolute constant for $p\ge64$.
+For the fixed jet the remainder has bounded degree depending on
+$N$, and the finite monic-to-$G_j$ connection is uniformly
+bounded for large $p$, because
+$\mathsf H_j(1)\to(1-r)^j>0$ for each fixed $j$.
+Thus its strong norm is at most $C_N\tau p^{-4}$.
+Choose $C_0$ to be the leading bound plus one, and increase $P_N$
+until $C_Np^{-2}\le1$. This proves \eqref{inf:uniform-delta}.
+\end{proof}
+
+\subsection{Scalar perturbation and density conjugation}
+
+Use the fixed centre chart $\Phi_N=qy$, $d=q+\Euler q$, and define
+\begin{equation}\label{inf:density-operators}
+ H_\Phi=-P_{\Phi_N}\Delta,\qquad
+ m=(\det D\Phi_N)^{1/2}=q^{p-1/2}d^{1/2},\qquad
+ \Hu=mH_\Phi m^{-1},\qquad \mathcal V=\Hu-H_0.
+\end{equation}
+Here $\Hu$ is the unitary Dirichlet realization on $\Hc$.
+The target volume uses the same fixed normalization as unit-ball
+volume, so multiplication by $m$ is exactly the unitary density
+factor. The scalar graph operator is
+$J_D=(P_{\Phi_N}\Delta+R^2)\KD$.
+All full-source graph estimates in this section are at this
+fixed finite centre with the strong norm
+\eqref{inf:strong-centre-norm}. The Newton iteration uses its
+frozen inverse, while the nonlinear map is estimated on
+$\Gc_p\times\Ec_1$.
+
+\begin{proposition}[The Hilbert relative estimate]
+\label{inf:Hilbert-relative}
+For the real finite-centre chart in \eqref{inf:density-operators},
+let $\delta$ be \eqref{inf:strong-centre-norm}. There are absolute
+constants $C,\varepsilon_H>0$ such that, if $p\ge64$ and
+$p\delta\le\varepsilon_H$, then
+\begin{equation}\label{inf:Hilbert-relative-bound}
+ \nrm{\mathcal VK_0^{-1}}_{\Hc,1}
+ \le C(\delta+p\delta^2).
+\end{equation}
+The scalar graph difference also satisfies
+\begin{equation}\label{inf:Hilbert-scalar-bound}
+ \nrm{(P_{\Phi_N}\Delta-\Delta)\KD}_{\Hc,1}
+ \le C(\delta+\delta^2).
+\end{equation}
+These constants do not depend on $N$, the split, or the number
+of nonzero centre modes. All invariant radial source layers
+are included.
+\end{proposition}
+\begin{proof}
+Use the orthonormal angular coordinates of \eqref{inf:H-matrix-norm}.
+Its ingredients are the endpoint supremum bound, finite angular
+bandwidth, and ball Hilbert estimates.
+
+\emph{1. Banded operators.}
+Let $P_j^H$ be the orthogonal projection onto angular degree
+$2j$. If an operator $T$ has angular bandwidth $D$, each block
+$P_i^HTP_j^H$ has norm at most $\nrm T_{\Hc\to\Hc}$, and each
+row and column has at most $2D+1$ nonzero blocks. Therefore
+\begin{equation}\label{inf:Hilbert-band-bound}
+ \nrm T_{\Hc,1}\le(2D+1)e^D\nrm T_{\Hc\to\Hc}.
+\end{equation}
+This bounds both weighted row and column sums.
+
+\emph{2. Multipliers.}
+For an invariant polynomial multiplier $a$ of Jacobi degree
+(maximum angular index) at most $D$, orthogonality gives bandwidth $D$ and multiplication
+on $L^2$ has norm at most $\nrm a_\infty$. Hence
+\[
+ \nrm{M_a}_{\Hc,1}\le(2D+1)e^D\nrm a_\infty.
+\]
+In particular $|S_it^h|\le1$ gives
+$(2i+1)e^i$ for that multiplier. Summing the centre coefficients
+shows that multiplication by $\mathfrak h=q-1$, $\Euler\mathfrak h$,
+and $\Euler(\Euler-1)\mathfrak h$ has norm at most $C\delta$.
+The fixed moments in \eqref{inf:strong-centre-norm} absorb all
+the displayed degree factors. The endpoint bound used here is
+for $\ab\le\bb$ and $G_i(1)=1$, as fixed in
+\eqref{inf:angular-jacobi}.
+
+\emph{3. Products of gradients.}
+For $A=2i$ the solid harmonic has
+$|\nabla S_i|\le\sqrt2A$, by radial homogeneity and the
+Bernstein bound on great circles. Thus
+$|\nabla S_i\cdot\nabla S_j|\le2(2i)(2j)$.
+Its angular bandwidth as a multiplier is at most $i+j$.
+Equation~\eqref{inf:Hilbert-band-bound} gives
+\begin{equation}\label{inf:Hilbert-gradient-product}
+ \nrm{M_{\nabla S_i\cdot\nabla S_j}}_{\Hc,1}
+ \le2(2i)(2j)(2i+2j+1)e^{i+j}.
+\end{equation}
+After summing the shape coefficients, this bounds the multipliers
+$M_q=\nabla q\cdot\nabla q$,
+$\nabla q\cdot\nabla\Euler q$,
+$\nabla d\cdot\nabla d$, and
+$\nabla q\cdot\nabla d$ by $C\delta^2$.
+An Euler derivative on a shape adds only its angular degree,
+which is included in the ten moments. This Hilbert multiplier
+bound is $C\delta^2$.
+
+\emph{4. Diagonal Poisson operators.}
+For $u=\KD f$, the ball spectral estimate and its energy identity
+give
+\[
+ \nrm u_2\le(p-1)^{-2}\nrm f_2,\qquad
+ \nrm{\nabla u}_2\le(p-1)^{-1}\nrm f_2.
+\]
+The boundary identity \eqref{inf:convex-Hessian} gives
+$\nrm{D^2u}_2\le\nrm f_2$ on the convex ball.
+Since $\Euler u=y\cdot\nabla u$ and
+$\Euler^2u=y^TD^2uy+y\cdot\nabla u$, the three Poisson operators
+have norms at most $(p-1)^{-2}$, $2/(p-1)$ and $4$.
+They are angular diagonal, so the same bounds hold in
+$\nrm\cdot_{\Hc,1}$ on all source layers.
+
+\emph{5. Gradient--Poisson operators.}
+The preceding energy estimate gives
+$\nrm{\nabla S_i\cdot\nabla\KD}_{\Hc\to\Hc}
+\le\sqrt2(2i)/(p-1)$.
+Using $\nabla\Euler u=\nabla u+(D^2u)y$ gives
+$\nrm{\nabla S_i\cdot\nabla\Euler\KD}_{\Hc\to\Hc}
+\le\sqrt2(2i)(1+(p-1)^{-1})$.
+Their exact profiles \eqref{inf:gradient-profile-one}--
+\eqref{inf:gradient-profile-two} show angular bandwidth $i$.
+Applying \eqref{inf:Hilbert-band-bound} and summing the centre
+coefficients proves
+\[
+ \nrm{\nabla\mathfrak h\cdot\nabla\KD}_{\Hc,1}\le C\delta/p,
+ \qquad
+ \nrm{\nabla\mathfrak h\cdot\nabla\Euler\KD}_{\Hc,1}\le C\delta.
+\]
+The same estimates hold with $\mathfrak h$ replaced by
+$\Euler\mathfrak h$, and hence for
+$d-1=\mathfrak h+\Euler\mathfrak h$.
+
+\emph{6. Inverse multipliers and density.}
+The Hilbert matrix norm is a Banach algebra with unit norm one
+by Lemma~\ref{inf:mixed-algebra}.
+For $C\delta<1$, the Neumann series for $q^{-1},d^{-1}$
+converge in it; they also converge uniformly on the ball to the
+pointwise multipliers. Their fixed inverse powers are bounded.
+The absolute binomial majorant for $m^{\pm1}$ gives
+\begin{equation}\label{inf:Hilbert-density-size}
+ \nrm{M_{m^{\pm1}}}_{\Hc,1}
+ \le(1-C\delta)^{-p-1}\le2
+\end{equation}
+when the absolute constant $\varepsilon_H$ is sufficiently small.
+This choice is independent of the finite centre order.
+
+\emph{7. The scalar graph difference.}
+Compose \eqref{inf:scalar-pullback} with $\KD$ and subtract
+the identity. The first term costs $C\delta$ by the inverse
+multiplier bound, and the second costs $C\delta$ by step 5.
+The third costs $C\delta^2$ by steps 3 and 4.
+Formula~\eqref{inf:Cq-identity} bounds its contracted Hessian
+multiplier by $C\delta^2(1+\delta)$; it is followed by
+$\Euler\KD$, of norm $C/p$. The remaining gradient-square
+term is bounded in the same way. This proves
+\eqref{inf:Hilbert-scalar-bound}.
+
+\emph{8. The density commutator.}
+Both $q$ and $d$ are harmonic. With $\alpha=p-1/2$,
+\[
+ \frac{\nabla m^{-1}}{m^{-1}}
+ =-\alpha q^{-1}\nabla q-\tfrac12d^{-1}\nabla d,
+\]
+\[
+ \frac{\Delta m^{-1}}{m^{-1}}
+ =\alpha(\alpha+1)q^{-2}\nabla q\cdot\nabla q
+ +\tfrac34d^{-2}\nabla d\cdot\nabla d
+ +\alpha q^{-1}d^{-1}\nabla q\cdot\nabla d.
+\]
+The gradient part of $[\Delta,m^{-1}]\KD$ is bounded by
+$Cp(\delta/p)=C\delta$, using step 5 and the inverse multipliers.
+Its potential part is bounded by
+$Cp^2\delta^2(p-1)^{-2}\le C\delta^2$, using steps 3 and 4.
+Thus
+\begin{equation}\label{inf:Hilbert-commutator}
+ \nrm{[\Delta,m^{-1}]\KD}_{\Hc,1}
+ \le C(\delta+\delta^2).
+\end{equation}
+The potential starts at quadratic order because $q,d$ are harmonic.
+
+\emph{9. Assembly on the graph domain.}
+Put $X=(H_\Phi-H_0)H_0^{-1}
+=(P_{\Phi_N}\Delta-\Delta)\KD$.
+Multiplication by $m^{-1}$ preserves the Dirichlet boundary
+condition, and the preceding commutator estimate bounds
+$H_0m^{-1}H_0^{-1}$ by an absolute constant. Hence
+\[
+ \mathcal VH_0^{-1}
+ =mX(H_0m^{-1}H_0^{-1})+m[H_0,m^{-1}]H_0^{-1}
+\]
+has Hilbert weighted norm at most $C(\delta+\delta^2)$,
+which is at most $C(\delta+p\delta^2)$.
+Finally $H_0K_0^{-1}$ is an angular-diagonal radial spectral
+contraction, so multiplying by it proves
+\eqref{inf:Hilbert-relative-bound}.
+The identities hold first on the smooth Dirichlet graph core;
+the bounds extend them to the Hilbert graph realization.
+\end{proof}
+
+\begin{theorem}[Exact relative graph bounds]\label{inf:relative-graph}
+Fix $\sigma=1$. There is an absolute $C$ independent of $N$ such
+that, for every fixed centre order $N$ and all $p\ge P_N$,
+\begin{align}
+ \nrm{\mathcal VK_0^{-1}}_{\Mmix,1}
+       +\nrm{\mathcal VK_0^{-1}}_{\Hc,1}
+ &\le C\tau p^{-2},\qquad K_0=H_0+R^2,
+ \label{inf:relative-two-norms}\\
+ \nrm{(P_{\Phi_N}\Delta-\Delta)\KD}_{\Cc\to\Cc}
+       +\nrm{(P_{\Phi_N}\Delta-\Delta)\KD}_{\Mmix\to\Mmix}
+ &\le C\tau p^{-2}.\label{inf:relative-scalar}
+\end{align}
+The density multipliers and their graph conjugates also satisfy,
+for the same $p\ge P_N$,
+\begin{align}
+ \max\{\nrm{M_{m^{\pm1}}}_{\Mmix,1},
+                  \nrm{M_{m^{\pm1}}}_{\Hc,1}\}&\le2,\nonumber\\
+ \max\{\nrm{H_0M_{m^{-1}}H_0^{-1}}_{\Mmix,1},
+                  \nrm{H_0M_{m^{-1}}H_0^{-1}}_{\Hc,1}\}&\le C.
+ \label{inf:density-graph-bounds}
+\end{align}
+All these bounds include every source layer. The operator $\Hu$ has domain
+$H^2(B)\cap H^1_0(B)$ in its invariant sector and has the actual
+centre-domain spectrum.
+\end{theorem}
+\begin{proof}
+Proposition~\ref{inf:Hilbert-relative} supplies the Hilbert half.
+For the mixed and coefficient bounds, use endpoint-normalized
+angular coordinates.
+We keep the size $\delta$ in \eqref{inf:strong-centre-norm}
+throughout the calculation. In $\Cc$ and both weighted matrix
+algebras, solid multipliers and their first two Euler derivatives
+are controlled by their coefficient sums with the corresponding
+degree factors. The ten moments and the factor $(2e^2)^j$
+dominate the angular weights, the bandwidth factor $2j+1$, and
+these fixed derivatives. Proposition~\ref{inf:module} and
+Lemmas~\ref{inf:mixed-multipliers} and \ref{inf:mixed-Poisson} thus give
+\[
+ \nrm{M_{q-1}}+\nrm{M_{d-1}}\le C\delta,
+ \quad
+ \nrm{\nabla(q-1)\cdot\nabla\KD}\le C\delta/p,
+ \quad
+ \nrm{\nabla(q-1)\cdot\nabla\Euler\KD}\le C\delta.
+\]
+For the coefficient-space version use
+Lemma~\ref{inf:gradient-profiles}, which explicitly includes $s=0$.
+The same statements hold with a fixed Euler derivative on the
+harmonic shape.
+
+Products of two harmonic gradients have multiplier norm
+$Cp\delta^2$. In the mixed and coefficient spaces this follows
+from the exact product coefficient $2h(h+2k+p-1)c_{ij}^k$
+and its bound by $Cp(1+i)(1+j)$.
+In the Hilbert matrix algebra use the pointwise product bound
+$Cij$, bandwidth at most $i+j$, and the row/column estimate in
+Lemma~\ref{inf:mixed-multipliers}; the available moments absorb
+the resulting polynomial factors. The coarser bound $Cp\delta^2$
+is therefore valid there as well. Products with one Euler
+derivative on either factor obey the same bound in terms of
+$\delta$.
+All inverse powers of $q,d$ are convergent series in these
+multiplier algebras when $C\delta<1/2$.
+
+Subtract $\Delta$ in \eqref{inf:scalar-pullback} and compose with
+$\KD$. The four terms have bounds, respectively,
+\begin{equation}\label{inf:scalar-four-bounds}
+ C\delta,\qquad C\delta,\qquad Cp\delta^2,
+                 \qquad C\delta^2(1+\delta).
+\end{equation}
+For the last bound, \eqref{inf:Cq-identity} gives multipliers
+$Cp\delta^2$ and $Cp\delta^3$, and
+$\Euler\KD$ costs $C/p$.
+The third term uses the bounded operator
+$\Euler(\Euler+1)\KD$.
+This proves a scalar graph bound $C(\delta+p\delta^2)$ in each
+of the three realizations, including the two weighted matrix
+norms.
+
+The density requires its own estimate. Both $q$ and $d$ are
+harmonic, since $\Delta\Euler q=(\Euler+2)\Delta q=0$.
+Write $\alpha=p-1/2$. Direct differentiation gives
+\begin{align}
+ \frac{\nabla m^{-1}}{m^{-1}}
+ &=-\alpha q^{-1}\nabla q-\tfrac12d^{-1}\nabla d,
+ \label{inf:density-gradient}\\
+ \frac{\Delta m^{-1}}{m^{-1}}
+ &=\alpha(\alpha+1)q^{-2}|\nabla q|^2
+       +\tfrac34d^{-2}|\nabla d|^2
+       +\alpha q^{-1}d^{-1}\nabla q\cdot\nabla d.
+ \label{inf:density-Laplacian}
+\end{align}
+The second formula is quadratic in the shape gradients.
+The binomial series for $m^{\pm1}$ has norms at most
+$\exp(Cp\delta)$, hence at most two after increasing the
+threshold using \eqref{inf:uniform-delta}.
+The commutator
+\[
+ [\Delta,m^{-1}]\KD
+ =2\nabla m^{-1}\cdot\nabla\KD+(\Delta m^{-1})\KD
+\]
+has norm at most
+$Cp(\delta/p)+Cp^2(p\delta^2)p^{-2}
+=C(\delta+p\delta^2)$ in both weighted matrix algebras.
+In particular $H_0m^{-1}H_0^{-1}$ is bounded by an absolute
+constant there.
+
+Put $X=(H_\Phi-H_0)H_0^{-1}
+=(P_{\Phi_N}\Delta-\Delta)\KD$.
+The exact factorization
+\[
+ \mathcal VH_0^{-1}
+ =mX(H_0m^{-1}H_0^{-1})+m[H_0,m^{-1}]H_0^{-1}
+\]
+therefore has norm at most $C(\delta+p\delta^2)$.
+The remaining factor $H_0K_0^{-1}$ is a block-diagonal radial
+Hilbert contraction in both matrix norms. This proves the
+corresponding estimate for $\mathcal VK_0^{-1}$.
+Finally insert \eqref{inf:uniform-delta}, with $\tau\le20$.
+The operator constants are absolute; the threshold $P_N$ absorbs
+the finite-jet remainder. This proves
+\eqref{inf:relative-two-norms} and \eqref{inf:relative-scalar}
+with $N$-independent constants, as well as
+\eqref{inf:density-graph-bounds}.
+
+We also identify their domains. For this finite smooth chart,
+composition and multiplication by the positive smooth density
+map the Dirichlet $H^2$ domain to itself. The physical smooth
+Dirichlet realization therefore gives the asserted domain and
+unitary spectrum. Equivalently the small relative graph bound
+in $\Hc$ preserves the ball domain by the closed-operator
+perturbation theorem. All equalities above first hold for Poisson
+images of polynomial sources. Those images are graph dense in
+the Dirichlet domain, because polynomial sources are dense in
+$L^2$ and $\KD:L^2\to H^2\cap H^1_0$ is continuous.
+Thus the bounded graph extensions are the same geometric
+operators. By Lemma~\ref{inf:mixed-domain}, on $\Mmix$ their graph domain is
+$\{\KD f:f\in\Mmix\}$ with its source graph norm; the embedding
+into $\Hc$ and Poisson uniqueness identify it with the restriction
+of that realization. The identical argument applies to $\Cc$.
+\end{proof}

@@ -1,0 +1,625 @@
+\section{The nonlinear map and the material isomorphism}\label{inf:sec-material}
+
+The chart in this section uses a harmonic extension on the whole ball.
+It is different from the homogeneous radial stretching used to derive
+the spectral flow. Both charts describe the same boundary domain at a
+fixed centre; only its spectrum is passed from one description to the
+other.
+
+\subsection{A smooth scalar chart on the ball}
+
+For a normalized boundary shape $f\in\Ec_1$ put
+\begin{equation}\label{inf:scalar-chart}
+ H_f=\HP f,\qquad q=1+H_f,\qquad d=q+\Euler q,
+ \qquad \Phi_f(y)=q(y)y.
+\end{equation}
+For a field $U$ on the reference ball define
+\begin{equation}\label{inf:scalar-pullback-definition}
+ P_{\Phi_f}\Delta U=
+       [\Delta(U\circ\Phi_f^{-1})]\circ\Phi_f,
+ \qquad B_{\Phi_f}=P_{\Phi_f}\Delta+R^2.
+\end{equation}
+For a smooth real chart, $B_{\Phi,D}$ denotes the restriction of
+$B_\Phi$ to the invariant Dirichlet graph domain
+$H^2(B)\cap H^1_0(B)$.
+Fix the analytic chart radius $\varepsilon_0=1/2$ and the
+working radius $\varepsilon_{\mathrm{work}}=1/4$.
+For every real $f\in\Ec_1$ with $\nrm f_{\Ec_1}<1/2$, the map
+$\Phi_f$ is a diffeomorphism of the closed ball onto the region
+with radial boundary $1+f$.
+Indeed $|q-1|\le\nrm f_{\Ec_1}$ and
+$|d-1|\le2\nrm f_{\Ec_1}<1$ on the ball, so $q,d>0$.
+On each ray, $\Phi_f(\zeta\omega)=\zeta q(\zeta\omega)\omega$
+keeps the direction fixed and has strictly positive radial
+derivative $d$. Distinct rays remain distinct and the radial
+map is one-to-one on each ray. Its Jacobian determinant is
+$q^{2p-1}d>0$, including at the origin. The inverse function
+theorem and the radial endpoint give the global
+identification. By Lemma~\ref{inf:space-embedding}, the harmonic
+extension and chart are real analytic on a neighbourhood of
+the closed ball. Both axes and the origin are ordinary points
+of this chart.
+
+\begin{lemma}[Exact scalar pullback]\label{inf:pullback}
+Let $w=\nabla q$, $M_q=w\cdot w$ and
+\begin{equation}\label{inf:pullback-metric}
+ A_q=q^{-2}\left\{I-\frac{y\otimes w+w\otimes y}{d}
+                         +\frac{M_q}{d^2}y\otimes y\right\},
+ \qquad C_q=A_q:D^2q.
+\end{equation}
+Then
+\begin{align}
+ P_{\Phi_f}\Delta U={}&q^{-2}\Delta U
+ -\frac2{q^2d}\nabla q\cdot\nabla\Euler U
+ +\frac{M_q}{q^2d^2}\Euler(\Euler+1)U
+ \label{inf:scalar-pullback}\\
+ &+\left(\frac{2M_q}{qd^3}-\frac{C_q}{d}\right)\Euler U,\nonumber\\
+ C_q={}&q^{-2}\left\{-\frac{2(\nabla q\cdot\nabla\Euler q-M_q)}d
+                +\frac{M_q\Euler(\Euler-1)q}{d^2}\right\}.
+ \label{inf:Cq-identity}
+\end{align}
+The second identity uses harmonicity of $q$.
+\end{lemma}
+\begin{proof}
+Since $D\Phi_f=qI+y\otimes w$, its inverse is
+$q^{-1}(I-y\otimes w/d)$ and
+$D\Phi_f^{-1}D\Phi_f^{-T}=A_q$.
+The coordinate change formula for a scalar Laplacian is
+\[
+ P_{\Phi_f}\Delta U=A_q:D^2U
+   -D\Phi_f^{-1}(A_q:D^2\Phi_f)\cdot\nabla U.
+\]
+Now $A_q:D^2\Phi_f=yC_q+2A_qw$, and multiplication by the
+inverse matrix gives
+\[
+ D\Phi_f^{-1}(A_q:D^2\Phi_f)
+ =\frac{2w}{q^2d}
+   +y\left\{\frac{C_q}d-\frac{2M_q}{q^2d^2}
+                             -\frac{2M_q}{qd^3}\right\}.
+\]
+On the other hand,
+\[
+ A_q:D^2U=q^{-2}\left\{\Delta U-\frac2d
+ (\nabla q\cdot\nabla\Euler U-\nabla q\cdot\nabla U)
+             +\frac{M_q}{d^2}\Euler(\Euler-1)U\right\}.
+\]
+The terms with $\nabla q\cdot\nabla U$ cancel, giving
+\eqref{inf:scalar-pullback}.
+Apply the last formula for $A_q:D^2U$ to $U=q$ and use
+$\Delta q=0$ to get \eqref{inf:Cq-identity}.
+All computations are identities of smooth functions; extension to
+the coefficient spaces is established next.
+\end{proof}
+
+\begin{proposition}[Analytic map with a polynomial second derivative]
+\label{inf:nonlinear-map}
+For $g\in\Gc_p$ and $\nrm f_{\Ec_1}<\varepsilon_0$, define
+\begin{equation}\label{inf:nonlinear-definition}
+ \Fnl(g,f)=B_{\Phi_f}(1+Kg).
+\end{equation}
+This is an analytic map
+$\Gc_p\times\{f\in\Ec_1:\nrm f_{\Ec_1}<\varepsilon_0\}\to\Cc$,
+affine in $g$,
+and on $\nrm f_{\Ec_1}\le\varepsilon_{\mathrm{work}}=1/4$ it satisfies
+\begin{equation}\label{inf:nonlinear-second}
+ \nrm{D^2\Fnl(g,f)}\le Cp(1+\nrm g_\Cc).
+\end{equation}
+For real $f$, its coefficient extension is exactly the weak scalar
+pullback of $1+Kg\in H^2(B)$. Its complexification is the analytic
+extension of the same algebraic operator formulas.
+\end{proposition}
+\begin{proof}
+The harmonic module estimate gives
+$\nrm{M_{q-1}}\le\nrm f_{\Ec_1}$. For $d-1=H_f+\Euler H_f$,
+the same estimate applied to each solid coefficient gives
+\[
+ \nrm{M_{d-1}}
+ \le\sum_{j\ge0}(1+2j)2^j\wt(2j)|f_j|
+ \le2\sum_{j\ge0}(1+j)2^j\wt(2j)|f_j|
+ =2\nrm f_{\Ec_1}.
+\]
+Their inverse powers are norm-convergent Neumann series on
+$\nrm f_{\Ec_1}<1/2$. On the closed working ball of radius $1/4$,
+differentiating these series any fixed number of times gives
+uniformly bounded multilinear multiplier maps.
+The same series converge uniformly on the closed ball, by
+\eqref{inf:shape-C2}, to the indicated pointwise inverse powers.
+
+Apply \eqref{inf:scalar-pullback} to $U=1+Kg$.
+All derivatives of the constant vanish. The term $q^{-2}\Delta Kg$
+is $q^{-2}g$.
+Lemma~\ref{inf:gradient-profiles} controls
+$\nabla q\cdot\nabla\Euler K$ with one shape moment.
+The operator $\Euler(\Euler+1)K$ is bounded by
+\eqref{inf:poisson-operator-bounds}, and its multiplier $M_q$
+is bounded by \eqref{inf:gradient-multiplier} with norm at most
+$Cp\nrm f_{\Ec_1}^2$.
+For the last term group
+\[
+ C_q\Euler K=q^{-2}\left\{
+ -2d^{-1}(\nabla q\cdot\nabla\Euler q-M_q)\Euler K
+ +M_qd^{-2}[\Euler(\Euler-1)q]\Euler K\right\}.
+\]
+The first grouped product is bounded by
+\eqref{inf:mixed-shape-clamped} and
+\eqref{inf:gradient-multiplier}; the last one by
+\eqref{inf:second-shape-clamped} followed by the bounded multiplier
+$M_q$. The scalar multipliers commute, so the high shape derivative
+is always placed immediately next to $\Euler K$ on its clamped
+source, as in Proposition~\ref{inf:grouped-shapes}.
+Every numerator is thus a bounded linear, bilinear, or trilinear
+map from shapes to operators $\Gc_p\to\Cc$, of norm at most $Cp$.
+The inverse multiplier series prove analyticity of the operator
+coefficient $L_f\in\mathcal B(\Gc_p,\Cc)$ in
+$\Fnl(g,f)=R^2+L_fg$.
+Its first two shape derivatives have norm at most $Cp$ on the
+closed working ball of radius $1/4$. The two mixed derivatives and the pure shape second
+derivative give \eqref{inf:nonlinear-second}; the pure source
+second derivative is zero. The term $R^2(1+Kg)$ is shape independent
+and contributes no second derivative.
+
+To identify the extension, first use polynomial sources and finite
+shape sums, where the identity is classical. Approximate any
+$f\in\Ec_1$ by finite sums in its norm; the charts converge in
+$C^2$ and have uniformly positive $q,d$ on any fixed smaller shape
+ball. The explicit inverse matrix is therefore uniformly
+bounded there. For each fixed $p$, their scalar
+pullbacks converge as maps $H^2(B)\to L^2(B)$ by the coordinate
+formula. Next approximate $g$ in $\Cc$, hence in $L^2$.
+Dirichlet regularity and uniqueness give convergence of $Kg$ in
+$H^2(B)$. The bounded coefficient maps converge in $\Cc$, hence
+in $L^2$, to the same pullback. This proves the assertion on the
+completed spaces.
+\end{proof}
+
+\subsection{Coefficient size of the known centre}
+
+\begin{lemma}[Fixed radial modes in coefficient norm]
+\label{inf:radial-centre-norm}
+Fix the finite mode set of the order-$N$ centre in
+Theorem~\ref{inf:centres}. For each fixed moment $k$ and
+$p\ge P_{N,k}$, its regular radial modes,
+rescaled to the unit ball, have $\Cc^{[k]}$ norms at most
+$C_{N,k}p^{k+1}$. The bound is uniform in $r$ and
+$0<|\theta|\le20$.
+\end{lemma}
+\begin{proof}
+For one fixed $j$ put $\nu=p+2j-1$ and write its normalized mode as
+$\zeta^{1-p}J_\nu(R\zeta)G_j/d_j^{\mathrm{mode}}$.
+Here $d_j^{\mathrm{mode}}$ is either $J_\nu(R)$ for value normalization or
+$J'_\nu(R)-(p-1)J_\nu(R)/R$ for physical normal normalization.
+The finite recurrence \eqref{inf:finite-q-recurrence} shows that
+$d_j^{\mathrm{mode}}/J_{p-1}(R)$ has a nonzero analytic limit in every case.
+In particular the resonant seed is normalized by its normal trace.
+
+In the solid basis the coefficients of this mode are
+\begin{equation}\label{inf:Bessel-Jacobi-coefficients}
+ c_s=\frac{2(\nu+1+2s)(-1)^sJ_{\nu+1+2s}(R)}{Rd_j^{\mathrm{mode}}}.
+\end{equation}
+To derive them, Rodrigues' formula and $s$ integrations by parts
+in $t=\zeta^2$ give the integral identity
+\[
+ \int_0^1\zeta^{\nu+1}J_\nu(R\zeta)J_s^\nu(\zeta^2)\,d\zeta
+ =\frac{(-1)^s}{R}J_{\nu+2s+1}(R).
+\]
+One may evaluate the final integral by the absolutely convergent
+Bessel power series and the beta integral. The derivative identity
+used in the integrations is
+$\partial_t^s(t^{-\nu/2}J_\nu(R\sqrt t))
+=(-R/2)^st^{-(\nu+s)/2}J_{\nu+s}(R\sqrt t)$.
+Dividing by the radial norm in \eqref{inf:radial-norm} proves
+\eqref{inf:Bessel-Jacobi-coefficients}.
+Parseval and the Lommel integral at a general argument give
+\begin{equation}\label{inf:centre-parseval}
+ \sum_{s\ge0}\frac{|c_s|^2}{\nu+1+2s}
+ =\frac{J_\nu(R)^2-J_{\nu-1}(R)J_{\nu+1}(R)}{(d_j^{\mathrm{mode}})^2}
+ \le C_{j,\mathrm{rad}}.
+\end{equation}
+The general Lommel identity follows by differentiating
+$x^2(J_\nu(x)^2-J_{\nu-1}(x)J_{\nu+1}(x))/2$ and using the
+recurrences. The bound follows since every numerator value is a
+fixed recurrence shift of $J_{p-1}(R)$ and the normalization
+quotient has a nonzero limit.
+
+For $s\le S=C_{j,\mathrm{rad}}'p+O_j(1)$, with a fixed $C_{j,\mathrm{rad}}'$ large enough that
+$\nu+1+2S\ge2R$, Cauchy--Schwarz in
+\eqref{inf:centre-parseval} gives
+\[
+ \sum_{s\le S}\wt(2j+2s)|c_s|\le C_{j,\mathrm{rad}}p.
+\]
+There are $O_j(p)$ terms; their denominator reciprocals in the
+Cauchy--Schwarz factor are inverted to quantities $O_j(p)$, and
+the weights are bounded by a constant by \eqref{inf:weight-properties}.
+A fixed degree moment adds at most $C_{j,k}p^k$.
+
+For the remaining tail use the positive ratio bound
+$J_{m+1}(R)/J_m(R)<R/(m+1)$ when $m\ge2R$.
+Here positivity follows from $j_{m,1}>m$.
+For a proof of the ratio bound, its Riccati equation is
+$r'=1-(2m+1)r/x+r^2$, with
+$r(x)\sim x/(2m+2)$ at zero. At a first contact with
+$x/(m+1)$ for $x\le m$, the difference of derivatives would be
+$-1+x^2/(m+1)^2<0$, excluding upward contact.
+Applying the bound twice to \eqref{inf:Bessel-Jacobi-coefficients}
+gives $|c_{s+1}/c_s|<R^2/(m(m+1))\le1/4$ for
+$m=\nu+1+2s\ge2R$.
+The neighbouring grading ratio is at most $e^{2/p}$, and the
+moment ratio tends uniformly to one as $p$ grows for fixed $k$.
+Thus the weighted tail is geometric with ratio below $1/2$ for
+large $p$, and is bounded by the head estimate. The angular factor
+$2^j$ is bounded for the fixed list of modes.
+\end{proof}
+
+\begin{proposition}[The deformed centre and its source]
+\label{inf:centre-source-norm}
+Let $f_N=h_N/R$, $\Phi_N=\Phi_{f_N}$, and
+\begin{equation}\label{inf:clamped-centre}
+ U_*=u_N\circ(R\Phi_N),\qquad U_0=U_*-\ell_N,
+ \qquad g_0=\Delta U_0,\qquad z_0=(g_0,f_N).
+\end{equation}
+For every fixed moment $k$ and $p\ge P_{N,k}$,
+$g_0\in\Gc_p$, $U_0=1+Kg_0$, and
+\begin{equation}\label{inf:centre-norm-bounds}
+ \nrm{U_*}_{\Cc^{[k]}}+\nrm{U_0}_{\Cc^{[k]}}
+ \le C_{N,k}p^{k+1},\qquad
+ \nrm{g_0}_{\Cc^{[k]}}\le C_{N,k}p^{k+5}.
+\end{equation}
+For $p\ge P_{N,0}$, on the fixed product region
+\begin{equation}\label{inf:nonlinear-working-region}
+ \{g\in\Gc_p:\nrm{g-g_0}_{\Cc}\le1\}
+ \ \times\ \{f\in\Ec_1:\nrm f_{\Ec_1}\le1/4\},
+\end{equation}
+\begin{equation}\label{inf:p6-second}
+ \sup\nrm{D^2\Fnl}\le C_Np^6.
+\end{equation}
+\end{proposition}
+\begin{proof}
+For each known centre mode, fix $p$ and put $\nu=p+2j-1$.
+Its radial factor in the solid basis is the entire function of
+the complex squared-radius variable $t$,
+\[
+ F_{\nu,j}(t)=\frac1{d_j^{\mathrm{mode}}}
+ \sum_{h\ge0}\frac{(-1)^h(R/2)^{\nu+2h}}{h!\,\Gamma(\nu+h+1)}t^h,
+ \qquad t\in\C,
+\]
+where $\Gamma$ is Euler's gamma function
+\cite[Eq.~10.2.2]{inf:dlmf}. For real $t>0$, this is
+$t^{-\nu/2}J_\nu(R\sqrt t)/d_j^{\mathrm{mode}}$.
+The radial expansion in Lemma~\ref{inf:radial-centre-norm} is
+$\sum_{s\ge0}c_sJ_s^\nu(t)$ on $0\le t\le1$ in weighted $L^2$.
+For $m=\nu+1+2s\ge2R$, the ratio bound proved in that lemma gives
+$|c_{s+1}|\le R^2|c_s|/[m(m+1)]$. Since $m\ge2s$, iteration
+from a fixed $s_0\ge1$ with $\nu+1+2s_0\ge2R$ gives
+\[
+ |c_s|\le |c_{s_0}|(R^2/4)^{s-s_0}
+                 \left(\frac{(s_0-1)!}{(s-1)!}\right)^2,
+ \qquad s\ge s_0.
+\]
+For every fixed $A>0$, Taylor's formula at one and
+\eqref{inf:Jacobi-endpoint-derivatives} give
+\[
+ \sup_{|t-1|\le A}|J_s^\nu(t)|
+ \le\sum_{h=0}^s\frac{[A s(2s+\nu+1)]^h}{(h!)^2}
+ \le\exp\{2\sqrt{A s(2s+\nu+1)}\}.
+\]
+For fixed $p,j,A$, this envelope is at most exponential in $s$,
+so the factorial bound makes the radial series locally uniformly
+convergent on $\C$. Its sum is entire. On $[0,1]$ uniform
+convergence and the original $L^2$ expansion identify that sum
+with $F_{\nu,j}$; continuity turns the almost-everywhere equality
+into equality on the interval. The identity theorem gives
+equality on $\C$, including at the deformed radial arguments.
+
+Write $q=1+\HP f_N$ and $e=q^2-1$.
+The finite centre shape and the module estimate give
+$\nrm{M_e}\le C_N\tau p^{-2}=:\epsilon_{\mathrm{cmp},p}$.
+For one radial basis polynomial the exact Taylor identity is
+\[
+ J_s^\beta(q^2t)=\sum_{m=0}^s\frac{e^m}{m!}
+                                      t^m\partial_t^mJ_s^\beta(t).
+\]
+The derivative columns and the positive $t$ stencils show that
+$t^m\partial_t^mJ_s^\beta$, whose degree is no greater than $s$,
+has coefficient sum
+$(s)_{\mathrm{fall},m}(s+\beta+1)_m/m!$.
+It follows that its relative composition norm is at most
+\begin{equation}\label{inf:composition-bound}
+ \sum_{m=0}^s\epsilon_{\mathrm{cmp},p}^m
+ \frac{(s)_{\mathrm{fall},m}(s+\beta+1)_m}{(m!)^2}
+ \le\exp\{2\sqrt{\epsilon_{\mathrm{cmp},p}s(2s+\beta+1)}\}.
+\end{equation}
+Indeed bound the product by $[s(2s+\beta+1)]^m$ and use
+$\sum z^m/(m!)^2\le e^{2\sqrt z}$, which follows by comparing
+with the even terms of the exponential using
+$\binom{2m}m\le4^m$.
+The extra solid factor is $q^{2j}$, a bounded multiplier because
+$j$ belongs to the fixed finite set of centre modes.
+
+On the $s=O_N(p)$ head the right side of
+\eqref{inf:composition-bound} is bounded by $C_N$.
+On the tail it is at most $\exp(C_N(s+p)/p)$.
+Multiply the geometric Bessel tail in
+Lemma~\ref{inf:radial-centre-norm} by this envelope and by the
+weight ratio $e^{2/p}$. For large $p$ the resulting geometric
+ratio is still below $1/2$. Thus each composed mode series
+converges in $\Cc$ with norm at most $C_Np$.
+The finite polynomial chart increases each total degree by at
+most a fixed multiple depending on $N$. Therefore each output
+moment is bounded by a constant times the corresponding input
+moment; the same argument gives convergence and the bounds in
+all fixed moments $k$.
+For this fixed $p$, the radial entire-function identity makes
+the composed partial sums converge uniformly on the closed ball
+to $S_j(qy)F_{\nu,j}(q^2t)$: the arguments $q^2t$ range over a
+compact set, and $S_j(qy)$ is a fixed polynomial. The polynomial
+partial sums also converge in $\Cc$ by the preceding coefficient
+estimate, hence in $L^2(B)$ by Lemma~\ref{inf:space-embedding}.
+Uniform convergence on the closed ball gives the same $L^2$ limit.
+Uniqueness of that limit and injectivity of $\Cc\hookrightarrow L^2(B)$
+identify the coefficient sum with the composed mode.
+Adding the finite list of centre modes proves the asserted
+identification and bounds for $U_*$.
+The finite field amplitudes are uniformly bounded by the centre
+construction. Subtracting the lift uses \eqref{inf:lift-estimates}
+and proves the assertion for $U_0$.
+The Laplacian bound \eqref{inf:Delta-moment}, with moments included,
+then gives $\nrm{g_0}_{\Cc^{[k]}}\le C_{N,k}p^{k+5}$.
+
+By construction the two traces of $U_0$ are exactly $1,0$.
+Dirichlet Poisson uniqueness yields $U_0=1+\KD g_0$, and
+\eqref{inf:poisson-trace} gives $g_0\in\Gc_p$.
+Finally \eqref{inf:nonlinear-second} and the $p^5$ source bound
+give \eqref{inf:p6-second} on the product region
+\eqref{inf:nonlinear-working-region}. Its exponent does not depend
+on $N$.
+\end{proof}
+
+\subsection{Residuals in the same coefficient space}
+
+\begin{proposition}[The residual and its material derivative]
+\label{inf:residual-estimates}
+At the centre $z_0$ of \eqref{inf:clamped-centre}, put
+$E_0=\Fnl(z_0)$. For every fixed moment $k$ and $p\ge P_{N,k}$,
+\begin{equation}\label{inf:residual-moments}
+ \nrm{E_0}_{\Cc^{[k]}}\le C_{N,k}\theta^2p^{2-N},\qquad
+ \nrm{\Euler E_0}_{\Cc^{[k]}}\le C_{N,k}\theta^2p^{3-N}.
+\end{equation}
+For a shape variation $\eta\in\Ec_1$, define
+\begin{equation}\label{inf:residual-material}
+ \mathcal V_{\mathrm{res}}(\delta g,\eta)
+       =(\HP\eta)d_0^{-1}\Euler E_0,
+ \qquad d_0=1+\HP f_N+\Euler\HP f_N.
+\end{equation}
+Then, for $p\ge P_N$,
+\begin{equation}\label{inf:residual-material-bound}
+ \nrm{\mathcal V_{\mathrm{res}}}_{\Xc_p\to\Cc}
+ \le C_N\theta^2p^{3-N}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The interior equation of the finite centre is exact, so
+$B_{\Phi_N}U_*=0$ and $E_0=-B_{\Phi_N}\ell_N$.
+The lift occupies only radial layers zero and one.
+On these layers the operators $\Delta$, $\Euler^2$ and
+$\nabla a\cdot\nabla\Euler$, for any fixed solid polynomial $a$,
+have coefficient bounds $C_a p^2$ times a fixed number of angular
+moments.
+On layer one,
+\[
+ \Euler\Psi_{j,1}=(2j+2)\Psi_{j,1}
+                            +2(\beta_j+1)\Psi_{j,0}.
+\]
+On a solid monomial $S_l t^h$ of bounded radial power,
+$\Delta(S_lt^h)=4h(h+2l+p-1)S_lt^{h-1}$ costs one factor $p+l$.
+Writing $J_1^{\beta_j}=(\beta_j+2)t-(\beta_j+1)$ adds at most one
+such factor. Multiplication by the fixed polynomial $a$ has bounded
+angular shifts and bounded radial powers.
+Finally
+$2\nabla a\cdot\nabla U=\Delta(aU)-a\Delta U-(\Delta a)U$.
+In the displayed Euler formula the large coefficient $p+j$ occurs
+on the harmonic layer, whose Laplacian product costs only one
+additional factor $p+j$; the layer-one coefficient is only $2j+2$.
+The product therefore costs at most $C_a(p+j)^2$.
+The direct Euler bound also gives $Cp^2$ after two fixed moments.
+
+At the fixed finite chart, $q_0-1,d_0-1$ have coefficient multiplier
+norm $O_N(\tau p^{-2})$. Put
+\[
+ \epsilon_{\mathrm{rec}}
+ =\max\{\nrm{M_{q_0-1}}_{\Cc\to\Cc},
+                 \nrm{M_{d_0-1}}_{\Cc\to\Cc}\},
+\]
+and increase the threshold until $\epsilon_{\mathrm{rec}}<1/2$.
+Their inverse powers preserve all fixed moments: multiplication
+by a polynomial of degree $D_N$ increases
+degree by at most $D_N$, and
+$\sum_{v\ge0}(1+vD_N)^k\epsilon_{\mathrm{rec}}^v<\infty$ for
+$\epsilon_{\mathrm{rec}}<1/2$.
+The constants may depend on $N,k$ but not on $p,r,\theta$.
+Apply the two-layer estimates to every term of
+\eqref{inf:scalar-pullback} and then these inverse multipliers.
+Equation~\eqref{inf:lift-estimates} and $R^2=O(p^2)$ give the
+first estimate in \eqref{inf:residual-moments}.
+Apply \eqref{inf:Euler-moment}, using that first estimate at moment
+$k+2$, to obtain the second.
+The module bound for $\HP\eta$ and the fixed inverse multiplier
+$d_0^{-1}$ then prove \eqref{inf:residual-material-bound}.
+\end{proof}
+
+\subsection{The exact material map and its inverse}
+
+The radial harmonic chart specifies the interior extension as well
+as the boundary displacement.
+
+\begin{theorem}[Material isomorphism]\label{inf:material-isomorphism}
+Fix $N\ge4$ and take $p$ sufficiently large for the centre above.
+Put
+\begin{equation}\label{inf:material-definitions}
+ D_p=-\partial_{\nu\nu}U_0|_{\partial B},\qquad
+ \mathfrak f_0=\frac{\Euler U_0}{d_0},\qquad
+ T_\eta=(\HP\eta)\mathfrak f_0.
+\end{equation}
+The map
+\begin{equation}\label{inf:Qmat-definition}
+ \Qmat(\delta g,\eta)=\Delta(K\delta g-T_\eta)
+                 :\Xc_p\longrightarrow\Cc
+\end{equation}
+is a bounded isomorphism, with
+\begin{equation}\label{inf:Qmat-bounds}
+ \nrm{\Qmat}\le C_Np^8,\qquad
+ \nrm{\Qmat^{-1}}\le C_Np^6.
+\end{equation}
+If $J_D=B_{\Phi_N,D}\KD$, then the exact factorization is
+\begin{equation}\label{inf:material-factorization}
+ D\Fnl(z_0)=J_D\Qmat+\mathcal V_{\mathrm{res}}.
+\end{equation}
+All constants are uniform in the admissible split and
+$0<|\theta|\le20$; the exponents are independent of $N$.
+\end{theorem}
+\begin{proof}
+The centre has constant Dirichlet trace and zero gradient, so its
+boundary Hessian is purely normal-normal. Evaluating its equation
+at the boundary gives
+\begin{equation}\label{inf:normal-hessian}
+ D_p=\frac{R^2-E_0|_{\partial B}}{\nu^TA_{q_0}\nu}.
+\end{equation}
+Indeed all drift terms multiply the zero gradient, and
+$D^2U_0=(\partial_{\nu\nu}U_0)\nu\otimes\nu$ there.
+The finite centre polynomial and the boundary algebra show
+$d_0|_{\partial B}=1+O_N(\tau p^{-2})$ and
+$\nu^TA_{q_0}\nu=1+O_N(\tau p^{-2})$ in $\Ec_1$.
+For the latter assertion insert \eqref{inf:pullback-metric};
+the product formula in the proof of
+\eqref{inf:gradient-multiplier}, with the extra boundary weight
+$1+k\le(1+i)(1+j)$ on each angular product, gives
+\[
+ \nrm{M_{q_0}|_{\partial B}}_{\Ec_1}
+ \le Cp\left(\sum_j(1+j)^2 2^j\wt(2j)|f_{N,j}|\right)^2
+ \le C_N\tau^2p^{-3}.
+\]
+Here all fixed moments of the finite centre shape are
+$O_N(\tau p^{-2})$ by \eqref{inf:centre-profile}.
+The trace of $E_0$ in $\Ec_1$ is bounded by its first source
+moment, since $J_s^{\beta_j}(1)=1$.
+To identify this coefficient trace, take polynomial sums $F_m$ of
+$E_0$ and put $h_m=F_m|_{\partial B}$. The first source moment
+gives $h_m\to h$ in $\Ec_1$, while the fourth source moment in
+Proposition~\ref{inf:residual-estimates} and
+\eqref{inf:Delta-moment} gives $\Delta F_m\to\Delta E_0$ in $L^2$.
+Since $F_m-\HP h_m$ has zero Dirichlet trace,
+\[
+ F_m-\HP h_m=\KD\Delta F_m.
+\]
+At fixed $p$, harmonic extension and Dirichlet Poisson regularity
+make both terms on the right of
+$F_m=\HP h_m+\KD\Delta F_m$ converge in $H^2$.
+Their $L^2$ limit is $E_0$, hence
+$E_0=\HP h+\KD\Delta E_0\in H^2$ and its Sobolev trace is $h$.
+Thus \eqref{inf:residual-moments} and the boundary algebra give
+\begin{equation}\label{inf:normal-hessian-inverse}
+ \nrm{D_p^{-1}}_{\Ec_1}\le C_Np^{-2}
+\end{equation}
+by the convergent inverse series in \eqref{inf:normal-hessian}.
+In particular $D_p$ has no zero.
+
+The moment bounds for the fixed centre and its reciprocal $d_0$
+give
+$\nrm{\mathfrak f_0}_{\Cc^{[k]}}\le C_{N,k}p^{k+4}$ by
+\eqref{inf:Euler-moment}.
+Using \eqref{inf:Delta-moment} with its sum of two powers yields
+\begin{equation}\label{inf:fixed-material-field}
+ \nrm{\Delta \mathfrak f_0}_\Cc\le C_Np^8.
+\end{equation}
+Since $\mathfrak f_0$ has zero Dirichlet trace, Dirichlet uniqueness implies
+$\mathfrak f_0=\KD\Delta \mathfrak f_0$.
+Harmonicity of $\HP\eta$ and
+\eqref{inf:gradient-C-one} therefore give
+\begin{equation}\label{inf:material-field-bound}
+ \nrm{\Delta T_\eta}_\Cc
+ \le\nrm{M_{\HP\eta}\Delta \mathfrak f_0}_\Cc+
+       2\nrm{\nabla(\HP\eta)\cdot\nabla\KD\Delta \mathfrak f_0}_\Cc
+ \le C_Np^8\nrm\eta_{\Ec_1}.
+\end{equation}
+One moment of the unknown shape enters. This proves
+boundedness of \eqref{inf:Qmat-definition}.
+
+For an arbitrary source $\psi\in\Cc$ set
+\begin{equation}\label{inf:material-reconstruction}
+ W=\KD\psi,\quad N_W=\partial_\nu W,\quad
+ \eta=(d_0|_{\partial B})N_W/D_p,\quad
+ \delta g=\psi+\Delta T_\eta.
+\end{equation}
+Equations \eqref{inf:poisson-trace} and
+\eqref{inf:normal-hessian-inverse} imply
+$\nrm\eta_{\Ec_1}\le C_Np^{-2}\nrm\psi_\Cc$;
+then \eqref{inf:material-field-bound} gives
+$\nrm{\delta g}_\Cc\le(1+C_Np^6)\nrm\psi_\Cc$.
+At the boundary,
+\[
+ T_\eta=0,\qquad \partial_\nu T_\eta=-D_p\eta/d_0.
+\]
+This follows by differentiating $\mathfrak f_0=(\Euler U_0)/d_0$:
+$\Euler U_0=0$ there and
+$\partial_\nu\Euler U_0=\partial_{\nu\nu}U_0=-D_p$.
+Hence $W+T_\eta$ has both traces zero.
+It is the Dirichlet Poisson solution with source $\delta g$;
+\eqref{inf:poisson-trace} implies $\delta g\in\Gc_p$ and
+$K\delta g=W+T_\eta$.
+This proves that \eqref{inf:material-reconstruction} is a right
+inverse to $\Qmat$ and gives its $p^6$ bound.
+Conversely, for any input to $\Qmat$, the field
+$W=K\delta g-T_\eta$ has zero Dirichlet trace and is recovered
+uniquely from its Laplacian. Its normal trace is $D_p\eta/d_0$,
+so \eqref{inf:material-reconstruction} recovers $\eta$ and then
+$\delta g$. This proves the left inverse as well.
+
+It remains to prove \eqref{inf:material-factorization}.
+For the chart variation $\Phi_N+t(\HP\eta)y$, its reference material
+vector is
+$v_\eta=D\Phi_N^{-1}((\HP\eta)y)=y(\HP\eta)/d_0$.
+Differentiation of the two compositions in
+\eqref{inf:scalar-pullback-definition} gives the exact scalar
+commutator identity
+\[
+ \delta(P_\Phi\Delta)U_0
+ =-P_{\Phi_N}\Delta(v_\eta\cdot\nabla U_0)
+       +v_\eta\cdot\nabla(P_{\Phi_N}\Delta U_0).
+\]
+It follows either by differentiating the inverse chart or by
+applying the chain rule first to a smooth physical test function.
+Since $v_\eta\cdot\nabla U_0=T_\eta$, adding the frequency term
+and the source variation yields
+\[
+ D\Fnl(z_0)(\delta g,\eta)
+ =B_{\Phi_N}(K\delta g-T_\eta)
+       +(\HP\eta)d_0^{-1}\Euler E_0.
+\]
+The field in parentheses has zero Dirichlet trace, so it equals
+$\KD\Qmat(\delta g,\eta)$. This proves
+\eqref{inf:material-factorization} on finite variations.
+To pass to the completion, fix $p$ and the smooth real centre chart.
+Dirichlet regularity on the ball gives a bounded map
+$\KD:L^2(B)\to H^2(B)\cap H^1_0(B)$; the smooth coefficients in
+\eqref{inf:scalar-pullback} give a bounded map
+$B_{\Phi_N,D}:H^2(B)\cap H^1_0(B)\to L^2(B)$.
+These continuity bounds use only ball regularity and the fixed
+chart, independently of the Dirichlet inverse estimates below.
+For $\dot z\in\Xc_p$, take finite variations
+$\dot z_m\to\dot z$ in $\Xc_p$.
+The already proved boundedness of $\Qmat$ gives
+$\Qmat\dot z_m\to\Qmat\dot z$ in $\Cc$, hence in $L^2(B)$ by
+Lemma~\ref{inf:space-embedding}. Consequently
+$J_D\Qmat\dot z_m\to B_{\Phi_N,D}\KD\Qmat\dot z$ in $L^2(B)$.
+The finite-variation identity also says
+$J_D\Qmat\dot z_m=(D\Fnl(z_0)-\mathcal V_{\mathrm{res}})\dot z_m$.
+Its right side converges in $\Cc$ to
+$(D\Fnl(z_0)-\mathcal V_{\mathrm{res}})\dot z$, by
+Proposition~\ref{inf:nonlinear-map} and
+\eqref{inf:residual-material-bound}. The continuous injective
+embedding $\Cc\hookrightarrow L^2(B)$ identifies the two limits.
+Thus $J_D\Qmat\dot z$ belongs to $\Cc$ and satisfies
+\eqref{inf:material-factorization} for every $\dot z\in\Xc_p$.
+Surjectivity of $\Qmat$ also gives boundedness of $J_D$ on all
+of $\Cc$, with
+$J_D=(D\Fnl(z_0)-\mathcal V_{\mathrm{res}})\Qmat^{-1}$.
+\end{proof}

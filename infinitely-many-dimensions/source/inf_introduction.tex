@@ -1,0 +1,328 @@
+\section{Results and scope}\label{inf:sec-introduction}
+
+In the smooth sphere-boundary formulation, the Schiffer conjecture
+states that a bounded domain $\Omega\subset\R^n$ with boundary
+homeomorphic to $S^{n-1}$ must be a ball if it supports a nonconstant
+solution of $\Delta u+\lambda u=0$, for some $\lambda>0$, with
+constant boundary value and zero normal derivative
+\cite{inf:Wil76,inf:Zal92}. We normalize the frequency to one and
+the boundary value to one. We construct domains with these
+overdetermined data in unbounded families of both odd and even ambient
+dimensions, while retaining strict convexity.
+
+Write $J_\nu$ for the Bessel function of the first kind of order $\nu$.
+The real primary crossing orders $\widehat p_m$, for all sufficiently
+large indices $m\ge m_0$, satisfy
+\[
+ J_{\widehat p_m}(2\sqrt{(\widehat p_m+1)(\widehat p_m+2)})=0.
+\]
+They are specified uniquely by the expansion in
+Proposition~\ref{inf:primary-expansion}. The arithmetic construction
+uses the fixed irrational number
+\[
+ \alpha_{\mathrm{ar}}=\frac{\pi}{2(\sqrt3-\pi/3)}
+\]
+and continued-fraction approximations with denominator one modulo
+four. Define $\mathcal P_{\mathrm{bd}}$ to consist of all positive
+$p\in\tfrac12\Z$ with $|p-\widehat p_m|<31/(10\widehat p_m)$
+for some $m\ge m_0$. The detuning is \eqref{inf:detuning-definition}
+at the Neumann zero continued from the nearby crossing.
+For every constructed domain the frequency-one
+Schiffer data mean a nonconstant classical solution of
+\begin{equation}\label{inf:main-equations}
+ \Delta u+u=0\quad\hbox{in }\Omega,\qquad
+ u=1,\quad\nabla u=0\quad\hbox{on }\partial\Omega.
+\end{equation}
+\begin{maintheorem}[Bounded detuning]\label{inf:main}\label{inf:theorem-A}
+For every sufficiently large $p\in\mathcal P_{\mathrm{bd}}$, there
+is an integer $a\in[p/2,3p/4]$ and a bounded strictly convex non-ball
+domain $\Omega\subset\R^{2p}$ with real-analytic boundary,
+invariant under $O(a)\times O(2p-a)$ and carrying
+\eqref{inf:main-equations}. Its detuning satisfies $0<|\theta|\le20$.
+There are infinitely many such inputs in each of $\Z$ and $\Z+1/2$.
+
+For every fixed positive integer $L_{\mathrm{ap}}$ and integer
+$b_{\mathrm{ap}}$, there is also an unbounded selection
+$n\equiv b_{\mathrm{ap}}\pmod{4L_{\mathrm{ap}}}$ with
+$|n/2-\widehat p_m|<32L_{\mathrm{ap}}^2/\widehat p_m$ and
+$0<|\theta|<256L_{\mathrm{ap}}^2$, whose sufficiently large members
+have the same domain conclusion. The threshold may depend on the
+fixed modulus and residue. Hence every residue modulo
+$L_{\mathrm{ap}}$ contains infinitely many such dimensions.
+For even $L_{\mathrm{ap}}$ a residue modulo $L_{\mathrm{ap}}$ permits
+only its compatible parity; for odd $L_{\mathrm{ap}}$ each residue
+modulo $L_{\mathrm{ap}}$ contains infinitely many dimensions of both parities.
+
+In each of these bounded families, fix
+$0<\varepsilon_{\mathrm{sp}}<1/4$ and $0<\eta_{\mathrm{cnt}}<1/3$.
+For every sufficiently large member $n=2p$, all but
+$O(n^{2/3+\eta_{\mathrm{cnt}}})$ integer splits
+$\varepsilon_{\mathrm{sp}}n\le a\le(1/2-\varepsilon_{\mathrm{sp}})n$
+give such domains, pairwise non-similar for distinct retained splits.
+The constant and threshold may depend on the family and these fixed
+parameters. Let $\mathcal N_{\mathrm{sim}}(n)$ be the number of
+integer splits $0<a<n/2$ for which the construction on some fixed
+compact interior interval gives a domain. Choosing one domain at
+each such split gives this many similarity classes, independently
+of the choices.
+Then along each family's dimensions
+\[
+ \liminf_{n\to\infty}\mathcal N_{\mathrm{sim}}(n)/n\ge1/2.
+\]
+The closure uses the cofactor estimate and a fixed centre order
+$N=4M+40$, with $M$ fixed after the bounded family and compact
+split interval have been chosen and before $N$.
+\end{maintheorem}
+
+\begin{maintheorem}[Logarithmic window]\label{inf:theorem-B}
+Let
+\[
+ \mathcal P_{\log}=\{p\in\tfrac12\Z:p>1,\quad
+ \exists m\ge m_0:\ |p-\widehat p_m|\le\log p/(8p)\}.
+\]
+For every sufficiently large $p\in\mathcal P_{\log}$, with $n=2p$, there is an
+integer split $0<a<n/2$ and a bounded strictly convex non-ball domain
+$\Omega\subset\R^{2p}$ with real-analytic boundary, invariant under
+$O(a)\times O(2p-a)$ and carrying \eqref{inf:main-equations}.
+For every fixed $0<\varepsilon_{\mathrm{sp}}<1/4$ and
+$0<\eta_{\mathrm{cnt}}<1/3$, all but
+$O_{\mathrm{sp},\eta_{\mathrm{cnt}}}(n^{2/3+\eta_{\mathrm{cnt}}})$
+interior integer splits in the interval of Theorem~\ref{inf:theorem-A}
+give pairwise non-similar domains. The same similarity-class lower
+limit is at least $1/2$. This family contains sequences of both
+parities with $|\theta|\to\infty$. The closure uses mixed
+conditioning and the fixed centre order $N=20$.
+\end{maintheorem}
+
+\begin{proof}[Proofs of Theorems~\ref{inf:theorem-A} and \ref{inf:theorem-B}]
+Corollary~\ref{inf:bounded-basic} proves the first bounded construction.
+Lemmas~\ref{inf:many-splits} and \ref{inf:similarity-classes},
+Proposition~\ref{inf:bounded-assembly}, and
+Theorem~\ref{inf:residue-arithmetic} give all the further assertions
+of Theorem~\ref{inf:theorem-A} through the cofactor route.
+Proposition~\ref{inf:log-assembly} gives the logarithmic construction
+and multiplicity, and Lemma~\ref{inf:log-multiplier} gives unbounded
+detuning in both parities. These prove Theorem~\ref{inf:theorem-B}.
+\end{proof}
+
+Both assertions concern sufficiently large inputs, with implicit
+thresholds and splits. Each fixed-width family and the logarithmic
+family have density zero
+by Proposition~\ref{inf:arithmetic-density}. The quartic profile and
+its Hermite limit are described in Section~\ref{inf:sec-shape}.
+
+The Pompeiu property means that a continuous function on $\R^n$
+whose integral over every rigid copy of a domain is zero must
+itself be zero. The Pompeiu conjecture states that, among bounded
+domains with Lipschitz boundary homeomorphic to $S^{n-1}$,
+failure of this property forces the domain to be a ball
+\cite{inf:Wil76,inf:Zal92}. The domains in both theorems fail this property
+because their indicator transforms vanish on the unit sphere.
+A single nonzero plane wave, or its real part, then gives the
+required nonzero function. This implication is proved directly
+by Green's identity in Proposition~\ref{inf:Pompeiu}.
+Consequently the Schiffer and Pompeiu conjectures fail within
+the class of convex domains in infinitely many dimensions.
+
+Brown, Schreiber and Taylor developed the spectral-synthesis
+approach to the Pompeiu problem and its Fourier--Laplace
+characterization \cite{inf:BST73}. Williams related failure of the
+Pompeiu property on simply connected Lipschitz domains to the
+overdetermined eigenvalue problem \cite{inf:Wil76};
+Zalcman's survey gives the classical
+bibliography \cite{inf:Zal92}. Recent planar counterexamples were
+constructed by Cao-Labora and de Dios Pont \cite{inf:CLdDP26}
+and by Colbrook and Stepaniants \cite{inf:CS26}.
+Convex counterexamples in the plane, in every dimension from three
+to eighteen, and in dimensions twenty and twenty-one were obtained
+by computer-assisted proofs in \cite{inf:Guo26}.
+The construction below uses a two-block split parameter at fixed
+ambient dimension and closes finite-order centres in a graded
+Jacobi coefficient space.
+
+\subsection{The construction and its estimates}
+
+The block split supplies a parameter while the ambient dimension
+and the ball radial spectrum remain fixed. Write an ambient point as
+$(X,Y)\in\R^a\times\R^{2p-a}$. With $n=2p$ and
+$r=a/(2p)$, invariant functions depend on radius and
+$x=|X|^2/(|X|^2+|Y|^2)$. Their angular basis is Jacobi orthogonal
+for the beta measure of parameters $pr,p(1-r)$.
+The monic quadratic $\mathsf H_2(x)$ has spherical degree four and is the
+shape used to start the construction.
+At a continued radial Neumann zero $J_p(R)=0$, define
+\[
+ \chi=\frac{J_{p+3}(R)}{J'_{p+3}(R)-(p-1)J_{p+3}(R)/R},
+ \qquad \theta=4Rp\chi.
+\]
+For all sufficiently large members of the bounded base family,
+$R=2p+3+O(p^{-1})$ and $0<|\theta|<20$.
+The estimates are uniform for $0<|\theta|\le20$.
+
+The normalized quartic radius is
+$1-\theta \mathsf H_2/(2R^2pg_2)$, where
+$g_2=[\mathsf H_2]\mathsf H_2^2\asymp p^{-1}$.
+Vary the real split through $\varsigma=(r-1/2)^2\in[1/64,1/16]$.
+The exact weighted Dirichlet eigenvalue curves have signed speed
+at least $c|\theta|/p$ when their offsets from $R^2$ lie in
+$(-|\theta|/(16p),|\theta|/(16p))$.
+Only $O(p^{2/3})$ ordered curves can enter this band.
+Avoiding their small intervals on the integer split grid gives an
+actual invariant Dirichlet gap $c|\theta|p^{-5/3}$ for at least
+one admissible $a$.
+
+For each fixed accuracy order $N$, finite-order centre construction
+at that split solves the interior
+Helmholtz equation exactly and makes both boundary defects
+$O_N(\theta^2p^{-N})$ on every prescribed finite complex disc,
+with the constant and threshold allowed to depend on that disc.
+The recurrence uses only fixed nonzero leading divisors, including
+the seed divisor $-1/8$ after its natural scaling.
+The centre differs from the quartic radius by
+$O_N(|\theta|p^{-4})$ in normalized coordinates, so it inherits
+half the Dirichlet gap by domain monotonicity.
+
+The nonlinear argument uses one fixed coefficient space
+$\Cc_{p,2}$ for sources and a boundary space $\Ec_1$ with one
+angular degree moment. The clamped source subspace $\Gc_p$
+contains exactly the sources whose Poisson fields have zero
+Dirichlet and normal traces. Positive Jacobi multiplication and a
+parameter-raising coupling give a high-shape-degree gain on these
+clamped fields. This makes the scalar pullback analytic on the
+fixed small-shape chart in $\Gc_p\times\Ec_1$, with a
+second-derivative bound $C_Np^6$ on the stated centre neighbourhood.
+An exact material change of variables has inverse bounded by
+$C_Np^6$ in those same spaces.
+
+The remaining inverse estimate passes through
+$\Mmix$, which has radial $L^2$ norms and angular $\ell^1$
+coefficients. In a ball window of width $E_{\mathrm{inv}}|\theta|$,
+the exact Schur matrix has entries of size $O(|\theta|)$,
+exponential angular decay in two matrix norms, and the actual
+Hilbert gap. Its logarithmic angular clusters have bounded
+\emph{cardinality} $M$, independent of $p$ and of the separation
+constant. A determinant and cofactor estimate on each cluster
+therefore gives
+\[
+ \nrm{F_{\mathrm{eff}}^{-1}}_{\ell^1(2^j)}
+ \le C|\theta|^{-1}p^{5M/3}.
+\]
+Radial graph reconstruction and a finite-head/infinite-tail
+argument give the full coefficient inverse for the scalar Dirichlet
+graph operator $J_D=B_{\Phi_N,D}\KD$, with $B_{\Phi,D}$ defined after
+\eqref{inf:scalar-pullback-definition},
+\begin{equation}\label{inf:intro-inverse}
+ \nrm{J_D^{-1}}_{\Cc_{p,2}\to\Cc_{p,2}}
+ \le C|\theta|^{-1}p^{5/2+5M/3}.
+\end{equation}
+
+The constants determining $M$ and the inverse exponent are fixed
+before the centre accuracy is chosen. With
+$N=4M+40$, the residual, corrected derivative and second derivative
+satisfy the three gates of Theorem~\ref{inf:newton-threshold} on a
+ball of radius $|\theta|p^{-2M-62/3}$.
+The exact zero remains strictly convex and keeps a nonzero
+physical monic seed coefficient. Its coefficient equation is
+identified with a weak equation on the completed spaces, then
+with a classical solution by elliptic regularity.
+
+The logical order of the main steps is
+\[
+ \begin{gathered}
+ \text{uniform Bessel expansion and congruence approximation}
+ \ \Longrightarrow\ \mathcal P_{\mathrm{bd}},\ R,\ \theta,\\
+ \text{angular positivity and exact local spectral flow}
+ \ \Longrightarrow\ \text{integer-split gap},\\
+ \text{finite centres and exact clamping}
+ \ \Longrightarrow\ \text{residuals and material map},\\
+ \text{relative graph bounds and bounded-cardinality clusters}
+ \ \Longrightarrow\ \text{coefficient inverse},\\
+ \text{Newton threshold}
+ \ \Longrightarrow\ \text{classical convex non-ball domain}.
+ \end{gathered}
+\]
+For Theorem~\ref{inf:theorem-B}, one radial pole per angular degree
+is retained first. A finite-shift Lommel recurrence isolates four
+critical phase ratios. Their short components have subpolynomial
+coefficient-to-Hilbert conditioning, while the complementary
+couplings have two inverse powers of $p$, up to a chosen small
+loss. The exact centre is restored in the mixed norm before the
+single radial conversion factor $\sqrt p$.
+Section~\ref{inf:sec-sharp} gives material and nonlinear exponents
+two and three; Section~\ref{inf:sec-tame} records their dependence
+on $\tau\le\log p$. The three gates then close at order twenty
+and radius $\tau p^{-11}$ as in
+Theorem~\ref{inf:fixed-order-newton}.
+
+The notation index in Appendix~\ref{inf:sec-notation} distinguishes
+the fixed flow window, the local-count window, and the shrinking
+inverse window.
+
+\subsection{Classical inputs}
+
+The proof uses the following classical results; the specialized
+estimates needed in the construction
+are proved in the body of the paper.
+\begin{enumerate}[label=\textup{(\arabic*)}]
+\item The integer-order common-zero theorem of Bourget, as a
+consequence of Siegel's theorem, excludes integer primary
+crossings \cite[\S15.28]{inf:watson}; see also
+\cite{inf:siegel}. At half-integer orders the sine--cosine
+representation and Hermite--Lindemann theorem
+\cite[\S1.2]{inf:BakerWustholz} give non-coincidence as proved in
+Lemma~\ref{inf:half-integer-noncoincidence}.
+The finite Lommel polynomials \cite{inf:watson} give the
+shift resonance estimate in Lemma~\ref{inf:lommel-resonance}.
+The transcendence of $\pi$
+\cite{inf:lindemann} makes $\alpha_{\mathrm{ar}}$ irrational.
+\item Bessel power series and recurrences, the fixed-order outgoing Hankel
+normalization and Watson's integral for the derivative of a
+positive zero with respect to order are used in their classical
+forms \cite[\S\S10.2, 10.6, 10.17; Eq.~10.21.17]{inf:dlmf}.
+The uniform large-order remainders, derivative bounds, spacing,
+and radial normalization used here are then proved in
+Section~\ref{inf:sec-bessel}.
+\item Gasper's positive linearization theorem is used with
+\eqref{inf:gasper-hypothesis} and normalization at the endpoint of
+the larger Jacobi exponent \cite[Theorem~1]{inf:gasper}.
+The parameter substitution is given before
+Lemma~\ref{inf:radial-stencils}.
+\item Closed Dirichlet forms, relatively bounded perturbations,
+compact resolvents, the min--max principle and finite Riesz
+reductions are used as in \cite[Chs.~II and IV--VII]{inf:kato}.
+The common domains, norm differentiability, eigenvalue derivative
+argument and Schur reconstructions for this family are written
+out in Section~\ref{inf:sec-flow}.
+\item Dirichlet $H^2$ and higher regularity and Sobolev traces are
+used on smooth bounded domains \cite[Chs.~6--9]{inf:GT}; analytic
+boundary regularity is used for analytic boundaries and constant
+Dirichlet data \cite{inf:MorreyNirenberg,inf:MorreyBoundary}.
+The convex Dirichlet Hessian inequality is proved by its boundary
+identity in \eqref{inf:convex-Hessian}. Polynomial core density
+and the zero-capacity cutoff statements at the axes and origin
+are included in Proposition~\ref{inf:flow-form}.
+\item Hadamard's convexity theorem for a compact hypersurface
+with positive second fundamental form is used in
+Lemma~\ref{inf:geometry-convexity}; see
+\cite{inf:doCarmoLima,inf:sacksteder}.
+Bernstein's inequality for trigonometric polynomials, applied on
+great circles, gives the dimension-independent shape derivative
+bounds \cite[Vol.~II, Ch.~X, Theorem~3.13]{inf:zygmund}. The Jacobi endpoint bound itself is
+proved in Lemma~\ref{inf:angular-sup}.
+The rotation argument in Proposition~\ref{inf:arithmetic-density}
+uses trigonometric polynomial approximation \cite{inf:zygmund}.
+\item Banach's contraction theorem \cite{inf:banach} is applied to
+a closed ball in the stated complete spaces.
+Taylor's formula, continued-fraction determinant identities and
+elementary lattice determinant facts are used in the explicit
+proofs of their specialized forms.
+\item The analytic implicit function theorem is used for the
+scaled radius and seed equations in Theorem~\ref{inf:centres}.
+Cauchy's estimates and the Hermite--Genocchi integral formula for
+divided differences give the analytic coefficient bounds in
+Lemma~\ref{inf:analytic-coefficients}; Cauchy's estimates also
+give the centre remainder bounds.
+The Dirichlet--Poincar\'e (Wirtinger) inequality on an interval is
+used in Lemma~\ref{inf:bessel-spacing} and
+Theorem~\ref{inf:local-count}.
+\end{enumerate}

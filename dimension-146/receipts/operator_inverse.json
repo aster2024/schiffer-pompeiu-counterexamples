@@ -1,0 +1,101 @@
+{
+  "status": "PROVED_INFINITE_DEFORMED_COEFFICIENT_INVERSE",
+  "schiffer_existence": "NOT_ASSEMBLED_HERE",
+  "p": 73,
+  "dimension": 146,
+  "blocks": [
+    54,
+    92
+  ],
+  "bounds": {
+    "0": {
+      "head_defect": "[0.158799737319007565957194590093 +/- 5.35e-31]",
+      "angular_defect": "[0.849954642239530507388826789271 +/- 4.81e-31]",
+      "radial_defect": "[0.336824255875511790253239114618 +/- 7.08e-31]",
+      "eta": "[0.849954642239530507388826789271 +/- 4.81e-31]",
+      "core_inverse": "[2352892.17948672310106395125307 +/- 4.87e-25]",
+      "full_shape_delta": "[5.15036168994531552052253289440e-14 +/- 3.29e-44]",
+      "model_export_delta": "[1.22933158060246140939188685641e-15 +/- 4.92e-45]",
+      "total_operator_perturbation": "[5.27329484800556166146172158004e-14 +/- 4.78e-44]",
+      "perturbation_gate": "[1.24074942079999142030013548640e-7 +/- 1.13e-37]",
+      "full_cleared_inverse": "[2352892.47142172021317992324621 +/- 1.92e-24]",
+      "clearing_multiplier": "[1.01626736702248484074317743745 +/- 2.74e-30]",
+      "graph_inverse": "[2391167.83681877876016477784372 +/- 1.02e-24]"
+    },
+    "2": {
+      "head_defect": "[0.172133835388023132403846277488 +/- 6.98e-31]",
+      "angular_defect": "[0.872119253384614454973605101789 +/- 8.19e-31]",
+      "radial_defect": "[0.340346032118091389362286184509 +/- 1.70e-31]",
+      "eta": "[0.872119253384614454973605101790 +/- 1.82e-31]",
+      "core_inverse": "[7832373.37348645460057769346538 +/- 7.72e-25]",
+      "full_shape_delta": "[1.21613119445368398977665226653e-13 +/- 8.74e-44]",
+      "model_export_delta": "[1.68749344092282785870589544297e-15 +/- 1.82e-45]",
+      "total_operator_perturbation": "[1.23300612886291226836371122096e-13 +/- 5.92e-44]",
+      "perturbation_gate": "[9.65736437305148232189281807227e-7 +/- 1.66e-37]",
+      "full_cleared_inverse": "[7832380.93750211680062884937432 +/- 4.24e-24]",
+      "clearing_multiplier": "[1.01813636955564457668816345632 +/- 1.27e-30]",
+      "graph_inverse": "[7974431.89268524111968495814457 +/- 3.29e-24]"
+    }
+  },
+  "original_C2_inverse": "[42495747556.1196499268011419524 +/- 3.11e-20]",
+  "source_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+  "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+  "components_sha256": "36faf0a51f121700b445566c79128e5d047a87c1d02c475d14733da59d0ceb45",
+  "products_sha256": "3a9cfe3315e5be3194ea60a68791359e6384cb7e2ac73f597bfb91f625adeb60",
+  "tails_sha256": "26bb32507316b163c73d700de76b4fb91f75f8093764f863119ab086fe126d1e",
+  "arithmetic_sha256": "91ac6f3dbdbe49550154469d9f44edf07f92db76a1acf97a29e2a4d859e45e5c",
+  "elapsed_s": 0.07879066467285156,
+  "a": 54,
+  "script_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+  "_hardening": {
+    "format": 1,
+    "phase": "inverse",
+    "role": "inverse",
+    "arguments": [
+      "--components",
+      "q16_components.json",
+      "--center",
+      "center.json",
+      "--products",
+      "products.json",
+      "--tails",
+      "tails.json",
+      "--arithmetic",
+      "arithmetic.json",
+      "--output",
+      "operator_inverse.json"
+    ],
+    "source_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+    "proof_sha256": "332a44a90a063de12f059efa891638cc528e354fc600f4230303c1e1e7478d3e",
+    "parameters": {
+      "p": 73,
+      "a": 54,
+      "b": 92
+    },
+    "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+    "environment": {
+      "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+      "implementation": "CPython",
+      "executable": "/usr/bin/python",
+      "optimization": 0,
+      "zlib": "1.3",
+      "zlib_runtime": "1.3",
+      "python-flint": "0.9.0",
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "sympy": "1.13.1",
+      "mpmath": "1.3.0"
+    },
+    "invocation_id": "249c45d7e084c7b6d6e8ae0471fd9e39",
+    "inputs": {
+      "center.json": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1"
+    },
+    "receipts": {
+      "q16_components.json": "36faf0a51f121700b445566c79128e5d047a87c1d02c475d14733da59d0ceb45",
+      "products.json": "3a9cfe3315e5be3194ea60a68791359e6384cb7e2ac73f597bfb91f625adeb60",
+      "tails.json": "26bb32507316b163c73d700de76b4fb91f75f8093764f863119ab086fe126d1e",
+      "arithmetic.json": "91ac6f3dbdbe49550154469d9f44edf07f92db76a1acf97a29e2a4d859e45e5c"
+    },
+    "artifacts": {}
+  }
+}

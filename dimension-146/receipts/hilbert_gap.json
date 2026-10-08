@@ -1,0 +1,72 @@
+{
+  "status": "PROVED_UNIFORM_INVARIANT_L2_GAP",
+  "p": 73,
+  "dimension": 146,
+  "blocks": [
+    54,
+    92
+  ],
+  "sector": "O(54)xO(92)-invariant functions ONLY",
+  "full_L2_inverse_claimed": false,
+  "shape_ball_radius_exact": "1e-46",
+  "center_parameter_window_exact": "1/4000",
+  "normalized_domain_gap_exact": "1/5000",
+  "coefficient_neumann_margin": "[0.331983687081466877105439352608 +/- 4.35e-31]",
+  "radial_dilation_error": "[1.00017202542078923428975730289e-46 +/- 2.99e-77]",
+  "physical_gap_lower": "[9.00554109896784432025366467615e-9 +/- 1.12e-39]",
+  "physical_L2_Dirichlet_inverse_upper": "[111042744.573628496293941982989 +/- 4.72e-22]",
+  "operator": "Delta+1 with zero Dirichlet trace on R*Phi_f(B), invariant sector, for every f in the stated E1 ball",
+  "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+  "operator_inverse_receipt_sha256": "d7cb98121e3edd4b7364450808e0d5ccb1e87e5ed2723ff47124b2a7a9b381a9",
+  "geometry_receipt_sha256": "485ed61901b17b40923ba53f5ff29fb2dce7561b986fb354750787e78b8f1dba",
+  "moments_receipt_sha256": "47f08db4b7da32715c25e49da2f2a5f08966042dfc6f735d0e9a83690f417179",
+  "script_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+  "elapsed_s": 0.0072002410888671875,
+  "a": 54,
+  "_hardening": {
+    "format": 1,
+    "phase": "hilbert",
+    "role": "hilbert",
+    "arguments": [
+      "--inverse",
+      "operator_inverse.json",
+      "--geometry",
+      "geometry.json",
+      "--moments",
+      "center_moments.json",
+      "--radius",
+      "1e-46",
+      "--output",
+      "hilbert_gap.json"
+    ],
+    "source_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+    "proof_sha256": "332a44a90a063de12f059efa891638cc528e354fc600f4230303c1e1e7478d3e",
+    "parameters": {
+      "p": 73,
+      "a": 54,
+      "b": 92
+    },
+    "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+    "environment": {
+      "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+      "implementation": "CPython",
+      "executable": "/usr/bin/python",
+      "optimization": 0,
+      "zlib": "1.3",
+      "zlib_runtime": "1.3",
+      "python-flint": "0.9.0",
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "sympy": "1.13.1",
+      "mpmath": "1.3.0"
+    },
+    "invocation_id": "d56167e6b6ec668cecb7c887883f2580",
+    "inputs": {},
+    "receipts": {
+      "operator_inverse.json": "d7cb98121e3edd4b7364450808e0d5ccb1e87e5ed2723ff47124b2a7a9b381a9",
+      "geometry.json": "485ed61901b17b40923ba53f5ff29fb2dce7561b986fb354750787e78b8f1dba",
+      "center_moments.json": "47f08db4b7da32715c25e49da2f2a5f08966042dfc6f735d0e9a83690f417179"
+    },
+    "artifacts": {}
+  }
+}

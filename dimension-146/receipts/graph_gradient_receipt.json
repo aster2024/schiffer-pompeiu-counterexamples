@@ -1,0 +1,82 @@
+{
+  "status": "FLOAT_COMPONENT_ONLY",
+  "array_sha256": "d6b29c9db6ac0d00eab982f5771ed8526cceeaf20b3e5db9dae947cb50ea81b0",
+  "content_sha256": "9fcc2fda32266f18acfb5fc71c3793e2e02b20af2eeef64d360283152d6811fb",
+  "contract": {
+    "p": 73,
+    "a": 54,
+    "J": 90,
+    "N": 214,
+    "head_J": 48,
+    "head_N": 128,
+    "shape_J": 16,
+    "components_sha256": "36faf0a51f121700b445566c79128e5d047a87c1d02c475d14733da59d0ceb45",
+    "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+    "script_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c"
+  },
+  "contract_hash": "ab72c94f633a6061a2a008b65422817d3369c3c3bd93bce468d9c002d08ee9ee",
+  "shape": [
+    19474,
+    19474
+  ],
+  "nnz": 17978740,
+  "seconds": 370.68211603164673,
+  "p": 73,
+  "a": 54,
+  "blocks": [
+    54,
+    92
+  ],
+  "script_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+  "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+  "_hardening": {
+    "format": 1,
+    "phase": "build",
+    "role": "build_artifact",
+    "arguments": [
+      "--components",
+      "q16_components.json",
+      "--center",
+      "center.json",
+      "--head-J",
+      "48",
+      "--head-N",
+      "128",
+      "--prefix",
+      "graph",
+      "--stage",
+      "gradient"
+    ],
+    "source_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+    "proof_sha256": "332a44a90a063de12f059efa891638cc528e354fc600f4230303c1e1e7478d3e",
+    "parameters": {
+      "p": 73,
+      "a": 54,
+      "b": 92
+    },
+    "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+    "environment": {
+      "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+      "implementation": "CPython",
+      "executable": "/usr/bin/python",
+      "optimization": 0,
+      "zlib": "1.3",
+      "zlib_runtime": "1.3",
+      "python-flint": "0.9.0",
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "sympy": "1.13.1",
+      "mpmath": "1.3.0"
+    },
+    "invocation_id": "df14876e778d7dc6b90e44e95f23d72c",
+    "inputs": {
+      "center.json": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1"
+    },
+    "receipts": {
+      "q16_components.json": "36faf0a51f121700b445566c79128e5d047a87c1d02c475d14733da59d0ceb45"
+    },
+    "artifacts": {
+      "graph_gradient.npz": "d6b29c9db6ac0d00eab982f5771ed8526cceeaf20b3e5db9dae947cb50ea81b0"
+    }
+  }
+}

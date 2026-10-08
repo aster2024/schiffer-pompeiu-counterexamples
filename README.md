@@ -31,6 +31,11 @@ For n = 2 the domain is strictly convex; it is the first convex planar counterex
 
 The dimensions are n = 2p for the sufficiently large integers and half-integers p close to a zero in the order of J_p(2·sqrt((p+1)(p+2))); the precise families are in the [README](infinitely-many-dimensions/README.md) of that directory. The proofs in this paper are analytic.
 
+## Further certified dimensions
+
+- [`dimension-19/`](dimension-19/): a convex counterexample in ℝ¹⁹ (verifier, centre, receipts and the proof of the one bound that differs from the paper). With the paper this covers every dimension from 2 to 21.
+- [`dimension-146/`](dimension-146/): a computer-assisted certificate for a strictly convex non-ball domain in ℝ¹⁴⁶ invariant under O(54) × O(92), in the two-block setting of the second paper (verifier, centre, analytic proof and receipts).
+
 ## Contents
 
 | Path | Description |
@@ -46,6 +51,7 @@ The dimensions are n = 2p for the sufficiently large integers and half-integers 
 | `verification/berenstein/`, `verification/diagnostics/berenstein/` | The convex planar domain for Berenstein's problem: `verify_berenstein_planar_convex_v3.py`, centre and receipt; numerical diagnostics. |
 | `SHA256SUMS`, `verification/**/SHA256SUMS` | Checksums. |
 | `infinitely-many-dimensions/` | The second paper (114 pages): PDF, LaTeX source and checksums. |
+| `dimension-19/`, `dimension-146/` | Verifiers, centres, proofs and receipts for dimensions 19 and 146. |
 
 The directory `verification/` is identical to the ancillary directory `anc/` of the arXiv submission. The repository was previously named `schiffer-pompeiu-r4`; its first releases contained only the four- and six-dimensional results, and release 3.0 the dimensions 3, 4, 6, 8, 10 and 14.
 

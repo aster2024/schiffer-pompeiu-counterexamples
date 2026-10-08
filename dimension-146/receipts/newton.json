@@ -1,0 +1,81 @@
+{
+  "status": "PROVED_CONDITIONAL_SCALAR_GATES_ONLY",
+  "schiffer_existence": "NOT_PROVED",
+  "assumptions": {
+    "infinite_J_D_inverse_C": "1e7",
+    "infinite_J_D_inverse_C2": "1e11",
+    "analytic_operator_constants": "K<=3/[p(p+1)], EK<=4/p, E(E+1)K<=9, grad H grad K<=16 E1/p, grad H grad EK<=14 E1, O5 constant 200 and grouped O9 constants 400/1600; see derivation ledger. These inequalities are not established by this scalar script.",
+    "center_moments": "Require independent valid interval replay of the exact moments input and the clamping lemmas."
+  },
+  "p": 73,
+  "chosen_radius_exact": "1e-46",
+  "bounds": {
+    "E0": "[5.59550523117825931688015459335e-68 +/- 2.97e-98]",
+    "E1": "[1.39936442212190226641278669771e-64 +/- 4.04e-94]",
+    "E2": "[6.91361826213963161194902001080e-61 +/- 2.98e-92]",
+    "G0": "[222085489147.256992587883965977 +/- 5.79e-20]",
+    "G2": "[2220854891472569.92587883965977 +/- 5.79e-16]",
+    "Delta_f0": "[164950063193938249.171376104433 +/- 3.29e-13]",
+    "Q0_inverse": "[5855730988627.55446909909568221 +/- 4.49e-18]",
+    "alpha": "[58557309886275544690.9909568221 +/- 2.29e-11]",
+    "Y": "[3.27657733792381211484481179127e-48 +/- 4.31e-78]",
+    "Z0": "[3.00688941885590416443327136963e-39 +/- 2.41e-69]",
+    "L": "[75326511250830800.0635031240481 +/- 3.97e-14]",
+    "radius": "[1.00000000000000000000000000000e-46 +/- 3e-80]",
+    "radii_polynomial": "[-9.67234226400215985753205859360e-47 +/- 4.49e-77]",
+    "contraction": "[4.41091786196692045453789791889e-10 +/- 4.67e-40]"
+  },
+  "moments_sha256": "47f08db4b7da32715c25e49da2f2a5f08966042dfc6f735d0e9a83690f417179",
+  "script_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+  "elapsed_s": 0.0034279823303222656,
+  "a": 54,
+  "blocks": [
+    54,
+    92
+  ],
+  "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+  "_hardening": {
+    "format": 1,
+    "phase": "newton",
+    "role": "newton",
+    "arguments": [
+      "--moments",
+      "center_moments.json",
+      "--B0",
+      "1e7",
+      "--B2",
+      "1e11",
+      "--radius",
+      "1e-46",
+      "--output",
+      "newton.json"
+    ],
+    "source_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+    "proof_sha256": "332a44a90a063de12f059efa891638cc528e354fc600f4230303c1e1e7478d3e",
+    "parameters": {
+      "p": 73,
+      "a": 54,
+      "b": 92
+    },
+    "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+    "environment": {
+      "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+      "implementation": "CPython",
+      "executable": "/usr/bin/python",
+      "optimization": 0,
+      "zlib": "1.3",
+      "zlib_runtime": "1.3",
+      "python-flint": "0.9.0",
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "sympy": "1.13.1",
+      "mpmath": "1.3.0"
+    },
+    "invocation_id": "b29d6b55f107ddbb54a4c9cfbb3ad678",
+    "inputs": {},
+    "receipts": {
+      "center_moments.json": "47f08db4b7da32715c25e49da2f2a5f08966042dfc6f735d0e9a83690f417179"
+    },
+    "artifacts": {}
+  }
+}

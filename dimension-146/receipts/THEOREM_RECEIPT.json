@@ -1,0 +1,218 @@
+{
+  "status": "PROVED_INF3_N146",
+  "theorem": "A bounded real-analytic strictly convex nonball O(54)xO(92)-invariant domain in R^146 carries a nonconstant real u satisfying (Delta+1)u=0, u=1 and partial_nu u=0 on the boundary.",
+  "p": 73,
+  "dimension": 146,
+  "blocks": [
+    54,
+    92
+  ],
+  "existence_radius_exact": "1e-46",
+  "existence_norm": "C x E1 sum norm, rho=2, Omega(D)=(1+D/73^2)^73",
+  "root_interval": [
+    "298050659551195754496447576409986078622894251520083163115137299218859158324004059003881468607517374378654964482712547382962242042640896329535919051855116209314630358449628996665469497899906766610689088863026487219187400579699932424727974369115109039842487917304702420243129157163990981413286601377134754437509184875721542837802348084857673806296161539365022270230920798333427721633108086962638973468185287848160103/2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "298050659551195754496447576409986078622894251520083163115137299218859158324004059003881468607517374378654964482712547382962242042640896329535919051855116209314630358449628996665469497899906766610689088863026487219187400579699932424727974369115109039842487917304702420243129157163990981413286601377134754437509184875721542837802348084857673806296161539365022270230920798333427721633108086962638973468185287852160103/2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "uniform_invariant_L2_gap": {
+    "status": "PROVED_UNIFORM_INVARIANT_L2_GAP",
+    "p": 73,
+    "dimension": 146,
+    "blocks": [
+      54,
+      92
+    ],
+    "sector": "O(54)xO(92)-invariant functions ONLY",
+    "full_L2_inverse_claimed": false,
+    "shape_ball_radius_exact": "1e-46",
+    "center_parameter_window_exact": "1/4000",
+    "normalized_domain_gap_exact": "1/5000",
+    "coefficient_neumann_margin": "[0.331983687081466877105439352608 +/- 4.35e-31]",
+    "radial_dilation_error": "[1.00017202542078923428975730289e-46 +/- 2.99e-77]",
+    "physical_gap_lower": "[9.00554109896784432025366467615e-9 +/- 1.12e-39]",
+    "physical_L2_Dirichlet_inverse_upper": "[111042744.573628496293941982989 +/- 4.72e-22]",
+    "operator": "Delta+1 with zero Dirichlet trace on R*Phi_f(B), invariant sector, for every f in the stated E1 ball",
+    "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+    "operator_inverse_receipt_sha256": "d7cb98121e3edd4b7364450808e0d5ccb1e87e5ed2723ff47124b2a7a9b381a9",
+    "geometry_receipt_sha256": "485ed61901b17b40923ba53f5ff29fb2dce7561b986fb354750787e78b8f1dba",
+    "moments_receipt_sha256": "47f08db4b7da32715c25e49da2f2a5f08966042dfc6f735d0e9a83690f417179",
+    "script_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+    "elapsed_s": 0.0072002410888671875,
+    "a": 54,
+    "_hardening": {
+      "format": 1,
+      "phase": "hilbert",
+      "role": "hilbert",
+      "arguments": [
+        "--inverse",
+        "operator_inverse.json",
+        "--geometry",
+        "geometry.json",
+        "--moments",
+        "center_moments.json",
+        "--radius",
+        "1e-46",
+        "--output",
+        "hilbert_gap.json"
+      ],
+      "source_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+      "proof_sha256": "332a44a90a063de12f059efa891638cc528e354fc600f4230303c1e1e7478d3e",
+      "parameters": {
+        "p": 73,
+        "a": 54,
+        "b": 92
+      },
+      "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+      "environment": {
+        "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+        "implementation": "CPython",
+        "executable": "/usr/bin/python",
+        "optimization": 0,
+        "zlib": "1.3",
+        "zlib_runtime": "1.3",
+        "python-flint": "0.9.0",
+        "numpy": "1.26.4",
+        "scipy": "1.15.2",
+        "sympy": "1.13.1",
+        "mpmath": "1.3.0"
+      },
+      "invocation_id": "d56167e6b6ec668cecb7c887883f2580",
+      "inputs": {},
+      "receipts": {
+        "operator_inverse.json": "d7cb98121e3edd4b7364450808e0d5ccb1e87e5ed2723ff47124b2a7a9b381a9",
+        "geometry.json": "485ed61901b17b40923ba53f5ff29fb2dce7561b986fb354750787e78b8f1dba",
+        "center_moments.json": "47f08db4b7da32715c25e49da2f2a5f08966042dfc6f735d0e9a83690f417179"
+      },
+      "artifacts": {}
+    }
+  },
+  "newton_bounds": {
+    "E0": "[5.59550523117825931688015459335e-68 +/- 2.97e-98]",
+    "E1": "[1.39936442212190226641278669771e-64 +/- 4.04e-94]",
+    "E2": "[6.91361826213963161194902001080e-61 +/- 2.98e-92]",
+    "G0": "[222085489147.256992587883965977 +/- 5.79e-20]",
+    "G2": "[2220854891472569.92587883965977 +/- 5.79e-16]",
+    "Delta_f0": "[164950063193938249.171376104433 +/- 3.29e-13]",
+    "Q0_inverse": "[5855730988627.55446909909568221 +/- 4.49e-18]",
+    "alpha": "[58557309886275544690.9909568221 +/- 2.29e-11]",
+    "Y": "[3.27657733792381211484481179127e-48 +/- 4.31e-78]",
+    "Z0": "[3.00688941885590416443327136963e-39 +/- 2.41e-69]",
+    "L": "[75326511250830800.0635031240481 +/- 3.97e-14]",
+    "radius": "[1.00000000000000000000000000000e-46 +/- 3e-80]",
+    "radii_polynomial": "[-9.67234226400215985753205859360e-47 +/- 4.49e-77]",
+    "contraction": "[4.41091786196692045453789791889e-10 +/- 4.67e-40]"
+  },
+  "graph_inverse_bounds": {
+    "0": {
+      "head_defect": "[0.158799737319007565957194590093 +/- 5.35e-31]",
+      "angular_defect": "[0.849954642239530507388826789271 +/- 4.81e-31]",
+      "radial_defect": "[0.336824255875511790253239114618 +/- 7.08e-31]",
+      "eta": "[0.849954642239530507388826789271 +/- 4.81e-31]",
+      "core_inverse": "[2352892.17948672310106395125307 +/- 4.87e-25]",
+      "full_shape_delta": "[5.15036168994531552052253289440e-14 +/- 3.29e-44]",
+      "model_export_delta": "[1.22933158060246140939188685641e-15 +/- 4.92e-45]",
+      "total_operator_perturbation": "[5.27329484800556166146172158004e-14 +/- 4.78e-44]",
+      "perturbation_gate": "[1.24074942079999142030013548640e-7 +/- 1.13e-37]",
+      "full_cleared_inverse": "[2352892.47142172021317992324621 +/- 1.92e-24]",
+      "clearing_multiplier": "[1.01626736702248484074317743745 +/- 2.74e-30]",
+      "graph_inverse": "[2391167.83681877876016477784372 +/- 1.02e-24]"
+    },
+    "2": {
+      "head_defect": "[0.172133835388023132403846277488 +/- 6.98e-31]",
+      "angular_defect": "[0.872119253384614454973605101789 +/- 8.19e-31]",
+      "radial_defect": "[0.340346032118091389362286184509 +/- 1.70e-31]",
+      "eta": "[0.872119253384614454973605101790 +/- 1.82e-31]",
+      "core_inverse": "[7832373.37348645460057769346538 +/- 7.72e-25]",
+      "full_shape_delta": "[1.21613119445368398977665226653e-13 +/- 8.74e-44]",
+      "model_export_delta": "[1.68749344092282785870589544297e-15 +/- 1.82e-45]",
+      "total_operator_perturbation": "[1.23300612886291226836371122096e-13 +/- 5.92e-44]",
+      "perturbation_gate": "[9.65736437305148232189281807227e-7 +/- 1.66e-37]",
+      "full_cleared_inverse": "[7832380.93750211680062884937432 +/- 4.24e-24]",
+      "clearing_multiplier": "[1.01813636955564457668816345632 +/- 1.27e-30]",
+      "graph_inverse": "[7974431.89268524111968495814457 +/- 3.29e-24]"
+    }
+  },
+  "original_C2_inverse": "[42495747556.1196499268011419524 +/- 3.11e-20]",
+  "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+  "verifier_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+  "embedded_proof_sha256": "332a44a90a063de12f059efa891638cc528e354fc600f4230303c1e1e7478d3e",
+  "receipt_sha256": {
+    "center": "47f08db4b7da32715c25e49da2f2a5f08966042dfc6f735d0e9a83690f417179",
+    "geometry": "485ed61901b17b40923ba53f5ff29fb2dce7561b986fb354750787e78b8f1dba",
+    "components": "36faf0a51f121700b445566c79128e5d047a87c1d02c475d14733da59d0ceb45",
+    "products": "3a9cfe3315e5be3194ea60a68791359e6384cb7e2ac73f597bfb91f625adeb60",
+    "tails": "26bb32507316b163c73d700de76b4fb91f75f8093764f863119ab086fe126d1e",
+    "arithmetic": "91ac6f3dbdbe49550154469d9f44edf07f92db76a1acf97a29e2a4d859e45e5c",
+    "inverse": "d7cb98121e3edd4b7364450808e0d5ccb1e87e5ed2723ff47124b2a7a9b381a9",
+    "newton": "f19fc8bdfe7ee47ecd8d58cd5849de230aa243432a5566a8ca1990b6b2626a65",
+    "identities": "ac9cf86351ccf31d70d87a3825aad95a4395fd670978734fa20ec1dc353c44c2",
+    "window": "b929f0da5fda935d9aca359598c14dcf2027b26f1ee24f8bdfed28620de2a3f3",
+    "ball_inverse": "048c764025015f9a47e15c22ad3121cd4c676e1f94bf83ad225e98f730f43df1",
+    "hilbert": "550159f41936a936b1302f1632bf07bf4a6d80460004bb7336de364a6e328fbd"
+  },
+  "trust_boundary": "Local computer-assisted proof using Arb, exact identities, the explicit IEEE binary64 error model and the embedded analytic lemmas/classical facts; not formal proof-assistant or community verification.",
+  "a": 54,
+  "script_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+  "_hardening": {
+    "format": 1,
+    "phase": "final",
+    "role": "final",
+    "arguments": [
+      "--output",
+      "THEOREM_RECEIPT.json"
+    ],
+    "source_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+    "proof_sha256": "332a44a90a063de12f059efa891638cc528e354fc600f4230303c1e1e7478d3e",
+    "parameters": {
+      "p": 73,
+      "a": 54,
+      "b": 92
+    },
+    "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+    "environment": {
+      "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+      "implementation": "CPython",
+      "executable": "/usr/bin/python",
+      "optimization": 0,
+      "zlib": "1.3",
+      "zlib_runtime": "1.3",
+      "python-flint": "0.9.0",
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "sympy": "1.13.1",
+      "mpmath": "1.3.0"
+    },
+    "invocation_id": "eb535cd20463d019d025291ab6f0d772",
+    "inputs": {
+      "center.json": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+      "preconditioner.npy": "b55f5134707cffa0c5fba5cfa5583284d71e2ca9b56e43bc17114eedc07f411e",
+      "graph_matrix.npz": "8f1445ab55ce21e20554bdb9968848dc6f8e8b04cd2d1d5e2299421d857241ea"
+    },
+    "receipts": {
+      "center_moments.json": "47f08db4b7da32715c25e49da2f2a5f08966042dfc6f735d0e9a83690f417179",
+      "geometry.json": "485ed61901b17b40923ba53f5ff29fb2dce7561b986fb354750787e78b8f1dba",
+      "q16_components.json": "36faf0a51f121700b445566c79128e5d047a87c1d02c475d14733da59d0ceb45",
+      "products.json": "3a9cfe3315e5be3194ea60a68791359e6384cb7e2ac73f597bfb91f625adeb60",
+      "tails.json": "26bb32507316b163c73d700de76b4fb91f75f8093764f863119ab086fe126d1e",
+      "arithmetic.json": "91ac6f3dbdbe49550154469d9f44edf07f92db76a1acf97a29e2a4d859e45e5c",
+      "operator_inverse.json": "d7cb98121e3edd4b7364450808e0d5ccb1e87e5ed2723ff47124b2a7a9b381a9",
+      "newton.json": "f19fc8bdfe7ee47ecd8d58cd5849de230aa243432a5566a8ca1990b6b2626a65",
+      "identities.json": "ac9cf86351ccf31d70d87a3825aad95a4395fd670978734fa20ec1dc353c44c2",
+      "ball_window.json": "b929f0da5fda935d9aca359598c14dcf2027b26f1ee24f8bdfed28620de2a3f3",
+      "ball_inverse.json": "048c764025015f9a47e15c22ad3121cd4c676e1f94bf83ad225e98f730f43df1",
+      "hilbert_gap.json": "550159f41936a936b1302f1632bf07bf4a6d80460004bb7336de364a6e328fbd",
+      "graph_build.json": "ef3e4a8981b02cca3b678c22989894d1bf293046c326b00bc42e3ed4f3b7aae1",
+      "graph_matrix_receipt.json": "0a340d6a4d48c18d961db75a47b3df4869d234342282cf2ef34801db5966b6ae",
+      "graph_mass_receipt.json": "8ba3523fccbd6083e355859578a13e10d2446ffc7e2712373bf2511359087548",
+      "graph_poisson_receipt.json": "94e3ee9d3c4c3af531120640b6e2add73007216adc3b357036c3f98e50f69ce1",
+      "graph_euler_receipt.json": "8d32d4c9dbd164763e016a7bcf90263ed22aa5103fc02a58540e85ab0c14e747",
+      "graph_euler2_receipt.json": "b670ba5fe0c6398d0fce6350c950e6577a36f8d127cd319d99ebb1bb8af64f18",
+      "graph_gradient_receipt.json": "cd8ebc587bfac04c695d3224e760d15625cfcccc3dd6a21d12602f6e6b5ff952",
+      "graph_mass_raw_receipt.json": "983172cd725d8255b6b346e86537dd7db45a3bc2b29daf8c686971e460ba6816",
+      "graph_d4_raw_receipt.json": "dc74cf3b80777a39c609666ce188ad2a5fdfa6393bb67c8de543d3b822189c8c",
+      "graph_d3_raw_receipt.json": "8da4af4f089c53df2dd8f6f4bb7f282d51330ad9381e9f214ed08d34cf329b41",
+      "graph_md2_raw_receipt.json": "e2671b50bae796d231dc1d8ca124c5e3f2b5f729d1f0eca1add5aecd378d7892",
+      "graph_P_raw_receipt.json": "d99d0ad4e51d15cd066b0fd35eab4c540082d16efed664f7fefa164f38494c48"
+    },
+    "artifacts": {}
+  }
+}

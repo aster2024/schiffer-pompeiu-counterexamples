@@ -1,0 +1,84 @@
+{
+  "status": "FLOAT_COMPONENT_ONLY",
+  "array_sha256": "b220794728f6aac7079a6840c97bcc8ff25ceaed7b784521d478a71e7252cab8",
+  "content_sha256": "a7c7de1cc2f588cd6806a62a3d6917c7f032b71f57a1e431ff8108dec284f0a3",
+  "contract": {
+    "p": 73,
+    "a": 54,
+    "J": 90,
+    "N": 214,
+    "head_J": 48,
+    "head_N": 128,
+    "shape_J": 16,
+    "components_sha256": "36faf0a51f121700b445566c79128e5d047a87c1d02c475d14733da59d0ceb45",
+    "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+    "script_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c"
+  },
+  "contract_hash": "ab72c94f633a6061a2a008b65422817d3369c3c3bd93bce468d9c002d08ee9ee",
+  "shape": [
+    6272,
+    19474
+  ],
+  "nnz": 12870693,
+  "seconds": 267.0798828601837,
+  "p": 73,
+  "a": 54,
+  "blocks": [
+    54,
+    92
+  ],
+  "script_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+  "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+  "_hardening": {
+    "format": 1,
+    "phase": "build",
+    "role": "build_artifact",
+    "arguments": [
+      "--components",
+      "q16_components.json",
+      "--center",
+      "center.json",
+      "--head-J",
+      "48",
+      "--head-N",
+      "128",
+      "--prefix",
+      "graph",
+      "--stage",
+      "md2"
+    ],
+    "source_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+    "proof_sha256": "332a44a90a063de12f059efa891638cc528e354fc600f4230303c1e1e7478d3e",
+    "parameters": {
+      "p": 73,
+      "a": 54,
+      "b": 92
+    },
+    "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+    "environment": {
+      "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+      "implementation": "CPython",
+      "executable": "/usr/bin/python",
+      "optimization": 0,
+      "zlib": "1.3",
+      "zlib_runtime": "1.3",
+      "python-flint": "0.9.0",
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "sympy": "1.13.1",
+      "mpmath": "1.3.0"
+    },
+    "invocation_id": "fcd844e8c6c8721ee94c9e285c512ebb",
+    "inputs": {
+      "center.json": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+      "graph_euler2.npz": "7210896e82d23ea6ea490af3fe2be3efd0caa487e7e0910e71d1cc040d9509e0"
+    },
+    "receipts": {
+      "q16_components.json": "36faf0a51f121700b445566c79128e5d047a87c1d02c475d14733da59d0ceb45",
+      "graph_euler2_receipt.json": "b670ba5fe0c6398d0fce6350c950e6577a36f8d127cd319d99ebb1bb8af64f18"
+    },
+    "artifacts": {
+      "graph_md2_raw.npz": "b220794728f6aac7079a6840c97bcc8ff25ceaed7b784521d478a71e7252cab8"
+    }
+  }
+}

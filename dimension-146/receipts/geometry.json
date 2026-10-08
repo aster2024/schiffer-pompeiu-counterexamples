@@ -1,0 +1,63 @@
+{
+  "status": "PROVED_WHOLE_E1_GEOMETRY_BALL",
+  "p": 73,
+  "dimension": 146,
+  "blocks": [
+    54,
+    92
+  ],
+  "E1_radius": "1e-8",
+  "E1_center_norm": "[0.00220320092324356503603399611973 +/- 4.16e-34]",
+  "C2_embedding": "[1.26226547971803426224979226321 +/- 1.78e-30]",
+  "minimum_radius_lower": "[0.999828004166866334523971554867 +/- 3.68e-32]",
+  "hessian_upper": "[0.00276664093185045930046385227413 +/- 3.26e-33]",
+  "chart_lipschitz_perturbation_upper": "[0.00881284369297426014413598447892 +/- 1.67e-33]",
+  "nonball_j2_coefficient_lower": "[0.000171628979293302873045499803966 +/- 3.48e-34]",
+  "scope": "Every shape in this E1 ball defines an analytic strictly convex nonball domain and injective radial harmonic chart. No PDE zero is asserted.",
+  "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+  "script_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+  "elapsed_s": 0.009879589080810547,
+  "a": 54,
+  "_hardening": {
+    "format": 1,
+    "phase": "geometry",
+    "role": "geometry",
+    "arguments": [
+      "--center",
+      "center.json",
+      "--radius",
+      "1e-8",
+      "--bits",
+      "4096",
+      "--output",
+      "geometry.json"
+    ],
+    "source_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+    "proof_sha256": "332a44a90a063de12f059efa891638cc528e354fc600f4230303c1e1e7478d3e",
+    "parameters": {
+      "p": 73,
+      "a": 54,
+      "b": 92
+    },
+    "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+    "environment": {
+      "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+      "implementation": "CPython",
+      "executable": "/usr/bin/python",
+      "optimization": 0,
+      "zlib": "1.3",
+      "zlib_runtime": "1.3",
+      "python-flint": "0.9.0",
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "sympy": "1.13.1",
+      "mpmath": "1.3.0"
+    },
+    "invocation_id": "4667787716855e002ce9289a02fd1dd3",
+    "inputs": {
+      "center.json": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1"
+    },
+    "receipts": {},
+    "artifacts": {}
+  }
+}

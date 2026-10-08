@@ -1,0 +1,69 @@
+{
+  "status": "PROVED_ASSEMBLY_ERROR_BUDGET_GIVEN_RECIPE",
+  "scope": "Frozen table builder only, using the operation-count and absolute-majorant proof in FINITE_ARITHMETIC.md. This receipt alone does not prove an inverse.",
+  "p": 73,
+  "dimension_work": 19474,
+  "max_polynomial_degree": 52,
+  "max_terms": 215,
+  "binary64_path_operation_bound": 166000,
+  "gamma": "[3.68594044189138128361315367278e-11 +/- 1.24e-42]",
+  "integer_expression_upper": 12782579220000,
+  "moment": "k=0 or (1+D/p)^2",
+  "bounds": {
+    "0": {
+      "absolute_computation_majorant": "[5.41017265868496518181360286268 +/- 4.23e-30]",
+      "matrix_error_bound": "[1.99503163973233876335471541962e-10 +/- 1.25e-41]"
+    },
+    "2": {
+      "absolute_computation_majorant": "[5.66696533980710086061497002302 +/- 4.24e-30]",
+      "matrix_error_bound": "[2.08972538723556235031178786311e-10 +/- 4.36e-40]"
+    }
+  },
+  "components_sha256": "36faf0a51f121700b445566c79128e5d047a87c1d02c475d14733da59d0ceb45",
+  "script_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+  "elapsed_s": 0.07016444206237793,
+  "a": 54,
+  "blocks": [
+    54,
+    92
+  ],
+  "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+  "_hardening": {
+    "format": 1,
+    "phase": "arithmetic",
+    "role": "arithmetic",
+    "arguments": [
+      "--components",
+      "q16_components.json",
+      "--output",
+      "arithmetic.json"
+    ],
+    "source_sha256": "3abd4552628cd60d084490667887eb9e862d63b457bea42f8ba46022ca94f78c",
+    "proof_sha256": "332a44a90a063de12f059efa891638cc528e354fc600f4230303c1e1e7478d3e",
+    "parameters": {
+      "p": 73,
+      "a": 54,
+      "b": 92
+    },
+    "center_sha256": "9437d79159eb43568d75416a0342d2e56e50cef35a471553479ad0b8d914ecb1",
+    "environment": {
+      "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+      "implementation": "CPython",
+      "executable": "/usr/bin/python",
+      "optimization": 0,
+      "zlib": "1.3",
+      "zlib_runtime": "1.3",
+      "python-flint": "0.9.0",
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "sympy": "1.13.1",
+      "mpmath": "1.3.0"
+    },
+    "invocation_id": "184ace451f0c99a8c40d3c527d271f61",
+    "inputs": {},
+    "receipts": {
+      "q16_components.json": "36faf0a51f121700b445566c79128e5d047a87c1d02c475d14733da59d0ceb45"
+    },
+    "artifacts": {}
+  }
+}

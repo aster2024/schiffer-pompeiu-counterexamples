@@ -1,0 +1,299 @@
+[
+  {
+    "name": "uncertain spectral sign",
+    "reason": "uncertain or zero sign",
+    "status": "REJECTED"
+  },
+  {
+    "name": "nonfinite boundary sample",
+    "reason": "finite boundary samples",
+    "status": "REJECTED"
+  },
+  {
+    "name": "missing scale",
+    "reason": "exact center schema",
+    "status": "REJECTED"
+  },
+  {
+    "name": "numeric coefficient",
+    "reason": "exact coefficient decimals",
+    "status": "REJECTED"
+  },
+  {
+    "name": "NaN coefficient",
+    "reason": "exact coefficient decimals",
+    "status": "REJECTED"
+  },
+  {
+    "name": "interval coefficient",
+    "reason": "exact coefficient decimals",
+    "status": "REJECTED"
+  },
+  {
+    "name": "zero scale",
+    "reason": "positive normalization divisors",
+    "status": "REJECTED"
+  },
+  {
+    "name": "negative scale",
+    "reason": "positive normalization divisors",
+    "status": "REJECTED"
+  },
+  {
+    "name": "wrong dimension",
+    "reason": "supported integer dimension",
+    "status": "REJECTED"
+  },
+  {
+    "name": "float dimension",
+    "reason": "supported integer dimension",
+    "status": "REJECTED"
+  },
+  {
+    "name": "negative frequency",
+    "reason": "frequency range",
+    "status": "REJECTED"
+  },
+  {
+    "name": "zero b",
+    "reason": "positive central derivative",
+    "status": "REJECTED"
+  },
+  {
+    "name": "length mismatch",
+    "reason": "center length binding",
+    "status": "REJECTED"
+  },
+  {
+    "name": "singular congruence",
+    "reason": "congruence nonsingularity",
+    "status": "REJECTED"
+  },
+  {
+    "name": "finite defect one",
+    "reason": "Schur gate",
+    "status": "REJECTED"
+  },
+  {
+    "name": "complement trace one",
+    "reason": "Schur gate",
+    "status": "REJECTED"
+  },
+  {
+    "name": "zero complement gap",
+    "reason": "complement gap",
+    "status": "REJECTED"
+  },
+  {
+    "name": "zero diagonal",
+    "reason": "nonzero finite diagonal",
+    "status": "REJECTED"
+  },
+  {
+    "name": "negative potential norm",
+    "reason": "nonnegative Schur bounds",
+    "status": "REJECTED"
+  },
+  {
+    "name": "excessive potential transfer",
+    "reason": "full potential transfer",
+    "status": "REJECTED"
+  },
+  {
+    "name": "nonfinite Schur",
+    "reason": "finite Schur inputs",
+    "status": "REJECTED"
+  },
+  {
+    "name": "inexact angular quadrature",
+    "reason": "angular polynomial exactness",
+    "status": "REJECTED"
+  },
+  {
+    "name": "invalid quadrature domain",
+    "reason": "quadrature integer domain",
+    "status": "REJECTED"
+  },
+  {
+    "name": "deleted spectral root",
+    "reason": "independent cell/root bijection",
+    "status": "REJECTED"
+  },
+  {
+    "name": "compensated spectral omission duplication",
+    "reason": "independent cell/root bijection",
+    "status": "REJECTED"
+  },
+  {
+    "name": "boundary mode coverage",
+    "reason": "boundary mode/grid coverage",
+    "status": "REJECTED"
+  },
+  {
+    "name": "boundary analytic radius ordering",
+    "reason": "ordered analytic radii",
+    "status": "REJECTED"
+  },
+  {
+    "name": "complex branch separation",
+    "reason": "complex radial square-root separation",
+    "status": "REJECTED"
+  },
+  {
+    "name": "zero polydisc radius",
+    "reason": "polydisc parameters",
+    "status": "REJECTED"
+  },
+  {
+    "name": "analytic radius at one",
+    "reason": "analytic radius exceeds one",
+    "status": "REJECTED"
+  },
+  {
+    "name": "invalid L2 inverse",
+    "reason": "positive L2 inverse bound",
+    "status": "REJECTED"
+  },
+  {
+    "name": "negative high-mode potential norm",
+    "reason": "potential bounds for norm transfer",
+    "status": "REJECTED"
+  },
+  {
+    "name": "inner radial split outside ball",
+    "reason": "inner splitting radius",
+    "status": "REJECTED"
+  },
+  {
+    "name": "Gegenbauer reciprocal",
+    "reason": "Gegenbauer Q reciprocal",
+    "status": "REJECTED"
+  },
+  {
+    "name": "zero radius",
+    "reason": "positive radius",
+    "status": "REJECTED"
+  },
+  {
+    "name": "zero shape weight",
+    "reason": "positive shape norm weight",
+    "status": "REJECTED"
+  },
+  {
+    "name": "nonfinite inverse",
+    "reason": "all scalar fields finite",
+    "status": "REJECTED"
+  },
+  {
+    "name": "negative Taylor norm",
+    "reason": "nonnegative norm bounds",
+    "status": "REJECTED"
+  },
+  {
+    "name": "missing quartic constant",
+    "reason": "all scalar fields present",
+    "status": "REJECTED"
+  },
+  {
+    "name": "radii polynomial failure",
+    "reason": "radii polynomial",
+    "status": "REJECTED"
+  },
+  {
+    "name": "contraction margin failure",
+    "reason": "strong contraction",
+    "status": "REJECTED"
+  },
+  {
+    "name": "quadratic margin failure",
+    "reason": "many-orders quadratic margin",
+    "status": "REJECTED"
+  },
+  {
+    "name": "analytic_univalence",
+    "reason": "analytic_univalence",
+    "status": "REJECTED"
+  },
+  {
+    "name": "meridian_tangent",
+    "reason": "meridian_tangent",
+    "status": "REJECTED"
+  },
+  {
+    "name": "meridian_convexity_numerator",
+    "reason": "meridian_convexity_numerator",
+    "status": "REJECTED"
+  },
+  {
+    "name": "transverse_curvature_numerator",
+    "reason": "transverse_curvature_numerator",
+    "status": "REJECTED"
+  },
+  {
+    "name": "nonball_c3",
+    "reason": "nonball_c3",
+    "status": "REJECTED"
+  },
+  {
+    "name": "actual residual destroys Hessian divisor",
+    "reason": "boundary Hessian reciprocal",
+    "status": "REJECTED"
+  },
+  {
+    "name": "holomorphic reciprocal",
+    "reason": "holomorphic p and raw Q reciprocal",
+    "status": "REJECTED"
+  },
+  {
+    "name": "inverse shape weight",
+    "reason": "positive shape norm weight",
+    "status": "REJECTED"
+  },
+  {
+    "b": "[0.99002271067202367014525094550108891665877438799085936182513622123693333994274786 +/- 2.72e-81]",
+    "name": "radial actual q >= b",
+    "q_radial": "[47.449407712150007706626174899455381935613174031241968219081651828809516518499690 +/- 3.45e-79]",
+    "reason": "Gegenbauer Q reciprocal",
+    "status": "REJECTED"
+  },
+  {
+    "name": "sampled maximum configured as Q bound",
+    "reason": "certified radial Q method",
+    "status": "REJECTED"
+  },
+  {
+    "name": "sampled maximum supplied as polynomial bound",
+    "reason": "supremum method must certify the entire interval",
+    "status": "REJECTED"
+  },
+  {
+    "name": "relabelled sampled endpoint maximum",
+    "reason": "proposed supremum must dominate the certified Bernstein envelope",
+    "status": "REJECTED"
+  },
+  {
+    "name": "radial truncated coefficient list",
+    "reason": "radial complete coefficient list",
+    "status": "REJECTED"
+  },
+  {
+    "name": "radial wrong signed connection",
+    "reason": "exact signed U-to-Gegenbauer identity",
+    "status": "REJECTED"
+  },
+  {
+    "name": "radial mismatched center hash",
+    "reason": "radial center file hash binding",
+    "status": "REJECTED"
+  },
+  {
+    "name": "second interval zero radius",
+    "reason": "second interval: radius",
+    "status": "REJECTED"
+  },
+  {
+    "name": "second interval zero sigma",
+    "reason": "second interval: shape weight",
+    "status": "REJECTED"
+  }
+]

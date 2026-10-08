@@ -27,8 +27,8 @@ four. Define $\mathcal P_{\mathrm{bd}}$ to consist of all positive
 $p\in\tfrac12\Z$ with $|p-\widehat p_m|<31/(10\widehat p_m)$
 for some $m\ge m_0$. The detuning is \eqref{inf:detuning-definition}
 at the Neumann zero continued from the nearby crossing.
-For every constructed domain the frequency-one
-Schiffer data mean a nonconstant classical solution of
+A domain carries the frequency-one Schiffer data
+\eqref{inf:main-equations} if it admits a classical solution $u$ of
 \begin{equation}\label{inf:main-equations}
  \Delta u+u=0\quad\hbox{in }\Omega,\qquad
  u=1,\quad\nabla u=0\quad\hbox{on }\partial\Omega.
@@ -42,12 +42,15 @@ invariant under $O(a)\times O(2p-a)$ and carrying
 There are infinitely many such inputs in each of $\Z$ and $\Z+1/2$.
 
 For every fixed positive integer $L_{\mathrm{ap}}$ and integer
-$b_{\mathrm{ap}}$, there is also an unbounded selection
-$n\equiv b_{\mathrm{ap}}\pmod{4L_{\mathrm{ap}}}$ with
-$|n/2-\widehat p_m|<32L_{\mathrm{ap}}^2/\widehat p_m$ and
-$0<|\theta|<256L_{\mathrm{ap}}^2$, whose sufficiently large members
-have the same domain conclusion. The threshold may depend on the
-fixed modulus and residue. Hence every residue modulo
+$b_{\mathrm{ap}}$, there is also an unbounded sequence of dimensions
+$(n_k)$, indexed by the continued-fraction convergent index $k$.
+Its sufficiently large terms $n=n_k$ satisfy
+$n\equiv b_{\mathrm{ap}}\pmod{4L_{\mathrm{ap}}}$,
+$|n/2-\widehat p_m|<32L_{\mathrm{ap}}^2/\widehat p_m$ for some
+$m=m_k\ge m_0$, and $0<|\theta|<256L_{\mathrm{ap}}^2$,
+and have the same domain conclusion. The starting index and thresholds
+may depend on $L_{\mathrm{ap}},b_{\mathrm{ap}}$ and, for the split-counting
+conclusion below, on the fixed $\varepsilon_{\mathrm{sp}},\eta_{\mathrm{cnt}}$. Hence every residue modulo
 $L_{\mathrm{ap}}$ contains infinitely many such dimensions.
 For even $L_{\mathrm{ap}}$ a residue modulo $L_{\mathrm{ap}}$ permits
 only its compatible parity; for odd $L_{\mathrm{ap}}$ each residue
@@ -58,17 +61,23 @@ $0<\varepsilon_{\mathrm{sp}}<1/4$ and $0<\eta_{\mathrm{cnt}}<1/3$.
 For every sufficiently large member $n=2p$, all but
 $O(n^{2/3+\eta_{\mathrm{cnt}}})$ integer splits
 $\varepsilon_{\mathrm{sp}}n\le a\le(1/2-\varepsilon_{\mathrm{sp}})n$
-give such domains, pairwise non-similar for distinct retained splits.
+give such domains, pairwise non-similar for distinct retained splits,
+where retained means not among the excluded splits.
 The constant and threshold may depend on the family and these fixed
 parameters. Let $\mathcal N_{\mathrm{sim}}(n)$ be the number of
-integer splits $0<a<n/2$ for which the construction on some fixed
-compact interior interval gives a domain. Choosing one domain at
+integer splits $0<a<n/2$ for which there exists a bounded strictly
+convex non-ball domain in $\R^n$ with real-analytic boundary,
+invariant under $O(a)\times O(n-a)$ and carrying
+\eqref{inf:main-equations}. Choosing one domain at
 each such split gives this many similarity classes, independently
 of the choices.
 Then along each family's dimensions
 \[
  \liminf_{n\to\infty}\mathcal N_{\mathrm{sim}}(n)/n\ge1/2.
 \]
+Since $\mathcal N_{\mathrm{sim}}(n)\le n/2$, this ratio tends to
+$1/2$; the number of interior integer splits carrying no such domain
+is $o(n)$ along each family, with the rate depending on the family.
 The closure uses the cofactor estimate and a fixed centre order
 $N=4M+40$, with $M$ fixed after the bounded family and compact
 split interval have been chosen and before $N$.
@@ -87,20 +96,30 @@ $O(a)\times O(2p-a)$ and carrying \eqref{inf:main-equations}.
 For every fixed $0<\varepsilon_{\mathrm{sp}}<1/4$ and
 $0<\eta_{\mathrm{cnt}}<1/3$, all but
 $O_{\mathrm{sp},\eta_{\mathrm{cnt}}}(n^{2/3+\eta_{\mathrm{cnt}}})$
-interior integer splits in the interval of Theorem~\ref{inf:theorem-A}
-give pairwise non-similar domains. The same similarity-class lower
+integer splits $\varepsilon_{\mathrm{sp}}n\le a\le
+(1/2-\varepsilon_{\mathrm{sp}})n$ give pairwise non-similar domains
+at the retained splits. The threshold and constant depend on the
+fixed $\varepsilon_{\mathrm{sp}},\eta_{\mathrm{cnt}}$.
+The same similarity-class lower
 limit is at least $1/2$. This family contains sequences of both
 parities with $|\theta|\to\infty$. The closure uses mixed
 conditioning and the fixed centre order $N=20$.
 \end{maintheorem}
 
 \begin{proof}[Proofs of Theorems~\ref{inf:theorem-A} and \ref{inf:theorem-B}]
-Corollary~\ref{inf:bounded-basic} proves the first bounded construction.
+Corollary~\ref{inf:bounded-basic}, with the inputs supplied by
+Lemma~\ref{inf:shifted-arithmetic} and Theorem~\ref{inf:near-integer},
+proves the first bounded construction.
 Lemmas~\ref{inf:many-splits} and \ref{inf:similarity-classes},
 Proposition~\ref{inf:bounded-assembly}, and
 Theorem~\ref{inf:residue-arithmetic} give all the further assertions
 of Theorem~\ref{inf:theorem-A} through the cofactor route.
-Proposition~\ref{inf:log-assembly} gives the logarithmic construction
+The wider windows and interior split intervals are supplied by
+Lemmas~\ref{inf:fixed-detuning-extension}, \ref{inf:split-extension}
+and \ref{inf:wide-low-transfer}.
+Proposition~\ref{inf:log-assembly}, using
+Corollary~\ref{inf:log-flow-count} and
+Theorem~\ref{inf:fixed-order-newton}, gives the logarithmic construction
 and multiplicity, and Lemma~\ref{inf:log-multiplier} gives unbounded
 detuning in both parities. These prove Theorem~\ref{inf:theorem-B}.
 \end{proof}
@@ -157,7 +176,7 @@ At a continued radial Neumann zero $J_p(R)=0$, define
 \]
 For all sufficiently large members of the bounded base family,
 $R=2p+3+O(p^{-1})$ and $0<|\theta|<20$.
-The estimates are uniform for $0<|\theta|\le20$.
+The estimates use the fixed parameter range $0<|\theta|\le T=20$.
 
 The normalized quartic radius is
 $1-\theta \mathsf H_2/(2R^2pg_2)$, where

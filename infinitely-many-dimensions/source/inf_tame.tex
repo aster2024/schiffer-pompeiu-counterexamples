@@ -1,5 +1,40 @@
 \section{Uniform dependence on the detuning bound}\label{inf:sec-tame}
 
+\begin{lemma}[Root continuation and detuning on logarithmic windows]
+\label{inf:log-root-detuning}
+Fix $C_*>0$. For every sufficiently large primary crossing
+$p_0=\widehat p_m$, the Neumann zero continues throughout
+$|p-p_0|\le C_{\mathrm{ap}}/p_0$, uniformly for
+$0<C_{\mathrm{ap}}\le C_*\log p_0$. In this range,
+\[
+ R-R_{\mathrm{alg}}=-(2\delta_0+O(p^{-1}))(p-p_0),\qquad
+ 2R^2-4(p+1)(p+2)=4p^2(1+O(p^{-1})),
+\]
+and
+\begin{equation}\label{inf:log-detuning-relation}
+ \theta=(16\delta_0+O(p^{-1}))p_0(p-p_0),\qquad
+ R=2p+3+O((1+C_{\mathrm{ap}})/p).
+\end{equation}
+The constants and threshold depend only on $C_*$.
+\end{lemma}
+\begin{proof}
+Simplicity and \eqref{inf:order-lipschitz} continue the zero across
+this interval with uniformly bounded derivative. Since
+$R(p_0)=2p_0+3+O(p_0^{-1})$ and
+$|p-p_0|=O(\log p_0/p_0)$, throughout it
+$p/R=1/2+O(p^{-1})$. The comparison function in
+\eqref{inf:order-derivative} is smooth near $1/2$, giving
+$R'=2\pi/(3\sqrt3)+O(p^{-1})$, whereas
+$R'_{\mathrm{alg}}=2+O(p^{-2})$.
+Integrating their difference retains the factor $p-p_0$.
+The physical trace denominator equals
+$-2(p+1)R^{-3}J_{p-1}(R)\{2R^2-4(p+1)(p+2)\}\ne0$,
+since $J_{p-1}(R)=J'_p(R)\ne0$ by simplicity.
+Using $R_{\mathrm{alg}}^2=4(p+1)(p+2)$ in
+\eqref{inf:trace-ratio-exact} and multiplying by $4Rp$ gives
+\eqref{inf:log-detuning-relation}.
+\end{proof}
+
 Fix the compact split interval, a finite centre accuracy $N$, and
 every finite derivative order and complex disc required for that
 centre. Constants in this section depend on these choices.
@@ -23,7 +58,7 @@ finite-centre estimates hold on
 Increasing the fixed exponents and constants when necessary, every
 bound in the following table holds. Here $E=K_{\mathrm{flow}}(1+\tau)$,
 $W=C_{\mathrm{cond}}(1+\tau)$, and $\delta$ is the strong centre size.
-The labels in the first column specify the inherited statement
+The references in the first column specify the statement
 and the quantity whose bound is being extended.
 
 \begingroup\small\normalfont
@@ -149,19 +184,9 @@ Theorem~\ref{inf:mixed-conditioning}.
 We give the dependence calculations in the order of their inputs.
 
 \emph{Roots and low states.}
-Equation~\eqref{inf:order-derivative} has error $O(p^{-2})$ and its
-comparison function is smooth near $1/2$. Throughout the stated
-interval, $p/R=1/2+O(p^{-1})$ and $R\to\infty$.
-Thus $R'=2\pi/(3\sqrt3)+O(p^{-1})$ and
-$R'_{\mathrm{alg}}=2+O(p^{-2})$.
-Integrating their difference retains exactly the factor $p-p_0$.
-Substitution in \eqref{inf:trace-ratio-exact} proves rows 1--2 and
-\begin{equation}\label{inf:log-detuning-relation}
- \theta=(16\delta_0+O(p^{-1}))p_0(p-p_0),\qquad
- R=2p+3+O((1+C_{\mathrm{ap}})/p).
-\end{equation}
-There is no additive detuning error. Row 3 is
-\eqref{inf:wide-low-error}.
+Lemma~\ref{inf:log-root-detuning} proves rows 1--2 and
+\eqref{inf:log-detuning-relation}. Row 3 is
+\eqref{inf:wide-low-error} in Lemma~\ref{inf:wide-low-transfer}.
 
 \emph{Finite jets and their remainders.}
 The radius equation is analytic in $(\eps,w)$ with
@@ -171,6 +196,16 @@ the collar ODE, the monic products, and the update
 $\eps$ coefficient is a polynomial in $\theta$.
 All leading divisors are independent of $\theta$: they are the
 normalization units, $-1/8$, $c_j$, and nonzero functions of $r$.
+In the physical amplitudes and displacement, every monomial of
+positive $\theta$ degree has positive $\eps$ order: the
+parameterizations are $a_2=\theta\eps\SeedA$,
+$a_j=\theta^2\eps^3Z_j$ for $j\in\mathcal I_{\mathrm{res}}$, $j\ge5$,
+$\chi=\theta\eps^2/(4\rho)$, and $w=\theta\eps^2$, as in
+\eqref{inf:resonant-scaling} and \eqref{inf:chi-analytic}.
+Every term of the defect equations has positive total degree in the
+amplitudes and displacement, since the ball solution is exact;
+$\theta$ enters through $w$, $\chi$ and the resonant amplitudes,
+so the unit eliminations preserve positive $\eps$ order.
 For this fixed finite jet choose $k_N$ larger than the finitely
 many ratios of positive $\theta$ degrees to positive $\eps$ orders.
 On $|\eps|\le c_N(1+T)^{-k_N}$, $|\theta|\le2(T+1)$, its
@@ -211,8 +246,8 @@ For composition, the argument of the square root in
 It is $O_N(T)$ on the $s=O_N(p)$ head, and on the tail gives an
 extra geometric step $e^{C_N\sqrt T/p}$, absorbed by the ratio
 $1/4$. The finite amplitudes stay bounded on the real input.
-This proves rows 10--11 and the old membership/moment estimates
-with envelope $\mathcal B_N(T)$.
+This proves rows 10--11 and the membership and moment bounds of
+Proposition~\ref{inf:centre-source-norm} with envelope $\mathcal B_N(T)$.
 The exact lift columns and their Laplacians give
 \eqref{inf:tame-residuals} by precisely the two-layer calculation
 of Proposition~\ref{inf:residual-estimates}.
@@ -312,17 +347,22 @@ No positive lower bound for $\tau$ has been used.
 \begin{corollary}[Uniform logarithmic flow and grid count]
 \label{inf:log-flow-count}
 For the inputs above, the signed slope is at least $c\tau/p$ in
-$|\lambda|<\tau/(16p)$. For any fixed $5/3<q_{\mathrm{gap}}<2$,
-all but
+$|\lambda|<\tau/(16p)$. For any fixed $5/3<q_{\mathrm{gap}}<2$
+and $\kappa_{\mathrm{gap}}>0$, all but
 \begin{equation}\label{inf:log-bad-splits}
  C\sqrt{1+\tau}\bigl(p^{2/3}+p^{8/3-q_{\mathrm{gap}}}\bigr)
 \end{equation}
-interior integer splits have actual quartic gap at least
+integer splits $2\varepsilon_{\mathrm{sp}}p\le a\le
+(1-2\varepsilon_{\mathrm{sp}})p$ have actual quartic gap at least
 $\kappa_{\mathrm{gap}}\tau p^{-q_{\mathrm{gap}}}$.
+The constant and threshold depend on the fixed split interval,
+$q_{\mathrm{gap}},\kappa_{\mathrm{gap}}$, and the fixed data of
+Lemma~\ref{inf:detuning-dependencies}.
 \end{corollary}
 \begin{proof}
 Rows 13--22 of Lemma~\ref{inf:detuning-dependencies} establish the
-flow, count, and spacing hypotheses. Apply the clipped-curve
+flow and count hypotheses. Lemma~\ref{inf:split-extension} gives the
+integer-grid spacing at least $\varepsilon_{\mathrm{sp}}/p$. Apply the clipped-curve
 argument of Lemma~\ref{inf:many-splits} with its explicitly stated
 number of curves. The expression in \eqref{inf:log-bad-splits}
 is $o(p)$ because $q_{\mathrm{gap}}>5/3$.

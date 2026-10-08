@@ -2,7 +2,7 @@
 
 Jizhou Guo — Dots Studio, Rednote — mitsuha2021b@gmail.com — 8 October 2026
 
-[**Paper (PDF, 112 pages)**](paper.pdf) · [LaTeX source](source/)
+[**Paper (PDF, 114 pages)**](paper.pdf) · [LaTeX source](source/)
 
 ## Results
 
@@ -58,3 +58,18 @@ twenty-one, with computer-assisted proofs, are in the first paper of this reposi
 | `SHA256SUMS` | Checksums of the files above |
 
 To compile: `cd source && tectonic main.tex`, or run `pdflatex main.tex` three times.
+
+The paper is also on ResearchGate: <https://www.researchgate.net/publication/415393919_Convex_non-ball_Schiffer_domains_in_infinitely_many_dimensions>.
+
+## Citation
+
+```bibtex
+@misc{Guo2026SchifferInfinitelyMany,
+  author = {Guo, Jizhou},
+  title = {Convex non-ball {S}chiffer domains in infinitely many dimensions},
+  year = {2026},
+  month = oct,
+  howpublished = {\url{https://github.com/aster2024/schiffer-pompeiu-counterexamples/tree/main/infinitely-many-dimensions}},
+  note = {Preprint, 8 October 2026}
+}
+```

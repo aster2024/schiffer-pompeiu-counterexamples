@@ -273,9 +273,13 @@ $\mathcal S_{\mathrm{pole}}^{(0)}$ has every principal inverse
 bounded by $2/W_{\mathrm{cond}}$. Indeed its band perturbation has
 norm $C\tau$ and division by the unperturbed diagonal has norm at most
 $1/W_{\mathrm{cond}}$, also after any coordinate restriction.
-Denote its exact window Schur matrix by $\mathcal F_{\mathrm{win}}$.
+Let $\mathcal F_{\mathrm{win}}$ be the Schur complement of
+$\mathcal S_{\mathrm{pole}}^{(0)}$ onto $\mathcal I_{\mathrm{win}}$.
 It is self-adjoint for $\diag(\eta_j^2)$ and has Hilbert gap $c\gamma$
-by the reconstruction argument already used.
+by Lemma~\ref{inf:centre-form-comparison} and angular complementary
+reconstruction. The remainder $\mathsf R_{\mathrm{pole},6}$ is
+restored after the window inverse in the proof of
+Theorem~\ref{inf:mixed-conditioning}.
 
 \begin{lemma}[Critical strips and the true minima]\label{inf:critical-strips}
 For $c_{\mathrm{cr}}\in\mathcal T_{\mathrm{crit}}$ let
@@ -322,8 +326,7 @@ For the nonseed indices of the low core one also has the uniform formula
  j\equiv2\pmod3,\qquad 5\le j\le C\sqrt{W_{\mathrm{cond}}+1}.
  \end{gathered}
 \end{equation}
-This offset formula is recorded separately; the closure uses the
-strip geometry and does not use \eqref{inf:low-core-offsets}.
+For $j=5,8,11$, these leading offsets are $-72,-240,-504$, respectively.
 \end{lemma}
 \begin{proof}
 The derivatives in the proof of Lemma~\ref{inf:phase-strip} give
@@ -682,7 +685,6 @@ $N,q_{\mathrm{gap}},\xi_{\mathrm{inv}},\kappa_{\mathrm{gap}}$, and
 the envelope in \eqref{inf:conditioning-centre-hypothesis}.
 \end{theorem}
 \begin{proof}
-Reserve half of $\xi_{\mathrm{inv}}$ for the subpolynomial factors.
 Delete cross-core entries of
 $\mathcal F_{\mathrm{win}}$. Their Hilbert norm is $o(\gamma)$ by
 \eqref{inf:global-off-core}, so every core retains Hilbert gap
@@ -711,8 +713,8 @@ by a coefficient diagonal Neumann series gives inverse $C/\gamma$,
 because $(1+\tau)^2p^{q_{\mathrm{gap}}-2}\to0$.
 
 The direct sum of all core inverses has coefficient norm at most
-$Cp^{\xi_{\mathrm{inv}}}/\gamma$ with the smaller internal exponent
-understood. Its product with the off-core error is bounded by
+$Cp^{\xi_{\mathrm{inv}}}/\gamma$, since the displayed subpolynomial
+factor is at most $p^{\xi_{\mathrm{inv}}/2}$ for sufficiently large $p$. Its product with the off-core error is bounded by
 $C(1+\tau)^2p^{q_{\mathrm{gap}}+\xi_{\mathrm{inv}}-2+2\alpha_{\mathrm{loc}}}=o(1)$.
 Thus $\mathcal F_{\mathrm{win}}^{-1}$ has that same bound.
 Recovering the angular complement costs bounded factors, since

@@ -11,13 +11,20 @@ Constants in this section may depend on this interval and on a fixed
 upper bound $T$ for $\tau$. The coefficient spaces and their angular
 radius two remain those of Definition~\ref{inf:spaces}.
 
-\begin{lemma}[Low-state transfer on a fixed wider window]
+\begin{lemma}[Low-state transfer on wider windows]
 \label{inf:wide-low-transfer}
-Fix $C_{\mathrm{ap}}>0$. The second conclusion of
-Proposition~\ref{inf:low-exclusion} holds for
-$|p-p_0|\le C_{\mathrm{ap}}/p_0$, after increasing the threshold
-depending on $C_{\mathrm{ap}}$. More generally, its proof is uniform
-for $C_{\mathrm{ap}}=O(\log p_0)$.
+Fix $C_*>0$. For every sufficiently large primary crossing $p_0$,
+uniformly for $0<C_{\mathrm{ap}}\le C_*\log p_0$ and
+$|p-p_0|\le C_{\mathrm{ap}}/p_0$, every even degree $\ell\ge0$
+with $\ell-1\le\sqrt{p_0}/4$, apart from the degree-four seed,
+has its ball Dirichlet spectrum outside $[R(p)^2-32,R(p)^2+32]$.
+Here $R(p)=j_{p,k_0}$ is the Neumann zero continued from
+$R_{\mathrm{alg}}(p_0)$, and the degree-$\ell$ spectrum is
+$\{j_{p+\ell-1,k}^2:k\ge1\}$, the ball spectrum in dimension $2p$
+at half-lattice inputs.
+The seed's other radial states are outside this window as well.
+The threshold depends on $C_*$. This includes every fixed
+$C_{\mathrm{ap}}>0$ after increasing its threshold.
 \end{lemma}
 \begin{proof}
 Suppose a nonseed low degree $\ell$ has a zero $z(p)$ with
@@ -41,7 +48,7 @@ in squared-energy offset by
  C C_{\mathrm{ap}}(\ell+1)/p_0
        +C C_{\mathrm{ap}}(1+C_{\mathrm{ap}})/p_0^2.
 \end{equation}
-For $\ell=O(\sqrt{p_0})$ this tends to zero in both stated ranges.
+For $\ell=O(\sqrt{p_0})$ this tends to zero in this range.
 The offset at $p_0$ is then less than $64$, contradicting the first
 conclusion of Proposition~\ref{inf:low-exclusion}. The other radial
 seed states are excluded by their frequency spacing and the same
@@ -190,19 +197,18 @@ required multiples of $T$ and of the inverse angular margin.
 After $C_0,C_{\mathrm{rel}}$ choose $E_{\mathrm{inv}}$, then
 $W_{\mathrm{loc}}=TE_{\mathrm{inv}}$ and $M=M_{TE_{\mathrm{inv}}}$,
 then separation and the head cutoff, and finally the centre order.
-The last column identifies the proof line permitting each substitution.
+The last column gives the justification for each substitution.
 
 \begingroup\small\normalfont
-\def\UrlBreaks{\do\:\do\-}
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.16}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{.23\textwidth}>{\raggedright\arraybackslash}p{.16\textwidth}>{\raggedright\arraybackslash}p{.29\textwidth}>{\raggedright\arraybackslash}p{.25\textwidth}@{}}
-\toprule Base label & Parameter replaced & Parameterized bound & Proof line permitting replacement\\\midrule
+\toprule Statement & Parameter replaced & Parameterized bound & Justification\\\midrule
 \endfirsthead
-\toprule Base label & Parameter replaced & Parameterized bound & Proof line permitting replacement\\\midrule
+\toprule Statement & Parameter replaced & Parameterized bound & Justification\\\midrule
 \endhead
-\ref{inf:detuning}, \nolinkurl{inf:detuning};
-\ref{inf:low-exclusion}, \nolinkurl{inf:low-exclusion}
+\ref{inf:detuning};
+\ref{inf:low-exclusion}
 & Scaled distance $31/10$, base detuning bound
 & Use $|p-p_0|\le C_{\mathrm{ap}}/p_0$ and
 $0<\tau\le T$; the radius and detuning comparison are
@@ -212,8 +218,8 @@ original energy bounds.
 zero derivative comparison hold on this fixed window;
 \ref{inf:wide-low-transfer} gives the continuation error
 \eqref{inf:wide-low-error}.\\
-\ref{inf:centres}, \nolinkurl{inf:centres};
-\ref{inf:centre-coefficient-defect}, \nolinkurl{inf:centre-coefficient-defect}
+\ref{inf:centres};
+\ref{inf:centre-coefficient-defect}
 & $|\theta|\le20$, base split interval
 & \eqref{inf:centre-complex-defect} and
 \eqref{inf:centre-coeff-defect-bound} are
@@ -223,8 +229,8 @@ $C_{N,T,\mathrm{sp}}\tau p^{-3}$.
 & In \eqref{inf:rho-equation} the $Z$ derivative at $(\eps,Z)=(0,4)$
 is $8$ for every $\theta$; the recursion divides by
 units, $-1/8$, $c_j$ and $r(1-r)$.\\
-\ref{inf:flow-relative}, \nolinkurl{inf:flow-relative};
-\ref{inf:flow-complement}, \nolinkurl{inf:flow-complement}
+\ref{inf:flow-relative};
+\ref{inf:flow-complement}
 & $\tau\le20$, absolute flow window
 & Relative bounds $C_{\mathrm{sp}}\tau p^{-2}$ and
 $C_{\mathrm{sp}}\tau^2p^{-3}$;
@@ -233,9 +239,9 @@ $C_{\mathrm{sp}}\tau^2(W_{\mathrm{flow}}(T)^{-1}+p^{-1})$.
 & The series is $\sum h^6(C_{\mathrm{sp}}\tau/p^2)^h$;
 the complement ratio is $C_{\mathrm{sp}}\tau/W_{\mathrm{flow}}(T)$.
 The derivative adds $C_{\mathrm{sp}}\tau^3/W_{\mathrm{flow}}(T)^2$.\\
-\ref{inf:flow-low-block}, \nolinkurl{inf:flow-low-block};
-\ref{inf:ordered-eigenvalues}, \nolinkurl{inf:ordered-eigenvalues};
-\ref{inf:flow-theorem}, \nolinkurl{inf:flow-theorem}
+\ref{inf:flow-low-block};
+\ref{inf:ordered-eigenvalues};
+\ref{inf:flow-theorem}
 & $\tau\le20$, $\varsigma_0\in(1/64,1/16)$
 & Use $\varsigma_0\in\operatorname{int}I_{\mathrm{sp}}$;
 the low inverse is $C_{T,\mathrm{sp}}/(p\tau)$.
@@ -246,7 +252,7 @@ to give seed diagonal $\theta/(2p)+O_T(\theta^2p^{-3})$;
 \eqref{inf:low-offsets} keeps the index-five value
 $-72+O_T(p^{-1})$. Final norm recovery in
 \ref{inf:flow-theorem} costs $C_{T,\mathrm{sp}}\sqrt p$.\\
-\ref{inf:quartic-count-window}, \nolinkurl{inf:quartic-count-window}
+\ref{inf:quartic-count-window}
 & $|\theta|\le20$, $W_{\mathrm{count}}=40$
 & Shell width $C_{\mathrm{sp}}\tau/p^2$ and containing
 count window $C_{\mathrm{sp}}(1+T)$.
@@ -254,8 +260,8 @@ count window $C_{\mathrm{sp}}(1+T)$.
 $\tau\nrm{T_\varsigma}_\infty/(2R^2)$;
 indexwise shell bounds multiply $O(p^2)$ eigenvalues by
 $1+O_{\mathrm{sp}}(\tau/p^2)$.\\
-\ref{inf:grid-avoidance}, \nolinkurl{inf:grid-avoidance};
-\ref{inf:integer-gap}, \nolinkurl{inf:integer-gap}
+\ref{inf:grid-avoidance};
+\ref{inf:integer-gap}
 & Base split grid and $\tau\le20$
 & The interior grid has $\asymp_{\mathrm{sp}}p$ points and spacing
 at least $\varepsilon_{\mathrm{sp}}/p$; one split has gap
@@ -264,8 +270,8 @@ $c_{T,\mathrm{sp}}\tau p^{-5/3}$.
 $C_{T,\mathrm{sp}}p^{2/3}(1+C_{T,\mathrm{sp}}p\gamma/\mu)$,
 with $\mu=c_{T,\mathrm{sp}}\tau/p$;
 choose the gap constant before the threshold.\\
-\ref{inf:uniform-centre-size}, \nolinkurl{inf:uniform-centre-size};
-\ref{inf:relative-graph}, \nolinkurl{inf:relative-graph}
+\ref{inf:uniform-centre-size};
+\ref{inf:relative-graph}
 & Centre-size and relative constants on the base compact set
 & $\delta\le C_{0,\mathrm{sp}}\tau p^{-2}$;
 \eqref{inf:relative-scalar} and \eqref{inf:relative-two-norms}
@@ -275,8 +281,8 @@ These constants precede $N$.
 the finite-order remainder $C_{N,T,\mathrm{sp}}\tau p^{-4}$
 is absorbed by the threshold. The scalar graph line is
 $C(\delta+p\delta^2)$.\\
-\ref{inf:centre-source-norm}, \nolinkurl{inf:centre-source-norm};
-\ref{inf:residual-estimates}, \nolinkurl{inf:residual-estimates}
+\ref{inf:centre-source-norm};
+\ref{inf:residual-estimates}
 & Fixed-centre constants for $\tau\le20$
 & \eqref{inf:centre-norm-bounds} retains powers $p^{k+1}$ and
 $p^{k+5}$ with $C_{N,k,T,\mathrm{sp}}$.
@@ -286,8 +292,8 @@ $C_{N,T,\mathrm{sp}}\theta^2p^{3-N}$.
 & The known-mode head uses the finite factor $e^{C_N\sqrt T}$;
 the factorial radial tail stays geometric. The two-layer lift
 and \eqref{inf:Delta-moment} give the residual powers.\\
-\ref{inf:material-isomorphism}, \nolinkurl{inf:material-isomorphism};
-\eqref{inf:p6-second}, \nolinkurl{inf:p6-second}
+\ref{inf:material-isomorphism};
+\eqref{inf:p6-second}
 & Fixed-centre constants for $\tau\le20$
 & $\nrm{\Qmat^{-1}}\le C_{N,T,\mathrm{sp}}p^6$ and
 $\sup\nrm{D^2\Fnl}\le C_{N,T,\mathrm{sp}}p^6$
@@ -296,9 +302,9 @@ on \eqref{inf:nonlinear-working-region}.
 $\nrm{D_p^{-1}}\le C_{N,T,\mathrm{sp}}p^{-2}$ and
 $\nrm{\Delta T_\eta}\le C_{N,T,\mathrm{sp}}p^8\nrm\eta$;
 \eqref{inf:nonlinear-second} costs $Cp(1+\nrm g)$.\\
-\eqref{inf:inverse-window}, \nolinkurl{inf:inverse-window};
-\ref{inf:inverse-complement}, \nolinkurl{inf:inverse-complement};
-\ref{inf:inverse-Schur}, \nolinkurl{inf:inverse-Schur}
+\eqref{inf:inverse-window};
+\ref{inf:inverse-complement};
+\ref{inf:inverse-Schur}
 & Containing window $20E_{\mathrm{inv}}$
 & The projection stays
 $\one_{[-E_{\mathrm{inv}}\tau,E_{\mathrm{inv}}\tau]}(H_0-R^2)$;
@@ -307,14 +313,14 @@ The Schur norm is $C_{E_{\mathrm{inv}},T,\mathrm{sp}}\tau$.
 & \eqref{inf:ball-complement-bound} and
 \eqref{inf:relative-two-norms} give complementary absorption;
 the four feedback factors give $C\tau/E_{\mathrm{inv}}$.\\
-\ref{inf:cluster-inverse}, \nolinkurl{inf:cluster-inverse}
+\ref{inf:cluster-inverse}
 & $\tau\le20$, gap exponent
 & For every $\tau>0$, gap $c\tau p^{-q_{\mathrm{gap}}}$ and
 $\sigma D>q_{\mathrm{gap}}M+q_{\mathrm{gap}}+2$ give
 $\nrm{F^{-1}}_1\le C\tau^{-1}p^{q_{\mathrm{gap}}M}$.
 & The cofactor line is $m!(C\tau)^{m-1}(2/\gamma_F)^m$;
 $\tau$ cancels in both error absorptions.\\
-\ref{inf:effective-inverse}, \nolinkurl{inf:effective-inverse}
+\ref{inf:effective-inverse}
 & $M_{20E_{\mathrm{inv}}}$, $5M/3$, $D_{\mathrm{sep}}>5M/3+5$
 & $M=M_{TE_{\mathrm{inv}}}$,
 $\nrm{\Feff^{-1}}_1\le C\tau^{-1}p^{q_{\mathrm{gap}}M}$;
@@ -322,14 +328,14 @@ choose $\sigma D_{\mathrm{sep}}>q_{\mathrm{gap}}M+q_{\mathrm{gap}}+2$.
 & \ref{inf:clusters} applies to the fixed superset;
 deleting inter-cluster entries costs
 $C\tau p^{-\sigma D_{\mathrm{sep}}}$, followed by the cofactor row.\\
-\ref{inf:mixed-inverse}, \nolinkurl{inf:mixed-inverse}
+\ref{inf:mixed-inverse}
 & Exponent $2+5M/3$
 & \eqref{inf:mixed-inverse-bound} has right side
 $C\tau^{-1}p^{2+q_{\mathrm{gap}}M}$.
 & The block solution costs $C/E_{\mathrm{inv}}$ off diagonal,
 $C\tau$ into the window and $Cp^2$ for $K_0\Pi$;
 density graph multipliers are bounded.\\
-\ref{inf:coefficient-inverse}, \nolinkurl{inf:coefficient-inverse}
+\ref{inf:coefficient-inverse}
 & $\tau\le20$, exponent $5/2+5M/3$
 & $\nrm{J_D^{-1}}_\Cc\le C\tau^{-1}p^{5/2+q_{\mathrm{gap}}M}
 \le Cp^{2M+3}/\gamma_p$, with
@@ -337,14 +343,14 @@ $\gamma_p=c_{\mathrm{gap}}\tau p^{-q_{\mathrm{gap}}}$.
 & \eqref{inf:head-conversion} costs $\sqrt p$;
 \eqref{inf:relative-scalar} gives \eqref{inf:head-tail-hypotheses}.
 Compare $5/2+q_{\mathrm{gap}}(M-1)\le2M+3$.\\
-\ref{inf:centre-gap-transfer}, \nolinkurl{inf:centre-gap-transfer}
+\ref{inf:centre-gap-transfer}
 & Gap exponent $5/3$, $\tau\le20$
 & Quartic gap $c_{\mathrm q}\tau p^{-q_{\mathrm{gap}}}$
 gives centre gap $(c_{\mathrm q}/2)\tau p^{-q_{\mathrm{gap}}}$.
 & The min--max displacement is $C_{N,T,\mathrm{sp}}\tau p^{-2}$;
 require $p^{2-q_{\mathrm{gap}}}>2C_{N,T,\mathrm{sp}}/c_{\mathrm q}$.\\
-\ref{inf:newton-threshold}, \nolinkurl{inf:newton-threshold};
-\ref{inf:Newton-zero}, \nolinkurl{inf:Newton-zero}
+\ref{inf:newton-threshold};
+\ref{inf:Newton-zero}
 & $\tau\le20$, gap exponent $5/3$
 & Inverse hypothesis
 $C_Np^{b_{\mathrm{inv}}}/(c_{\mathrm{gap}}\tau p^{-q_{\mathrm{gap}}})$;
@@ -353,8 +359,8 @@ $L=B+d_{\mathrm{nl}}+4$, $N\ge\lceil2B+d_{\mathrm{nl}}+8\rceil$.
 & \eqref{inf:newton-gate-one}--\eqref{inf:newton-gate-three} give
 $C_Np^{B+L+2-N}$, $C_N\tau p^{B+3-N}$ and
 $C_Np^{B+d_{\mathrm{nl}}-L}$; only the second uses $\tau\le T$.\\
-\ref{inf:geometry-convexity}, \nolinkurl{inf:geometry-convexity};
-\ref{inf:geometry-nonball}, \nolinkurl{inf:geometry-nonball}
+\ref{inf:geometry-convexity};
+\ref{inf:geometry-nonball}
 & Fixed-centre comparison constants
 & Normalized $C^2$ size
 $C_{N,T,\mathrm{sp}}\tau p^{-2}+O(\tau p^{-L})$;
@@ -534,37 +540,49 @@ the cofactor chain uniformly for $0<\tau\le T$.
 For a differentiable nonconstant radial graph about zero invariant
 under $O(a)\times O(n-a)$, its orthogonal symmetry Lie algebra is
 $\mathfrak{so}(a)\oplus\mathfrak{so}(n-a)$.
-Consequently constructed domains at distinct splits below $n/2$
-are pairwise non-similar. For a dimension family, define
-$\mathcal N_{\mathrm{sim}}(n)$ as the number of integers $0<a<n/2$
-for which the construction gives a domain on some fixed compact
-interior split interval, with its associated fixed centre order.
+Every bounded strictly convex non-ball domain with real-analytic
+boundary and this invariance is such a radial graph. Consequently
+any two such domains at distinct splits below $n/2$ are non-similar.
+Define $\mathcal N_{\mathrm{sim}}(n)$ as the number of integers
+$0<a<n/2$ for which there exists a bounded strictly convex non-ball
+domain in $\R^n$ with real-analytic boundary, invariant under
+$O(a)\times O(n-a)$ and carrying \eqref{inf:main-equations}.
 Choosing any one such domain at each split gives this many
 similarity classes, independently of the choices.
 Suppose that, for every fixed $0<\varepsilon_{\mathrm{sp}}<1/4$
 and $0<\eta_{\mathrm{cnt}}<1/3$, all but
 $O(n^{2/3+\eta_{\mathrm{cnt}}})$ integer splits in
 $[\varepsilon_{\mathrm{sp}}n,(1/2-\varepsilon_{\mathrm{sp}})n]$
-give domains. Then along that family's dimensions,
+give such domains. Then along that family's dimensions,
 \[
  \mathcal N_{\mathrm{sim}}(n)\ge
  (1/2-2\varepsilon_{\mathrm{sp}})n-Cn^{2/3+\eta_{\mathrm{cnt}}},\qquad
  \liminf_{n\to\infty}\frac{\mathcal N_{\mathrm{sim}}(n)}n\ge\frac12.
 \]
 The limit inferior is taken through that family's dimensions.
-A countable exhaustion by fixed compact split intervals suffices
-in the definition of $\mathcal N_{\mathrm{sim}}$.
+The upper bound $\mathcal N_{\mathrm{sim}}(n)\le n/2$ gives
+$\mathcal N_{\mathrm{sim}}(n)/n\to1/2$. Thus the number of integer
+splits $0<a<n/2$ carrying no such domain is $o(n)$ along the family.
 \end{lemma}
 \begin{proof}
+A bounded convex domain $\Omega$ with the stated invariance is centrally
+symmetric and contains zero in its interior. Each ray meets the boundary
+exactly once, and at $y\in\partial\Omega$ its supporting tangent
+hyperplane gives $\langle y,\nu(y)\rangle>0$ for the outward unit
+normal $\nu(y)$ because zero is interior; hence every ray is transverse
+and radial projection is an analytic diffeomorphism onto the sphere.
+For a non-ball domain its radius is nonconstant.
 Write the radius on the sphere as $F(x)$, $x=|X|^2$.
-There is $x_0\in(0,1)$ with $F'(x_0)\ne0$.
+Since $x$ is a submersion for $0<x<1$, $F$ is differentiable there;
+the mean value theorem and continuity at the endpoints give
+$x_0\in(0,1)$ with $F'(x_0)\ne0$.
 A skew matrix has diagonal blocks in the two block Lie algebras and
 off-diagonal blocks $M,-M^t$. Its infinitesimal action on $F$ is
 $2F'(x)X^tMY$. Vanishing for all $X,Y$ with squared norms
 $x_0,1-x_0$ forces $M=0$, by varying their directions. The block
 diagonal matrices are symmetries, proving the equality.
 
-All constructed domains have barycentre zero. A similarity between
+Every such bounded domain has barycentre zero by central symmetry. A similarity between
 two has zero translation and conjugates their orthogonal symmetry
 Lie algebras. The dimension of the latter is
 $\{a(a-1)+(n-a)(n-a-1)\}/2$, whose change from $a$ to $a+1$ is
@@ -572,22 +590,29 @@ $2a+1-n<0$ on the selected range. Thus different splits give different
 similarity classes. The assumed exceptional-split bound and integer
 counting give the displayed lower bound. Fixing any $\varepsilon_{\mathrm{sp}}>0$
 and then taking the lower limit proves a bound $1/2-2\varepsilon_{\mathrm{sp}}$.
-Taking the supremum over these fixed choices proves the last assertion;
-their thresholds need not be uniform as $\varepsilon_{\mathrm{sp}}\downarrow0$.
+Taking the supremum over these fixed choices proves the limit inferior.
+The same count leaves at most
+$2\varepsilon_{\mathrm{sp}}n+Cn^{2/3+\eta_{\mathrm{cnt}}}$ splits
+without a constructed domain. Divide by $n$, take the upper limit
+along the family, and then let the fixed margin tend to zero to
+obtain $o(n)$ such splits.
 \end{proof}
 
 \begin{theorem}[Dimensions in prescribed residue classes]
 \label{inf:residue-arithmetic}
 For every positive integer $L_{\mathrm{ap}}$ and every integer
-$b_{\mathrm{ap}}$, there is an unbounded selection of dimensions
-$n\equiv b_{\mathrm{ap}}\pmod{4L_{\mathrm{ap}}}$ with
+$b_{\mathrm{ap}}$, there is an unbounded sequence of dimensions
+$(n_k)$, indexed by the continued-fraction convergent index $k$,
+with $n_k\equiv b_{\mathrm{ap}}\pmod{4L_{\mathrm{ap}}}$.
+For every sufficiently large $k$, some $m=m_k\ge m_0$ satisfies
 \[
- |n/2-\widehat p_m|<32L_{\mathrm{ap}}^2/\widehat p_m,
- \qquad 0<\tau<256L_{\mathrm{ap}}^2
+ |n_k/2-\widehat p_m|<32L_{\mathrm{ap}}^2/\widehat p_m,
+ \qquad 0<\tau<256L_{\mathrm{ap}}^2.
 \]
-eventually. Every sufficiently large selected dimension has the
-domains and multiplicity just proved. The threshold may depend on
-the fixed modulus, residue, and split/counting parameters.
+Every sufficiently large term has the domains and multiplicity of
+Proposition~\ref{inf:bounded-assembly}. The starting index and
+thresholds may depend on the fixed
+$L_{\mathrm{ap}},b_{\mathrm{ap}},\varepsilon_{\mathrm{sp}},\eta_{\mathrm{cnt}}$.
 In particular every residue modulo $L_{\mathrm{ap}}$ occurs
 infinitely often. For even $L_{\mathrm{ap}}$ the residue determines
 the parity; for odd $L_{\mathrm{ap}}$ both parities occur infinitely

@@ -2,7 +2,7 @@
 
 Jizhou Guo — Dots Studio, Rednote — mitsuha2021b@gmail.com — 8 October 2026
 
-[**Paper (PDF, 114 pages)**](paper.pdf) · [LaTeX source](source/)
+[**Paper (PDF, 114 pages)**](paper.pdf) · [LaTeX source](source/) · Archive: [doi:10.5281/zenodo.23238160](https://doi.org/10.5281/zenodo.23238160)
 
 ## Results
 
@@ -70,6 +70,7 @@ The paper is also on ResearchGate: <https://www.researchgate.net/publication/415
   year = {2026},
   month = oct,
   howpublished = {\url{https://github.com/aster2024/schiffer-pompeiu-counterexamples/tree/main/infinitely-many-dimensions}},
-  note = {Preprint, 8 October 2026}
+  note = {Preprint, 8 October 2026. Archived in Zenodo, version 5.0},
+  doi = {10.5281/zenodo.23238160}
 }
 ```

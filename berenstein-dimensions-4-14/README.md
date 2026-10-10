@@ -23,22 +23,25 @@ identification ℝ¹⁴ ≅ 𝔤₂ the domain is invariant under the adjoint ac
 section is strictly convex.
 
 In dimension fourteen strict convexity is asserted for the Cartan section and convexity for the domain.
-Dimensions six, eight and ten are not covered.
+Dimensions six, eight and ten are not covered by these certificates.
 
 ## Proof
 
-- Dimension four: an O(3)-invariant domain; the function y·u on the meridian half-plane solves a planar
-  Helmholtz problem with Cauchy data (0, y).
-- Dimension fourteen: an Ad(G₂)-invariant domain; with π the product of the positive roots on the Cartan plane
-  (a multiple of Im z⁶), the function π·u solves a planar Helmholtz problem with Cauchy data (0, π). Convexity is
+- Dimension four: an O(3)-invariant domain; on the meridian plane domain, which is symmetric under both
+  coordinate reflections, the function y·u is odd in y and solves a planar Helmholtz problem with Cauchy data
+  (0, y).
+- Dimension fourteen: an Ad(G₂)-invariant domain; with π(z) = Im z⁶, a non-zero scalar multiple of the product of the
+  six positive roots on the Cartan plane, the function π·u solves a planar Helmholtz problem with Cauchy data (0, π). Convexity is
   transferred from the Cartan section by the convexity theorem of Kostant, in the form given by Lewis.
-- Both planar problems are pulled back to the unit disc by a conformal map and solved by a Newton–Kantorovich
-  (radii-polynomial) argument around an explicit approximate solution. Finite blocks are verified in Arb ball
-  arithmetic and every infinite tail is bounded analytically.
+- Both planar problems are pulled back to the unit disc by a conformal map. An exact solution is obtained from
+  the contraction criterion of Section 4 of the paper, applied to x ↦ x − A·F(x) in a ball around an explicit
+  finite centre, where A is an approximate inverse of the derivative. Finite blocks are enclosed in Arb interval
+  arithmetic; the infinite tails are bounded by analytic estimates proved in the paper, whose finite constants
+  are enclosed in the same way.
 
 | Quantity | Dimension four | Dimension fourteen |
 |---|---|---|
-| radius r of the existence ball | 1/12500 | 10⁻²⁰ |
+| radius r of the contraction ball | 1/12500 | 10⁻²⁰ |
 | residual bound Y | < 3.038 × 10⁻⁶ | < 1.063 × 10⁻²⁵ |
 | Z₀ | < 0.926 | < 0.49 |
 | Z₁ | 0 | < 2.4 × 10⁻¹¹ |
@@ -47,7 +50,8 @@ Dimensions six, eight and ten are not covered.
 
 ## Verification
 
-Requirements: Python 3, `python-flint` 0.9.0, NumPy. Run one verifier at a time.
+Requirements: Python 3 (recorded runs: 3.10.19), `python-flint` 0.9.0, and NumPy for dimension fourteen. Run one
+verifier at a time.
 
     cd verification/r4
     sha256sum -c SHA256SUMS
@@ -73,7 +77,7 @@ SHA-256 of the single-file verifiers: `e3479208ba7234e291cdde4d30e8e8c66ece07ae3
   ([arXiv:2608.08953](https://arxiv.org/abs/2608.08953)), a bounded simply connected non-disc with analytic boundary
   and a sign-changing eigenfunction; and the strictly convex planar domain in the paper of this repository
   ([arXiv:2609.35419](https://arxiv.org/abs/2609.35419), version 2), whose Question 2 asks whether Berenstein's
-  conjecture fails in every dimension n ≥ 3.
+  conjecture fails in every dimension n ≥ 3, and within the convex class in those dimensions.
 - Dai, Sun, Wei and Zhang ([arXiv:2511.19819](https://arxiv.org/abs/2511.19819)): a bounded uniformly convex
   planar domain with connected C^{2,ε} boundary is a disc if the problem has a non-trivial solution corresponding
   to a large eigenvalue.

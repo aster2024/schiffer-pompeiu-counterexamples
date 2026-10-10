@@ -58,7 +58,7 @@ It reports: optimized Python disables proof assertions.
 A changed embedded nonlinear certificate was also rejected after the outer
 payload digest was recomputed, because the inner file manifest did not match.
 
-The executable estimates are described in Sections 6 and 7.
+The executable estimates are described in Sections 6 and 8 of the paper.
 The embedded explanatory document specifies the coefficient equations and spaces.
 The complete analytic proof is in the paper. No separate file is needed to
 run the self-contained verifier. Transparent files support inspection and

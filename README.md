@@ -42,9 +42,9 @@ The dimensions are n = 2p for the sufficiently large integers and half-integers 
 
 **Theorem.** There are a bounded strictly convex domain in ℝ⁴, different from a ball, with real-analytic boundary diffeomorphic to S³, and a bounded convex domain in ℝ¹⁴, different from a ball and invariant under the adjoint action of G₂, each carrying a sign-changing solution of
 
-    Δu + u = 0 in Ω,   u = 0 and ∂ᵥu = c on ∂Ω,   c ≠ 0.
+    Δu + u = 0 in Ω,   u = 0 and ∂_ν u = c on ∂Ω,   c ≠ 0.
 
-The proofs are computer-assisted, by the fixed-disc method of the planar case; each dimension has a single-file verifier whose last line is `PROVED`.
+The proofs are computer-assisted, by planar reductions and a conformal formulation on the unit disc (Sections 2 and 3 of the paper); each dimension has a single-file verifier whose last line is `PROVED`.
 
 ## Contents
 

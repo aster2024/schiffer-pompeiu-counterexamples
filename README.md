@@ -36,6 +36,16 @@ The dimensions are n = 2p for the sufficiently large integers and half-integers 
 - [`dimension-19/`](dimension-19/): a convex counterexample in ℝ¹⁹ (verifier, centre, receipts and the proof of the one bound that differs from the paper). With the paper this covers every dimension from 2 to 21.
 - [`dimension-146/`](dimension-146/): a computer-assisted certificate for a strictly convex non-ball domain in ℝ¹⁴⁶ invariant under O(54) × O(92), in the two-block setting of the second paper (verifier, centre, analytic proof and receipts).
 
+## Berenstein's problem in dimensions four and fourteen
+
+[`berenstein-dimensions-4-14/`](berenstein-dimensions-4-14/) contains the paper *Counterexamples to Berenstein's conjecture in dimensions four and fourteen* (17 pages, 10 October 2026; [PDF](berenstein-dimensions-4-14/paper.pdf)) and its verification files.
+
+**Theorem.** There are a bounded strictly convex domain in ℝ⁴, different from a ball, with real-analytic boundary diffeomorphic to S³, and a bounded convex domain in ℝ¹⁴, different from a ball and invariant under the adjoint action of G₂, each carrying a sign-changing solution of
+
+    Δu + u = 0 in Ω,   u = 0 and ∂ᵥu = c on ∂Ω,   c ≠ 0.
+
+The proofs are computer-assisted, by the fixed-disc method of the planar case; each dimension has a single-file verifier whose last line is `PROVED`.
+
 ## Contents
 
 | Path | Description |
@@ -52,6 +62,7 @@ The dimensions are n = 2p for the sufficiently large integers and half-integers 
 | `SHA256SUMS`, `verification/**/SHA256SUMS` | Checksums. |
 | `infinitely-many-dimensions/` | The second paper (114 pages): PDF, LaTeX source and checksums. |
 | `dimension-19/`, `dimension-146/` | Verifiers, centres, proofs and receipts for dimensions 19 and 146. |
+| `berenstein-dimensions-4-14/` | Berenstein's problem in dimensions 4 and 14: paper (17 pages), LaTeX source, verifiers, certificate data and checksums. |
 
 The directory `verification/` is identical to the ancillary directory `anc/` of the arXiv submission. The repository was previously named `schiffer-pompeiu-r4`; its first releases contained only the four- and six-dimensional results, and release 3.0 the dimensions 3, 4, 6, 8, 10 and 14.
 

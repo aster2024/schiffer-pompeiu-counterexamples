@@ -1,0 +1,19 @@
+# Analytic specification of the dimension-fourteen certificate
+
+The theorem concerns a bounded convex non-ball domain in the compact Lie algebra of G2, with strictly convex Cartan section, and a sign-changing Helmholtz solution with zero Dirichlet data and nonzero constant normal derivative. The complete analytic proof is in the accompanying paper, source/main.tex.
+
+Use the normalized positive-root product pi(z)=Im(z^6). The radial Laplacian on invariant functions satisfies (Delta u)|_t=pi^(-1) Delta_t(pi u). The fixed-disc unknowns are a sine-series source g and a real conformal map psi(w)=sum c_j w^j, j=1 mod 12. With V=K_D g, p=psi', q=Ng/sin(6 theta) and h=Im(psi^6)/(B sin(6 theta)), the coefficient equations are g+|p|^2 K_D g=0 and (q^2-h^2 |p|^2)/b=0. The denominator b is fixed at the inverse centre.
+
+The spaces have source weights rho^n, shape weights (j+12)rho^(j-1), and boundary-character weights rho^(n-6), with rho=51/50 and n=6 mod 12. The weighted derivative multiplier is theta_1=sup j/(j+12)=1.
+
+The finite inverse uses the 380-dimensional centre with angular cutoff 114 and radial cutoff 36. The contraction centre has cutoffs 186 and 48. Both field scales B are identical exact dyadic numbers. The finite Jacobian is expanded in eight disjoint column files. The saved inverse entries are exact dyadic numbers, and its weighted norm is below 82859 with defect below 3e-9.
+
+The high-shape Schur operator C=P_t(\mathcal T-QH), Qf=2q_0q(f)/b; \mathcal T is the Cartan shape derivative, has ball inverse \mathcal T_0^(-1) and defect \mathcal K=I-\mathcal T_0^(-1)C of norm below 0.474. Twenty columns cover j=121 through 349; a factorization estimate covers every j>=361. The approximate inverse uses (I+\mathcal K+...+\mathcal K^12)\mathcal T_0^(-1), an invertible finite polynomial with norm below 9.
+
+The high-source-to-finite bound is below 1/5, and the high-shape-to-finite bound below 10. The former covers 6742 possible columns and its support-zero complement; the latter covers 118 columns and all j>=1537 by exact support. Source smoothing is below 0.142, high-shape-to-source norm below 250, and harmonic feedback below 114/10^6. The combined high-source defect is 244743/500000. The high-shape defect is below 0.018962. All 380 finite input columns are covered, with the final column bounded using its full Schur residual and finite-polynomial truncation error. These bounds give the whole derivative defect below 0.49 and the whole approximate-inverse norm below 100000.
+
+The nonlinear coefficients use theta_1=1 at both centres, with sum q d_q<37.149 and d_2<18.551. The weighted centre distance is below 6.440e-18, giving transferred defect below 0.490000000024. The residual and fixed-boundary normalization give Y<1.063e-25. At radius 1e-20 the mapping and derivative radius inequalities are strictly negative.
+
+The same ball gives a univalent conformal map on a neighbourhood of the closed disc, a strictly convex Cartan section, a nonzero c_13 coefficient, positive boundary factors q and h, and opposite signs at two interior chamber points. Positivity recovers the signed boundary condition exactly. Weyl anti-invariance gives analytic division by pi. A codimension-three cutoff argument and elliptic analytic regularity remove the singular orbit strata. Polynomial Chevalley restriction gives the analytic radial boundary; Kostant convexity, in the precise invariant-set form of Lewis's Theorem 3.6 applied through i k, proves convexity of the ambient domain. No assertion of strict convexity in the ambient fourteen-dimensional space is needed.
+
+Run verify_r14.py for the self-contained arithmetic verification, or append --recompute-all to regenerate every bounded column file. Run check_inequalities.py for comparisons with the sharper numerical constants in the paper. The README gives exact commands and the SHA256SUMS file specifies all transparent inputs.

@@ -1,0 +1,76 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{Berenstein1980}
+Carlos~A. Berenstein, \emph{An inverse spectral theorem and its relation to the
+  {Pompeiu} problem}, Journal d'Analyse Math\'ematique \textbf{37} (1980),
+  128--144.
+
+\bibitem{BerensteinYang1987}
+Carlos~A. Berenstein and Paul~C. Yang, \emph{An inverse {Neumann} problem},
+  Journal f\"ur die reine und angewandte Mathematik \textbf{382} (1987), 1--21.
+
+\bibitem{BrownSchreiberTaylor1973}
+L.~Brown, B.~M. Schreiber, and B.~A. Taylor, \emph{Spectral synthesis and the
+  {Pompeiu} problem}, Annales de l'Institut Fourier \textbf{23} (1973), no.~3,
+  125--154.
+
+\bibitem{CSS2026}
+Matthew~J. Colbrook, Siavash Sadeghi, and George Stepaniants, \emph{A
+  computer-assisted counterexample to the planar {Berenstein} conjecture},
+  2026, arXiv:2608.08953v1.
+
+\bibitem{ColbrookStepaniants2026}
+Matthew~J. Colbrook and George Stepaniants, \emph{A computer-assisted
+  counterexample to the planar {Pompeiu} and {Schiffer} conjectures}, 2026,
+  arXiv:2608.01579v1.
+
+\bibitem{DaiSunWeiZhang2026}
+Guowei Dai, Yingxin Sun, Juncheng Wei, and Yong Zhang, \emph{On the {Schiffer}
+  and {Berenstein} conjectures with high-frequency for convex domains in the
+  plane}, 2026, arXiv:2511.19819v2, 13 August 2026.
+
+\bibitem{DaiZhang2025}
+Guowei Dai and Yong Zhang, \emph{Interval bifurcation theorems for {Fredholm}
+  operator and its application to an elliptic overdetermined problem in bounded
+  domains}, 2025, arXiv:2304.04525v4.
+
+\bibitem{Guo2026}
+Jizhou Guo, \emph{Convex counterexamples to the {Schiffer} and {Pompeiu}
+  conjectures in dimensions two to eighteen}, 2026, arXiv:2609.35419v2.
+
+\bibitem{Kostant1973}
+Bertram Kostant, \emph{On convexity, the {Weyl} group and the {Iwasawa}
+  decomposition}, Annales scientifiques de l'\'Ecole Normale Sup\'erieure
+  \textbf{6} (1973), no.~4, 413--455.
+
+\bibitem{Lewis2000}
+Adrian~S. Lewis, \emph{Convex analysis on {Cartan} subspaces}, Nonlinear
+  Analysis: Theory, Methods \& Applications \textbf{42} (2000), no.~6,
+  813--820.
+
+\bibitem{Minlend2023}
+Ignace~Aristide Minlend, \emph{Overdetermined problems with sign-changing
+  eigenfunctions in unbounded periodic domains}, 2023, arXiv:2307.07784v1.
+
+\bibitem{Ruiz2025}
+David Ruiz, \emph{Nonsymmetric sign-changing solutions to overdetermined
+  elliptic problems in bounded domains}, Journal of the European Mathematical
+  Society, 2025, Online publication,
+  \href{https://doi.org/10.4171/JEMS/1595}{doi:10.4171/JEMS/1595}.
+
+\bibitem{Serrin1971}
+James Serrin, \emph{A symmetry problem in potential theory}, Archive for
+  Rational Mechanics and Analysis \textbf{43} (1971), no.~4, 304--318.
+
+\bibitem{Tevelev1999}
+Eugene~A. Tevelev, \emph{On {Chevalley} restriction theorem}, 1999,
+  arXiv:math/9901060v1.
+
+\end{thebibliography}

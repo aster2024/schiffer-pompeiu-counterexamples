@@ -1,0 +1,1243 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{booktabs,array}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\D}{\mathbb D}
+\newcommand{\T}{\mathbb T}
+\newcommand{\F}{\mathcal F}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\kf}{\mathfrak k}
+\newcommand{\tf}{\mathfrak t}
+\setlength{\emergencystretch}{1em}
+\newcommand{\Pf}{P_f}
+\newcommand{\Pt}{P_t}
+\newcommand{\rFourHash}{e3479208ba7234e291cdde4d30e8e8c66ece07ae3bdade67daf9661f622a6337}
+\newcommand{\rFourPayload}{77cebdd65d09b3f10ab95a17efb05af1f5b8add1837c1a5d6973b679ced1ba97}
+\newcommand{\rFourSeconds}{9.514}
+\newcommand{\rFourFullSeconds}{374.957}
+\newcommand{\rFourteenHash}{3ea6375202d31df994cb407603dc7d3c7cbee83587b95c91ab4fe71e8a3b5702}
+\newcommand{\rFourteenPayload}{a6229049ed6e91c4a690c1f0ed9ad49034272328751d70207cc5bda6829dc88e}
+\newcommand{\rFourteenSeconds}{34.589}
+\newcommand{\rFourteenFullSeconds}{518.356}
+\hypersetup{pdftitle={Counterexamples to Berenstein's conjecture in dimensions four and fourteen},pdfauthor={Jizhou Guo}}
+\begin{document}
+\title{Counterexamples to Berenstein's conjecture in dimensions four and fourteen}
+\author{Jizhou Guo}
+\email{mitsuha2021b@gmail.com}
+\date{October 10, 2026}
+\subjclass[2020]{Primary 35N25; Secondary 35P05, 35J05, 22E30, 65G20}
+\keywords{Berenstein conjecture, overdetermined Dirichlet problem, sign-changing eigenfunction, convex domain, interval arithmetic}
+\begin{abstract}
+There exists a bounded strictly convex domain in $\R^4$, different from a
+ball, with real-analytic boundary diffeomorphic to $S^3$, carrying a
+real-analytic sign-changing solution of $\Delta u+u=0$ with $u=0$ and
+$\partial_\nu u=1$ on the boundary. There also exists a bounded convex
+non-ball domain in $\R^{14}$, invariant under the adjoint action of $G_2$
+and with strictly convex Cartan section, carrying a sign-changing solution
+with zero Dirichlet data and nonzero constant normal derivative.
+The constructions combine planar reductions, a conformal formulation on
+the unit disc and interval bounds for an infinite-dimensional contraction.
+\end{abstract}
+\maketitle
+\raggedbottom
+
+\section{Introduction}
+Let $\nu$ denote the outward unit normal. We consider the overdetermined
+Dirichlet eigenvalue problem
+\begin{equation}\label{eq:problem}
+ \Delta u+\lambda u=0\quad\hbox{in }\Omega,\qquad
+ u=0,\quad \partial_\nu u=c\quad\hbox{on }\partial\Omega,
+ \qquad \lambda>0,\quad c\ne0.
+\end{equation}
+Berenstein's conjecture asks whether a bounded smooth domain admitting
+such a solution must be a ball. The inverse spectral background is described by Berenstein~\cite{Berenstein1980}; related questions for the Neumann problem were studied by Berenstein--Yang~\cite{BerensteinYang1987}. A dilation normalizes
+$\lambda$ to one, and multiplication of $u$ by a constant normalizes $c$
+to one. For a sign-definite eigenfunction, Serrin's symmetry theorem
+forces the domain to be a ball~\cite{Serrin1971}. The functions constructed
+below change sign.
+
+The complementary Schiffer problem prescribes constant Dirichlet data
+and zero normal derivative for a nonconstant Helmholtz solution.
+The Pompeiu problem asks whether a continuous function whose integral
+over every rigid motion of a domain vanishes must be zero. Its
+Fourier-spectral formulation was developed by Brown, Schreiber and
+Taylor~\cite{BrownSchreiberTaylor1973}. For \eqref{eq:problem}, Green's
+identity with $e^{i\omega\cdot x}$, $\abs{\omega}^2=\lambda$, gives
+$\int_{\partial\Omega}e^{i\omega\cdot x}\,d\sigma=0$. The boundary measure
+appears here, whereas the area measure appears in the corresponding
+Schiffer formulation.
+
+Colbrook and Stepaniants~\cite{ColbrookStepaniants2026} developed a
+conformal fixed-disc construction for the planar Schiffer and Pompeiu
+problems. Colbrook, Sadeghi and Stepaniants~\cite{CSS2026} adapted the
+method to \eqref{eq:problem}, obtaining a bounded simply connected
+planar non-disc with analytic boundary and a sign-changing eigenfunction.
+The author's paper~\cite{Guo2026}, version~2, contains constructions for
+the Schiffer and Pompeiu problems and a separate part giving a strictly
+convex planar domain for Berenstein's problem. Question~2 of \cite{Guo2026} asks whether Berenstein's conjecture fails in every dimension $n\ge3$, and within the convex class in those dimensions.
+The two constructions in the present paper address that question in
+dimensions four and fourteen.
+Dai, Sun, Wei and Zhang~\cite{DaiSunWeiZhang2026} show that a bounded uniformly convex planar domain with connected $C^{2,\epsilon}$ boundary, $\epsilon\in(0,1)$, is a disc if \eqref{eq:problem} admits a nontrivial solution corresponding to a large eigenvalue.
+
+There are also bifurcation results for related sign-changing problems.
+Ruiz~\cite{Ruiz2025} constructs a bounded non-ball domain for a suitable
+$C^2$ semilinear nonlinearity. Dai and Zhang~\cite{DaiZhang2025},
+Theorem~1.3, obtain a branch of bounded-domain solutions of
+$-\rho\Delta u=u-(u^+)^3$ from a bifurcation interval, for symmetry groups
+satisfying their spectral condition. Minlend~\cite{Minlend2023},
+Theorem~1.1, constructs linear Dirichlet examples on unbounded periodic
+domains bifurcating from generalized cylinders. These results have
+different nonlinearities or different domain classes from the bounded
+linear problem considered here.
+
+\begin{theorem}\label{thm:r4}
+There exist a bounded strictly convex domain $\Omega\subset\R^4$,
+different from a ball, with real-analytic boundary diffeomorphic to $S^3$,
+and a real-analytic sign-changing function $u$, analytic on a
+neighbourhood of $\overline\Omega$, such that
+\[
+ \Delta u+u=0\quad\hbox{in }\Omega,\qquad
+ u=0,\quad\partial_\nu u=1\quad\hbox{on }\partial\Omega.
+\]
+\end{theorem}
+
+\begin{theorem}\label{thm:r14}
+There exists a bounded convex domain $\Omega\subset\R^{14}$, different
+from a ball, carrying a sign-changing solution of
+$\Delta u+u=0$ with $u=0$ and nonzero constant normal derivative on its
+boundary. After an isometric identification $\R^{14}\simeq\mathfrak g_2$,
+the domain is invariant under the adjoint action of the compact group
+$G_2$, and its Cartan section is strictly convex.
+\end{theorem}
+
+We give the planar reductions and coefficient estimates before specifying
+the two contraction balls. Every numerical upper bound used below is
+either a rational consequence of those estimates or an interval
+comparison in the accompanying verification files. The analytic
+arguments explain why the finite calculations control every infinite
+column and why an exact coefficient zero gives the stated boundary data.
+
+\section{The planar reductions}\label{sec:reductions}
+\subsection{Dimension four}
+Write $X=(x,X')\in\R\times\R^3$ and $y=\abs{X'}$. For an
+$O(3)$-invariant function $u(x,y)$, direct differentiation gives
+\begin{equation}\label{eq:r4radial}
+ \Delta_{x,y}(yu)=y\left(u_{xx}+u_{yy}+\frac2y u_y\right)
+                 =y\Delta_{\R^4}u,\qquad y>0.
+\end{equation}
+Thus we seek a plane domain $D$, symmetric under both coordinate
+reflections, and an analytic function $F$ satisfying
+\begin{equation}\label{eq:r4plane}
+ (\Delta+1)F=0,\quad F|_{\partial D}=0,\quad
+ \partial_\nu F=y\quad\hbox{on }\partial D,\qquad
+ F(x,-y)=-F(x,y).
+\end{equation}
+Odd analytic division gives $F(x,y)=yG(x,y^2)$ near the axis. Consequently
+$u(x,X')=G(x,\abs{X'}^2)$ is analytic across it. On the regular boundary,
+the product rule and $u=0$ give $\partial_\nu F=y\partial_\nu u$.
+Equation \eqref{eq:r4radial} and continuity then give the equation and
+constant normal derivative also at the axis.
+
+\subsection{Dimension fourteen}
+Equip the compact Lie algebra $\kf=\mathfrak g_2$ with an
+$\Ad(G_2)$-invariant Euclidean inner product, and let $\tf$ be its
+two-dimensional Cartan subalgebra. Choose orthonormal coordinates
+$z=x+iy$ so that the reflection walls are $\arg z=k\pi/6$. The product of
+the six positive roots is a nonzero scalar multiple of
+\[
+ \pi(z)=\im z^6.
+\]
+We use this normalization of $\pi$. It is harmonic. Equivalently,
+$\Delta\pi$ is an anti-invariant polynomial of degree four, while every
+anti-invariant polynomial is divisible by the six wall factors.
+
+On the regular Cartan plane, each root plane has real dimension two.
+The orbit-volume density is therefore a constant times $\pi^2$.
+For an invariant function $u$, the radial part of the Euclidean
+Laplacian is
+\begin{equation}\label{eq:radialg2}
+ (\Delta_\kf u)|_\tf
+ =\pi^{-2}\operatorname{div}_\tf(\pi^2\nabla u)
+ =\pi^{-1}\Delta_\tf(\pi u).
+\end{equation}
+The second equality follows by expanding the derivatives and using
+$\Delta\pi=0$. This also follows directly from the orthogonal root-plane
+coordinates and their Jacobian. An invariant boundary has its normal in
+the Cartan plane at a regular point: its tangent space contains the
+orbit tangent space, whose orthogonal complement is $\tf$. Hence, if
+$F=\pi u$ and $u=0$, then
+\begin{equation}\label{eq:fluxg2}
+ \partial_\nu F=\pi\,\partial_\nu u.
+\end{equation}
+It suffices to construct a strictly convex Weyl-invariant section $D$
+and an anti-invariant planar field with
+$(\Delta+1)F=0$, $F=0$ and $\partial_\nu F=\pi$ on $\partial D$.
+The lift and its singular points are treated in
+Section~\ref{sec:reconstruction}.
+
+\section{The fixed disc and coefficient spaces}\label{sec:disc}
+We use $m=1$ for the meridian problem in dimension four and $m=6$
+for the Cartan problem in dimension fourteen. This use of $m=1$ is a
+notation for the Fourier sector, rather than a Lie-algebra root count.
+Let
+\[
+ \psi(w)=\sum_{j\equiv1\ (2m)}c_jw^j,\qquad c_j\in\R,\quad c_1>0,
+ \qquad D=\psi(\D).
+\]
+Take a fixed positive field scale $B$, with $B=1$ in dimension four, and
+put $F=B V\circ\psi^{-1}$ and $p=\psi'$. The pulled-back equation is
+$\Delta V+\abs p^2V=0$.
+
+\subsection{The full zero-Dirichlet inverse}
+For $n\equiv m\pmod{2m}$, $n\ge m$, and $s\ge0$, set
+\[
+ S_{n,s}(re^{i\theta})
+ =r^nP_s^{(0,n)}(2r^2-1)\sin(n\theta).
+\]
+The Jacobi polynomials are normalized by $P_s^{(0,n)}(1)=1$. The
+zero-Dirichlet inverse of $\Delta$ on this sector is
+\begin{align}
+ K_DS_{n,0}&=\frac{S_{n,1}-S_{n,0}}{4(n+1)(n+2)},\label{eq:kd0}\\
+ K_DS_{n,s}&=\frac{S_{n,s-1}}{4d(d+1)}
+             -\frac{S_{n,s}}{2d(d+2)}
+             +\frac{S_{n,s+1}}{4(d+1)(d+2)},\quad
+ d=n+2s,\quad s\ge1.\label{eq:kds}
+\end{align}
+Substitution in the Jacobi differential equation verifies
+$\Delta K_DS_{n,s}=S_{n,s}$. The coefficients of each column sum to zero,
+which gives its zero boundary value. Differentiating at $r=1$ gives
+\begin{equation}\label{eq:normal}
+ Ng:=\partial_rK_Dg|_\T
+   =\sum_n\frac{g_{n,0}}{2(n+1)}\sin(n\theta).
+\end{equation}
+In particular the harmonic source row $s=0$ is retained. Removing it
+would remove the required nonzero normal trace. These full Dirichlet
+formulas are also used in~\cite{CSS2026}.
+
+Define
+\[
+ \chi_n(\theta)=\frac{\sin(n\theta)}{\sin(m\theta)}
+ =U_{n/m-1}(\cos(m\theta)),\qquad
+ q=\frac{Ng}{\sin(m\theta)},\qquad
+ h=\frac{\im(\psi^m)}{B\sin(m\theta)}.
+\]
+The quotients extend analytically to the walls. With $V=K_Dg$, the exact
+coefficient equations are
+\begin{equation}\label{eq:map}
+ \F_1(g,c)=g+\abs p^2K_Dg,\qquad
+ \F_2(g,c)=\frac{q^2-h^2\abs p^2}{\eta},
+\end{equation}
+where $\eta=1$ in dimension four and $\eta=b$ in dimension fourteen;
+$b$ is the fixed coefficient $c_1$ at the inverse centre. Thus $\eta$
+does not vary with the unknown. The boundary polynomial has degree
+$2m+2$. If $q,h>0$ and $p\ne0$ on the boundary, a zero of
+\eqref{eq:map} gives $q=h\abs p$, which is the signed normal condition.
+
+\subsection{Norms and multiplication}
+For $\rho>1$ define
+\begin{align}
+ \norm g_G&=\sum_{n,s}\rho^n\abs{g_{n,s}},&
+ \norm v_U&=\sum_n\rho^{n-m}\abs{v_n},&
+ \norm v_{U,1}&=\sum_n\frac nm\rho^{n-m}\abs{v_n},\label{eq:norms}\\
+ \norm c_C&=\sigma\sum_j(j+2m)\rho^{j-1}\abs{c_j},&
+ X&=G\oplus C,&
+ \mathcal Y&=G\oplus U.\label{eq:shapenorm}
+\end{align}
+Both direct sums have the sum norm. We take
+$(\rho,\sigma)=(11/10,b^3)$ in dimension four and
+$(51/50,1)$ in dimension fourteen.
+
+Here are the multiplication estimates used throughout. In the complex
+mother space let
+$\Phi_{k,s}=r^{|k|}P_s^{(0,|k|)}(2r^2-1)e^{ik\theta}$, with weight
+$\rho^{|k|}$. For $k\ge0$,
+\[
+ w\Phi_{k,s}
+ =\frac{k+s+1}{k+2s+1}\Phi_{k+1,s}
+  +\frac{s}{k+2s+1}\Phi_{k+1,s-1}.
+\]
+For $k=-n<0$ the corresponding coefficients are
+$(n+s)/(n+2s+1)$ at $(k+1,s)$ and
+$(s+1)/(n+2s+1)$ at $(k+1,s+1)$. The conjugate recurrence follows by
+conjugation. All coefficients are nonnegative and sum to one. Iteration
+therefore gives
+\begin{equation}\label{eq:wiener}
+ \norm{af}_G\le \norm a_{\mathrm W}\norm f_G,\qquad
+ \norm a_{\mathrm W}=\sum_k\rho^{|k|}\abs{a_k}.
+\end{equation}
+The sine embedding uses conjugate coefficients of magnitude
+$|g_{n,s}|/2$, so its mother-space norm is exactly $\norm g_G$.
+
+The character identity
+$U_aU_b=\sum_{k=|a-b|,\ k\equiv a+b\ (2)}^{a+b}U_k$
+has $\min(a,b)+1$ terms. The weights of its terms are bounded by the
+product weight. It follows that
+\begin{equation}\label{eq:fusion}
+ \norm{v_1v_2}_U\le
+ \min\{\norm{v_1}_{U,1}\norm{v_2}_U,\,
+       \norm{v_1}_U\norm{v_2}_{U,1}\}.
+\end{equation}
+An even Laurent multiplier with frequencies in $2m\Z$ has $U$-operator
+norm at most its Wiener norm: use the two-character expression for a
+paired cosine. In particular multiplication by $\abs p^2$ costs at most
+$P^2$, where $P=\sum_jj\rho^{j-1}|c_j|$.
+
+The absolute column sums in \eqref{eq:kd0}--\eqref{eq:kds} give
+\begin{equation}\label{eq:kappa}
+ \norm{K_D}_{G\to G}\le\kappa_m
+ :=\max\left\{\frac1{2(m+1)(m+2)},\,\frac1{(m+2)(m+4)}\right\}.
+\end{equation}
+Thus $\kappa_1=1/12$ and $\kappa_6=1/80$. From
+\eqref{eq:normal} and the shape weights,
+\begin{align}
+ \norm{q(g)}_U&\le\frac{\rho^{-m}}{2(m+1)}\norm g_G,&
+ \norm{q(g)}_{U,1}&\le\frac{\rho^{-m}}{2m}\norm g_G,\label{eq:qbound}\\
+ \sum_j\rho^{j-1}|\delta c_j|&\le
+       \frac{\norm{\delta c}_C}{\sigma(1+2m)},&
+ \sum_jj\rho^{j-1}|\delta c_j|&\le
+       \frac{\norm{\delta c}_C}{\sigma}.\label{eq:thetacorrect}
+\end{align}
+These estimates and finite character fusion prove that \eqref{eq:map}
+is a continuous polynomial $X\to\mathcal Y$.
+
+No exponential radial weight is imposed on $s$. This causes no
+regularity assumption on the solution: $|S_{n,s}|\le1$ on the disc, so
+source truncations converge uniformly. The zero-Dirichlet
+$W^{2,a}$ estimates for any finite $a>2$ give $C^1$ convergence of their
+solutions and convergence of the normal traces. Consequently
+$V=K_Dg$ has the stated boundary values and solves $\Delta V=g$ weakly.
+At an exact zero the elliptic equation gives interior analyticity.
+Analyticity across the boundary is addressed below.
+
+\section{A contraction criterion}\label{sec:contraction}
+Let $A:\mathcal Y\to X$ be a bounded injective operator. Let $x^0$ be
+the centre used to construct $A$ and let $\bar x$ be the centre of the
+contraction ball. Write
+\[
+ Y\ge\norm{A\F(\bar x)},\quad
+ Z_0\ge\norm{I-AD\F(x^0)},\quad
+ Z_1\ge\norm{A(D\F(\bar x)-D\F(x^0))}.
+\]
+Suppose that expanding the polynomial at $\bar x$ gives multilinear
+remainder bounds $d_q$, $2\le q\le 2m+2$. Set $C_q=\norm A\,d_q$ and
+\[
+ R(r)=\sum_{q=2}^{2m+2}C_qr^q,\qquad
+ Z_2(r)=\sum_{q=2}^{2m+2}qC_qr^{q-1}.
+\]
+Thus $Z_2$ denotes the nonlinear derivative contribution at radius $r$.
+The inequalities
+\begin{equation}\label{eq:radii}
+ Y+(Z_0+Z_1-1)r+R(r)<0,\qquad
+ Z_0+Z_1+Z_2(r)<1
+\end{equation}
+imply existence of a unique zero in $\overline B_X(\bar x,r)$.
+Indeed $x\mapsto x-A\F(x)$ maps this complete closed ball into itself and
+is a strict contraction. Its fixed point satisfies $A\F(x)=0$;
+injectivity of $A$ gives $\F(x)=0$. The factor $q$ in $Z_2$ is obtained
+by replacing one of the $q$ multilinear factors by a direction vector.
+
+\section{The certificate in dimension four}\label{sec:r4}
+\subsection{Finite centre and approximate inverse}
+The centre $\bar x=x^0$ is given by
+\path{finite_center_r4_M31_S24.json}. Its hexadecimal coefficients are
+exact dyadic rationals. The source coordinates are $n=1,3,\ldots,31$,
+$s=0,\ldots,24$, and the shape coordinates are $j=1,3,\ldots,31$.
+There are $400+16=416$ finite unknowns. For orientation,
+$b=c_1=7.08373029362\ldots$,
+$c_3=0.153114245\ldots$ and $c_5=0.171014117\ldots$.
+
+Let $\Pf$ and $\Pt$ project onto these finite coordinates and their
+complements, in the appropriate source and boundary spaces.
+The finite Jacobian $J_f=\Pf D\F(\bar x)|_{X_f}$ is assembled from four
+disjoint interval column files. The verifier computes an interval
+inverse, takes its exact dyadic midpoint $A_f$, and recomputes its
+defect. Every midpoint entry is compared with the saved inverse.
+The resulting bounds are
+\begin{equation}\label{eq:r4finite}
+ \norm{A_f}<1665.434,\qquad
+ E_f:=\norm{I-A_fJ_f}<2.05\cdot10^{-34}<21\cdot10^{-35}.
+\end{equation}
+The $X$-norm of the last column of $A_f$, without the input row weight,
+is $<54.778$. These are direct interval comparisons; the additional
+\path{check_inequalities.py} also checks the sharper defect bound in
+\eqref{eq:r4finite}. Thus $A_f$ and $J_f$ are invertible.
+
+On high shape indices define the ball operator
+\begin{equation}\label{eq:r4tail}
+ (Tc)_j=-b^3(j+2)(c_j-c_{j+2}),\qquad
+ (T^{-1}r)_j=-\sum_{\substack{k\ge j\\k\ {\rm odd}}}
+                    \frac{r_k}{b^3(k+2)},\quad j\ge33.
+\end{equation}
+The ball shape column has coefficients $-b^3(j+2)$ at character row $j$
+and $b^3j$ at row $j-2$, by differentiating \eqref{eq:map} at
+$\psi=bw$, $h=b$, $q=b^2$. Weighted summation of
+\eqref{eq:r4tail} gives
+\[
+ \norm{T^{-1}}\le L_T=(1-\rho^{-2})^{-1}.
+\]
+For $y=(f,v)\in\mathcal Y$, set $g_t=f_t$ and
+\begin{equation}\label{eq:r4A}
+ c_t=T^{-1}\Pt\bigl(v-2q_0q(f)\bigr),\qquad q_0=q(g^0).
+\end{equation}
+Subtract $b^3\,33\,c_{33,t}$ from row $31$ of the finite boundary output
+$\Pf y$, and apply $A_f$ to that corrected finite output. Together with
+$(g_t,c_t)$ this defines $Ay$. The finite row correction is the ball
+coupling from shape index $33$; it is part of the operator.
+
+The operator is injective. If $Ay=0$, its high source component gives
+$f_t=0$, its high shape component gives
+$\Pt(v-2q_0q(f))=0$, and the invertible finite map gives
+$f_f=v_f=0$, since the row correction is then zero. Thus $f=0$, $v_t=0$
+and $y=0$.
+Put $N_q=\norm{q_0}_{U,1}<86.059$ and
+$E=54.778(33/35)\rho^{-32}$. Equations
+\eqref{eq:qbound}, \eqref{eq:r4tail} and the finite column bound give
+\begin{equation}\label{eq:r4Anorm}
+ \norm A\le1665.434+1+(1+E)L_T\frac{N_q}{2\rho}<2444.
+\end{equation}
+The complete residual is expanded without discarding any output
+coefficient and preconditioned with \eqref{eq:r4A}. Its finite and tail
+norms are respectively $<1.198868\cdot10^{-6}$ and
+$<1.838234\cdot10^{-6}$, giving
+\begin{equation}\label{eq:r4Y}
+ Y<3.038\cdot10^{-6}.
+\end{equation}
+
+\subsection{All derivative columns}
+In a weighted $\ell^1$ space an operator norm is the supremum of its
+normalized column norms. The column partition is as follows:
+\begin{center}
+\begin{tabular}{@{}p{0.18\textwidth}p{0.59\textwidth}r@{}}
+\toprule
+Class & Indices & Upper bound\\
+\midrule
+Finite & All $416$ finite coordinates & $0.578+E_f$\\
+Near source & $n\le31$, $25\le s\le55$; and
+ $33\le n\le61$, $0\le s\le55$; $1336$ columns & $0.679$\\
+Far source & $n\ge63$ or $s\ge56$ & $0.886$\\
+Near shape & $j=33,35,\ldots,299$; $134$ columns & $0.720$\\
+Far shape & Every odd $j\ge301$ & $0.925823$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The finite-tail, near-source and near-shape files enclose the whole
+output of \eqref{eq:r4A}, including the finite row correction. Their
+spans are checked for exact coverage, and all their columns were
+regenerated in the complete replay.
+
+Here are the analytic arguments for the unenumerated classes.
+Let $P=\sum_jj\rho^{j-1}|c_j|<9.09$ and
+$d=|p_0|^2K_De_{n,s}$ for a source column. Its source derivative is
+$e_{n,s}+d$, and its boundary derivative is exactly $2q_0q(e_{n,s})$.
+The high boundary residual in \eqref{eq:r4A} is therefore
+$-2\Pt(q_0q(d))$. Multiplication by $|p_0|^2$ shifts angular degree by
+at most $30$ and lowers the radial index by at most $30$.
+$K_D$ lowers it by at most one more. Hence $n\ge63$ cannot reach the
+finite angular rows, and $s\ge56$ cannot reach the finite radial rows.
+For $n\ge63$ the trace quotient costs at most
+$[2\rho(n-29)]^{-1}$. Its whole-column bound is
+\begin{equation}\label{eq:r4farsource}
+ \frac{P^2}{65\cdot67}
+ \left(1+(1+E)L_T\frac{N_q}{34\rho}\right)<0.885833.
+\end{equation}
+For $s\ge56$, $n\le61$, the harmonic row of $d$ vanishes, and the bound
+is $P^2/(113\cdot115)<0.006359$. These cases cover the complement of the
+near-source list.
+
+For a high shape column, the pure boundary output, aligned by offsets
+from $j$, has the form
+\begin{equation}\label{eq:affine}
+ B^{\rm shape}_{j+a}=jA_a+B_a,\qquad
+ a=-92,-90,\ldots,60,\qquad \sum_aA_a=0,\quad j\ge125.
+\end{equation}
+To verify the identity analytically, expand
+$-2h_0\,\chi_j|p_0|^2-h_0^2
+(jw^{j-1}\bar p_0+j\bar w^{j-1}p_0)$ in characters.
+The centre has character degree at most $30$ and derivative frequency
+at most $30$. Once the high frequency is separated from these supports,
+character fusion has fixed offsets and coefficients independent of $j$,
+apart from the displayed derivative factor $j$. The latter is a
+difference of adjacent characters, using
+$2\cos(k\theta)=U_k-U_{k-2}$. The two fused sums have equal numbers of
+terms, so their coefficient sums cancel. This proves the last identity
+in \eqref{eq:affine}. The two exact columns $j=125,127$ determine
+$A_a,B_a$; the program also checks $j=129,301$ exactly.
+
+Put $D_a=B_a-(a+2)A_a$. Formula \eqref{eq:r4tail} gives
+\[
+ c_{j+v}=-b^{-3}\sum_{a\ge v}
+       \left(A_a+\frac{D_a}{j+a+2}\right).
+\]
+For offsets $v<-92$ the $A_a$ sum is zero. Let
+\begin{align*}
+ L_v&=-b^{-3}\sum_{a\ge v}A_a-\mathbf1_{\{v=0\}},&
+ L_0^\sharp&=\sum_v\rho^v|L_v|,\\
+ L_1^\sharp&=\sum_v|v|\rho^v|L_v|,&
+ D^\sharp&=b^{-3}\sum_v\rho^v\sum_{a\ge v}|D_a|,\\
+ D^-&=\frac{\rho^{-94}}{b^3(1-\rho^{-2})}\sum_a|D_a|.
+\end{align*}
+The sums over $v$ here run through the offsets in \eqref{eq:affine}.
+At $J=301$, the normalized boundary defect is bounded, for every
+$j\ge J$, by
+\begin{equation}\label{eq:r4boundaryfar}
+ L_0^\sharp+\frac{L_1^\sharp}{J+2}
+ +\left(1+\frac{60}{J+2}\right)\frac{D^\sharp}{J-90}
+ +\frac{D^-}{J-90}<0.706765.
+\end{equation}
+This follows by bounding $(j+v+2)/(j+2)$ in the finite sums and extending
+the low-offset leakage to its geometric series.
+
+The interior shape output uses the zero-Dirichlet factor
+$V_0=(1-r^2)Q_0$. The finite rational identity is checked coefficient by
+coefficient, independently of its interval evaluation.
+For angular degree $n>0$ the $r^2$ recurrence has coefficients
+\[
+ a_s=\frac{(s+1)(n+s+1)}{(n+2s+1)(n+2s+2)},\qquad
+ c_s=\frac{s(n+s)}{(n+2s)(n+2s+1)},\qquad b_s=1-a_s-c_s.
+\]
+Thus $a_s,c_s\ge0$ and
+$a_s+c_s\le(2s+1)/(n+1)$. The absolute column sum of $1-r^2$ is
+$2(a_s+c_s)$.
+Set $W=\bar p_0Q_0$, expanded in the complex mother basis.
+Its least angular frequency is $-61$. Multiplication by $w^{j-1}$
+increases the radial index by at most $\max(0,-k)$ for an input
+frequency $k$, while its coefficients remain nonnegative with sum one.
+The two conjugate shape terms consequently have normalized source norm
+\begin{equation}\label{eq:r4interiorfar}
+ I_J=\frac4{b^3}\sum_{k,s}
+       \frac{|W_{k,s}|\rho^k[2(s+\max(0,-k))+1]}{J+k}
+       <0.076108.
+\end{equation}
+The additional tail shape norm from its trace is at most
+$L_TN_q I_J/[\rho(J-61)]<0.142951$.
+The only finite output is the row correction in \eqref{eq:r4A}.
+The boundary and trace contributions to it are bounded by
+\[
+ \frac{54.778\,33\sum_a|D_a|}
+ {b^3(J-90)(J+2)\rho^{J-1}}
+ +\frac{54.778\,33\,\rho^{-(J-93)}}{J-90}
+                  \frac{N_q I_J}{\rho(J-61)}
+ <5.23\cdot10^{-10}.
+\]
+Together with \eqref{eq:r4boundaryfar} and \eqref{eq:r4interiorfar}
+this gives the far-shape bound $0.925823$. Every denominator increases
+with $j\ge J$ and every leakage weight decreases. The estimate therefore
+applies to the entire tail.
+
+The five classes now give
+\begin{equation}\label{eq:r4Z}
+ Z_0=\norm{I-AD\F(\bar x)}<463/500=0.926,\qquad Z_1=0.
+\end{equation}
+
+\subsection{Nonlinear bounds and radius}
+At the centre put
+$P=\norm{p_0}_{\mathrm W}$, $P_2=\norm{|p_0|^2}_{\mathrm W}$,
+$H_0=\norm{h_0}_U$, $H_1=\norm{h_0}_{U,1}$,
+$H_{20}=\norm{h_0^2}_U$, $V_0^\sharp=\norm{K_Dg^0}_G$.
+For a unit $X$ perturbation the linear bounds are
+\[
+ a_p=a_{h,1}=b^{-3},\quad a_{h,0}=(3b^3)^{-1},\quad
+ a_{q,0}=(4\rho)^{-1},\quad a_{q,1}=(2\rho)^{-1},\quad K=1/12.
+\]
+Let $L_h=2\min(H_1a_{h,0},H_0a_{h,1})$ and
+$Q_h=a_{h,0}a_{h,1}$. Expansion of \eqref{eq:map}, using
+\eqref{eq:fusion}, gives
+\begin{align*}
+ d_{2,I}&=2Pa_pK+V_0^\sharp a_p^2,&d_{3,I}&=Ka_p^2,\\
+ d_{2,B}&=a_{q,0}a_{q,1}+H_{20}a_p^2+2Pa_pL_h+Q_hP_2,\\
+ d_{3,B}&=L_ha_p^2+2Pa_pQ_h,&d_{4,B}&=Q_ha_p^2.
+\end{align*}
+The interval computation of these expressions and \eqref{eq:r4Anorm}
+gives
+\[
+ C_2<268,\qquad C_3<23/10000,\qquad C_4<6/10^8.
+\]
+At the exact rational radius $r=1/12500$, the rational upper bounds in
+\eqref{eq:r4Y} and \eqref{eq:r4Z} give
+\begin{align}
+ Y+(Z_0-1)r+268r^2+\frac{23}{10000}r^3+\frac6{10^8}r^4
+     &<-1.1667\cdot10^{-6},\label{eq:r4poly}\\
+ Z_0-1+536r+\frac{69}{10000}r^2+\frac{24}{10^8}r^3
+     &<-0.0311.\label{eq:r4lip}
+\end{align}
+These are strict rational comparisons. Section~\ref{sec:contraction}
+gives an exact zero $x^*$ in this ball.
+
+\subsection{Geometric and sign margins}
+For a perturbation in this ball,
+\[
+ |\delta c_1|\le\frac r{3b^3},\qquad
+ \sum_{j\ge1}j|\delta c_j|R^{j-1}\le\frac r{b^3}
+ \quad(R\le\rho),\qquad
+ \sum_{j\ge3}j(j-1)|\delta c_j|
+ \le\frac{r\rho}{b^3e\log\rho}.
+\]
+The last estimate uses $\sup_{t\ge0}t\rho^{-t}=1/(e\log\rho)$.
+The interval sums at the centre, with these perturbation bounds, give
+\begin{align}
+ \re\psi'(w)&>5.39635 &&(|w|\le21/20),\label{eq:r4geom1}\\
+ |\psi'(w)|&>5.66945,\quad
+ \re\left(1+\frac{w\psi''(w)}{\psi'(w)}\right)>0.10935
+                                      &&(|w|\le1),\label{eq:r4geom2}\\
+ \re\frac{w\psi'(w)}{\psi(w)}&>0.84029 &&(|w|=1),&
+ |c_3^*|&>0.1531.\label{eq:r4geom3}
+\end{align}
+For example the convexity lower bound is
+$1-(\sum_{j>1}j(j-1)|c_j|+r\rho/(b^3e\log\rho))/
+(b-\sum_{j>1}j|c_j|-r/b^3)$.
+The positive real derivative gives univalence by integrating along
+line segments. The curvature and radial inequalities give strict
+convexity and strict star-shapedness.
+
+The character bound $|U_{n-1}|\le n$ gives $q^*>24.345$.
+The same estimate for $h$ gives
+$h^*\ge b-\sum_{j>1}j|c_j|-r/b^3>5.66945$; thus its positivity is also
+a consequence of the derivative margin. The squared boundary equation
+therefore yields the positive branch $q^*=h^*|p^*|$.
+The interval values at $w=i/4,3i/4$, including the uniform field error
+$r/12$, satisfy
+\begin{equation}\label{eq:r4sign}
+ V^*(i/4)>10,\qquad V^*(3i/4)<-8.
+\end{equation}
+The centre values are enclosed near $13.53518938515$ and
+$-8.60629803547$, respectively. The two images lie on the positive
+imaginary axis, since $\re\psi'>0$. Thus division by $y$ preserves
+their opposite signs.
+
+\section{The certificate in dimension fourteen}\label{sec:r14}
+\subsection{Two centres and the finite block}
+All norms in this section use $\rho=51/50$. The inverse centre $x^0$
+is specified by \path{center_r14_M114_S36_arbrefined.json}, and the
+contraction centre $\bar x$ by
+\path{center_r14_M186_S48_arbrefined2.json}. They have the same exact
+dyadic field scale $B$. At $x^0$ the finite source indices are
+$n=6,18,\ldots,114$, $s=0,\ldots,36$, and the finite shape indices are
+$j=1,13,\ldots,109$. There are $370+10=380$ finite unknowns. At $\bar x$
+the corresponding cutoffs are $186$ and $48$.
+
+The saved binary64 matrix $A_f$ is interpreted entrywise as an exact
+dyadic matrix. Eight disjoint files enclose all finite Jacobian columns
+at $128$-bit precision. Direct interval multiplication gives
+\begin{equation}\label{eq:r14finite}
+ \norm{A_f}<82859,\qquad
+ \norm{I-A_fJ_f}<2.161\cdot10^{-9}<3\cdot10^{-9}.
+\end{equation}
+The program also stores and recomputes the norm of each output column
+of $A_f$, including its row weight. This profile is used for the source
+cross bound. Both $A_f$ and $J_f$ are invertible.
+
+\subsection{The tail Schur operator}
+At $x^0$ write
+\[
+ Qf=\frac{2q_0q(f)}b,\qquad
+ H=D_c\F_1(x^0),\qquad \mathcal T=D_c\F_2(x^0),\qquad
+ C=\Pt(\mathcal T-QH)|_{C_t},\quad b=c_1^0.
+\]
+The projections onto the high shape and boundary coordinates are
+identified by boundary index $n=j+5$. Put
+$h_b=b^6/B$, $\alpha=h_b^2$ and $\tau=(1-\rho^{-12})^{-1}$.
+The ball shape operator has columns
+\[
+ \mathcal T_0e_j=-\alpha\bigl[(j+12)\chi_{j+5}-j\chi_{j-7}\bigr].
+\]
+Its step-$12$ tail inverse satisfies
+$\norm{\mathcal T_0^{-1}}\le\tau/\alpha$, by the same weighted summation as
+\eqref{eq:r4tail}. Define $\mathcal K=I-\mathcal T_0^{-1}C$.
+The $20$ columns $j=121,133,\ldots,349$ are enclosed separately and have
+maximum $<0.059850$. We next bound every $j\ge J=361$ analytically.
+
+Put $P=\sum_jj\rho^{j-1}|c_j^0|$,
+$C_\psi=\sum_j\rho^{j-1}|c_j^0|$,
+$\delta P=\sum_{j>1}j\rho^{j-1}|c_j^0|$,
+$\delta h_1=\norm{h_0-h_b}_{U,1}$ and
+$\delta h_{20}=\norm{h_0^2-\alpha}_U$. Set
+\[
+ D_h=\frac{6C_\psi^5}{B},\quad
+ \delta D_h=\frac{6(C_\psi^5-b^5)}B,\quad
+ D_{h,b}=\frac{6h_b}b,\quad
+ \delta P_2=2b\,\delta P+(\delta P)^2.
+\]
+Here $C_\psi\ge b$, and the nonnegative power expansion bounds the
+coefficient difference from the ball by $\delta D_h$.
+Expansion of $-2h_0\delta h\,|p_0|^2-h_0^2\delta|p|^2$, followed by
+\eqref{eq:fusion} and division by the shape weight, bounds $\mathcal T-\mathcal T_0$ by
+\[
+ B_J=\frac2{b(J+12)}
+ \bigl(\delta h_1D_hP^2+h_b\delta D_hP^2+
+       h_bD_{h,b}\delta P_2\bigr)
+       +\frac2b(P\delta h_{20}+\alpha\delta P).
+\]
+After $\mathcal T_0^{-1}$ this contributes $\tau B_J/\alpha<0.275974$.
+
+For the other Schur term factor $K_Dg^0=(1-r^2)Q_0$ and set
+$W=\bar p_0Q_0$. The factor identity is checked over $\mathbb Q$;
+its interval expansion satisfies the same identity.
+For a mother-space term at angular frequency $k$, multiplying by
+$w^{j-1}$ gives frequency $j-1+k>0$ for $j\ge J$.
+The nonnegative multiplication coefficients sum to one. In the
+harmonic output row of $(1-r^2)\Phi_{n,s}$ only $s=0,1$ can contribute.
+Their coefficients have magnitude at most $1/(n+2)$; taking the normal
+trace costs a further $1/[2(n+1)]$. Consequently, with
+$N_q=\norm{q_0}_{U,1}$, the $QH$ contribution to $\mathcal K$ is at most
+\begin{equation}\label{eq:r14fartrace}
+ \frac{4\tau N_q}{\alpha b\rho^6}
+ \sum_{k,s}\frac{|W_{k,s}|\rho^k}{(J+k)(J+k+1)}
+ <0.197588.
+\end{equation}
+This retains the harmonic row, rather than replacing it by the entire
+$K_D$ column sum. Both denominator factors increase with $j\ge J$.
+The total far bound is $<0.473562$. Combining near and far columns gives
+\begin{equation}\label{eq:r14K}
+ \norm{\mathcal K}<0.474,\qquad
+ \norm{C^{-1}}\le\frac{\tau}{\alpha(1-\norm{\mathcal K})}<9.
+\end{equation}
+This covers the whole high shape space.
+
+We use the finite polynomial
+\begin{equation}\label{eq:CN}
+ C_{13}^{-1}=\left(\sum_{\ell=0}^{12}\mathcal K^\ell\right)\mathcal T_0^{-1}.
+\end{equation}
+It has norm $<9$ and is invertible: its polynomial factor satisfies
+$(\sum_{\ell=0}^{12}\mathcal K^\ell)(I-\mathcal K)=I-\mathcal K^{13}$, and both $I-\mathcal K$ and
+$I-\mathcal K^{13}$ are invertible since $\norm{\mathcal K}<1$.
+
+\subsection{The full approximate inverse and cross bounds}
+For $y=(f,v)\in\mathcal Y$, define
+\begin{align}
+ \widetilde v&=v-Qf,&
+ c_t&=C_{13}^{-1}\Pt\widetilde v,&
+ g_t&=\Pt f-\Pt Hc_t,\label{eq:r14A1}\\
+ x_f&=A_f\Pf\bigl(y-D\F(x^0)(g_t,c_t)\bigr),&
+ Ay&=(x_f,g_t,c_t).\label{eq:r14A2}
+\end{align}
+The output shear, the invertible high shape map, the source shear and
+the finite invertible map are triangular factors. More directly,
+$Ay=0$ implies $c_t=g_t=0$, hence $\Pt f=0$ and
+$\Pt(v-Qf)=0$, and then $x_f=0$ implies $\Pf f=\Pf v=0$.
+It follows that $y=0$. The same equations reconstruct $y$ from any
+$x_f,g_t,c_t$, so $A$ is also a bounded bijection.
+
+The cross bounds are
+\begin{equation}\label{eq:r14cross}
+ X_s:=\norm{A_f\Pf D_g\F|_{G_t}}<0.171168<1/5,\qquad
+ X_c:=\norm{A_f\Pf D_c\F|_{C_t}}<9.183045<10.
+\end{equation}
+We describe their complete support coverage. Let $p_{\max}=108$,
+$h_{\max}=6\cdot109=654$ and $h^2_{\max}=2h_{\max}-6=1302$.
+For the source bound, a pair of derivative monomials
+$w^a\bar w^b$ is bounded by weight $\rho^{a+b}$ and has angular
+displacement at most $a+b$, while its radial lowering is at most
+$a+b$. Multiplication positivity and the exact $K_D$ column sum
+bound each finite output by the largest inverse-profile entry among
+the allowed output rows. The harmonic boundary output is expanded by
+character fusion. Enumerating $n\le330$, $s\le253$, outside the finite
+block, gives $6742$ possible source columns. For every remaining column
+the finite source output is zero by support, and the finite boundary
+output is zero either because $s>0$ or because the character supports
+are separated. The certified maximum in \eqref{eq:r14cross} is reached
+at $(n,s)=(6,37)$.
+
+For the shape bound the finite output is exactly zero when
+\[
+ j+5-h_{\max}-p_{\max}>114,\quad
+ j-1-p_{\max}-h^2_{\max}>114,\quad
+ j-1-114-p_{\max}>114.
+\]
+All three hold for $j\ge1537$. The $118$ columns
+$j=121,133,\ldots,1525$ are expanded and multiplied by $A_f$ with
+interval arithmetic. Their index lists and centre and inverse hashes
+are checked for complete coverage. Thus neither cross bound is a
+sampled tail estimate.
+
+The source smoothing and high shape derivative bounds are
+\begin{equation}\label{eq:r14smallblocks}
+ \norm{\Pt|p_0|^2K_D|_{G_t}}<0.141426<0.142,\qquad
+ \norm{H|_{C_t}}<250.
+\end{equation}
+For the source estimate use $P^2$ times the largest high-source $K_D$
+column sum: compare the lowest high radial index $s=37$ and the lowest
+high angular index $n=126$, including both harmonic and nonharmonic
+columns. For the shape estimate the $20$ near columns are enclosed
+separately. The far bound comes from the factor $1-r^2$, as in
+\eqref{eq:r4interiorfar}, and equals
+\[
+ 4\sum_{k,s}\frac{|W_{k,s}|\rho^k
+                 [2(s+\max(0,-k))+1]}{361+k}<249.711<250.
+\]
+
+For the feedback block, retain only those terms in \eqref{eq:kd0} and
+\eqref{eq:kds} that can reach radial row zero after multiplication.
+If a multiplier pair has total degree $d=a+b$, only $K_D$ terms at
+radial index at most $d$ contribute, and their resulting angular degree
+is at least $\max(6,n-d)$. The normal quotient therefore has the
+additional factor $1/[2(\max(6,n-d)+1)]$. Summing these nonnegative
+majorants proves
+\begin{equation}\label{eq:r14QD}
+ \norm{Q|p_0|^2K_D|_{G_t}}<0.000112959<114/10^6.
+\end{equation}
+The program checks $5952$ cases with $n\le342$, $s\le217$, outside the
+finite block. For $s\ge218$ no harmonic output is possible; for
+$n>342$ both the $K_D$ coefficients and the angular trace factors
+decrease. This proves the bound on the unenumerated complement.
+
+For the norm of $A$ on the entire output space, the coarse estimates
+$\norm H<1076$ and $\norm Q<0.133<1$ follow from
+$2P\norm{K_Dg^0}_G$ and \eqref{eq:qbound}.
+Equations \eqref{eq:r14A1}--\eqref{eq:r14A2} yield
+\begin{equation}\label{eq:r14Anorm}
+ \norm A\le82859+(1+X_s)
+       +\bigl((1+X_s)\norm H+X_c+1\bigr)\,9
+       <94580<10^5,
+\end{equation}
+where $X_s=1/5$, $X_c=10$ may be used as rational ceilings.
+
+\subsection{Every column of the derivative defect}
+For a normalized high source input, the transformed boundary output in
+\eqref{eq:r14A1} is $-Q|p_0|^2K_De$. Its shape correction has norm
+at most $c=9(114/10^6)=513/500000$. The source error has norm at most
+$g=0.142+250c=797/2000$. The finite correction is bounded by
+$X_sg+X_cc$. Thus the whole column defect is bounded by
+\begin{equation}\label{eq:r14highsource}
+ (1+X_s)g+(1+X_c)c=244743/500000=0.489486<0.49.
+\end{equation}
+For a high shape input, \eqref{eq:CN} gives the exact shape remainder
+$\mathcal K^{13}e$. Its source remainder is $H \mathcal K^{13}e$, and its finite remainder
+is controlled by the two cross blocks. Consequently every such column
+has defect at most
+\begin{equation}\label{eq:r14highshape}
+ \bigl((1+X_s)250+1+X_c\bigr)(0.474)^{13}<0.018962.
+\end{equation}
+
+For a finite normalized input, let $(f,v)=D\F(x^0)e$ and set
+$c_0=\mathcal T_0^{-1}\Pt(v-Qf)$. The same algebra gives the coarse bound
+\begin{equation}\label{eq:finitecoarse}
+ E_f+\frac65\norm{\Pt f}
+       +\frac{311}{1-0.474}\norm{c_0},\qquad E_f=3\cdot10^{-9}.
+\end{equation}
+Eight interval files cover all $380$ finite input columns.
+For indices $0,\ldots,378$, \eqref{eq:finitecoarse} is $<0.114825$.
+The final shape column, index $379$, has a larger coarse estimate and is
+treated directly.
+
+For that column let $\hat c$ be the eight-term dyadic shape vector in
+\path{r14_M114_lastshape_tail_seed.json} and put
+$R=\Pt(v-Qf)-C\hat c$.
+Full coefficient expansion gives $\norm R<3.573\cdot10^{-15}$.
+The difference between $C_{13}^{-1}\Pt(v-Qf)$ and $\hat c$ is at most
+\[
+ \epsilon_c=9\norm R+
+       \frac{0.474^{13}}{1-0.474}\norm{c_0}.
+\]
+The second term compares the finite polynomial with the true Schur
+inverse. Let $\hat g=\Pt f-\Pt H\hat c$. Expand its complete finite
+correction by \eqref{eq:r14A2}. The sum of its finite, source-tail and
+shape-tail defects, plus $311\epsilon_c$ divided by the input weight,
+is $<0.160581$. Thus index $379$ is included with a rigorous remainder,
+rather than accepting its finite seed as an exact solution.
+
+Finite, high source and high shape inputs exhaust $X$. The preceding
+estimates establish
+\begin{equation}\label{eq:r14Z0}
+ Z_0=\norm{I-AD\F(x^0)}<0.49.
+\end{equation}
+
+\subsection{Nonlinear bounds and centre transfer}
+For a unit shape perturbation,
+\[
+ \theta_0=1/13,\qquad
+ \theta_1=\sup_{j\equiv1\ (12)}\frac{j}{j+12}=1
+\]
+bound $\sum\rho^{j-1}|\delta c_j|$ and
+$\sum j\rho^{j-1}|\delta c_j|$, respectively. Both estimates use the weighted norms in \eqref{eq:thetacorrect}.
+
+At either centre let $H_{0,0}=\norm h_U$, $H_{1,0}=\norm h_{U,1}$.
+For $1\le k\le6$ define
+\begin{align*}
+ H_{0,k}&=\frac{\binom6k}{B}C_\psi^{6-k}\theta_0^k,\\
+ H_{1,k}&=\frac{\binom6k}{B}
+ \left(\frac{6-k}{6}P C_\psi^{5-k}\theta_0^k
+       +\frac{k}{6}C_\psi^{6-k}\theta_1\theta_0^{k-1}\right).
+\end{align*}
+The term with $6-k$ is zero when $k=6$.
+These follow by expanding $\psi^6$ and differentiating a product of six
+holomorphic factors; the character multiplier $n/6$ accounts for the
+total degree divided by six. Put
+\[
+ L_\ell=\sum_{\substack{0\le k,k'\le6\\k+k'=\ell}}
+       \min(H_{1,k}H_{0,k'},H_{0,k}H_{1,k'}),
+ \quad a_{q,0}=\rho^{-6}/14,\quad a_{q,1}=\rho^{-6}/12.
+\]
+Take $L_\ell=0$ outside $0\le\ell\le12$. The boundary majorant at degree
+$q$ is
+\[
+ d_{q,B}=\frac1{c_1}
+   \left(P^2L_q+2P\theta_1L_{q-1}+\theta_1^2L_{q-2}
+             +\mathbf1_{\{q=2\}}a_{q,0}a_{q,1}\right).
+\]
+For the interior part,
+$d_{2,I}=2P\theta_1\kappa_6+\norm{K_Dg}_G\theta_1^2$,
+$d_{3,I}=\kappa_6\theta_1^2$, and the other interior coefficients are
+zero. Set $d_q=d_{q,I}+d_{q,B}$, $2\le q\le14$.
+These are multilinear bounds in the sum input norm.
+
+At $x^0$, $\sum_{q=2}^{14}qd_q<37.149$. The complete weighted
+distance between the centres is
+$\delta=\norm{\bar x-x^0}<6.440\cdot10^{-18}<1$.
+Therefore
+\begin{equation}\label{eq:r14transfer}
+\begin{aligned}
+ Z_1&\le\norm A\sum_{q=2}^{14}qd_q\delta^{q-1}\\
+    &<10^5\cdot37.149\cdot6.440\cdot10^{-18}<2.4\cdot10^{-11},\\
+ Z_0+Z_1&<0.490000000024<1/2.
+\end{aligned}
+\end{equation}
+This uses $\delta^{q-1}\le\delta$ for $q\ge2$.
+
+At $\bar x$ the complete coefficient residual is
+$<1.063\cdot10^{-30}$. The evaluator uses the denominator $\bar c_1$
+in the boundary output, whereas \eqref{eq:map} fixes $b=c_1^0$.
+Multiply its residual and nonlinear coefficients by
+$f=\max(1,\bar c_1/b)<1+1.7\cdot10^{-23}$ to bound the fixed map.
+Both nonlinear certificates use $\theta_1=1$, and their quadratic
+coefficients satisfy $d_2<18.551$. Hence $Y<1.063\cdot10^{-25}$.
+
+At $r=10^{-20}$, using $10^5$ and $1/2$ as ceilings for the inverse norm
+and transferred defect, respectively, the interval comparisons give
+\begin{align}
+ Y-\frac r2+\sum_{q=2}^{14}10^5 f d_qr^q
+        &<-4.99989\cdot10^{-21},\label{eq:r14poly}\\
+ -\frac12+\sum_{q=2}^{14}q\,10^5 f d_qr^{q-1}
+        &<-0.49999999999996.\label{eq:r14lip}
+\end{align}
+In particular $Z_2(r)<4\cdot10^{-14}$. The exact zero $x^*$ follows
+from Section~\ref{sec:contraction}.
+
+\subsection{Geometry and sign}
+At $\bar x$ put $L=\bar c_1-\sum_{j>1}j|\bar c_j|$ and
+$U=\sum_{j>1}j(j-1)|\bar c_j|$.
+The radius bounds $|\delta\psi'|\le r$ on $|w|\le1.001$ and
+$|\delta\psi''|\le50r$ on $|w|\le1$ follow from
+\eqref{eq:thetacorrect} and $1/(e\log(51/50))<50$.
+The centre sums certify a positive outer derivative lower bound and
+$L-U-51r>25.4946>0$. Hence $\psi^*$ is univalent on
+$|w|\le1.001$, and $\re(1+w\psi''/\psi')>0$ on the unit disc.
+Its image is strictly convex and contains zero.
+The interval comparison $|\bar c_{13}|-r/[25\rho^{12}]>0$
+proves $c_{13}^*\ne0$.
+
+For a character polynomial, its constant coefficient minus
+$\sum_{n>6}(n/6)|v_n|$ is a lower bound on its boundary value.
+The source perturbation costs at most $r\rho^{-6}/12$, and the shape
+perturbation costs at most $\sum_{k=1}^6H_{1,k}r^k$.
+The exact-boundary margins are
+\begin{equation}\label{eq:r14positive}
+ q^*>29.1875,\qquad h^*>0.98405.
+\end{equation}
+Thus the positive square root is obtained throughout the boundary.
+At $w=t e^{i\pi/12}$ the centre values for $t=1/10,37/100$ are
+enclosed below $-0.0795470$ and above $1.4919379$, respectively.
+The field perturbation is at most $r/80$, so the exact values still
+have opposite signs. Real coefficients $j=1\pmod{12}$ keep this ray
+fixed, and its image has positive radius because $\re\psi'>0$.
+Therefore $\pi(\psi(w))>0$ at both points.
+
+\section{Reconstruction of the domains and fields}\label{sec:reconstruction}
+\subsection{The planar field and exact boundary data}
+At either exact zero, $V=K_Dg$ has zero Dirichlet trace and satisfies
+$\Delta V+|p|^2V=0$. The conformal map is univalent on a neighbourhood
+of the closed disc. Set $F=B V\circ\psi^{-1}$ on $D=\psi(\D)$.
+The conformal normal derivative formula gives
+\[
+ \partial_\nu F(\psi(e^{i\theta}))
+       =B\,\frac{Ng(\theta)}{|p(e^{i\theta})|}.
+\]
+The positive margins for $q,h$ give $Ng=h|p|\sin(m\theta)$.
+Thus $\partial_\nu F=\im\psi$ for $m=1$ and
+$\partial_\nu F=\im(\psi^6)=\pi$ for $m=6$.
+These are equalities for the exact solution, including the wall
+endpoints by continuity.
+
+The field is analytic in $D$ by elliptic regularity. Its zero
+Dirichlet data and the displayed analytic Neumann data on the analytic
+boundary give a local analytic continuation by the
+Cauchy--Kowalevski theorem. To identify it with $F$ on the interior
+side, their difference has zero Cauchy data. Extend the difference by
+zero across the boundary; integration by parts shows that it solves
+Helmholtz distributionally there. Analytic elliptic regularity and
+vanishing on the exterior open set imply that the difference is zero.
+Compactness of the boundary gives an analytic continuation on a
+neighbourhood of $\overline D$.
+
+The real coefficient and sine symmetries commute with the equation
+and the conformal change of variables. For $m=1$, $D$ is invariant
+under both coordinate reflections and $F$ is odd in $y$.
+For $m=6$, $\psi(e^{i\pi/6}w)=e^{i\pi/6}\psi(w)$ and
+$F$ changes sign under the corresponding rotation. It is odd under
+conjugation, and hence under the Weyl reflections. In particular $D$
+is Weyl-invariant and $F$ is Weyl anti-invariant.
+
+\subsection{The four-dimensional lift}
+Define
+\[
+ \Omega_4=\{(x,X'):(x,|X'|)\in D\},\qquad
+ u_4(x,X')=G(x,|X'|^2),\quad F(x,y)=yG(x,y^2).
+\]
+The division is analytic locally at every axis point. Away from the
+axis it is ordinary division by $y$, so the local definitions agree.
+Equation \eqref{eq:r4radial} proves the Helmholtz equation, and the
+boundary product rule proves $u_4=0$, $\partial_\nu u_4=1$, extending
+to the axis by analyticity.
+
+Convexity follows from planar convexity and reflection symmetry:
+for two points the norm of their transverse convex combination is at
+most the corresponding convex combination of transverse norms.
+The planar section contains every smaller nonnegative vertical
+coordinate at the same horizontal coordinate. Strict convexity
+follows as well. If the meridian data of two different boundary
+points differ, their planar convex combination is interior. If they
+coincide but the transverse directions differ, strict triangle
+inequality decreases the transverse norm, again giving an interior
+point. At transverse norm zero identical meridian data give a single
+point, so this case has no exception.
+
+For completeness the analytic boundary can be written as a radial
+sphere. The positive meridian radius $R_D(\theta)$ is analytic,
+even and $\pi$-periodic. Its exponentially convergent Fourier series
+uses only $\cos(2k\theta)=T_k(\cos2\theta)$. On $S^3$ substitute
+$\cos2\theta=\omega_1^2-|\omega'|^2$. The resulting positive function
+$R(\omega)$ is analytic: the exponential coefficient bound makes the
+Chebyshev series converge on a complex neighbourhood of the compact
+range $[-1,1]$. The radial map $\omega\mapsto R(\omega)\omega$ is
+injective, and its derivative has tangential projection
+$R(\omega)$ times the identity. It is therefore an analytic
+parametrization of the boundary by $S^3$.
+
+The symmetries force the centre of a hypothetical ball to be zero.
+Its meridian section would be a centred disc. A conformal map to that
+disc with $\psi(0)=0$, $\psi'(0)>0$ is linear, contrary to
+$c_3^*\ne0$. Finally \eqref{eq:r4sign}, on the positive meridian
+half-plane, gives opposite signs of $u_4$. This proves
+Theorem~\ref{thm:r4}.
+
+\subsection{The invariant lift in dimension fourteen}
+Set $\Omega_{14}=\Ad(G_2)D$. Every orbit meets $\tf$ in a Weyl orbit,
+so $\Omega_{14}\cap\tf=D$ and the regular field is defined by
+$u_{14}|_\tf=F/\pi$. Analytic anti-invariance makes $F$ vanish on each
+wall. Analytic division by a linear wall factor can be repeated:
+after division the remaining wall vanishing follows off the
+intersections and then by analytic continuation. Thus $F/\pi$ is
+analytic and Weyl-invariant on the whole Cartan section, including
+the origin. The field scale and the normalization of $\pi$ have been
+fixed throughout. Using the literal positive-root product instead
+would multiply the constant flux by a nonzero scalar, removable by
+scaling $u_{14}$.
+
+We state the convexity result used here precisely. For a real
+semisimple Cartan decomposition $\mathfrak g=\mathfrak t_c\oplus
+\mathfrak p$, with maximal abelian section $\mathfrak a\subset
+\mathfrak p$, Kostant's theorem says
+$P_{\mathfrak a}(\Ad(K)x)=\operatorname{conv}(Wx)$ for
+$x\in\mathfrak a$. Lewis~\cite{Lewis2000}, Theorems~2.2 and~3.6,
+formulates its consequence: an $\Ad(K)$-invariant subset of
+$\mathfrak p$ is convex exactly when its section in $\mathfrak a$
+is convex. The projection theorem is due to
+Kostant~\cite{Kostant1973}. Apply this to the complexification of
+$\mathfrak g_2$ regarded as a real Lie algebra, with
+$\mathfrak p=i\kf$, $\mathfrak a=i\tf$ and compact group $G_2$.
+Multiplication by $i$ is an equivariant isometry after normalization
+of the Killing form. The convex Weyl-invariant section therefore
+gives convexity of $\Omega_{14}$.
+
+One can also see the set conclusion from the projection statement.
+The closed invariant lift of $\overline D$ equals the intersection
+of all adjoint conjugates of
+$\{X:P_\tf X\in\overline D\}$. The inclusion from left to right uses
+$\operatorname{conv}(Wx)\subset\overline D$. For the reverse inclusion,
+conjugate $X$ into $\tf$ and apply that particular projection.
+The intersection is convex. Its interior is $\Ad(G_2)D$: the radial
+description below identifies interior and boundary. Thus the open
+domain is convex.
+
+To justify the analytic boundary, let $R_D(\theta)$ be the positive
+analytic radial function of $D$. Weyl symmetry makes it an analytic
+function $f(\cos6\theta)$. At the endpoints of $[-1,1]$ this follows
+from the even analytic Taylor expansion at a reflection wall and
+the nonzero quadratic term of $\cos6\theta$ there. Polynomial
+Chevalley restriction gives a real homogeneous invariant polynomial
+$P_6$ on $\kf$ restricting to $\re z^6$; see, for example, the
+restriction statement in~\cite{Tevelev1999}. Hence on an annulus
+around the unit sphere
+\[
+ R(X)=f\left(\frac{P_6(X)}{|X|^6}\right)
+\]
+is analytic. Every unit direction is conjugate to a Cartan direction,
+so its argument lies in $[-1,1]$ and $R$ is positive.
+This yields an analytic radial boundary with nonzero normal,
+parametrized by $S^{13}$.
+
+The regular orbit field satisfies Helmholtz by
+\eqref{eq:radialg2}. Its extension as an orbit function is locally
+bounded since the analytic section quotient is locally bounded.
+The nonregular set has codimension at least three: a nonzero wall
+has one section parameter and an extra two-dimensional root plane
+in its centralizer, so its orbit saturation has dimension
+$1+(14-4)=11$; the origin has higher codimension. On compact subsets
+away from the origin these are finitely many smooth wall strata.
+An $\epsilon$-tube cutoff around a stratum of codimension $c\ge3$
+has gradient and Hessian integrals
+$O(\epsilon^{c-1})$ and $O(\epsilon^{c-2})$. Testing Helmholtz
+against this cutoff, using boundedness of the field, makes all error
+terms tend to zero. A separate ball cutoff treats the origin.
+The equation consequently holds distributionally across the
+nonregular set. Elliptic analytic regularity gives the analytic
+extension. Apply the same argument to the planar continuation on
+a slightly larger invariant neighbourhood to obtain boundary
+regularity.
+
+At regular boundary points $u_{14}=0$ and
+$\partial_\nu u_{14}=1$ by \eqref{eq:fluxg2}. The regular boundary
+points are dense, and the analytic field and boundary extend both
+equalities to all boundary points. The domain is bounded, and its
+Cartan section is strictly convex.
+An adjoint-invariant ball would have an adjoint-fixed centre; the
+simple Lie algebra has no nonzero fixed vector. Its section would
+therefore be a centred disc, contradicting $c_{13}^*\ne0$.
+The two points of Section~\ref{sec:r14} have positive $\pi$ and
+opposite field signs. This proves Theorem~\ref{thm:r14}.
+
+\section{The computer-assisted inequalities}\label{sec:computer}
+The verification directories contain the two self-contained Python
+programs, their transparent coefficient programs and exact data,
+supplementary numerical comparisons, and SHA-256 lists. All
+coefficient calculations use rational arithmetic or Arb interval
+arithmetic through \texttt{python-flint 0.9.0}. The recorded Python
+version is $3.10.19$ on Linux x86-64. Arb calculations use one thread;
+the surrounding numerical libraries are also restricted to one
+thread. Binary64 files specify exact dyadic inputs.
+
+The four-dimensional single file authenticates its payload and
+manifest, checks every finite and near-tail span, reconstructs and
+compares the finite inverse, and recomputes the residual, far-tail,
+nonlinear, rational-radius and geometric inequalities. Its complete
+mode additionally regenerates every bounded column file and compares
+the bytes. The fourteen-dimensional file authenticates its payload
+and individual files, checks finite and cross-column coverage,
+recomputes the inverse profile and far bounds, composes the
+all-column defect, regenerates both nonlinear coefficient files
+with $\theta_1=1$, transfers the centre, and checks the radius,
+boundary signs and geometry. Its complete mode regenerates every
+finite and near-column file.
+
+The finite inverse and near columns do not themselves prove an
+infinite-dimensional norm bound. The support arguments,
+character identities, far-tail estimates, injectivity and
+reconstruction are proved in the text. The programs enclose the
+finite expressions in those estimates. The additional
+\path{check_inequalities.py} compares their typed interval outputs
+with the sharper numerical ceilings printed here. The finite matrix program enforces the ceiling $21\cdot10^{-35}$ used in the assembled estimate; the supplementary comparisons also
+check the sharper finite defect in \eqref{eq:r4finite}.
+
+The principal contraction bounds are:
+\begin{center}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Quantity & Dimension four & Dimension fourteen\\
+\midrule
+$r$ & $1/12500$ & $10^{-20}$\\
+$Y$ & $<3.038\cdot10^{-6}$ & $<1.063\cdot10^{-25}$\\
+$Z_0$ & $<0.926$ & $<0.49$\\
+$Z_1$ & $0$ & $<2.4\cdot10^{-11}$\\
+$Z_2(r)$ & $<0.042881$ & $<4\cdot10^{-14}$\\
+$\norm A$ & $<2444$ & $<10^5$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For location of the numerical comparisons, the finite inverse and
+residual in dimension four are in
+\path{verify_finite_inverse_r4.py}; its five column classes are in the
+three bounded-column families and
+\path{verify_far_source_bound_r4.py},
+\path{verify_far_shape_bound_r4.py}. Its remaining inequalities are in
+\path{verify_nonlinear_r4.py}, \path{verify_radii_r4.py},
+\path{verify_geometry_r4.py} and \path{verify_signchange_r4.py}.
+\path{verify_ball_linearization.py} also checks a Dirichlet-ball Bessel near-resonance and the quadratic and cubic moments of $U_4$; this is a consistency check on which no inequality of the proof depends.
+In dimension fourteen the finite matrix is checked by
+\path{verify_finite_block_rank2.py}; the tail and cross estimates are
+checked by the Schur, source-tail, cross-source, cross-shape, $H$ and
+$QD$ programs. The finite-input files and
+\path{verify_last_finite_column_r14.py} complete that column class.
+The nonlinear and centre-transfer calculations are in
+\path{nonlinear_majorant_rank2.py} and
+\path{verify_center_shift_r14.py}, and the final inequalities in
+\path{verify_radii_geometry_r14.py}.
+
+From the corresponding verification directory run, sequentially,
+\begin{verbatim}
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  nice -n 19 python3 -B verify_berenstein_r4.py
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  nice -n 19 python3 -B verify_r14.py
+\end{verbatim}
+Each command ends with the line \texttt{PROVED} and exit code zero.
+For complete regeneration append \texttt{--recompute} to the
+four-dimensional command and \texttt{--recompute-all} to the
+fourteen-dimensional command. Run the additional numerical comparisons
+with \texttt{nice -n 19 python3 -B check\_inequalities.py}.
+Its last line is \texttt{ALL\_PAPER\_INEQUALITIES\_CHECKED}.
+
+Recorded single-file wall times are \rFourSeconds\ seconds and
+\rFourteenSeconds\ seconds, respectively. Complete serial
+regeneration of the supplied mathematical programs and numerical
+data took \rFourFullSeconds\ seconds and
+\rFourteenFullSeconds\ seconds.
+Optimization with \texttt{-O} is rejected before mathematical
+verification. In each dimension a changed embedded numerical file
+was also rejected after its outer payload digest was recomputed,
+because the inner file manifest did not match.
+
+The single-file and compressed-payload SHA-256 values are
+\noindent Dimension four, program:\par\nopagebreak
+\noindent\texttt{\rFourHash}\par
+\noindent Dimension four, payload:\par\nopagebreak
+\noindent\texttt{\rFourPayload}\par
+\noindent Dimension fourteen, program:\par\nopagebreak
+\noindent\texttt{\rFourteenHash}\par
+\noindent Dimension fourteen, payload:\par\nopagebreak
+\noindent\texttt{\rFourteenPayload}\par
+Each directory's \path{SHA256SUMS} also lists every transparent
+verification file. A hash comparison authenticates the specified
+reproducible inputs; the analytic proof and the interval calculations
+establish the theorem.
+
+\section{Remarks}
+The two solutions lie outside the sign-definite case of Serrin's
+theorem. In dimension fourteen the assertion of strict convexity is
+made for the Cartan section; the ambient-domain assertion is convexity.
+Dimensions six, eight and ten are not covered by these certificates.
+The two coefficient balls specify the exact constructions.
+
+\section*{Use of AI}
+The proofs, the programs and the text of this paper were produced with
+AI systems (GPT-6 Astra, GPT-6.1 Sol and Claude Opus~5.5) under the
+author's direction. They were checked by independent reviews with
+AI models and by independent replays of the interval-arithmetic
+certificates. The author takes responsibility for the content.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}
